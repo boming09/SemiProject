@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>메인 페이지=제일 첫화면</h1>
+	<!-- 메뉴바 -->
+	
+	<!-- 메인/카테고리 -->
+	<%@ include file="/WEB-INF/views/common/category.jsp" %>
 </body>
 </html>
