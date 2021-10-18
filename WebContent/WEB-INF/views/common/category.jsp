@@ -40,8 +40,10 @@
 		display : flex;
 		justify-content : center;	
 		align-items: center;
-		font-size : 1.2rem;
+		font-size : 1.3rem;
 		font-weight : bold;
+		background : white;
+		border : solid 5px rgb(196, 217, 195);
 	}
 	
 	#category li {
