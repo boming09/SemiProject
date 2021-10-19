@@ -149,7 +149,7 @@ nav {
         <!-- 3. 페이지 제목-->
         <div class="mainlogo wrapper">
             <h2 class="page-title">
-                <a href="00_메인 추천.html"><img class="logo" src="<%= request.getContextPath() %>/resources/image/logo.png" alt="home logo"></a>    
+                <a href="00_메인 추천.html"><img class="logo" src="<%= request.getContextPath() %>/resources/images/logo.png" alt="home logo"></a>    
             </h2>
             <div class="search_area">
                 <form method="get">
