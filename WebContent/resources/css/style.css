@@ -1,0 +1,189 @@
+@charset "UTF-8"; /* 인코딩 문자 깨짐 방지 (유니코드 문자열 있을 시) */
+
+/* <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> */
+
+html {
+    font-size: 100%;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+#top {
+   
+    height: 190px;
+
+}
+
+#top .page-title {
+    text-align: center;
+   /* font-size: 3rem;*/
+}
+
+/* 내비 메뉴 장식 */
+
+nav {
+    background-color: rgba(196, 217, 195, 1);
+    width: 100%;
+}
+.main-nav {
+    list-style: none;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    display: flex;
+    margin-top: 10px;
+    background-color: rgba(196, 217, 195, 1);
+    margin-left: 60%;
+    margin-bottom: 14px;
+}
+
+/* 내비 li 여백 */
+.main-nav li {
+    margin-left: 20px;
+}
+
+/* 내비 a 태그 */
+.main-nav a {
+    color: black;
+    font-size: 12px;
+    
+}
+
+
+/* 로고 내비 수평 정렬 */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+/*콘텐츠의 최대 출력 너비 설정 */
+.wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+
+.mainlogo {
+    height: 100px;
+    padding: 30px;
+}
+
+.topline {
+    border-bottom: 6px solid;
+    color: rgba(196, 217, 195, 1);
+
+}
+
+article {
+
+    border: rgba(73, 125, 78, 1) 3px solid;
+    padding: 20px;
+    max-width: 714px;
+    
+    
+}
+
+
+.recomm {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+
+.book{
+    margin-top: 4%;
+    margin-bottom: 4%;
+    width: 180px;
+}
+
+.book1{
+    margin-left: 55px;
+    
+}
+
+.book3{
+   margin-right: 55px;
+}
+
+
+
+
+
+/*------------------메인 컨첸츠--------------------*/
+
+
+* {margin:0;padding:0;border:0;}
+
+.tab_content {
+    position:absolute;
+    top:41%;
+    left:57%;
+    transform:translate(-50%,-50%);
+    font-size:15px; 
+    
+} /* 화면의 가운데 정렬 */
+
+input[type="radio"] { display:none; } /* input을 안보이게 처리 */
+
+input[type="radio"] + label {
+    display:inline-block; 
+    width:263px; 
+    padding:12px; 
+    border:rgba(73, 125, 78, 1) 3px solid; 
+    border-bottom: rgba(196, 217, 195, 1); 
+    color:white; 
+    background-color:rgba(73, 125, 78, 1); 
+    font-size:13px;
+    cursor:pointer;
+    text-align: center;
+} /* label에 대한 버튼속성 */
+
+input[type="radio"]:checked + label {
+    background:white; 
+    color:#000;
+}
+
+.conbox {
+    width:800px;
+    height:320px;
+    background:white; 
+    border:rgba(73, 125, 78, 1) 3px solid; 
+    border-top: rgba(196, 217, 195, 1); 
+    margin:0 auto; 
+    display:none; 
+    padding-top: 12px;
+} /* 컨텐츠 영역 */
+
+input[id="tab01"]:checked ~ .con1 {display:block;} /* 인풋에 체크가 해당 요소보이게 설정 */
+input[id="tab02"]:checked ~ .con2 {display:block;}
+input[id="tab03"]:checked ~ .con3 {display:block;}
+
+
+
+
+
+/*------------------footer--------------*/
+
+footer {
+background:rgba(196, 217, 195, 1);
+text-align: center;
+padding : 26px 0;
+position: absolute;
+bottom: 0;
+width: 100%;
+
+}
+
+footer p {
+color: black;
+font-size: 0.865rem;
+}
+
+
+
+

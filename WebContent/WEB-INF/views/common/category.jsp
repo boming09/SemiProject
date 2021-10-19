@@ -22,7 +22,7 @@
 		background : rgb(196, 217, 195);
 	}
 	
-	#main-content {
+	/*#main-content {
 		width : 64%;
 		height : 500px;
 		border : 1px solid black;
@@ -32,7 +32,7 @@
 		width : 18%;
 		height : 500px;
 		border : 1px solid black;
-	}
+	}*/
 	
 	.q-search {
 		text-align : center;
@@ -57,6 +57,8 @@
 		color : black;
 	}
 	
+	
+	
 </style>
 </head>
 <body>
@@ -72,8 +74,8 @@
 				<li><a href="#">중고샵</a></li>
 			</ul>
 		</aside>
-		<article id="main-content">
-		</article>
+	<!-- <article id="main-content">
+		</article> -->	
 		<aside id="sidebar">
 		</aside>
 	</div>
