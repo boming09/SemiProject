@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SemiProject</title>
 </head>
 <body>
 	<!-- 메뉴바 -->
-	
+	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
 	<!-- 메인/카테고리 -->
 	<%@ include file="/WEB-INF/views/common/category.jsp" %>
 </body>
