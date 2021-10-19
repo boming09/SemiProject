@@ -58,7 +58,7 @@ a {
 }
 
 .input_area input {
-    width: 250px;
+    width: 350px;
 	height: 30px;
     border: 0px;
 }
