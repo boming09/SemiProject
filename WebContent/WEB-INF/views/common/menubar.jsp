@@ -70,9 +70,26 @@ a {
     margin-left: 20px;
 }
 
-h2 {
-    text-align: center;
+/* 로고 */
+.page-title a {
+    display: flex;
+    justify-content: center;
+	align-items: center;
+	text-decoration : none;
+	color : black;
 }
+
+.page-title img {
+	width : 90px;
+	height : 35px;
+}
+
+.page-title div {
+	/* 봄숲 text */
+	font-size : 1.6rem;
+}
+
+
 /* 내비 메뉴 장식 */
 
 nav {
@@ -141,16 +158,19 @@ nav {
                     <li><a href="#">회원가입</a></li>
                     <li><a href="#">마이페이지</a></li>
                     <li><a href="#">장바구니</a></li>
-                    <li><a href="#">고객센터</a></li>
+                    <li><a href="<%= request.getContextPath() %>/cs">고객센터</a></li>
                 </ul>
             </nav>
             
         </header>
         <!-- 3. 페이지 제목-->
         <div class="mainlogo wrapper">
-            <h2 class="page-title">
-                <a href="00_메인 추천.html"><img class="logo" src="<%= request.getContextPath() %>/resources/images/logo.png" alt="home logo"></a>    
-            </h2>
+            <div class="page-title">
+            	<a href="<%= request.getContextPath() %>">
+                <img src="<%= request.getContextPath() %>/resources/images/logo.png" alt="home logo">
+                <div>봄숲</div>
+                </a>
+            </div>
             <div class="search_area">
                 <form method="get">
                     <select id="searchCondition" name="searchCondition">
