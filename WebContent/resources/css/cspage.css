@@ -1,38 +1,38 @@
 @charset "UTF-8";
-
+/*
 * {margin:0;padding:0;border:0;}
         
 a { 
     text-decoration: none;
     color: black;
 }
-
+*/
 .csarea {
     display: flex;
 }
-
 
 /* 컨텐츠 */
 .content {
     width: 70%;
 }
 
-.content header {
+.csctheader {
     height: 70px;
     display : flex;
     justify-content : space-between;	
     align-items: center;
     margin: 5px;
+    margin-bottom: 10px;
     padding-left: 20px;
     padding-right: 20px;
 }
 
-.content header span:first-child {
+.csctheader span:first-child {
     font-size: 1.3rem;
     font-weight : bold;
 }
 
-.content header span:last-child {
+.csctheader span:last-child {
     font-size: 0.7rem;
 }
 
@@ -57,12 +57,12 @@ a {
 }
 
 .ct-area3 {
-    top: 50%;
+    top: 40%;
     left: 3%;
 }
 
 .ct-area4 {
-    top: 50%;
+    top: 40%;
     right: 3%;
 }
 

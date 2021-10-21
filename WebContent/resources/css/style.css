@@ -24,7 +24,6 @@ a {
 }
 
 /* 내비 메뉴 장식 */
-
 nav {
     background-color: rgba(196, 217, 195, 1);
     width: 100%;
@@ -59,6 +58,7 @@ nav {
     justify-content: space-between;
    
 }
+
 
 /*콘텐츠의 최대 출력 너비 설정 */
 .wrapper {

@@ -15,11 +15,12 @@
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
 	
 	<div class="csarea wrapper">
-	<!-- cs 카테고리 -->
-	<%@ include file="/WEB-INF/views/notice/cscategory.jsp" %>
+		<!-- cs 카테고리 -->
+		<%@ include file="/WEB-INF/views/notice/cscategory.jsp" %>
+		
 		<div class="content">
-            <header>
-                <span>FAQ</span>
+            <header class="csctheader">
+                <span>FAQgggg</span>
                 <span>분야별 FAQ 빠른 찾기를 이용해보세요.</span>
             </header>
             <div class="ctarea">
