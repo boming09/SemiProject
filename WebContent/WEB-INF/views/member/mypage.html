@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bomsoup login</title>
+    <link href="resources/css/mypage-style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <!-- favicon (Real Favicon Generator 등에서 가공 필요) -->
+    <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
+    <!--웹 폰트-->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="top">
+        <header class="page-header">            
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="login.html">로그인</a></li>
+                    <li><a href="joinmembership.html">회원가입</a></li>
+                    <li><a href="mypage.html">마이페이지</a></li>
+                    <li><a href="#">장바구니</a></li>
+                    <li><a href="#">고객센터</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- 페이지 제목 -->
+        <div class="mainlogo wrapper">
+            <h2 class="page-title">
+                <a href="00_메인 추천.html"><img class="logo" src="resources/image/logo.png" alt="home logo"></a>    
+            </h2>
+            <div class="search_area">
+                <form method="get">
+                    <select id="searchCondition" name="searchCondition">
+                        <option value="search">통합검색</option>
+                        <option value="title">제목</option>
+                        <option value="content">내용</option>
+                    </select> 
+                    <span class="input_area"> <input type="search"
+                        name="searchValue" placeholder="검색할 내용을 입력하세요.">
+                    </span>
+                    <button type="submit">검색</button>
+                </form>
+            </div>
+        </div>       
+            <div class="topline">
+            </div>
+        </div>
+        <div class="content wrapper">
+            <aside id="category">
+                <div class="q-search">빠른분야찾기</div>
+                <ul class="q-list">
+                    <li><a href="#">국내도서</a>
+                        <div class="sublist kbook">
+                                <ul class="kbook1">
+                                    <li><a href="#">소설/시/희곡</a></li>
+                                </ul>
+                                <ul>
+                                    <li><a href="#">만화</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#">국외도서</a>
+                        <div class="sublist fbook">
+                                <ul>
+                                    <li><a href="#">문학 소설</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#">eBook</a>
+                        <div class="sublist ebook">
+                                <ul> 
+                                    <li><a href="#">소설</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#">웹소설/코믹</a>
+                        <div class="sublist webcomic">                           
+                                <ul>
+                                    <li><a href="#">로맨스</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#">공연</a>
+                        <div class="sublist show">                            
+                                <ul>
+                                    <li><a href="#">콘서트</a></li>                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#">중고샵</a>
+                        <div class="sublist used">                            
+                                <ul>
+                                    <li><a href="#">가정과 생활</a></li>                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+    <footer>
+        <div class="wrapper">
+            <p><small>&copy; 2021 Bomsoup</small></p>
+        </div>
+    </footer>
+</body>
+</html>
