@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class DoOneQuestionServlet
+ * Servlet implementation class faqNoticeServlet
  */
-@WebServlet("/one/question")
-public class DoOneQuestionServlet extends HttpServlet {
+@WebServlet("/faq")
+public class faqNoticeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DoOneQuestionServlet() {
+    public faqNoticeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,8 +28,8 @@ public class DoOneQuestionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1:1문의하기
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/DoOneQuestion.jsp");
+		// 고객센터 FAQ-주문/결제 클릭시 화면 페이지로 단순 이동
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/faqNoticeView.jsp");
 		view.forward(request, response);
 	}
 

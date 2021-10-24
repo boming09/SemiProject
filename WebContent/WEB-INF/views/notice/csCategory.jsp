@@ -7,7 +7,7 @@
 <title>cs_category</title>
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="<%= request.getContextPath() %>/resources/css/cscategory.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/csCategory.css" rel="stylesheet">
 </head>
 <body>
     <aside class="category">
@@ -26,7 +26,7 @@
                 <li><a href="<%= request.getContextPath() %>/one">1:1 문의내역</a></li>
             </ul>
         </div>
-        <div class="area3"><a class="ca-top" href="#">작가 소통게시판</a>
+        <div class="area3"><a class="ca-top" href="<%= request.getContextPath() %>/commu">작가 소통게시판</a>
             <ul class="ca-list">
                 <li><a href="#">작가 소개</a></li>
             </ul>
