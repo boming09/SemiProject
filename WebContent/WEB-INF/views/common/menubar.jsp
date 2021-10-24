@@ -115,7 +115,7 @@ nav {
 /* 내비 a 태그 */
 .main-nav a {
     color: black;
-    font-size: 14px;
+    font-size: 12px;
     
 }
 
