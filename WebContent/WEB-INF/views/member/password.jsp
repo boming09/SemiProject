@@ -32,12 +32,10 @@
                 </div>
                 <br>
                 <div class="id3">
-                    <input type="radio" class="psreset" name="phoneno"> 
-                    <label class="psreset">휴대전화 번호</label>                    
+                    <input type="radio" id="#" name="#" value="phone" checked="checked">휴대전화 번호                                      
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" class="psreset" name="emailno">
-                    <label class="psreset">E-mail 주소</label>
+                    <input type="radio" id="#" name="#" value="email">E-mail 주소                    
                     <br><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -45,7 +43,7 @@
                     <label>휴대전화 번호</label> <input type="text" class="id1text" size="10"><br><br>
                     &nbsp;&nbsp;
                     <label>E-mail 주소</label> <input type="text" class="id1text" size="10"><br><br>
-                    <a href="password2.html"><button class="id2pagebut">다음단계</button></a><br>
+                    <a href="password2"><button class="id2pagebut">다음단계</button></a><br>
                 </div>
                 <br><div class="topline">
                 </div><br>
@@ -54,7 +52,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="emailconsulting.html"><button id="emailquestion">E-mail로 문의하기</button></a><br>
+                <a href="emailconsulting"><button id="emailquestion">E-mail로 문의하기</button></a><br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

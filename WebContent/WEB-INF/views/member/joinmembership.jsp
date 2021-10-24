@@ -112,7 +112,7 @@
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <label class="termstext">약관 전체보기</label>
-                        <a href="#"><img class="terms" src="<%= request.getContextPath() %>/resources/image/premium-icon-terms-of-use-1698490.png" alt="terms"></a> 
+                        <a href="#"><img class="terms" src="<%= request.getContextPath() %>/resources/images/login-terms.png" alt="terms"></a> 
                     </td>
                 </tr>
                 <tr>
@@ -120,7 +120,7 @@
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <label class="termstext">약관 전체보기</label>
-                        <a href="#"><img class="terms" src="<%= request.getContextPath() %>/resources/image/premium-icon-terms-of-use-1698490.png" alt="terms"></a> 
+                        <a href="#"><img class="terms" src="<%= request.getContextPath() %>/resources/images/login-terms.png" alt="terms"></a> 
                     </td>
                 </tr>
                 <tr>
@@ -128,14 +128,14 @@
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <label class="termstext">내용보기</label>
-                        <a href="#"><img class="terms" src="<%= request.getContextPath() %>/resources/image/premium-icon-check-mark-3906842.png" alt="cehck"></a> 
+                        <a href="#"><img class="terms" src="<%= request.getContextPath() %>/resources/images/login-check.png" alt="cehck"></a> 
                     </td>
                 </tr>
                 <div class="joinme" onclick="bomsoup()">회원 가입하기</div>
                 <script>
                     function bomsoup() {
                         alert("회원가입이 완료 되었습니다.");
-                        window.location.href = "login.html";
+                        window.location.href = "login";
                     }
                 </script>
             </table>

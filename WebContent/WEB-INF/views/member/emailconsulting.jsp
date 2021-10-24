@@ -88,7 +88,7 @@
         <script>
             function emailbut() {
                         alert("이메일 문의 접수가 완료되었습니다. 로그인 화면으로 돌아갑니다.");
-                        window.location.href = "login.html";
+                        window.location.href = "login";
                     }
         </script>    
     <!-- 

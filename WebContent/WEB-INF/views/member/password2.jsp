@@ -31,16 +31,14 @@
                 </div>
                 <br>
                 <div class="id3">
-                    <input type="radio" class="psreset" name="phoneno"> 
-                    <label class="psreset">휴대전화 번호</label>                    
+                    <input type="radio" id="#" name="#" value="phone" checked="checked">휴대전화 번호                  
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" class="psreset" name="emailno">
-                    <label class="psreset">E-mail 주소</label>
+                    <input type="radio" id="#" name="#" value="email">E-mail 주소
                     <br><br>
                     
                     <label>E-mail 주소</label> <input type="text" class="id1text" size="10"><br><br>
-                    <a href="login.html"><button class="id2pagebut">다음단계</button></a><br><br>
+                    <a href="login"><button class="id2pagebut">다음단계</button></a><br><br>
                     <label id="ps2explanation">휴대전화 번호가 바뀌어도 본인 명의의 휴대폰으로 본인인증을<br>
                     할수 있습니다.</label>
                 
@@ -52,7 +50,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="emailconsulting.html"><button id="emailquestion">E-mail로 문의하기</button></a><br>
+                <a href="emailconsulting"><button id="emailquestion">E-mail로 문의하기</button></a><br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

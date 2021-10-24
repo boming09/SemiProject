@@ -65,22 +65,22 @@
                 </tr><br>
                 <tr>
                     <td>
-                        <input type="radio"><label id="emailcheck"> 또는 E-Mail 저장 </label>
-                        <a href="id.html"><input type="button" value="아이디 찾기" class="idb"></a>
-                        <a href="password.html"><input type="button" value="비밀번호 찾기" class="psb"></a><br>
+                        <input type="radio" id="loemailcheck" name="loemailcheck" value="loemailcheck" checked="checked">ID 또는 E-Mail 저장
+                        <a href="id"><input type="button" value="아이디 찾기" class="idb"></a>
+                        <a href="password"><input type="button" value="비밀번호 찾기" class="psb"></a><br>
                     </td>
                 </tr>
-                <a href="joinmembership.html"><input type="button" value="봄숲 간편 회원가입" class="mbjoin"></a><br>
+                <a href="joinmembership"><input type="button" value="봄숲 간편 회원가입" class="mbjoin"></a><br>
                 <div class="imgdiv">
-                    <a href="#"><img class="naverlogo" src="<%= request.getContextPath() %>/resources/image/naver.jpg" alt="naver logo"></a>   
-                    <a href="#"><img class="kakaologo" src="<%= request.getContextPath() %>/resources/image/kakao.jpg" alt="kako logo"></a>
-                </div>
+                    <a href="#"><img class="naverlogo" src="<%= request.getContextPath() %>/resources/images/naver.jpg" alt="naver logo"></a>   
+                    <a href="#"><img class="kakaologo" src="<%= request.getContextPath() %>/resources/images/kakao.jpg" alt="kako logo"></a>
+                </div>             
             </fieldset>
             <button id="lobut" onclick="lolo()">로그인</button>
             <script>
                 function lolo() {
                     alert("로그인");
-                    window.location.href = "login.html";
+                    window.location.href = "login";
                 }
             </script>
     </div>
