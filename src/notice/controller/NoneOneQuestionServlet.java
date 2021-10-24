@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class FaqNoticeTypeServlet
+ * Servlet implementation class NoneOneQuestionServlet
  */
-@WebServlet("/faq")
-public class FaqNoticeTypeServlet extends HttpServlet {
+@WebServlet("/one")
+public class NoneOneQuestionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FaqNoticeTypeServlet() {
+    public NoneOneQuestionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,8 +28,8 @@ public class FaqNoticeTypeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 고객센터 FAQ-주문/결제 클릭시 화면 페이지로 단순 이동
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/FaqNoticeType.jsp");
+		// 1:1문의 없을때 보이는 화면 + 1:1문의내역 겸??
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/NoneOneQuestion.jsp");
 		view.forward(request, response);
 	}
 

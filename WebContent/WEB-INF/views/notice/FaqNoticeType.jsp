@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="<%= request.getContextPath() %>/resources/css/faqnoticetype.css" rel="stylesheet">
-<title>Insert title here</title>
+<link href="<%= request.getContextPath() %>/resources/css/FaqNoticeType.css" rel="stylesheet">
+<title>FaqNoticeType</title>
 </head>
 <body>
 	<!-- 고객센터 사이드 FAQ-주문/결제 클릭시 첫 화면 -->
@@ -22,17 +22,20 @@
 			 <header class="faqheader">
                 <div>FAQ</div>
                 <div class="faqsearch">
-                    <input type="text" placeholder="FAQ 검색"></input>
-                    <button>
-                    	<img src="<%= request.getContextPath() %>/resources/images/magnifier.png">
-                   	</button>
+                	<form class="faqsearch">
+	                    <input type="text" placeholder="FAQ 검색"></input>
+	                    <button>
+	                    	<img src="<%= request.getContextPath() %>/resources/images/magnifier.png">
+	                   	</button>
+                	</form>
                 </div>
             </header>
         
             <div class="typearea">
             	<div class="type_area">
 	                <select class="atype">
-	                    <option>주문/결제</option>
+	                	<option>전체</option>
+	                    <option selected>주문/결제</option>
 	                    <option>취소/교환/반품</option>
 	                    <option>배송</option>
 	                    <option>회원관리</option>
@@ -44,6 +47,7 @@
                 <span class="typearrow">〉</span>
                 <div class="type_area">
 	                <select class="btype">
+	                	<option>전체</option>
 	                    <option>주문/주문확인</option>
 	                    <option>주문변경</option>
 	                    <option>결제정보</option>
@@ -54,12 +58,11 @@
                 	</div>
                 </div>
             </div>
-        
+        	
             <div class="top3">TOP 3</div>
             <div class="top3_list">
                 <ul class="top3_ul">
-                    <li class="faq_type">[주문확인]</li>
-                    <li class="faq_q">분류 해당질문 여긴 나중에 반복문 돌려돌려</li>
+                    <li class="faq_q">[분류] 분류 해당질문 여긴 나중에 반복문 돌려돌려</li>
                     <li class="faq_icon">▼</li>
                 </ul>
             </div>
