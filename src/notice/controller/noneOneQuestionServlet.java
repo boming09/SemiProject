@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class NoneOneQuestionServlet
+ * Servlet implementation class noneOneQuestionServlet
  */
 @WebServlet("/one")
-public class NoneOneQuestionServlet extends HttpServlet {
+public class noneOneQuestionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoneOneQuestionServlet() {
+    public noneOneQuestionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,7 +29,7 @@ public class NoneOneQuestionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1:1문의 없을때 보이는 화면 + 1:1문의내역 겸??
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/NoneOneQuestion.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/noneOneQuestionView.jsp");
 		view.forward(request, response);
 	}
 

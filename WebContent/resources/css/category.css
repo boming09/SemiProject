@@ -98,6 +98,10 @@
     line-height: 2rem;
 }
 
+.sublist-list li:hover {
+	text-decoration: underline;
+}
+
 .fbook {
     width: 200px;
     height: 550px;

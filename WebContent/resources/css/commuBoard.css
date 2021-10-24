@@ -1,0 +1,136 @@
+@charset "UTF-8";
+.csarea {
+    /* 챙겨가야하는 놈 */
+    /* 카테고리 + 컨텐츠 영역 flex 용도 */
+    display: flex;
+}
+.content {
+    /* 챙겨가야하는 놈 */
+    width: 70%;
+}
+
+/* 컨텐츠 헤더 */
+.commu_header {
+    height: 70px;
+    display : flex;
+    justify-content : space-between;	
+    align-items: center;
+    margin: 5px 0px 20px 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+} 
+.commu_header div:first-child {
+    font-size: 1.3rem;
+    font-weight : bold;
+}
+
+/* 작가소개 버튼 */
+.commun_writerinfo button {
+    width: 120px;
+    height: 40px;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0px 10px;
+    background: rgb(73, 125, 78);
+    color: white;
+}
+.commun_writerinfo button:hover {
+    background-color: white;
+    color: black;
+    border: 3px solid rgb(73, 125, 78);
+}
+
+/* 멘트 */
+.commu_ment ul li {
+    margin-left: 60px;
+    line-height: 30px;
+    font-size: 0.75rem;
+}
+
+/* 리스트 top 영역 */
+.commu_area1 {
+    margin: 30px 20px 10px 20px;
+    display: flex;
+    justify-content : space-between;	
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.commu_area1 label {
+    font-size: 0.8rem;
+    margin-right: 10px;
+    font-weight: normal;
+}
+
+.commu_area1 button {
+    /* 글 작성 버튼 */
+    width: 60px;
+    height: 30px;
+    background: rgb(73, 125, 78);
+    color: white;
+    font-size : 0.8rem;
+}
+.commu_area1 button:hover {
+    background-color: white;
+    color: black;
+    border: 3px solid rgb(73, 125, 78);
+}
+
+/* 리스트 */
+.commu_area2 {
+    margin: 0px 20px 10px 20px;
+}
+
+.commu_listarea ul {
+    display: flex;
+    justify-content : space-between;	
+    align-items: center;
+    text-align: center;
+    font-size: 0.9rem;
+    border-bottom: 1px solid lightgray;
+}
+.commu_listtop {
+    background: rgb(239, 239, 239);
+    font-weight: bold;
+}
+
+.commu_listarea {
+    border-top: 1px solid lightgray;
+}
+
+.commu_listarea ul li {
+    height: 50px;
+    line-height: 50px;
+    list-style: none;
+    
+}
+.commu_no {
+    width: 8%;
+    border-right: 1px solid lightgray;
+  
+}
+.commu_writer {
+    width: 10%;
+    border-right: 1px solid lightgray;
+    
+}
+.commu_title {
+    width: 47%;
+    border-right: 1px solid lightgray;
+    
+}
+.commu_user {
+    width: 10%;
+    border-right: 1px solid lightgray;
+    
+}
+.commu_date {
+    width: 15%;
+    border-right: 1px solid lightgray;
+    
+}
+.commu_status {
+    width: 10%;
+   
+}

@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>cs_page</title>
+<title>csPageView</title>
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="<%= request.getContextPath() %>/resources/css/cspage.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/csPage.css" rel="stylesheet">
 </head>
 <body>
 	<!-- 고객센터 클릭시 첫 화면 -->
@@ -16,7 +16,7 @@
 	
 	<div class="csarea wrapper">
 		<!-- cs 카테고리 -->
-		<%@ include file="/WEB-INF/views/notice/cscategory.jsp" %>
+		<%@ include file="/WEB-INF/views/notice/csCategory.jsp" %>
 		
 		<div class="content">
             <header class="csctheader">
