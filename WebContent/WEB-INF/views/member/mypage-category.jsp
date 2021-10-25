@@ -14,7 +14,7 @@
     <link href="<%= request.getContextPath() %>/resources/css/mypage-style.css" rel="stylesheet">
 </head>
 <body>
-	<!-- mypage-category -->
+	<!-- mypage-category 추가 -->
     <aside class="category">
         <div class="ca-head">마이페이지</div>
         <div class="area1"><a class="ca-top" href="#">개인정보 수정</a>
