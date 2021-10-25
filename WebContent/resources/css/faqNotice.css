@@ -130,9 +130,9 @@ a {
 
 .top3_ul, .total_ul {
     display: flex;
-    justify-content: space-around;
     list-style: none;
     text-align: center;
+    justify-content : space-between;
     align-items: center;
     margin: 0px 20px;
     height: 50px;
@@ -140,25 +140,36 @@ a {
     font-size: 0.9rem;
 }
 
+
 /* 
 .board_list>ul.last {
     border: 0;
 }
 */
 
-.faq_type {
-    width: 15%;
+/* 분류 영역 없음 */
+.faq_type, .faq_q {
+	text-align: left;
+	padding-left : 15px;
 }
-
-.faq_q {
-    width: 80%;
-    text-align: left;
-    padding-left: 15px;
-}
-
 .faq_icon {
-    width: 5%;
+	padding-right : 15px;
 }
+
+/* 이건 분류영역 따로 지정 */
+.total_ul .faq_type {
+	width : 20%;	
+}
+.total_ul .faq_q {
+	width : 75%;	
+	text-align: left;
+	padding-left : 0px
+}
+.total_ul .faq_icon {
+	width : 5%;	
+}
+
+
 
 .top3_ul:hover {
     background: #f3f5f7;

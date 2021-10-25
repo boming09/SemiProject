@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+.csarea {
+    /* 챙겨가야하는 놈 */
+    /* 카테고리 + 컨텐츠 영역 flex 용도 */
+    display: flex;
+}
+.content {
+    /* 챙겨가야하는 놈 */
+    width: 70%;
+}
+
+/* 컨텐츠 헤더 */
+.one_header {
+    height: 70px;
+    display : flex;
+    justify-content : space-between;	
+    align-items: center;
+    margin: 5px 0px 10px 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+} 
+.one_header div:first-child {
+    font-size: 1.3rem;
+    font-weight : bold;
+}
+
+/* 문의하기 버튼 */
+.one_question button {
+    width: 120px;
+    height: 40px;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0px 10px;
+    background: rgb(73, 125, 78);
+    color: white;
+}
+.one_question button:hover {
+	background-color: white;
+    color: black;
+    border: 3px solid rgb(73, 125, 78);
+}
+
+/* 멘트 */
+.one_ment ul {
+    padding-left: 60px;
+    line-height: 30px;
+    font-size: 0.75rem;
+}
+
+/* 문의내역 없을시 */
+.one_none_ment {
+    margin: 30px 0px;
+}
+
+.one_none_ment span {
+    display: block;
+    text-align: center;
+    background: rgb(239, 239, 239);
+    margin: 0px 20px 0px 20px;
+}
+
+.none_span1 {
+    padding-top: 60px;
+    padding-bottom: 30px;
+    font-weight : bold;
+    
+}
+
+.none_span2 {
+    padding-bottom: 60px;
+    font-size: 0.7rem;
+}
