@@ -32,8 +32,8 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <label>가입일</label> <input type="text" class="id1text" size="10"><br><br>
                     <label>E-mail 주소</label> <input type="text" class="id1text" size="10"><br><br>
-                    <a href="login.html"><button class="id2pagebut">로그인 하기</button></a>
-                    <a href="password.html"><button class="id2pagebut">비밀번호 찾기</button></a><br>
+                    <a href="login"><button class="id2pagebut">로그인 하기</button></a>
+                    <a href="password"><button class="id2pagebut">비밀번호 찾기</button></a><br>
                 </div>
                 <br><div class="topline">
                 </div><br>
@@ -42,7 +42,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="emailconsulting.html"><button id="emailquestion">E-mail로 문의하기</button></a><br>
+                <a href="emailconsulting"><button id="emailquestion">E-mail로 문의하기</button></a><br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

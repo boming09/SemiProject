@@ -32,7 +32,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <label>이름</label> <input type="text" class="id1text" size="10"><br><br>
                     <label>E-mail 주소</label> <input type="text" class="id1text" size="10"><br><br>
-                    <a href="id2.html"><button id="Confirmbut">가입여부 확인하기</button></a><br>
+                    <a href="id2"><button id="Confirmbut">가입여부 확인하기</button></a><br>
                 </div>
                 <br><div class="topline">
                 </div><br>
@@ -41,8 +41,10 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <!-- 띄어 쓰기로 자리 잡음 -->
-                <a href="emailconsulting.html"><button id="emailquestion">E-mail로 문의하기</button></a><br>
+              
+                <!-- 띄어 쓰기로 자리 잡음 --> 
+                <a href="emailconsulting"><button id="emailquestion">E-mail로 문의하기</button></a><br>
+              
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
