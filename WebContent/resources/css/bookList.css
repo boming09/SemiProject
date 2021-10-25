@@ -1,0 +1,154 @@
+@charset "UTF-8";
+.csarea {
+    /* 챙겨가야하는 놈 !*/
+    /* 카테고리 + 컨텐츠 영역 flex 용도 */
+    display: flex;
+}
+.content {
+    /* 챙겨가야하는 놈 */
+    width: 70%;
+}
+
+.book_category {
+    border-top: 1px solid rgba(196, 217, 195, 1);
+    border-bottom: 1px solid rgba(196, 217, 195, 1);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.cLi {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;  /* 공간을 균등하게 */
+    padding: 10px;
+}
+
+.cLi li:hover {
+    color: #acadadd0;
+    cursor: pointer;
+}
+
+.bookSort {
+    background: rgba(196, 217, 195, 1);
+    display: flex;
+    justify-content: space-between;
+}
+
+.sortLi {
+    list-style: none;
+    margin-top: 15px;
+    display: flex;
+}
+
+.sortLi a, em{
+    color: black;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-decoration: none;
+}
+
+.sortLi a:hover{
+    color: green;
+}
+
+.book_info {
+    display: block;
+    padding: 10% 0;
+}
+
+.book_info div{
+    margin: 10px 0;
+}
+
+.book_title {
+    font-family: "";
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.book_title:hover {
+    cursor: pointer;
+}
+
+.price{
+    font-weight: bold;
+    color: red;
+}
+
+.book_division{
+    padding: 0;
+    border: 1px dashed #acadadd0;
+}
+
+
+.book_btns input,
+.book_btns button {
+    margin: 8px;
+}
+
+.btn_count {
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin: 7px;
+    width: 80px;
+    height: 30px;
+    text-align: right;
+}
+
+.btn_count input[type=number] {
+    margin: 5px;
+}
+
+.btn_count:hover{
+    border-color: orange;
+}
+
+.basket{
+    color: #577057;
+    border: 1px solid #577057;
+    width: 80px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.basket:hover,
+.buy:hover  {
+    background-color: rgba(196, 217, 195, 1);
+    color: black;
+    border: 1px solid white;
+    font-weight: bold;
+}
+
+.buy {
+    background: #577057;
+    color: white;
+    width: 80px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.book_pages {
+    margin: 10px;
+}
+
+.book_paging {
+    height: 50px;
+    line-height: 50px;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    width: 480px;
+    margin: auto;
+}
+
+.book_paging a {
+    text-decoration: none;
+    color: black;
+    width: 45px;
+    display: block;
+    text-align: center;
+}
+
+.book_paging a.current_page {
+    border-bottom: 2px solid rgba(196, 217, 195, 1);
+    font-weight: bold;
+}
