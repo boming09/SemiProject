@@ -59,6 +59,11 @@
                 </div>
             </div>
         </div>
+        <!-- 광고  -->
+		<%@ include file="/WEB-INF/views/common/adArea.jsp" %>
 	</div>
+	
+	<!-- footer -->
+	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
 </html>

@@ -36,6 +36,11 @@
 		        <span class="none_span2">봄숲에 대한 모든 궁금증은 1:1 문의하기로 부담없이 확인하세요.</span>
 		    </div>
 		</div>
+		<!-- 광고  -->
+		<%@ include file="/WEB-INF/views/common/adArea.jsp" %>
 	</div>
+	
+	<!-- footer -->
+	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
 </html>

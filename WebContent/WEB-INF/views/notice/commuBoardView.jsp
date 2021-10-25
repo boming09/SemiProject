@@ -22,7 +22,7 @@
             <header class="commu_header">
                 <div>소통게시판</div>
                 <div class="commun_writerinfo">
-                    <button>작가 소개</button>
+                    <button type="button" onclick="location.href='<%= request.getContextPath() %>/w-info'">작가 소개</button>
                 </div>
             </header>
             <div class="commu_ment">
@@ -65,6 +65,12 @@
                 </div>
                 
             </div>
+    	</div>
+    	<!-- 광고  -->
+		<%@ include file="/WEB-INF/views/common/adArea.jsp" %>
 	</div>
+	<!-- footer -->
+	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+	
 </body>
 </html>

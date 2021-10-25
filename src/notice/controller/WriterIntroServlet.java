@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class CommuBoardServlet
+ * Servlet implementation class WriterIntroServlet
  */
-@WebServlet("/commu")
-public class CommuBoardServlet extends HttpServlet {
+@WebServlet("/w-info")
+public class WriterIntroServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommuBoardServlet() {
+    public WriterIntroServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,8 +28,8 @@ public class CommuBoardServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 카테고리 작가소통게시판 클릭시 소통게시판 페이지로 단순 이동
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/commuBoardView.jsp");
+		// 작가 소개 페이지 이동
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/writerInfoView.jsp");
 		view.forward(request, response);
 	}
 
