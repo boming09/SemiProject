@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -150,6 +151,9 @@ nav {
 </style>
 </head>
 <body>
+<!-- page의 application의 contextPath -->
+<c:set var="contextPath" value="${ pageContext.servletContext.contextPath }"
+scope="application"/>
     <div id="top">
         <header class="page-header">
             <nav>
@@ -172,7 +176,7 @@ nav {
                 </a>
             </div>
             <div class="search_area">
-                <form method="get">
+                <form method="get" action="${ contextPath }/book/list">
                     <select id="searchCondition" name="searchCondition">
                         <option value="search">통합검색</option>
                         <option value="title">제목</option>
@@ -181,12 +185,18 @@ nav {
                     <span class="input_area"> <input type="search"
                         name="searchValue" placeholder="검색할 내용을 입력하세요.">
                     </span>
-                    <button type="submit">검색</button>
+                    <button type="submit" onclick="search()">검색</button>
                 </form>
             </div>
         </div>
         <div class="topline">
         </div>
     </div>
+    <script>
+    /* function search(){
+    	location.href="${ contextPath }/book/list";
+    }
+    */
+    </script>
 </body>
 </html>
