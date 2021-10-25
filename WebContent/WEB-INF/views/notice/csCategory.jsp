@@ -28,7 +28,7 @@
         </div>
         <div class="area3"><a class="ca-top" href="<%= request.getContextPath() %>/commu">작가 소통게시판</a>
             <ul class="ca-list">
-                <li><a href="#">작가 소개</a></li>
+                <li><a href="<%= request.getContextPath() %>/w-info">작가 소개</a></li>
             </ul>
         </div>
         <div class="area4"><a class="ca-top" href="#">작가 인증게시판</a></div>

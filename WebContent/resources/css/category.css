@@ -10,9 +10,12 @@
     display : flex;
 }
 
-#category {
-    width : 18%;
-    height : 500px;
+#cate_area {
+	display : block;
+	width : 18%;
+}
+.category {
+    height : 450px;
     background : rgb(196, 217, 195);
 }
         
@@ -48,7 +51,7 @@
 
 }
     
-#category a {
+.category a {
     text-decoration : none;
     text-align : center;
     color : black;
@@ -135,3 +138,13 @@
     position: absolute;
     top : -200px;
 }
+
+/* 광고 */
+.main_ad img {
+	width: 100%;
+	height : 100px;
+	border : 1px solid lightgray;
+	margin-top : 5px;
+}
+
+

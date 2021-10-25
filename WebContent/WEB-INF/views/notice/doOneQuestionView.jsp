@@ -42,12 +42,10 @@
                     <span class="q_content">문의 내용</span>
                     <div class="q_content2">
                         <span><textarea></textarea></span>
-                        <span>
-                            <ul>
-                                <li>문의내용을 구체적으로 작성해주세요. 정확하고 빠른 답변에 도움이 됩니다.</li>
-                                <li>주민등록번호를 포함한 고객님의 소중한 개인정보는 사이트에 노출되지 않으나 꼭 필요한 경우가 아닌경우 기재를 삼가시길 바랍니다.</li>
-                            </ul>
-                        </span>
+                        <ul>
+                            <li>문의내용을 구체적으로 작성해주세요. 정확하고 빠른 답변에 도움이 됩니다.</li>
+                            <li>주민등록번호를 포함한 고객님의 소중한 개인정보는 사이트에 노출되지 않으나 꼭 필요한 경우가 아닌경우 기재를 삼가시길 바랍니다.</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -56,13 +54,11 @@
                     <div class="q_file2">
                         <span class="q_uplode"><input type="file"></span>
                         <span class="q_uplode"><input type="file"></span>
-                        <span>
-                            <ul>
-                                <li>첨부가능 용량은 파일당 5MB 미만이며, 최대 2개까지 가능합니다.</li>
-                                <li>첨부가능 파일확장자 : jpg, gif, bmp, png</li>
-                                <li>첨부파일 중 개인정보가 포함되어 있는 파일은 상담 완료 후 즉각 파기하며, 상담 외의 목적으로는 사용되지 않습니다.</li>
-                            </ul>
-                        </span>
+                        <ul>
+                            <li>첨부가능 용량은 파일당 5MB 미만이며, 최대 2개까지 가능합니다.</li>
+                            <li>첨부가능 파일확장자 : jpg, gif, bmp, png</li>
+                            <li>첨부파일 중 개인정보가 포함되어 있는 파일은 상담 완료 후 즉각 파기하며, 상담 외의 목적으로는 사용되지 않습니다.</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="q_btn">
@@ -71,7 +67,11 @@
                 </div>
             </form>
         </div>
-	
+		<!-- 광고  -->
+		<%@ include file="/WEB-INF/views/common/adArea.jsp" %>
 	</div>
+	
+	<!-- footer -->
+	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
 </html>
