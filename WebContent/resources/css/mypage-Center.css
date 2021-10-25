@@ -1,0 +1,40 @@
+@charset "UTF-8";
+.csarea {
+    /* 챙겨가야하는 놈 */
+    /* 카테고리 + 컨텐츠 영역 flex 용도 */
+    display: flex;
+}
+.content {
+    /* 챙겨가야하는 놈 */
+    width: 70%;
+}
+
+/*
+.center1 .center2 {
+	height: 70px;
+    display : flex;
+    justify-content : space-between;	
+    align-items: center;
+    margin: 5px 0px 10px 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background : white;
+}
+*/
+
+.center {
+	background : white;
+	display: flex;
+	justify-content : space-between;
+	width : 300px;
+	height : 90px;
+}
+
+.content{
+	background : lightgray;
+	height : 200px;
+	width : 700px;
+	margin: 0px 0px 0px 20px;
+	padding : 20px;
+	display: flex;
+}
