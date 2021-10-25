@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 html {
     font-size: 100%;
 }
@@ -22,7 +21,7 @@ a {
     border-radius: 5px;
 }
 
-/* center */
+/* center  */
 
 .main-center {
     width : 600px;
