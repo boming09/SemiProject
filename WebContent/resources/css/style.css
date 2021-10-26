@@ -5,7 +5,6 @@
 
 html {
     font-size: 100%;
-
 }
 
 a {
@@ -24,6 +23,7 @@ a {
 }
 
 /* 내비 메뉴 장식 */
+
 nav {
     background-color: rgba(196, 217, 195, 1);
     width: 100%;
@@ -59,9 +59,16 @@ nav {
    
 }
 
-
 /*콘텐츠의 최대 출력 너비 설정 */
 .wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+
+
+
+.wrap {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 4%;
@@ -78,14 +85,7 @@ nav {
 
 }
 
-article {
 
-    border: rgba(73, 125, 78, 1) 3px solid;
-    padding: 20px;
-    max-width: 714px;
-    
-    
-}
 
 
 .recomm {
@@ -111,17 +111,11 @@ article {
 }
 
 
-
-
-
-/*------------------메인 컨첸츠--------------------*/
-
-
 * {margin:0;padding:0;border:0;}
 
 .tab_content {
     position:absolute;
-    top:41%;
+    top:37%;
     left:57%;
     transform:translate(-50%,-50%);
     font-size:15px; 
@@ -167,6 +161,103 @@ input[id="tab03"]:checked ~ .con3 {display:block;}
 
 
 
+
+/*-----------todays_recom--------------*/
+
+
+.todays_recom {
+
+    border: rgba(73, 125, 78, 1) 3px solid;
+   /* position: absolute;  
+    top: 65%;
+    left: 34%;*/
+    position: relative;
+    width: 551px;
+    top: -90px;
+    left: 210px;
+
+}
+
+.book4{
+    margin-right: 20px;
+}
+
+.bookk{
+    width: 150px;
+}
+
+#today {
+    margin: 25px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+#tri {
+    font-size: 12px;
+    max-width: 100px;
+}
+
+
+.todays {
+    padding-bottom: 50px;
+} /*푸터와 간격*/
+
+#tbn {
+    color: rgba(73, 125, 78, 1);
+    font-size: 15px;
+}
+
+
+/*------------Best seller-----------------*/
+
+.best-seller {
+    border: rgba(73, 125, 78, 1) 3px solid;
+   /* position: absolute;
+    top: 65%;
+    left: 70%;
+    width: 12%;*/
+    position: relative;
+    width: 230px;
+    bottom: 430px;
+    left: 778px;
+    height: 290px;
+
+
+}
+
+
+#bs {
+    font-weight: bold;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: -10px;
+}
+.bsb {
+    width: 25px;
+}
+
+.bsn {
+    font-size: 12px;
+    font-weight: bold;
+}
+.bsw {
+    font-size: 10px;
+}
+
+#bs_tb {
+   
+    margin-left: 14px;
+    margin-bottom: 10px;
+    margin-top : -10px
+ 
+}
+
+.best {
+	height:0px;
+}
+
+
 /*------------------footer--------------*/
 
 footer {
@@ -183,6 +274,11 @@ footer p {
 color: black;
 font-size: 0.865rem;
 }
+
+
+
+
+
 
 
 
