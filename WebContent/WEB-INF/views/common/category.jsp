@@ -161,11 +161,11 @@
                 </li>
 			</ul>
 		</aside>
+		<div class="main_ad">
+			<img id="ad1" src="<%= request.getContextPath() %>/resources/images/ad8.png">
+			<img id="ad2" src="<%= request.getContextPath() %>/resources/images/ad9.png">
+		</div> 
 	</div>
-	<div class="main_ad">
-		<img id="ad1" src="<%= request.getContextPath() %>/resources/images/ad8.png">
-		<img id="ad2" src="<%= request.getContextPath() %>/resources/images/ad9.png">
-	</div> 
 
 </body>
 </html>
