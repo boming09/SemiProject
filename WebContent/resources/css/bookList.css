@@ -1,9 +1,20 @@
 @charset "UTF-8";
+
 .csarea {
-    /* 챙겨가야하는 놈 !*/
+    /* 챙겨가야하는 놈 ! */
     /* 카테고리 + 컨텐츠 영역 flex 용도 */
     display: flex;
 }
+
+.csarea > div {
+	display: block;
+}
+
+.csarea div:first-child {
+	width: 72%;
+	margin-left:10px;
+}
+
 .content {
     /* 챙겨가야하는 놈 */
     width: 70%;
@@ -18,7 +29,7 @@
 .cLi {
     display: flex;
     list-style: none;
-    justify-content: space-around;  /* 공간을 균등하게 */
+    justify-content: space-around;  /* 공간을 균등하게  */
     padding: 10px;
 }
 
