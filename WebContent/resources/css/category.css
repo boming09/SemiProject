@@ -25,7 +25,7 @@
     display : flex;
     justify-content : center;	
     align-items: center;
-    font-size : 1.2rem;
+    font-size : 1rem;
     font-weight : bold;
     background : white;
     border : solid 5px rgb(196, 217, 195);
@@ -40,7 +40,7 @@
     list-style : none;
     text-align : left;
     line-height: 3.5rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight : bold;
     padding-left: 30px;
 }
@@ -146,5 +146,21 @@
 	border : 1px solid lightgray;
 	margin-top : 5px;
 }
+
+#ad2 {
+	margin-bottom: 20px;
+}
+
+/* 
+.content {
+	height : 900px;
+}
+body {
+	display : block;
+}
+footer {
+	margin-top : 20px;
+} */
+
 
 
