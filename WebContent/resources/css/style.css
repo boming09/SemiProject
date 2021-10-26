@@ -63,7 +63,6 @@ nav {
 .wrapper {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 4%;
 }
 
 
@@ -112,21 +111,28 @@ nav {
 
 
 * {margin:0;padding:0;border:0;}
+/*******************************/
+.main {
+	width : 72%;
+	margin-left : 15px;
+	margin-right : 15px;
+}
+/********************************/
 
 .tab_content {
-    position:absolute;
+   /* position:absolute;
     top:37%;
     left:57%;
-    transform:translate(-50%,-50%);
-    font-size:15px; 
-    
+    transform:translate(-50%,-50%);  */
+    font-size:15px;
 } /* 화면의 가운데 정렬 */
+
 
 input[type="radio"] { display:none; } /* input을 안보이게 처리 */
 
 input[type="radio"] + label {
     display:inline-block; 
-    width:263px; 
+    width:253.8px; 
     padding:12px; 
     border:rgba(73, 125, 78, 1) 3px solid; 
     border-bottom: rgba(196, 217, 195, 1); 
@@ -137,19 +143,21 @@ input[type="radio"] + label {
     text-align: center;
 } /* label에 대한 버튼속성 */
 
+
 input[type="radio"]:checked + label {
     background:white; 
     color:#000;
 }
 
 .conbox {
-    width:800px;
+	width: 100%;
+    /* width:800px; */
     height:320px;
     background:white; 
     border:rgba(73, 125, 78, 1) 3px solid; 
     border-top: rgba(196, 217, 195, 1); 
     margin:0 auto; 
-    display:none; 
+    display:none;
     padding-top: 12px;
 } /* 컨텐츠 영역 */
 
@@ -163,19 +171,27 @@ input[id="tab03"]:checked ~ .con3 {display:block;}
 
 
 /*-----------todays_recom--------------*/
-
-
+.main_bottom {
+	width : 100%;
+	margin-top : 40px;
+	display : flex;
+	justify-content : space-between;
+    align-items: center;
+    height : 300px;
+}
+.todays {
+	width: 60%;
+}
 .todays_recom {
-
     border: rgba(73, 125, 78, 1) 3px solid;
    /* position: absolute;  
     top: 65%;
-    left: 34%;*/
+    left: 34%;
     position: relative;
     width: 551px;
     top: -90px;
     left: 210px;
-
+    */
 }
 
 .book4{
@@ -196,34 +212,41 @@ input[id="tab03"]:checked ~ .con3 {display:block;}
 #tri {
     font-size: 12px;
     max-width: 100px;
+    line-height: 15px;
 }
 
 
 .todays {
-    padding-bottom: 50px;
+    /* padding-bottom: 50px; */
 } /*푸터와 간격*/
 
 #tbn {
     color: rgba(73, 125, 78, 1);
-    font-size: 15px;
+    font-size: 13px;
 }
 
+#tbn2 {
+	font-size: 13px;
+	line-height:15px;
+}
 
 /*------------Best seller-----------------*/
-
+.best {
+	width: 38%;
+}
 .best-seller {
     border: rgba(73, 125, 78, 1) 3px solid;
    /* position: absolute;
     top: 65%;
     left: 70%;
     width: 12%;*/
+    /*
     position: relative;
     width: 230px;
     bottom: 430px;
     left: 778px;
     height: 290px;
-
-
+	*/
 }
 
 
@@ -246,15 +269,15 @@ input[id="tab03"]:checked ~ .con3 {display:block;}
 }
 
 #bs_tb {
-   
+  
     margin-left: 14px;
-    margin-bottom: 10px;
-    margin-top : -10px
+    margin-bottom: 19px;
+    margin-top : 3px;
  
 }
 
 .best {
-	height:0px;
+	height:287.97px;
 }
 
 
@@ -264,8 +287,10 @@ footer {
 background:rgba(196, 217, 195, 1);
 text-align: center;
 padding : 26px 0;
+
 position: absolute;
 bottom: 0;
+
 width: 100%;
 
 }

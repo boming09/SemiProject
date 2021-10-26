@@ -7,7 +7,7 @@
 <title>ad Area</title>
 <style>
 	.ad_area {
-		width : 12%;
+		width : 10%;
 		display : block;
 		height : 500px;
 	}
