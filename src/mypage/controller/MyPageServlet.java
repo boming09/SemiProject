@@ -1,4 +1,4 @@
-package member.controller;
+package mypage.controller;
 
 import java.io.IOException;
 
@@ -29,7 +29,7 @@ public class MyPageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 메뉴바의 마이페이지 클릭 시 마이페이지로 단순 이동
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/mypage.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/mypage.jsp");
 		view.forward(request, response);
 	}
 

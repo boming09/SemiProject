@@ -19,7 +19,7 @@
         
     <div class="csarea wrapper">
 		<!-- mypage-category 카테고리 추가 -->
-		<%@ include file="/WEB-INF/views/member/mypage-category.jsp" %>		
+		<%@ include file="/WEB-INF/views/mypage/mypage-category.jsp" %>		
 		
 		<div class="content">            
             
