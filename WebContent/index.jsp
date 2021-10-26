@@ -15,8 +15,5 @@
 	<%@ include file="/WEB-INF/views/common/mainContents.jsp" %>
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
-	<p>Test</p>
 </body>
 </html>
-
-<!-- ddd -->
