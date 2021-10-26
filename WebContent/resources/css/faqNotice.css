@@ -6,7 +6,7 @@
 }
 /* 영역 묶어주기 */
 .content {
-    width: 70%;
+    width: 72%;
 }
 
 /* 컨텐츠 헤더 */
@@ -16,11 +16,12 @@
     justify-content : space-between;	
     align-items: center;
     margin: 0px 0px 30px 0px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+  
 }
 .faqheader div:first-child {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight : bold;
 }
 
@@ -30,35 +31,24 @@
     align-items: center;
 }
 .faqsearch input {
-    border: 4px solid rgb(73, 125, 78);
+    border: 3px solid rgb(73, 125, 78);
     border-right : 0px;
     width: 130px;
-    height: 25px;
+    height: 26px;
     padding-left: 10px;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
 }
 
 .faqsearch button {
-	height: 25px;
+	height: 26px;
 }
 
 .faqsearch button img {
-    width: 22px;
-    height: 25px;
-    border: 4px solid rgb(73, 125, 78);
+    width: 23px;
+    height: 26px;
+    border: 3px solid rgb(73, 125, 78);
     border-left: 0px;
-    font-size: 0.7rem;
 }
-/*
-.faqsearch button {
-    background: rgb(196, 217, 195);
-    width: 38px;
-    height: 25px;
-    border: 4px solid rgb(196, 217, 195);
-    font-size: 0.7rem;
-}
-*/
-
 
  /* 카테고리 분류 */
 .typearea {
@@ -68,11 +58,13 @@
 }
 
 .typearrow {
-    margin-left: 30px;
-    margin-right: 30px;
-    font-size: 1.5rem;
+	/* > */
+    margin-left: 40px;
+    margin-right: 20px;
+    font-size: 1.8rem;
     font-weight: bold;
-    padding-top : 5px;
+    /* span 가운데 줄맞춤은 line-height */
+    line-height: 50px;
 }
 
 .type_area {
@@ -114,7 +106,8 @@
 .top3, .total {
     font-size: 1.1rem;
     font-weight: bold;
-    margin: 30px 20px 0px 20px;
+    margin: 30px 40px 0px 40px;
+    padding-left : 5px;
     padding-bottom: 10px;
     border-bottom: 1px solid lightgray;
 }
@@ -125,12 +118,11 @@
     text-align: center;
     justify-content : space-between;
     align-items: center;
-    margin: 0px 20px;
+    margin: 0px 40px;
     height: 50px;
     border-bottom: 1px solid lightgray;
     font-size: 0.9rem;
 }
-
 
 /* 
 .board_list>ul.last {
@@ -165,3 +157,7 @@
 .top3_ul:hover {
     background: #f3f5f7;
 }
+.total_ul:hover {
+    background: #f3f5f7;
+}
+

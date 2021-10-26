@@ -7,7 +7,7 @@
 }
 .content {
     /* 챙겨가야하는 놈 */
-    width: 70%;
+    width: 72%;
 }
 
 /* 컨텐츠 헤더 */
@@ -17,33 +17,33 @@
     justify-content : space-between;	
     align-items: center;
     margin: 0px 0px 0px 0px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
 } 
 .one_header div:first-child {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight : bold;
 }
 
 /* 문의하기 버튼 */
 .one_question button {
-    width: 120px;
+    width: 100px;
     height: 40px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: bold;
     padding: 0px 10px;
     background: rgb(73, 125, 78);
     color: white;
 }
 .one_question button:hover {
-	background-color: white;
+	background-color: rgb(196, 217, 195);
     color: black;
-    border: 3px solid rgb(73, 125, 78);
+    /* border: 3px solid rgb(73, 125, 78); */
 }
 
 /* 멘트 */
 .one_ment ul {
-    padding-left: 60px;
+    padding-left: 80px;
     line-height: 30px;
     font-size: 0.75rem;
 }
@@ -57,17 +57,18 @@
     display: block;
     text-align: center;
     background: rgb(239, 239, 239);
-    margin: 0px 20px 0px 20px;
+    margin: 0px 40px 0px 40px;
 }
 
 .none_span1 {
     padding-top: 60px;
     padding-bottom: 30px;
+    font-size: 0.9rem;
     font-weight : bold;
     
 }
 
 .none_span2 {
     padding-bottom: 60px;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
 }

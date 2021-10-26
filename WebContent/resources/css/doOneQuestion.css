@@ -6,7 +6,7 @@
 }
 .content {
     /* 챙겨가야하는 놈 */
-    width: 70%;
+    width: 72%;
 }
 
 /* 컨텐츠 헤더 */
@@ -16,19 +16,19 @@
     justify-content : space-between;	
     align-items: center;
     margin: 0px 0px 0px 0px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
 } 
 .one_header div:first-child {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight : bold;
 }
 
 /* 문의내역 버튼 */
 .one_question button {
-    width: 120px;
+    width: 105px;
     height: 40px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: bold;
     padding: 0px 10px;
     background: rgb(73, 125, 78);
@@ -42,13 +42,13 @@
 
 /* 멘트 */
 .one_ment ul {
-    padding-left: 60px;
+    padding-left: 80px;
     line-height: 30px;
     font-size: 0.75rem;
 }
 /* 작성 영역*/
 .q_info {
-    margin: 20px;
+    margin: 20px 40px 20px 40px;
 }
 
 .q_titlearea, .q_contentarea, .q_filearea {
@@ -65,7 +65,7 @@
     width: 20%;
     text-align: center;
     background: rgb(239, 239, 239);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }
 
 .q_title2, .q_content2, .q_file2 {
@@ -99,7 +99,7 @@
 }
 
 .q_content2 ul {
-    font-size: 0.5rem;
+    font-size: 0.7rem;
     padding-left: 30px;
     padding-right: 10px;
     margin-bottom: 10px;
@@ -113,11 +113,11 @@
 
 .q_uplode input {
     margin: 10px;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
 }
 
 .q_file2 ul {
-    font-size: 0.5rem;
+    font-size: 0.7rem;
     padding-left: 30px;
     padding-right: 10px;
     margin-bottom: 10px;

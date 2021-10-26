@@ -1,19 +1,12 @@
 @charset "UTF-8";
-/*
-* {margin:0;padding:0;border:0;}
-        
-a { 
-    text-decoration: none;
-    color: black;
-}
-*/
+
 .csarea {
     display: flex;
 }
 
 /* 컨텐츠 */
 .content {
-    width: 70%;
+    width: 72%;
 }
 
 .csctheader {
@@ -22,17 +15,17 @@ a {
     justify-content : space-between;	
     align-items: center;
     margin: 0px 0px 20px 0px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .csctheader span:first-child {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight : bold;
 }
 
 .csctheader span:last-child {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
 }
 
 .ctarea {
@@ -48,25 +41,25 @@ a {
 }
 
 .ct-area1 {
-    left: 3%;
+    left: 5%;
 }
 
 .ct-area2 {
-    right: 3%;
+    right: 5%;
 }
 
 .ct-area3 {
     top: 40%;
-    left: 3%;
+    left: 5%;
 }
 
 .ct-area4 {
     top: 40%;
-    right: 3%;
+    right: 5%;
 }
 
 .ct-top {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight : bold;
     color: white;
     height: 35px;
