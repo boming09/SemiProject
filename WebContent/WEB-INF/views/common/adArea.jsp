@@ -15,7 +15,7 @@
 	.ad_area img {
 		display : block;
 		width : 100%;
-		height : 160px;
+		height : 170px;
 		border : 1px solid lightgray;
 		margin-bottom : 5px;
 		
