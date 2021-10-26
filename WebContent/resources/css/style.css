@@ -131,8 +131,8 @@ nav {
 input[type="radio"] { display:none; } /* input을 안보이게 처리 */
 
 input[type="radio"] + label {
-    display:inline; 
-    width:363px; 
+    display:inline-block; 
+    width:253.8px; 
     padding:12px; 
     border:rgba(73, 125, 78, 1) 3px solid; 
     border-bottom: rgba(196, 217, 195, 1); 
@@ -212,6 +212,7 @@ input[id="tab03"]:checked ~ .con3 {display:block;}
 #tri {
     font-size: 12px;
     max-width: 100px;
+    line-height: 15px;
 }
 
 
@@ -221,9 +222,13 @@ input[id="tab03"]:checked ~ .con3 {display:block;}
 
 #tbn {
     color: rgba(73, 125, 78, 1);
-    font-size: 15px;
+    font-size: 13px;
 }
 
+#tbn2 {
+	font-size: 13px;
+	line-height:15px;
+}
 
 /*------------Best seller-----------------*/
 .best {
@@ -266,8 +271,8 @@ input[id="tab03"]:checked ~ .con3 {display:block;}
 #bs_tb {
   
     margin-left: 14px;
-    margin-bottom: 10px;
-    margin-top : -10px
+    margin-bottom: 19px;
+    margin-top : 3px;
  
 }
 
@@ -282,10 +287,10 @@ footer {
 background:rgba(196, 217, 195, 1);
 text-align: center;
 padding : 26px 0;
-/*
+
 position: absolute;
 bottom: 0;
-*/
+
 width: 100%;
 
 }
