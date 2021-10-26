@@ -40,9 +40,6 @@ https://github.com/filipelinhares/ress-->
                     <li><a href="#"><img class="book book1" src="<%= request.getContextPath() %>/resources/images/thisweek1.png"></a></li>
                     <li><a href="#"><img class="book" src="<%= request.getContextPath() %>/resources/images/thisweek2.png"></a></li>
                     <li><a href="#"><img class="book book3" src="<%= request.getContextPath() %>/resources/images/thisweek3.png"></a></li>
-               
-          
-               
                 </ul>  
             </div>
             <div class="conbox con2">
@@ -87,7 +84,7 @@ https://github.com/filipelinhares/ress-->
 					       절의 사랑과 우정이 우리를 다시 그곳으로 데려간다.</td>
 					</tr>
 					<tr>
-					    <td><b>1차원이 되고 싶어</b><br>
+					    <td id=tbn2><b>1차원이 되고 싶어</b><br>
 					    박신영 저 | 문학동네<br>
 					    <b>13,320</b>원(10% 할인)<b>P</b>740원
 					   </td>
