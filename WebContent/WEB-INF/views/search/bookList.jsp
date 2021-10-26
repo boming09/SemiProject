@@ -20,8 +20,8 @@ https://github.com/filipelinhares/ress -->
 <body>
 <jsp:include page="/WEB-INF/views/common/menubar.jsp"/>
 <jsp:include page="/WEB-INF/views/common/category.jsp"/>
-	<div class="csarea outer">
-		<div class="content wrapper">
+	<div class="csarea">
+		<div class="content">
             <div class="book_category">
                 <ul class="cLi">
                     <!-- c:forEach -->

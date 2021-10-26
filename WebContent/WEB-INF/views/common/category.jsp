@@ -10,6 +10,7 @@
 <link href="<%= request.getContextPath() %>/resources/css/category.css" rel="stylesheet">
 </head>
 <body>
+	<div class="content wrapper">
 	<div id="cate_area">
 		<aside class="category">
 			<div class="q-search">빠른분야찾기</div>
@@ -166,6 +167,5 @@
 			<img id="ad2" src="<%= request.getContextPath() %>/resources/images/ad9.png">
 		</div> 
 	</div>
-
 </body>
 </html>
