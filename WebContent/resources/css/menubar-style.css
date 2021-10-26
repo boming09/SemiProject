@@ -3,6 +3,7 @@
 /* <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> */
 
+
 html {
     font-size: 100%;
 }
@@ -99,7 +100,6 @@ nav {
 .wrapper {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 4%;
 }
 
 .mainlogo {

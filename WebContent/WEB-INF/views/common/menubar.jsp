@@ -14,13 +14,26 @@
 <link href="<%= request.getContextPath() %>/resources/css/menubar-style.css" rel="stylesheet">
 <!-- favicon (Real Favicon Generator 등에서 가공 필요) -->
 <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
-<!-- 웹 폰트-->
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
 <style>
 @charset "UTF-8"; /* 인코딩 문자 깨짐 방지 (유니코드 문자열 있을 시) */
 
-/* <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> */
+/* 전체 글꼴 */
+@font-face {
+    font-family: 'ChosunGu';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+} 
+/* 봄숲 글꼴 */
+@font-face {
+    font-family: 'ghanachoco';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ghanachoco.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {  font-family: 'ChosunGu';}
 
 html {
     font-size: 100%;
@@ -41,10 +54,10 @@ a {
    /* font-size: 3rem;*/
 }
 
+    /* 로고 사이 공백 */
 .search_area {
 	text-align: center;
 	padding: 30px;
-    /* 로고 사이 공백 */
 }
 
 .search_area select {
@@ -62,6 +75,12 @@ a {
     width: 350px;
 	height: 30px;
     border: 0px;
+    font-size : 0.9rem;
+}
+
+#search_btn {
+	font-size : 1rem;
+	font-weight : bold;
 }
 
 .mainlogo {
@@ -69,7 +88,7 @@ a {
     justify-content: center;
     display: flex;
     margin-left: 20px;
-}
+} 
 
 /* 로고 */
 .page-title a {
@@ -87,13 +106,14 @@ a {
 
 .page-title div {
 	/* 봄숲 text */
-	font-size : 1.6rem;
+	font-size : 2.2rem;
+	font-family: 'ghanachoco';
 }
 
 
 /* 내비 메뉴 장식 */
 
-nav {
+ nav {
     background-color: rgba(196, 217, 195, 1);
     width: 100%;
 }
@@ -106,15 +126,15 @@ nav {
     background-color: rgba(196, 217, 195, 1);
     margin-left: 60%;
     margin-bottom: 14px;
-}
+} 
 
 /* 내비 li 여백 */
 .main-nav li {
     margin-left: 20px;
-}
+} */
 
 /* 내비 a 태그 */
-.main-nav a {
+ .main-nav a {
     color: black;
     font-size: 12px;
     
@@ -122,20 +142,19 @@ nav {
 
 .main nav a:hover {
     color: #0bd;
-}
+} 
 
 /* 로고 내비 수평 정렬 */
-.page-header {
+ .page-header {
     display: flex;
     justify-content: space-between;
    
-}
+} */
 
 /*콘텐츠의 최대 출력 너비 설정 */
-.wrapper {
+ .wrapper {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 4%;
 }
 
 .mainlogo {
@@ -147,7 +166,7 @@ nav {
     border-bottom: 6px solid;
     color: rgba(196, 217, 195, 1);
 
-}
+} 
 </style>
 </head>
 <body>
@@ -185,7 +204,7 @@ scope="application"/>
                     <span class="input_area"> <input type="search"
                         name="searchValue" placeholder="검색할 내용을 입력하세요.">
                     </span>
-                    <button type="submit" onclick="search()">검색</button>
+                    <button id="search_btn" type="submit" onclick="search()">검색</button>
                 </form>
             </div>
         </div>
