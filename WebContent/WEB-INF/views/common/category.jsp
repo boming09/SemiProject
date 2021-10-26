@@ -166,7 +166,8 @@
 			<img id="ad1" src="<%= request.getContextPath() %>/resources/images/ad8.png">
 			<img id="ad2" src="<%= request.getContextPath() %>/resources/images/ad9.png">
 		</div> 
-	
+		
+
 	</div>
 </body>
 </html>
