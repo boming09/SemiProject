@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="q_btn">
-                    <button type="button">취소</button>
+                    <button type="button" onclick="location.href='${ contextPath }/one'">취소</button>
                     <button type="button">등록</button>
                 </div>
             </form>

@@ -22,7 +22,7 @@
 		    <header class="one_header">
 		        <div>1:1 문의</div>
 		        <div class="one_question">
-		            <button type="button" onclick="location.href='${ contextPath }/one/question'">1:1 문의하기</button>
+		            <button type="button" onclick="location.href='${ contextPath }/one/insert'">1:1 문의하기</button>
 		        </div>
 		    </header>
 		    <div class="one_ment">

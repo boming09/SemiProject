@@ -22,7 +22,7 @@
             <header class="commu_header">
                 <div>소통게시판</div>
                 <div class="commun_writerinfo">
-                    <button type="button" onclick="location.href='${ contextPath }/w-info'">작가 소개</button>
+                    <button type="button" onclick="location.href='${ contextPath }/commu/w-info'">작가 소개</button>
                 </div>
             </header>
             <div class="commu_ment">
