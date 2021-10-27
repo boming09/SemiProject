@@ -4,6 +4,9 @@
 	
 }
 
+h3{
+	color : rgb(101, 69, 245);
+}
 .csarea {
     /* 챙겨가야하는 놈 !*/
     /* 카테고리 + 컨텐츠 영역 flex 용도 */
@@ -11,9 +14,222 @@
 }
 .content {
     /* 챙겨가야하는 놈 */
-    width: 70%;
+    width: 70%;    
 }
 
+/* 헤더 div */
+/* 헤더 center */
+.hdcenter{
+	background : lightgray;
+	width: 600px;
+	height: 120px;
+	magin : 0px;
+	margin-left : 30px;
+}
+
+/* 왼쪽 div */
+.left {
+	width : 250px;
+	height : 80px;
+	background : white;
+	position : absolute;
+	left : 720px;
+	font-size : 0.8rem;
+}
+
+/* 오른쪽 div */
+.right {
+	width : 250px;
+	height : 80px;
+	background : white;
+	position : absolute;
+	right : 670px;
+}
+
+/* 전체 주문내역 */
+/* 주문내역 center */
+.center{
+	background : lightgray;
+	width: 600px;
+	height: 200px;
+	margin-left : 30px;
+}
+
+/* 주문내역 selectbox */
+.selectbox{
+	width: 80px;
+	height : 30px;
+	font-size : 13px;
+	/*padding: .6em .5em;*/
+	border: 1px solid #999;
+	background: white;
+	border-radius: 0px;
+	text-aling : center;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	/*
+	border : 1px solid black;
+	background : white;
+	width : 100px;
+	height: 20px;
+	font-size : 15px;
+	border-radius: 0px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	*/
+}
+
+/* select박스 들 위치 */
+#sb1 {
+	position : absolute;
+	top : 42%;
+	left : 36.5%;
+}
+#sb2 {
+	position : absolute;
+	top : 42%;
+	left : 41%;
+}
+#sb3 {
+	position : absolute;
+	top : 42%;
+	right : 44%;
+}
+#sb4 {
+	position : absolute;
+	top : 42%;
+	right : 39%;
+}
+#sb5 {
+	position : absolute;
+	top : 49%;
+	left : 41%;
+	width : 150px;
+}
+#sb6 {
+	position : absolute;
+	top : 49%;
+	left : 55%;
+}
+
+/* 주문 검색 */
+.cs {
+	width : 120px;
+	position : absolute;
+	top : 42.5%;
+	right : 45%;
+	font-size : 13px;
+}
+
+/* 판매자별 조회 */
+.cs2 {
+	width : 120px;
+	position : absolute;
+	top : 49.5%;
+	left : 36.5%;
+	font-size : 13px;
+}
+
+/* 배송 상태별 조회 */
+.cs3 {
+	width : 120px;
+	position : absolute;
+	top : 49.5%;
+	right : 44%;
+	font-size : 13px;
+}
+
+
+/* 찾기 버튼 */
+.searchbut{
+	width : 80px;
+	height : 80px;
+	background: #497D4E;
+	color : white;
+	position : absolute;
+	top : 45%;
+	right : 34%;
+	text-align : center;
+	font-size : 1.8rem;
+}
+
+/* 주문 상태 */
+.df {
+	display: flex;
+	background: white;
+	border: 1px solid blue;
+	width : 600px;
+	height : 50px;
+	text-align : center;
+	margin-left: 30px;
+	font-size: 13px;
+}
+
+/* 주문일 */
+#df1 {
+	width : 60px;
+	border: 2px solid blue;
+	text-align : center;
+}
+/* 주문번호 */
+#df2 {
+	width : 80px;
+	border: 2px solid blue;
+	text-align : center;
+}
+/* 수령인 */
+#df3 {
+	width : 60px;
+	border: 2px solid blue;
+	text-align : center;
+}
+/* 주문상품 */
+#df4 {
+	width : 180px;
+	border: 2px solid blue;
+	text-align : center;
+}
+/* 조회 및 증빛 서류 */
+#df5 {
+	width : 120px;
+	border: 2px solid blue;
+	text-align : center;
+}
+/* 비고 */
+#df6 {
+	width : 100px;
+	border: 2px solid blue;
+	text-align : center;
+}
+
+.focenter{
+	background : lightgray;
+	width: 600px;
+	height: 120px;
+	magin : 0px;
+	margin-left : 30px;
+}
+
+/* 왼쪽 div */
+.left2 {
+	width : 250px;
+	height : 80px;
+	background : white;
+	position : absolute;
+	left : 720px;
+}
+
+/* 오른쪽 div */
+.right2 {
+	width : 250px;
+	height : 80px;
+	background : white;
+	position : absolute;
+	right : 670px;
+}
+/*
 .csctheader {
     height: 70px;
     display : flex;
@@ -85,3 +301,4 @@
     font-weight: bold;
     text-decoration: underline;
 }
+*/
