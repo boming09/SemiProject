@@ -7,6 +7,13 @@
 .content {
     /* 챙겨가야하는 놈 */
     width: 72%;
+    margin-left : 15px;
+    margin-right : 15px;
+}
+/* footer 챙겨가기 !!*/
+.footer2 {
+	position:relative;
+	height : 67px;
 }
 
 /* 컨텐츠 헤더 */
@@ -16,8 +23,8 @@
     justify-content : space-between;	
     align-items: center;
     margin: 0px 0px 0px 0px;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
 } 
 .one_header div:first-child {
     font-size: 1.1rem;
@@ -26,7 +33,7 @@
 
 /* 문의내역 버튼 */
 .one_question button {
-    width: 105px;
+    width: 100px;
     height: 40px;
     font-size: 0.9rem;
     font-weight: bold;
@@ -35,20 +42,19 @@
     color: white;
 }
 .one_question button:hover {
-	background-color: white;
+	background-color: rgb(196, 217, 195);
     color: black;
-    border: 3px solid rgb(73, 125, 78);
 }
 
 /* 멘트 */
 .one_ment ul {
-    padding-left: 80px;
+    padding-left: 60px;
     line-height: 30px;
     font-size: 0.75rem;
 }
 /* 작성 영역*/
 .q_info {
-    margin: 20px 40px 20px 40px;
+    margin: 20px 30px 20px 30px;
 }
 
 .q_titlearea, .q_contentarea, .q_filearea {
@@ -141,7 +147,6 @@
 }
 
 .q_btn button:hover {
-    background-color: white;
+    background-color: rgb(196, 217, 195);
     color: black;
-    border: 3px solid rgb(73, 125, 78);
 }

@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class doOneQuestionServlet
+ * Servlet implementation class WriterCheckInsertServlet
  */
-@WebServlet("/one/question")
-public class doOneQuestionServlet extends HttpServlet {
+@WebServlet("/w-check/insert")
+public class WriterCheckInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public doOneQuestionServlet() {
+    public WriterCheckInsertServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,8 +28,8 @@ public class doOneQuestionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1:1문의하기
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/doOneQuestionView.jsp");
+		// 작가인증게시판 글작성 화면 이동
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/writerCheckInsert.jsp");
 		view.forward(request, response);
 	}
 

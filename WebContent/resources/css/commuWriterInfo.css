@@ -7,7 +7,14 @@
 }
 .content {
     /* 챙겨가야하는 놈 */
-    width: 70%;
+    width: 72%;
+   	margin-left : 15px;
+    margin-right : 15px;
+}
+/* footer 챙겨가기 */
+.footer2 {
+	position:relative;
+	height : 67px;
 }
 
 /* 컨텐츠 헤더 */
@@ -17,11 +24,11 @@
     justify-content : space-between;	
     align-items: center;
     margin: 0px 0px 10px 0px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 .winfo_header div:first-child {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight : bold;
 }
 
@@ -31,24 +38,23 @@
     align-items: center;
 }
 .winfo_search input {
-    border: 4px solid rgb(73, 125, 78);
+    border: 3px solid rgb(196, 217, 195);
     border-right : 0px;
     width: 130px;
-    height: 25px;
+    height: 26px;
     padding-left: 10px;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
 }
 
 .winfo_search button {
-    height: 25px;
+    height: 26px;
 }
 
 .winfo_search button img {
-    width: 22px;
-    height: 25px;
-    border: 4px solid rgb(73, 125, 78);
-    border-left: 0px;   
-    font-size: 0.7rem;
+    width: 23px;
+    height: 26px;
+    border: 3px solid rgb(196, 217, 195);
+    border-left: 0px;  
 }
 
 /* 멘트 */
@@ -67,22 +73,21 @@
 
 .winfo_commu_btn button {
     width: 100px;
-    height: 35px;
-    font-size: 0.8rem;
+    height: 40px;
+    font-size: 0.9rem;
     font-weight : bold;
     background-color: rgb(73, 125, 78);
     color: white;
-    margin-right: 20px;
+    margin-right: 30px;
 }
 .winfo_commu_btn button:hover {
-    background-color: white;
+    background: rgb(196, 217, 195);
     color: black;
-    border: 3px solid rgb(73, 125, 78);
 }
 
 /* 프로필 */
 .w_profilearea {
-    margin: 20px 20px;
+    margin: 20px 30px;
     padding-top : 20px;
     padding-bottom : 20px;
     display: flex;
@@ -91,15 +96,15 @@
 }
 
 .w_profile {
-    width: 35%;
+    width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
     
 }
 .w_profile img {
-	width : 150px;
-	height : 150px;
+	width : 140px;
+	height : 140px;
 }
 
 /* 작가 소개 영역 */
@@ -109,9 +114,9 @@
 }
 
 .w_introduce span:first-child {
-    width: 150px;
+    width: 110px;
     border-bottom: 3px dotted rgb(73, 125, 78);
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight : bold;
     text-align: center;
     padding-top: 10px;
