@@ -120,6 +120,7 @@
     font-size: 0.8rem;
     background: rgb(73, 125, 78);
     color: white;
+    font-weight : bold;
 }
 
 .wc_btn button:hover {
