@@ -10,7 +10,7 @@
 <link href="<%= request.getContextPath() %>/resources/css/category.css" rel="stylesheet">
 </head>
 <body>
-	<div class="content wrapper">
+	
 	<div id="cate_area">
 		<aside class="category">
 			<div class="q-search">빠른분야찾기</div>
