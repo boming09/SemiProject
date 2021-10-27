@@ -19,7 +19,7 @@
 	        <div class="area1"><a class="ca-top" href="${ contextPath }/cs">FAQ</a>
 	            <ul class="ca-list">
 	                <li><a href="${ contextPath }/faq">주문/결제</a></li>
-	                <li><a href="#">취소/교환/반품</a></li>
+	                <li><a href="${ contextPath }/w-mypage">취소/교환/반품</a></li>
 	                <li><a href="#">배송</a></li>
 	                <li><a href="#">회원관리</a></li>
 	            </ul>
