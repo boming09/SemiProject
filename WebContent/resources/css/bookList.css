@@ -6,28 +6,23 @@
     display: flex;
 }
 
-.csarea > div {
-	display: block;
-}
-
-.csarea div:first-child {
-	width: 72%;
-	margin-left:10px;
-}
-
 .content {
     /* 챙겨가야하는 놈 */
-    width: 70%;
+    width: 72%;
+	flex-direction: column;	
+	margin-left: 100px;
+}
+
+#outer {
 }
 
 .book_category {
     border-top: 1px solid rgba(196, 217, 195, 1);
     border-bottom: 1px solid rgba(196, 217, 195, 1);
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
+
 .cLi {
-    display: flex;
+	display: flex;
     list-style: none;
     justify-content: space-around;  /* 공간을 균등하게  */
     padding: 10px;
@@ -39,6 +34,7 @@
 }
 
 .bookSort {
+	padding:10px;
     background: rgba(196, 217, 195, 1);
     display: flex;
     justify-content: space-between;
