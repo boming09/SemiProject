@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class faqNoticeServlet
+ * Servlet implementation class CommuWriterInfoServlet
  */
-@WebServlet("/faq")
-public class faqNoticeServlet extends HttpServlet {
+@WebServlet("/commu/w-info")
+public class CommuWriterInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public faqNoticeServlet() {
+    public CommuWriterInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,8 +28,8 @@ public class faqNoticeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 고객센터 FAQ-주문/결제 클릭시 화면 페이지로 단순 이동
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/faqNoticeView.jsp");
+		// 작가 소개 페이지 이동
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/commuWriterInfoView.jsp");
 		view.forward(request, response);
 	}
 

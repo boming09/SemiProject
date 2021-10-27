@@ -6,17 +6,17 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="<%= request.getContextPath() %>/resources/css/faqNotice.css" rel="stylesheet">
-<title>faqNoticeView</title>
+<link href="${ contextPath }/resources/css/faqNotice.css" rel="stylesheet">
+<title>고객센터_FAQ</title>
 </head>
 <body>
 	<!-- 고객센터 사이드 FAQ-주문/결제 클릭시 첫 화면 -->
 	<!-- 메뉴바 -->
-	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
+	<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 	
 	<div class="csarea wrapper">
 		<!-- cs 카테고리 -->
-		<%@ include file="/WEB-INF/views/notice/csCategory.jsp" %>
+		<jsp:include page="/WEB-INF/views/notice/csCategory.jsp" />
 		
 		<div class="content">
 			 <header class="faqheader">
@@ -25,7 +25,7 @@
                 	<form class="faqsearch">
 	                    <input type="text" placeholder="FAQ 검색"></input>
 	                    <button>
-	                    	<img src="<%= request.getContextPath() %>/resources/images/magnifier.png">
+	                    	<img src="${ contextPath }/resources/images/magnifier.png">
 	                   	</button>
                 	</form>
                 </div>
@@ -41,7 +41,7 @@
 	                    <option>회원관리</option>
 	                </select>
 	                <div class="faqarrow">
-	                	<img src="<%= request.getContextPath() %>/resources/images/faqarrow.png">
+	                	<img src="${ contextPath }/resources/images/faqarrow.png">
 	                </div>
             	</div>
                 <span class="typearrow">〉</span>
@@ -54,7 +54,7 @@
 	                    <option>세금계산서/영수증</option>
 	                </select>
 	                <div class="faqarrow">
-	                	<img src="<%= request.getContextPath() %>/resources/images/faqarrow.png">
+	                	<img src="${ contextPath }/resources/images/faqarrow.png">
                 	</div>
                 </div>
             </div>
@@ -77,10 +77,13 @@
             </div>
 	    </div>
 	    <!-- 광고  -->
-		<%@ include file="/WEB-INF/views/common/adArea.jsp" %>
+		<jsp:include page="/WEB-INF/views/common/adArea.jsp" />
+		
+	</div>
+	<div class="footer2">
+		<!-- footer -->
+		<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	</div>
 	
-	<!-- footer -->
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
 </html>

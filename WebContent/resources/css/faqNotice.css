@@ -1,12 +1,20 @@
 @charset "UTF-8";
+* {margin:0;padding:0;border:0;}
 
-/* csarea + content 화면마다 가져가기!! */
+/* csarea + content + footer 화면마다 가져가기!! */
 .csarea {
     display: flex;
 }
 /* 영역 묶어주기 */
 .content {
     width: 72%;
+    margin-left : 15px;
+    margin-right : 15px;    
+}
+/* footer */
+.footer2 {
+	position:relative;
+	height : 67px;
 }
 
 /* 컨텐츠 헤더 */
@@ -16,8 +24,8 @@
     justify-content : space-between;	
     align-items: center;
     margin: 0px 0px 30px 0px;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
   
 }
 .faqheader div:first-child {
@@ -31,12 +39,12 @@
     align-items: center;
 }
 .faqsearch input {
-    border: 3px solid rgb(73, 125, 78);
+    border: 3px solid rgb(196, 217, 195);
     border-right : 0px;
     width: 130px;
     height: 26px;
     padding-left: 10px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
 }
 
 .faqsearch button {
@@ -46,7 +54,7 @@
 .faqsearch button img {
     width: 23px;
     height: 26px;
-    border: 3px solid rgb(73, 125, 78);
+    border: 3px solid rgb(196, 217, 195);
     border-left: 0px;
 }
 
@@ -74,7 +82,7 @@
 
 .atype, .btype {
 	/* select */
-	border: 5px solid rgb(73, 125, 78);
+	border: 3px solid rgb(73, 125, 78);
     width: 220px;
     height: 50px;   
     font-size: 0.9rem;
@@ -104,9 +112,9 @@
 
 /* faq 리스트 */
 .top3, .total {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
-    margin: 30px 40px 0px 40px;
+    margin: 30px 30px 0px 30px;
     padding-left : 5px;
     padding-bottom: 10px;
     border-bottom: 1px solid lightgray;
@@ -118,7 +126,7 @@
     text-align: center;
     justify-content : space-between;
     align-items: center;
-    margin: 0px 40px;
+    margin: 0px 30px;
     height: 50px;
     border-bottom: 1px solid lightgray;
     font-size: 0.9rem;
@@ -160,4 +168,5 @@
 .total_ul:hover {
     background: #f3f5f7;
 }
+
 

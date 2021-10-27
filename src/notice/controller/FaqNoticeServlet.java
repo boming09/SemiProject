@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class csServlet
+ * Servlet implementation class FaqNoticeServlet
  */
-@WebServlet("/cs")
-public class csServlet extends HttpServlet {
+@WebServlet("/faq")
+public class FaqNoticeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public csServlet() {
+    public FaqNoticeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,8 +28,8 @@ public class csServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 메뉴바의 고객센터 클릭 시 고객센터 페이지로 단순 이동
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/csPageView.jsp");
+		// 고객센터 FAQ-주문/결제 클릭시 화면 페이지로 단순 이동
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/faqNoticeView.jsp");
 		view.forward(request, response);
 	}
 
