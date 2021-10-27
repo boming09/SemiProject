@@ -19,8 +19,8 @@ https://github.com/filipelinhares/ress -->
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/menubar.jsp"/>
+<div class="csarea wrapper">
 <jsp:include page="/WEB-INF/views/common/category.jsp"/>
-	<div class="csarea">
 		<div class="content">
             <div class="book_category">
                 <ul class="cLi">
