@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+.html{
+	
+}
+
+h3 {
+	color : red;
+	text-align: left;
+}
+
+.csarea {
+    /* 챙겨가야하는 놈 !*/
+    /* 카테고리 + 컨텐츠 영역 flex 용도 */
+    display: flex;
+}
+.content {
+    /* 챙겨가야하는 놈 */
+    width: 70%;    
+}
+
+/* 헤더 div */
+/* 헤더 center */
+.hdcenter{
+	background : ;
+	width : 600px;
+	height : 70px;
+	magin : 0px;
+	margin-left : 30px;
+}
+/* 헤더 li */
+.hdcenter li{
+	margin-left : 30px;
+	font-size : 10px;
+	line-height : 13px;
+}
+
+/* center */
+.cen{
+	margin-left : 30px;
+}
+
+/* table */
+.ctable {
+	border : 1px solid lightskyblue;
+	background-color : white;
+	width : 700px;
+	height: 50px;
+	font-size : 10px;
+	border-collapse: collapse;
+	font-weight : bold;
+}
+
+tr, th, td {
+	border : 1px solid lightskyblue;
+}
+
+
+#table1 tr{
+	height : 28px;
+}
+
+#table1 th{
+	width : 80px;
+}
+
+#table2 tr, th, td{
+	
+}
+
+/* 버튼 속성 */
+.tb1{
+	background : green;
+	border-radius : 10%;
+	color : white;
+	height : 20px;
+}
+
+#tb1phone{
+	width : 150px;
+}
+
+#tb1ip{
+	width : 100px;
+}
+
+.tb2{
+	border : 1px solid black;
+	border-radius : 10%;
+	width : 80px;
+	height : 20px;
+}
+
+.tb3{
+	border : 1px solid black;
+	border-radius : 10%;
+	width : 150px;
+	height : 20px;
+}
+
+.tb4{
+	border : 1px solid black;
+	border-radius : 10%;
+	height : 20px;
+}
+
+/* 약관 내역 */
+.pterms li{
+	font-size : 10px;
+	line-height : 13px;
+}
+
