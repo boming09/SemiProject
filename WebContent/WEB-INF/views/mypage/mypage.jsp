@@ -108,9 +108,9 @@
             		안녕하세요 OOO독자님 OOO도서 저자 OOO입니다
             	</div>
             	<div class="right2">
-            		O O O작가님
-            		X X X작가님
-            		ㅁ ㅁㅁ작가님
+            		O O O작가님<br>
+            		X X X작가님<br>
+            		ㅁ ㅁㅁ작가님<br>
             	</div>
             </div>
         </div>

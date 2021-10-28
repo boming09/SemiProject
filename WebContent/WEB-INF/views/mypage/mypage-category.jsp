@@ -16,10 +16,10 @@
 <body>
 	<!-- mypage-category 추가 -->
     <aside class="category">
-        <div class="ca-head">마이페이지</div>
+        <div class="ca-head"><a href="<%= request.getContextPath() %>/mypage">마이페이지</a></div>
         <div class="area1"><a class="ca-top" href="#">개인정보 수정</a>
             <ul class="ca-list">
-                <li><a href="#">회원정보 수정</a></li>
+                <li><a href="<%= request.getContextPath() %>/memberinformation">회원정보 수정</a></li>
                 <li><a href="#">회원탈퇴</a></li>
                 <li><a href="#">회원주소록</a></li>
                 <li><a href="#">마이리뷰</a></li>

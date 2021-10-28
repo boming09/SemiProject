@@ -11,51 +11,12 @@
     <!-- favicon (Real Favicon Generator 등에서 가공 필요) -->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
     <!-- 외부 스타일 시트 -->
-    <link href="<%= request.getContextPath() %>/resources/css/login-style.css" rel="stylesheet">
-    
+    <link href="<%= request.getContextPath() %>/resources/css/login-style.css" rel="stylesheet">    
 </head>
-<body>	
-    <!-- 
-    <div id="top">
-        <header class="page-header">            
-            <nav>
-                <ul class="main-nav">
-                    <li><a href="login.html">로그인</a></li>
-                    <li><a href="joinmembership.html">회원가입</a></li>
-                    <li><a href="mypage.html">마이페이지</a></li>
-                    <li><a href="#">장바구니</a></li>
-                    <li><a href="#">고객센터</a></li>
-                </ul>
-            </nav>
-        </header>
-        -->
-        <!-- 페이지 제목 -->
-        <!-- 
-        <div class="mainlogo wrapper">
-            <h2 class="page-title">
-                <a href="00_메인 추천.html"><img class="logo" src="resources/image/logo.png" alt="home logo"></a>    
-            </h2>
-            <div class="search_area">
-                <form method="get">
-                    <select id="searchCondition" name="searchCondition">
-                        <option value="search">통합검색</option>
-                        <option value="title">제목</option>
-                        <option value="content">내용</option>
-                    </select> 
-                    <span class="input_area"> <input type="search"
-                        name="searchValue" placeholder="검색할 내용을 입력하세요.">
-                    </span>
-                    <button type="submit">검색</button>
-                </form>
-            </div>
-        </div>       
-            <div class="topline">
-            </div>
-        </div>
-		 -->
+<body>    
 	<!-- 메뉴바 -->
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
-<div class="main-center">
+	<div class="main-center">
     <fieldset class="lofd">
         <legend id="lolegend">로그인</legend>
             <tr>
@@ -84,16 +45,8 @@
                 window.location.href = "login";
             }
         </script>
-</div>
-
+	</div>
     <!-- footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
-    <!--
-    <footer>
-        <div class="wrapper">
-            <p><small>&copy; 2021 Bomsoup</small></p>
-        </div>
-    </footer>
-    -->
 </body>
 </html>
