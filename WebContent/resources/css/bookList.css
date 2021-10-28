@@ -10,7 +10,7 @@
     /* 챙겨가야하는 놈 */
     width: 72%;
 	flex-direction: column;	
-	margin-left: 100px;
+	margin-left: 2%;
 }
 
 #outer {
@@ -19,6 +19,7 @@
 .book_category {
     border-top: 1px solid rgba(196, 217, 195, 1);
     border-bottom: 1px solid rgba(196, 217, 195, 1);
+    margin-bottom: 5px;
 }
 
 .cLi {
