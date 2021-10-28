@@ -6,23 +6,23 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="<%= request.getContextPath() %>/resources/css/doOneQuestion.css" rel="stylesheet">
-<title>doOneQuestionView</title>
+<link href="${ contextPath }/resources/css/oneQuestionInsert.css" rel="stylesheet">
+<title>고객센터_1:1문의</title>
 </head>
 <body>
 	<!-- 고객센터 사이드 FAQ-주문/결제 클릭시 첫 화면 -->
 	<!-- 메뉴바 -->
-	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
+	<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 	
 	<div class="csarea wrapper">
 		<!-- cs 카테고리 -->
-		<%@ include file="/WEB-INF/views/notice/csCategory.jsp" %>
+		<jsp:include page="/WEB-INF/views/notice/csCategory.jsp" />
 		
 		<div class="content">
             <header class="one_header">
                 <div>1:1 문의하기</div>
                 <div class="one_question">
-                    <button type="button" onclick="location.href='<%= request.getContextPath() %>/one'">1:1 문의내역</button>
+                    <button type="button" onclick="location.href='${ contextPath }/one'">1:1 문의내역</button>
                 </div>
             </header>
             <div class="one_ment">
@@ -62,16 +62,18 @@
                     </div>
                 </div>
                 <div class="q_btn">
-                    <button type="button">취소</button>
+                    <button type="button" onclick="location.href='${ contextPath }/one'">취소</button>
                     <button type="button">등록</button>
                 </div>
             </form>
         </div>
 		<!-- 광고  -->
-		<%@ include file="/WEB-INF/views/common/adArea.jsp" %>
+		<jsp:include page="/WEB-INF/views/common/adArea.jsp" />
 	</div>
 	
-	<!-- footer -->
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+	<div class="footer2">
+		<!-- footer -->
+		<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	</div>
 </body>
 </html>

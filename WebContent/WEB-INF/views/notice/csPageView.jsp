@@ -4,19 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>csPageView</title>
+<title>고객센터_FAQ</title>
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="<%= request.getContextPath() %>/resources/css/csPage.css" rel="stylesheet">
+<link href="${ contextPath }/resources/css/csPage.css" rel="stylesheet">
 </head>
 <body>
 	<!-- 고객센터 클릭시 첫 화면 -->
 	<!-- 메뉴바 -->
-	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
+	<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 	
 	<div class="csarea wrapper">
 		<!-- cs 카테고리 -->
-		<%@ include file="/WEB-INF/views/notice/csCategory.jsp" %>
+		<jsp:include page="/WEB-INF/views/notice/csCategory.jsp" />
 		
 		<div class="content">
             <header class="csctheader">
@@ -60,10 +60,12 @@
             </div>
         </div>
         <!-- 광고  -->
-		<%@ include file="/WEB-INF/views/common/adArea.jsp" %>
+		<jsp:include page="/WEB-INF/views/common/adArea.jsp" />
 	</div>
 	
-	<!-- footer -->
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+	<div class="footer2">
+		<!-- footer -->
+		<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	</div>
 </body>
 </html>

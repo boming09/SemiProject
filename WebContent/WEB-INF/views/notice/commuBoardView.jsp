@@ -6,23 +6,23 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="<%= request.getContextPath() %>/resources/css/commuBoard.css" rel="stylesheet">
-<title>commuBoardview</title>
+<link href="${ contextPath }/resources/css/commuBoard.css" rel="stylesheet">
+<title>고객센터_소통게시판</title>
 </head>
 <body>
 	<!-- 고객센터 사이드 FAQ-주문/결제 클릭시 첫 화면 -->
 	<!-- 메뉴바 -->
-	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
+	<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 	
 	<div class="csarea wrapper">
 		<!-- cs 카테고리 -->
-		<%@ include file="/WEB-INF/views/notice/csCategory.jsp" %>
+		<jsp:include page="/WEB-INF/views/notice/csCategory.jsp" />
 		
 		<div class="content">
             <header class="commu_header">
                 <div>소통게시판</div>
                 <div class="commun_writerinfo">
-                    <button type="button" onclick="location.href='<%= request.getContextPath() %>/w-info'">작가 소개</button>
+                    <button type="button" onclick="location.href='${ contextPath }/commu/w-info'">작가 소개</button>
                 </div>
             </header>
             <div class="commu_ment">
@@ -67,10 +67,12 @@
             </div>
     	</div>
     	<!-- 광고  -->
-		<%@ include file="/WEB-INF/views/common/adArea.jsp" %>
+		<jsp:include page="/WEB-INF/views/common/adArea.jsp" />
 	</div>
-	<!-- footer -->
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+	<div class="footer2">
+		<!-- footer -->
+		<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	</div>
 	
 </body>
 </html>

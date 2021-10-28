@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class csServlet
+ * Servlet implementation class OneQuestionServlet
  */
-@WebServlet("/cs")
-public class csServlet extends HttpServlet {
+@WebServlet("/one")
+public class OneQuestionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public csServlet() {
+    public OneQuestionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,8 +28,8 @@ public class csServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 메뉴바의 고객센터 클릭 시 고객센터 페이지로 단순 이동
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/csPageView.jsp");
+		// 1:1문의 없을때 보이는 화면 + 1:1문의내역 겸??
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/oneQuestionView.jsp");
 		view.forward(request, response);
 	}
 

@@ -1,4 +1,4 @@
-package notice.controller;
+package writer.controller;
 
 import java.io.IOException;
 
@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class noneOneQuestionServlet
+ * Servlet implementation class WMypageServlet
  */
-@WebServlet("/one")
-public class noneOneQuestionServlet extends HttpServlet {
+@WebServlet("/w-mypage")
+public class WMypageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public noneOneQuestionServlet() {
+    public WMypageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,8 +28,8 @@ public class noneOneQuestionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1:1문의 없을때 보이는 화면 + 1:1문의내역 겸??
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/noneOneQuestionView.jsp");
+		// 작가회원 마이페이지
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/writer/wMyPageView.jsp");
 		view.forward(request, response);
 	}
 
