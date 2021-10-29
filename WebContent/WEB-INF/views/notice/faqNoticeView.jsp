@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
 <link href="${ contextPath }/resources/css/faqNotice.css" rel="stylesheet">
@@ -61,10 +62,31 @@
         	
             <div class="top3">TOP 3</div>
             <div class="top3_list">
-                <ul class="top3_ul">
-                    <li class="faq_q">[분류] 분류 해당질문 여긴 나중에 반복문 돌려돌려</li>
-                    <li class="faq_icon">▼</li>
-                </ul>
+            	<div>
+	                <ul class="top3_ul">
+	                    <li class="faq_type">[세금계산서]</li>
+                    	<li class="faq_q">총 리스트영역 여긴 나중에 반복문 돌려돌려</li>
+	                    <li class="faq_icon">▼</li>
+	                </ul>
+	                <div class="top_a"></div>
+            	</div>
+            	<div>
+	                <ul class="top3_ul">
+	                    <li class="faq_type">[세금계산서]</li>
+                   		<li class="faq_q">총 리스트영역 여긴 나중에 반복문 돌려돌려</li>	
+	                    <li class="faq_icon">▼</li>
+	                </ul>
+	                <div class="top_a"></div>
+            	</div>
+            	<div>
+	                <ul class="top3_ul">
+	               		<li class="faq_type">[세금계산서]</li>
+	                    <li class="faq_q">해당질문 여긴 나중에 반복문 돌려돌려</li>
+	                    <li class="faq_icon">▼</li>
+	                </ul>
+	                <div class="top_a"></div>
+            	</div>
+	               
             </div>
         
             <div class="total">LIST</div>
@@ -85,5 +107,15 @@
 		<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	</div>
 	
+	 <script type="text/javascript">
+		$('.top3_ul').click(function(){
+			if($(this).next($('div')).css('display') == 'none') {
+				$('div.top_a').slideUp();
+				$(this).next($('div')).slideDown();
+			} else {
+				$(this).next($('div')).slideUp();
+			}
+		})
+	</script>
 </body>
 </html>

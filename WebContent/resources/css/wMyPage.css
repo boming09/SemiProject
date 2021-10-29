@@ -1,0 +1,144 @@
+@charset "UTF-8";
+
+.csarea {
+    /* 챙겨가야하는 놈 */
+    /* 카테고리 + 컨텐츠 영역 flex 용도 */
+    display: flex;
+}
+
+.content {
+    /* 챙겨가야하는 놈 */
+    width: 72%;
+    margin-left : 15px;
+    margin-right : 15px;
+}
+.footer2 {
+    /* 챙겨가야하는 놈 */
+    position:relative;
+    height : 67px;
+}
+
+/* 컨텐츠 헤더 */
+.wmy_header {
+    height: 70px;
+    display : flex;
+    justify-content : space-between;	
+    align-items: center;
+    margin: 0px 0px 10px 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 1.1rem;
+    font-weight : bold;
+}
+
+/* 정보 전체 영역*/
+.wmy_info {
+    margin: 20px 30px 20px 30px;
+}
+/* 프로필 사진 */
+.wmy_pro {
+    display: flex;
+    flex-direction: column;
+}
+.wmy_pro img {
+    width: 200px;
+    height: 200px;
+    margin: 0px auto;
+}
+/* 자기소개 textarea*/
+.wmy_self {
+	margin: 0px auto;
+	display : flex;
+	flex-direction: column;
+	margin-top : 20px;
+	margin-bottom : 20px;
+}
+
+.wmy_self span {
+	border-left : 5px solid black;
+	font-size : 0.85rem;
+	margin-bottom : 5px;
+}
+
+.wmy_self textarea {
+	border : 1px solid lightgray;
+	font-size : 0.8rem;
+	resize : none;
+	padding : 10px;
+}
+
+
+/* 정보 */
+.wmy_idarea, .wmy_pwarea, .wmy_namearea, .wmy_phonearea,
+.wmy_emailarea, .wmy_addressarea {
+    border-top: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+}
+.wmy_addressarea {
+    border-bottom: 1px solid lightgray;
+}
+
+.wmy_id, .wmy_pw, .wmy_name, .wmy_phone,
+.wmy_email, .wmy_address {
+    width: 40%;
+    text-align: center;
+    background: rgb(239, 239, 239);
+    font-size: 0.9rem;
+    line-height: 50px;
+    /* span태그 세로가운데는 line-height로 맞추기 */
+}
+.wmy_address {
+    line-height: 110px;
+}
+.wmy_address2{
+    display: flex;
+    flex-direction: column;
+    line-height: 30px;
+}
+.wmy_id2, .wmy_pw2, .wmy_name2, .wmy_phone2,
+.wmy_email2, .wmy_address2 {
+    margin-left: 10px;
+    font-size: 0.85rem;
+    padding : 10px 0;
+}
+
+/* 이용약관 */
+.wmy_agree {
+	margin-top : 10px;
+}
+.wmy_agree span {
+    font-size: 0.75rem;       
+    line-height: 20px;
+    color: red;
+    font-weight : bold;
+}
+
+.wmy_agree ul {
+	font-size: 0.75rem; 
+    margin-left: 30px;
+    color: black;
+    line-height: 20px;
+}
+
+/* 정보수정/회원탈퇴 버튼 */
+.wmy_btn {
+    display : flex;
+    justify-content : center;	
+    align-items: center;
+}
+.wmy_btn button {
+    margin: 20px;
+    margin-bottom: 60px;
+    width: 90px;
+    height: 35px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    background: rgb(73, 125, 78);
+    color: white;
+}
+
+.wmy_btn button:hover {
+    background-color: rgb(196, 217, 195);
+    color: black;
+}

@@ -15,9 +15,9 @@
 	<div id="wmyct_area">
 	    <aside class="category">
 	        <div class="ca-head">마이페이지</div>
-	        <div class="area1"><a class="ca-top" href="#">회원정보</a>
+	        <div class="area1"><a class="ca-top" href="${ contextPath }/w-mypage">회원정보</a>
 	            <ul class="ca-list">
-	                <li><a href="#">회원정보 수정</a></li>
+	                <li><a href="${ contextPath }/w-mypage/update">회원정보 수정</a></li>
 	                <li><a href="#">회원 탈퇴</a></li>
 	            </ul>
 	        </div>
