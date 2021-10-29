@@ -32,7 +32,7 @@
 		        </ul>
 		    </div>
 		    <div class="one_none_ment">
-		        <span class="none_span1">최근 3개월간 문의 내역이 없습니다.</span>
+		        <span class="none_span1">1:1 문의 내역이 없습니다.</span>
 		        <span class="none_span2">봄숲에 대한 모든 궁금증은 1:1 문의하기로 부담없이 확인하세요.</span>
 		    </div>
 		</div>
