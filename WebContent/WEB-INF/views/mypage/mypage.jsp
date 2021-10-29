@@ -22,9 +22,9 @@
 		<%@ include file="/WEB-INF/views/mypage/mypage-category.jsp" %>		
 		<!-- 헤더 div -->
 		<div class="content">            
+           	<h4>고객님, 안녕하세요.</h4><br>
             <header>
             	<div class="hdcenter">
-            		고객님, 안녕하세요
             		<div class="left">
             		<h3>멤버십 등급 : 일반</h3>
             		봄숲 멤버십 회원이 되신걸 환영합니다.<br>
@@ -39,56 +39,57 @@
             
             <!-- center div -->
             <br>
-            <h4>&nbsp;&nbsp;&nbsp;&nbsp;
-            	&nbsp;전체 주문내역</h4>
+            <h4>전체 주문내역</h4>
             <br>
             <div class="center">
-            	<div>
-            		<select class="selectbox" id="sb1" name="sb1">
-                        <option value="">전체보기</option>
-                        <option value="">제목</option>
-                        <option value="">내용</option>
-                    </select>
-                </div>
-                <div>
-            		<select class="selectbox" id="sb2" name="sb2">
-                        <option value="">전체보기</option>
-                        <option value="">제목</option>
-                        <option value="">내용</option>
-                    </select>
-                </div>
-                <div class="cs">주문검색</div>
-                <div class="cs2">판매자별 조회</div>
-                <div class="cs3">배송 상태별 조회</div>
-                <div>
-            		<select class="selectbox" id="sb3" name="sb3">
-                        <option value="">전체보기</option>
-                        <option value="">제목</option>
-                        <option value="">내용</option>
-                    </select>
-                </div>
-                <div>
-            		<select class="selectbox" id="sb4" name="sb4">
-                        <option value="">전체보기</option>
-                        <option value="">제목</option>
-                        <option value="">내용</option>
-                    </select>
-                </div>
-                <div>
-            		<select class="selectbox" id="sb5" name="sb5">
-                        <option value="">전체보기</option>
-                        <option value="">제목</option>
-                        <option value="">내용</option>
-                    </select>
-                </div>
-                <div>
-            		<select class="selectbox" id="sb6" name="sb6">
-                        <option value="">전체보기</option>
-                        <option value="">제목</option>
-                        <option value="">내용</option>
-                    </select>
-                </div>
-                <a href=""><div class="searchbut">찾기</div></a>
+            	<div class="center0">
+	            	<div class="cenleft">
+		            	<div class="centerdiv1">
+		            		<select class="selectbox" id="sb1" name="sb1">
+		                        <option value="">전체보기</option>
+		                        <option value="">제목</option>
+		                        <option value="">내용</option>
+		                    </select>                
+		            		<select class="selectbox" id="sb2" name="sb2">
+		                        <option value="">전체보기</option>
+		                        <option value="">제목</option>
+		                        <option value="">내용</option>
+		                    </select>
+		                </div>
+		                <div class="centerdiv3">
+		                <label>주문검색</label>
+		            		<select class="selectbox" id="sb3" name="sb3">
+		                        <option value="">주문상품</option>
+		                        <option value="">제목</option>
+		                        <option value="">내용</option>
+		                    </select>                
+		            		<select class="selectbox" id="sb4" name="sb4">
+		                        <option value=""></option>
+		                        <option value="">제목</option>
+		                        <option value="">내용</option>
+		                    </select>
+		                </div>
+	                </div>
+	                <div class="cenright">
+		                <div class="centerdiv5">
+		                	<label>판매자별 조회</label>
+		            		<select class="selectbox" id="sb5" name="sb5">
+		                        <option value="">전체보기</option>
+		                        <option value="">제목</option>
+		                        <option value="">내용</option>
+		                    </select>
+		                </div>
+		                <div class="centerdiv6">
+		                <label>배송 상태별 조회</label>
+		            		<select class="selectbox" id="sb6" name="sb6">
+		                        <option value="">전체보기</option>
+		                        <option value="">제목</option>
+		                        <option value="">내용</option>
+		                    </select>
+		                </div>
+	                </div>
+	            </div>
+	                <div class="searchbut"><a href="">찾기</a></div>
             </div>
             <br>
             <div class="df">
@@ -100,8 +101,7 @@
             	<div id="df6">비고</div>
             </div>
             <br>
-            <h4>&nbsp;&nbsp;&nbsp;&nbsp;
-            	&nbsp;작가 와의 소통</h4>
+            <h4>작가 와의 소통</h4>
             <br>
             <div class="focenter">
             	<div class="left2">

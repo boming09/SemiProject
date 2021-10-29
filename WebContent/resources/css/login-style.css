@@ -83,10 +83,10 @@ a {
 /* 로그인 버튼 */
 #lobut {
     width : 150px;
-    height : 130px;
+    height : 110px;
     position : absolute;
-            top : 480px;
-            left : 350px;
+            top : 35px;
+            left : 330px;
     background :#497D4E;
     color : white;
     text-align: center;
@@ -142,7 +142,7 @@ a {
     width : 300px;
     height : 100px;
     position : absolute;
-            top : 530px;
+            top : 480px;
             left : 600px;
     background :#497D4E;
     color : white;

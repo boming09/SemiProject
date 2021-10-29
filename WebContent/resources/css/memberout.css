@@ -5,12 +5,18 @@
 }
 
 h3{
-	color : rgb(101, 69, 245);
+	
 }
 
 h4{
-	margin-left : 50px;
+	color: red;
+	text-aling: center;
 }
+
+.topline {
+    border-bottom: 3px solid;
+    color: rgba(196, 217, 195, 1);
+} 
 
 .csarea {
     /* 챙겨가야하는 놈 !*/
