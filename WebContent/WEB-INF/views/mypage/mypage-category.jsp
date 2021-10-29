@@ -20,7 +20,7 @@
         <div class="area1"><a class="ca-top" href="#">개인정보 수정</a>
             <ul class="ca-list">
                 <li><a href="<%= request.getContextPath() %>/memberinformation">회원정보 수정</a></li>
-                <li><a href="#">회원탈퇴</a></li>
+                <li><a href="<%= request.getContextPath() %>/memberout">회원탈퇴</a></li>
                 <li><a href="#">회원주소록</a></li>
                 <li><a href="#">마이리뷰</a></li>
                 <li><a href="#">내쿠폰</a></li>

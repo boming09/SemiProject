@@ -18,7 +18,7 @@
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
 	<div class="main-center">
     <fieldset class="lofd">
-        <legend id="lolegend">로그인</legend>
+        <legend id="lolegend"></legend>
             <tr>
                 <td><input type="text" class="textbox" id="loginid" placeholder="아이디를 입력하세요"></td><br><br>
             </tr>
