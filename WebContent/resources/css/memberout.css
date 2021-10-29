@@ -4,11 +4,7 @@
 	
 }
 
-h3{
-	
-}
-
-h4{
+.h4{
 	color: red;
 	text-aling: center;
 }
@@ -30,314 +26,83 @@ h4{
 
 /* 헤더 div */
 /* 헤더 center */
-.hdcenter{
-	background : lightgray;
-	height: 120px;
+.hd1{
 	margin-left : 50px;
 	margin-right : 50px;
-	display: flex;
-	justify-content: space-between;
 }
 
-/* 왼쪽 div */
-.left, .right {
-	width : 250px;
-	height : 80px;
-	background : white;
-	font-size : 0.8rem;
-	margin : 20px;
-	padding-top : 10px;
-	padding-left : 10px;
-	margin-left : 50px;
-	margin-right : 50px;	
+/* ul */
+.heul{
+	font-size : 12px;
+	margin-left : 20px;
 }
 
-/* 전체 주문내역 */
-/* 주문내역 center */
-.center{
-	background : lightgray;
-	height: 150px;
-	display: flex;
-	margin-left : 50px;
-	margin-right : 50px;	
+/* li 2번째줄 */
+#hi1li2{
+	color : red;
 }
 
-/* div1~4 감싸준 div */
-.center0{
-	width : 80%;
-}
-
-.cenleft{
-	display: flex;
-	height: 75px; 
-	align-items : center;
-	margin-left: 20px;
-}
-
-.cenright{
-	display: flex;
-	height: 75px;
-	align-items : center;
-	margin-left: 20px;
-	margin-bottom: 20px;
-}
-
-.centerdiv1 {
-	
-}
-
-.centerdiv3 {
-	margin-left: 70px;
-}
-
-.centerdiv5 {
-	
-}
-
-.centerdiv6 {
-	margin-left: 60px;
-}
-
-/* 주문내역 selectbox */
-.selectbox{
-	width: 80px;
-	height : 30px;
-	font-size : 13px;	
-	border: 1px solid #999;
-	background: white;
-	border-radius: 0px;	
-	appearance: none;
-	text-align: center;
-	/*
+/* 이메일 변경하기 버튼 */
+#emailbut{
 	border : 1px solid black;
-	background : white;
-	width : 100px;
-	height: 20px;
-	font-size : 15px;
-	border-radius: 0px;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	*/
-}
-
-/* select박스 들 위치 */
-#sb1 {
-	
-}
-#sb2 {
+	border-radius : 10%;
 	margin-left : 20px;
 }
-#sb3 {
-	margin-left : 10px;
-}
-#sb4 {
-	margin-left : 20px;
-}
-#sb5 {
-	margin-left : 10px;
-}
-#sb6 {
-	margin-left : 10px;
+
+/* 경고 이미지 */
+.warnign{
+	width : 14px;
+    height : 14px;
 }
 
-/* 주문 검색 */
-.cs {
-	width : 50px;	
-	font-size : 13px;
-	margin-left: 20px;	
-}
+/*-------------------------------------------------------------------*/
 
-/* 판매자별 조회 */
-.cs2 {
-	width : 80px;	
-	font-size : 13px;
-	
+/* 탈퇴 체크 내역 */
+/* 탈퇴 체크 메인 div */
+.center {
+  width: 1080px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 132px 350px; /* 각 행(세로줄)의 길이 */
+  grid-template-rows: 80px 80px 80px 80px; /* 각 열(가로줄)의 길이 */
+  gap: 10px; /* 자식요소간의 간격 */
+  margin-left : 50px;
+  margin-right : 50px;
 }
-
-/* 배송 상태별 조회 */
-.cs3 {
-	width : 100px;
-	font-size : 13px;	
-}
-
-
-/* 찾기 버튼 */
-.searchbut{
-	width : 80px;
-	height : 80px;
-	background: #497D4E;
-	color : white;
-	text-align : center;
-	font-size : 1.8rem;
-	margin-top : 35px;
-	margin-right : 20px;
-	padding-top : 25px;
-	/*
-	position : absolute;
-	top : 45%;
-	right : 34%;
-	*/
-}
-
-/* 주문 상태 */
-.df {
-	display: flex;
-	background: white;
-	border: 1px solid blue;
-	height : 50px;
-	text-align : center;
-	margin-left : 50px;
-	margin-right : 50px;
-	font-size: 13px;	
-}
-
-/* 주문일 */
-#df1 {
-	width : 80px;
-	border: 2px solid blue;
-	text-align : center;
-	padding-top : 15px;
-}
-/* 주문번호 */
-#df2 {
-	width : 80px;
-	border: 2px solid blue;
-	text-align : center;
-	padding-top : 15px;
-}
-/* 수령인 */
-#df3 {
-	width : 60px;
-	border: 2px solid blue;
-	text-align : center;
-	padding-top : 15px;
-}
-/* 주문상품 */
-#df4 {
-	width : 230px;
-	border: 2px solid blue;
-	text-align : center;
-	padding-top : 15px;
-}
-/* 조회 및 증빛 서류 */
-#df5 {
-	width : 140px;
-	border: 2px solid blue;
-	text-align : center;
-	padding-top : 15px;
-}
-/* 비고 */
-#df6 {
-	width : 103px;
-	border: 2px solid blue;
-	text-align : center;
-	padding-top : 15px;
-}
-
-.focenter{
-	background : lightgray;
-	height: 120px;
-	magin : 0px;
-	margin-left : 50px;
-	margin-right : 50px;
-	display: flex;
-	justify-content: space-between;
-}
-
 /* 왼쪽 div */
-.left2 {
-	width : 250px;
-	height : 80px;
-	background : white;
-	margin : 20px;
-	padding-top : 10px;
-	padding-left : 10px;
-	margin-left : 50px;
-	margin-right : 50px;	
+.temp-box-left {
+  color: blue;
+  width: 100%;
+  height: 100%;
+  font-size: 15px;
+  text-align: center;
+  padding-top : 30px;
 }
-
 /* 오른쪽 div */
-.right2 {
-	width : 250px;
-	height : 80px;
-	background : white;
-	margin : 20px;
-	padding-top : 10px;
-	padding-left : 10px;
+
+.temp-box-right {
+  width: 100%;
+  height: 100%;
+  font-size: 15px;
+  text-align: center;
+  padding : 30px;
+}
+
+.temp-box-right1 {
+  width: 100%;
+  height: 100%;
+  font-size: 15px;
+  text-align: center;
+}
+
+#ta {
+	width : 350px;
+	height: 82px;
+	border: 1px solid black;
+}
+
+.end {
 	margin-left : 50px;
-	margin-right : 50px;	
+	margin-right : 50px;
+	text-aling : center;
 }
-/*
-.csctheader {
-    height: 70px;
-    display : flex;
-    justify-content : space-between;	
-    align-items: center;
-    margin: 5px;
-    margin-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-.csctheader span:first-child {
-    font-size: 1.3rem;
-    font-weight : bold;
-}
-
-.csctheader span:last-child {
-    font-size: 0.7rem;
-}
-
-.ctarea {
-    height: 90%;
-    position: relative;
-}
-
-.ct-area1, .ct-area2, .ct-area3, .ct-area4 {
-    width: 280px;
-    height: 200px;
-    border: 5px solid rgb(73, 125, 78);
-    position : absolute
-}
-
-.ct-area1 {
-    left: 3%;
-}
-
-.ct-area2 {
-    right: 3%;
-}
-
-.ct-area3 {
-    top: 40%;
-    left: 3%;
-}
-
-.ct-area4 {
-    top: 40%;
-    right: 3%;
-}
-
-.ct-top {
-    font-size: 1rem;
-    font-weight : bold;
-    color: white;
-    height: 35px;
-    line-height: 35px;
-    border-bottom: 5px solid rgb(73, 125, 78);
-    text-align : center;
-    background: rgb(73, 125, 78);
-}
-
-.ct-list {
-    padding: 12px 0px 0px 50px;
-    font-size: 0.8rem;
-    line-height: 33px;
-}
-
-.ct-list li:hover {
-    font-weight: bold;
-    text-decoration: underline;
-}
-*/
