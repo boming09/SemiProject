@@ -21,10 +21,10 @@
 	
 		<!-- 광고 -->
 		<%@ include file="/WEB-INF/views/common/adArea.jsp" %>
-	</div>
-	
+	</div>	
 	
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+	
 </body>
 </html>
