@@ -18,7 +18,7 @@
 		<jsp:include page="/WEB-INF/views/writer/wmyCategory.jsp" />
 		
 		<div class="content">
-		 	<div class="wmy_header">회원정보</div>
+		 	<div class="wmy_header">회원정보 수정</div>
 		 	
 		 	<!-- 회원 정보 영역 -->
             <form class="wmy_info">
@@ -35,13 +35,13 @@
 	            
                 <div class="wmy_idarea">
                     <span class="wmy_id">아이디</span>
-                    <span class="wmy_id2"><input type="text"></span>
+                    <span class="wmy_id2">변경불가</span>
                 </div>
     
                 <div class="wmy_pwarea">
                     <span class="wmy_pw">비밀번호</span>
                     <span class="wmy_pw2">*********</span>
-                    <button type="button">변경</button>
+                    <button type="button">비밀번호 변경</button>
                 </div>
     
                 <div class="wmy_namearea">
@@ -79,9 +79,8 @@
 		<jsp:include page="/WEB-INF/views/common/adArea.jsp" />	
 	</div>
 	
-	<div class="footer2">
-		<!-- footer -->
-		<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-	</div>
+	<!-- footer -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	
 </body>
 </html>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
 <link href="${ contextPath }/resources/css/faqNotice.css" rel="stylesheet">
@@ -68,7 +68,15 @@
                     	<li class="faq_q">총 리스트영역 여긴 나중에 반복문 돌려돌려</li>
 	                    <li class="faq_icon">▼</li>
 	                </ul>
-	                <div class="top_a"></div>
+	                <div class="top3_a">
+	                	<div class="top3_answer">답변내용~~어쩌고 저쩌고<br>
+	                	블라블라<br>메롱메롱</div>
+	                	<div class="top3_service">
+	                		<img src="${ contextPath }/resources/images/callcenter.png">
+	                		<p>추가로 자세한 상담을 원하신다면 1:1문의를 이용해주세요</p>
+	                		<button>1:1문의</button>
+	                	</div>
+	                </div>
             	</div>
             	<div>
 	                <ul class="top3_ul">
@@ -76,7 +84,15 @@
                    		<li class="faq_q">총 리스트영역 여긴 나중에 반복문 돌려돌려</li>	
 	                    <li class="faq_icon">▼</li>
 	                </ul>
-	                <div class="top_a"></div>
+	                <div class="top3_a">
+	                	<div class="top3_answer">답변내용~~어쩌고 저쩌고<br>
+	                	블라블라<br>메롱메롱</div>
+	                	<div class="top3_service">
+	                		<img src="${ contextPath }/resources/images/callcenter.png">
+	                		<p>추가로 자세한 상담을 원하신다면 1:1문의를 이용해주세요</p>
+	                		<button>1:1문의</button>
+	                	</div>
+	                </div>
             	</div>
             	<div>
 	                <ul class="top3_ul">
@@ -84,11 +100,20 @@
 	                    <li class="faq_q">해당질문 여긴 나중에 반복문 돌려돌려</li>
 	                    <li class="faq_icon">▼</li>
 	                </ul>
-	                <div class="top_a"></div>
+	                <div class="top3_a">
+	                	<div class="top3_answer">답변내용~~어쩌고 저쩌고<br>
+	                	블라블라<br>메롱메롱</div>
+	                	<div class="top3_service">
+	                		<img src="${ contextPath }/resources/images/callcenter.png">
+	                		<p>추가로 자세한 상담을 원하신다면 1:1문의를 이용해주세요</p>
+	                		<button>1:1문의</button>
+	                	</div>
+	                </div>
             	</div>
 	               
             </div>
         
+        	<!-- 영역을 더 잡아?? -->
             <div class="total">LIST</div>
             <div class="total_list">
                 <ul class="total_ul">
@@ -102,15 +127,15 @@
 		<jsp:include page="/WEB-INF/views/common/adArea.jsp" />
 		
 	</div>
-	<div class="footer2">
-		<!-- footer -->
-		<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-	</div>
+
+	<!-- footer -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	
 	
 	 <script type="text/javascript">
 		$('.top3_ul').click(function(){
 			if($(this).next($('div')).css('display') == 'none') {
-				$('div.top_a').slideUp();
+				$('div.top3_a').slideUp();
 				$(this).next($('div')).slideDown();
 			} else {
 				$(this).next($('div')).slideUp();
