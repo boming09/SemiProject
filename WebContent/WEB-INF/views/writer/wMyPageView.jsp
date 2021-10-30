@@ -93,10 +93,8 @@
 		<jsp:include page="/WEB-INF/views/common/adArea.jsp" />	
 	</div>
 	
-	
-	<div class="footer2">
-		<!-- footer -->
-		<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-	</div>
+	<!-- footer -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
 </body>
 </html>

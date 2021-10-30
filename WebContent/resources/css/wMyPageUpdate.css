@@ -12,11 +12,6 @@
     margin-left : 15px;
     margin-right : 15px;
 }
-.footer2 {
-    /* 챙겨가야하는 놈 */
-    position:relative;
-    height : 67px;
-}
 
 /* 컨텐츠 헤더 */
 .wmy_header {
@@ -67,7 +62,6 @@
     padding : 10px;
 }
 
-/* 이건 update??에서 하잣 */
 .wmy_pro img {
     margin-bottom: 20px;
 }
@@ -129,16 +123,16 @@
     font-size: 0.85rem;
     padding : 10px 0;
 }
-.wmy_id2 input, .wmy_name2 input, .wmy_phone2 input,
+.wmy_name2 input, .wmy_phone2 input,
 .wmy_email2 input, .wmy_address2 input {
     width: 300px;
-    height: 20px;
-    font-size: 0.85rem;
+    height: 30px;
+    font-size: 0.9rem;
 }
 /* 비밀번호 변경 버튼 */
 .wmy_pwarea button {
     font-size: 0.75rem;
-    width: 40px;
+    width: 90px;
     height: 25px;
     margin-left: 50px;
     background: rgb(73, 125, 78);

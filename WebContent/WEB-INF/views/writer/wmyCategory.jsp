@@ -21,9 +21,9 @@
 	                <li><a href="#">회원 탈퇴</a></li>
 	            </ul>
 	        </div>
-	        <div class="area2"><a class="ca-top" href="#">MY 도서</a>
+	        <div class="area2"><a class="ca-top" href="${ contextPath }/w-mybook">MY 도서</a>
 	            <ul class="ca-list">
-	                <li><a href="#">도서 리스트</a></li>
+	                <li><a href="${ contextPath }/w-mybook">도서 리스트</a></li>
 	                <li><a href="#"> 도서 리뷰</a></li>
 	            </ul>
 	        </div>
