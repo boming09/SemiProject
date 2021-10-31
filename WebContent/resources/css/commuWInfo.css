@@ -100,6 +100,7 @@
 .w_profile img {
 	width : 140px;
 	height : 140px;
+	border-radius: 50%;
 }
 
 /* 작가 소개 영역 */

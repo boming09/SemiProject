@@ -23,7 +23,7 @@
 		 	<!-- 회원 정보 영역 -->
             <form class="wmy_info">
 	            <div class="wmy_pro">
-	                <img src="${ contextPath }/resources/images/writer1.png">
+	                <img src="${ contextPath }/resources/images/prodefault.png">
 	                <!-- label의 for속성 이름과 input id이름이 같아야 연동된다~~ -->
 	                <label for="profile">프로필이미지 변경</label>
 	                <input type="file" id="profile">
@@ -70,7 +70,7 @@
         
                 <div class="wmy_btn">
                     <button type="button" onclick="location.href='${ contextPath }/w-mypage'">취소</button>
-                    <button type="button">정보수정</button>
+                    <button type="button">수정하기</button>
                 </div>
             </form>
 		</div>
