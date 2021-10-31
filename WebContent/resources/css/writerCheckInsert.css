@@ -64,7 +64,7 @@
 }
 
 .wc_title2 input {
-    width: 560px;
+    width: 96%;
     height: 30px;
     border: 1px solid rgb(239, 239, 239);
     margin: 0px 10px;
@@ -77,8 +77,8 @@
 }
 
 .wc_content2 textarea {
-    width: 560px;
-    height: 240px;
+    width: 96%;
+    height: 310px;
     border: 1px solid rgb(239, 239, 239);
     margin: 10px 10px;
     resize: none;

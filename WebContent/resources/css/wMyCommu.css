@@ -1,0 +1,115 @@
+@charset "UTF-8";
+.csarea {
+    /* 챙겨가야하는 놈 */
+    /* 카테고리 + 컨텐츠 영역 flex 용도 */
+    display: flex;
+}
+.content {
+    /* 챙겨가야하는 놈 */
+    width: 72%;
+    margin-left : 15px;
+    margin-right : 15px;    
+}
+
+/* 컨텐츠 헤더 */
+.wcommu_header {
+    height: 70px;
+    display : flex;
+    justify-content : space-between;	
+    align-items: center;
+    margin: 0px 0px 10px 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+} 
+.wcommu_header div:first-child {
+    font-size: 1.1rem;
+    font-weight : bold;
+}
+/* 전체 소통게시판 버튼 */
+.wcommu_commu button {
+    width: 100px;
+    height: 45px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 0px 10px;
+    background: rgb(73, 125, 78);
+    color: white;
+    line-height : 20px;
+}
+.wcommu_commu button:hover {
+    background-color: rgb(196, 217, 195);
+    color: black;
+}
+
+
+/* 리스트 top 영역 */
+.wcommu_area1 {
+    margin: 30px 30px 10px 30px;
+    display: flex;
+    justify-content : space-between;	
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* 리스트 */
+.wcommu_area2 {
+    margin: 0px 30px 10px 30px;
+}
+
+.wcommu_listarea ul {
+    display: flex;
+    justify-content : space-between;	
+    align-items: center;
+    text-align: center;
+    font-size: 0.8rem;
+    border-bottom: 1px solid lightgray;
+    list-style: none;
+}
+.wcommu_listtop {
+    background: rgb(239, 239, 239);
+    font-weight: bold;
+}
+
+.wcommu_listarea {
+    border-top: 1px solid lightgray;
+}
+
+.wcommu_listarea ul li {
+    height: 50px;
+    line-height: 50px;
+}
+.wcommu_no {
+    width: 8%;
+    border-right: 1px solid lightgray;
+  
+}
+.wcommu_writer {
+    width: 10%;
+    border-right: 1px solid lightgray;
+}
+.wcommu_title {
+    width: 47%;
+    border-right: 1px solid lightgray;    
+}
+.title2 {
+	text-align : left;
+	padding: 0 10px;
+}
+.wcommu_user {
+    width: 10%;
+    border-right: 1px solid lightgray;
+    
+}
+.wcommu_date {
+    width: 15%;
+    border-right: 1px solid lightgray;
+}
+.wcommu_status {
+    width: 10%;
+}
+
+/* 마우스 오버시 */
+.wcommu_list:hover {
+    background: #f3f5f7;
+}

@@ -1,4 +1,4 @@
-package notice.controller;
+package writer.controller;
 
 import java.io.IOException;
 
@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class CommuBoardServlet
+ * Servlet implementation class WMyUnreviewDetailServlet
  */
-@WebServlet("/commu")
-public class CommuBoardServlet extends HttpServlet {
+@WebServlet("/w-unreview/detail")
+public class WMyUnreviewDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommuBoardServlet() {
+    public WMyUnreviewDetailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,8 +28,8 @@ public class CommuBoardServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 카테고리 작가소통게시판 클릭시 소통게시판 페이지로 단순 이동
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/commuBoardView.jsp");
+		// 도서 미답변리뷰 상세페이지 이동
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/writer/wMyUnreviewDetailView.jsp");
 		view.forward(request, response);
 	}
 

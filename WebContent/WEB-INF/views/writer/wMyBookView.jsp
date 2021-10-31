@@ -21,7 +21,7 @@
 		 	<header class="wbook_header">
                 <div>MY 도서</div>
                 <div class="wbook_unreview">
-                    <button>미답변 리뷰</button>
+                    <button onclick="location.href='${ contextPath }/w-unreview'">미답변 리뷰</button>
                 </div>
             </header>
 			
@@ -30,7 +30,7 @@
            	<table class="wbook_listarea">
                 <tr class="wbook_listtop">
                     <th class="wb_no">번호</th>
-                    <th class="wb_name">도서 이름</th>
+                    <th class="wb_name">도서명</th>
                     <th class="wb_pub">출판사</th>
                     <th class="wb_date">등록일</th>
                     <th class="wb_amount">판매수</th>
@@ -41,12 +41,13 @@
                 <tr class="wbook_content">
                     <td class="wb_no">100</td>
                     <td class="wb_name">
-                        <a href="#">
-                            <div class="wb_namearea">
-                                <img class="wb_img" src="${ contextPath }/resources/images/testbook.jpg">
-                                <span>HTML + CSS + 자바스크립트 웹표dd안녕하세요 ddddddddddd래ㅔㄱ가ㅗㄱㄹ란꼰거 준의 정석 완전 긴 책이름</span>
-                            </div>
-                        </a>
+	                    <div class="wb_namearea">
+	                    	<a href="#">
+		                        <img class="wb_img" src="${ contextPath }/resources/images/testbook.jpg">
+		                        <span>HTML + CSS + 자바스크립트 웹표dd안녕하세요 ddddddddddd래ㅔㄱ가ㅗㄱㄹ란꼰거 준의 정석 완전 긴 책이름</span>
+	                    	</a>
+	                    </div>
+                   
                     </td>
                     <td class="wb_pub">이지스퍼블리싱 어쩌고 ㅎㅎㅎㅎㅎㅎㅎ아아아</td>
                     <td class="wb_date">2021-10-04</td>

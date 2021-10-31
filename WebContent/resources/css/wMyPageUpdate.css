@@ -39,6 +39,8 @@
     width: 200px;
     height: 200px;
     margin: 0px auto;
+    border-radius: 50%;
+    
 }
 /* 자기소개 textarea*/
 .wmy_self {

@@ -1,4 +1,4 @@
-package notice.controller;
+package writer.controller;
 
 import java.io.IOException;
 
@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class CommuWriterInfoServlet
+ * Servlet implementation class WMyCommuDetailServlet
  */
-@WebServlet("/commu/w-info")
-public class CommuWriterInfoServlet extends HttpServlet {
+@WebServlet("/w-commu/detail")
+public class WMyCommuDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommuWriterInfoServlet() {
+    public WMyCommuDetailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,8 +28,8 @@ public class CommuWriterInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 작가 소개 페이지 이동
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/commuWriterInfoView.jsp");
+		// 작가소통게시판 게시글 상세 페이지
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/writer/wMyCommuDetailView.jsp");
 		view.forward(request, response);
 	}
 

@@ -13,7 +13,8 @@ a {
 
 /* 사이드 바 */
 .category {
-    height : 430px;
+   /*  height : 430px; */
+   	height : 398px;
     background : rgb(196, 217, 195);
 }
 

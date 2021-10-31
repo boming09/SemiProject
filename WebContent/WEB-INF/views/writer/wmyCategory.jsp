@@ -17,20 +17,20 @@
 	        <div class="ca-head">마이페이지</div>
 	        <div class="area1"><a class="ca-top" href="${ contextPath }/w-mypage">회원정보</a>
 	            <ul class="ca-list">
-	                <li><a href="${ contextPath }/w-mypage/update">회원정보 수정</a></li>
+	                <li><a href="${ contextPath }/w-mypage/update">정보 수정</a></li>
 	                <li><a href="#">회원 탈퇴</a></li>
 	            </ul>
 	        </div>
 	        <div class="area2"><a class="ca-top" href="${ contextPath }/w-mybook">MY 도서</a>
 	            <ul class="ca-list">
 	                <li><a href="${ contextPath }/w-mybook">도서 리스트</a></li>
-	                <li><a href="#"> 도서 리뷰</a></li>
+	                <li><a href="${ contextPath }/w-unreview">미답변 리뷰</a></li>
 	            </ul>
 	        </div>
-	        <div class="area3"><a class="ca-top" href="#">작가 소통게시판</a>
+	        <div class="area3"><a class="ca-top" href="${ contextPath }/w-commu">MY 소통게시판</a>
 	            <ul class="ca-list">
-	                <li><a href="#">미답변 리스트</a></li>
-                    <li><a href="#">전체 게시글</a></li>
+	                <li><a href="${ contextPath }/w-commu">소통 리스트</a></li>
+                    <!-- <li><a href="#">미답변 게시글</a></li> -->
 	            </ul>
 	        </div>
 	    </aside>
