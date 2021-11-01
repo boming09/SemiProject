@@ -1,0 +1,327 @@
+@charset "UTF-8";
+
+.csarea {
+    /* 챙겨가야하는 놈 ! */
+    /* 카테고리 + 컨텐츠 영역 flex 용도 */
+    display: flex;
+}
+
+.content {
+    /* 챙겨가야하는 놈 */
+    width: 82%;
+	flex-direction: column;	
+	margin: 0 2%;
+}
+.content {
+    /* 챙겨가야하는 놈 */
+	margin-left: 4%;
+}
+
+.detailTopWrap {
+    display: flex;
+    justify-content: space-around;
+}
+
+.topColRft {
+    width: 65%;
+    padding: 10px 30px;
+    border-top: 1px solid rgba(196, 217, 195, 1);
+    border-bottom: 1px solid rgba(196, 217, 195, 1);
+}
+
+.bookImgArea img {
+    width: 250px;
+    height: 362px;
+}
+
+.infoTop > div{
+    padding-bottom: 0.8em;
+}
+
+.titleName{
+    margin-top: 0.83em;
+    text-align: left;
+}
+.reviewCount a{
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+}
+
+.infoBot {
+    display: flex;
+    justify-content: space-between;
+}
+
+table {
+    border-spacing: 0 20px;
+}
+.accentRow {    /* 판매가 */
+    color: red;
+    font-weight: bold;
+}
+
+.accentPrice {
+    font-size: 1.25rem;
+}
+
+.etcRow a {
+    color: black;
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 0 3px;
+}
+.etcRow a:hover {
+    border-color : orange;
+}
+
+.etc_p {
+    display: flex;
+    color: gray;
+    margin-left: 5px;
+}
+
+/* 결제 버튼  영역 */
+.acArea {
+    display: flex;
+    flex-direction: column;
+    width: 120px;
+}
+.btn_count,
+.acArea button {
+    margin: 8px 0;
+}
+.btn_count {
+    border: 1px solid gray;
+    width: 120px;
+    height: 50px;
+    line-height: 40px;
+    text-align: center;
+}
+.btn_count input[type=number] {
+    border: 0px;
+    padding: 4px;
+}
+.btn_count:hover{
+    border-color: orange;
+}
+.basket{
+    color: #577057;
+    border: 1px solid #577057;
+    width: 120px;
+    padding: 15px;
+    font-weight: bold;
+}
+.buy {
+    background: #577057;
+    border: 1px solid #577057;
+    color: white;
+    width: 120px;
+    padding: 15px;
+    font-weight: bold;
+}
+.basket:hover,
+.buy:hover  {
+    background-color: rgba(196, 217, 195, 1);
+    color: black;
+    border: 1px solid white;
+    font-weight: bold;
+}
+
+/* 광고 영역 : 사이즈 지정하기 */
+.adverArea {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.adverArea img{
+    width: 900px;
+}
+
+/* 도서 정보 */
+.detailBotWrap {
+    margin-top: 20px;
+}
+
+.detailInfo {
+    height: 36px;
+    border-bottom: 3px solid rgba(196, 217, 195, 1);
+}
+
+.detailInfo span {
+    background: rgba(196, 217, 195, 1);
+    padding: 15px;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+/* 소개 영역 - 공통 */
+.infoSet {
+    font-size: 20px;
+}
+
+.infoSetCont_wrap {
+    line-height: 23px;
+}
+
+.information {
+    padding: 40px 0;
+    border-bottom: 1px solid lightgray;
+}
+
+.information > div {
+    padding: 20px 20px;
+}
+
+/* 책 소개 */
+.info_introduce iframe {
+    padding-top: 40px;
+}
+
+.infoIframe,
+.infoImgWrap {   /* iframe 부모 요소에 가운데 정렬 */
+    text-align: center;
+}
+
+/* 상세 이미지 */
+.info_img {
+    padding: 20px 0;
+    border-bottom: 1px solid lightgray;
+}
+.infoImgWrap img{
+	width: 860px;
+}
+
+/* 저자 소개 */
+.authCont {
+    display: flex;
+}
+.authImg {
+    width: 125px;
+    height: 155px;
+}
+.authTit {
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.authorName {
+    font-size: 15px;
+}
+.authCont p {
+    margin-bottom: 1rem;
+}
+.authTxtWrap {
+    padding-left: 15px;
+}
+
+/* 회원 리뷰 영역 */
+.reviewContTop {
+    text-align: center;
+    background-color: rgba(196, 217, 195, 1);
+    padding: 50px 0;
+    margin-bottom: 20px;
+}
+.reviewTop {
+    font-size: 28px;
+    font-weight: bold;
+    padding: 20px 0;
+}
+.book_rating b{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* 리뷰 - 댓글 등록 */
+.reviewWrite {
+    padding: 20px 0;
+}
+.writeRating {
+    padding: 0 30px;
+}
+.writeArea_wrap {
+    display: flex;
+    justify-content: center;
+}
+.writeArea {
+    border: 1px solid gray;
+}
+#count{
+    width: 45px;
+}
+.wordCount {
+    padding: 0 5px
+}
+.writeBtn {
+    width: 100px;
+    height: 120px;
+    background-color: #577057;
+    color: white;
+    margin: 0 30px;
+}
+
+/* 리뷰 - 댓글 목록 */
+.reviewContentList {
+    margin: 40px 0;
+    padding: 20px 10px;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    position: relative;
+}
+.reviewInfoGrp{
+    padding: 30px 0;
+}
+.cmt_cont{
+    padding: 10px 20px;
+}
+.reviewInfoBot {
+    display: flex;
+    justify-content: right;
+}
+.reviewInfoBot span{
+    padding: 0 5px;
+}
+/* 리뷰 - 작가댓글 */
+.fas fa-check-circle{
+    font-size: 15px;
+}
+.replyCmt{
+    display: none;
+    padding: 0 30px;
+}
+.authReply{
+    cursor: pointer;
+}
+
+.star-input>.input,
+.star-input>.input>label:hover,
+.star-input>.input>input:focus+label,
+.star-input>.input>input:checked+label{display: inline-block;vertical-align:middle;background:url('/bomsoop/resources/images/star/grade_img.png')no-repeat;}
+.star-input{display:inline-block; white-space:nowrap;width:200px;height:40px;padding:0px;line-height:30px;}
+.star-input>.input{display:inline-block;width:150px;background-size:150px;height:28px;white-space:nowrap;overflow:hidden;position: relative;}
+.star-input>.input>input{position:absolute;width:1px;height:1px;opacity:0;}
+.star-input>.input.focus{outline:1px dotted #ddd;}
+.star-input>.input>label{width:30px;height:0;padding:28px 0 0 0;overflow: hidden;float:left;cursor: pointer;position: absolute;top: 0;left: 0;}
+.star-input>.input>label:hover,
+.star-input>.input>input:focus+label,
+.star-input>.input>input:checked+label{background-size: 150px;background-position: 0 bottom;}
+.star-input>.input>label:hover~label{background-image: none;}
+.star-input>.input>label[for="p1"]{width:15px;z-index:10;}
+.star-input>.input>label[for="p2"]{width:30px;z-index:9;}
+.star-input>.input>label[for="p3"]{width:45px;z-index:8;}
+.star-input>.input>label[for="p4"]{width:60px;z-index:7;}
+.star-input>.input>label[for="p5"]{width:75px;z-index:6;}
+.star-input>.input>label[for="p6"]{width:90px;z-index:5;}
+.star-input>.input>label[for="p7"]{width:105px;z-index:4;}
+.star-input>.input>label[for="p8"]{width:120px;z-index:3;}
+.star-input>.input>label[for="p9"]{width:135px;z-index:2;}
+.star-input>.input>label[for="p10"]{width:150px;z-index:1;}
+.star-input>output{display:inline-block;width:20px; font-size:18px;text-align:right; vertical-align:middle;}
+
+.star-input input[type="radio"] + label {
+	border: none;
+    border-bottom: white;
+    color:white;
+    background: transparent;	/* 투명 */
+}

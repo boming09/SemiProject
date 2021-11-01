@@ -87,7 +87,7 @@ a {
     align-items: center;
     justify-content: center;
     display: flex;
-    margin-left: 20px;
+   /* margin-left: 20px;*/
 } 
 
 /* 로고 */
@@ -180,7 +180,7 @@ scope="application"/>
                     <li><a href="<%= request.getContextPath() %>/login">로그인</a></li>
                     <li><a href="<%= request.getContextPath() %>/joinmembership">회원가입</a></li>
                     <li><a href="<%= request.getContextPath() %>/mypage">마이페이지</a></li>
-                    <li><a href="#">장바구니</a></li>
+                    <li><a href="<%= request.getContextPath() %>/cart">장바구니</a></li>
                     <li><a href="<%= request.getContextPath() %>/cs">고객센터</a></li>
                 </ul>
             </nav>

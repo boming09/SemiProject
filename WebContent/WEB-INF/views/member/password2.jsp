@@ -31,10 +31,10 @@
                 </div>
                 <br>
                 <div class="id3">
-                    <input type="radio" id="#" name="#" value="phone" checked="checked">휴대전화 번호                  
+                    <input type="checkbox" id="#" name="#" value="phone" checked="checked">&nbsp;&nbsp;휴대전화 번호                  
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" id="#" name="#" value="email">E-mail 주소
+                    <input type="checkbox" id="#" name="#" value="email">&nbsp;&nbsp;E-mail 주소
                     <br><br>
                     
                     <label>E-mail 주소</label> <input type="text" class="id1text" size="10"><br><br>
@@ -64,6 +64,6 @@
             </div>
         </div>    
     <!-- footer -->
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 </html>

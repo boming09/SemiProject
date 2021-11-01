@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SearchListView</title>
+<title>SearchListView</title>	<!-- paging이 안보임 : footer가 가림 -->
 
 <!-- CSS -->
 <!-- 브라우저별로 디폴트로 적용된 CSS에 차이(여백, 폰트 크기 등)가 있어 CSS가 별도로
@@ -15,7 +16,7 @@ https://github.com/filipelinhares/ress -->
 <!-- favicon (Real Favicon Generator 등에서 가공 필요) -->
 <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
 <!-- 외부 스타일 시트 -->
-<link href="<%= request.getContextPath() %>/resources/css/bookList.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/book/bookList.css" rel="stylesheet">
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/menubar.jsp"/>
@@ -50,10 +51,11 @@ https://github.com/filipelinhares/ress -->
                             <col width="82">
                         </colgroup>
                         <tbody>
-                            <tr>
+                        <c:forEach var="i" begin="1" end="10">
+                            <tr onclick="detailView()">
                                 <td class="book_img">
                                     <div class="img_wrap">
-                                        <img src="resources/image/pop1.png">
+                                        <img src="${ contextPath }/resources/images/book/pop1.png" alt="book">
                                     </div>
                                 </td>
                                 <td class="book_info">
@@ -82,46 +84,10 @@ https://github.com/filipelinhares/ress -->
                                     <button class="buy" type="button" onclick="">바로구매</button>
                                 </td>
                             </tr>
-                            <!-- c:forEach -->
                             <tr>
                                 <td colspan="3" class="book_division"></td>
                             </tr>
-                            <tr>
-                                <td class="book_img">
-                                    <div class="img_wrap">
-                                        <img src="resources/image/pop1.png">
-                                    </div>
-                                </td>
-                                <td class="book_info">
-                                    <div class="book_title">킹덤</div>
-                                    <div class="info">
-                                        <span class="writer">요네스 뵈</span> | 
-                                        <span class="publisher">비채</span> | 
-                                        <span class="publication_date">2021년 10월</span>
-                                    </div>
-                                    <div class="price">
-                                       <span class="book_price">17,280</span>원
-                                    </div>
-                                    <div class="book_rating">
-                                        <span class="reviewCount"></span>
-                                        <span class="reviewRating"></span>
-                                    </div>
-                                    <div>
-                                        <button class="info_etc" type="button">배송안내</button>
-                                    </div>
-                                </td>
-                                <td class="book_btns">
-                                    <div class="btn_count">
-                                        <input type="number" name="count" value="0" min="0" max="50" size="5">
-                                    </div>
-                                    <button class="basket" type="button" onclick="">장바구니</button>
-                                    <button class="buy" type="button" onclick="">바로구매</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3" class="book_division"></td>
-                            </tr>
-                        </tbody>
+                        </c:forEach>
                     </table>
                 <div class="book_pages">
                     <ul class="book_paging">
@@ -133,6 +99,7 @@ https://github.com/filipelinhares/ress -->
                         
                         <!-- 최대 10개의 페이지 목록 -->
                         <li>${ p }</li>
+                        <li>1</li>
 
                         <!-- 다음 페이지로(>) -->
                         <li>&gt;</li>
@@ -144,8 +111,18 @@ https://github.com/filipelinhares/ress -->
                     </div>
 				</div>
 			</div>
+			<%@ include file="/WEB-INF/views/common/adArea.jsp" %>
 		</div>
+	<!--  <div class="footer2"> -->
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" /> 
+	<!-- </div>  -->
+	
+	<script>
+		function detailView(){
+			location.href="${contextPath}/book/detail";
+			// location.href="${contextPath}/book/detail?bid=" + bid;
+		}
+	</script>
 </body>
 </html>
