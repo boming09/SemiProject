@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/wMyCommuDetail.css" rel="stylesheet">
+<link href="${ contextPath }/resources/css/writer/wMyCommuDetail.css" rel="stylesheet">
 <title>MY 소통게시판</title>
 </head>
 <body>

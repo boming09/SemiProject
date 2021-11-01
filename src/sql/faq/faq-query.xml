@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM
+"http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="getListCount">
+		SELECT
+			   COUNT(*)
+		  FROM FAQ
+	</entry>
+	
+	<!-- 페이징 처리 조회용 (1~5) -->
+	<entry key="selectList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.*
+		          FROM (SELECT
+			                   FAQ_NO
+			                 , TITLE
+			                 , REPLY
+			                 , CATEGORY_TYPE
+			                 , COUNT
+			              FROM FAQ
+			              JOIN FAQ_CATEGORY USING(CATEGORY_NO)
+			             ORDER BY FAQ_NO DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+
+
+
+
+
+</properties>
