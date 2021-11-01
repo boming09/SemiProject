@@ -248,7 +248,9 @@ h4{
 	padding-top : 10px;
 	padding-left : 10px;
 	margin-left : 50px;
-	margin-right : 50px;	
+	margin-right : 50px;
+	font-size: 10px;
+	line-height : 15px;
 }
 
 /* 오른쪽 div */
@@ -260,78 +262,7 @@ h4{
 	padding-top : 10px;
 	padding-left : 10px;
 	margin-left : 50px;
-	margin-right : 50px;	
+	margin-right : 50px;
+	font-size: 12px;
+	line-height : 15px;
 }
-/*
-.csctheader {
-    height: 70px;
-    display : flex;
-    justify-content : space-between;	
-    align-items: center;
-    margin: 5px;
-    margin-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-.csctheader span:first-child {
-    font-size: 1.3rem;
-    font-weight : bold;
-}
-
-.csctheader span:last-child {
-    font-size: 0.7rem;
-}
-
-.ctarea {
-    height: 90%;
-    position: relative;
-}
-
-.ct-area1, .ct-area2, .ct-area3, .ct-area4 {
-    width: 280px;
-    height: 200px;
-    border: 5px solid rgb(73, 125, 78);
-    position : absolute
-}
-
-.ct-area1 {
-    left: 3%;
-}
-
-.ct-area2 {
-    right: 3%;
-}
-
-.ct-area3 {
-    top: 40%;
-    left: 3%;
-}
-
-.ct-area4 {
-    top: 40%;
-    right: 3%;
-}
-
-.ct-top {
-    font-size: 1rem;
-    font-weight : bold;
-    color: white;
-    height: 35px;
-    line-height: 35px;
-    border-bottom: 5px solid rgb(73, 125, 78);
-    text-align : center;
-    background: rgb(73, 125, 78);
-}
-
-.ct-list {
-    padding: 12px 0px 0px 50px;
-    font-size: 0.8rem;
-    line-height: 33px;
-}
-
-.ct-list li:hover {
-    font-weight: bold;
-    text-decoration: underline;
-}
-*/

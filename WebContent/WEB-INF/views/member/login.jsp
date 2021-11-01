@@ -27,7 +27,7 @@
             </tr><br>
             <tr>
                 <td>
-                    <input type="radio" id="loemailcheck" name="loemailcheck" value="loemailcheck" checked="checked">ID 또는 E-Mail 저장
+                    <input type="checkbox" id="loemailcheck" name="loemailcheck" value="loemailcheck" checked="checked">ID 또는 E-Mail 저장
                     <a href="id"><input type="button" value="아이디 찾기" class="idb"></a>
                     <a href="password"><input type="button" value="비밀번호 찾기" class="psb"></a><br>
                 </td>
@@ -47,6 +47,6 @@
         </script>
 	</div>
     <!-- footer -->
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 </html>

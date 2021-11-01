@@ -105,20 +105,21 @@
             <br>
             <div class="focenter">
             	<div class="left2">
-            		안녕하세요 OOO독자님 OOO도서 저자 OOO입니다
+            		<a href="#">안녕하세요 OOO독자님 OOO도서 저자 OOO입니다</a><br>
+            		<a href="#">안녕하세요 OOO독자님 OOO도서 저자 XXX입니다</a><br>
+            		<a href="#">안녕하세요 OOO독자님 OOO도서 저자 ㅁㅁㅁ입니다</a><br>
             	</div>
             	<div class="right2">
-            		O O O작가님<br>
-            		X X X작가님<br>
-            		ㅁ ㅁㅁ작가님<br>
+            		<a href="#">O O O작가님</a><br>
+            		<a href="#">X X X작가님</a><br>
+            		<a href="#">ㅁ ㅁㅁ작가님</a><br>
             	</div>
             </div>
-        </div>
-        
+        </div>        
         <!-- 광고  -->
 		<%@ include file="/WEB-INF/views/common/adArea.jsp" %>
 	</div>	
     <!-- footer -->
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 </html>
