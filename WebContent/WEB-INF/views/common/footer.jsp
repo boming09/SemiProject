@@ -17,7 +17,7 @@
 <body>
 <div class="footer2">
 <footer>
-    <div class="footer2">
+    <div>
         <p><small>&copy; 2021. Bomsoop All Rights Reserved.</small></p>
     </div>
 </footer>
