@@ -1,0 +1,189 @@
+@charset "UTF-8";
+
+
+
+.ct_wrapper {
+    min-width : 800px;
+    width : 1100px;
+    margin : 0px auto;
+
+    /*height:100vh; */
+}
+
+.cart_bl {
+	width:95%; /*수정*/
+	position: inline-block;
+	margin-left :5%;
+	margin-top: 5%;
+	margin-bottom: 10% /*footer랑 간격*/
+	
+	
+}
+
+#cart {
+    position: relative;
+    font-size: 1.3rem;
+    font-weight:bold;
+    left:10px;
+    top:11px;
+
+}
+.cart_tb {
+	margin-top : 10px;
+  	padding : 10px;  
+	width: 100%;
+    border-top: black 1px solid;
+    font-size: 0.9rem;
+    
+}
+
+#cart_sel {
+	position: relative;
+	border:1px solid black;
+	left:84%;
+	margin-top:10px;
+	padding:1px;
+	font-size:0.9rem;
+}
+
+#delete_btn {
+	position: relative;
+	border:1px solid black;
+	left:83%;
+
+	margin-top:10px;
+	margin-bottom:20px;
+	padding:1px;
+	font-size:0.9rem;
+	
+}
+
+.btn {
+	background:gray;
+	padding:7px;
+	color:white;
+}
+
+
+.boldft {
+	font-weight:bold
+}
+
+/*.cart_tb span:not(.pdnm) {
+	margin:8%;	
+}
+
+.pdnm {
+	margin-left:8%;	
+}*/
+
+/*#ctod {
+	/*margin-left:50%;
+	
+}*/
+
+.hidden {
+	display:none;
+}
+
+
+
+/*-------------------------*/
+
+ul,ol,li {
+  list-style: none;
+}
+
+
+.title_item {
+  /*display: block;*/
+  font-size: 16px;
+
+ 
+}
+
+.title_item,
+.desc_item {
+  margin-top: 10px;
+}
+
+.desc_item {
+  font-size: 12px;
+}
+
+.ct_container {
+  display: grid; 
+  grid-template-columns : 0.5fr 3.5fr 2.5fr 1.5fr 1fr 0.5fr;
+  grid-gap:0.5rem;
+ /* grid-auto-rows:minmax(10em, auto);*/
+  background: #f3f3f3;
+  padding-left:40px;
+  pading-right:30px;
+  padding-top:30px;
+  padding-bottom:23px;
+
+  align-items:center;
+
+ 
+
+}
+
+.cart_thum {
+	width:80px;
+}
+
+.item {
+	/*align-self:top;
+	justify-self:left;
+	background:white;*/
+	
+	
+}
+
+.thum {
+	
+	
+}
+
+
+.ct_input {
+	border:1px solid black;
+	background-color:white;
+	width:60px;
+	height:27px;
+}
+
+.ct_tt {
+	background: #f3f3f3;
+	display: grid;
+	grid-template-columns: 5fr 5fr;
+	padding-left:30px;
+	padding-top:10px;
+	padding-bottom:15px;
+}
+
+.ct_tt div {
+	margin:12px;
+	/*margin-left:50px;*/
+	font-weight:bold;
+}
+
+.c_item {
+
+	align-self:end;
+}
+
+#ct_order_btn {
+	background:rgb(73, 125, 78);
+	padding:20px;
+	color:white;
+	font-size:1.1rem;
+	position: relative;
+	left: 40%;
+	margin-top: 50px;
+}
+
+.rrr {
+	position:relative;
+	height: 67px;
+}

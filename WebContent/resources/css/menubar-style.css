@@ -50,7 +50,9 @@ a {
     align-items: center;
     justify-content: center;
     display: flex;
-    margin-left: 20px;
+    /*margin-left: 20px;*/
+
+
 }
 
 h2 {

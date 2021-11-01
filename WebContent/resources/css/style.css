@@ -5,6 +5,7 @@
 
 html {
     font-size: 100%;
+    width:100%;
 }
 
 a {
@@ -63,6 +64,9 @@ nav {
 .wrapper {
     max-width: 1100px;
     margin: 0 auto;
+    
+   /* height : 80vh;*/
+    /*또 푸터 올라옴...*/
 }
 
 
@@ -299,7 +303,6 @@ footer p {
 color: black;
 font-size: 0.865rem;
 }
-
 
 
 

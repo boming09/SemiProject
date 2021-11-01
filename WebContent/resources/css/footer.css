@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+/*------------------footer--------------*/
+
+footer {
+background:rgba(196, 217, 195, 1);
+text-align: center;
+padding : 26px 0;
+
+position: absolute;
+bottom: 0;
+
+width: 100%;
+
+}
+
+footer p {
+color: black;
+font-size: 0.865rem;
+}
+
+
