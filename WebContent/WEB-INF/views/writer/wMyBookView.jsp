@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/wMyBook.css" rel="stylesheet">
+<link href="${ contextPath }/resources/css/writer/wMyBook.css" rel="stylesheet">
 <title>MY 도서</title>
 </head>
 <body>
@@ -43,7 +43,7 @@
                     <td class="wb_name">
 	                    <div class="wb_namearea">
 	                    	<a href="#">
-		                        <img class="wb_img" src="${ contextPath }/resources/images/testbook.jpg">
+		                        <img class="wb_img" src="${ contextPath }/resources/images/writer/testbook.jpg">
 		                        <span>HTML + CSS + 자바스크립트 웹표dd안녕하세요 ddddddddddd래ㅔㄱ가ㅗㄱㄹ란꼰거 준의 정석 완전 긴 책이름</span>
 	                    	</a>
 	                    </div>
