@@ -35,7 +35,7 @@
         
             <div class="typearea">
             	<div class="type_area">
-	                <select class="atype" name="fcateType" >
+	                <select class="atype" name="atype" >
 	                	<option>전체</option>
 	                    <option value="10" selected>주문/결제</option>
 	                    <option value="20">취소/교환/반품</option>
@@ -48,7 +48,7 @@
             	</div>
                 <span class="typearrow">〉</span>
                 <div class="type_area">
-	                <select class="btype">
+	                <select class="btype" name="btype">
 	                	<option>전체</option>
 	                    <option>주문/주문확인</option>
 	                    <option>주문변경</option>

@@ -28,7 +28,7 @@
 .wcheck_ment ul li {
     margin-left: 60px;
     line-height: 30px;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
 }
 
 /* 작성 영역*/
@@ -50,7 +50,7 @@
     width: 20%;
     text-align: center;
     background: rgb(239, 239, 239);
-    font-size: 0.8rem;
+    font-size: 0.95rem;
 }
 
 .wc_title2, .wc_content2, .wc_file2 {
@@ -68,7 +68,8 @@
     height: 30px;
     border: 1px solid rgb(239, 239, 239);
     margin: 0px 10px;
-    font-size: 0.8rem;
+    padding-left : 10px;
+    font-size: 0.9rem;
 }
 
 /* 문의내용 영역 */
@@ -86,16 +87,16 @@
 
 /* 첨부파일 영역 */
 .wc_file {
-    line-height: 128px;
+    line-height: 160px;
 }
 
 .wc_uplode input {
-    margin: 10px;
-    font-size: 0.7rem;
+    margin: 15px;
+    font-size: 0.9rem;
 }
 
 .wc_file2 ul {
-    font-size: 0.5rem;
+    font-size: 0.8rem;
     padding-left: 30px;
     padding-right: 10px;
     margin-bottom: 10px;
@@ -113,7 +114,7 @@
     margin-bottom: 60px;
     width: 90px;
     height: 35px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     background: rgb(73, 125, 78);
     color: white;
     font-weight : bold;

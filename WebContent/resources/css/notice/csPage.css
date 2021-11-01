@@ -27,7 +27,7 @@
 }
 
 .csctheader span:last-child {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
 }
 
 .ctarea {
@@ -61,7 +61,7 @@
 }
 
 .ct-top {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight : bold;
     color: white;
     height: 35px;
@@ -73,7 +73,7 @@
 
 .ct-list {
     padding: 12px 0px 0px 50px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     line-height: 33px;
 }
 

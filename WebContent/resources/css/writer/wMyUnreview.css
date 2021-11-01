@@ -55,7 +55,7 @@
 }
 .unreview_listarea table {
 	width : 100%;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     /*  테이블 간격 없애기 */
     border-collapse: collapse; 
     border-spacing: 0;
