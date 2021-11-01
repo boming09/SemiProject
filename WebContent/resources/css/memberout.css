@@ -4,9 +4,18 @@
 	
 }
 
-.h4{
+.h4go{
 	color: red;
-	text-aling: center;
+	display: flex;
+	text-aling : center;
+	margin-left : 200px;
+}
+
+.h5go{
+	color: red;
+	display: flex;
+	text-aling : center;
+	margin-left : 100px;
 }
 
 .topline {
@@ -60,15 +69,17 @@
 /* 탈퇴 체크 내역 */
 /* 탈퇴 체크 메인 div */
 .center {
-  width: 1080px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 132px 350px; /* 각 행(세로줄)의 길이 */
-  grid-template-rows: 80px 80px 80px 80px; /* 각 열(가로줄)의 길이 */
-  gap: 10px; /* 자식요소간의 간격 */
-  margin-left : 50px;
-  margin-right : 50px;
+	  width: 50%;
+	  margin: auto;
+	  display: grid;
+	  grid-template-columns: 132px 350px; /* 각 행(세로줄)의 길이 */
+	  grid-template-rows: 80px 80px 80px 80px; /* 각 열(가로줄)의 길이 */
+	  gap: 10px; /* 자식요소간의 간격 */
+	  margin-left : 100px;
+	  margin-right : 100px;
+	  text-aling : center;
 }
+
 /* 왼쪽 div */
 .temp-box-left {
   color: blue;
@@ -78,14 +89,18 @@
   text-align: center;
   padding-top : 30px;
 }
-/* 오른쪽 div */
 
+/* 오른쪽 div */
 .temp-box-right {
   width: 100%;
   height: 100%;
   font-size: 15px;
   text-align: center;
-  padding : 30px;
+  padding-left: 30px;
+  padding-top : 20px;
+  display: grid;
+  grid-template-columns: 175px 175px;
+  grid-template-rows: 20px 20px 20px 20px;
 }
 
 .temp-box-right1 {
@@ -93,6 +108,14 @@
   height: 100%;
   font-size: 15px;
   text-align: center;
+}
+
+.rightdiv{
+	width: 150px;
+}
+
+.sizeplz{
+	width: 200px;
 }
 
 #ta {
@@ -105,4 +128,17 @@
 	margin-left : 50px;
 	margin-right : 50px;
 	text-aling : center;
+}
+
+#out{
+	border : 1px solid black;
+	margin-left : 20px;
+}
+
+#outbut{
+	border : 1px solid black;
+	border-radius : 10%;
+	margin-left : 20px;
+	color : black;
+	width : 100px;
 }
