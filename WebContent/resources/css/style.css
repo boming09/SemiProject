@@ -81,18 +81,13 @@ nav {
 .topline {
     border-bottom: 6px solid;
     color: rgba(196, 217, 195, 1);
-
 }
-
-
-
 
 .recomm {
     display: flex;
     justify-content: space-between;
     list-style: none;
 }
-
 
 .book{
     margin-top: 4%;
@@ -300,6 +295,11 @@ color: black;
 font-size: 0.865rem;
 }
 
+.footer2 {
+	/* 챙겨가야하는 놈 */
+	position: relative;
+	height: 67px;
+}
 
 
 

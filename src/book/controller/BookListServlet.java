@@ -1,8 +1,6 @@
-package notice.controller;
+package book.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class FaqNoticeServlet
+ * Servlet implementation class BookListServlet
  */
-@WebServlet("/faq")
-public class FaqNoticeServlet extends HttpServlet {
+@WebServlet("/book/list")
+public class BookListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FaqNoticeServlet() {
+    public BookListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,9 +26,7 @@ public class FaqNoticeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 고객센터 FAQ-주문/결제 클릭시 화면 페이지로 단순 이동
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/faqNoticeView.jsp");
-		view.forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/book/bookList.jsp").forward(request, response);
 	}
 
 	/**
