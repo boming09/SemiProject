@@ -10,7 +10,7 @@
     /* 챙겨가야하는 놈 */
     width: 72%;
 	flex-direction: column;	
-	margin-left: 2%;
+	margin: 0 2%;
 }
 
 #outer {
