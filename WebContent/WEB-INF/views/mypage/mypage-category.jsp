@@ -21,9 +21,8 @@
             <ul class="ca-list">
                 <li><a href="<%= request.getContextPath() %>/memberinformation">회원정보 수정</a></li>
                 <li><a href="<%= request.getContextPath() %>/memberout">회원탈퇴</a></li>
-                <li><a href="#">회원주소록</a></li>
-                <li><a href="#">마이리뷰</a></li>
-                <li><a href="#">내쿠폰</a></li>
+                <li><a href="<%= request.getContextPath() %>/mypagemyreview">마이리뷰</a></li>
+                <li><a href="<%= request.getContextPath() %>/mypagemycoupon">내쿠폰</a></li>
             </ul>
         </div>
         <div class="area2"><a class="ca-top" href="#">주문내역</a>
@@ -46,9 +45,11 @@
 	            <li><a href="#">자주 묻는 질문 FAQ</a></li>
 	            <li><a href="#">1:1 고객상담</a></li>
 	        </ul>
-	    </div>
-        <div><img src="#">광고1</div>
-        <div><img src="#">광고2</div>
-    </aside>    
+	    </div>        
+    	<div class="cs_ad">
+			<img id="csad1" src="${ contextPath }/resources/images/ad8.png">
+			<img id="csad2" src="${ contextPath }/resources/images/ad9.png">
+		</div>  
+    </aside>  
 </body>
 </html>
