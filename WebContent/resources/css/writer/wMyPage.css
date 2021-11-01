@@ -52,13 +52,13 @@
 
 .wmy_self span {
 	border-left : 5px solid black;
-	font-size : 0.85rem;
+	font-size : 0.9rem;
 	margin-bottom : 5px;
 }
 
 .wmy_self textarea {
 	border : 1px solid lightgray;
-	font-size : 0.8rem;
+	font-size : 0.85rem;
 	resize : none;
 	padding : 10px;
 }
@@ -80,7 +80,7 @@
     width: 40%;
     text-align: center;
     background: rgb(239, 239, 239);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     line-height: 50px;
     /* span태그 세로가운데는 line-height로 맞추기 */
 }
@@ -95,7 +95,7 @@
 .wmy_id2, .wmy_pw2, .wmy_name2, .wmy_phone2,
 .wmy_email2, .wmy_address2 {
     margin-left: 10px;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     padding : 10px 0;
 }
 
@@ -104,14 +104,14 @@
 	margin-top : 10px;
 }
 .wmy_agree span {
-    font-size: 0.75rem;       
+    font-size: 0.85rem;       
     line-height: 20px;
     color: red;
     font-weight : bold;
 }
 
 .wmy_agree ul {
-	font-size: 0.75rem; 
+	font-size: 0.8rem; 
     margin-left: 30px;
     color: black;
     line-height: 20px;
@@ -128,7 +128,7 @@
     margin-bottom: 60px;
     width: 90px;
     height: 35px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: bold;
     background: rgb(73, 125, 78);
     color: white;

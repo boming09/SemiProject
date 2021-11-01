@@ -45,7 +45,7 @@
 .one_ment ul {
     padding-left: 60px;
     line-height: 30px;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
 }
 /* 작성 영역*/
 .q_info {
@@ -66,7 +66,7 @@
     width: 20%;
     text-align: center;
     background: rgb(239, 239, 239);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
 }
 
 .q_title2, .q_content2, .q_file2 {
@@ -100,7 +100,7 @@
 }
 
 .q_content2 ul {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     padding-left: 30px;
     padding-right: 10px;
     margin-bottom: 10px;
@@ -109,16 +109,16 @@
 
 /* 첨부파일 영역 */
 .q_file {
-    line-height: 133px;
+    line-height: 143px;
 }
 
 .q_uplode input {
-    margin: 10px;
-    font-size: 0.8rem;
+    margin: 15px;
+    font-size: 0.9rem;
 }
 
 .q_file2 ul {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     padding-left: 30px;
     padding-right: 10px;
     margin-bottom: 10px;
@@ -136,7 +136,7 @@
     margin-bottom: 60px;
     width: 90px;
     height: 35px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: bold;
     background: rgb(73, 125, 78);
     color: white;

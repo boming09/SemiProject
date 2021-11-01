@@ -38,7 +38,7 @@
     width: 130px;
     height: 26px;
     padding-left: 10px;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
 }
 
 .winfo_search button {
@@ -62,7 +62,7 @@
 .winfo_ment li {
     margin-left: 60px;
     line-height: 30px;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     list-style: disc; /* 기본 */
 }
 
@@ -110,9 +110,9 @@
 }
 
 .w_introduce span:first-child {
-    width: 110px;
+    width: 130px;
     border-bottom: 3px dotted rgb(73, 125, 78);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight : bold;
     text-align: center;
     padding-top: 10px;
@@ -132,6 +132,6 @@
 }
 
 .w_introduce span:last-child {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     padding-top: 10px;
 }

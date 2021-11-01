@@ -52,7 +52,7 @@
 /* 리스트 테이블 */
 .wbook_listarea {
     margin: 0px 30px 10px 30px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     /*  테이블 간격 없애기 */
     border-collapse: collapse; 
     border-spacing: 0;

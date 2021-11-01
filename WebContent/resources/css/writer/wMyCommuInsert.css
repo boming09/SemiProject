@@ -34,7 +34,7 @@
 }
 /* 내용 영역 */
 .wcommu_conarea table {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     margin: 0px 30px 10px 30px;
     /*  테이블 간격 없애기 */
     border-collapse: collapse; 
@@ -46,7 +46,7 @@
 td {
     padding: 10px;
 }
-.name, .rcontent {
+.title, .wcontent {
     line-height: 20px;
 }
               
@@ -113,7 +113,7 @@ th, td {
     margin-bottom : 60px;
     width: 90px;
     height: 35px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: bold;
     background: rgb(73, 125, 78);
     color: white;

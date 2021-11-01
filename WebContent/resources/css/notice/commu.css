@@ -45,7 +45,7 @@
 .commu_ment ul li {
     margin-left: 60px;
     line-height: 30px;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
 }
 
 /* 리스트 top 영역 */
@@ -92,7 +92,7 @@
     justify-content : space-between;	
     align-items: center;
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     border-bottom: 1px solid lightgray;
 }
 .commu_listtop {

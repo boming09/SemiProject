@@ -46,7 +46,7 @@
 .one_ment ul {
     padding-left: 60px;
     line-height: 30px;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
 }
 
 /* 문의내역 없을시 */
@@ -64,12 +64,12 @@
 .none_span1 {
     padding-top: 60px;
     padding-bottom: 30px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight : bold;
     
 }
 
 .none_span2 {
     padding-bottom: 60px;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
 }
