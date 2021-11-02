@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>SemiProject</title>
+<style>
+.content wrapper{
+	min-height: 1280px;
+}
+</style>
 </head>
 <body>
 	<!-- 메뉴바 -->
@@ -18,7 +23,6 @@
 		
 		<!-- 메인 컨텐츠 -->
 		<%@ include file="/WEB-INF/views/common/mainContents.jsp" %>
-	
 		<!-- 광고 -->
 		<%@ include file="/WEB-INF/views/common/adArea.jsp" %>
 	</div>	
