@@ -328,6 +328,7 @@ footer {
 .emailtable{    
     border-spacing: 10px;
     border-collapse: separate;
+    line-height : 22px;
 }
 
 

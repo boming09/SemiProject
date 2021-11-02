@@ -11,7 +11,7 @@
     <!-- favicon (Real Favicon Generator 등에서 가공 필요) -->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
     <!-- 외부 스타일 시트 -->
-    <link href="<%= request.getContextPath() %>/resources/css/login-style.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/resources/css/kwang/login-style.css" rel="stylesheet">
 </head>
 <body>	
         <!-- 메뉴바 -->
@@ -33,7 +33,7 @@
                     <td><input type="text" class="emailaddress"><br>
                         주문 문의 등 고객센터에서 문의사항을 정확하게 파악하기 위한 상세 정보를<br>
                         최대한 입력해주시면 감사 하겠습니다</td>
-                </tr>
+                </tr>                
                 <tr>
                     <th>문의 내용</th>
                     <td><input type="textarea" id="emailarea"></textarea></td><br>

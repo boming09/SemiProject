@@ -11,7 +11,7 @@
     <!-- favicon (Real Favicon Generator 등에서 가공 필요) -->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
     <!-- 외부 스타일 시트 -->
-    <link href="<%= request.getContextPath() %>/resources/css/mypage-style.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/resources/css/kwang/mypage-style.css" rel="stylesheet">
 </head>
 <body>
 	<!-- mypage-category 추가 -->
@@ -28,8 +28,8 @@
         <div class="area2"><a class="ca-top" href="#">주문내역</a>
             <ul class="ca-list">
                 <li><a href="#">주문 조회/변경/취소</a></li>
-                <li><a href="#">반품/교환 내역</a></li>
-                <li><a href="#">취소 주문내역</a></li>
+                <li><a href="<%= request.getContextPath() %>/mypagereturn">반품/교환 내역</a></li>
+                <li><a href="<%= request.getContextPath() %>/mypagecancel">취소 주문내역</a></li>
             </ul>
         </div>
         <div class="area3"><a class="ca-top" href="#">작가 소통게시판</a>

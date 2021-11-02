@@ -178,7 +178,7 @@ h4{
 .df {
 	display: flex;
 	background: white;
-	border: 1px solid blue;
+	border: 1px solid rgba(196, 217, 195, 1);
 	height : 50px;
 	text-align : center;
 	margin-left : 50px;
@@ -189,42 +189,42 @@ h4{
 /* 주문일 */
 #df1 {
 	width : 80px;
-	border: 2px solid blue;
+	border: 2px solid rgba(196, 217, 195, 1);
 	text-align : center;
 	padding-top : 15px;
 }
 /* 주문번호 */
 #df2 {
 	width : 80px;
-	border: 2px solid blue;
+	border: 2px solid rgba(196, 217, 195, 1);
 	text-align : center;
 	padding-top : 15px;
 }
 /* 수령인 */
 #df3 {
 	width : 60px;
-	border: 2px solid blue;
+	border: 2px solid rgba(196, 217, 195, 1);
 	text-align : center;
 	padding-top : 15px;
 }
 /* 주문상품 */
 #df4 {
 	width : 230px;
-	border: 2px solid blue;
+	border: 2px solid rgba(196, 217, 195, 1);
 	text-align : center;
 	padding-top : 15px;
 }
 /* 조회 및 증빛 서류 */
 #df5 {
 	width : 140px;
-	border: 2px solid blue;
+	border: 2px solid rgba(196, 217, 195, 1);
 	text-align : center;
 	padding-top : 15px;
 }
 /* 비고 */
 #df6 {
 	width : 103px;
-	border: 2px solid blue;
+	border: 2px solid rgba(196, 217, 195, 1);
 	text-align : center;
 	padding-top : 15px;
 }
