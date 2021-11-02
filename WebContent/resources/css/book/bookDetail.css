@@ -27,6 +27,8 @@
     padding: 10px 30px;
     border-top: 1px solid rgba(196, 217, 195, 1);
     border-bottom: 1px solid rgba(196, 217, 195, 1);
+    position: relative; /* 부모 기준 */
+    z-index: 1;
 }
 
 .bookImgArea img {
@@ -65,20 +67,35 @@ table {
     font-size: 1.25rem;
 }
 
-.etcRow a {
+#etcMsg {
     color: black;
     text-decoration: none;
     border: 1px solid black;
     padding: 0 3px;
+    cursor: pointer;
 }
-.etcRow a:hover {
+#etcMsg:hover {
     border-color : orange;
 }
-
 .etc_p {
     display: flex;
     color: gray;
     margin-left: 5px;
+}
+.msgInfo {  /* 배송 안내 메시지 */
+    display: none;
+    position: absolute;
+    background-color: rgb(239, 239, 239);
+    width: 280px;
+    height: 350px;
+    border-radius: 5px;
+    z-index: 2;
+    top: 265px;;
+    left: 165px;
+}
+.msgInfo p {
+    padding: 12px 10px;
+    color: gray;
 }
 
 /* 결제 버튼  영역 */

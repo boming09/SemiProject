@@ -20,15 +20,6 @@ crossorigin="anonymous"></script>
 <!-- icon url -->
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <title>bookDetailPage</title>
-<script>
-    function calc(){
-        document.getElementById('count').value = 
-        document.getElementById('replyCont').value.length;
-        if(document.getElementById('count').value == 150) {
-            alert("한글 기준 150자까지 입력가능합니다.");
-        }
-    }
-</script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/menubar.jsp"/>
@@ -103,14 +94,21 @@ crossorigin="anonymous"></script>
                                     <tr class="etcRow">
                                         <td>배송안내</td>
                                         <td>
-                                            <span>무료 &nbsp;<a href="#" onclick="openLayer()">?</a></span>
-                                            <div class="message">이곳은 메시지입니다.</div><!-- 배송 안내 메시지 담기 -->
+                                            <span>무료 &nbsp;<a id="etcMsg">?</a></span>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                             <div class="etc_p"><p>해외배송 &nbsp; 최저가 &nbsp; 소득공제</p></div>
                         </div>
+                        <!-- 배송 안내 -->
+	                    <div class="msgInfo">
+                            <p>* 저희 봄숲에서는 주문건을 확인 후, 송장번호 입력일 기준으로 1~3일내 출고로 진행하고 있습니다</p>
+                            <p>* 제주도 및 도서산간 지역은 기본배송료 외 추가 운임료가 발생할 수 있습니다.</p>
+                            <p>&nbsp;추가 금액은 별도로 공지드리고있으니 이점 참고하여주세요</p>
+                            <p>* 반품/교환/환불 신청은 상품수령후 7일이내에 게시판 혹은 카카오플친 모모케이스로 신청부탁드립니다.</p>
+                            <p>* 상담시간 월-금 AM10:00 - PM5:00 휴일과 상담시간 외의 문의는 게시판을 이용해주세요</p>
+	                    </div>
                         <!-- 구매 영역 -->
                         <div class="acArea">
                             <div class="btn_count">
@@ -404,7 +402,7 @@ crossorigin="anonymous"></script>
                             </div>
                         </div>
                         <!-- 작가계정 : 답글 달기 button -->
-                        <div class="authReply">작가 댓글 보기&nbsp;<i class="fas fa-caret-down"></i></div>
+                        <div class="authReply">작가 댓글 보기&nbsp;<i class="fas fa-caret-down" onclick="closeMsg();"></i></div>
                         <div class="replyCmt">
                             <div class="cmt_cont">
                                 <span class="txt_cont">
@@ -438,6 +436,25 @@ crossorigin="anonymous"></script>
         }else{
             $(this).siblings('.replyCmt').slideUp();    // display=none 이 아닐 때 클릭 시 위로 올라가게
         }
+    });
+</script>
+<script>
+    function calc(){
+        document.getElementById('count').value = 
+        document.getElementById('replyCont').value.length;
+        if(document.getElementById('count').value == 150) {
+            alert("한글 기준 150자까지 입력가능합니다.");
+        }
+    }
+    
+    $(document).ready(function () {
+        $('#etcMsg').click(function(){  // a 태그를 클릭하면 함수 동작하는데
+            if($('.msgInfo').css('display') == 'none'){  // div가 안보이면
+                $('.msgInfo').show();   // 보이게
+            } else {
+                $('.msgInfo').hide();   // 보이면 안보이게
+            }
+        });
     });
 </script>
 </body>
