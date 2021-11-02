@@ -11,7 +11,7 @@
     <!-- favicon (Real Favicon Generator 등에서 가공 필요) -->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
     <!-- 외부 스타일 시트 -->
-    <link href="<%= request.getContextPath() %>/resources/css/mypage-Center.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/resources/css/mypage/mypage-Center.css" rel="stylesheet">
 </head>
 <body>
     <!-- 메뉴바 -->
