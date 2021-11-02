@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/wMyPage.css" rel="stylesheet">
+<link href="${ contextPath }/resources/css/writer/wMyPage.css" rel="stylesheet">
 <title>작가회원 마이페이지</title>
 </head>
 <body>
@@ -24,7 +24,7 @@
             <form class="wmy_info">
             
 	            <div class="wmy_pro">
-	                <img src="${ contextPath }/resources/images/prodefault.png">
+	                <img src="${ contextPath }/resources/images/writer/prodefault.png">
 	                <!-- label의 for속성 이름과 input id이름이 같아야 연동된다~~ -->
 	                <!-- <label for="profile">프로필이미지 변경</label>
 	                <input type="file" id="profile"> -->

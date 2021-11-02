@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/commuWInfo.css" rel="stylesheet">
+<link href="${ contextPath }/resources/css/notice/commuWInfo.css" rel="stylesheet">
 <title>고객센터_소통게시판</title>
 </head>
 <body>
@@ -25,7 +25,7 @@
                     <form class="winfo_search">
 	                    <input type="text" placeholder="작가 검색"></input>
 	                    <button>
-	                    	<img src="${ contextPath }/resources/images/magnifier.png">
+	                    	<img src="${ contextPath }/resources/images/notice/magnifier.png">
 	                   	</button>
                 	</form>
                 </div>
@@ -41,9 +41,9 @@
             </div>
 
             <div class="w_profilearea">
-                <div class="w_profile"><img src="${ contextPath }/resources/images/writer1.png"></div>
+                <div class="w_profile"><img src="${ contextPath }/resources/images/notice/writer1.png"></div>
                 <div class="w_introduce">
-                    <span>정다정 작가님<img src="${ contextPath }/resources/images/writer_check1.png"></span>
+                    <span>정다정 작가님<img src="${ contextPath }/resources/images/notice/writer_check1.png"></span>
                     <span>안녕하세요! 소개 반복문 돌려돌려~~</span>
                 </div>
             </div>

@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/writerCheckInsert.css" rel="stylesheet">
+<link href="${ contextPath }/resources/css/notice/writerCheckInsert.css" rel="stylesheet">
 <title>작가인증게시판</title>
 </head>
 <body>

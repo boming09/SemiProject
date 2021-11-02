@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/oneQuestion.css" rel="stylesheet">
+<link href="${ contextPath }/resources/css/notice/oneQuestion.css" rel="stylesheet">
 <title>고객센터_1:1문의</title>
 </head>
 <body>

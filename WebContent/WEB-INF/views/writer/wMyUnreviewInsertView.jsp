@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/wMyUnreviewInsert.css" rel="stylesheet">
+<link href="${ contextPath }/resources/css/writer/wMyUnreviewInsert.css" rel="stylesheet">
 <title>MY 도서</title>
 </head>
 <body>

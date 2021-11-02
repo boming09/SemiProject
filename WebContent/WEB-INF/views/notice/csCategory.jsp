@@ -9,19 +9,28 @@
 <title>cs_category</title>
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="<%= request.getContextPath() %>/resources/css/csCategory.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/notice/csCategory.css" rel="stylesheet">
 </head>
 <body>
 <c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" scope="application"/>
 	<div id="csct_area">
 	    <aside class="category">
 	        <div class="ca-head">고객센터</div>
+	        <!-- 어떤거 클릭했는지 정보 보내기 -->
 	        <div class="area1"><a class="ca-top" href="${ contextPath }/cs">FAQ</a>
 	            <ul class="ca-list">
-	                <li><a href="${ contextPath }/faq">주문/결제</a></li>
-	                <li><a href="${ contextPath }/w-mypage">취소/교환/반품</a></li>
-	                <li><a href="#">배송</a></li>
-	                <li><a href="#">회원관리</a></li>
+	                <li>
+	                	<a href="${ contextPath }/faq">주문/결제</a>
+	                </li>
+	                <li>
+	                	<a href="${ contextPath }/w-mypage">취소/교환/반품</a>
+	                </li>
+	                <li >
+	                	<a href="#">배송</a>
+	                </li>
+	                <li >
+	                	<a href="#">회원관리</a>
+	                </li>
 	            </ul>
 	        </div>
 	        <div class="area2"><a class="ca-top" href="${ contextPath }/one">1:1 문의</a>
@@ -43,5 +52,9 @@
 			<img id="csad2" src="${ contextPath }/resources/images/ad9.png">
 		</div> 
 	</div>
+	
+	<script>
+		
+	</script>
 </body>
 </html>
