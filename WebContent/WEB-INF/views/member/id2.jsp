@@ -16,6 +16,7 @@
 <body>
     <!-- 메뉴바 -->
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
+        <div class="id0">
         <div class="id1">
             	아이디 찾기
             <div class="id2">
@@ -54,8 +55,9 @@
                 
                 <label id="idnologin">로그인 필요 없음</label>
             </div>
-        </div>  
+        </div>
+        </div> 
     <!-- footer -->
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	<jsp:include page="/WEB-INF/views/member/footer.jsp" />
 </body>
 </html>

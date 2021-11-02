@@ -1,11 +1,11 @@
 @charset "UTF-8";
 
 .html{
-	height: 100%;
+	
 }
 
-body{
-	height:100%;
+.wrapper{
+	height: 90vh;
 }
 
 h3{
@@ -16,6 +16,19 @@ h4{
 	margin-left : 50px;
 }
 
+h2{
+	margin-left : 50px;
+}
+
+#hi{
+	text-align : left;
+}
+
+#hi2{
+	text-align : left;
+	color : red;
+}
+
 .csarea {
     /* 챙겨가야하는 놈 !*/
     /* 카테고리 + 컨텐츠 영역 flex 용도 */
@@ -23,15 +36,17 @@ h4{
 }
 .content {
     /* 챙겨가야하는 놈 */
-    width: 72%;
-    min-height: 100%; 
-    position: relative;
-    
+    width: 72%;    
 }
 
-.wrapper{
-	height: 90vh;
+/* content 안내 */
+.content_li ul{
+	margin-left : 50px;
+	padding-left : 30px;
+	font-size : 10px;
+	font-weight: bold;
 }
+
 
 /* 헤더 div */
 /* 헤더 center */

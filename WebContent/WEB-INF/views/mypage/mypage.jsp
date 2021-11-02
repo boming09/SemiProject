@@ -92,13 +92,21 @@
 	                <div class="searchbut"><a href="">찾기</a></div>
             </div>
             <br>
-            <div class="df">
+            <div class="df1">
             	<div id="df1">주문일</div>
             	<div id="df2">주문번호</div>
             	<div id="df3">수령인</div>
             	<div id="df4">주문상품</div>
             	<div id="df5">조회 및 증빙 서류</div>
             	<div id="df6">비고</div>
+            </div>
+            <div class="df2">
+            	<div id="df2-1"></div>
+            	<div id="df2-2"></div>
+            	<div id="df2-3"></div>
+            	<div id="df2-4"></div>
+            	<div id="df2-5"></div>
+            	<div id="df2-6"></div>
             </div>
             <br>
             <h4>작가 와의 소통</h4>

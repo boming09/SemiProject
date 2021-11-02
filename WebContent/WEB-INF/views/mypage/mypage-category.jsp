@@ -17,7 +17,7 @@
 	<!-- mypage-category 추가 -->
     <aside class="category">
         <div class="ca-head"><a href="<%= request.getContextPath() %>/mypage">마이페이지</a></div>
-        <div class="area1"><a class="ca-top" href="#">개인정보 수정</a>
+        <div class="area1"><a class="ca-top">개인정보 수정</a>
             <ul class="ca-list">
                 <li><a href="<%= request.getContextPath() %>/memberinformation">회원정보 수정</a></li>
                 <li><a href="<%= request.getContextPath() %>/memberout">회원탈퇴</a></li>
@@ -25,21 +25,21 @@
                 <li><a href="<%= request.getContextPath() %>/mypagemycoupon">내쿠폰</a></li>
             </ul>
         </div>
-        <div class="area2"><a class="ca-top" href="#">주문내역</a>
+        <div class="area2"><a class="ca-top">주문내역</a>
             <ul class="ca-list">
-                <li><a href="#">주문 조회/변경/취소</a></li>
+                <li><a href="<%= request.getContextPath() %>/mypageorchca">주문 조회/변경/취소</a></li>
                 <li><a href="<%= request.getContextPath() %>/mypagereturn">반품/교환 내역</a></li>
                 <li><a href="<%= request.getContextPath() %>/mypagecancel">취소 주문내역</a></li>
             </ul>
         </div>
-        <div class="area3"><a class="ca-top" href="#">작가 소통게시판</a>
+        <div class="area3"><a class="ca-top">작가 소통게시판</a>
             <ul class="ca-list">
                 <li><a href="#">내 작가 리스트</a></li>
                 <li><a href="#">즐겨찾기 게시판</a></li>
                 <li><a href="#">최근 대화 내역</a></li>
             </ul>
         </div>
-        <div class="area4"><a class="ca-top" href="#">고객센터</a>
+        <div class="area4"><a class="ca-top">고객센터</a>
 	        <ul class="ca-list">
 	            <li><a href="#">나의 계정 도움말</a></li>
 	            <li><a href="#">자주 묻는 질문 FAQ</a></li>

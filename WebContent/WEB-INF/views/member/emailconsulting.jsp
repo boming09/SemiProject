@@ -16,6 +16,7 @@
 <body>	
         <!-- 메뉴바 -->
 		<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
+        <div class="id0">
         <div class="emailconsulting">
             E mail 상담
             <div class="topline">
@@ -45,6 +46,7 @@
                         해결하기 위해서만 사용하며, 상담 종료 후 폐기 됩니다.</td>
                 </tr>
             </table>
+        </div>
         </div>    
         <button class="emailbut" onclick="emailbut()">접수하기</button>
         <script>
@@ -61,6 +63,6 @@
     </footer>
     -->
     <!-- footer -->
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	<jsp:include page="/WEB-INF/views/member/footer.jsp" />
 </body>
 </html>
