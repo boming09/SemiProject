@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM
+"http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="insertOne">
+		INSERT INTO ONEQUESTION
+		(
+		        ONE_NO
+		      , TITLE
+		      , CONTENT
+		      , CREATE_DATE
+		      , STATUS
+		      , USER_NO
+		      , REPLY
+		      , FILEID
+		      , ORIGIN_FILE
+		      , CHANGE_FILE
+		)
+		VALUES
+		(    
+		        SEQ_ONE_NO.NEXTVAL
+		      , ?
+		      , ?
+		      , DEFAULT
+		      , DEFAULT
+		      , ?
+		      , DEFAULT
+		      , ?
+		      , ?
+		      , ?
+		)
+	</entry>
+
+
+
+
+
+</properties>

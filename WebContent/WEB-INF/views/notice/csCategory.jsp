@@ -6,10 +6,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>cs_category</title>
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
 <link href="<%= request.getContextPath() %>/resources/css/notice/csCategory.css" rel="stylesheet">
+
+<title>cs_category</title>
+<!-- alert 창 출력 -->
+<% if(session.getAttribute("msg") != null) { %>
+<script>
+	alert('<%= session.getAttribute("msg") %>');
+</script>
+<% 
+	session.removeAttribute("msg");
+	}
+%>
 </head>
 <body>
 <c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" scope="application"/>
