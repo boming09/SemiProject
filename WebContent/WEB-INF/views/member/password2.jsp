@@ -16,8 +16,9 @@
 <body>
     <!-- 메뉴바 -->
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
+        <div class="id0">
         <div class="ps3">
-            비밀번호 재설정
+            	비밀번호 재설정
             <div class="ps4">
                 <br>
                 &nbsp;&nbsp;본인인증 수단으로 비밀번호 재설정 하기
@@ -62,8 +63,9 @@
                 
                 <label id="idnologin">로그인 필요 없음</label>
             </div>
+        </div>
         </div>    
     <!-- footer -->
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	<jsp:include page="/WEB-INF/views/member/footer.jsp" />
 </body>
 </html>

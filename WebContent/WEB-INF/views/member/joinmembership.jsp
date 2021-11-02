@@ -19,6 +19,7 @@
 <body>
     <!-- 메뉴바 -->
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
+    <div class="id0">
     <div class="main-center2">
         <h1>봄숲 개인 회원가입</h1>
         <fieldset class="lofd">
@@ -143,7 +144,8 @@
         <div class="topline">
         </div>
     </div>
+    </div>
     <!-- footer -->
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	<jsp:include page="/WEB-INF/views/member/footer.jsp" />
 </body>
 </html>

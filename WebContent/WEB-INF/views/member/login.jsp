@@ -47,6 +47,6 @@
         </script>
 	</div>
     <!-- footer -->
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	<jsp:include page="/WEB-INF/views/member/footer.jsp" />
 </body>
 </html>
