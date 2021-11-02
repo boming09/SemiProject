@@ -36,11 +36,20 @@
             <div class="typearea">
             	<div class="type_area">
 	                <select class="atype" name="atype" >
-	                	<option>전체</option>
-	                    <option value="10" selected>주문/결제</option>
-	                    <option value="20">취소/교환/반품</option>
-	                    <option value="30">배송</option>
-	                    <option value="40">회원관리</option>
+	                	<option value="0">전체</option>
+	                	<!-- 반복문 돌려서 대분류 가져오기 -->
+	                    <c:forEach var="cate" items="${ fcate }">
+	                		<c:set var="ref" value="${ cate.fref_no }"/>
+		                	<c:if test="${ ref eq '0' }">
+			                	<option value="${ cate.fcate_no }" class="acate">${ cate.fcate_no }</option>
+		                	</c:if>
+	                	</c:forEach>
+	           
+	                	<!-- valeu값 = db category_no -->
+	                   <!--  <option value="1" selected>주문/결제</option>
+	                    <option value="6">취소/교환/반품</option>
+	                    <option value="10">배송</option>
+	                    <option value="14">회원관리</option> -->
 	                </select>
 	                <div class="faqarrow">
 	                	<img src="${ contextPath }/resources/images/notice/faqarrow.png">
@@ -49,11 +58,36 @@
                 <span class="typearrow">〉</span>
                 <div class="type_area">
 	                <select class="btype" name="btype">
-	                	<option>전체</option>
-	                    <option>주문/주문확인</option>
-	                    <option>주문변경</option>
-	                    <option>결제정보</option>
-	                    <option>세금계산서/영수증</option>
+	                	<!-- 반복문 돌려서 소분류 가져오기 -->
+	                	<option value="0">전체</option>
+	                	<c:forEach var="cate" items="${ fcate }">
+	                		<c:set var="ref" value="${ cate.fref_no }"/>	                		
+		                	<c:if test="${ ref ne '0' }">
+			                	<option value="${ cate.fref_no }" class="bcate">${ cate.fcate_type }</option>
+		                	</c:if> 
+	                	</c:forEach>
+	                
+	                	<!-- <option value="0" class="a0">전체</option>
+	                	
+	                    <option value="1" class="a1">주문/주문확인</option>
+	                    <option value="1" class="a1">주문변경</option>
+	                    <option value="1" class="a1">결제정보</option>
+	                    <option value="1" class="a1">세금계산서/영수증</option>
+	                    
+	
+	                    <option value="7" class="a6">취소/취소환불</option>
+	                    <option value="8" class="a6">교환</option>
+	                    <option value="9" class="a6">반품/반품환불</option>
+	                    
+	               
+	                    <option value="11" class="a10">배송정보</option>
+	                    <option value="12" class="a10">해외배송</option>
+	                    <option value="13" class="a10">배송비</option>
+						
+					
+	                    <option value="15" class="a14">회원가입/탈퇴</option>
+	                    <option value="16" class="a14">회원정보 확인/변경</option>
+	                    <option value="17" class="a14">작가회원 인증</option> -->	                
 	                </select>
 	                <div class="faqarrow">
 	                	<img src="${ contextPath }/resources/images/notice/faqarrow.png">
@@ -178,7 +212,23 @@
 			} else {
 				$(this).next($('div')).slideUp();
 			}
-		});		
+		});	
+		
+		
+		
+		/* 카테고리 분류 */
+		/* $('.atype').change(function() {
+			
+			console.log($(this).val());
+			if($(this).val() == 1) {
+				//$("btype").find("option[value!=1]").detach();
+				console.log($('btype').val());
+			}
+			
+		}) */
+		
+		
+		
 	</script>
 </body>
 </html>

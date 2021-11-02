@@ -1,6 +1,8 @@
 package notice.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -9,7 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import notice.model.service.FaqService;
+import notice.model.vo.Fcategory;
 
 /**
  * Servlet implementation class FaqNoticeServlet
@@ -45,6 +49,15 @@ public class FaqNoticeServlet extends HttpServlet {
 		
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("faqList", map.get("faqList"));
+		
+		
+		// 카테고리 가져오기
+		List<Fcategory> fcate = new ArrayList<>();
+		
+		fcate = new FaqService().selectCateList();
+		
+		request.setAttribute("fcate", fcate);
+		
 		
 		// 고객센터 FAQ-주문/결제 클릭시 화면 페이지로 단순 이동
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/faqNoticeView.jsp");

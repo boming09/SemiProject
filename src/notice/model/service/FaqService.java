@@ -9,6 +9,7 @@ import java.util.Map;
 
 import notice.model.dao.FaqDao;
 import notice.model.vo.Faq;
+import notice.model.vo.Fcategory;
 import notice.model.vo.PageInfo;
 
 public class FaqService {
@@ -47,6 +48,20 @@ public class FaqService {
 		close(conn);		
 		
 		return returnMap;
+	}
+
+	// 카테고리 조회
+	public List<Fcategory> selectCateList() {
+		Connection conn = getConnection();
+		
+		List<Fcategory> fcate = faqDao.selectCateList(conn);
+		
+		// System.out.println(fcate);
+		// => ㅇㅇ
+		
+		close(conn);
+		
+		return fcate;
 	}
 	
 	
