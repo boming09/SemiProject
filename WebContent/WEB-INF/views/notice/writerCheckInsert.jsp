@@ -27,37 +27,37 @@
                 </ul>
             </div>
 
-            <form class="wc_info">
+            <form class="wc_info" method="get" onSubmit="${ contextPath }/one/insert">
                 <div class="wc_titlearea">
                     <span class="wc_title">제목</span>
-                    <span class="wc_title2"><input type="text" placeholder="작가 인증 신청합니다."></span>
+                    <span class="wc_title2">
+                    	<input type="text" placeholder="작가 인증 신청합니다." name="title" required>
+                    </span>
                 </div>
 
                 <div class="wc_contentarea">
                     <span class="wc_content">내용</span>
                     <div class="wc_content2">
-                        <textarea></textarea>
+                        <textarea name="content" required></textarea>
                     </div>
                 </div>
 
                 <div class="wc_filearea">
                     <span class="wc_file">파일 첨부</span>
                     <div class="wc_file2">
-                        <span class="wc_uplode"><input type="file"></span>
-                        <span class="wc_uplode"><input type="file"></span>
-                        <span>
-                            <ul>
-                                <li>인증서류 ex) 출판사 계약서, 저작권 등록증 등</li>
-                                <li>첨부가능 용량은 파일당 5MB 미만이며, 최대 2개까지 가능합니다.</li>
-                                <li>첨부가능 파일확장자 : jpg, gif, bmp, png</li>
-                                <li>첨부파일 중 개인정보가 포함되어 있는 파일은 상담 완료 후 즉각 파기하며, 상담 외의 목적으로는 사용되지 않습니다.</li>
-                            </ul>
-                        </span>
+                        <span class="wc_uplode"><input type="file" name="file1"></span>
+                        <span class="wc_uplode"><input type="file" name="file2"></span>
+                        <ul>
+                            <li>인증서류 ex) 출판사 계약서, 저작권 등록증 등</li>
+                            <li>첨부가능 용량은 파일당 5MB 미만이며, 최대 2개까지 가능합니다.</li>
+                            <li>첨부가능 파일확장자 : jpg, gif, bmp, png</li>
+                            <li>첨부파일 중 개인정보가 포함되어 있는 파일은 상담 완료 후 즉각 파기하며, 상담 외의 목적으로는 사용되지 않습니다.</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="wc_btn">
                     <button type="button" onclick="location.href='${ contextPath }/w-check'">취소</button>
-                    <button type="button">등록</button>
+                    <button type="submit">등록</button>
                 </div>
             </form>
         </div>
