@@ -32,16 +32,16 @@
                 </ul>
             </div>
 
-            <form class="q_info">
+            <form class="q_info" action="${ contextPath }/one/insert" method="post">
                 <div class="q_titlearea">
                     <span class="q_title">문의 제목</span>
-                    <span class="q_title2"><input type="text"></span>
+                    <span class="q_title2"><input type="text" name="title" required></span>
                 </div>
 
                 <div class="q_contentarea">
                     <span class="q_content">문의 내용</span>
                     <div class="q_content2">
-                        <span><textarea></textarea></span>
+                        <span><textarea name="content" required></textarea></span>
                         <ul>
                             <li>문의내용을 구체적으로 작성해주세요. 정확하고 빠른 답변에 도움이 됩니다.</li>
                             <li>주민등록번호를 포함한 고객님의 소중한 개인정보는 사이트에 노출되지 않으나 꼭 필요한 경우가 아닌경우 기재를 삼가시길 바랍니다.</li>
@@ -52,8 +52,8 @@
                 <div class="q_filearea">
                     <span class="q_file">파일 첨부</span>
                     <div class="q_file2">
-                        <span class="q_uplode"><input type="file"></span>
-                        <span class="q_uplode"><input type="file"></span>
+                        <span class="q_uplode"><input type="file" name="file1"></span>
+                        <span class="q_uplode"><input type="file" name="file2"></span>
                         <ul>
                             <li>첨부가능 용량은 파일당 5MB 미만이며, 최대 2개까지 가능합니다.</li>
                             <li>첨부가능 파일확장자 : jpg, gif, bmp, png</li>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="q_btn">
                     <button type="button" onclick="location.href='${ contextPath }/one'">취소</button>
-                    <button type="button">등록</button>
+                    <button type="submit">등록</button>
                 </div>
             </form>
         </div>
