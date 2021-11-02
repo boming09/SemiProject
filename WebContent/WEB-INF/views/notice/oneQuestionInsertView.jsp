@@ -32,7 +32,7 @@
                 </ul>
             </div>
 
-            <form class="q_info" action="${ contextPath }/one/insert" method="post">
+            <form class="q_info" action="${ contextPath }/one/insert" method="post" enctype="multipart/form-data">
                 <div class="q_titlearea">
                     <span class="q_title">문의 제목</span>
                     <span class="q_title2"><input type="text" name="title" required></span>
@@ -52,8 +52,8 @@
                 <div class="q_filearea">
                     <span class="q_file">파일 첨부</span>
                     <div class="q_file2">
-                        <span class="q_uplode"><input type="file" name="file1"></span>
-                        <span class="q_uplode"><input type="file" name="file2"></span>
+                        <span class="q_uplode"><input type="file" name="file" accept="image/gif,image/jpeg,image/png"></span>
+                        <!-- <span class="q_uplode"><input type="file" name="file2"></span> -->
                         <ul>
                             <li>첨부가능 용량은 파일당 5MB 미만이며, 최대 2개까지 가능합니다.</li>
                             <li>첨부가능 파일확장자 : jpg, gif, bmp, png</li>
