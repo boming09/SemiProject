@@ -103,7 +103,7 @@ crossorigin="anonymous"></script>
                                     <tr class="etcRow">
                                         <td>배송안내</td>
                                         <td>
-                                            <span class="">
+                                            <span>
                                                	무료 &nbsp;<a href="#" onclick="openLayer()">?</a>
                                             </span>
                                         </td>
@@ -117,8 +117,8 @@ crossorigin="anonymous"></script>
                             <div class="btn_count">
                                 <input type="number" name="count" value="0" min="0" max="50" size="5">
                             </div>
-                            <button class="basket" type="button" onclick="">장바구니</button>
-                            <button class="buy" type="button" onclick="">바로구매</button>
+                            <button id="basket" type="button" onclick="">장바구니</button>
+                            <button id="buy" type="button" onclick="">바로구매</button>
                         </div>
                     </div>
                 </div>
@@ -244,8 +244,8 @@ crossorigin="anonymous"></script>
                                         <output for="star-input"><b>0</b></output>						
                                     </span>
                                 </span><!-- 별 -->
-                                <em class="bom_b">9.8</em><!-- 9.8점 -->
-                                <em class="bom_m">10</em><!-- 10점 만점 -->
+                                <em class="bom_b"></em><!-- 9.8점 -->
+                                <em class="bom_m">/10</em><!-- 10점 만점 -->
                             </div>
                         </div>
                     </div>
@@ -328,10 +328,10 @@ crossorigin="anonymous"></script>
                                 </div>
                                 <div class="cmt_cont">
                                     <span class="txt_cont">
-                                        노르웨이의 문학을 세계에 알린 공로를 인정받아 2013년 페르귄트상을,
-                                        2015년 상트페테르부르크상을, 2016년 리버튼 공로상을 수상했다.
-                                        몸이 열 개라도 모자랄 것 같은 작가 요 네스뵈는 그러나 뮤지션으로도 매우 활발히 활동하고 있다.
-                                        실제로 그는 노르웨이의 록밴
+					                                    노르웨이의 문학을 세계에 알린 공로를 인정받아 2013년 페르귄트상을,
+	                                  2015년 상트페테르부르크상을, 2016년 리버튼 공로상을 수상했다.
+					                                    몸이 열 개라도 모자랄 것 같은 작가 요 네스뵈는 그러나 뮤지션으로도 매우 활발히 활동하고 있다.
+					                                    실제로 그는 노르웨이의 록밴
                                     </span>
                                 </div>
                             </div>
@@ -345,10 +345,10 @@ crossorigin="anonymous"></script>
                         <div class="replyCmt">
                             <div class="cmt_cont">
                                 <span class="txt_cont">
-                                    노르웨이의 문학을 세계에 알린 공로를 인정받아 2013년 페르귄트상을,
-                                    2015년 상트페테르부르크상을, 2016년 리버튼 공로상을 수상했다.
-                                    몸이 열 개라도 모자랄 것 같은 작가 요 네스뵈는 그러나 뮤지션으로도 매우 활발히 활동하고 있다.
-                                    실제로 그는 노르웨이의 록밴
+				                                    노르웨이의 문학을 세계에 알린 공로를 인정받아 2013년 페르귄트상을,
+                                  2015년 상트페테르부르크상을, 2016년 리버튼 공로상을 수상했다.
+				                                    몸이 열 개라도 모자랄 것 같은 작가 요 네스뵈는 그러나 뮤지션으로도 매우 활발히 활동하고 있다.
+				                                    실제로 그는 노르웨이의 록밴
                                 </span>
                             </div>
                             <div class="reviewInfoBot">

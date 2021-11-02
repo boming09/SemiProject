@@ -13,8 +13,10 @@
 </style>
 <title>SemiProject</title>
 <style>
-.content wrapper{
-	min-height: 1280px;
+.wrapper2{
+	max-width: 1100px;
+	margin: 0 auto;
+	height: 80vh;
 }
 </style>
 </head>
@@ -24,7 +26,7 @@
 	
 	
 	<!-- 메인은 content wrapper로 영역 잡기!!! -->
-	<div class="content wrapper">
+	<div class="content wrapper2">
 		<!-- 메인/카테고리 -->
 		<%@ include file="/WEB-INF/views/common/category.jsp" %>
 
