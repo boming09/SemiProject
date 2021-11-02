@@ -201,9 +201,12 @@ scope="application"/>
             <div class="search_area">
                 <form method="get" action="${ contextPath }/book/list">
                     <select id="searchCondition" name="searchCondition">
-                        <option value="search">통합검색</option>
-                        <option value="title">제목</option>
-                        <option value="content">내용</option>
+                        <option value="search"
+                        <c:if test="${ param.searchCondition == 'search' }">selected</c:if>>통합검색</option>
+                        <option value="title"
+                        <c:if test="${ param.searchCondition == 'title' }">selected</c:if>>제목</option>
+                        <option value="content"
+                        <c:if test="${ param.searchCondition == 'author' }">selected</c:if>>작가</option>
                     </select> 
                     <span class="input_area">
                     <input type="search" name="searchValue" placeholder="검색할 내용을 입력하세요.">
@@ -215,11 +218,5 @@ scope="application"/>
         <div class="topline">
         </div>
     </div>
-    <script>
-    /* function search(){
-    	location.href="${ contextPath }/book/list";
-    }
-    */
-    </script>
 </body>
 </html>
