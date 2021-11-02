@@ -35,7 +35,7 @@ https://github.com/filipelinhares/ress -->
             </div>
 			<div class="booklist_area">
                 <div class="bookSort">
-                    <h1>검색 결과</h1>
+                    <h2>검색 결과</h2>
                     <ul class="sortLi">
                         <li><a href="#">인기순</a></li><label> | </label>
                         <li><a href="#">신상품순</a></li><label> | </label>
@@ -52,14 +52,14 @@ https://github.com/filipelinhares/ress -->
                         </colgroup>
                         <tbody>
                         <c:forEach var="i" begin="1" end="10">
-                            <tr onclick="detailView()">
+                            <tr>
                                 <td class="book_img">
-                                    <div class="img_wrap">
+                                    <div class="img_wrap" onclick="detailView()">
                                         <img src="${ contextPath }/resources/images/book/pop1.png" alt="book">
                                     </div>
                                 </td>
                                 <td class="book_info">
-                                    <div class="book_title">킹덤</div>
+                                    <div class="book_title"><span onclick="detailView()">킹덤</span></div>
                                     <div class="info">
                                         <span class="writer">요네스 뵈</span> | 
                                         <span class="publisher">비채</span> | 
@@ -72,16 +72,17 @@ https://github.com/filipelinhares/ress -->
                                         <span class="reviewCount"></span>
                                         <span class="reviewRating"></span>
                                     </div>
-                                    <div>
-                                        <button class="info_etc" type="button">배송안내</button>
+                                    <div class="info_etc">
+                                        <span>배송안내</span>
+                                       	<span>무료 &nbsp;<a href="#" onclick="openLayer()">?</a></span>
                                     </div>
                                 </td>
                                 <td class="book_btns">
-                                    <div class="">
+                                    <div class="btn_count">
                                         <input type="number" name="count" value="0" min="0" max="50" size="5">
                                     </div>
-                                    <button class="basket" type="button" onclick="">장바구니</button>
-                                    <button class="buy" type="button" onclick="">바로구매</button>
+                                    <button id="basket" type="button" onclick="">장바구니</button>
+                                    <button id="buy" type="button" onclick="">바로구매</button>
                                 </td>
                             </tr>
                             <tr>

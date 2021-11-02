@@ -13,47 +13,43 @@
 	margin: 0 2%;
 }
 
-#outer {
-}
-
+/* 소분류 영역 */
 .book_category {
     border-top: 1px solid rgba(196, 217, 195, 1);
     border-bottom: 1px solid rgba(196, 217, 195, 1);
-    margin-bottom: 5px;
+    margin-bottom: 20px;
 }
 
+/* 도서 목록 영역*/
 .cLi {
 	display: flex;
     list-style: none;
     justify-content: space-around;  /* 공간을 균등하게  */
     padding: 10px;
 }
-
 .cLi li:hover {
-    color: #acadadd0;
-    cursor: pointer;
+            color: #acadadd0;
+            cursor: pointer;
 }
 
+/* 도서 정렬 */
 .bookSort {
-	padding:10px;
+	padding: 12px 12px;
     background: rgba(196, 217, 195, 1);
     display: flex;
     justify-content: space-between;
 }
-
 .sortLi {
     list-style: none;
     margin-top: 15px;
     display: flex;
 }
-
 .sortLi a, em{
     color: black;
     padding-left: 5px;
     padding-right: 5px;
     text-decoration: none;
 }
-
 .sortLi a:hover{
     color: green;
 }
@@ -63,36 +59,41 @@
     padding: 10% 0;
 }
 
+.img_wrap img {	/* td1 - 이미지 크기*/
+	width: 152px;
+	height: 200px;
+}
+.img_wrap {
+	cursor: pointer;
+}
 .book_info div{
-    margin: 10px 0;
+    padding: 10px 10px;
 }
 
-.book_title {
-    font-family: "";
+.book_title {	/* td2 - 제목 */
     font-weight: bold;
     font-size: 20px;
 }
-
-.book_title:hover {
+.book_title span:hover {
     cursor: pointer;
 }
-
-.price{
+.info_etc a {	/* td2 - 배송안내 */
+    color: black;
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 0 3px;
+}
+.info_etc a:hover {
+    border-color : orange;
+}
+.price{			/* td2 - 가격 */
     font-weight: bold;
     color: red;
 }
-
-.book_division{
-    padding: 0;
-    border: 1px dashed #acadadd0;
-}
-
-
 .book_btns input,
-.book_btns button {
+.book_btns button {	/* td3 - 결제 버튼 */
     margin: 8px;
 }
-
 .btn_count {
     border: 1px solid gray;
     border-radius: 5px;
@@ -101,39 +102,40 @@
     height: 30px;
     text-align: right;
 }
-
 .btn_count input[type=number] {
     margin: 5px;
 }
-
 .btn_count:hover{
     border-color: orange;
 }
-
-.basket{
-    color: #577057;
-    border: 1px solid #577057;
+#basket{
+    color: rgba(73, 125, 78, 1);
+    border: 1px solid rgba(73, 125, 78, 1);
     width: 80px;
     padding: 5px;
     border-radius: 5px;
 }
-
-.basket:hover,
-.buy:hover  {
+#basket:hover,
+#buy:hover  {
     background-color: rgba(196, 217, 195, 1);
     color: black;
     border: 1px solid white;
     font-weight: bold;
 }
-
-.buy {
-    background: #577057;
+#buy {
+    background: rgba(73, 125, 78, 1);
     color: white;
+    border: 1px solid rgba(73, 125, 78, 1);
     width: 80px;
     padding: 5px;
     border-radius: 5px;
 }
 
+/* 목록 구분 영역 : tr */
+.book_division{
+    padding: 0;
+    border: 1px dashed #acadadd0;
+}
 .book_pages {
     margin: 10px;
 }

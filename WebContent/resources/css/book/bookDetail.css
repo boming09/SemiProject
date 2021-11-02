@@ -105,23 +105,21 @@ table {
 .btn_count:hover{
     border-color: orange;
 }
-.basket{
-    color: #577057;
-    border: 1px solid #577057;
+#basket{
+    color: rgba(73, 125, 78, 1);
+    border: 1px solid rgba(73, 125, 78, 1);
     width: 120px;
     padding: 15px;
-    font-weight: bold;
 }
-.buy {
-    background: #577057;
-    border: 1px solid #577057;
+#buy {
+    background: rgba(73, 125, 78, 1);
+    border: 1px solid rgba(73, 125, 78, 1);
     color: white;
     width: 120px;
     padding: 15px;
-    font-weight: bold;
 }
-.basket:hover,
-.buy:hover  {
+#basket:hover,
+#buy:hover  {
     background-color: rgba(196, 217, 195, 1);
     color: black;
     border: 1px solid white;
@@ -256,8 +254,9 @@ table {
 .writeBtn {
     width: 100px;
     height: 120px;
-    background-color: #577057;
+    background-color: rgba(73, 125, 78, 1);
     color: white;
+    font-size: 20px;
     margin: 0 30px;
 }
 
