@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Properties;
 
 import notice.model.vo.Faq;
+import notice.model.vo.Fcategory;
 import notice.model.vo.PageInfo;
 
 public class FaqDao {
@@ -87,7 +88,9 @@ public class FaqDao {
 				faq.setFaq_no(rset.getInt("faq_no"));
 				faq.setTitle(rset.getString("title"));
 				faq.setReply(rset.getString("reply"));
+				faq.setFcategory_no(rset.getInt("category_no"));
 				faq.setFcategory(rset.getString("category_type"));
+				faq.setFref_no(rset.getInt("ref_no"));
 				faq.setFcount(rset.getInt("count"));
 				
 				faqList.add(faq);  // 리스트에 추가
@@ -101,6 +104,39 @@ public class FaqDao {
 		}
 		
 		return faqList;
+	}
+
+	
+	// 카테고리 조회
+	public List<Fcategory> selectCateList(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = faqQuery.getProperty("selectCateList");
+		
+		List<Fcategory> fcate = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Fcategory f = new Fcategory();
+				f.setFcate_no(rset.getInt("category_no"));
+				f.setFcate_type(rset.getString("category_type"));
+				f.setFref_no(rset.getInt("ref_no"));
+				
+				fcate.add(f);
+			}
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}		
+		
+		return fcate;
 	}
 	
 	

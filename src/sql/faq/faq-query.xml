@@ -16,7 +16,9 @@
 			                   FAQ_NO
 			                 , TITLE
 			                 , REPLY
+			                 , CATEGORY_NO
 			                 , CATEGORY_TYPE
+			                 , REF_NO
 			                 , COUNT
 			              FROM FAQ
 			              JOIN FAQ_CATEGORY USING(CATEGORY_NO)
@@ -24,6 +26,13 @@
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 
+	<entry key="selectCateList">
+		SELECT
+		       CATEGORY_NO
+		     , CATEGORY_TYPE
+		     , REF_NO
+		  FROM FAQ_CATEGORY
+	</entry>
 
 
 
