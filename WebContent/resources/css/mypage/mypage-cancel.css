@@ -1,0 +1,134 @@
+@charset "UTF-8";
+.csarea {
+    /* 챙겨가야하는 놈 */
+    /* 카테고리 + 컨텐츠 영역 flex 용도 */
+    display: flex;
+}
+.content {
+    /* 챙겨가야하는 놈 */
+    width: 72%;
+    margin-left : 15px;
+    margin-right : 15px;    
+}
+
+/* 컨텐츠 헤더 */
+.review_header {
+    height: 70px;
+    display : grid;	
+    align-items: center;
+    margin: 0px 0px 10px 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+} 
+
+.review_header div:first-child {
+    font-size: 1.1rem;
+    font-weight : bold;
+}
+
+/* header ul 속성 */
+.review_header_ul{
+	font-size: 10px;
+	font-weight : bold;
+	padding-left : 30px;
+}
+
+
+/* 리스트 top 영역 */
+.review_area1 {
+    margin: 30px 30px 10px 30px;
+    display: flex;
+    justify-content : space-between;	
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* 리스트 */
+.review_area2 {
+    margin: 0px 30px 10px 30px;
+    border-left : 1px solid lightgray;
+}
+
+.review_listarea ul {
+    display: flex;
+    justify-content : space-between;	
+    align-items: center;
+    text-align: center;
+    font-size: 0.8rem;
+    border-bottom: 1px solid lightgray;
+    list-style: none;
+}
+.review_listtop {
+    background: rgb(239, 239, 239);
+    font-weight: bold;
+}
+
+.review_listarea {
+    border-top: 1px solid lightgray;
+}
+
+.review_listarea ul li {
+    height: 50px;
+    line-height: 50px;
+}
+
+/* 주문일 */
+.review_orderdate {
+    width: 20%;
+    border-right: 1px solid lightgray;
+  
+}
+
+/* 주문번호 */
+.review_orderno {
+    width: 20%;
+    border-right: 1px solid lightgray;
+}
+
+/* 주문상품 */
+.review_orderproduct {
+    width: 40%;
+    border-right: 1px solid lightgray;    
+}
+.title2 {
+	text-align : left;
+	padding: 0 10px;
+}
+
+/* 조회 취소 */
+.review_cancelinquiry {
+    width: 20%;
+    border-right: 1px solid lightgray;
+    
+}
+
+/* 영수증 출력 */
+.receipt{
+	height: 70px;
+    display : grid;	
+    align-items: center;
+    margin: 0px 0px 10px 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: red;
+    font-size : 20px;
+}
+
+.receipt div:first-child {
+    font-size: 1.1rem;
+    font-weight : bold;
+}
+
+/* header ul 속성 */
+.receipt_ul{
+	font-size: 8px;
+	font-weight : bold;
+	padding-left : 30px;
+	color : black;
+}
+
+/* 마우스 오버시 */
+.review_list:hover {
+    background: #f3f5f7;
+}
