@@ -12,7 +12,7 @@
 <link rel="icon" type="image/x-icon"
 	href="resources/image/khfavicon.ico">
 <!-- 외부 스타일 시트 -->
-<link href="<%= request.getContextPath() %>/resources/css/memberout.css"
+<link href="<%= request.getContextPath() %>/resources/css/mypage/memberout.css"
 	rel="stylesheet">
 </head>
 <body>
@@ -42,7 +42,7 @@
 					<br>
 					<p>
 						<img class="warnign"
-							src="<%= request.getContextPath() %>/resources/images/warning.png"
+							src="<%= request.getContextPath() %>/resources/images/mypage/warning.png"
 							alt="warning"> 로그인할 때 사용하시는 이메일 주소를 직접 변경할 수 있습니다. <input
 							type="button" id="emailbut" value="이메일주소 변경하기">
 					</p>

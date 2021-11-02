@@ -11,7 +11,7 @@
     <!-- favicon (Real Favicon Generator 등에서 가공 필요) -->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
     <!-- 외부 스타일 시트 -->
-    <link href="<%= request.getContextPath() %>/resources/css/login-style.css" rel="stylesheet">    
+    <link href="<%= request.getContextPath() %>/resources/css/member/login-style.css" rel="stylesheet">    
 </head>
 <body>    
 	<!-- 메뉴바 -->
@@ -34,8 +34,8 @@
             </tr>
             <a href="joinmembership"><input type="button" value="봄숲 간편 회원가입" class="mbjoin"></a><br>
             <div class="imgdiv">
-                <a href="#"><img class="naverlogo" src="<%= request.getContextPath() %>/resources/images/naver.jpg" alt="naver logo"></a>   
-                <a href="#"><img class="kakaologo" src="<%= request.getContextPath() %>/resources/images/kakao.jpg" alt="kako logo"></a>
+                <a href="#"><img class="naverlogo" src="<%= request.getContextPath() %>/resources/images/member/naver.jpg" alt="naver logo"></a>   
+                <a href="#"><img class="kakaologo" src="<%= request.getContextPath() %>/resources/images/member/kakao.jpg" alt="kako logo"></a>
             </div>             
         </fieldset>
         <button id="lobut" onclick="lolo()">로그인</button>

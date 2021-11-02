@@ -11,7 +11,7 @@
     <!-- favicon (Real Favicon Generator 등에서 가공 필요) -->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
     <!-- 외부 스타일 시트 -->
-    <link href="<%= request.getContextPath() %>/resources/css/login-style.css" rel="stylesheet">    
+    <link href="<%= request.getContextPath() %>/resources/css/member/login-style.css" rel="stylesheet">    
     <script>
     
     </script>
@@ -112,7 +112,7 @@
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <label class="termstext">약관 전체보기</label>
-                        <a href="#"><img class="terms" src="<%= request.getContextPath() %>/resources/images/login-terms.png" alt="terms"></a> 
+                        <a href="#"><img class="terms" src="<%= request.getContextPath() %>/resources/images/member/login-terms.png" alt="terms"></a> 
                     </td>
                 </tr>
                 <tr>
@@ -120,7 +120,7 @@
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <label class="termstext">약관 전체보기</label>
-                        <a href="#"><img class="terms" src="<%= request.getContextPath() %>/resources/images/login-terms.png" alt="terms"></a> 
+                        <a href="#"><img class="terms" src="<%= request.getContextPath() %>/resources/images/member/login-terms.png" alt="terms"></a> 
                     </td>
                 </tr>
                 <tr>
@@ -128,7 +128,7 @@
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <label class="termstext">내용보기</label>
-                        <a href="#"><img class="terms" src="<%= request.getContextPath() %>/resources/images/login-check.png" alt="cehck"></a> 
+                        <a href="#"><img class="terms" src="<%= request.getContextPath() %>/resources/images/member/login-check.png" alt="cehck"></a> 
                     </td>
                 </tr>
                 <div class="joinme" onclick="bomsoup()">회원 가입하기</div>
