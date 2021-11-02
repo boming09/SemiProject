@@ -103,9 +103,8 @@ crossorigin="anonymous"></script>
                                     <tr class="etcRow">
                                         <td>배송안내</td>
                                         <td>
-                                            <span>
-                                               	무료 &nbsp;<a href="#" onclick="openLayer()">?</a>
-                                            </span>
+                                            <span>무료 &nbsp;<a href="#" onclick="openLayer()">?</a></span>
+                                            <div class="message">이곳은 메시지입니다.</div><!-- 배송 안내 메시지 담기 -->
                                         </td>
                                     </tr>
                                 </tbody>

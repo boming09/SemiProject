@@ -93,14 +93,15 @@ table {
 }
 .btn_count {
     border: 1px solid gray;
-    width: 120px;
-    height: 50px;
-    line-height: 40px;
+    width: 110px;
+    height: 40px;
+    line-height: 30px;
     text-align: center;
+    padding: 4px 0;
 }
 .btn_count input[type=number] {
     border: 0px;
-    padding: 4px;
+    margin-left: 30px;
 }
 .btn_count:hover{
     border-color: orange;
@@ -108,15 +109,15 @@ table {
 #basket{
     color: rgba(73, 125, 78, 1);
     border: 1px solid rgba(73, 125, 78, 1);
-    width: 120px;
-    padding: 15px;
+    width: 110px;
+    padding: 12px;
 }
 #buy {
     background: rgba(73, 125, 78, 1);
     border: 1px solid rgba(73, 125, 78, 1);
     color: white;
-    width: 120px;
-    padding: 15px;
+    width: 110px;
+    padding: 12px;
 }
 #basket:hover,
 #buy:hover  {
