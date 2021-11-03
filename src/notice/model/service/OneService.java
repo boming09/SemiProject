@@ -59,12 +59,29 @@ public class OneService {
 		
 		Map<String, Object> returnMap = new HashMap<>();
 		
-		returnMap.put("pi", pi);
-		returnMap.put("oneList", oneList);
+		if(listCount == 0) {
+			returnMap.put("pi", null);
+			returnMap.put("oneList", null);
+		} else {
+			returnMap.put("pi", pi);
+			returnMap.put("oneList", oneList);
+		}
 		
 		close(conn);	
 		
 		return returnMap;
+	}
+
+
+	// 1:1문의내역 상세페이지
+	public One selectOne(int one_no) {
+		Connection conn = getConnection();
+		
+		One one = oneDao.selectOne(conn, one_no);
+		
+		close(conn);
+		
+		return one;
 	}
 	
 }

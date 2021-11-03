@@ -34,37 +34,27 @@
                 <table>
                     <tr class="liarea">
                         <th class="one_title">제목</th>
-                        <td class="title"><div>짧짧</div></td>         
+                        <td class="title"><div>${ one.otitle }</div></td>         
                         <th class="one_date">등록일</th>
-                        <td class="date">2021-10-24</td>
+                        <td class="date">${ one.odate }</td>
                     </tr>         
                     <tr class="liarea2">
                         <th class="one_content">내용</th>
-                        <td class="ocontent" colspan="3">문의.unre_date, .unre_rating오랑너ㅗ여ㅑ니엉느누나te, .unre_rating오랑너ㅗ여ㅑ니엉느누나te, .unre_rating오랑너ㅗ여ㅑ니엉느누나te, .unre_rating오랑너ㅗ여ㅑ니엉느누나ㅡ우라ㅣㄴ여ㅗㄹㄴ열널이ㅏ</td>
+                        <td class="ocontent" colspan="3">${ one.ocontent }</td>
                     </tr>
                     <tr class="liarea3">
                         <th class="one_file">첨부파일</th>
-                        <td class="ofile" colspan="3"><input type="file"></td>
+                        <td class="ofile" colspan="3">${ one.origin_file }</td>
                     </tr>
                 </table>
             </div>
+            
                        
             <div class="one_btn">
                 <button type="button" onclick="location.href='${ contextPath }/one'">취소</button>
                 <button type="button" onclick="location.href='#'">수정하기</button>
             </div>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+           
             
 		</div>
 		<!-- 광고  -->

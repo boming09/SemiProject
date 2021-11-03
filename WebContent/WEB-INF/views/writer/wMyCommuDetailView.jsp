@@ -28,7 +28,7 @@
                     <tr class="liarea">
                         <th class="wcommu_title" rowspan="2">제목</th>
                         <td class="title" rowspan="2">
-                            <div>도서제목인데 오나전ㅇdgdgdgddfdfddddsefedcxcvdsfegdxcvcxxsdawwwwwwwww라ㅓ길수도 있지요~~ㅇ하ㅓ오혀다</div>
+                            <div></div>
                         </td>         
                         <th class="wcommu_user">작성자</th>
                         <td class="user">user01</td>
@@ -40,7 +40,7 @@
                                       
                     <tr class="liarea2">
                         <th class="wcommu_content">내용</th>
-                        <td class="wcontent" colspan="3">문의.unre_date, .unre_rating오랑너ㅗ여ㅑ니엉느누나te, .unre_rating오랑너ㅗ여ㅑ니엉느누나te, .unre_rating오랑너ㅗ여ㅑ니엉느누나te, .unre_rating오랑너ㅗ여ㅑ니엉느누나ㅡ우라ㅣㄴ여ㅗㄹㄴ열널이ㅏ</td>
+                        <td class="wcontent" colspan="3"></td>
                     </tr>
                 </table>
             </div>

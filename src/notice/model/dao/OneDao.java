@@ -134,6 +134,46 @@ public class OneDao {
 		
 		return oneList;
 	}
+
+
+	// 1:1문의내역 상세페이지
+	public One selectOne(Connection conn, int one_no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = oneQuery.getProperty("selectOne");
+		
+		One one = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, one_no);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				one = new One();
+				one.setOne_no(rset.getInt("one_no"));
+				one.setOtitle(rset.getString("title"));
+				one.setOcontent(rset.getString("content"));
+				one.setOdate(rset.getDate("create_date"));
+				one.setStatus(rset.getString("status"));
+				one.setOuser(rset.getInt("user_no"));
+				one.setOreply(rset.getString("reply"));
+				one.setFile_path(rset.getString("fileid"));
+				one.setOrigin_file(rset.getString("origin_file"));
+				one.setChange_file(rset.getString("change_file"));
+			}
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return one;
+	}
 	
 	
 	

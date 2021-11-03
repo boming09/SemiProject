@@ -29,7 +29,7 @@ public class WMyUnreviewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 도서 미답변리뷰 페이지 이동
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/writer/wMyUnreviewView.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/writer/wMyUnreviewListView.jsp");
 		view.forward(request, response);
 	}
 
