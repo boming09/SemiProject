@@ -26,7 +26,7 @@
             </header>
         
             <div class="wcommu_area1">
-                <span>소통 게시글 목록</span>
+                <span>소통 리스트</span>
                 <!-- <span>
                     <input type="checkbox" name="mylist" value=""><label>내가 쓴 글만 보기</label>
                     <button type="button">글 작성</button>

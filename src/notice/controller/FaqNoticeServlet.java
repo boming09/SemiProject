@@ -39,6 +39,7 @@ public class FaqNoticeServlet extends HttpServlet {
 		
 		// 하지만 페이지 전환 시 view 화면에서 전달 받은 현재 페이지가 있을 경우 해당 페이지를 page로 적용
 		// page가 어디서 넘어올까...? view 화면에서 없는뎅...9ㅅ9
+		// => 페이지 클릭한거 들고온닷
 		if(request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}

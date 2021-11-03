@@ -31,8 +31,33 @@
 		)
 	</entry>
 
+	<entry key="getListCount">
+		SELECT
+			   COUNT(*)
+		  FROM ONEQUESTION
+		 WHERE USER_NO = ?
+	</entry>
 
-
+	<entry key="selectList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.*
+		          FROM (SELECT
+		                   ONE_NO
+		                 , TITLE
+		                 , CONTENT
+		                 , CREATE_DATE
+		                 , O.STATUS
+		                 , USER_NO
+		                 , REPLY
+		                 , FILEID
+		                 , ORIGIN_FILE
+		                 , CHANGE_FILE
+		              FROM ONEQUESTION O
+		              JOIN MEMBER USING(USER_NO)
+		             WHERE USER_NO = ?
+		             ORDER BY CREATE_DATE DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
 
 
 </properties>

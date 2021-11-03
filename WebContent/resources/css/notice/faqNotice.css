@@ -207,6 +207,7 @@
 /* 페이징 영역 */
 .pagingarea {
 	margin: 10px 30px;
+	margin-bottom : 80px;
 	height : 50px;
 	display : flex;
 	justify-content : center;
