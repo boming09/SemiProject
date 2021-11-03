@@ -132,16 +132,16 @@ ul,ol,li {
 .discount {
 	display:inline-block;
 	position:relative;
-	width:150px;
-	height:150px;
+	width:130px;
+	height:130px;
 	border:1px solid gray;
-	background: #f3f3f3;
+	background:#F2F9F0;
 	text-align:center;
 	line-height:18px;
 }
 
 .dis_btn {
-	padding:7px;
+	padding:1px;
 	border: 1px solid gray;
 	/*position:relative;
 	left:10px;*/
@@ -154,7 +154,7 @@ a {
 }
 
 .align_ct{
-	display:inline-block;
+	display:block;
 	margin:3px;
 }
 
@@ -163,13 +163,14 @@ a {
 	display:grid;
 	grid-template-columns : 1fr 1fr;
 	justify-items:left;
-	width:308px;
+	width:256px;
+	font-size:0.8rem;
 	
 }
 .dis{
  	display:inline-block;
  	position:relative;
- 	padding:7px;
+ 	padding:1px;
  	background:white;
  	width:45px;
  	border:1px solid gray;
@@ -203,29 +204,70 @@ a {
 
 .pay_tt {
 	background: #f3f3f3;
+	/*background:#F2F9F0;*/
 	display: grid;
 	grid-template-columns: 4fr 6fr;
-	padding-left:30px;
+	padding-left:50px;
 	padding-top:10px;
-	padding-bottom:15px;
+	padding-bottom:14px;
 	font-weight:bold;
+	font-size:0.95rem;
+	border-top:2px solid gray;
 	
 }
 
 .od_ttt {
 	background: #f3f3f3;
+	/*background:#F2F9F0;*/
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
-	padding-left:30px;
+	padding-left:50px;
 	padding-top:10px;
-	padding-bottom:15px;
+	padding-bottom:14px;
+	font-size:0.9rem;
+	border-top:1px dotted gray;
 	
 	
 }
 
+.fs {
+	font-size:0.95rem;
+	border-bottom:2px solid gray;
+}
+
 .pay {
 	background: #f3f3f3;
+	/*background:#F2F9F0;*/
 	padding:20px;
+	font-size:0.9rem;
+	padding-left:40px;
+	border-top:2px solid gray;
+	border-bottom:2px solid gray;
+}
+
+#couponBtn{
+	font-weight:bold;
+}
+
+#infullBtn{
+	border:1px solid green;
+	color:green;
+	font-weight:bold;
+	
+}
+.bold{
+	font-weight:bold;
+}
+
+.white{
+	background:white;
+	border-left:1px solid white;
+}
+
+#pointPayBtn{
+	background:green;
+	color:white;
+	font-weight:bold;
 }
 
 .agree {
@@ -236,14 +278,14 @@ a {
 .agree_dt {
 	margin-top: 30px;
 	margin-bottom:10px;
-	font-size:1.2rem;
+	font-size:1.1rem;
 	font-weight:bold;
 	color:gray;
 }
 
 .agree_dt2 {
 	width:100%;
-	border:1px solid gray;
+	border:2px solid gray;
 	margin-bottom:20px;
 	background: #f3f3f3;
 	font-weight:bold;

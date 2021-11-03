@@ -7,7 +7,7 @@
 <title>cart</title>
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="<%= request.getContextPath() %>/resources/css/order.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/order/order.css" rel="stylesheet">
 
 </head>
 <body>
@@ -24,23 +24,8 @@
             <form class="order" action="<%= request.getContextPath() %>/payment"
 			method="post">
             
-       		<!--   <label class="hidden"> cart_select</label>
-       		 
-       		 <button id="delete_btn">선택상품삭제</button>
-       		 
-       			<select id="cart_sel"name="cart_sel">
-           		 <option value="new" selected>최근담은순</option>
-           		 <option value="low">저가격순</option>
-            	 <option value='high'>고가격순</option>
-            	 <option value="name">이름순</option>
-            	 <option value="rel">출간일순</option>
-        	    </select> -->
-    	    
-            
-           <!--   <hr style="border: inset 10px #f3f3f3;"> -->
            
      		  <div class="od_info">주문 상품 정보</div>
-     		 <!--  <hr style="border: solid 1px gray;">--> 
 			  <div class="od_contain">
 
 			  		<div class="item">상품명</div>
@@ -48,7 +33,6 @@
 			  		<div class="item">수량</div>
 
 			  </div>
-			   <hr style="border: solid 1px gray;">
 			  <div class="od_container">
 					<div class="item">
 						<b>[국내도서] 어떻게 쓰지 않을 수 있겠어요</b>
@@ -98,26 +82,25 @@
 						<b>1</b>
 						
 					</div>
+					
+					
 
 		</div>
 			            
-           
-        <!--  <hr style="border: outset 10px #f3f3f3;">   -->
-        
-        	<hr style="border: solid 1px gray;">
+
         	<div class="od_info">배송지 정보 입력</div>
-        	<hr style="border: solid 1px gray;">
-        	<div class="od_tt">
+
+        	<div class="od_tt top_tt">
         		<div class="o_item">
         			<div><b>배송지 선택</b></div>
         		</div>
         		<div class="o_item">
         			<span class="address"><input type="radio" name="rd_address" value="same_info"><b>주문 고객 정보와 동일</b> </span>
-        			<span class="address"><input type="radio" name="rd_address" value="new_address"><b>최근 배송지 주소</b></span>
+        			<span class="address"><input type="radio" name="rd_address" value="new_address"><b>새로운 배송지 입력</b></span>
         		</div>
         	</div>
         	
-        	<hr style="border: solid 1px gray;">
+
         	<div class="od_tt">
         		<div class="o_item">
         			<div><b>주문인 *</b></div>
@@ -127,7 +110,7 @@
         		</div>
         	</div>
         	
-        	<hr style="border: solid 1px gray;">
+    
         	<div class="od_tt">
         		<div class="o_item">
         			<div><b>받으시는 분 *</b></div>
@@ -137,7 +120,7 @@
         		</div>
         	</div>
         	
-        	<hr style="border: solid 1px gray;">
+ 
         	<div class="od_tt">
         		<div class="o_item">
         			<div><b>주소 *</b></div>
@@ -160,7 +143,6 @@
         		</div>
         	</div>
         	
-        	<hr style="border: solid 1px gray;">
         	<div class="od_tt">
         		<div class="o_item">
         			<div><b>휴대전화 *</b></div>
@@ -171,7 +153,6 @@
         		</div>
         	</div>
         	
-        	<hr style="border: solid 1px gray;">
         	<div class="od_tt">
         		<div class="o_item">
         			<div><b>전화번호</b></div>
@@ -182,8 +163,7 @@
         		</div>
         	</div>
         	
-        	<hr style="border: solid 1px gray;">
-        	<div class="od_tt">
+        	<div class="od_tt btm_line">
         		<div class="o_item">
         			<div><b>어디에 둘까요? *</b></div>
         		</div>
@@ -205,7 +185,6 @@
 	        	
         		</div>
         	</div>
-        	<hr style="border: solid 1px gray;">
      		
      		<button id="ct_order_btn">다음 단계 </button>
      		</form>
