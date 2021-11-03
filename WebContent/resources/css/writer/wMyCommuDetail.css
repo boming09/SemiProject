@@ -34,7 +34,12 @@
     font-weight: bold;
 }
 /* 내용 영역 */
+.wcommu_conarea {
+	display : flex;
+	justify-content :center;
+}
 .wcommu_conarea table {
+	width : 100%;
     font-size: 0.9rem;
     margin: 0px 30px 10px 30px;
     /*  테이블 간격 없애기 */

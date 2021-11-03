@@ -49,10 +49,8 @@ public class OneQuestionServlet extends HttpServlet {
 				
 		// 만약 1:1문의 내역 없을경우 => oneQuestionView.jsp
 		// 내역 있을경우 => oneQuestionViewList.jsp
-		
-		//System.out.println(map.get("oneList"));
 		String forpage = "";
-		
+				
 		if(map.get("oneList") != null) { 
 			// 1:1문의 있을때 리스트 화면 이동 
 			request.setAttribute("pi", map.get("pi"));

@@ -59,5 +59,21 @@
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 
+	<entry key="selectOne">
+		SELECT
+		       ONE_NO
+		     , TITLE
+		     , CONTENT
+		     , CREATE_DATE
+		     , O.STATUS
+		     , USER_NO
+		     , REPLY
+		     , FILEID
+		     , ORIGIN_FILE
+		     , CHANGE_FILE
+		  FROM ONEQUESTION O
+		  JOIN MEMBER USING(USER_NO)
+		 WHERE ONE_NO = ?
+	</entry>
 
 </properties>
