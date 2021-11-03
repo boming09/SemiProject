@@ -7,7 +7,7 @@
 <title>cart</title>
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="<%= request.getContextPath() %>/resources/css/cart.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/order/cart.css" rel="stylesheet">
 
 </head>
 <body>
@@ -19,10 +19,7 @@
 		<div class="cart_bl">
             <div id="cart">장바구니</div>
                
- 			<!-- 어디로갈지쓰셈 -->
-
-            <form class="cart" action="<%= request.getContextPath() %>/order"
-			method="post">
+ 			
             
        		 <label class="hidden"> cart_select</label>
        		 
@@ -36,8 +33,13 @@
             	 <option value="rel">출간일순</option>
         	    </select>
     	    
+    	    
+    	    <!-- 어디로갈지쓰셈 -->
+
+            <form class="cart" action="<%= request.getContextPath() %>/order"
+			method="post">
             
-           <!--   <hr style="border: inset 10px #f3f3f3;"> -->
+        
      
 			  <div class="ct_container">
 			  		<div class="item"></div>
@@ -55,8 +57,8 @@
 						<p class="desc_item">작가:홍길동<br>출판사:봄숲</p>
 					</div>
 					<div class="item">
-						<strong class="title_item">정가:37000원</strong>
-						<p class="desc_item">판매가:26000원<br>마일리지:1000원</p>
+						<strong class="title_item">판매가:<span class="price">20,000</span>원</strong>
+						<p class="desc_item">정가:<span class="lth">30,000</span>원<br>마일리지:<span class="green">1,000</span>원(5%)</p>
 					</div>
 					<div class="item">
 						<strong class="title_item">
@@ -83,7 +85,7 @@
 						</strong>
 					</div>
 					<div class="item">
-						<input type="checkbox">
+						<input type="checkbox" id="cart_chk" name="cart_chk" checked>
 					</div>
 
 		
@@ -95,8 +97,8 @@
 						<p class="desc_item">작가:홍길동<br>출판사:봄숲</p>
 					</div>
 					<div class="item">
-						<strong class="title_item">정가:30000원</strong>
-						<p class="desc_item">정가:20000원<br>마일리지:1000원</p>
+						<strong class="title_item">판매가:<span class="price">20,000</span>원</strong>
+						<p class="desc_item">정가:<span class="lth">30,000원</span><br>마일리지:<span class="green">1,000원</span>(5%)</p>
 					</div>
 					<div class="item">
 						
@@ -125,7 +127,7 @@
 				
 					</div>
 					<div class="item">
-						<input type="checkbox">
+						<input type="checkbox" id="cart_chk" name="cart_chk" checked>
 					</div>
 
 					
@@ -137,8 +139,8 @@
 						<p class="desc_item">작가:홍길동<br>출판사:봄숲</p>
 					</div>
 					<div class="item">
-						<strong class="title_item">정가:30000원</strong>
-						<p class="desc_item">정가:20000원<br>마일리지:1000원</p>
+						<strong class="title_item">판매가:<span class="price">20,000</span>원</strong>
+						<p class="desc_item">정가:<span class="lth">30,000원</span><br>마일리지:<span class="green">1,000</span>원(5%)</p>
 					</div>
 					<div class="item">
 						
@@ -165,7 +167,7 @@
 						</strong>
 					</div>
 					<div class="item">
-						<input type="checkbox">
+						<input type="checkbox" id="cart_chk" name="cart_chk" checked>
 					</div>
 					<div class="item">
 						<span class="thum"><img class="cart_thum" src="<%= request.getContextPath() %>/resources/images/thisweek3.png"></span>	
@@ -175,8 +177,8 @@
 						<p class="desc_item">작가:홍길동<br>출판사:봄숲</p>
 					</div>
 					<div class="item">
-						<strong class="title_item">정가:30000원</strong>
-						<p class="desc_item">정가:20000원<br>마일리지:1000원</p>
+						<strong class="title_item">판매가:<span class="price">20,000</span>원</strong>
+						<p class="desc_item">정가:<span class="lth">30,000원</span><br>마일리지:<span class="green">1,000</span>원(5%)</p>
 					</div>
 					<div class="item">
 						
@@ -203,36 +205,33 @@
 						</strong>
 					</div>
 					<div class="item">
-						<input type="checkbox">
+						<input type="checkbox" id="cart_chk" name="cart_chk" checked>
 					</div>
 	  
 			</div>
 			            
-           
-        <!--  <hr style="border: outset 10px #f3f3f3;">   -->
-        
-        	<hr style="border: solid 1px gray;">
+     
         	<div class="ct_tt">
 	            <div class="c_item">
-		            <div>총 상품 가격 : <span>53,200원</span> (총 <span>2</span>권 <span>5320원</span> 할인) + 배송비 <span>0원</span> </div>
-		            <div>적립 예상 마일리지 : 상품 구매(<span>2,660원</span>)</div>
-		            <div>수령 예상일: 지금 주문하면 <span>내일</span> 받을 수 있습니다.</div>
+		            <div>총 상품 가격 : <span class="price">53,200</span>원 (총 <span>2</span>권 <span>5320원</span> 할인) + 배송비 <span>0원</span> </div>
+		            <div>적립 예상 마일리지 : 상품 구매(<span class="green">2,660원</span>)</div>
+		            <div>수령 예상일: 지금 주문하면 <span class="price">내일</span> 받을 수 있습니다.</div>
 		        </div>
      		</div>
-     		<hr style="border: solid 1px gray;">
+     
      		<div class="ct_tt">
-     			<div class="c_item">
-     				<div>총 상품 가격 : 53,200원</div>
-     				<div>배송비 : 0원</div>
+     			<div class="d_item">
+     				<div>총 상품 가격 : <span class="price">53,200</span>원 </div>
+     				<div>배송비 : <span class="price">0원</span></div>
      				<div>총 주문 상품수 : 2권</div>
-     				<div>총 결제 예상 금액 : 53,200원</div>
+     				<div>총 결제 예상 금액 : <span class="price">53,200원</span></div>
      			</div>
-     			<div class="c_item">
-     				<div>상품 마일리지 : 2,660원</div>
-     				<div>총 적립 예상 마일리지 : 2660원</div>
+     			<div class="d_item">
+     				<div>상품 마일리지 : <b>2,660원</b></div>
+     				<div>총 적립 예상 마일리지 : <span class="price">2,660원</span></div>
      			</div>
      		</div>
-     		<hr style="border: solid 1px gray;">
+     	
      		<button id="ct_order_btn">선택한 상품 주문하기</button>
      		</form>
      		

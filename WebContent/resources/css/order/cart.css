@@ -42,7 +42,7 @@
 	border:1px solid black;
 	left:84%;
 	margin-top:10px;
-	padding:1px;
+	padding:3px;
 	font-size:0.9rem;
 }
 
@@ -53,7 +53,7 @@
 
 	margin-top:10px;
 	margin-bottom:20px;
-	padding:1px;
+	padding:3px;
 	font-size:0.9rem;
 	
 }
@@ -97,7 +97,8 @@ ul,ol,li {
 
 .title_item {
   /*display: block;*/
-  font-size: 16px;
+  /*font-size: 15px;*/
+  font-size:0.9rem;
 
  
 }
@@ -109,7 +110,27 @@ ul,ol,li {
 
 .desc_item {
   font-size: 12px;
+  line-height:16px;
 }
+
+.lth {
+ /* text-decoration: line-through;*/
+
+}
+
+.price {
+	color:#D25832;
+}
+
+.green {
+	color:green;
+}
+
+.desc_item,
+.title_item{
+	margin-top:5px;
+}
+
 
 .ct_container {
   display: grid; 
@@ -117,9 +138,10 @@ ul,ol,li {
   grid-gap:0.5rem;
  /* grid-auto-rows:minmax(10em, auto);*/
   background: #f3f3f3;
-  padding-left:40px;
-  pading-right:30px;
-  padding-top:30px;
+  /*background:#F2F9F0;*/
+  padding-left:50px;
+  padding-right:40px;
+  padding-top:35px;
   padding-bottom:23px;
 
   align-items:center;
@@ -136,7 +158,6 @@ ul,ol,li {
 	/*align-self:top;
 	justify-self:left;
 	background:white;*/
-	
 	
 }
 
@@ -155,11 +176,13 @@ ul,ol,li {
 
 .ct_tt {
 	background: #f3f3f3;
+	/*background:#F2F9F0;*/
 	display: grid;
 	grid-template-columns: 5fr 5fr;
-	padding-left:30px;
-	padding-top:10px;
-	padding-bottom:15px;
+	padding-left:36px;
+	padding-top:15px;
+	padding-bottom:20px;
+	border-top:dotted 1px green;
 }
 
 .ct_tt div {
@@ -171,6 +194,13 @@ ul,ol,li {
 .c_item {
 
 	align-self:end;
+	font-size:0.9rem;
+}
+
+.d_item {
+
+	align-self:end;
+	font-size:1rem;
 }
 
 #ct_order_btn {

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="<%= request.getContextPath() %>/resources/css/payment.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/order/payment.css" rel="stylesheet">
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
