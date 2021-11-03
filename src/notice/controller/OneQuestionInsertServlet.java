@@ -77,10 +77,10 @@ public class OneQuestionInsertServlet extends HttpServlet {
 		//System.out.println(ocontent);
 		
 		// ((Member)request.getSession().getAttribute("loginUser")).getUserId();
-		int owriter = 2;  // id=test 
+		int ouser = 2;  // id=test 
 		
 		One one = new One();
-		one.setOwriter(owriter);
+		one.setOuser(ouser);
 		one.setOtitle(otitle);
 		one.setOcontent(ocontent);
 		

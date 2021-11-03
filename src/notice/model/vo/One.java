@@ -1,6 +1,6 @@
 package notice.model.vo;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class One {
 	/*
@@ -15,7 +15,7 @@ public class One {
 	ORIGIN_FILE	VARCHAR2(255 BYTE)
 	CHANGE_FILE	VARCHAR2(255 BYTE)
 	*/
-	private int owriter;            // 로그인 유저=게시글 작성자(추후 member랑 조인)
+	private int ouser;              // 로그인 유저=게시글 작성자(추후 member랑 조인)
 	private int one_no;				// 1:1문의 게시글번
 	private String otitle;			// 제목
 	private String ocontent; 		// 내용
@@ -28,10 +28,10 @@ public class One {
 	
 	public One() {}
 
-	public One(int owriter, int one_no, String otitle, String ocontent, Date odate, String status, String oreply,
+	public One(int ouser, int one_no, String otitle, String ocontent, Date odate, String status, String oreply,
 			String file_path, String origin_file, String change_file) {
 		super();
-		this.owriter = owriter;
+		this.ouser = ouser;
 		this.one_no = one_no;
 		this.otitle = otitle;
 		this.ocontent = ocontent;
@@ -43,12 +43,12 @@ public class One {
 		this.change_file = change_file;
 	}
 
-	public int getOwriter() {
-		return owriter;
+	public int getOuser() {
+		return ouser;
 	}
 
-	public void setOwriter(int owriter) {
-		this.owriter = owriter;
+	public void setOuser(int ouser) {
+		this.ouser = ouser;
 	}
 
 	public int getOne_no() {
@@ -125,11 +125,12 @@ public class One {
 
 	@Override
 	public String toString() {
-		return "One [owriter=" + owriter + ", one_no=" + one_no + ", otitle=" + otitle + ", ocontent=" + ocontent
+		return "One [ouser=" + ouser + ", one_no=" + one_no + ", otitle=" + otitle + ", ocontent=" + ocontent
 				+ ", odate=" + odate + ", status=" + status + ", oreply=" + oreply + ", file_path=" + file_path
 				+ ", origin_file=" + origin_file + ", change_file=" + change_file + "]";
 	}
 
+	
 	
 	
 }

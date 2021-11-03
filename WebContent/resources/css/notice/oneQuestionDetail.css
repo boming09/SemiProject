@@ -8,48 +8,39 @@
     /* 챙겨가야하는 놈 */
     width: 72%;
     margin-left : 15px;
-    margin-right : 15px;    
+    margin-right : 15px;
 }
 
 /* 컨텐츠 헤더 */
-.unreview_header {
+.one_header {
     height: 70px;
     display : flex;
     justify-content : space-between;	
     align-items: center;
-    margin: 0px 0px 10px 0px;
+    margin: 0px 0px 0px 0px;
     padding-left: 30px;
     padding-right: 30px;
 } 
-.unreview_header div:first-child {
+.one_header div:first-child {
     font-size: 1.1rem;
     font-weight : bold;
 }
 
-/* 미답변리뷰 버튼 */
-.wb_detailpage button {
-    width: 100px;
-    height: 45px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    padding: 0px 10px;
-    background: rgb(73, 125, 78);
-    color: white;
-    line-height : 20px;
-}
-.wb_detailpage button:hover {
-    background-color: rgb(196, 217, 195);
-    color: black;
+/* 멘트 */
+.one_ment ul {
+    padding-left: 60px;
+    line-height: 30px;
+    font-size: 0.8rem;
 }
 
-/* 리스트 top 영역 => 리뷰리스트 text */
-.unreview_area {
+/* 리스트 top 영역 => 문의내역 text */
+.one_area {
     margin: 30px 30px 10px 30px;
     font-size: 0.9rem;
     font-weight: bold;
 }
 /* 내용 영역 */
-.unreview_conarea table {
+.one_conarea table {
     font-size: 0.9rem;
     margin: 0px 30px 10px 30px;
     /*  테이블 간격 없애기 */
@@ -62,7 +53,7 @@
 td {
     padding: 10px;
 }
-.name, .rcontent {
+.title, .ocontent {
     line-height: 20px;
 }
               
@@ -71,21 +62,25 @@ td {
     height: 50px;
 }
 .liarea2 {
-    height: 200px;;
+    height: 300px;;
 }
+.liarea3 {
+	height : 70px;
+}
+
 /* 너비 */
-.unre_name, .unre_user, .unre_date, .unre_rating, .unre_content {
+.one_title, .one_date, .one_content, .one_file {
     width: 12%;
     text-align: center;
     background: rgb(239, 239, 239);         
 }
-.name, .user {
+.title {
     width: 58%;
 }
-.date, .rating {
+.date {
     width: 18%;
 }
-.rcontent {
+.ocontent {
     width: 88%;
 }
 
@@ -93,23 +88,22 @@ td {
 th, td {
     border-right: 1px solid lightgray;
 }
-.date, .rating, .rcontent {
+.user, .date, .ocontent, .ofile {
     border: 0;
 }
 
-.unre_name, .name, .unre_date, .date,
-.unre_user, .user, .unre_rating, .rating {
+.one_title, .title, .one_date, .date,
+.one_content, .ocontent {
     border-bottom: 1px solid lightgray;
 }
 
-
 /* 취소/답변작성 버튼 */
-.unre_btn {
+.one_btn {
     display : flex;
     justify-content : center;	
     align-items: center;
 }
-.unre_btn button {
+.one_btn button {
     margin: 20px;
     margin-bottom : 60px;
     width: 90px;
@@ -120,7 +114,7 @@ th, td {
     color: white;
 }
 
-.unre_btn button:hover {
+.one_btn button:hover {
     background-color: rgb(196, 217, 195);
     color: black;
 }

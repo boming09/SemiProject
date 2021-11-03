@@ -41,7 +41,7 @@
 	                    <c:forEach var="cate" items="${ fcate }">
 	                		<c:set var="ref" value="${ cate.fref_no }"/>
 		                	<c:if test="${ ref eq '0' }">
-			                	<option value="${ cate.fcate_no }" class="acate">${ cate.fcate_no }</option>
+			                	<option value="${ cate.fcate_no }" class="acate">${ cate.fcate_type }</option>
 		                	</c:if>
 	                	</c:forEach>
 	           
@@ -177,7 +177,6 @@
 							</c:otherwise>
 						</c:choose>
 					</li>
-					
 	            </ul>
             </div>
             
