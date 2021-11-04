@@ -10,7 +10,7 @@ h3 {
 }
 
 .wrapper{
-	height: 90vh;
+	height: 95vh;
 }
 
 .csarea {
@@ -55,6 +55,10 @@ h3 {
 	font-weight : bold;
 }
 
+.tbtd{
+	height: 30px;
+}
+
 tr, th, td {
 	border : 1px solid lightskyblue;
 }
@@ -82,30 +86,140 @@ tr, th, td {
 
 #tb1phone{
 	width : 150px;
+	height : 30px;
+	background: #497d42;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px; 
 }
 
 #tb1ip{
-	width : 100px;
+	width : 150px;
+	height : 30px;
+	background: #497d42;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px; 
+}
+
+#pwdUpdateBtn{
+	width : 150px;
+	height : 30px;
+	background: #497d42;
+    color: white;
+    font-weight: bold;
+    margin-left : 15px;
+    border-radius: 15px; 
+}
+
+.tb0{
+	width : 150px;
+	height : 30px;
+	background: #497d42;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;   
 }
 
 .tb2{
-	border : 1px solid black;
-	border-radius : 10%;
-	width : 80px;
-	height : 20px;
+	width : 150px;
+	height : 30px;
+	background: #497d42;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;  
 }
 
 .tb3{
 	border : 1px solid black;
 	border-radius : 10%;
 	width : 150px;
-	height : 20px;
+	height : 30px;
+	margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 13px;
+    padding-left: 10px;
 }
 
 .tb4{
 	border : 1px solid black;
 	border-radius : 10%;
-	height : 20px;
+	height : 30px;
+	margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 13px;
+    padding-left: 10px;
+}
+
+.tb5{
+	border : 1px solid black;
+	border-radius : 10%;
+	width : 150px;
+	height : 30px;
+	margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+.postcodify_postcode5{
+	border : 1px solid black;
+	border-radius : 10%;
+	height : 30px;
+	margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 13px;
+    padding-left: 10px;
+}
+
+.postcodify_address{
+	border : 1px solid black;
+	border-radius : 10%;
+	height : 30px;
+	margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 13px;
+    padding-left: 10px;
+}
+
+.postcodify_extra_details{
+	border : 1px solid black;
+	border-radius : 10%;
+	height : 30px;
+	margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 13px;
+    padding-left: 10px;
+}
+
+#postcodify_search_button{
+	width : 150px;
+	height : 30px;
+	background: #497d42;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px; 
+}
+
+/* 수정하기 버튼 */
+#updateBtn{
+	width : 150px;
+	height : 30px;
+	background: #497d42;
+    color: white;
+    height: 30px;
+    font-weight: bold;
+    margin-top : 20px;
+    margin-left : 160px;
+}
+
+#deleteBtn{
+	width : 150px;
+	height : 30px;
+	background: #497d42;
+    color: white;
+    height: 30px;
+    font-weight: bold;
+    margin-left: 20px;
 }
 
 /* 약관 내역 */

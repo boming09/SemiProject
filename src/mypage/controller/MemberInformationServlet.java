@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.service.MemberService;
+import member.model.vo.Member;
+
 /**
  * Servlet implementation class MemberInformationServlet
  */
@@ -37,8 +40,40 @@ public class MemberInformationServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		
+		// 회원정보 수정에 필요한 값 추출
+		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
+		String userName = request.getParameter("userName");
+		String userPhone = request.getParameter("phone");
+		String userEmail = request.getParameter("email");
+		String[] addressArr = request.getParameterValues("address");
+		
+		String address ="";
+		
+		if(addressArr != null && !addressArr[0].equals("")) {
+			address = String.join("|", addressArr);
+			
+		}
+		
+		Member member = new Member(userNo, userName, userPhone, userEmail, address);
+				
+		// 비즈니스 로직 수행 (DB update)
+		// db update 수정 된 member select > session의 loginUser 값 변경
+		Member updatedMember = new MemberService().updateMember(member);
+		
+		// 응답 화면
+		if(updatedMember != null) {
+			request.getSession().setAttribute("message", "회원 정보 수정이 완료 되었습니다.");
+			
+			request.getSession().setAttribute("loginUser", updatedMember);
+			
+			response.sendRedirect(request.getContextPath());
+		} else {
+			request.setAttribute("message", "회원정보 수정에 실패 하였습니다.<br>다시 정보입력을 확인해 주세요.");
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/errorpage.jsp");
+			view.forward(request, response);
+		}
 	}
 
 }

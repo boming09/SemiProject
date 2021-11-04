@@ -141,9 +141,13 @@
 				나의 계정과 나의 서재 등</label><br> <label class="end">모든 DB가 자동 삭제 됩니다.
 				신중하게 선택해 주세요.</label> <br>
 			<br>
+			<!-- 비밀번호 확인후 탈퇴하기 가능 하면 만들고  못할거 같으면 삭제하고 
+				  탈퇴하기 클릭시 탈퇴가능하게 만들예정. -->
 			<div class="h5go">
 				<h4 class="h5go">
-					비밀번호 : <input type="text" id="out"> <input type="button" id="outbut" value="탈퇴확인">
+					비밀번호 : <input type="password" id="out"> 
+					<button id="deleteBtn" type="button"
+					onclick="confirmAccountDelete();">탈퇴하기</button>
 				</h4>
 			</div>
 			<br>
@@ -154,5 +158,11 @@
 	</div>
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	<script>
+	function confirmAccountDelete(){
+			if(confirm("정말로 탈퇴하시겠습니까?"))
+				location.href='<%= request.getContextPath () %>/accountDelete';
+		}
+	</script>
 </body>
 </html>
