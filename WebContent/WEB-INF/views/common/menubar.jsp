@@ -220,7 +220,8 @@ scope="application"/>
                         <c:if test="${ param.searchCondition == 'author' }">selected</c:if>>작가</option>
                     </select> 
                     <span class="input_area">
-                    <input type="search" name="searchValue" placeholder="검색할 내용을 입력하세요.">
+                    <input type="search" name="searchValue" value="${ param.searchValue }"
+                    placeholder="검색할 내용을 입력하세요.">
                     <button id="search_btn" type="submit" onclick="search()"><i class="fas fa-search"></i></button>
                     </span>
                 </form>
