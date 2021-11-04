@@ -36,7 +36,7 @@
     margin: 20px 30px 20px 30px;
 }
 
-.wc_titlearea, .wc_contentarea, .wc_filearea {
+.wc_titlearea, .wc_contentarea, .wc_filearea, .wc_bookarea {
     border-top: 1px solid lightgray;
     display: flex;
     align-items: center;
@@ -46,7 +46,7 @@
     border-bottom: 1px solid lightgray;
 }
 
-.wc_title, .wc_content, .wc_file {
+.wc_title, .wc_content, .wc_file, .wc_book {
     width: 20%;
     text-align: center;
     background: rgb(239, 239, 239);
@@ -54,7 +54,7 @@
     border-right: 1px solid lightgray;
 }
 
-.wc_title2, .wc_content2, .wc_file2 {
+.wc_title2, .wc_content2, .wc_file2, .wc_book2 {
     width: 80%;
 }
 
@@ -85,6 +85,61 @@
     margin: 10px 10px;
     resize: none;
     padding-left : 10px;
+}
+
+/* 도서 인증 영역 */
+.wc_book {
+	line-height: 222px;
+}
+.wc_search {
+	/* fieldset */
+	width: 96%;
+	height : 50px;
+	display : flex;
+	align-items: center;
+	margin-left : 10px;
+	margin-top : 10px;
+	font-size: 0.9rem;
+	border-bottom: 1px solid rgb(239, 239, 239);
+}
+
+.wc_search input {
+	width : 200px;
+	height : 30px;
+	font-size : 0.9rem;
+	margin-left : 10px;
+	padding-left : 10px;
+	border: 1px solid rgb(239, 239, 239);
+}
+.wc_search button {
+	font-size : 0.8rem;
+	margin-left : 10px;
+	width: 65px;
+    height: 30px;
+    background: rgb(73, 125, 78);
+    color: white;
+    font-weight : bold;
+}
+.wc_search button:hover {
+    background-color: rgb(196, 217, 195);
+    color: black;
+}
+.wc_book2 select {
+	width : 200px;
+	margin : 15px;
+	margin-left : 10px;
+	font-size : 0.9rem;
+	
+}
+.wc_book2 textarea {
+	font-size : 0.9rem;
+	width: 96%;
+	height: 100px;
+	resize: none;
+	padding-left : 10px;
+	border: 1px solid rgb(239, 239, 239);
+	margin: 0px 10px;
+	margin-bottom : 10px;
 }
 
 /* 첨부파일 영역 */

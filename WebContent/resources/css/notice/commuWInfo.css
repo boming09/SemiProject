@@ -111,7 +111,7 @@
 
 .w_introduce span:first-child {
     width: 130px;
-    border-bottom: 3px dotted rgb(73, 125, 78);
+    border-bottom: 2px solid rgb(117, 117, 117);
     font-size: 0.95rem;
     font-weight : bold;
     text-align: center;
@@ -123,15 +123,12 @@
     align-items: center;
 }
 
-.w_introduce span:first-child img {
-	display : inline;
-	width : 22px;
-	height : 22px;
-	margin-left : 5px;
-	
-}
-
 .w_introduce span:last-child {
     font-size: 0.9rem;
     padding-top: 10px;
+}
+
+/* 작가 인증 체크아이콘 */
+i {
+	font-size : 1rem;
 }
