@@ -10,7 +10,7 @@ a {
 }
 
 .textbox {    
-    border : 1px solid rgba(196, 217, 195, 1);       
+    border : 1px solid rgba(196, 217, 195, 1);
     padding : 15px 35px;
     border-radius: 5px;
 }
@@ -24,16 +24,16 @@ a {
 
 /* center  */
 
-.main-center {
-    width : 600px;
-    height : 600px;
-    margin : 800 800;
-    min-height: 100%; 
-    position: relative;
-    /*position: absolute;*/
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.outer {
+	width: 50%;
+	min-width: 400px;
+	height: 600px;
+	border: 1px solid white;
+	border-radius: 10px;
+	margin: 70px auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .main-center2 {
@@ -51,13 +51,23 @@ a {
     */
 }
 
+.outer {
+		width:45%;
+		min-width : 650px;
+		border: 1px solid lightgray;
+    	border-radius: 10px;
+		margin: 70px auto;
+}
+
 .lofd {
     border : 1px solid white;
     padding : 30px;
+    display: table-caption;
 }
 
 #lolegend {
-    font-size: 15px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 /* 아이디 이메일 저장 */
@@ -67,29 +77,33 @@ a {
 
 /* 아이디 찾기 버튼*/
 .idb {
+    width : 145px;
     border : 1px solid rgba(196, 217, 195, 1);
     background-color: white;
     color: red;
-    padding : 15px 35px;
+    padding : 15px 20px;
     border-radius: 5px;
+    margin-top: 20px;
 }
 
 /* 비밀번호 찾기 버튼*/
 .psb {
+	width : 145px;
     border : 1px solid rgba(196, 217, 195, 1);
     background-color: white;
     color: red;
-    padding : 15px 35px;
+    padding : 15px 20px;
     border-radius: 5px;
+    text-align : center;
 }
 
 /* 로그인 버튼 */
 #lobut {
     width : 150px;
-    height : 110px;
+    height : 105px;
     position : absolute;
-            top : 35px;
-            left : 330px;
+            top : 348px;
+            right : 720px;
     background :#497D4E;
     color : white;
     text-align: center;
@@ -126,18 +140,102 @@ a {
 .lotb{
     border-spacing: 10px;
 }
+
+.lotb2{
+	border-spacing: 10px;
+}
+
+.postcodify_postcode5{
+	width : 100px;
+	height : 30px;
+	border : 1px solid gray;
+	padding: 10px;
+}
+
+.postcodify_address{
+	width : 300px;
+	height : 30px;
+	border : 1px solid gray;
+	padding: 10px;
+}
+
+.postcodify_extra_info{
+	width : 300px;
+	height : 30px;
+	border : 1px solid gray;
+	padding: 10px;
+}
+
+#postcodify_search_button{
+	width: 100px;
+    background: #497d42;
+    color: white;
+    height: 30px;
+    font-weight: bold;
+}
+
+
 /* 회원가입 텍스트박스 */
 .lomb {
     border : 1px solid gray;
+    height : 30px;
+    padding: 10px;
+}
+
+#lomb2 {
+	border : 1px solid gray;
+	height : 30px;
+}
+
+#emailSelection{
+	width : 80px;
+	border : 1px solid gray;
+	height : 30px;
+	text-align : center;
+	padding-right: 10px;
+	margin-left : 10px;
 }
 
 /* 중복확인 */
 .check {
-    border : 1px solid #497D4E;
+    width: 100px;
+    background: #497d42;
+    color: white;
+    height: 30px;
+    font-weight: bold;
+    margin-left : 60px;
+}
+
+buttom{
+	/*
+	border : 1px solid #497D4E;
     background : #497D4E;
     color : white;
     width : 100px;
     height : 20px;
+    */
+    width : 100px;
+	height : 35px;
+	border : 0px;
+	color:white;
+	background:#282A35;
+	margin : 5px;
+	cursor : pointer;
+}
+
+/* 개인정보 띄우기 */
+.id_name{
+	padding-left : 20px;
+}
+
+.privacy{
+	padding-right: 41px;
+}
+
+/* 주소 띄우기 */
+.address_name{
+	padding-left : 55px;
+	padding-right : 88px;	
 }
 
 /* 회웝가입 버튼 */
@@ -145,19 +243,21 @@ a {
     width : 300px;
     height : 100px;
     position : absolute;
-            top : 480px;
+            top : 677px;
             left : 600px;
     background :#497D4E;
     color : white;
     text-align: center;
     font-size : 40px;
     padding : 20px;
+    cursor : pointer;
 }
 
 /* 약관 텍스트 */
 .termstext{
     font-size : 8px;
     color : gray;
+    padding-left : 46px;
 }
 
 /* 아이콘 크기 */
@@ -353,6 +453,16 @@ footer {
     height : 40px
 }
 
+/* 로그인 적는곳 */
+#loginid{
+	margin-bottom: 10px;
+	width : 300px;
+}
+
+#loginps{
+	width : 300px;
+}
+
 /* 문의 내용 */
 #emailarea{
     border : 1px solid black;
@@ -368,6 +478,27 @@ footer {
     position: absolute;
     top: 76%;
     right: 48%;
+}
+
+/* 에러페이지 */
+#errorcenter{
+	    height: 70vh;
+}
+
+#imageArea {
+	width : 400px;
+	margin : 80px auto;
+	display : flex;
+	justify-content : center;
+	align-tiem : center;
+}
+
+#imageArea img {
+	width : 100%;
+}
+
+#msgArea{
+	text-align : center;
 }
 
 
