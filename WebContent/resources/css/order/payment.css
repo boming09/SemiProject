@@ -80,7 +80,6 @@
 }
 
 
-
 /*-------------------------*/
 
 ul,ol,li {
@@ -296,6 +295,12 @@ a {
 	margin:20px;
 }
 
+#agreebox {
+	zoom: 1.4;
+	width:17px;
+	
+	
+}
 .pay div{
 	margin:5px;
 }
