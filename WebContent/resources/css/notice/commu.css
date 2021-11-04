@@ -116,26 +116,61 @@
   
 }
 .commu_writer {
-    width: 10%;
+    width: 13%;
     border-right: 1px solid lightgray;
-    
+}
+.writer2, .user2 {
+	padding : 0 5px;
 }
 .commu_title {
-    width: 47%;
+    width: 42%;
     border-right: 1px solid lightgray;
-    
+}
+.title2 {
+	text-align : left;
+	padding : 0 10px;
 }
 .commu_user {
-    width: 10%;
+    width: 12%;
     border-right: 1px solid lightgray;
-    
 }
 .commu_date {
     width: 15%;
     border-right: 1px solid lightgray;
-    
 }
 .commu_status {
     width: 10%;
-   
+}
+
+/* 마우스 오버시 */
+.commu_list:hover {
+    background: #f3f5f7;
+}
+
+/* 페이징 영역 */
+.pagingarea {
+	margin: 10px 30px;
+	margin-bottom : 80px;
+	height : 50px;
+	display : flex;
+	justify-content : center;
+    align-items: center;
+}
+.pagingarea ul {
+	list-style : none;
+	display : flex;
+	justify-content : center;
+    align-items: center;
+    width : 400px;
+    height : 50px;  
+}
+
+.pagingarea ul li {
+	width: 40px;
+	text-align : center;
+}
+
+.current_page {
+	border-bottom: 2px solid black;
+	font-weight: bold;
 }

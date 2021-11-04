@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +37,7 @@
                 <span>목록</span>
                 <span>
                     <input type="checkbox" name="mylist" value=""><label>내가 쓴 글만 보기</label>
-                    <button type="button">글 작성</button>
+                    <button type="button" onclick="location.href='${ contextPath }/commu/insert'">글 작성</button>
                 </span>
             </div>
 
@@ -44,24 +45,69 @@
                 <div class="commu_listarea">
                     <ul class="commu_listtop">
                         <li class="commu_no">번호</li>
-                        <li class="commu_writer">작가</li>
+                        <li class="commu_writer">소통작가</li>
                         <li class="commu_title">제목</li>
                         <li class="commu_user">작성자</li>
                         <li class="commu_date">등록일</li>
                         <li class="commu_status">상태</li>
                     </ul>
-                    <ul class="commu_list">
-                        <li class="commu_no">100</li>
-                        <li class="commu_writer">반복문</li>
-                        <li class="commu_title">반복문</li>
-                        <li class="commu_user">반복문</li>
-                        <li class="commu_date">반복문</li>
-                        <li class="commu_status">답변완료</li>
-                    </ul>
+                    <c:forEach var="commu" items="${ commuList }">
+	                    <ul class="commu_list" onclick="detailView(${ commu.commu_no })">
+	                        <li class="commu_no">${ commu.commu_no }</li>
+	                        <li class="commu_writer writer2">${ commu.cwriter_name }</li>
+	                        <li class="commu_title title2">${ commu.ctitle }</li>
+	                        <li class="commu_user user2">${ commu.user_no }</li>
+	                        <li class="commu_date">${ commu.create_date }</li>
+	                        <li class="commu_status" id="commuStatus" value="${ commu.status }">
+	                        	<c:choose>
+		                        	<c:when test="${ commu.status == 'N' }">미답변</c:when>
+		                        	<c:otherwise>답변완료</c:otherwise>
+		                        </c:choose>
+	                        </li>
+	                    </ul>                    
+                    </c:forEach>
                 </div>
                 
-                <div class="commu_page">
-                    <!-- 페이지 바 영역 => 나중에 작성 -->
+                <div class="pagingarea">
+                    <ul class="commu_paging">
+		            	<!-- 앞으로 이동하는 버튼(<) -->
+		            	<li>
+						<c:choose>
+							<c:when test="${ pi.page > 1 }">
+								<a href="${ contextPath }/commu?page=${ pi.page - 1}">&lt;</a>
+							</c:when>
+							<c:otherwise>
+								<a href="#">&lt;</a>
+							</c:otherwise>
+						</c:choose>
+						</li>
+		            
+		            	<!-- 최대5개의 페이지 바 -->
+						<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+							<li>
+								<c:choose>
+									<c:when test="${ p eq pi.page }">
+										<a href="#" class="current_page">${ p }</a>
+									</c:when>
+									<c:otherwise>
+										<a href="${ contextPath }/commu?page=${ p }">${ p }</a>
+									</c:otherwise>
+								</c:choose>
+							</li>
+						</c:forEach>
+		            	
+		            	<!-- 다음 페이지로(>) -->                     
+						<li>
+							<c:choose>
+								<c:when test="${ pi.page < pi.maxPage }">
+									<a href="${ contextPath }/commu?page=${ pi.page + 1}">&gt;</a>
+								</c:when>
+								<c:otherwise>
+									<a href="#">&gt;</a>
+								</c:otherwise>
+							</c:choose>
+						</li>
+	           		</ul>
                 </div>
                 
             </div>
@@ -73,5 +119,37 @@
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
+	
+	<script>
+		function detailView(communo){
+			location.href='${ contextPath }/commu/detail?commu_no=' + communo;
+		}
+		
+		
+		
+		
+		
+		
+		
+	</script>
+	
+	<!-- 로그인 유저 생기면~~~ -->
+	<%-- <c:choose>
+		<c:when test="${ !empty loginUser }">
+			<script>
+				function detailView(bid){
+					location.href='${ contextPath }/board/detail?bid=' + bid;
+				}
+			</script>
+		</c:when>
+		<c:otherwise>
+			<script>
+				function detailView(bid){
+					alert("로그인 후 이용 가능합니다.");
+					location.href='${ contextPath }/login'
+				}
+			</script>
+		</c:otherwise>
+	</c:choose> --%>
 </body>
 </html>

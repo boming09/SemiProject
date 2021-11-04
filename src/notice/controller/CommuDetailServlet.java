@@ -2,27 +2,26 @@ package notice.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import notice.model.service.OneService;
-import notice.model.vo.One;
+import notice.model.service.CommuService;
+import notice.model.vo.Commu;
 
 /**
- * Servlet implementation class OneQuestionDetailServlet
+ * Servlet implementation class CommuDetailServlet
  */
-@WebServlet("/one/detail")
-public class OneQuestionDetailServlet extends HttpServlet {
+@WebServlet("/commu/detail")
+public class CommuDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public OneQuestionDetailServlet() {
+    public CommuDetailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,20 +30,19 @@ public class OneQuestionDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int one_no = Integer.parseInt(request.getParameter("one_no"));
-		//System.out.println(one_no);
-		// => 몇번 게시물인지?? 확인
+		int commu_no = Integer.parseInt(request.getParameter("commu_no"));
+		//System.out.println(commu_no);
 		
-		One one = new OneService().selectOne(one_no);
-		//System.out.println(one);
+		Commu commu = new CommuService().selectCommu(commu_no);
+		//System.out.println(commu);
 		
-		if(one != null) {
-			// 1:1문의 게시글 디테일 페이지 이동
-			request.setAttribute("one", one);
-			request.getRequestDispatcher("/WEB-INF/views/notice/oneQuestionDetailView.jsp").forward(request, response);
+		if(commu != null) {
+			// 소통게시판 게시글 디테일 페이지 이동
+			request.setAttribute("commu", commu);
+			request.getRequestDispatcher("/WEB-INF/views/notice/commuDetailView.jsp").forward(request, response);
 		} else {
 			request.getSession().setAttribute("msg", "실패^^~~");
-			request.getRequestDispatcher("/WEB-INF/views/notice/oneQuestionView.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/notice/commuView.jsp").forward(request, response);
 		}
 		
 	}
