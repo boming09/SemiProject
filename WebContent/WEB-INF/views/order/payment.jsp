@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,7 @@
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
 <link href="<%= request.getContextPath() %>/resources/css/order/payment.css" rel="stylesheet">
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </head>
 <body>
 	<!-- 메뉴바 -->
@@ -98,13 +99,24 @@
 			<div class="agree">
 				<div class="agree_dt">구매조건을 확인하였으며 결제에 동의합니다.</div>
 				<div class="agree_dt2">
-					<p>주문 상품의 상품명, 가격, 배송 정보를 확인하였으며, 구매에 동의합니다.</p>
+					<p>주문 상품의 상품명, 가격, 배송 정보를 확인하였으며, 구매에 동의합니다.<input type="checkbox" id="agreebox" name="agree" value="agree" required></p>
 				</div>
 			</div>
 			
 			
-     		<button id="ct_order_btn">결제하기 </button>
+     		<button id="ct_order_btn" type="submit">결제하기 </button>
      		</form>
+     		<script>
+     			$("#ct_order_btn").click(function(){
+     				 if($("#agreebox").is(":checked") == false){ 
+      					alert("구매에 동의하셔야 결제가 진행됩니다.")	;
+      					return;
+     				 } 
+     			});
+     		
+     				 
+     			
+     		</script>
      		
          </div>
 		</div>
