@@ -67,6 +67,7 @@
     text-align: center;
     background: rgb(239, 239, 239);
     font-size: 0.95rem;
+    border-right: 1px solid lightgray;
 }
 
 .q_title2, .q_content2, .q_file2 {

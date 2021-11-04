@@ -21,9 +21,9 @@
 		<div class="content">
             <header class="one_header">
                 <div>1:1 문의하기</div>
-                <div class="one_question">
+                <%-- <div class="one_question">
                     <button type="button" onclick="location.href='${ contextPath }/one'">1:1 문의내역</button>
-                </div>
+                </div> --%>
             </header>
             <div class="one_ment">
                 <ul>

@@ -12,7 +12,7 @@
 }
 
 /* 컨텐츠 헤더 */
-.wcheck_header {
+.commu_header {
     height: 70px;
     display : flex;
     justify-content : space-between;	
@@ -20,33 +20,35 @@
     margin: 0px 0px 10px 0px;
     padding-left: 30px;
     padding-right: 30px;
+} 
+.commu_header div:first-child {
     font-size: 1.1rem;
     font-weight : bold;
-} 
+}
 
 /* 멘트 */
-.wcheck_ment ul li {
+.commu_ment ul li {
     margin-left: 60px;
     line-height: 30px;
     font-size: 0.8rem;
 }
 
 /* 작성 영역*/
-.wc_info {
+.commu_info {
     margin: 20px 30px 20px 30px;
 }
 
-.wc_titlearea, .wc_contentarea, .wc_filearea {
+.commu_warea, .commu_titlearea, .commu_contentarea {
     border-top: 1px solid lightgray;
     display: flex;
     align-items: center;
 }
 
-.wc_filearea {
+.commu_contentarea {
     border-bottom: 1px solid lightgray;
 }
 
-.wc_title, .wc_content, .wc_file {
+.commu_w, .commu_title, .commu_content {
     width: 20%;
     text-align: center;
     background: rgb(239, 239, 239);
@@ -54,17 +56,27 @@
     border-right: 1px solid lightgray;
 }
 
-.wc_title2, .wc_content2, .wc_file2 {
+.commu_writer, .commu_title2, .commu_content2 {
     width: 80%;
 }
 
 /* span태그 세로가운데는 line-height로 맞추기 */
+/* 작가선택 영역 */
+.commu_w {
+	line-height: 50px;
+}
+
+.commu_writer {
+	width : 40%;
+	padding : 0 10px;
+}
+
 /* 문의제목 영역 */
-.wc_title {
+.commu_title {
     line-height: 50px;
 }
 
-.wc_title2 input {
+.commu_title2 input {
     width: 96%;
     height: 30px;
     border: 1px solid rgb(239, 239, 239);
@@ -74,11 +86,11 @@
 }
 
 /* 문의내용 영역 */
-.wc_content {
+.commu_content {
     line-height: 336px;
 }
 
-.wc_content2 textarea {
+.commu_content2 textarea {
     width: 96%;
     height: 310px;
     border: 1px solid rgb(239, 239, 239);
@@ -87,31 +99,14 @@
     padding-left : 10px;
 }
 
-/* 첨부파일 영역 */
-.wc_file {
-    line-height: 160px;
-}
-
-.wc_uplode input {
-    margin: 15px;
-    font-size: 0.9rem;
-}
-
-.wc_file2 ul {
-    font-size: 0.8rem;
-    padding-left: 30px;
-    padding-right: 10px;
-    margin-bottom: 10px;
-    line-height: 20px;
-}
 
 /* 취소/등록 버튼 */
-.wc_btn {
+.commu_btn {
     display : flex;
     justify-content : center;	
     align-items: center;
 }
-.wc_btn button {
+.commu_btn button {
     margin: 20px;
     margin-bottom: 60px;
     width: 90px;
@@ -122,7 +117,7 @@
     font-weight : bold;
 }
 
-.wc_btn button:hover {
+.commu_btn button:hover {
     background-color: rgb(196, 217, 195);
     color: black;
 }

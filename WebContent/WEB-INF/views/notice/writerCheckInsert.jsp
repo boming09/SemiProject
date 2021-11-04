@@ -27,7 +27,7 @@
                 </ul>
             </div>
 
-            <form class="wc_info" method="get" onSubmit="${ contextPath }/one/insert">
+            <form class="wc_info" <%-- action="${ contextPath }/w-check/insert" --%> method="post" enctype="multipart/form-data">
                 <div class="wc_titlearea">
                     <span class="wc_title">제목</span>
                     <span class="wc_title2">
