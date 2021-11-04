@@ -43,7 +43,6 @@ public class JDBCTemplate {
 		
 		return conn;
 	}
-
 	
 	// 사용 객체 반환 메소드(Connection, Statement, ResultSet)
 	public static void close(Connection conn) {

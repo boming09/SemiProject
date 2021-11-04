@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="member.model.vo.Member"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	Member loginUser = (Member)session.getAttribute("loginUser");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -181,11 +184,19 @@ scope="application"/>
         <header class="page-header">
             <nav>
                 <ul class="main-nav">
+                	<% if(loginUser == null) { %>
                     <li><a href="<%= request.getContextPath() %>/login">로그인</a></li>
                     <li><a href="<%= request.getContextPath() %>/joinmembership">회원가입</a></li>
                     <li><a href="<%= request.getContextPath() %>/mypage">마이페이지</a></li>
                     <li><a href="<%= request.getContextPath() %>/cart">장바구니</a></li>
                     <li><a href="<%= request.getContextPath() %>/cs">고객센터</a></li>
+                    <% } else { %>
+                    <li><a href="<%= request.getContextPath() %>/memberinformation">정보수정</a></li>
+                    <li><a href="<%= request.getContextPath() %>/logout">로그아웃</a></li>
+                    <li><a href="<%= request.getContextPath() %>/mypage">마이페이지</a></li>
+                    <li><a href="<%= request.getContextPath() %>/cart">장바구니</a></li>
+                    <li><a href="<%= request.getContextPath() %>/cs">고객센터</a></li>
+                    <% } %>
                 </ul>
             </nav>
             
