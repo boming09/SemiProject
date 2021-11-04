@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.Arrays"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -34,16 +34,63 @@
             </header>
             <br>
             <div class="cen">
+            	<form id="joinForm" action="<%= request.getContextPath() %>/memberinformation"
+            	method="post" onsubmit="return validate();">
 	            <table class="ctable" id="table1">
 	            	<tr>
-	            		<th>아이디</th>
+	            		<th class="tbtd">아이디</th>
 	            		<td>&nbsp;&nbsp;
-	            			<input type="text" class="tb3"></td>
+	            			<input type="text" class="tb3" name="userId" 
+	            			value="<%= loginUser.getUserId() %>" readonly></td>
 	            	</tr>
+	            	<tr>
+	            		<th>비밀번호</th>
+	            		<td>&nbsp;&nbsp;
+	            			<input type="text" class="tb3" name="userPwd" readonly> 
+	            			<button id="pwdUpdateBtn" type="button"
+	            			onclick="openPopup('<%= request.getContextPath() %>/pwdModify', 'pwdModify', 480, 480);">비밀번호 변경</button></td>           			
+	            	</tr>	            	
 	            	<tr>
 	            		<th>성  명</th>
 	            		<td>&nbsp;&nbsp;
-	            			<input type="text" class="tb3"></td>
+	            			<input type="text" class="tb3" name="userName"
+	            			value="<%= loginUser.getUserName() %>" required></td>
+	            	</tr>
+	            	<tr>
+	            		<th>휴대전화</th>
+	            		<td>&nbsp;&nbsp;
+	            			<input type="text" class="tb3"  name="phone"
+	            			value="<%= loginUser.getUserPhone() != null ? loginUser.getUserPhone() : "" %>">	            			
+	            			&nbsp;&nbsp;&nbsp;&nbsp;
+	            			주문배송 SMS, ARS상담시 본인 확인용으로 사용</td>
+	            	</tr>
+	            	<tr>
+	            		<th>이메일 주소</th>
+	            		<td>&nbsp;&nbsp;
+	            			<input type="text" class="tb3" name="email"
+	            			value="<%= loginUser.getUserEmail() != null ? loginUser.getUserEmail() : "" %>"></td>
+	            	</tr>
+	            	<tr>
+	            		<% 
+	            			String[] address;
+	            			if(loginUser.getUserAddress() != null){
+            					address = loginUser.getUserAddress().split("[|]");
+	            			} else {
+	            				address = new String[] {"", "", ""};
+	            			}
+	            		%>
+	            		<th class="address_name">주   소</th>
+	            		<td>&nbsp;&nbsp;
+	            			<input type="text" class="postcodify_postcode5" name="address" size="15"
+	            			value="<%= address[0] %>" readonly><br>
+	            			&nbsp;&nbsp;
+	            			<input type="text" class="postcodify_address" name="address" size="35"
+	            			value="<%= address[1] %>" readonly><br>
+	            			&nbsp;&nbsp;
+	            			<input type="text" class="postcodify_extra_details" name="address" size="35"
+	            			value="<%= address[2] %>">
+	            			&nbsp;&nbsp;&nbsp;&nbsp;
+	            			<button type="button" id="postcodify_search_button">변경하기</button></td>
 	            	</tr>
 	            	<tr>
 	            		<th>본인인증</th>
@@ -59,37 +106,10 @@
 	            		<td>&nbsp;&nbsp;
 	            			<input type="text" class="tb3">
 	            			&nbsp;&nbsp;&nbsp;&nbsp;
-	            			<input type="button" class="tb2" value="변경하기"><br>
+	            			<input type="button" class="tb2" value="변경하기">
 		            		&nbsp;&nbsp;&nbsp;&nbsp;
 		            		서재 닉네임은 100자평, 마이리뷰, 이벤트 댓글에 사용됩니다.</td>
-	            	</tr>
-	            	<tr>
-	            		<th>이메일 주소</th>
-	            		<td>&nbsp;&nbsp;
-	            			<input type="text" class="tb3">
-	            			&nbsp;&nbsp;&nbsp;&nbsp;
-	            			<input type="button" class="tb2" value="변경하기"></td>
-	            	</tr>
-	            	<tr>
-	            		<th>주   소</th>
-	            		<td>&nbsp;&nbsp;
-	            			<input type="text" class="tb4" size="15"><br>
-	            			&nbsp;&nbsp;
-	            			<input type="text" class="tb4" size="29"><br>
-	            			&nbsp;&nbsp;
-	            			<input type="text" class="tb4" size="29">
-	            			&nbsp;&nbsp;&nbsp;&nbsp;
-	            			<input type="button" class="tb2" value="변경하기"></td>
-	            	</tr>
-	            	<tr>
-	            		<th>휴대전화</th>
-	            		<td>&nbsp;&nbsp;
-	            			<input type="text" class="tb3">
-	            			&nbsp;&nbsp;&nbsp;&nbsp;
-	            			<input type="button" class="tb2" value="변경하기">
-	            			&nbsp;&nbsp;&nbsp;&nbsp;
-	            			주문배송 SMS, ARS상담시 본인 확인용으로 사용</td>
-	            	</tr>
+	            	</tr>          	
 	            	<tr>
 	            		<th>전화번호</th>
 	            		<td>&nbsp;&nbsp;
@@ -97,13 +117,7 @@
 	            			&nbsp;&nbsp;&nbsp;&nbsp;
 	            			<input type="button" class="tb2" value="입력하기">
 	            	</tr>
-	            	<tr>
-	            		<th>비밀번호</th>
-	            		<td>&nbsp;&nbsp;
-	            			<input type="text" class="tb3">
-	            			&nbsp;&nbsp;&nbsp;&nbsp;
-	            			<input type="button" class="tb2" value="변경하기"></td>
-	            	</tr>
+	            	
 	            </table>
 	            <br>
 	            <h3>계정 연동여부</h3>
@@ -112,20 +126,26 @@
 	            	<tr>
 	            		<th>카카오</th>
 	            		<td>&nbsp;&nbsp;&nbsp;&nbsp;
-	            			<input type="button" class="tb2" value="변경하기"></td>
+	            			<input type="button" class="tb0" value="변경하기"></td>
 	            		<th>네이버</th>
 	            		<td>&nbsp;&nbsp;&nbsp;&nbsp;
-	            			<input type="button" class="tb2" value="변경하기"></td>
+	            			<input type="button" class="tb0" value="변경하기"></td>
 	            	</tr>
 	            </table>
 	            <br>
 	            <table class="ctable" id="table3">
 	            	<tr>
-	            		<th><input type="button" class="tb3" value="뉴스레터/문자수신 설정">
+	            		<th><input type="button" class="tb5" value="뉴스레터/문자수신 설정">
 	            		 &nbsp;&nbsp;&nbsp;&nbsp;메일, sms 또는 알림톡, 앱 푸시를 통한 신간, 이벤트 정보 수신 여부를
 	            			설정할 수 있습니다.
 	            	</tr>
 	            </table>
+	            	<div class="btnArea">
+						<button id="updateBtn">수정하기</button>
+						<a href="<%= request.getContextPath() %>/memberout"><button id="deleteBtn" type="button"
+						>탈퇴하기</button></a>
+				</div>       
+	            </form>
 	            <br>
 	            <h3 class="terms" id="terms">봄숲 약관 동의 내역</h3>
 	            <br>
@@ -147,5 +167,36 @@
 	</div>	
     <!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	<!-- jQuery와 Postcodify를 로딩한다 -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+
+	<!-- "검색" 단추를 누르면 팝업 레이어가 열리도록 설정한다 -->
+	<script>
+		$(function() {
+			$("#postcodify_search_button").postcodifyPopUp();
+		});
+	</script>
+
+	<script>
+		// 사용자 입력 값 유효성 검사용 함수
+		function validate(){
+			return true;
+		}
+		
+		// 비밀번호 변경 팝업창 호출
+		function openPopup(url, title, width, height) {
+			
+			var left = (document.body.clientWidth/2)-(width/2);
+			left += window.screenLeft;	// 듀얼 모니터
+			var top = (screen.availHeight/2)-(height/2);
+			
+			var options = "width="+width+",height="+height+",left="+left+",top="+top;
+			
+			window.open(url, title, options);
+		}
+		
+		
+	</script>
 </body>
 </html>

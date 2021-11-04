@@ -18,8 +18,8 @@
 .h5go{
 	color: red;
 	display: flex;
-	text-aling : center;
-	margin-left : 100px;
+	margin-left: 80px;
+    font-size: 20px;
 }
 
 .topline {
@@ -145,4 +145,14 @@
 	margin-left : 20px;
 	color : black;
 	width : 100px;
+}
+
+#deleteBtn{
+	width : 150px;
+	height : 30px;
+	background: #497d42;
+    color: white;
+    height: 30px;
+    font-weight: bold;
+    margin-left: 20px;
 }

@@ -19,5 +19,84 @@
 	        AND USER_PWD = ?
 	        AND STATUS = 'Y'
 	</entry>
+	
+	<entry key="insertMember">
+		INSERT
+			INTO MEMBER
+			(
+				  USER_NO
+				, USER_ID
+				, USER_PWD
+				, USER_NAME
+				, USER_EMAIL
+				, USER_PHONE
+				, USER_ADDRESS
+				, USER_GRADE
+				, ENROLL_DATE
+				, STATUS
+			)
+			VALUES
+			(
+				SEQ_USER_NO.NEXTVAL
+			   , ?
+			   , ?
+			   , ?
+			   , ?
+			   , ?
+			   , ?
+			   , 1
+			   , SYSDATE
+			   , DEFAULT
+			)
+	</entry>
+	
+	<entry key="updateMember">
+		UPDATE
+				MEMBER
+			SET USER_NAME = ?
+			  , USER_PHONE = ?
+			  , USER_EMAIL = ?
+		      , USER_ADDRESS = ?
+		  WHERE USER_NO = ? 
+	</entry>
+	
+	<entry key="selectMember">
+		SELECT
+				USER_NO
+			  , USER_ID
+			  , USER_PWD
+			  , USER_NAME
+			  , USER_EMAIL
+			  , USER_PHONE
+			  , USER_ADDRESS
+			  , USER_GRADE
+			  , ENROLL_DATE
+			  , STATUS
+	       FROM MEMBER
+	      WHERE USER_NO = ?
+	        AND STATUS = 'Y'
+	</entry>
+	
+	<entry key="updatePwd">
+		UPDATE	
+				MEMBER
+			SET USER_PWD = ?
+		  WHERE USER_NO = ?
+		    AND USER_PWD = ?
+	</entry>
+	
+	<entry key="deleteAccount">
+		UPDATE
+				MEMBER
+			SET STATUS = 'N'
+		  WHERE USER_NO = ?
+	</entry>
+	
+	<entry key="idCheck">
+		 SELECT
+				COUNT(*)
+		   FROM MEMBER
+		  WHERE USER_ID = ?	
+	</entry>
 
 </properties>

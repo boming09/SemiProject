@@ -15,6 +15,15 @@
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
 <link href="<%= request.getContextPath() %>/resources/css/menubar-style.css" rel="stylesheet">
+<%-- session에 담긴 message 있을 경우 alert 하는 script --%>
+<% if(session.getAttribute("message") != null) { %>
+<script>
+	alert( '<%= session.getAttribute("message") %>');
+</script>
+<%
+		session.removeAttribute("message");
+	} 
+%>
 <!-- favicon (Real Favicon Generator 등에서 가공 필요) -->
 <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
 <!-- icon link -->
@@ -187,7 +196,6 @@ scope="application"/>
                 	<% if(loginUser == null) { %>
                     <li><a href="<%= request.getContextPath() %>/login">로그인</a></li>
                     <li><a href="<%= request.getContextPath() %>/joinmembership">회원가입</a></li>
-                    <li><a href="<%= request.getContextPath() %>/mypage">마이페이지</a></li>
                     <li><a href="<%= request.getContextPath() %>/cart">장바구니</a></li>
                     <li><a href="<%= request.getContextPath() %>/cs">고객센터</a></li>
                     <% } else { %>

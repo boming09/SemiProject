@@ -24,8 +24,7 @@
 	                id="loginid" name="userId" placeholder="아이디를 입력하세요" required>
 	            <input type="password" class="textbox" 
 	                id="loginps" name="userPwd" placeholder="비밀번호를 입력하세요" required><br>                  
-	            <input type="checkbox" id="loemailcheck" name="loemailcheck" 
-	                    value="loemailcheck" checked="checked">ID 또는 E-Mail 저장
+	            <input type="checkbox" id="remember" name="remember">ID 또는 E-Mail 저장
 	                    <a href="id"><input type="button" value="아이디 찾기" class="idb"></a>
 	                    <a href="password"><input type="button" value="비밀번호 찾기" class="psb"></a>
 	              
@@ -40,6 +39,9 @@
 	</div>
     <!-- footer -->
 	<jsp:include page="/WEB-INF/views/member/footer.jsp" />
+	<!-- 쿠키 사용하여 아이디 기억하기 기능 -->
+	<scripit src="<%= request.getContextPath() %>/resources/js/login/rememberUserId.js"></scripit>	
+	
 	<!-- 카카오 간편로그인 -->
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script>

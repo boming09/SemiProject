@@ -22,7 +22,7 @@
 	<div id="errorcenter">
 		<div id="imageArea">
 			<img id="errorImage"
-			src="<%= request.getContextPath() %>/resources/images/member/error.png">
+			src="<%= request.getContextPath() %>/resources/images/logo.png">
 		</div>
 	<h1 id="msgArea"><%= msg %></h1>
 	</div>
