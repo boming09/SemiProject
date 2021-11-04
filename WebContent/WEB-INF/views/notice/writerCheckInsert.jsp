@@ -41,6 +41,21 @@
                         <textarea name="content" required></textarea>
                     </div>
                 </div>
+                
+                <div class="wc_bookarea">
+                    <div class="wc_book">내도서</div>
+                    <div class="wc_book2">
+                        <fieldset class="wc_search">
+	                        <label>도서검색 :</label>
+	                        <input type="text">
+	                        <button type="submit">검색하기</button>   
+                        </fieldset>
+                        <select name="selectbook">
+                        	<option>▼ 도서선택 ▼</option>
+                        </select>
+                        <textarea></textarea>                       
+                    </div>
+                </div>
 
                 <div class="wc_filearea">
                     <span class="wc_file">파일 첨부</span>

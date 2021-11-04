@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
 <link href="${ contextPath }/resources/css/notice/commuWInfo.css" rel="stylesheet">
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <title>고객센터_소통게시판</title>
 </head>
 <body>
@@ -43,7 +44,7 @@
             <div class="w_profilearea">
                 <div class="w_profile"><img src="${ contextPath }/resources/images/notice/writer1.png"></div>
                 <div class="w_introduce">
-                    <span>정다정 작가님<img src="${ contextPath }/resources/images/notice/writer_check1.png"></span>
+                    <span>정다정 작가님&nbsp;<i class="fas fa-check-circle"></i></span>
                     <span>안녕하세요! 소개 반복문 돌려돌려~~</span>
                 </div>
             </div>
