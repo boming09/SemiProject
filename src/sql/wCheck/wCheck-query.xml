@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM
+"http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectBookList">
+		SELECT 
+		       BOOK_ID
+		     , BOOK_NAME
+		     , AUTHOR
+		     , PUBLICATION_DATE
+		     , PUBLISHER
+		     , SALE_RATE
+		     , BOOK_IMG
+		  FROM BOOK
+		 ORDER BY BOOK_NAME
+	</entry>
+	
+	<entry key="selectTitleList">
+		SELECT 
+		       BOOK_ID
+		     , BOOK_NAME
+		     , AUTHOR
+		     , PUBLICATION_DATE
+		     , PUBLISHER
+		     , SALE_RATE
+		     , BOOK_IMG
+		  FROM BOOK
+		 WHERE BOOK_NAME LIKE '%' || ? || '%'
+		 ORDER BY BOOK_NAME
+	</entry>
+	
+	<entry key="selectWriterList">
+		SELECT 
+		       BOOK_ID
+		     , BOOK_NAME
+		     , AUTHOR
+		     , PUBLICATION_DATE
+		     , PUBLISHER
+		     , SALE_RATE
+		     , BOOK_IMG
+		  FROM BOOK
+		 WHERE AUTHOR LIKE '%' || ? || '%'
+		 ORDER BY BOOK_NAME
+	</entry>
+	
+
+</properties>

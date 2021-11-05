@@ -102,6 +102,15 @@
 	font-size: 0.9rem;
 	border-bottom: 1px solid rgb(239, 239, 239);
 }
+#wc_type {
+	width : 40px;
+	margin:0px;
+	margin-left : 10px;
+	text-align-last: center;
+	text-align: center;
+	-ms-text-align-last: center;
+	-moz-text-align-last: center;
+}
 
 .wc_search input {
 	width : 200px;
