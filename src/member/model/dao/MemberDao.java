@@ -43,12 +43,15 @@ public class MemberDao {
 									 , rset.getString("user_id")
 									 , rset.getString("user_pwd")
 									 , rset.getString("user_name")
+									 , rset.getString("gender")
 									 , rset.getString("user_email")
 									 , rset.getString("user_phone")
 									 , rset.getString("user_address")
 									 , rset.getInt("user_grade")
 									 , rset.getDate("enroll_date")
-									 , rset.getString("status"));
+									 , rset.getString("status")
+									 , rset.getString("user_certify")
+									 , rset.getString("user_nickname"));
 			}			
 			
 		} catch (SQLException e) {
@@ -129,12 +132,15 @@ public class MemberDao {
 									 , rset.getString("user_id")
 									 , rset.getString("user_pwd")
 									 , rset.getString("user_name")
+									 , rset.getString("gender")
 									 , rset.getString("user_email")
 									 , rset.getString("user_phone")
 									 , rset.getString("user_address")
 									 , rset.getInt("user_grade")
 									 , rset.getDate("enroll_date")
-									 , rset.getString("status"));
+									 , rset.getString("status")
+									 , rset.getString("user_certify")
+									 , rset.getString("user_nickname"));
 			
 			}
 		} catch (SQLException e) {

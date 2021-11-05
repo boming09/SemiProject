@@ -73,12 +73,21 @@
                         </select></td>
                 </tr>
                 <tr>
+                    <th>성별</th>
+                    <td class="id_name">
+                    <input type="radio" class="lomb" name="gender" id="male" value="m" checked>
+                    <label for="male">남자</label>
+                    <input type="radio" class="lomb" name="gender" id="male2" value="f">
+                    <label for="male2">여자</label>                        
+                    </td>
+                </tr>
+                <tr>
                     <th class="privacy">개인정보 유효기간</th>
                     <td class="id_name">
-                    <input type="radio" name="interest">&nbsp;1년&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="interest">&nbsp;3년&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="interest">&nbsp;5년&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="interest" checked>&nbsp;탈퇴 시까지</td>
+                    <input type="radio" name="interest" id="interest2">1년
+                    <input type="radio" name="interest" id="interest">3년
+                    <input type="radio" name="interest" id="interest">5년
+                    <input type="radio" name="interest" id="interest" checked>&nbsp;탈퇴 시까지</td>
                 </tr>                
             </table>
         </fieldset>
