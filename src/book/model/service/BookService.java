@@ -27,7 +27,7 @@ public class BookService {
 		
 		// 3. 페이징 처리된 게시글 목록 조회
 		List<Book> bookList = bookDao.selectList(conn, pi, search);
-		
+		System.out.println(bookList);
 		returnMap.put("pi", pi);
 		returnMap.put("bookList", bookList);
 		

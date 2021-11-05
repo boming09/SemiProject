@@ -36,5 +36,134 @@ public class Book {
 //	AUTHOR_INTRO	VARCHAR2(4000 BYTE)
 //	BOOK_IMG	VARCHAR2(4000 BYTE)
 	
+	public Book() {}
+	
+	public Book(int bid, String btitle, int cid, int bauthor, int btranslator, Date publicationDate, String publisher,
+			int price, int stock, double saleRate, int salePrice, String bintro, String burl, String filepath,
+			String aintro, String bimg) {
+		super();
+		this.bid = bid;
+		this.btitle = btitle;
+		this.cid = cid;
+		this.bauthor = bauthor;
+		this.btranslator = btranslator;
+		this.publicationDate = publicationDate;
+		this.publisher = publisher;
+		this.price = price;
+		this.stock = stock;
+		this.saleRate = saleRate;
+		this.salePrice = salePrice;
+		this.bintro = bintro;
+		this.burl = burl;
+		this.filepath = filepath;
+		this.aintro = aintro;
+		this.bimg = bimg;
+	}
+	
+	public int getBid() {
+		return bid;
+	}
+	public void setBid(int bid) {
+		this.bid = bid;
+	}
+	public String getBtitle() {
+		return btitle;
+	}
+	public void setBtitle(String btitle) {
+		this.btitle = btitle;
+	}
+	public int getCid() {
+		return cid;
+	}
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
+	public int getBauthor() {
+		return bauthor;
+	}
+	public void setBauthor(int bauthor) {
+		this.bauthor = bauthor;
+	}
+	public int getBtranslator() {
+		return btranslator;
+	}
+	public void setBtranslator(int btranslator) {
+		this.btranslator = btranslator;
+	}
+	public Date getPublicationDate() {
+		return publicationDate;
+	}
+	public void setPublicationDate(Date publicationDate) {
+		this.publicationDate = publicationDate;
+	}
+	public String getPublisher() {
+		return publisher;
+	}
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+	public double getSaleRate() {
+		return saleRate;
+	}
+	public void setSaleRate(double saleRate) {
+		this.saleRate = saleRate;
+	}
+	public int getSalePrice() {
+		return salePrice;
+	}
+	public void setSalePrice(int salePrice) {
+		this.salePrice = salePrice;
+	}
+	public String getBintro() {
+		return bintro;
+	}
+	public void setBintro(String bintro) {
+		this.bintro = bintro;
+	}
+	public String getBurl() {
+		return burl;
+	}
+	public void setBurl(String burl) {
+		this.burl = burl;
+	}
+	public String getFilepath() {
+		return filepath;
+	}
+	public void setFilepath(String filepath) {
+		this.filepath = filepath;
+	}
+	public String getAintro() {
+		return aintro;
+	}
+	public void setAintro(String aintro) {
+		this.aintro = aintro;
+	}
+	public String getBimg() {
+		return bimg;
+	}
+	public void setBimg(String bimg) {
+		this.bimg = bimg;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [bid=" + bid + ", btitle=" + btitle + ", cid=" + cid + ", bauthor=" + bauthor + ", btranslator="
+				+ btranslator + ", publicationDate=" + publicationDate + ", publisher=" + publisher + ", price=" + price
+				+ ", stock=" + stock + ", saleRate=" + saleRate + ", salePrice=" + salePrice + ", bintro=" + bintro
+				+ ", burl=" + burl + ", filepath=" + filepath + ", aintro=" + aintro + ", bimg=" + bimg + "]";
+	}
+	
 	
 }
