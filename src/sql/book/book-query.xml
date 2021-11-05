@@ -13,8 +13,7 @@
   SELECT
          COUNT(*)
     FROM BOOK
-    JOIN MEMBER ON(AUTHOR = USER_NO)
-   WHERE BOOK_NAME LIKE '%' || ? || '%' OR USER_NAME LIKE '%' || ? || '%'
+   WHERE BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%'
 </entry>
 
 <entry key="getTitleListCount">
@@ -28,15 +27,14 @@
   SELECT
          COUNT(*)
     FROM BOOK
-    JOIN MEMBER ON(AUTHOR = USER_NO)
-   WHERE USER_NAME LIKE '%' || ? || '%'
+   WHERE AUTHOR LIKE '%' || ? || '%'
 </entry>
 
 <entry key="selectList">
 	SELECT * 
 	     FROM (SELECT ROWNUM RNUM, A.*
 		      FROM (SELECT
-	                        BOOK_ID
+	                       BOOK_ID
 	                     , BOOK_NAME
 	                     , CATEGORY_ID
 	                     , USER_NAME
@@ -62,10 +60,12 @@
 	SELECT * 
 	     FROM (SELECT ROWNUM RNUM, A.*
 		      FROM (SELECT
-	                        BOOK_ID
+	                       BOOK_ID
 	                     , BOOK_NAME
 	                     , CATEGORY_ID
-	                     , USER_NAME
+	                     , CATEGORY_NAME
+	                     , USER_NO
+	                     , AUTHOR
 	                     , EDITOR
 	                     , PUBLICATION_DATE
 	                     , PUBLISHER
@@ -78,9 +78,9 @@
 	                     , FILE_PATH
 	                     , AUTHOR_INTRO
 	                     , BOOK_IMG
-	                     FROM BOOK B
-	                     JOIN MEMBER ON(AUTHOR = USER_NO)
-	                     WHERE BOOK_NAME LIKE '%' || ? || '%' OR USER_NAME LIKE '%' || ? || '%'
+	                     FROM BOOK
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%'
 	                     ORDER BY PUBLICATION_DATE DESC) A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
@@ -89,10 +89,12 @@
 	SELECT * 
 	     FROM (SELECT ROWNUM RNUM, A.*
 		      FROM (SELECT
-	                        BOOK_ID
+	                       BOOK_ID
 	                     , BOOK_NAME
 	                     , CATEGORY_ID
-	                     , USER_NAME
+	                     , CATEGORY_NAME
+	                     , USER_NO
+	                     , AUTHOR
 	                     , EDITOR
 	                     , PUBLICATION_DATE
 	                     , PUBLISHER
@@ -105,8 +107,8 @@
 	                     , FILE_PATH
 	                     , AUTHOR_INTRO
 	                     , BOOK_IMG
-	                     FROM BOOK B
-	                     JOIN MEMBER ON(AUTHOR = USER_NO)
+	                     FROM BOOK
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
 	                     WHERE BOOK_NAME LIKE '%' || ? || '%'
 	                     ORDER BY PUBLICATION_DATE DESC) A)
 	 WHERE RNUM BETWEEN ? AND ?
@@ -116,10 +118,12 @@
 	SELECT * 
 	     FROM (SELECT ROWNUM RNUM, A.*
 		      FROM (SELECT
-	                        BOOK_ID
+	                       BOOK_ID
 	                     , BOOK_NAME
 	                     , CATEGORY_ID
-	                     , USER_NAME
+	                     , CATEGORY_NAME
+	                     , USER_NO
+	                     , AUTHOR
 	                     , EDITOR
 	                     , PUBLICATION_DATE
 	                     , PUBLISHER
@@ -132,9 +136,9 @@
 	                     , FILE_PATH
 	                     , AUTHOR_INTRO
 	                     , BOOK_IMG
-	                     FROM BOOK B
-	                     JOIN MEMBER ON(AUTHOR = USER_NO)
-	                     WHERE USER_NAME LIKE '%' || ? || '%'
+	                     FROM BOOK
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE AUTHOR LIKE '%' || ? || '%'
 	                     ORDER BY PUBLICATION_DATE DESC) A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
