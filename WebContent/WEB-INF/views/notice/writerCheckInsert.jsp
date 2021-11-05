@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!-- ajax는 jquery 추가해야함 -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
 <link href="${ contextPath }/resources/css/notice/writerCheckInsert.css" rel="stylesheet">
@@ -46,14 +48,18 @@
                     <div class="wc_book">내도서</div>
                     <div class="wc_book2">
                         <fieldset class="wc_search">
-	                        <label>도서검색 :</label>
-	                        <input type="text">
-	                        <button type="submit">검색하기</button>   
+	                        <!-- <label>도서검색 :</label> -->
+	                        <select id="wc_type">
+	                        	<option value="title">제목</option>
+	                        	<option value="writer">작가</option>
+	                        </select>
+	                        <input type="text" id="wc_input">
+	                        <button type="button" id="wc_btn">검색하기</button>   
                         </fieldset>
-                        <select name="selectbook">
+                        <select name="selectbook" id="wc_select">
                         	<option>▼ 도서선택 ▼</option>
                         </select>
-                        <textarea></textarea>                       
+                        <textarea id="wc_textarea"></textarea>                       
                     </div>
                 </div>
 
@@ -82,6 +88,49 @@
 
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-
+	
+	<script>
+		/*
+		<fieldset class="wc_search">
+	    	<label>도서검색 :</label>
+	    	<input type="text" id="wc_input">
+	    	<button type="button" id="wc_btn">검색하기</button>   
+		</fieldset>
+		<select name="selectbook" id="wc_select">
+			<option>▼ 도서선택 ▼</option>
+		</select>
+		<textarea id="wc_textarea"></textarea>       
+		*/
+		$(function(){
+			$('#wc_btn').click(function(){
+				$.ajax({
+					url : "${ pageContext.servletContext.contextPath }/w-check/insert",
+					data : { type : $('#wc_type').val(), input : $("#wc_input").val( ) },
+					dataType : "json",
+					type : "get",
+					success : function(list) {
+						console.log(list);
+					},
+					error : function(e) {
+						console.log(e);
+					}
+					
+					
+					
+				});
+			});
+		});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</script>
 </body>
 </html>
