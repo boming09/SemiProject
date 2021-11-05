@@ -106,7 +106,7 @@
 	            		<td>&nbsp;&nbsp;
 	            			<input type="text" class="tb3">
 	            			&nbsp;&nbsp;&nbsp;&nbsp;
-	            			<input type="button" class="tb2" value="변경하기">
+	            			<input type="button" class="tb2" id="tb0" value="변경하기">
 		            		&nbsp;&nbsp;&nbsp;&nbsp;
 		            		서재 닉네임은 100자평, 마이리뷰, 이벤트 댓글에 사용됩니다.</td>
 	            	</tr>          	
@@ -115,7 +115,7 @@
 	            		<td>&nbsp;&nbsp;
 	            			<input type="text" class="tb3">
 	            			&nbsp;&nbsp;&nbsp;&nbsp;
-	            			<input type="button" class="tb2" value="입력하기">
+	            			<input type="button" class="tb2" id="tb0" value="입력하기">
 	            	</tr>
 	            	
 	            </table>
@@ -126,10 +126,10 @@
 	            	<tr>
 	            		<th>카카오</th>
 	            		<td>&nbsp;&nbsp;&nbsp;&nbsp;
-	            			<input type="button" class="tb0" value="변경하기"></td>
+	            			<input type="button" class="tb0" id="tb0" value="변경하기"></td>
 	            		<th>네이버</th>
 	            		<td>&nbsp;&nbsp;&nbsp;&nbsp;
-	            			<input type="button" class="tb0" value="변경하기"></td>
+	            			<input type="button" class="tb0" id="tb0" value="변경하기"></td>
 	            	</tr>
 	            </table>
 	            <br>
