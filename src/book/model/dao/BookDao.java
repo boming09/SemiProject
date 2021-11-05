@@ -125,10 +125,18 @@ public class BookDao {
 	         
 	         while(rset.next()) {
 	            Book book = new Book();
-	            book.setBid(rset.getInt("bid"));
-	            book.setBtitle(rset.getString("btitle"));
-	            book.setCid(rset.getInt("cid"));
-	            book.setCname(rset.getString("cname"));
+	            book.setBid(rset.getInt("book_id"));
+	            book.setBtitle(rset.getString("book_name"));
+	            book.setCid(rset.getInt("category_id"));
+	            book.setCname(rset.getString("category_name"));
+	            book.setUserNo(rset.getInt("user_no"));
+	            book.setAuthor(rset.getString("author"));
+	            book.setTranslator(rset.getString("editor"));
+	            book.setPublicationDate(rset.getDate("publication_date"));
+	            book.setPublisher(rset.getString("publisher"));
+	            book.setSalePrice(rset.getInt("sale_price"));
+	            book.setBimg(rset.getString("book_img"));
+	            
 	            bookList.add(book);
 	         }
 	      } catch (SQLException e) {

@@ -7,8 +7,8 @@ public class Book {
 	private String btitle;			// 도서 제목
 	private int cid;				// 카테고리 번호
 	private String cname;			// 카테고리 이름(카테고리 번호 참조 값)
-	private int userNo;			// 저자(= user_no 참조 값) null
-	private String author;		// 저자 이름 not null
+	private int userNo;				// 저자(= user_no 참조 값) null
+	private String author;			// 저자 이름 not null
 	private String translator;		// 역자
 	private Date publicationDate;	// 출판일
 	private String publisher;		// 출판사
