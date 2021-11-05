@@ -9,7 +9,7 @@
 		     , AUTHOR
 		     , PUBLICATION_DATE
 		     , PUBLISHER
-		     , SALE_RATE
+		     , STOCK
 		     , BOOK_IMG
 		  FROM BOOK
 		 ORDER BY BOOK_NAME
@@ -22,7 +22,7 @@
 		     , AUTHOR
 		     , PUBLICATION_DATE
 		     , PUBLISHER
-		     , SALE_RATE
+		     , STOCK
 		     , BOOK_IMG
 		  FROM BOOK
 		 WHERE BOOK_NAME LIKE '%' || ? || '%'
@@ -36,12 +36,68 @@
 		     , AUTHOR
 		     , PUBLICATION_DATE
 		     , PUBLISHER
-		     , SALE_RATE
+		     , STOCK
 		     , BOOK_IMG
 		  FROM BOOK
 		 WHERE AUTHOR LIKE '%' || ? || '%'
 		 ORDER BY BOOK_NAME
 	</entry>
 	
-
+	<entry key="insertWCheck">
+		INSERT INTO WCHECK
+		(
+		    WCK_NO
+		  , TITLE
+		  , CONTENT
+		  , USER_NO
+		  , CREATE_DATE
+		  , STATUS
+		)
+		VALUES
+		(
+		    SEQ_WCK_NO.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  , DEFAULT
+		  , DEFAULT
+		)
+	</entry>
+	
+	<entry key="insertWBook">
+		INSERT INTO W_BOOK
+		(
+		    BOOK_ID
+		  , WCK_NO
+		)
+		VALUES
+		(
+		    ?
+		  , SEQ_WCK_NO.CURRVAL
+		)
+	</entry>
+	
+	<entry key="insertUpload">
+		INSERT INTO WC_UPLOAD
+		(
+		    WCUP_NO
+		  , WCK_NO
+		  , FILE_PATH
+		  , ORIGIN_FILE
+		  , CHANGE_FILE
+		  , STATUS
+		)
+		VALUES
+		(
+		    WCUP_NO.NEXTVAL
+		  , SEQ_WCK_NO.CURRVAL
+		  , ?
+		  , ?
+		  , ?
+		  , DEFAULT
+		)
+	</entry>
+	
+	
+	
 </properties>
