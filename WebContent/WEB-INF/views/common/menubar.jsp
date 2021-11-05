@@ -177,6 +177,7 @@ scope="application"/>
         <header class="page-header">
             <nav>
                 <ul class="main-nav">
+                	<li><a href="<%= request.getContextPath() %>/admin/main">관리자페이지</a></li>
                     <li><a href="<%= request.getContextPath() %>/login">로그인</a></li>
                     <li><a href="<%= request.getContextPath() %>/joinmembership">회원가입</a></li>
                     <li><a href="<%= request.getContextPath() %>/mypage">마이페이지</a></li>
