@@ -76,9 +76,10 @@ public class MemberDao {
 			pstmt.setString(1, member.getUserId());
 			pstmt.setString(2, member.getUserPwd());
 			pstmt.setString(3, member.getUserName());
-			pstmt.setString(4, member.getUserEmail());
-			pstmt.setString(5, member.getUserPhone());
-			pstmt.setString(6, member.getUserAddress());
+			pstmt.setString(4, member.getGender());
+			pstmt.setString(5, member.getUserEmail());
+			pstmt.setString(6, member.getUserPhone());
+			pstmt.setString(7, member.getUserAddress());
 			
 			result = pstmt.executeUpdate();		
 			

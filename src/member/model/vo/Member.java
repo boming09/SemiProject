@@ -48,7 +48,17 @@ public class Member {
 		this.userAddress = userAddress;
 	}
 
-
+	public Member(String userId, String userPwd, String userName, String gender, String userPhone, String userEmail,
+			String userAddress) {
+		super();
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.gender = gender;
+		this.userPhone = userPhone;
+		this.userEmail = userEmail;
+		this.userAddress = userAddress;
+	}
 
 	public Member(String userId, String userPwd, String userName, String userPhone, String userEmail,
 			String userAddress) {
