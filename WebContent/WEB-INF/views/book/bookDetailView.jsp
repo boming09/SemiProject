@@ -154,7 +154,7 @@ crossorigin="anonymous"></script>
             <div class="info_img information">
                 <div class="infoSet"><h4>상세 이미지</h4></div>
                 <div class="infoSetCont_wrap">
-                    <div class="infoImgWrap"><img src="${contextPath}/resources/images/book/detailView.jpg" alt="detailView"></div>
+                    <div class="infoImgWrap"><img src="${contextPath}/resources/images/detailBook/${ book.filepath }" alt="detailView"></div>
                 </div>
             </div>
 
