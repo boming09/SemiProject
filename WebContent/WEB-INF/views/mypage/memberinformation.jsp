@@ -104,10 +104,9 @@
 	            	<tr>
 	            		<th rowspan="">서재 닉네임</th>
 	            		<td>&nbsp;&nbsp;
-	            			<input type="text" class="tb3">
-	            			&nbsp;&nbsp;&nbsp;&nbsp;
-	            			<input type="button" class="tb2" id="tb0" value="변경하기">
-		            		&nbsp;&nbsp;&nbsp;&nbsp;
+	            			<input type="text" class="tb3" name="userNickname"
+	            			value="<%= loginUser.getUserNickname() != null ? loginUser.getUserNickname() : "" %>" required>
+	            			&nbsp;&nbsp;&nbsp;&nbsp;	            			
 		            		서재 닉네임은 100자평, 마이리뷰, 이벤트 댓글에 사용됩니다.</td>
 	            	</tr>
 	            </table>
