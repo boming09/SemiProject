@@ -11,11 +11,12 @@
     <!-- favicon (Real Favicon Generator 등에서 가공 필요) -->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
     <!-- 외부 스타일 시트 -->
-    <link href="<%= request.getContextPath() %>/resources/css/login-style.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/resources/css/member/login-style.css" rel="stylesheet">
 </head>
 <body>
     <!-- 메뉴바 -->
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
+        <div class="id0">
         <div class="id1">
             	아이디 찾기
             <div class="id2">
@@ -54,8 +55,9 @@
                 
                 <label id="idnologin">로그인 필요 없음</label>
             </div>
-        </div>  
+        </div>
+        </div> 
     <!-- footer -->
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+	<jsp:include page="/WEB-INF/views/member/footer.jsp" />
 </body>
 </html>

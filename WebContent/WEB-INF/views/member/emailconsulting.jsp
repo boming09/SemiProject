@@ -11,11 +11,12 @@
     <!-- favicon (Real Favicon Generator 등에서 가공 필요) -->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
     <!-- 외부 스타일 시트 -->
-    <link href="<%= request.getContextPath() %>/resources/css/login-style.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/resources/css/member/login-style.css" rel="stylesheet">
 </head>
 <body>	
         <!-- 메뉴바 -->
 		<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
+        <div class="id0">
         <div class="emailconsulting">
             E mail 상담
             <div class="topline">
@@ -45,6 +46,7 @@
                         해결하기 위해서만 사용하며, 상담 종료 후 폐기 됩니다.</td>
                 </tr>
             </table>
+        </div>
         </div>    
         <button class="emailbut" onclick="emailbut()">접수하기</button>
         <script>
@@ -61,6 +63,6 @@
     </footer>
     -->
     <!-- footer -->
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+	<jsp:include page="/WEB-INF/views/member/footer.jsp" />
 </body>
 </html>

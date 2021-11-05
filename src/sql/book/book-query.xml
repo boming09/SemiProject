@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM
+"http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+<entry key="getListCount">
+   SELECT
+          COUNT(*)
+     FROM BOOK
+</entry>
+
+<entry key="getSearchListCount">
+  SELECT
+         COUNT(*)
+    FROM BOOK
+    JOIN MEMBER ON(AUTHOR = USER_NO)
+   WHERE BOOK_NAME LIKE '%' || ? || '%' OR USER_NAME LIKE '%' || ? || '%'
+</entry>
+
+<entry key="getTitleListCount">
+  SELECT
+         COUNT(*)
+    FROM BOOK
+   WHERE BOOK_NAME LIKE '%' || ? || '%'
+</entry>
+
+<entry key="getAuthorListCount">
+  SELECT
+         COUNT(*)
+    FROM BOOK
+    JOIN MEMBER ON(AUTHOR = USER_NO)
+   WHERE USER_NAME LIKE '%' || ? || '%'
+</entry>
+
+<entry key="selectList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                        BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , USER_NAME
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , PRICE
+	                     , STOCK
+	                     , SALE_RATE
+	                     , SALE_PRICE
+	                     , BOOK_INTRO
+	                     , BOOK_URL
+	                     , FILE_PATH
+	                     , AUTHOR_INTRO
+	                     , BOOK_IMG
+	                     FROM BOOK B
+	                     JOIN MEMBER ON(AUTHOR = USER_NO)
+	                     ORDER BY PUBLICATION_DATE DESC) A)
+	 WHERE RNUM BETWEEN ? AND ?;
+</entry>
+
+<entry key="selectSearchList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                        BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , USER_NAME
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , PRICE
+	                     , STOCK
+	                     , SALE_RATE
+	                     , SALE_PRICE
+	                     , BOOK_INTRO
+	                     , BOOK_URL
+	                     , FILE_PATH
+	                     , AUTHOR_INTRO
+	                     , BOOK_IMG
+	                     FROM BOOK B
+	                     JOIN MEMBER ON(AUTHOR = USER_NO)
+	                     WHERE BOOK_NAME LIKE '%' || ? || '%' OR USER_NAME LIKE '%' || ? || '%'
+	                     ORDER BY PUBLICATION_DATE DESC) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectTitleList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                        BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , USER_NAME
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , PRICE
+	                     , STOCK
+	                     , SALE_RATE
+	                     , SALE_PRICE
+	                     , BOOK_INTRO
+	                     , BOOK_URL
+	                     , FILE_PATH
+	                     , AUTHOR_INTRO
+	                     , BOOK_IMG
+	                     FROM BOOK B
+	                     JOIN MEMBER ON(AUTHOR = USER_NO)
+	                     WHERE BOOK_NAME LIKE '%' || ? || '%'
+	                     ORDER BY PUBLICATION_DATE DESC) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectAuthorList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                        BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , USER_NAME
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , PRICE
+	                     , STOCK
+	                     , SALE_RATE
+	                     , SALE_PRICE
+	                     , BOOK_INTRO
+	                     , BOOK_URL
+	                     , FILE_PATH
+	                     , AUTHOR_INTRO
+	                     , BOOK_IMG
+	                     FROM BOOK B
+	                     JOIN MEMBER ON(AUTHOR = USER_NO)
+	                     WHERE USER_NAME LIKE '%' || ? || '%'
+	                     ORDER BY PUBLICATION_DATE DESC) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+
+
+
+
+
+
+
+
+</properties>

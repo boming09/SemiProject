@@ -11,42 +11,58 @@
     <!-- favicon (Real Favicon Generator 등에서 가공 필요) -->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
     <!-- 외부 스타일 시트 -->
-    <link href="<%= request.getContextPath() %>/resources/css/login-style.css" rel="stylesheet">    
+    <link href="<%= request.getContextPath() %>/resources/css/member/login-style.css" rel="stylesheet">    
 </head>
 <body>    
 	<!-- 메뉴바 -->
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
-	<div class="main-center">
-    <fieldset class="lofd">
-        <legend id="lolegend">로그인</legend>
-            <tr>
-                <td><input type="text" class="textbox" id="loginid" placeholder="아이디를 입력하세요"></td><br><br>
-            </tr>
-            <tr>
-                <td><input type="password" class="textbox" id="loginps" placeholder="비밀번호를 입력하세요"></td><br>                   
-            </tr><br>
-            <tr>
-                <td>
-                    <input type="radio" id="loemailcheck" name="loemailcheck" value="loemailcheck" checked="checked">ID 또는 E-Mail 저장
-                    <a href="id"><input type="button" value="아이디 찾기" class="idb"></a>
-                    <a href="password"><input type="button" value="비밀번호 찾기" class="psb"></a><br>
-                </td>
-            </tr>
-            <a href="joinmembership"><input type="button" value="봄숲 간편 회원가입" class="mbjoin"></a><br>
-            <div class="imgdiv">
-                <a href="#"><img class="naverlogo" src="<%= request.getContextPath() %>/resources/images/naver.jpg" alt="naver logo"></a>   
-                <a href="#"><img class="kakaologo" src="<%= request.getContextPath() %>/resources/images/kakao.jpg" alt="kako logo"></a>
-            </div>             
-        </fieldset>
-        <button id="lobut" onclick="lolo()">로그인</button>
-        <script>
-            function lolo() {
-                alert("로그인");
-                window.location.href = "login";
-            }
-        </script>
+	<div class="wrapper">
+		<div class="outer">
+	    	<form class="lofd" action="<%= request.getContextPath() %>/login"
+	    	method="post">
+	        	<input type="text" class="textbox" 
+	                id="loginid" name="userId" placeholder="아이디를 입력하세요" required>
+	            <input type="password" class="textbox" 
+	                id="loginps" name="userPwd" placeholder="비밀번호를 입력하세요" required><br>                  
+	            <input type="checkbox" id="remember" name="remember">ID 또는 E-Mail 저장
+	                    <a href="id"><input type="button" value="아이디 찾기" class="idb"></a>
+	                    <a href="password"><input type="button" value="비밀번호 찾기" class="psb"></a>
+	              
+	            <a href="joinmembership"><input type="button" value="봄숲 간편 회원가입" class="mbjoin"></a><br>
+	            <div class="imgdiv">
+	                <a href="kakaoLogin();"><img class="naverlogo" src="<%= request.getContextPath() %>/resources/images/member/naver.jpg" alt="naver logo"></a>   
+	                <a href="#"><img class="kakaologo" src="<%= request.getContextPath() %>/resources/images/member/kakao.jpg" alt="kako logo"></a>
+	            </div>             
+	        <input type="submit" id="lobut" value="로그인">
+	        </from>
+		</div>
 	</div>
     <!-- footer -->
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+	<jsp:include page="/WEB-INF/views/member/footer.jsp" />
+	<!-- 쿠키 사용하여 아이디 기억하기 기능 -->
+	<scripit src="<%= request.getContextPath() %>/resources/js/login/rememberUserId.js"></scripit>	
+	
+	<!-- 카카오 간편로그인 -->
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script>
+		// dfeffb0d0cd1f04335779fda1d08bc4f
+		window.Kakao.init("dfeffb0d0cd1f04335779fda1d08bc4f");
+		
+		function kakaoLogin(){
+			window.Kakao.Auth.login({
+				scope: 'profile, account_email, gender',
+				success: function(authObj){
+					console.log(authObj);
+					window.Kakao.API.request({
+						url:'/v2/user/me',
+						success: res => {
+							const kakao_account = res.kakao_account;
+							console.log(kakao_account)
+						}
+					});
+				}
+			});
+		}
+	</script>
 </body>
 </html>

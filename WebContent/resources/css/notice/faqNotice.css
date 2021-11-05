@@ -1,0 +1,234 @@
+@charset "UTF-8";
+* {margin:0;padding:0;border:0;}
+
+/* csarea + content + footer 화면마다 가져가기!! */
+.csarea {
+    display: flex;
+}
+/* 영역 묶어주기 */
+.content {
+    width: 72%;
+    margin-left : 15px;
+    margin-right : 15px;    
+}
+
+/* 컨텐츠 헤더 */
+.faqheader {
+    height: 70px;
+    display : flex;
+    justify-content : space-between;	
+    align-items: center;
+    margin: 0px 0px 30px 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+  
+}
+.faqheader div:first-child {
+    font-size: 1.1rem;
+    font-weight : bold;
+}
+
+/* faq 검색창 */
+.faqsearch {
+    display: flex;
+    align-items: center;
+}
+.faqsearch input {
+    border: 3px solid rgb(196, 217, 195);
+    border-right : 0px;
+    width: 130px;
+    height: 26px;
+    padding-left: 10px;
+    font-size: 0.75rem;
+}
+
+.faqsearch button {
+	height: 26px;
+}
+
+.faqsearch button img {
+    width: 23px;
+    height: 26px;
+    border: 3px solid rgb(196, 217, 195);
+    border-left: 0px;
+}
+
+ /* 카테고리 분류 */
+.typearea {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.typearrow {
+	/* > */
+    margin-left: 40px;
+    margin-right: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    /* span 가운데 줄맞춤은 line-height */
+    line-height: 50px;
+}
+
+.type_area {
+	/* select + img감싸고있는 div */
+	position : relative;
+}
+
+.atype, .btype {
+	/* select */
+	border: 3px solid rgb(73, 125, 78);
+    width: 220px;
+    height: 50px;   
+    font-size: 0.9rem;
+    padding-left: 10px;
+    z-index: 100;
+}
+
+.faqarrow {
+	/*img감싸고있는 div*/
+	height : 50px;
+	position : absolute;
+	top : 0;
+	right : 15px;
+	display : flex;
+	justify-content: center;
+	align-items : center;
+	padding-top: 0px;
+	z-index : 1;
+}
+
+.faqarrow img {
+	width : 20px;
+	height : 20px;
+}
+
+
+/* faq 리스트 */
+.top3, .total {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 30px 30px 0px 30px;
+    padding-left : 5px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.top3_ul, .total_ul {
+    display: flex;
+    list-style: none;
+    text-align: center;
+    justify-content : space-between;
+    align-items: center;
+    margin: 0px 30px;
+    height: 50px;
+    border-bottom: 1px solid lightgray;
+    font-size: 0.9rem;
+}
+
+/* 답변 영역 */
+.top3_a, .total_a {
+	margin: 0px 30px 0px 30px;
+	border-bottom: 1px solid lightgray;
+	display: none;
+	background : rgb(239, 239, 239);
+}
+.top3_answer, .total_answer {
+	/* 답변 내용 */
+	font-size: 0.9rem;
+	line-height : 20px;
+	padding : 15px 25px 15px 25px;
+}
+.top3_service, .total_service {
+	/* 1:1문의 안내 영역*/
+	font-size: 0.9rem;
+	background : rgb(196, 217, 195);
+	margin : 20px;
+	padding :10px 15px;
+	display : flex;
+	align-items : center;
+}
+.top3_service img, .total_service img {
+	width : 35px;
+	height : 35px;
+	margin-right : 15px;
+}
+.top3_service p, .total_service p {
+	margin-right : 15px;
+}
+.top3_service button, .total_service button {
+	background : rgb(73, 125, 78);
+	color : white;
+	width : 52px;
+	height : 28px;
+	font-size: 0.8rem;
+	text-align : center;
+}
+.top3_service button:hover {
+    background: rgb(196, 217, 195);
+    border : 2px solid rgb(73, 125, 78);
+    color : black;
+    font-weight: bold;
+}
+.total_service button:hover {
+    background: rgb(196, 217, 195);
+    border : 2px solid rgb(73, 125, 78);
+    color : black;
+    font-weight: bold;
+}
+
+/* 
+.board_list>ul.last {
+    border: 0;
+}
+*/
+
+/* 이건 분류영역 따로 지정 */
+/* .faq_type {
+	width : 20%;
+	text-align: right;	
+} */
+.faq_q {
+	width : 95%;	
+	text-align: left;
+	padding-left : 10px
+}
+.faq_icon {
+	width : 5%;	
+}
+
+.top3_ul:hover {
+    background: #f3f5f7;
+}
+.total_ul:hover {
+    background: #f3f5f7;
+}
+
+/* 페이징 영역 */
+.pagingarea {
+	margin: 10px 30px;
+	margin-bottom : 80px;
+	height : 50px;
+	display : flex;
+	justify-content : center;
+    align-items: center;
+}
+.pagingarea ul {
+	list-style : none;
+	display : flex;
+	justify-content : center;
+    align-items: center;
+    width : 400px;
+    height : 50px;  
+}
+
+.pagingarea ul li {
+	width: 40px;
+	text-align : center;
+}
+
+.current_page {
+	border-bottom: 2px solid black;
+	font-weight: bold;
+}
+

@@ -11,13 +11,14 @@
     <!-- favicon (Real Favicon Generator 등에서 가공 필요) -->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
 	<!-- 외부 스타일 시트 -->
-    <link href="<%= request.getContextPath() %>/resources/css/login-style.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/resources/css/member/login-style.css" rel="stylesheet">
 </head>
 <body>
     <!-- 메뉴바 -->
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
+        <div class="id0">
         <div class="ps3">
-            비밀번호 재설정
+            	비밀번호 재설정
             <div class="ps4">
                 <br>
                 &nbsp;&nbsp;본인인증 수단으로 비밀번호 재설정 하기
@@ -31,10 +32,10 @@
                 </div>
                 <br>
                 <div class="id3">
-                    <input type="radio" id="#" name="#" value="phone" checked="checked">휴대전화 번호                  
+                    <input type="checkbox" id="#" name="#" value="phone" checked="checked">&nbsp;&nbsp;휴대전화 번호                  
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" id="#" name="#" value="email">E-mail 주소
+                    <input type="checkbox" id="#" name="#" value="email">&nbsp;&nbsp;E-mail 주소
                     <br><br>
                     
                     <label>E-mail 주소</label> <input type="text" class="id1text" size="10"><br><br>
@@ -62,8 +63,9 @@
                 
                 <label id="idnologin">로그인 필요 없음</label>
             </div>
+        </div>
         </div>    
     <!-- footer -->
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+	<jsp:include page="/WEB-INF/views/member/footer.jsp" />
 </body>
 </html>

@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/oneQuestion.css" rel="stylesheet">
+<link href="${ contextPath }/resources/css/notice/oneQuestion.css" rel="stylesheet">
 <title>고객센터_1:1문의</title>
 </head>
 <body>
@@ -32,7 +32,7 @@
 		        </ul>
 		    </div>
 		    <div class="one_none_ment">
-		        <span class="none_span1">최근 3개월간 문의 내역이 없습니다.</span>
+		        <span class="none_span1">1:1 문의 내역이 없습니다.</span>
 		        <span class="none_span2">봄숲에 대한 모든 궁금증은 1:1 문의하기로 부담없이 확인하세요.</span>
 		    </div>
 		</div>
@@ -40,9 +40,8 @@
 		<jsp:include page="/WEB-INF/views/common/adArea.jsp" />
 	</div>
 	
-	<div class="footer2">
-		<!-- footer -->
-		<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-	</div>
+	<!-- footer -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
 </body>
 </html>

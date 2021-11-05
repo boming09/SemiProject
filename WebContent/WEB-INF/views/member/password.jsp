@@ -11,11 +11,12 @@
     <!-- favicon (Real Favicon Generator 등에서 가공 필요) -->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
     <!-- 외부 스타일 시트 -->
-    <link href="<%= request.getContextPath() %>/resources/css/login-style.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/resources/css/member/login-style.css" rel="stylesheet">
 </head>
 <body>
     <!-- 메뉴바 -->
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
+        <div class="id0">
         <div class="ps1">
             비밀번호 재설정
             <div class="ps2">
@@ -32,16 +33,17 @@
                 </div>
                 <br>
                 <div class="id3">
-                    <input type="radio" id="#" name="#" value="phone" checked="checked">휴대전화 번호                                      
+                    <input type="checkbox" checked="checked">휴대전화 번호
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" id="#" name="#" value="email">E-mail 주소                    
+                    <input type="checkbox">E-mail 주소                    
                     <br><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;
                     <label>이름</label> <input type="text" class="id1text" size="10"><br><br>
                     <label>휴대전화 번호</label> <input type="text" class="id1text" size="10"><br><br>
-                    &nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;
                     <label>E-mail 주소</label> <input type="text" class="id1text" size="10"><br><br>
                     <a href="password2"><button class="id2pagebut">다음단계</button></a><br>
                 </div>
@@ -64,8 +66,9 @@
                 
                 <label id="idnologin">로그인 필요 없음</label>
             </div>
-        </div>    
+        </div> 
+        </div>   
     <!-- footer -->
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+	<jsp:include page="/WEB-INF/views/member/footer.jsp" />
 </body>
 </html>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM
+"http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="getWriterList">
+		SELECT
+		       USER_NO
+		     , USER_NAME
+		     , USER_GRADE
+		     , STATUS
+		  FROM MEMBER
+		 WHERE USER_GRADE = 20
+		   AND STATUS = 'Y'
+		 ORDER BY USER_NAME
+	</entry>
+
+	<entry key="insertCommu">
+		INSERT INTO COMMU
+		(
+		    COMMU_NO
+		  , TITLE
+		  , CONTENT
+		  , USER_NO
+		  , CREATE_DATE
+		  , REPLY
+		  , COUNT
+		  , WRITER_NO
+		  , STATUS
+		)
+		VALUES
+		(
+		    SEQ_COMMU_NO.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  , DEFAULT
+		  , DEFAULT
+		  , DEFAULT
+		  , ?
+		  , DEFAULT
+		)
+	</entry>
+
+	<entry key="getListCount">
+		SELECT
+		       COUNT(*)
+		  FROM COMMU
+	</entry>
+
+	<entry key="selectList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.* 
+			        FROM(SELECT
+			               COMMU_NO
+			             , TITLE
+			             , CONTENT
+			             , C.USER_NO
+			             , CREATE_DATE
+			             , REPLY
+			             , COUNT
+			             , C.WRITER_NO
+			             , W.USER_NAME 
+			             , C.STATUS
+			          FROM COMMU C
+			          JOIN MEMBER W ON(C.WRITER_NO = W.USER_NO)
+			         ORDER BY CREATE_DATE DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectCommu">
+		SELECT
+		       COMMU_NO
+		     , TITLE
+		     , CONTENT
+		     , C.USER_NO
+		     , CREATE_DATE
+		     , REPLY
+		     , COUNT
+		     , C.WRITER_NO
+		     , W.USER_NAME 
+		     , C.STATUS
+		  FROM COMMU C
+		  JOIN MEMBER W ON(C.WRITER_NO = W.USER_NO)
+		 WHERE COMMU_NO = ?
+		 ORDER BY CREATE_DATE DESC
+	</entry>
+	
+
+</properties>

@@ -7,7 +7,7 @@
 <title>고객센터_FAQ</title>
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/csPage.css" rel="stylesheet">
+<link href="${ contextPath }/resources/css/notice/csPage.css" rel="stylesheet">
 </head>
 <body>
 	<!-- 고객센터 클릭시 첫 화면 -->
@@ -63,9 +63,8 @@
 		<jsp:include page="/WEB-INF/views/common/adArea.jsp" />
 	</div>
 	
-	<div class="footer2">
-		<!-- footer -->
-		<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-	</div>
+	<!-- footer -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
 </body>
 </html>

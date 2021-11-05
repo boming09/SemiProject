@@ -19,7 +19,6 @@ https://github.com/filipelinhares/ress-->
  <!-- 외부 스타일 시트 -->
  <link href="<%= request.getContextPath() %>/resources/css/style.css" rel="stylesheet">
 
-
 </head>
 <body>
   <section class="main">  

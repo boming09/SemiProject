@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.service.MemberService;
+import member.model.vo.Member;
+
 /**
  * Servlet implementation class JoinMemberShipServlet
  */
@@ -37,8 +40,37 @@ public class JoinMemberShipServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		// 회원 정보 입력 후 회원 가입 버튼을 눌렀을 때
+		// 요청을 통해 넘어온 DB에 Insert 후 응답 화면
+		request.setCharacterEncoding("UTF-8");
+		
+		String userId = request.getParameter("userId");
+		String userPwd = request.getParameter("userPwd");
+		String userName = request.getParameter("userName");
+		String userPhone = request.getParameter("phone");
+		String userEmail = request.getParameter("email");
+		String[] addressArr = request.getParameterValues("address");
+		
+		String address = "";
+					
+		if(addressArr != null && !addressArr[0].equals(""))
+			address = String.join("|", addressArr);
+					
+		Member member = new Member(userId, userPwd, userName, userPhone, userEmail, address);
+		
+		int result = new MemberService().insertMember(member);
+		
+		System.out.println(result);
+		
+		if(result > 0) {
+			request.getSession().setAttribute("message", "회원 가입이 완료 되었습니다. 로그인 해주세요.");		
+			
+			response.sendRedirect(request.getContextPath());
+		} else {
+			request.setAttribute("message", "회원가입에 실패 하였습니다.<br>다시 정보입력을 확인해 주세요.");
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/errorpage.jsp");
+			view.forward(request, response);
+		}
 	}
 
 }

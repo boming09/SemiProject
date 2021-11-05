@@ -8,6 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import member.model.service.MemberService;
+import member.model.vo.Member;
 
 /**
  * Servlet implementation class LoginServlet
@@ -37,8 +41,31 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String userId = request.getParameter("userId");
+		String userPwd = request.getParameter("userPwd");
+			
+		// System.out.println(userId + " " + userPwd);
+		
+		Member loginUser = new MemberService().loginMember(userId, userPwd);
+			
+		// System.out.println("loginUser : " + loginUser);
+		
+		if(loginUser != null) {
+			
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("loginUser", loginUser);
+						
+			session.setMaxInactiveInterval(1200);			
+			response.sendRedirect(request.getContextPath());
+			
+		} else {
+			// id, pwd 값이 일치하는 유저가 없을 경우 => 로그인에 실패 => errorpage로 forward
+			request.setAttribute("message", "로그인에 실패하였습니다.<br> 비밀번호를 다시 확인해 주세요.");
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/errorpage.jsp");
+			view.forward(request, response);
+		}
+		
 	}
 
 }

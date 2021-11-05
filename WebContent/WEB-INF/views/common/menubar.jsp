@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="member.model.vo.Member"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	Member loginUser = (Member)session.getAttribute("loginUser");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +15,19 @@
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
 <link href="<%= request.getContextPath() %>/resources/css/menubar-style.css" rel="stylesheet">
+<%-- session에 담긴 message 있을 경우 alert 하는 script --%>
+<% if(session.getAttribute("message") != null) { %>
+<script>
+	alert( '<%= session.getAttribute("message") %>');
+</script>
+<%
+		session.removeAttribute("message");
+	} 
+%>
 <!-- favicon (Real Favicon Generator 등에서 가공 필요) -->
 <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
+<!-- icon link -->
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
 <style>
 @charset "UTF-8"; /* 인코딩 문자 깨짐 방지 (유니코드 문자열 있을 시) */
@@ -65,10 +79,9 @@ a {
 }
 
 .input_area {
-    border: 6px solid rgba(196, 217, 195, 1);
-    padding: 5px 5px 10px 5px;
-    margin-right: 10px;
-    width: 100%;
+    border: 5px solid rgba(196, 217, 195, 1);
+    border-radius: 20px;
+    padding: 10px 10px 7px 10px;
 }
 
 .input_area input {
@@ -79,15 +92,18 @@ a {
 }
 
 #search_btn {
-	font-size : 1rem;
-	font-weight : bold;
+	font-size : 1.5rem;
+}
+
+.fas fa-search{
+	font-size: 20px;
 }
 
 .mainlogo {
     align-items: center;
     justify-content: center;
     display: flex;
-    margin-left: 20px;
+   /* margin-left: 20px;*/
 } 
 
 /* 로고 */
@@ -178,11 +194,18 @@ scope="application"/>
             <nav>
                 <ul class="main-nav">
                 	<li><a href="<%= request.getContextPath() %>/admin/main">관리자페이지</a></li>
+                	<% if(loginUser == null) { %>
                     <li><a href="<%= request.getContextPath() %>/login">로그인</a></li>
                     <li><a href="<%= request.getContextPath() %>/joinmembership">회원가입</a></li>
-                    <li><a href="<%= request.getContextPath() %>/mypage">마이페이지</a></li>
-                    <li><a href="#">장바구니</a></li>
+                    <li><a href="<%= request.getContextPath() %>/cart">장바구니</a></li>
                     <li><a href="<%= request.getContextPath() %>/cs">고객센터</a></li>
+                    <% } else { %>
+                    <li><a href="<%= request.getContextPath() %>/memberinformation">정보수정</a></li>
+                    <li><a href="<%= request.getContextPath() %>/logout">로그아웃</a></li>
+                    <li><a href="<%= request.getContextPath() %>/mypage">마이페이지</a></li>
+                    <li><a href="<%= request.getContextPath() %>/cart">장바구니</a></li>
+                    <li><a href="<%= request.getContextPath() %>/cs">고객센터</a></li>
+                    <% } %>
                 </ul>
             </nav>
             
@@ -198,25 +221,23 @@ scope="application"/>
             <div class="search_area">
                 <form method="get" action="${ contextPath }/book/list">
                     <select id="searchCondition" name="searchCondition">
-                        <option value="search">통합검색</option>
-                        <option value="title">제목</option>
-                        <option value="content">내용</option>
+                        <option value="search"
+                        <c:if test="${ param.searchCondition == 'search' }">selected</c:if>>통합검색</option>
+                        <option value="title"
+                        <c:if test="${ param.searchCondition == 'title' }">selected</c:if>>제목</option>
+                        <option value="author"
+                        <c:if test="${ param.searchCondition == 'author' }">selected</c:if>>작가</option>
                     </select> 
-                    <span class="input_area"> <input type="search"
-                        name="searchValue" placeholder="검색할 내용을 입력하세요.">
+                    <span class="input_area">
+                    <input type="search" name="searchValue" value="${ param.searchValue }"
+                    placeholder="검색할 내용을 입력하세요.">
+                    <button id="search_btn" type="submit" onclick="search()"><i class="fas fa-search"></i></button>
                     </span>
-                    <button id="search_btn" type="submit" onclick="search()">검색</button>
                 </form>
             </div>
         </div>
         <div class="topline">
         </div>
     </div>
-    <script>
-    /* function search(){
-    	location.href="${ contextPath }/book/list";
-    }
-    */
-    </script>
 </body>
 </html>

@@ -19,23 +19,17 @@ public class JDBCTemplate {
 		Connection conn = null;
 		Properties driver = new Properties();
 		String fileName = JDBCTemplate.class.getResource("/sql/driver.properties").getPath();
-		
-		// System.out.println(fileName);
-		
+				
 		try {
 			driver.load(new FileReader(fileName));
-			// driver.properties 파일의 key+value 값 가져오기~~~~
 			// 1. OracleDriver 등록
 			Class.forName(driver.getProperty("driver"));
 			
 			// 2. DBMS와 연결
-			// 추후에 id pw 변경하기~!~!
-			/*
 			conn = DriverManager.getConnection(driver.getProperty("url")
 											 , driver.getProperty("user")
 											 , driver.getProperty("password"));
-			*/
-			
+					
 			// 3. 트랜잭션 관리는 application에서 수행하기 위해 자동 commit 방지
 			conn.setAutoCommit(false);
 			
@@ -49,7 +43,6 @@ public class JDBCTemplate {
 		
 		return conn;
 	}
-
 	
 	// 사용 객체 반환 메소드(Connection, Statement, ResultSet)
 	public static void close(Connection conn) {
@@ -103,18 +96,5 @@ public class JDBCTemplate {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 }
