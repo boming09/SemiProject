@@ -205,7 +205,7 @@ scope="application"/>
                         <c:if test="${ param.searchCondition == 'search' }">selected</c:if>>통합검색</option>
                         <option value="title"
                         <c:if test="${ param.searchCondition == 'title' }">selected</c:if>>제목</option>
-                        <option value="content"
+                        <option value="author"
                         <c:if test="${ param.searchCondition == 'author' }">selected</c:if>>작가</option>
                     </select> 
                     <span class="input_area">

@@ -4,23 +4,23 @@ public class PageInfo {
 	private int page;			// 요청하는 페이지 (board/list?page=5)
 	private int listCount;		// 전체 게시글 수 (105)
 	private int pageLimit;		// 하단에 보여질 페이지 목록 수 (10)
-	private int boardLimit;		// 한 페이지에 보여질 게시글 최대 수 (10)
+	private int bookLimit;		// 한 페이지에 보여질 게시글 최대 수 (10)
 	private int maxPage;		// 전체 페이지에서 가장 마지막 페이지 - 계산하여 도출
 	private int startPage;		// 하단에 보여질 페이지 목록 시작 값
 	private int endPage;		// 하단에 보여질 페에지 목록 끝 값
 	
 	// 페이지 처리 계산에 필요한 값을 받아 start, end, maxPage 계산하여 값 설정하기
-	public PageInfo(int page, int listCount, int pageLimit, int boardLimit) {
+	public PageInfo(int page, int listCount, int pageLimit, int bookLimit) {
 		
 		this.page = page;
 		this.listCount = listCount;
 		this.pageLimit = pageLimit;
-		this.boardLimit = boardLimit;
+		this.bookLimit = bookLimit;
 		
 		// * maxPage : 전체 페이지에서 가장 마지막 페이지
 		// 게시글 개수가 105개면 페이지 수는 자투리 5개까지 한 페이지로 생각해서 11페이지가 필요함
 		// 전체 게시글 수 / 한 페이지에 보여질 개수 결과를 올림 처리 (int / int = 10 -> double 형변환 -> 결과 값은 다시 int로 변환)
-		this.maxPage = (int)Math.ceil((double)listCount / boardLimit);	// ceil : 올림 처리
+		this.maxPage = (int)Math.ceil((double)listCount / bookLimit);	// ceil : 올림 처리
 		
 		// * startPage : 하단에 보여질 페이지 목록 시작 값 (1, 11, 21 ...)
 		// 요청 page에서 pageLimit만큼을 나누고 다시 곱합 뒤 1을 더함
@@ -66,12 +66,12 @@ public class PageInfo {
 		this.pageLimit = pageLimit;
 	}
 
-	public int getBoardLimit() {
-		return boardLimit;
+	public int getBookLimit() {
+		return bookLimit;
 	}
 
-	public void setBoardLimit(int boardLimit) {
-		this.boardLimit = boardLimit;
+	public void setBookLimit(int boardLimit) {
+		this.bookLimit = boardLimit;
 	}
 
 	public int getMaxPage() {
@@ -100,8 +100,8 @@ public class PageInfo {
 
 	@Override
 	public String toString() {
-		return "PageInfo [page=" + page + ", listCount=" + listCount + ", pageLimit=" + pageLimit + ", boardLimit="
-				+ boardLimit + ", maxPage=" + maxPage + ", startPage=" + startPage + ", endPage=" + endPage + "]";
+		return "PageInfo [page=" + page + ", listCount=" + listCount + ", pageLimit=" + pageLimit + ", bookLimit="
+				+ bookLimit + ", maxPage=" + maxPage + ", startPage=" + startPage + ", endPage=" + endPage + "]";
 	}
 	
 	
