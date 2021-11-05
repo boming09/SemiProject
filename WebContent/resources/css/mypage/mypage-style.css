@@ -6,6 +6,7 @@ html {
 
 a {
     text-decoration: none;
+    color : black;
 }
 
 .category {
@@ -45,10 +46,9 @@ a {
 
 
 .ca-list {
-    font-size: 0.1rem;
+    font-size: 0.88rem;
     line-height: 2rem;
     padding: 10px 0px 0px 40px;
-    line-height: 20px;
 }
 
 .ca-list li:hover {

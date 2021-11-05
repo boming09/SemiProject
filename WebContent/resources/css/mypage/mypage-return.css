@@ -12,7 +12,7 @@
 }
 
 .wrapper{
-	height: 90vh;
+	height: 100vh;
 }
 
 /* 컨텐츠 헤더 */
@@ -58,7 +58,16 @@
     margin-right: 30px;
 }
 
-.center_to1 {
+input[type="radio"] + label {
+    display: inline-block;
+    width: 253.8px;
+    padding: 12px;
+    font-size: 13px;
+    cursor: pointer;
+    text-align: center;
+}
+
+#tab01 {
     width: 30%;
 	height: 40px;
     border : 1px solid #1b6bbb;
@@ -69,7 +78,7 @@
 	padding-top: 10px;
 }
 
-.center_to2 {
+#tab02 {
     width: 300px;
     height: 40px;
     border : 1px solid #1b6bbb;

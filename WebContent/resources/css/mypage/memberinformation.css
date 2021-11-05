@@ -10,7 +10,7 @@ h3 {
 }
 
 .wrapper{
-	height: 95vh;
+	height: 100vh;
 }
 
 .csarea {
@@ -119,6 +119,11 @@ tr, th, td {
     color: white;
     font-weight: bold;
     border-radius: 15px;   
+}
+
+#tb0{
+	 color: white;
+	 font-weight: bold;
 }
 
 .tb2{
