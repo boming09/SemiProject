@@ -125,7 +125,11 @@ public class BookDao {
 	         
 	         while(rset.next()) {
 	            Book book = new Book();
-	            
+	            book.setBid(rset.getInt("bid"));
+	            book.setBtitle(rset.getString("btitle"));
+	            book.setCid(rset.getInt("cid"));
+	            book.setCname(rset.getString("cname"));
+	            bookList.add(book);
 	         }
 	      } catch (SQLException e) {
 	         e.printStackTrace();

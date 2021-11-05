@@ -6,8 +6,10 @@ public class Book {
 	private int bid;				// 도서 번호
 	private String btitle;			// 도서 제목
 	private int cid;				// 카테고리 번호
-	private int bauthor;			// 저자
-	private int btranslator;		// 역자
+	private String cname;			// 카테고리 이름(카테고리 번호 참조 값)
+	private int userNo;			// 저자(= user_no 참조 값) null
+	private String author;		// 저자 이름 not null
+	private String translator;		// 역자
 	private Date publicationDate;	// 출판일
 	private String publisher;		// 출판사
 	private int price;				// 정가
@@ -37,16 +39,18 @@ public class Book {
 //	BOOK_IMG	VARCHAR2(4000 BYTE)
 	
 	public Book() {}
-	
-	public Book(int bid, String btitle, int cid, int bauthor, int btranslator, Date publicationDate, String publisher,
-			int price, int stock, double saleRate, int salePrice, String bintro, String burl, String filepath,
-			String aintro, String bimg) {
+
+	public Book(int bid, String btitle, int cid, String cname, int userNo, String author, String translator,
+			Date publicationDate, String publisher, int price, int stock, double saleRate, int salePrice, String bintro,
+			String burl, String filepath, String aintro, String bimg) {
 		super();
 		this.bid = bid;
 		this.btitle = btitle;
 		this.cid = cid;
-		this.bauthor = bauthor;
-		this.btranslator = btranslator;
+		this.cname = cname;
+		this.userNo = userNo;
+		this.author = author;
+		this.translator = translator;
 		this.publicationDate = publicationDate;
 		this.publisher = publisher;
 		this.price = price;
@@ -59,111 +63,160 @@ public class Book {
 		this.aintro = aintro;
 		this.bimg = bimg;
 	}
-	
+
 	public int getBid() {
 		return bid;
 	}
+
 	public void setBid(int bid) {
 		this.bid = bid;
 	}
+
 	public String getBtitle() {
 		return btitle;
 	}
+
 	public void setBtitle(String btitle) {
 		this.btitle = btitle;
 	}
+
 	public int getCid() {
 		return cid;
 	}
+
 	public void setCid(int cid) {
 		this.cid = cid;
 	}
-	public int getBauthor() {
-		return bauthor;
+
+	public String getCname() {
+		return cname;
 	}
-	public void setBauthor(int bauthor) {
-		this.bauthor = bauthor;
+
+	public void setCname(String cname) {
+		this.cname = cname;
 	}
-	public int getBtranslator() {
-		return btranslator;
+
+	public int getUserNo() {
+		return userNo;
 	}
-	public void setBtranslator(int btranslator) {
-		this.btranslator = btranslator;
+
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getTranslator() {
+		return translator;
+	}
+
+	public void setTranslator(String translator) {
+		this.translator = translator;
+	}
+
 	public Date getPublicationDate() {
 		return publicationDate;
 	}
+
 	public void setPublicationDate(Date publicationDate) {
 		this.publicationDate = publicationDate;
 	}
+
 	public String getPublisher() {
 		return publisher;
 	}
+
 	public void setPublisher(String publisher) {
 		this.publisher = publisher;
 	}
+
 	public int getPrice() {
 		return price;
 	}
+
 	public void setPrice(int price) {
 		this.price = price;
 	}
+
 	public int getStock() {
 		return stock;
 	}
+
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
+
 	public double getSaleRate() {
 		return saleRate;
 	}
+
 	public void setSaleRate(double saleRate) {
 		this.saleRate = saleRate;
 	}
+
 	public int getSalePrice() {
 		return salePrice;
 	}
+
 	public void setSalePrice(int salePrice) {
 		this.salePrice = salePrice;
 	}
+
 	public String getBintro() {
 		return bintro;
 	}
+
 	public void setBintro(String bintro) {
 		this.bintro = bintro;
 	}
+
 	public String getBurl() {
 		return burl;
 	}
+
 	public void setBurl(String burl) {
 		this.burl = burl;
 	}
+
 	public String getFilepath() {
 		return filepath;
 	}
+
 	public void setFilepath(String filepath) {
 		this.filepath = filepath;
 	}
+
 	public String getAintro() {
 		return aintro;
 	}
+
 	public void setAintro(String aintro) {
 		this.aintro = aintro;
 	}
+
 	public String getBimg() {
 		return bimg;
 	}
+
 	public void setBimg(String bimg) {
 		this.bimg = bimg;
 	}
 
 	@Override
 	public String toString() {
-		return "Book [bid=" + bid + ", btitle=" + btitle + ", cid=" + cid + ", bauthor=" + bauthor + ", btranslator="
-				+ btranslator + ", publicationDate=" + publicationDate + ", publisher=" + publisher + ", price=" + price
-				+ ", stock=" + stock + ", saleRate=" + saleRate + ", salePrice=" + salePrice + ", bintro=" + bintro
-				+ ", burl=" + burl + ", filepath=" + filepath + ", aintro=" + aintro + ", bimg=" + bimg + "]";
+		return "Book [bid=" + bid + ", btitle=" + btitle + ", cid=" + cid + ", cname=" + cname + ", userNo=" + userNo
+				+ ", author=" + author + ", translator=" + translator + ", publicationDate=" + publicationDate
+				+ ", publisher=" + publisher + ", price=" + price + ", stock=" + stock + ", saleRate=" + saleRate
+				+ ", salePrice=" + salePrice + ", bintro=" + bintro + ", burl=" + burl + ", filepath=" + filepath
+				+ ", aintro=" + aintro + ", bimg=" + bimg + "]";
 	}
+
 	
 	
 }
