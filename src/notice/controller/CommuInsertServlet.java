@@ -50,7 +50,7 @@ public class CommuInsertServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// ((Member)request.getSession().getAttribute("loginUser")).getUserId();
-		int cuser = 28;  // 작성자 
+		int cuser = 44;  // 작성자 
 		
 		// 선택한 작가 회원번호 들고오기
 		int cwriter = Integer.parseInt(request.getParameter("writer"));

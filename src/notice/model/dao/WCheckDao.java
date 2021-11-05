@@ -9,16 +9,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-
+import static common.JDBCTemplate.*;
 import book.model.vo.Book;
 import notice.model.vo.SearchB;
+import notice.model.vo.Upload;
+import notice.model.vo.WBook;
+import notice.model.vo.WCheck;
 
 public class WCheckDao {
 	
 	private Properties wcQuery = new Properties();
 	
 	public WCheckDao() {
-		String fileName = WCheckDao.class.getResource("/sql/wCheck/wcheck-query.xml").getPath();
+		String fileName = WCheckDao.class.getResource("/sql/wCheck/wCheck-query.xml").getPath();
 		
 		try {
 			wcQuery.loadFromXML(new FileInputStream(fileName));
@@ -59,15 +62,99 @@ public class WCheckDao {
 			
 			while(rset.next()) {
 				Book book = new Book();
+				book.setBid(rset.getInt("book_id"));
+				book.setBtitle(rset.getString("book_name"));
+				book.setAuthor(rset.getString("author"));
+				book.setPublicationDate(rset.getDate("publication_date"));
+				book.setPublisher(rset.getString("publisher"));
+				book.setStock(rset.getInt("stock"));
+				book.setBimg(rset.getString("book_img"));
 				
+				bookList.add(book);
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
 		}
 		
-		return null;
+		return bookList;
 	}
+
+
+	// WCHECK 테이블에 삽입
+	public int insertWCheck(Connection conn, WCheck wcheck) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = wcQuery.getProperty("insertWCheck");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, wcheck.getWtitle());
+			pstmt.setString(2, wcheck.getWcontent());
+			pstmt.setInt(3, wcheck.getUser_no());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	// W_BOOK 테이블에 삽입
+	public int insertWBook(Connection conn, WBook wbook) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = wcQuery.getProperty("insertWBook");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, wbook.getBid());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	// WC_UPLOAD 테이블에 삽입
+	public int insertUpload(Connection conn, Upload upload) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = wcQuery.getProperty("insertUpload");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, upload.getFile_path());
+			pstmt.setString(2, upload.getOrigin_file());
+			pstmt.setString(3, upload.getChange_file());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}	
+		
+		return result;
+	}
+
+
 	
 	
 	

@@ -76,6 +76,7 @@ public class OneQuestionInsertServlet extends HttpServlet {
 		//System.out.println(otitle);
 		//System.out.println(ocontent);
 		
+		// 유저~~~
 		// ((Member)request.getSession().getAttribute("loginUser")).getUserId();
 		int ouser = 2;  // id=test 
 		
