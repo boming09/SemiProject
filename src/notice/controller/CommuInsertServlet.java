@@ -71,10 +71,10 @@ public class CommuInsertServlet extends HttpServlet {
 		//System.out.println(result);
 		
 		if(result > 0) {
-			request.getSession().setAttribute("msg", "게시글 작성 완료!!");
+			request.getSession().setAttribute("msg", "게시글이 등록 되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/commu");
 		} else {
-			request.getSession().setAttribute("msg", "게시글 작성 실패9ㅅ9");
+			request.getSession().setAttribute("msg", "실패9ㅅ9");
 			request.getRequestDispatcher("/WEB-INF/views/notice/commuInsertView.jsp").forward(request, response);
 		}
 		

@@ -43,14 +43,15 @@
 	                </li>
 	            </ul>
 	        </div>
-	        <div class="area2"><a class="ca-top" href="${ contextPath }/one">1:1 문의</a>
+	        <div class="area2"><p class="ca-top">1:1 문의</p>
 	            <ul class="ca-list">
-	                <li><a href="${ contextPath }/one/insert">1:1 문의하기</a></li>
-	                <li><a href="${ contextPath }/one">1:1 문의내역</a></li>
+	                <li onclick="loginCheck()"><a>1:1 문의내역</a></li>
+	                <li onclick="loginCheck2()"><a>1:1 문의하기</a></li>
 	            </ul>
 	        </div>
-	        <div class="area3"><a class="ca-top" href="${ contextPath }/commu">작가 소통게시판</a>
-	            <ul class="ca-list">
+	        <div class="area3"><p class="ca-top">작가 소통게시판</p>
+	            <ul class="ca-list" onclick="loginChcek()">
+	            	<li><a href="${ contextPath }/commu">소통 게시판</a></li>
 	                <li><a href="${ contextPath }/commu/w-info">작가 소개</a></li>
 	            </ul>
 	        </div>
@@ -63,8 +64,30 @@
 		</div> 
 	</div>
 	
-	<script>
-		
-	</script>
+	<!-- 로그인 체크 -->
+	<c:choose>
+		<c:when test="${ !empty loginUser }">
+			<script>
+				function loginCheck(){
+					location.href='${ contextPath }/one';
+				}
+				function loginCheck2(){
+					location.href='${ contextPath }/one/insert';
+				}
+			</script>
+		</c:when>
+		<c:otherwise>
+			<script>
+				function loginCheck(){
+					alert("로그인 후 이용 가능합니다.");
+					location.href='${ contextPath }/login';
+				}
+				function loginCheck2(){
+					alert("로그인 후 이용 가능합니다.");
+					location.href='${ contextPath }/login';
+				}
+			</script>
+		</c:otherwise>
+	</c:choose>
 </body>
 </html>

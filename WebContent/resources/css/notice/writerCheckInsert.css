@@ -54,6 +54,7 @@
     text-align: center;
     background: rgb(239, 239, 239);
     font-size: 0.95rem;
+    font-weight: bold;
     border-right: 1px solid lightgray;
 }
 
@@ -154,8 +155,6 @@
 #wc_mybookarea {
 	font-size : 0.9rem;
 	width: 96%;
-}
-#wc_mybookarea {
 	padding-left : 30px;
 	margin : 10px;
 	line-height: 20px;

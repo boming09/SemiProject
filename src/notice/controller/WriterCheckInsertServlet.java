@@ -135,7 +135,7 @@ public class WriterCheckInsertServlet extends HttpServlet {
 		
 		if(result > 0) {
 			// 인증게시판 목록 재요청
-			request.getSession().setAttribute("msg", "성공^^");
+			request.getSession().setAttribute("msg", "게시글이 등록 되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/w-check");
 		} else {
 			// 실패시 저장 된 사진 삭제
@@ -144,7 +144,7 @@ public class WriterCheckInsertServlet extends HttpServlet {
 				failedFile.delete();
 			}
 			
-			request.getSession().setAttribute("msg", "실패^^~~");
+			request.getSession().setAttribute("msg", "실패9ㅅ9");
 			request.getRequestDispatcher("/WEB-INF/views/notice/writerCheckView.jsp").forward(request, response);
 		}
 		

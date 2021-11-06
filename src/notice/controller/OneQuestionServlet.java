@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.vo.Member;
 import notice.model.service.OneService;
 
 
@@ -35,8 +36,8 @@ public class OneQuestionServlet extends HttpServlet {
 		// 1:1문의 내역있을시 리스트 가져오기 => 로그인한 유저만
 		
 		// 로그인 유저 가져오기
-		// ((Member)request.getSession().getAttribute("loginUser")).getUserId();
-		int ouser = 2;
+		int ouser = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
+		//int ouser = 2;
 		
 		// 1. 페이징 처리
 		int page = 1;
@@ -62,8 +63,8 @@ public class OneQuestionServlet extends HttpServlet {
 			//1:1문의 없을때 보이는 화면 이동
 			forpage = "/WEB-INF/views/notice/oneQuestionView.jsp";
 		}
-		 
 		request.getRequestDispatcher(forpage).forward(request, response);
+		 
 		
 	}
 

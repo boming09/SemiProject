@@ -35,6 +35,13 @@ public class CommuServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 소통게시판 리스트 가져와서 뷰로 넘기기
 		
+		// 내가 쓴 글 체크시
+		int user_no = 0;
+		if(request.getParameter("userNo") != null) {
+			user_no = Integer.parseInt(request.getParameter("userNo"));
+			//System.out.println(user_no);
+		}
+		
 		// page : 현재 요청 페이지
 		int page = 1;
 		
@@ -44,7 +51,7 @@ public class CommuServlet extends HttpServlet {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
 		
-		Map<String, Object> map = new CommuService().selectList(page);
+		Map<String, Object> map = new CommuService().selectList(page, user_no);
 		
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("commuList", map.get("commuList"));

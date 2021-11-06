@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- ajax는 jquery 추가해야함 -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
@@ -46,7 +45,7 @@
                 		</td>
                 	</tr>
                 	
-                	<tr><td rowspan="4" class="wc_book">내도서</td></tr>
+                	<tr><td rowspan="4" class="wc_book">MY도서</td></tr>
                 	<tr class="wc_book2">
                 		<td>
                 			<fieldset class="wc_search">

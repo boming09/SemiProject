@@ -15,6 +15,7 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import com.oreilly.servlet.MultipartRequest;
 
 import common.MyFileRenamePolicy;
+import member.model.vo.Member;
 import notice.model.service.OneService;
 import notice.model.vo.One;
 
@@ -70,15 +71,13 @@ public class OneQuestionInsertServlet extends HttpServlet {
 		MultipartRequest mRequest
 		= new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 		
-		
 		String otitle = mRequest.getParameter("title");
 		String ocontent = mRequest.getParameter("content");
 		//System.out.println(otitle);
 		//System.out.println(ocontent);
 		
 		// 유저~~~
-		// ((Member)request.getSession().getAttribute("loginUser")).getUserId();
-		int ouser = 2;  // id=test 
+		int ouser = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
 		
 		One one = new One();
 		one.setOuser(ouser);
@@ -91,26 +90,21 @@ public class OneQuestionInsertServlet extends HttpServlet {
 			one.setOrigin_file(mRequest.getOriginalFileName("file"));
 			one.setChange_file(mRequest.getFilesystemName("file"));
 		} 
-		
 		// System.out.println(one);
-		// => ㅇㅇ
 		
 		int result = new OneService().insertOne(one);
-		
 		// System.out.println(result);
-		// => ㅇㅇ
 		
 		if(result > 0) {
 			// 문의내역 목록 재요청
-			// 아직 미작성
-			// response.sendRedirect(request.getContextPath() + "/one/list");
+			request.getSession().setAttribute("msg", "게시글이 등록 되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/one");
 		} else {
 			// 실패시 저장 된 사진 삭제
 			File fail = new File(savePath + one.getChange_file());
 			fail.delete();
 			
-			request.getSession().setAttribute("msg", "문의하기 실패^^~~");
+			request.getSession().setAttribute("msg", "실패9ㅅ9");
 			request.getRequestDispatcher("/WEB-INF/views/notice/oneQuestionView.jsp").forward(request, response);
 		}
 		 

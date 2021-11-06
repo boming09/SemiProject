@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Properties;
 import static common.JDBCTemplate.*;
 import book.model.vo.Book;
+import notice.model.vo.PageInfo;
 import notice.model.vo.SearchB;
 import notice.model.vo.Upload;
 import notice.model.vo.WBook;
@@ -32,10 +33,10 @@ public class WCheckDao {
 	
 	
 	// 작가인증시 도서 검색 후 리스트
-	public List<Book> selectBookList(Connection conn, SearchB search) {
+	public List<Book> searchBookList(Connection conn, SearchB search) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = wcQuery.getProperty("selectBookList");
+		String sql = wcQuery.getProperty("searchBookList");
 		
 		List<Book> bookList = new ArrayList<>();
 		
@@ -43,9 +44,9 @@ public class WCheckDao {
 		// 검색조건, 검색 값이 null이 아닌경우
 		if(search.getSearchType() != null && search.getSearch() != null) {
 			if(search.getSearchType().equals("title")) {
-				sql = wcQuery.getProperty("selectTitleList");				
+				sql = wcQuery.getProperty("searchTitleList");				
 			} else if(search.getSearchType().equals("writer")) {
-				sql = wcQuery.getProperty("selectWriterList");
+				sql = wcQuery.getProperty("searchWriterList");
 			}
 		}
 		
@@ -152,6 +153,255 @@ public class WCheckDao {
 		}	
 		
 		return result;
+	}
+
+
+	// 게시글 총 개수 구하기
+	public int getListCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int listCount = 0;
+		String sql = wcQuery.getProperty("getListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+				
+		return listCount;
+	}
+
+
+	// 게시글 총 리스트
+	public List<WCheck> selectList(Connection conn, PageInfo pi) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = wcQuery.getProperty("selectList");
+		
+		List<WCheck> wcheckList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			// 페이지 설정
+			int startRow = (pi.getPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow); // 페이지 시작 값
+			pstmt.setInt(2, endRow);  // 페이지 끝 값
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				WCheck wcheck = new WCheck();
+				wcheck.setWck_no(rset.getInt("wck_no"));
+				wcheck.setWtitle(rset.getString("title"));
+				wcheck.setWcontent(rset.getString("content"));
+				wcheck.setUser_no(rset.getInt("user_no"));
+				wcheck.setUser_name(rset.getString("user_name"));
+				wcheck.setCreate_date(rset.getDate("create_date"));
+				wcheck.setStatus(rset.getString("status"));
+				
+				wcheckList.add(wcheck);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}	
+		
+		return wcheckList;
+	}
+
+	// 내가 쓴 게시글 총 개수
+	public int getMyListCount(Connection conn, int user_no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int myListCount = 0;
+		String sql = wcQuery.getProperty("getMyListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, user_no);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				myListCount = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+				
+		return myListCount;
+	}
+
+	// 내가 쓴 게시글 리스트
+	public List<WCheck> selectMyList(Connection conn, PageInfo pi, int user_no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = wcQuery.getProperty("selectMyList");
+		
+		List<WCheck> wcheckMyList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			// 페이지 설정
+			int startRow = (pi.getPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, user_no);
+			pstmt.setInt(2, startRow); // 페이지 시작 값
+			pstmt.setInt(3, endRow);  // 페이지 끝 값
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				WCheck wcheck = new WCheck();
+				wcheck.setWck_no(rset.getInt("wck_no"));
+				wcheck.setWtitle(rset.getString("title"));
+				wcheck.setWcontent(rset.getString("content"));
+				wcheck.setUser_no(rset.getInt("user_no"));
+				wcheck.setUser_name(rset.getString("user_name"));
+				wcheck.setCreate_date(rset.getDate("create_date"));
+				wcheck.setStatus(rset.getString("status"));
+				
+				wcheckMyList.add(wcheck);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}	
+		
+		return wcheckMyList;
+	}
+
+	
+	// 게시글 상세페이지 가져오기
+	public WCheck selectWCheck(Connection conn, int wck_no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = wcQuery.getProperty("selectWCheck");
+		
+		WCheck wcheck = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, wck_no);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				wcheck = new WCheck();
+				wcheck.setWck_no(rset.getInt("wck_no"));
+				wcheck.setWtitle(rset.getString("title"));
+				wcheck.setWcontent(rset.getString("content"));
+				wcheck.setUser_no(rset.getInt("user_no"));
+				wcheck.setUser_name(rset.getString("user_name"));
+				wcheck.setCreate_date(rset.getDate("create_date"));
+				wcheck.setStatus(rset.getString("status"));				
+			}	
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return wcheck;
+	}
+
+	// 게시글에 참조된 도서리스트
+	public List<WBook> selectWBookList(Connection conn, int wck_no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = wcQuery.getProperty("selectWBook");
+		
+		List<WBook> wbookList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, wck_no);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				WBook wbook = new WBook();
+				wbook.setBid(rset.getInt("book_id"));
+				wbook.setWck_no(rset.getInt("wck_no"));
+				wbook.setB_name(rset.getString("book_name"));
+				wbook.setB_author(rset.getString("author"));
+				
+				wbookList.add(wbook);
+			}
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return wbookList;
+	}
+
+	// 게시글에 참조된 첨부파일리스트
+	public List<Upload> selectUploadList(Connection conn, int wck_no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = wcQuery.getProperty("selectUpload");
+		
+		List<Upload> uploadList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, wck_no);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Upload upload = new Upload();
+				upload.setWup_no(rset.getInt("wcup_no"));
+				upload.setWck_no(rset.getInt("wck_no"));
+				upload.setFile_path(rset.getString("file_path"));
+				upload.setOrigin_file(rset.getString("origin_file"));
+				upload.setChange_file(rset.getString("change_file"));
+				upload.setStatus(rset.getString("status"));
+				
+				uploadList.add(upload);
+			}
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return uploadList;
 	}
 
 
