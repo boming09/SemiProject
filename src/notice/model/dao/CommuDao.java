@@ -201,6 +201,85 @@ public class CommuDao {
 		return commu;
 	}
 
+	
+	// 내가 쓴 글 게시글 총 개수
+	public int getMyListCount(Connection conn, int user_no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int myListCount = 0;
+		
+		String sql = commuQuery.getProperty("getMyListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, user_no);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				myListCount = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return myListCount;
+	}
+
+	// 내가 쓴 글 총 리스트 가져오기
+	public List<Commu> selecMytList(Connection conn, PageInfo pi, int user_no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = commuQuery.getProperty("selectMyList");
+		
+		List<Commu> commuMyList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, user_no);
+			
+			// 페이지 설정
+			int startRow = (pi.getPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(2, startRow); // 페이지 시작 값
+			pstmt.setInt(3, endRow);  // 페이지 끝 값
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				Commu commu = new Commu();
+				commu.setCommu_no(rset.getInt("commu_no"));
+				commu.setCtitle(rset.getString("title"));
+				commu.setCcontent(rset.getString("content"));
+				commu.setUser_no(rset.getInt("user_no"));
+				commu.setCreate_date(rset.getDate("create_date"));
+				commu.setCreply(rset.getString("reply"));
+				commu.setCount(rset.getInt("count"));
+				commu.setCwriter_no(rset.getInt("writer_no"));
+				commu.setCwriter_name(rset.getString("user_name"));
+				commu.setStatus(rset.getString("status"));
+				
+				commuMyList.add(commu);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}		
+		
+		return commuMyList;
+	}
+
 
 
 	

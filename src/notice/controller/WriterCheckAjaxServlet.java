@@ -43,7 +43,7 @@ public class WriterCheckAjaxServlet extends HttpServlet {
 		//System.out.println(type);
 		
 		// 검색타입/검색어 객체로 넘기기
-		List<Book> bookList = new WCheckService().selectBookList(new SearchB(type, input));
+		List<Book> bookList = new WCheckService().searchBookList(new SearchB(type, input));
 		//System.out.println(bookList);
 		//request.setAttribute("bookList", bookList);
 		

@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
 <link href="${ contextPath }/resources/css/notice/commu.css" rel="stylesheet">
@@ -34,10 +35,10 @@
             </div>
 
             <div class="commu_area1">
-                <span>목록</span>
+                <span>소통 리스트</span>
                 <span>
-                    <input type="checkbox" name="mylist" value=""><label>내가 쓴 글만 보기</label>
-                    <button type="button" onclick="location.href='${ contextPath }/commu/insert'">글 작성</button>
+                    <input type="checkbox" id="cMypost"><label>내가 쓴 글만 보기</label>
+                    <button type="button" onclick="loginCheck()">글 작성</button>
                 </span>
             </div>
 
@@ -119,37 +120,43 @@
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
+	<!-- 체크박스 클릭시(내가쓴글) 회원번호 넘기기 -->
+	<form name="cMypostForm" method="get">
+			<input type="hidden" name="userNo" value="${ loginUser.userNo }">
+	</form>
+
 	
 	<script>
 		function detailView(communo){
 			location.href='${ contextPath }/commu/detail?commu_no=' + communo;
 		}
-		
-		
-		
-		
-		
-		
-		
 	</script>
 	
-	<!-- 로그인 유저 생기면~~~ -->
-	<%-- <c:choose>
+	<!-- 로그인 체크 -->
+	<c:choose>
 		<c:when test="${ !empty loginUser }">
 			<script>
-				function detailView(bid){
-					location.href='${ contextPath }/board/detail?bid=' + bid;
+				function loginCheck(){
+					location.href='${ contextPath }/commu/insert';
 				}
+				// 체크박스는 로그인 시만
+				// 2페이지 넘어가면 풀린다....
+				$("#cMypost").click(function(){
+					if($("#cMypost").prop("checked")) {
+						document.forms.cMypostForm.action = "${ contextPath }/commu";
+						document.forms.cMypostForm.submit(); 
+					} 
+				});
 			</script>
 		</c:when>
 		<c:otherwise>
 			<script>
-				function detailView(bid){
+				function loginCheck(){
 					alert("로그인 후 이용 가능합니다.");
-					location.href='${ contextPath }/login'
+					location.href='${ contextPath }/login';
 				}
 			</script>
 		</c:otherwise>
-	</c:choose> --%>
+	</c:choose>
 </body>
 </html>

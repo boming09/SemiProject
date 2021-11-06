@@ -67,6 +67,7 @@
     text-align: center;
     background: rgb(239, 239, 239);
     font-size: 0.95rem;
+    font-weight: bold;
     border-right: 1px solid lightgray;
 }
 
@@ -85,6 +86,7 @@
     height: 30px;
     border: 1px solid rgb(239, 239, 239);
     margin: 0px 10px;
+    font-size: 0.9rem;
 }
 
 /* 문의내용 영역 */
@@ -98,6 +100,7 @@
     border: 1px solid rgb(239, 239, 239);
     margin: 10px 10px;
     resize: none;
+    font-size: 0.9rem;
 }
 
 .q_content2 ul {

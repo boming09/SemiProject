@@ -16,6 +16,7 @@ public class WCheck {
 	private String wtitle;			// 제목
 	private String wcontent;		// 내용
 	private int user_no;			// 회원번호(작가등급 바뀌기전=일반회원)
+	private String user_name;			// 회원이름(작가인증게시판은 작성자-이름으로보이게)
 	private Date create_date;		// 작성일
 	private String status;			// 확인 상태
 	
@@ -24,18 +25,21 @@ public class WCheck {
 	
 	public WCheck() {}
 
-	public WCheck(int wck_no, String wtitle, String wcontent, int user_no, Date create_date, String status,
-			List<WBook> wbook, List<Upload> wupload) {
+	public WCheck(int wck_no, String wtitle, String wcontent, int user_no, String user_name, Date create_date,
+			String status, List<WBook> wbook, List<Upload> wupload) {
 		super();
 		this.wck_no = wck_no;
 		this.wtitle = wtitle;
 		this.wcontent = wcontent;
 		this.user_no = user_no;
+		this.user_name = user_name;
 		this.create_date = create_date;
 		this.status = status;
 		this.wbook = wbook;
 		this.wupload = wupload;
 	}
+
+
 
 	public int getWck_no() {
 		return wck_no;
@@ -67,6 +71,15 @@ public class WCheck {
 
 	public void setUser_no(int user_no) {
 		this.user_no = user_no;
+	}
+	
+
+	public String getUser_name() {
+		return user_name;
+	}
+
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
 
 	public Date getCreate_date() {
@@ -104,9 +117,11 @@ public class WCheck {
 	@Override
 	public String toString() {
 		return "WCheck [wck_no=" + wck_no + ", wtitle=" + wtitle + ", wcontent=" + wcontent + ", user_no=" + user_no
-				+ ", create_date=" + create_date + ", status=" + status + ", wbook=" + wbook + ", wupload=" + wupload
-				+ "]";
+				+ ", user_name=" + user_name + ", create_date=" + create_date + ", status=" + status + ", wbook="
+				+ wbook + ", wupload=" + wupload + "]";
 	}
+
+	
 
 	
 	
