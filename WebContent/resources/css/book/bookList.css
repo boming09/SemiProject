@@ -22,10 +22,15 @@
 
 /* 도서 목록 영역*/
 .cLi {
-	display: flex;
     list-style: none;
-    justify-content: space-around;  /* 공간을 균등하게  */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  	text-align: center;
+    /* justify-content: space-around; */  /* 공간을 균등하게  */
     padding: 10px;
+}
+.cLi li {
+	padding: 10px 0;
 }
 .cLi li:hover {
     color: #acadadd0;
@@ -58,7 +63,6 @@
     display: block;
     padding: 10% 0;
 }
-
 .img_wrap img {	/* td1 - 이미지 크기*/
 	width: 152px;
 	height: 200px;

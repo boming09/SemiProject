@@ -14,7 +14,8 @@ import static common.JDBCTemplate.*;
 public class BookService {
 	
 	private BookDao bookDao = new BookDao();
-
+	
+	// BookList
 	public Map<String, Object> selectList(int page, Search search) {
 		Connection conn = getConnection();
 		Map<String, Object> returnMap = new HashMap<>();
@@ -34,6 +35,26 @@ public class BookService {
 		close(conn);
 		
 		return returnMap;
+	}
+	
+	// List category
+	public List<String> categoryList(Search search) {
+		Connection conn = getConnection();
+		List<String> categoryList = bookDao.categoryList(conn, search);
+		
+		close(conn);
+		
+		return categoryList;
+	}
+	
+	// detailBook
+	public Book selectBook(int bid) {
+		Connection conn = getConnection();
+		Book book = bookDao.selectBook(conn, bid);
+		
+		close(conn);
+		
+		return book;
 	}
 	
 	
