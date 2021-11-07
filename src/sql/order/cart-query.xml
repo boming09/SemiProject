@@ -14,9 +14,9 @@
 		      , BOOK_IMG
 		      , CART_NO
 		      , BOOK_ID
-		      , USER_NO
+		      , C.USER_NO
 		      , AMOUNT
-		   FROM CART 
+		   FROM CART C
 		  LEFT JOIN BOOK USING(BOOK_ID)
 	</entry>
 
@@ -58,9 +58,9 @@
 		     , PRICE
 		     , CART_NO
 		     , BOOK_ID
-		     , USER_NO
+		     , C.USER_NO
 		     , AMOUNT
-		  FROM CART 
+		  FROM CART C
 		  LEFT JOIN BOOK USING(BOOK_ID)
 	     WHERE CART_NO = ?
 	</entry>
