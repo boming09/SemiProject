@@ -336,7 +336,7 @@ public class WCheckDao {
 	public List<WBook> selectWBookList(Connection conn, int wck_no) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = wcQuery.getProperty("selectWBook");
+		String sql = wcQuery.getProperty("selectWBookList");
 		
 		List<WBook> wbookList = new ArrayList<>();
 		
@@ -371,7 +371,7 @@ public class WCheckDao {
 	public List<Upload> selectUploadList(Connection conn, int wck_no) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = wcQuery.getProperty("selectUpload");
+		String sql = wcQuery.getProperty("selectUploadList");
 		
 		List<Upload> uploadList = new ArrayList<>();
 		
@@ -402,6 +402,40 @@ public class WCheckDao {
 		}
 		
 		return uploadList;
+	}
+
+	// 파일 다운로드시 업로드한 파일 찾아오기
+	public Upload selectUpload(Connection conn, int wup_no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = wcQuery.getProperty("selectUpload");
+		
+		Upload upload = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, wup_no);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				upload = new Upload();
+				upload.setWup_no(rset.getInt("wcup_no"));
+				upload.setWck_no(rset.getInt("wck_no"));
+				upload.setFile_path(rset.getString("file_path"));
+				upload.setOrigin_file(rset.getString("origin_file"));
+				upload.setChange_file(rset.getString("change_file"));
+				upload.setStatus(rset.getString("status"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return upload;
 	}
 
 

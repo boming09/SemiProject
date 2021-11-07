@@ -160,7 +160,7 @@
 		 WHERE WCK_NO = ?
 	</entry>
 	
-	<entry key="selectWBook">
+	<entry key="selectWBookList">
 		SELECT
 		       BOOK_ID
 		     , WCK_NO
@@ -172,7 +172,7 @@
 		 ORDER BY BOOK_NAME
 	</entry>
 	
-	<entry key="selectUpload">
+	<entry key="selectUploadList">
 		SELECT
 		       WCUP_NO
 		     , WCK_NO
@@ -184,8 +184,17 @@
 		 WHERE WCK_NO = ?
 	</entry>
 	
-	
-	
-	
+	<entry key="selectUpload">
+		SELECT
+		       WCUP_NO
+		     , WCK_NO
+		     , FILE_PATH
+		     , ORIGIN_FILE
+		     , CHANGE_FILE
+		     , STATUS
+		  FROM WC_UPLOAD
+		 WHERE WCUP_NO = ?
+	</entry>
+		
 	
 </properties>

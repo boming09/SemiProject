@@ -179,7 +179,7 @@
 		function openPopup(url, title, width, height) {
 			
 			var left = (document.body.clientWidth/2)-(width/2);
-			left += window.screenLeft;	// 듀얼 모니터
+			//left += window.screenLeft;	// 듀얼 모니터
 			var top = (screen.availHeight/2)-(height/2);
 			
 			var options = "width="+width+",height="+height+",left="+left+",top="+top;
