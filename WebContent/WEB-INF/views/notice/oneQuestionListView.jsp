@@ -46,7 +46,7 @@
                     </ul>
                     <!-- 반복문 -->
                     <c:forEach var="one" items="${ oneList }">
-                    	<%-- <ul class="board_ul" onclick="detailView(${board.bid})"> --%>
+	                    <%-- <c:set var="index" value="${ index + 1 }"/> --%>
 	                    <ul class="one_list" onclick="detailView(${ one.one_no })">
 	                        <li class="one_no">${ one.one_no }</li>
 	                        <li class="one_title title2">${ one.otitle }</li>
@@ -112,32 +112,12 @@
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
-	
+	<!-- 여기는 로그인유저와 작성자와 같은지 확인 필요 없음 -->
 	<script>
 		function detailView(oneno){
 			location.href='${ contextPath }/one/detail?one_no=' + oneno;
 		}
 	</script>
-	
-	
-	<!-- 로그인 유저 생기면~~~ -->
-	<%-- <c:choose>
-		<c:when test="${ !empty loginUser }">
-			<script>
-				function detailView(bid){
-					location.href='${ contextPath }/board/detail?bid=' + bid;
-				}
-			</script>
-		</c:when>
-		<c:otherwise>
-			<script>
-				function detailView(bid){
-					alert("로그인 후 이용 가능합니다.");
-					location.href='${ contextPath }/login'
-				}
-			</script>
-		</c:otherwise>
-	</c:choose> --%>
 	
 </body>
 </html>

@@ -48,6 +48,7 @@ public class MemberInformationServlet extends HttpServlet {
 		String userPhone = request.getParameter("phone");
 		String userEmail = request.getParameter("email");
 		String[] addressArr = request.getParameterValues("address");
+		String userNickname = request.getParameter("userNickname");
 		
 		String address ="";
 		
@@ -56,7 +57,7 @@ public class MemberInformationServlet extends HttpServlet {
 			
 		}
 		
-		Member member = new Member(userNo, userName, userPhone, userEmail, address);
+		Member member = new Member(userNo, userName, userPhone, userEmail, address, userNickname);
 				
 		// 비즈니스 로직 수행 (DB update)
 		// db update 수정 된 member select > session의 loginUser 값 변경

@@ -22,7 +22,7 @@
 		<%@ include file="/WEB-INF/views/mypage/mypage-category.jsp" %>		
 		<!-- 헤더 div -->
 		<div class="content">            
-           	<h4>${ loginUser.userId }고객님, 안녕하세요.</h4><br>
+           	<h4>${ loginUser.userNickname } 고객님, 안녕하세요.</h4><br>
             <header>
             	<div class="hdcenter">
             		<div class="left">

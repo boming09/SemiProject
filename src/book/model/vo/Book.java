@@ -7,9 +7,9 @@ public class Book {
 	private String btitle;			// 도서 제목
 	private int cid;				// 카테고리 번호
 	private String cname;			// 카테고리 이름(카테고리 번호 참조 값)
-	private int userNo;			// 저자(= user_no 참조 값) null
-	private String author;		// 저자 이름 not null
-	private String translator;		// 역자
+	private int userNo;				// 저자(= user_no 참조 값) null
+	private String author;			// 저자 이름 not null
+	private String editor;			// 역자
 	private Date publicationDate;	// 출판일
 	private String publisher;		// 출판사
 	private int price;				// 정가
@@ -40,7 +40,7 @@ public class Book {
 	
 	public Book() {}
 
-	public Book(int bid, String btitle, int cid, String cname, int userNo, String author, String translator,
+	public Book(int bid, String btitle, int cid, String cname, int userNo, String author, String editor,
 			Date publicationDate, String publisher, int price, int stock, double saleRate, int salePrice, String bintro,
 			String burl, String filepath, String aintro, String bimg) {
 		super();
@@ -50,7 +50,7 @@ public class Book {
 		this.cname = cname;
 		this.userNo = userNo;
 		this.author = author;
-		this.translator = translator;
+		this.editor = editor;
 		this.publicationDate = publicationDate;
 		this.publisher = publisher;
 		this.price = price;
@@ -112,12 +112,12 @@ public class Book {
 		this.author = author;
 	}
 
-	public String getTranslator() {
-		return translator;
+	public String getEditor() {
+		return editor;
 	}
 
-	public void setTranslator(String translator) {
-		this.translator = translator;
+	public void setEditor(String editor) {
+		this.editor = editor;
 	}
 
 	public Date getPublicationDate() {
@@ -211,7 +211,7 @@ public class Book {
 	@Override
 	public String toString() {
 		return "Book [bid=" + bid + ", btitle=" + btitle + ", cid=" + cid + ", cname=" + cname + ", userNo=" + userNo
-				+ ", author=" + author + ", translator=" + translator + ", publicationDate=" + publicationDate
+				+ ", author=" + author + ", editor=" + editor + ", publicationDate=" + publicationDate
 				+ ", publisher=" + publisher + ", price=" + price + ", stock=" + stock + ", saleRate=" + saleRate
 				+ ", salePrice=" + salePrice + ", bintro=" + bintro + ", burl=" + burl + ", filepath=" + filepath
 				+ ", aintro=" + aintro + ", bimg=" + bimg + "]";

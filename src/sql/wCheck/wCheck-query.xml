@@ -2,46 +2,190 @@
 <!DOCTYPE properties SYSTEM
 "http://java.sun.com/dtd/properties.dtd">
 <properties>
-	<entry key="selectBookList">
+	<entry key="searchBookList">
 		SELECT 
 		       BOOK_ID
 		     , BOOK_NAME
 		     , AUTHOR
 		     , PUBLICATION_DATE
 		     , PUBLISHER
-		     , SALE_RATE
+		     , STOCK
 		     , BOOK_IMG
 		  FROM BOOK
 		 ORDER BY BOOK_NAME
 	</entry>
 	
-	<entry key="selectTitleList">
+	<entry key="searchTitleList">
 		SELECT 
 		       BOOK_ID
 		     , BOOK_NAME
 		     , AUTHOR
 		     , PUBLICATION_DATE
 		     , PUBLISHER
-		     , SALE_RATE
+		     , STOCK
 		     , BOOK_IMG
 		  FROM BOOK
 		 WHERE BOOK_NAME LIKE '%' || ? || '%'
 		 ORDER BY BOOK_NAME
 	</entry>
 	
-	<entry key="selectWriterList">
+	<entry key="searchWriterList">
 		SELECT 
 		       BOOK_ID
 		     , BOOK_NAME
 		     , AUTHOR
 		     , PUBLICATION_DATE
 		     , PUBLISHER
-		     , SALE_RATE
+		     , STOCK
 		     , BOOK_IMG
 		  FROM BOOK
 		 WHERE AUTHOR LIKE '%' || ? || '%'
 		 ORDER BY BOOK_NAME
 	</entry>
 	
-
+	<entry key="insertWCheck">
+		INSERT INTO WCHECK
+		(
+		    WCK_NO
+		  , TITLE
+		  , CONTENT
+		  , USER_NO
+		  , CREATE_DATE
+		  , STATUS
+		)
+		VALUES
+		(
+		    SEQ_WCK_NO.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  , DEFAULT
+		  , DEFAULT
+		)
+	</entry>
+	
+	<entry key="insertWBook">
+		INSERT INTO W_BOOK
+		(
+		    BOOK_ID
+		  , WCK_NO
+		)
+		VALUES
+		(
+		    ?
+		  , SEQ_WCK_NO.CURRVAL
+		)
+	</entry>
+	
+	<entry key="insertUpload">
+		INSERT INTO WC_UPLOAD
+		(
+		    WCUP_NO
+		  , WCK_NO
+		  , FILE_PATH
+		  , ORIGIN_FILE
+		  , CHANGE_FILE
+		  , STATUS
+		)
+		VALUES
+		(
+		    WCUP_NO.NEXTVAL
+		  , SEQ_WCK_NO.CURRVAL
+		  , ?
+		  , ?
+		  , ?
+		  , DEFAULT
+		)
+	</entry>
+	
+	<entry key="getListCount">
+		SELECT
+		       COUNT(*)
+		  FROM WCHECK
+	</entry>
+	
+	<entry key="selectList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.*
+		          FROM (SELECT
+		                   WCK_NO
+		                 , TITLE
+		                 , CONTENT
+		                 , USER_NO
+		                 , USER_NAME
+		                 , CREATE_DATE
+		                 , W.STATUS
+		              FROM WCHECK W
+		              JOIN MEMBER M USING(USER_NO)
+		             ORDER BY CREATE_DATE DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="getMyListCount">
+		SELECT
+		       COUNT(*)
+		  FROM WCHECK
+		 WHERE USER_NO = ?
+	</entry>
+	
+	<entry key="selectMyList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.*
+		          FROM (SELECT
+		                   WCK_NO
+		                 , TITLE
+		                 , CONTENT
+		                 , USER_NO
+		                 , USER_NAME
+		                 , CREATE_DATE
+		                 , W.STATUS
+		              FROM WCHECK W
+		              JOIN MEMBER M USING(USER_NO)
+		             WHERE USER_NO = ?
+		             ORDER BY CREATE_DATE DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectWCheck">
+		SELECT
+		       WCK_NO
+		     , TITLE
+		     , CONTENT
+		     , USER_NO
+		     , USER_NAME
+		     , CREATE_DATE
+		     , W.STATUS
+		  FROM WCHECK W
+		  JOIN MEMBER USING(USER_NO)
+		 WHERE WCK_NO = ?
+	</entry>
+	
+	<entry key="selectWBook">
+		SELECT
+		       BOOK_ID
+		     , WCK_NO
+		     , BOOK_NAME
+		     , AUTHOR
+		  FROM W_BOOK
+		  JOIN BOOK USING(BOOK_ID)
+		 WHERE WCK_NO = ?
+		 ORDER BY BOOK_NAME
+	</entry>
+	
+	<entry key="selectUpload">
+		SELECT
+		       WCUP_NO
+		     , WCK_NO
+		     , FILE_PATH
+		     , ORIGIN_FILE
+		     , CHANGE_FILE
+		     , STATUS
+		  FROM WC_UPLOAD
+		 WHERE WCK_NO = ?
+	</entry>
+	
+	
+	
+	
+	
 </properties>

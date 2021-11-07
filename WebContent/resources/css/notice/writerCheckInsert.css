@@ -31,26 +31,30 @@
     font-size: 0.8rem;
 }
 
-/* 작성 영역*/
+/* 작성 영역 = form */
 .wc_info {
     margin: 20px 30px 20px 30px;
 }
 
-.wc_titlearea, .wc_contentarea, .wc_filearea, .wc_bookarea {
-    border-top: 1px solid lightgray;
-    display: flex;
-    align-items: center;
+/* 테이블 */
+.wc_area {
+	width : 100%;
+	border-bottom: 1px solid lightgray;
+	/*  테이블 간격 없애기 */
+    border-collapse: collapse; 
+    border-spacing: 0;
 }
 
-.wc_filearea {
-    border-bottom: 1px solid lightgray;
+.wc_area tr {
+	 border-top: 1px solid lightgray; 
 }
 
-.wc_title, .wc_content, .wc_file, .wc_book {
+.wc_title, .wc_content, .wc_book, .wc_file {
     width: 20%;
     text-align: center;
     background: rgb(239, 239, 239);
     font-size: 0.95rem;
+    font-weight: bold;
     border-right: 1px solid lightgray;
 }
 
@@ -58,10 +62,9 @@
     width: 80%;
 }
 
-/* span태그 세로가운데는 line-height로 맞추기 */
 /* 문의제목 영역 */
 .wc_title {
-    line-height: 50px;
+    height: 50px;
 }
 
 .wc_title2 input {
@@ -75,7 +78,7 @@
 
 /* 문의내용 영역 */
 .wc_content {
-    line-height: 336px;
+    height: 336px;
 }
 
 .wc_content2 textarea {
@@ -89,7 +92,7 @@
 
 /* 도서 인증 영역 */
 .wc_book {
-	line-height: 222px;
+	height : 122px;
 }
 .wc_search {
 	/* fieldset */
@@ -133,30 +136,40 @@
     background-color: rgb(196, 217, 195);
     color: black;
 }
-.wc_book2 select {
-	width : 200px;
+.wc_area .noline {
+	border-top : 0px;
+}
+.wc_area .line {
+	border-bottom : 1px solid rgb(239, 239, 239);
+	margin : 0 10px;
+}
+
+#wc_select {
+	width : 530px;
 	margin : 15px;
-	margin-left : 10px;
+	margin-left : 15px;
 	font-size : 0.9rem;
 	
 }
-.wc_book2 textarea {
+/* 선택한 책 나오는 곳 */
+#wc_mybookarea {
 	font-size : 0.9rem;
 	width: 96%;
-	height: 100px;
-	resize: none;
-	padding-left : 10px;
-	border: 1px solid rgb(239, 239, 239);
-	margin: 0px 10px;
-	margin-bottom : 10px;
+	padding-left : 30px;
+	margin : 10px;
+	line-height: 20px;
 }
 
 /* 첨부파일 영역 */
 .wc_file {
-    line-height: 160px;
+    height: 160px;
 }
-
-.wc_uplode input {
+.filearea {
+	display : flex;
+	align-items: center;
+	height : 50px;
+}
+.filearea input {
     margin: 15px;
     font-size: 0.9rem;
 }
@@ -165,7 +178,7 @@
     font-size: 0.8rem;
     padding-left: 30px;
     padding-right: 10px;
-    margin-bottom: 10px;
+    margin: 10px 0;
     line-height: 20px;
 }
 
