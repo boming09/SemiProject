@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM
+"http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectList">
+		SELECT 
+		        BOOK_NAME
+		      , CATEGORY_ID
+		      , AUTHOR
+		      , PUBLISHER
+		      , SALE_PRICE
+		      , PRICE
+		      , STOCK
+		      , BOOK_IMG
+		      , CART_NO
+		      , BOOK_ID
+		      , USER_NO
+		      , AMOUNT
+		   FROM CART 
+		  LEFT JOIN BOOK USING(BOOK_ID)
+	</entry>
+
+	<entry key="insertCart">
+		INSERT
+			INTO CART
+			(
+				CART_NO
+			  , BOOK_ID
+			  , AMOUNT
+			  , USER_NO
+			)
+			VALUES
+			(
+				SEQ_CART_NO.NEXTVAL
+			  , ?
+			  , ?
+			  , ?
+			)
+	</entry>
+	
+	<entry key="deleteCart">
+		DELETE FROM CART
+ 		 WHERE CART_NO = ?
+	</entry>
+	
+	<entry key="updateCart">
+		UPDATE CART
+	  	   SET AMOUNT = ?
+	 	 WHERE CART_NO = ?
+	</entry>
+
+	<entry key="selectOrderList">
+		SELECT 
+		       BOOK_NAME
+		     , CATEGORY_ID
+		     , AUTHOR
+		     , SALE_PRICE
+		     , PRICE
+		     , CART_NO
+		     , BOOK_ID
+		     , USER_NO
+		     , AMOUNT
+		  FROM CART 
+		  LEFT JOIN BOOK USING(BOOK_ID)
+	     WHERE CART_NO = ?
+	</entry>
+
+</properties>
