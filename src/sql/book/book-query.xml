@@ -2,7 +2,7 @@
 <!DOCTYPE properties SYSTEM
 "http://java.sun.com/dtd/properties.dtd">
 <properties>
-
+<!-- paging Count -->
 <entry key="getListCount">
    SELECT
           COUNT(*)
@@ -30,6 +30,7 @@
    WHERE AUTHOR LIKE '%' || ? || '%'
 </entry>
 
+<!-- book List -->
 <entry key="selectList">
 	SELECT * 
 	     FROM (SELECT ROWNUM RNUM, A.*
@@ -53,7 +54,7 @@
 	                     FROM BOOK B
 	                     JOIN MEMBER ON(AUTHOR = USER_NO)
 	                     ORDER BY PUBLICATION_DATE DESC) A)
-	 WHERE RNUM BETWEEN ? AND ?;
+	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 
 <entry key="selectSearchList">
@@ -143,12 +144,66 @@
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 
+<!-- category List -->
+<entry key="categoryList">
+SELECT
+       CATEGORY_NAME
+  FROM BOOK
+  JOIN B_CATEGORY USING(CATEGORY_ID)
+ GROUP BY CATEGORY_NAME
+</entry>
 
+<entry key="searchCategoryList">
+SELECT
+       CATEGORY_NAME
+  FROM BOOK
+  JOIN B_CATEGORY USING(CATEGORY_ID)
+ WHERE BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%'
+ GROUP BY CATEGORY_NAME
+</entry>
 
+<entry key="titleCategoryList">
+SELECT
+       CATEGORY_NAME
+  FROM BOOK
+  JOIN B_CATEGORY USING(CATEGORY_ID)
+ WHERE BOOK_NAME LIKE '%' || ? || '%'
+ GROUP BY CATEGORY_NAME
+</entry>
 
+<entry key="authorCategoryList">
+SELECT
+       CATEGORY_NAME
+  FROM BOOK
+  JOIN B_CATEGORY USING(CATEGORY_ID)
+ WHERE AUTHOR LIKE '%' || ? || '%'
+ GROUP BY CATEGORY_NAME
+</entry>
 
-
-
-
+<!-- select Book -->
+<entry key="selectBook">
+SELECT
+       BOOK_ID
+     , BOOK_NAME
+     , CATEGORY_ID
+     , CATEGORY_NAME
+     , USER_NO
+     , AUTHOR
+     , EDITOR
+     , PUBLICATION_DATE
+     , PUBLISHER
+     , PRICE
+     , STOCK
+     , SALE_RATE
+     , SALE_PRICE
+     , BOOK_INTRO
+     , BOOK_URL
+     , FILE_PATH
+     , AUTHOR_INTRO
+     , BOOK_IMG
+     FROM BOOK
+     JOIN B_CATEGORY USING(CATEGORY_ID)
+    WHERE BOOK_ID = ?
+</entry>
 
 </properties>

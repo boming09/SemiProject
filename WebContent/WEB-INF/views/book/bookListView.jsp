@@ -29,12 +29,9 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 		<div class="content">
             <div class="book_category">
                 <ul class="cLi">
-                    <!-- c:forEach -->
-                    <li>종교</li>
-                    <li>만화/라이트노벨</li>
-                    <li>어린이</li>
-                    <li>소설/시/희곡</li>
-                    <!-- c:forEach -->
+                    <c:forEach var="category" items="${ categoryList }">
+                    <li onclick="seachCategory('${ category }')">${ category }</li>
+                    </c:forEach>
                 </ul>
             </div>
 			<div class="booklist_area">
@@ -103,7 +100,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 				                                    <input type="radio" name="star-input" value="10" id="p10">
 				                                    <label for="p10">10</label>
 				                                  </span>
-				                                  <output for="star-input"><b>0</b>점</output>						
+				                                  <output for="star-input"><b>9</b>점</output>						
 				                            </span>
 				                        </span>
 			                        </div>
@@ -152,11 +149,15 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" /> 
 	
-	<script>
-		function detailView(bid){
-			location.href="${contextPath}/book/detail?bid=" + bid;
-		}
-	</script>
+<script>
+	function detailView(bid){
+		location.href="${contextPath}/book/detail?bid=" + bid;
+	}
+	
+	function seachCategory(category){
+		location.href="${contextPath}/book/categorylist?category=" + category;
+	}
+</script>
 <script src="${contextPath}/resources/js/star/jquery-1.11.3.min.js"></script>
 <script src="${contextPath}/resources/js/star/star.js"></script>
 </body>
