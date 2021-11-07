@@ -138,7 +138,7 @@ public class cartDao {
 			if(i< cartNo.length-1)
 					params += ",";
 		}
-		String sql =  "SELECT BOOK_NAME, CATEGORY_ID, AUTHOR, PUBLISHER, SALE_PRICE, PRICE, STOCK, BOOK_IMG, CART_NO, BOOK_ID, USER_NO, AMOUNT FROM CART LEFT JOIN BOOK USING(BOOK_ID) WHERE CART_NO in ("+params+")";
+		String sql =  "SELECT BOOK_NAME, CATEGORY_ID, AUTHOR, PUBLISHER, SALE_PRICE, PRICE, STOCK, BOOK_IMG, CART_NO, BOOK_ID, C.USER_NO, AMOUNT FROM CART C LEFT JOIN BOOK USING(BOOK_ID) WHERE CART_NO in ("+params+")";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
