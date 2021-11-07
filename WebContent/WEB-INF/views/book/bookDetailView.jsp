@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,17 +27,22 @@ crossorigin="anonymous"></script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/menubar.jsp"/>
+
+
 <div class="csarea wrapper">
     <div class="content">
         <div class="detailTopWrap">
+
             <div class="topColLft"> <!-- top left -->
                 <div class="bookImgArea">   <!-- book image -->
-                    <img src="${contextPath}/resources/images/book/pop1.png" alt="book">
+                    <img name="bookname" src="${contextPath}/resources/images/book/pop1.png" alt="book">
                 </div>
             </div>
             <div class="topColRft"> <!-- top right -->
                 <div class="infoTop">   <!-- 도서정보 top: 정보관련 -->
+
                     <div class="titleArea"><h2 class="titleName">${ book.btitle }</h2></div>
+
                     <div class="pubArea">
                         <span class="book_auth">${ book.author }&nbsp;${ book.editor }</span>
                         <span>|</span>
@@ -121,17 +128,37 @@ crossorigin="anonymous"></script>
 	                    </div>
                         <!-- 구매 영역 -->
                         <div class="acArea">
-                            <div class="btn_count">
-                                <input type="number" name="count" value="0" min="0" max="50" size="5">
-                            </div>
-                            <button id="basket" type="button" onclick="">장바구니</button>
-                            <button id="buy" type="button" onclick="">바로구매</button>
+                        
+                        
+                        <!-- 로그인 하지 않으면 장바구니/구매 버튼 보이지 않는 처리와 버튼과 페이지 연결  -->
+						<script>            
+				            function submit2(frm) {
+				              frm.action="${ contextPath }/order/direct" //바로구매 서블릿만들기
+				              frm.submit();
+				              return true;
+				            }                 
+			         	 </script>
+			                            
+                          <c:if test="${ ! empty loginUser}">
+                          <form action="${ contextPath }/cart" method="post">
+                          <input type="hidden" name="book_id" value="14"> <!--  name=${ book.book_id }-->
+	                            <div class="btn_count">
+	                                <input type="number" name="count" value="1" min="1" max="50" size="5">
+	                            </div>
+	                            <button id="basket" type="submit">장바구니</button>
+	                            <button id="buy" type="button" onclick="return submit2(this.form);">바로구매</button>
+                          </form>
+                          </c:if> 
+                                              
                         </div>
                     </div>
                 </div>
             </div>
         <!-- top detail end -->
+     
         </div> 
+       	   
+        
 
         <!-- 광고 -->
         <div class="adverArea">
