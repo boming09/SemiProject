@@ -40,6 +40,7 @@
     height: 200px;
     margin: 0px auto;
     border-radius: 50%;
+    border : 1px solid rgb(73, 125, 78);
 }
 /* 자기소개 textarea*/
 .wmy_self {
@@ -100,6 +101,11 @@
     font-size: 0.9rem;
     padding : 10px 0;
 }
+
+.wmy_address2 input {
+	width : 300px;
+}
+
 
 /* 이용약관 */
 .wmy_agree {

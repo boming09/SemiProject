@@ -54,7 +54,7 @@ public class OneQuestionInsertServlet extends HttpServlet {
 		 */
 		
 		if(!ServletFileUpload.isMultipartContent(request)) {
-			// 잘못된경로면 일단 cs페이지로...alert창 안뜨넵.....;;
+			// 잘못된경로면 일단 cs페이지로...
 			request.getSession().setAttribute("msg", "잘못된 전송입니다.");
 			request.getRequestDispatcher("/WEB-INF/views/notice/csPageView.jsp").forward(request, response);
 			return;

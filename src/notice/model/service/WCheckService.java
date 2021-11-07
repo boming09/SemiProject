@@ -121,6 +121,17 @@ public class WCheckService {
 		
 		return wcheck;
 	}
+
+	// 파일 다운로드시 업로드한 파일 찾아오기
+	public Upload selectUpload(int wup_no) {
+		Connection conn = getConnection();
+		
+		Upload upload = wcDao.selectUpload(conn, wup_no);
+		
+		close(conn);
+		
+		return upload;
+	}
 	
 	
 	
