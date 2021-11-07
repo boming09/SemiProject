@@ -22,7 +22,7 @@
 		<%@ include file="/WEB-INF/views/mypage/mypage-category.jsp" %>		
 		<!-- 헤더 div -->
 		<div class="content">            
-           	<h2 id="hi">고객님, 안녕하세요.</h2><br>
+           	<h2 id="hi">${ loginUser.userNickname } 고객님, 안녕하세요.</h2><br>
            	<div class="content_li">
            		<ul>
            			<li>배송 문의 : 익일택배 OO택배(1588-0000) / 당일택배 XX택배 (1588-1111) / 편의점 택배(1588-2222)</li>

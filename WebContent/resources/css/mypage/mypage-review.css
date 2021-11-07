@@ -113,6 +113,103 @@
     width: 10%;
 }
 
+/* 별점 */
+.rating .rate_radio + label {
+    position: relative;
+    display: inline-block;
+    margin-left: -4px;
+    z-index: 10;
+    width: 12px;
+    height: 12px;
+    background-image: url('./img/starrate.png');
+    background-repeat: no-repeat;
+    background-size: 60px 60px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+}
+.rating .rate_radio:checked + label {
+    background-color: #ff8;
+}
+.rating .rate_radio {
+    position: relative;
+    display: inline-block;
+    z-index: 20;
+    opacity: 0.001;
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    cursor: pointer;
+    vertical-align: top;
+    display: none;
+}
+.rating .rate_radio + label {
+    position: relative;
+    display: inline-block;
+    margin-left: -4px;
+    z-index: 10;
+    width: 12px;
+    height: 12px;
+    background-image: url('../../images/mypage/starrate.png');
+    background-repeat: no-repeat;
+    background-size: 12px 12px;
+    cursor: pointer;
+    background-color: gray;
+}
+.rating .rate_radio:checked + label {
+    background-color: #ff8;
+}
+
+/* 검색 */
+#searchselect2{
+	width : 60px;
+	height: 40px;
+	border : 1px solid gray;
+	margint-top : 10px;
+	padding-left : 15px;
+	font-size : 13px;
+	font-weight: bold;
+}
+
+.search_area2 {
+	text-align: center;
+	padding-top: 20px;
+}
+
+.search_area2 select {
+	width: 150px;
+	height: 30px;
+	border: 0px;
+}
+
+.input_area2 {
+	width: 250px;
+	border: solid 1px #dadada;
+	padding: 10px 10px 14px 10px;
+	margin-right: 20px;
+	background: white;
+}
+
+.input_area2 input {
+	width: 250px;
+	height: 30px;
+	border: 0px;
+}
+
+.input_area2 input:focus, .search_area2 select:focus {
+	outline: none;
+}
+
+#noticeInsert {
+	width: 90px;
+	height: 35px;
+	border: 0px;
+	color: white;
+	background: #282A35;
+	margin: 5px;
+	cursor : pointer;
+	font-size : 13px;
+}
+
 /* 마우스 오버시 */
 .review_list:hover {
     background: #f3f5f7;
