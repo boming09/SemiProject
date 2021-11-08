@@ -32,7 +32,8 @@
             <div class="wcheck_area1">
                 <span>인증 리스트</span>
                 <span>
-                    <input type="checkbox" id="mypost"><label>내가 쓴 글만 보기</label>
+                    <input type="checkbox" id="mypost" name="mypost">
+                    	<label>내가 쓴 글만 보기</label>
                     <button type="button" onclick="loginCheck()">글 작성</button>
                 </span>
             </div>
@@ -47,7 +48,6 @@
                         <li class="wcheck_status">상태</li>
                     </ul>
                     <c:forEach var="wcheck" items="${ wcheckList }">
-	                    <%-- <input type="hidden" id="wuser_no" value="${ wcheck.user_no }"> --%>
 	                    <ul class="wcheck_list" onclick="loginCheckDetail(${ wcheck.wck_no })">
 	                        <li class="wcheck_no">${ wcheck.wck_no }</li>
 	                        <li class="wcheck_title">${ wcheck.wtitle }</li>
@@ -63,13 +63,20 @@
                     </c:forEach>
                 </div>
                 
+             	<%-- <c:if test="${ !empty param.userNo }">
+					<c:set var="searchParam" value="&user_no=${ loginUser.userNo }"/>
+				</c:if>  --%>
+				<c:if test="${ param.mypost == loginUser.userNo}">
+					<c:set var="searchParam" value="&user_no=${ loginUser.userNo }"/>
+				</c:if> 
+                
                 <div class="pagingarea">
                     <ul class="wcheck_paging">
 		            	<!-- 앞으로 이동하는 버튼(<) -->
 		            	<li>
 						<c:choose>
 							<c:when test="${ pi.page > 1 }">
-								<a href="${ contextPath }/w-check?page=${ pi.page - 1}">&lt;</a>
+								<a href="${ contextPath }/w-check?page=${ pi.page - 1}${ searchParam }">&lt;</a>
 							</c:when>
 							<c:otherwise>
 								<a href="#">&lt;</a>
@@ -95,7 +102,7 @@
 						<li>
 							<c:choose>
 								<c:when test="${ pi.page < pi.maxPage }">
-									<a href="${ contextPath }/w-check?page=${ pi.page + 1}">&gt;</a>
+									<a href="${ contextPath }/w-check?page=${ pi.page + 1}${ searchParam }">&gt;</a>
 								</c:when>
 								<c:otherwise>
 									<a href="#">&gt;</a>
@@ -116,8 +123,8 @@
 	
 	<!-- 체크박스 클릭시(내가쓴글) 회원번호 넘기기 -->
 	<form name="mypostForm" method="get">
-			<input type="hidden" name="userNo" value="${ loginUser.userNo }">
-	</form>
+			<input type="hidden" name="user_no" value="${ loginUser.userNo }">
+	</form> 
 	
 	<!-- 로그인 체크 -->
 	<c:choose>
@@ -131,7 +138,7 @@
 				$("#mypost").click(function(){
 					if($("#mypost").prop("checked")) {
 						document.forms.mypostForm.action = "${ contextPath }/w-check";
-						document.forms.mypostForm.submit(); 
+						document.forms.mypostForm.submit();  
 					} 
 				});
 				
@@ -155,47 +162,8 @@
 			</script>
 		</c:otherwise>
 	</c:choose>
-		 
-<%-- 	<c:choose>
-		<c:when test="${ loginUser.userNo == wcheck.user_no }">
-			<script>
-				// 인증게시판 상세페이지 자기 게시물만 볼 수 있음
-				function loginCheckDetail(wckno) {
-					location.href='${ contextPath }/w-check/detail?wck_no=' + wckno;
-				}
-			</script>
-		</c:when>
-		<c:otherwise>
-			<script>
-				function loginCheckDetail() {
-					alert("작성한 게시글이 아닙니다. 다시 확인해주세요.");
-					//location.href='${ contextPath }/w-check';
-				}
-				
-			</script>
-		</c:otherwise>
-	</c:choose> --%> 
 	
-	
-	<%-- <c:if test="${ loginUser.userNo == wcheck.user_no }">
-		<script>
-			// 인증게시판 상세페이지 자기 게시물만 볼 수 있음
-			function loginCheckDetail(wckno) {
-				location.href='${ contextPath }/w-check/detail?wck_no=' + wckno;
-			}
-		</script>
-	</c:if>
-	<c:if test="${ loginUser.userNo != wcheck.user_no }">
-		<script>
-			// 인증게시판 상세페이지 자기 게시물만 볼 수 있음
-			function loginCheckDetail(wckno) {
-				alert("작성한 게시글이 아닙니다. 다시 확인해주세요.");
-				//location.href='${ contextPath }/w-check';
-			}
-		</script>
-	</c:if> --%>
-	
-	
+
 	
 </body>
 </html>

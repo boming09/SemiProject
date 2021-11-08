@@ -27,21 +27,6 @@
     font-weight : bold;
 }
 
-/* 미답변리뷰 버튼 */
-.wbook_unreview button {
-    width: 100px;
-    height: 40px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    padding: 0px 10px;
-    background: rgb(73, 125, 78);
-    color: white;
-}
-.wbook_unreview button:hover {
-    background-color: rgb(196, 217, 195);
-    color: black;
-}
-
 /* 리스트 top 영역 */
 .wbook_area {
     margin: 30px 30px 10px 30px;
@@ -50,7 +35,12 @@
 }
 
 /* 리스트 테이블 */
+.wbook_listarea2 {
+	display : flex;
+	justify-content :center;
+} 
 .wbook_listarea {
+	width : 100%;
     margin: 0px 30px 10px 30px;
     font-size: 0.9rem;
     /*  테이블 간격 없애기 */
@@ -82,12 +72,19 @@
 .wbook_content td:last-child {
     border-right: 0;
 }
+
+/* 마우스 오버시 */
+.wbook_content:hover {
+    background: #f3f5f7;
+}
+
 /* 도서 내용 */
 .wb_namearea a {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    cursor : pointer;
 }
 .wb_img {
     width : 140px;
@@ -98,22 +95,48 @@
     margin-bottom: 15px;
 }
 
+
 /* 너비 지정 */
 .wb_no {
-    width: 10%;
+    width: 12%;
 }
 .wb_name {
-    width: 35%;
+    width: 40%;
 }
 .wb_pub {
     width: 20%;   
 }
 .wb_update {
-    width: 15%;
-}
-.wb_amount {
-    width: 10%;
+    width: 18%;
 }
 .wb_review {
     width: 10%;
+}
+
+/* 페이징 영역 */
+.pagingarea {
+	margin: 10px 30px;
+	margin-bottom : 80px;
+	height : 50px;
+	display : flex;
+	justify-content : center;
+    align-items: center;
+}
+.pagingarea ul {
+	list-style : none;
+	display : flex;
+	justify-content : center;
+    align-items: center;
+    width : 400px;
+    height : 50px;  
+}
+
+.pagingarea ul li {
+	width: 40px;
+	text-align : center;
+}
+
+.current_page {
+	border-bottom: 2px solid black;
+	font-weight: bold;
 }

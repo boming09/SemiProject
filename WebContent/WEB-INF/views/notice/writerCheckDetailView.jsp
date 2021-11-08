@@ -64,7 +64,7 @@
                         	<div class="line filearea">
 	                			<c:forEach var="upload" items="${ wcheck.wupload }">
                         			[<p>${ upload.origin_file }</p>
-                        			<c:if test="${ loginUser.userNo == wcheck.user_no }">
+                        			<c:if test="${ loginUser.userNo == wcheck.user_no || loginUser.userGrade == 30 }">
 	               						<p><button onclick="location.href='${ contextPath }/w-check/download?wup_no=${ upload.wup_no }'">다운로드</button></p>
                						</c:if>]
                         		</c:forEach>

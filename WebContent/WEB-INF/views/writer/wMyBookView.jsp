@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,44 +21,80 @@
 		<div class="content">
 		 	<header class="wbook_header">
                 <div>MY 도서</div>
-                <div class="wbook_unreview">
-                    <button onclick="location.href='${ contextPath }/w-unreview'">미답변 리뷰</button>
-                </div>
             </header>
 			
             <div class="wbook_area">도서 리스트</div>
+            <div class="wbook_listarea2">
+	           	<table class="wbook_listarea">
+	                <tr class="wbook_listtop">
+	                    <th class="wb_no">도서번호</th>
+	                    <th class="wb_name">도서명</th>
+	                    <th class="wb_pub">출판사</th>
+	                    <th class="wb_date">등록일</th>
+	                    <th class="wb_review">리뷰</th>
+	                </tr>
+	
+	                <!-- 반복문 돌릴 애들 -->
+	                <c:forEach var="wbook" items="${ wbookList }">
+		                <tr class="wbook_content">
+		                    <td class="wb_no">${ wbook.bid }</td>
+		                    <td class="wb_name">
+			                    <div class="wb_namearea" onclick="detailView(${ wbook.bid })">
+			                    	<a>
+				                        <img class="wb_img" src="${ contextPath }/resources/images/book/${ wbook.bimg }">
+				                        <span>${ wbook.btitle }</span>
+			                    	</a>
+			                    </div>
+		                   
+		                    </td>
+		                    <td class="wb_pub">${ wbook.publisher }</td>
+		                    <td class="wb_date">${ wbook.publicationDate }</td>
+		                    <td class="wb_review">아직</td>
+		                </tr>
+	                </c:forEach>
+	            </table>
+            </div>
             
-           	<table class="wbook_listarea">
-                <tr class="wbook_listtop">
-                    <th class="wb_no">번호</th>
-                    <th class="wb_name">도서명</th>
-                    <th class="wb_pub">출판사</th>
-                    <th class="wb_date">등록일</th>
-                    <th class="wb_amount">판매수</th>
-                    <th class="wb_review">리뷰</th>
-                </tr>
-
-                <!-- 반복문 돌릴 애들 -->
-                <tr class="wbook_content">
-                    <td class="wb_no">100</td>
-                    <td class="wb_name">
-	                    <div class="wb_namearea">
-	                    	<a href="#">
-		                        <img class="wb_img" src="${ contextPath }/resources/images/writer/testbook.jpg">
-		                        <span>HTML + CSS + 자바스크립트 웹표dd안녕하세요 ddddddddddd래ㅔㄱ가ㅗㄱㄹ란꼰거 준의 정석 완전 긴 책이름</span>
-	                    	</a>
-	                    </div>
-                   
-                    </td>
-                    <td class="wb_pub">이지스퍼블리싱 어쩌고 ㅎㅎㅎㅎㅎㅎㅎ아아아</td>
-                    <td class="wb_date">2021-10-04</td>
-                    <td class="wb_amount">10권</td>
-                    <td class="wb_review">5개</td>
-                </tr>
-            </table>
-            
-            <div class="wbook_page">
-                <!-- 페이지 바 영역 => 나중에 작성 -->
+            <div class="pagingarea">
+            	 <ul class="wmybook_paging">
+	            	<!-- 앞으로 이동하는 버튼(<) -->
+	            	<li>
+					<c:choose>
+						<c:when test="${ pi.page > 1 }">
+							<a href="${ contextPath }/w-mybook?page=${ pi.page - 1}">&lt;</a>
+						</c:when>
+						<c:otherwise>
+							<a href="#">&lt;</a>
+						</c:otherwise>
+					</c:choose>
+					</li>
+	            
+	            	<!-- 최대5개의 페이지 바 -->
+					<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+						<li>
+							<c:choose>
+								<c:when test="${ p eq pi.page }">
+									<a href="#" class="current_page">${ p }</a>
+								</c:when>
+								<c:otherwise>
+									<a href="${ contextPath }/w-mybook?page=${ p }">${ p }</a>
+								</c:otherwise>
+							</c:choose>
+						</li>
+					</c:forEach>
+	            	
+	            	<!-- 다음 페이지로(>) -->                     
+					<li>
+						<c:choose>
+							<c:when test="${ pi.page < pi.maxPage }">
+								<a href="${ contextPath }/w-mybook?page=${ pi.page + 1}">&gt;</a>
+							</c:when>
+							<c:otherwise>
+								<a href="#">&gt;</a>
+							</c:otherwise>
+						</c:choose>
+					</li>
+           		</ul>
             </div>
 		</div>
 		
@@ -67,5 +104,11 @@
 	
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	
+	<script>
+		function detailView(bid) {
+			location.href = "${ contextPath }/book/detail?bid=" + bid;
+		}
+	</script>
 </body>
 </html>

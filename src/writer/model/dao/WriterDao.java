@@ -1,17 +1,20 @@
 package writer.model.dao;
 
+import static common.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
+import book.model.vo.Book;
 import member.model.vo.Member;
-
-import static common.JDBCTemplate.*;
-
+import notice.model.vo.PageInfo;
 import writer.model.vo.WProfile;
 import writer.model.vo.WriterInfo;
 
@@ -31,6 +34,7 @@ public class WriterDao {
 	}
 
 	// 작가 회원정보 가져오기
+	/*
 	public WriterInfo selectWriter(Connection conn, int user_no) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -67,7 +71,7 @@ public class WriterDao {
 		
 		return writer;
 	}
-	
+	*/
 	
 	// 작가 프로필 + 자기소개 들고오기(회원번호)
 	public WProfile selecWProfile(Connection conn, int user_no) {
@@ -242,6 +246,99 @@ public class WriterDao {
 				
 		return writer;
 	}
+	
+	// 작가 회원 탈퇴
+	public int deleteInfo(Connection conn, int user_no) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = writerQuery.getProperty("deleteInfo");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, user_no);
+			
+			result = pstmt.executeUpdate();
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	
+	// 작가도서리스트 페이징 처리
+	public int getListCount(Connection conn, int user_no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int listCount = 0;
+		String sql = writerQuery.getProperty("getListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, user_no);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return listCount;
+	}
+	
+	
+	// 작가 도서리스트
+	public List<Book> selectWBookList(Connection conn, PageInfo pi, int user_no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = writerQuery.getProperty("selectWBookList");
+		
+		List<Book> wbookList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			// 페이지 설정
+			int startRow = (pi.getPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, user_no);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Book wbook = new Book();
+				wbook.setBid(rset.getInt("book_id"));
+				wbook.setBtitle(rset.getString("book_name"));
+				wbook.setPublicationDate(rset.getDate("publication_date"));
+				wbook.setPublisher(rset.getString("publisher"));
+				wbook.setBimg(rset.getString("book_img"));
+				
+				wbookList.add(wbook);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return wbookList;
+	}
+
+
 	
 
 	
