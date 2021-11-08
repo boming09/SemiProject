@@ -98,10 +98,20 @@
         			<div><b>배송지 선택</b></div>
         		</div>
         		<div class="o_item">
-        			<span class="address"><input type="radio" name="rd_address" value="same_info"><b>주문 고객 정보와 동일</b> </span>
+        			<span class="address"><input type="radio" name="rd_address" value="same_info" checked><b>주문 고객 정보와 동일</b> </span>
         			<span class="address"><input type="radio" name="rd_address" value="new_address"><b>새로운 배송지 입력</b></span>
         		</div>
         	</div>
+        	
+        		<%
+				 	String[] address;
+				 	if(loginUser.getUserAddress() != null) {
+						address = loginUser.getUserAddress().split("\\|");				 		
+				 	} else {
+				 		address = new String[] {"", "", ""}; //주소값 없는경우 null 표시 방지
+				 	}
+				 %>
+        	
         	
 
         	<div class="od_tt">
@@ -109,7 +119,7 @@
         			<div><b>주문인 *</b></div>
         		</div>
         		<div class="o_item">
-        			<span class="address name"><input type="text" name="order_name" value="주문인" class="nm_area"> </span>
+        			<span class="address name"><input type="text" name="order_name" value="${loginUser.userName}" class="nm_area"> </span>
         		</div>
         	</div>
         	
@@ -119,7 +129,7 @@
         			<div><b>받으시는 분 *</b></div>
         		</div>
         		<div class="o_item">
-        			<span class="address name"><input type="text" name="receive_name" value="받는사람" class="nm_area"> </span>
+        			<span class="address name"><input type="text" name="receive_name" value="${loginUser.userName}" class="nm_area"> </span>
         		</div>
         	</div>
         	
@@ -129,20 +139,20 @@
         			<div><b>주소 *</b></div>
         		</div>
         		<div class="o_item">
-	        		<span class="address name"><input type="text" name="address" class="postcodify_postcode5 nm_area" readonly></span>
+	        		<span class="address name"><input type="text" name="address" class="postcodify_postcode5 nm_area" value="<%= address[0] %>" readonly></span>
 					<button type="button" id="postcodify_search_button"><b>검색</b></button>
 				</div>
 				<div class="o_item">
 					<div></div>
 				</div>
 				<div class="o_item">
-					<span class="address name"><input type="text" name="address" class="postcodify_address add_area" readonly></span>
+					<span class="address name"><input type="text" name="address" class="postcodify_address add_area" value="<%= address[1] %>" readonly></span>
 				</div>
 				<div class="o_item">
 					<div></div>
 				</div>
 				<div class="o_item">
-				<span class="address name"><input type="text" name="address" class="postcodify_details add_area"></span>
+				<span class="address name"><input type="text" name="address" class="postcodify_details add_area" value="<%= address[2] %>"></span>
         		</div>
         	</div>
         	
@@ -151,7 +161,7 @@
         			<div><b>휴대전화 *</b></div>
         		</div>
         		<div class="o_item">
-	        	<span class="address name"><input type="tel" maxlength="11" name="phone"
+	        	<span class="address name"><input type="tel" maxlength="11" name="phone" value="${loginUser.userPhone} "
 											placeholder="(-없이)01012345678" class="nm_area"></span>
         		</div>
         	</div>
