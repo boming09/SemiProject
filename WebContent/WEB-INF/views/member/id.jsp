@@ -29,12 +29,14 @@
                 <div class="topline">
                 </div>
                 <br>
+                <form name="idfindscreen" method="post">
                 <div class="id3">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label>이름</label> <input type="text" class="id1text" size="10"><br><br>
-                    <label>E-mail 주소</label> <input type="text" class="id1text" size="10"><br><br>
-                    <a href="id2"><button id="Confirmbut">가입여부 확인하기</button></a><br>
+                    <label>이름</label> <input type="text" name="userName" class="id1text" size="10"><br><br>
+                    <label>E-mail 주소</label> <input type="text" name="userEmail" class="id1text" size="10"><br><br>
+                    <a href="id2"><button id="Confirmbut" name="enter" onClick="id_search();">가입여부 확인하기</button></a><br>
                 </div>
+                </form>
                 <br><div class="topline">
                 </div><br>
                 &nbsp;&nbsp;&nbsp;<label>고객센터 1544 - 0000</label>
@@ -52,5 +54,25 @@
         </div>  
     <!-- footer -->
 	<jsp:include page="/WEB-INF/views/member/footer.jsp" />
+	
+	<script>
+		function id_search(){
+			var frm = document.idfindscreen;
+			
+			if(frm.userName.value.length < 1){
+				alert("이름을 입력해주세요");
+				return;
+			}
+			
+			if(frm.userEmail.value.length < 1){
+				alert("이메일을 입력해주세요.")
+				return;
+			}
+			
+			frm.method="post";
+			frm.action="/WEB-INF/views/member/id2.jsp";
+			frm.submit();
+		}
+	</script>
 </body>
 </html>

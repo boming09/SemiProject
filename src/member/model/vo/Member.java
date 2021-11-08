@@ -47,9 +47,18 @@ public class Member {
 		this.userEmail = userEmail;
 		this.userAddress = userAddress;
 	}
+	
+	
+	public Member(String userId, String userPwd, String userName, String userEmail, String userPhone, Date enrollDate) {
+		super();
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.userEmail = userEmail;
+		this.userPhone = userPhone;
+		this.enrollDate = enrollDate;
+	}
 
-	
-	
 	public Member(int userNo, String userName, String userPhone, String userEmail, String userAddress,
 			String userNickname) {
 		super();

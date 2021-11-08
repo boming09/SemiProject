@@ -3,6 +3,7 @@ package mypage.controller;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,6 +43,12 @@ public class MypageMyreviewServlet extends HttpServlet {
 		}
 		
 		Map<String, Object> map = new MyreviewService().selectList(page);
+		
+		request.setAttribute("pi", map.get("pi"));
+		request.setAttribute("myreviewList", map.get("myreviewList"));
+		
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/mypage-myreview.jsp");
+		view.forward(request, response);
 		
 	}
 

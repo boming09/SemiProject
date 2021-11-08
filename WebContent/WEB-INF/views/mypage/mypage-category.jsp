@@ -34,16 +34,14 @@
         </div>
         <div class="area3"><a class="ca-top">작가 소통게시판</a>
             <ul class="ca-list">
-                <li><a href="#">내 작가 리스트</a></li>
-                <li><a href="#">즐겨찾기 게시판</a></li>
-                <li><a href="#">최근 대화 내역</a></li>
+                <li><a href="<%= request.getContextPath() %>/commu/w-info">내 작가 리스트</a></li>
+                <li><a href="<%= request.getContextPath() %>/commu">작가 소통 게시판</a></li>
             </ul>
         </div>
         <div class="area4"><a class="ca-top">고객센터</a>
 	        <ul class="ca-list">
-	            <li><a href="#">나의 계정 도움말</a></li>
 	            <li><a href="#">자주 묻는 질문 FAQ</a></li>
-	            <li><a href="#">1:1 고객상담</a></li>
+	            <li><a href="<%= request.getContextPath() %>/one/insert">1:1 고객상담</a></li>
 	        </ul>
 	    </div>        
     	<div class="cs_ad">
