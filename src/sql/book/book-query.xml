@@ -51,6 +51,7 @@
 	                     , FILE_PATH
 	                     , AUTHOR_INTRO
 	                     , BOOK_IMG
+	                     , STAR_SCORE
 	                     FROM BOOK B
 	                     JOIN MEMBER ON(AUTHOR = USER_NO)
 	                     ORDER BY PUBLICATION_DATE DESC) A)
@@ -79,6 +80,7 @@
 	                     , FILE_PATH
 	                     , AUTHOR_INTRO
 	                     , BOOK_IMG
+	                     , STAR_SCORE
 	                     FROM BOOK
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
 	                     WHERE BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%'
@@ -108,6 +110,7 @@
 	                     , FILE_PATH
 	                     , AUTHOR_INTRO
 	                     , BOOK_IMG
+	                     , STAR_SCORE
 	                     FROM BOOK
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
 	                     WHERE BOOK_NAME LIKE '%' || ? || '%'
@@ -137,6 +140,7 @@
 	                     , FILE_PATH
 	                     , AUTHOR_INTRO
 	                     , BOOK_IMG
+	                     , STAR_SCORE
 	                     FROM BOOK
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
 	                     WHERE AUTHOR LIKE '%' || ? || '%'
@@ -201,6 +205,8 @@ SELECT
      , FILE_PATH
      , AUTHOR_INTRO
      , BOOK_IMG
+     , STAR_SCORE
+     , AVG_SCORE
      FROM BOOK
      JOIN B_CATEGORY USING(CATEGORY_ID)
     WHERE BOOK_ID = ?

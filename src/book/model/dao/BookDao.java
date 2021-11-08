@@ -136,6 +136,7 @@ public class BookDao {
 	            book.setPublisher(rset.getString("publisher"));
 	            book.setSalePrice(rset.getInt("sale_price"));
 	            book.setBimg(rset.getString("book_img"));
+	            book.setStarScore(rset.getInt("star_score"));
 	            
 	            bookList.add(book);
 	         }
@@ -227,7 +228,10 @@ public class BookDao {
 							  , rset.getString("book_url")
 							  , rset.getString("file_path")
 							  , rset.getString("author_intro")
-							  , rset.getString("book_img"));
+							  , rset.getString("book_img")
+							  , rset.getInt("star_score")
+							  , rset.getDouble("avg_score"));
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
