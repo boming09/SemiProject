@@ -79,28 +79,38 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 				                        <span id="spanBkRating">
 				                            <span class="star-input noneArea">
 				                                <span class="input">
-				                                    <input type="radio" name="star-input" value="1" id="p1">
+				                                    <input type="radio" name="${ book.bid }" value="1" id="p1"
+				                                    <c:if test="${ book.starScore == '1' }">checked</c:if>>
 				                                    <label for="p1">1</label>
-				                                    <input type="radio" name="star-input" value="2" id="p2">
+				                                    <input type="radio" name="${ book.bid }" value="2" id="p2"
+				                                    <c:if test="${ book.starScore == '2' }">checked</c:if>>
 				                                    <label for="p2">2</label>
-				                                    <input type="radio" name="star-input" value="3" id="p3">
+				                                    <input type="radio" name="${ book.bid }" value="3" id="p3"
+				                                    <c:if test="${ book.starScore == '3' }">checked</c:if>>
 				                                    <label for="p3">3</label>
-				                                    <input type="radio" name="star-input" value="4" id="p4">
+				                                    <input type="radio" name="${ book.bid }" value="4" id="p4"
+				                                    <c:if test="${ book.starScore == '4' }">checked</c:if>>
 				                                    <label for="p4">4</label>
-				                                    <input type="radio" name="star-input" value="5" id="p5">
+				                                    <input type="radio" name="${ book.bid }" value="5" id="p5"
+				                                    <c:if test="${ book.starScore == '5' }">checked</c:if>>
 				                                    <label for="p5">5</label>
-				                                    <input type="radio" name="star-input" value="6" id="p6" checked>
+				                                    <input type="radio" name="${ book.bid }" value="6" id="p6"
+				                                    <c:if test="${ book.starScore == '6' }">checked</c:if>>
 				                                    <label for="p6">6</label>
-				                                    <input type="radio" name="star-input" value="7" id="p7">
+				                                    <input type="radio" name="${ book.bid }" value="7" id="p7"
+				                                    <c:if test="${ book.starScore == '7' }">checked</c:if>>
 				                                    <label for="p7">7</label>
-				                                    <input type="radio" name="star-input" value="8" id="p8">
+				                                    <input type="radio" name="${ book.bid }" value="8" id="p8"
+				                                    <c:if test="${ book.starScore == '8' }">checked</c:if>>
 				                                    <label for="p8">8</label>
-				                                    <input type="radio" name="star-input" value="9" id="p9">
+				                                    <input type="radio" name="${ book.bid }" value="9" id="p9"
+				                                    <c:if test="${ book.starScore == '9' }">checked</c:if>>
 				                                    <label for="p9">9</label>
-				                                    <input type="radio" name="star-input" value="10" id="p10">
+				                                    <input type="radio" name="${ book.bid }" value="10" id="p10"
+				                                    <c:if test="${ book.starScore == '10' }">checked</c:if>>
 				                                    <label for="p10">10</label>
 				                                  </span>
-				                                  <output for="star-input"><b>0</b>점</output>						
+				                                  <output for="${ book.bid }"><b>${ book.starScore }</b>점</output>						
 				                            </span>
 				                        </span>
 			                        </div>
@@ -111,11 +121,14 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                                     </div>
                                 </td>
                                 <td class="book_btns">
-                                    <div class="btn_count">
-                                        <input type="number" name="count" value="0" min="0" max="50" size="5">
-                                    </div>
-                                    <button id="basket" type="button" onclick="">장바구니</button>
-                                    <button id="buy" type="button" onclick="">바로구매</button>
+                          			<form name="acForm" method="post">
+                          	 				<input type="hidden" name="book_id" value="${ book.bid }">
+                                    	<div class="btn_count">
+                                        	<input type="number" name="count" value="0" min="0" max="50" size="5">
+                                    	</div>
+	                            		<button id="basket" type="button" onclick="cart()">장바구니</button>
+	                            		<button id="buy" type="button" onclick="direct()">바로구매</button>
+                          			</form>
                                 </td>
                             </tr>
                             <tr>
@@ -141,7 +154,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                         <!-- 맨 끝으로 이동하는 버튼(>>) -->
                         <li><a href="">&gt;&gt;</a></li>
                     </ul>
-                </div>
+                	</div>
                     </div>
 				</div>
 			</div>
@@ -159,6 +172,39 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 		location.href="${contextPath}/book/categorylist?category=" + category;
 	}
 </script>
+
+
+<c:choose>
+<c:when test="${ !empty loginUser }">
+<script>            
+    function direct() {
+      document.forms.acForm.action="${ contextPath }/order/direct" //바로구매 서블릿만들기
+      document.forms.acForm.submit();
+      return true;
+    }
+    
+    function cart() {
+    	document.forms.acForm.action="${ contextPath }/cart";
+    	document.forms.acForm.submit();
+    }
+</script>
+</c:when>
+<c:otherwise>
+<script>
+	function direct(){
+		alert('로그인 후 이용 가능합니다.');
+		location.href="${contextPath}/login";
+	}
+	
+	function cart(){
+		alert('로그인 후 이용 가능합니다.');
+		location.href="${contextPath}/login";
+	}
+</script>
+</c:otherwise>
+</c:choose>
+
+
 <script src="${contextPath}/resources/js/star/jquery-1.11.3.min.js"></script>
 <script src="${contextPath}/resources/js/star/star.js"></script>
 </body>
