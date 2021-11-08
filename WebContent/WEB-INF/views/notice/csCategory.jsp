@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
 <link href="<%= request.getContextPath() %>/resources/css/notice/csCategory.css" rel="stylesheet">
-
 <title>cs_category</title>
 <!-- alert 창 출력 -->
 <% if(session.getAttribute("msg") != null) { %>
@@ -33,7 +32,7 @@
 	                	<a href="${ contextPath }/faq">주문/결제</a>
 	                </li>
 	                <li>
-	                	<a href="${ contextPath }/w-mypage">취소/교환/반품</a>
+	                	<a href="#">취소/교환/반품</a>
 	                </li>
 	                <li >
 	                	<a href="#">배송</a>

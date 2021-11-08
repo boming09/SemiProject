@@ -28,6 +28,10 @@ public class CommuWInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 작가 리스트 가져오기
+		// 그럼 또 페이징 처리...ㅎㅎ 검색기능 넣어야겠넴....
+		
+		
 		// 작가 소개 페이지 이동
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/commuWInfoView.jsp");
 		view.forward(request, response);

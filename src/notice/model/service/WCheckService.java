@@ -72,7 +72,7 @@ public class WCheckService {
 	public Map<String, Object> selectList(int page, int user_no) {
 		Connection conn = getConnection();
 		int listCount = 0;
-		PageInfo pi =null;
+		PageInfo pi = null;
 		List<WCheck> wcheckList = null;
 		
 		if(user_no > 0) {

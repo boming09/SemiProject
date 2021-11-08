@@ -100,7 +100,8 @@
     
                 <div class="wmy_btn">
                     <button type="button" onclick="location.href='${ contextPath }/w-mypage/update'">정보수정</button>
-                    <button type="button">회원탈퇴</button>
+                    
+                    <button type="button" id="deleteBtn" onclick="myDelete()">회원탈퇴</button>
                 </div>
             </form>
         </div>
@@ -110,6 +111,13 @@
 	
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-
+	<script>
+		// 탈퇴하기
+		function myDelete() {
+			if(confirm("정말로 탈퇴하시겠습니까?")) {
+				location.href='${ contextPath }/w-mypage/delete';
+			}
+		}
+	</script>
 </body>
 </html>

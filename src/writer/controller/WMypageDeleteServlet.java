@@ -1,7 +1,6 @@
 package writer.controller;
 
 import java.io.IOException;
-import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,21 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import member.model.vo.Member;
 import writer.model.service.WriterService;
 
 /**
- * Servlet implementation class WMyBookServlet
+ * Servlet implementation class WMypageDeleteServlet
  */
-@WebServlet("/w-mybook")
-public class WMyBookServlet extends HttpServlet {
+@WebServlet("/w-mypage/delete")
+public class WMypageDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public WMyBookServlet() {
+    public WMypageDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,35 +31,32 @@ public class WMyBookServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 도서 리스트 가져오기
-		// 회원번호 필요
+		// 탈퇴할 유저 가져오기
 		int user_no = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
+		//System.out.println(user_no);
 		
-		// page : 현재 요청 페이지
-		int page = 1;
-		// 하지만 페이지 전환 시 view 화면에서 전달 받은 현재 페이지가 있을 경우 해당 페이지를 page로 적용
-		if(request.getParameter("page") != null) {
-			page = Integer.parseInt(request.getParameter("page"));
+		int result = new WriterService().deleteInfo(user_no);
+		
+		if(result > 0) {
+			// 로그인 세션 정보 삭제
+			request.getSession().removeAttribute("loginUser");
+			// 메뉴바에서 alert창 수행 => 왜 한박자 느리지?
+			// request.getSession().setAttribute("msg", "회원 탈퇴가 완료 되었습니다.");
+			// 메인 화면으로 이동 (서버 재요청-redirect)
+			response.sendRedirect(request.getContextPath());
+		} else {
+			/* 실패한 경우 "회원 탈퇴에 실패하였습니다" 메세지 가지고 에러 페이지로 이동 */
+			request.getSession().setAttribute("msg", "실패9ㅅ9");
+			request.getRequestDispatcher("/WEB-INF/views/writer/wMyPageView.jsp").forward(request, response);
 		}
-		
-		// 책 리스트 여러개니깐 객체 생성
-		Map<String, Object> map = new WriterService().selectWBookList(page, user_no);
-		//System.out.println(wbookList);
-		
-		request.setAttribute("wbookList", map.get("wbookList"));
-		request.setAttribute("pi", map.get("pi"));
-		
-		// 작가 소개 페이지 이동
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/writer/wMyBookView.jsp");
-		view.forward(request, response);
+
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
 
 }

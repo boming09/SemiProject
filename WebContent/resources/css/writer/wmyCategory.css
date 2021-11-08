@@ -13,7 +13,7 @@ a {
 
 /* 사이드 바 */
 .category {
-   	height : 395px;
+   	height : 331px;
     background : rgb(196, 217, 195);
 }
 
@@ -63,5 +63,5 @@ a {
 }
 
 #csad2 {
-    margin-bottom: 80px;
+    margin-bottom: 150px;
 }
