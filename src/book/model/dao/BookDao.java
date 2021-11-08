@@ -129,7 +129,6 @@ public class BookDao {
 	            book.setBtitle(rset.getString("book_name"));
 	            book.setCid(rset.getInt("category_id"));
 	            book.setCname(rset.getString("category_name"));
-	            book.setUserNo(rset.getInt("user_no"));
 	            book.setAuthor(rset.getString("author"));
 	            book.setEditor(rset.getString("editor"));
 	            book.setPublicationDate(rset.getDate("publication_date"));
