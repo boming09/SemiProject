@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.service.MemberService;
+import member.model.vo.Member;
+
 /**
  * Servlet implementation class IdServlet
  */
@@ -28,17 +31,32 @@ public class IdServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		
+		String userName = request.getParameter("userName");
+		String userEmail = request.getParameter("userEmail");
+		
+		MemberService service = new MemberService();
+		Member member = service.searchId(userName, userEmail);
+		
+		System.out.println("member : " + member);
+		
+		if(member != null) {
 		// 로그인 화면에서 아이디 찾기 클릭시 단순 이동
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/id.jsp");
 		view.forward(request, response);
+		} else {
+			request.setAttribute("message", "아이디 찾기에 실패하였습니다.<br> 정보를 다시 확인해 주세요.");
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/errorpage.jsp");
+			view.forward(request, response);
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
 
 }
