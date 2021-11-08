@@ -39,10 +39,10 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                     <h2>검색 결과</h2>
                     <ul class="sortLi">
                     <!-- ajax로 해야하나? -->
-                        <li><a href="${ contextPath }/book/popular">인기순</a></li><label> | </label>
-                        <li><a href="${ contextPath }/book/new">신상품순</a></li><label> | </label>
-                        <li><a href="${ contextPath }/book/highest">최고가순</a></li><label> | </label>
-                        <li><a href="${ contextPath }/book/lowest">최저가순</a></li>
+                        <li><a href="${ contextPath }/book/sort?sort=popular&bookList">인기순</a></li><label> | </label>
+                        <li><a href="${ contextPath }/book/sort?sort=new">신상품순</a></li><label> | </label>
+                        <li><a href="${ contextPath }/book/sort?sort=highest">최고가순</a></li><label> | </label>
+                        <li><a href="${ contextPath }/book/sort?sort=lowest">최저가순</a></li>
                     </ul>
                 </div>
 				<div class="book_list">
@@ -124,7 +124,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                           			<form name="acForm" method="post">
                           	 				<input type="hidden" name="book_id" value="${ book.bid }">
                                     	<div class="btn_count">
-                                        	<input type="number" name="count" value="0" min="0" max="50" size="5">
+                                        	<input type="number" name="count" value="1" min="1" max="50" size="5">
                                     	</div>
 	                            		<button id="basket" type="button" onclick="cart()">장바구니</button>
 	                            		<button id="buy" type="button" onclick="direct()">바로구매</button>
@@ -136,27 +136,53 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                             </tr>
                         </c:forEach>
                     </table>
-                <div class="book_pages">
-                    <ul class="book_paging">
-                        <!-- 맨 처음으로 이동하는 버튼(<<) -->	
-                        <li><a href="#">&lt;&lt;</a></li>
                     
-                        <!-- 이전 페이지로(<) -->
-                        <li>&lt;</li>
-                        
-                        <!-- 최대 10개의 페이지 목록 -->
-                        <li>${ p }</li>
-                        <li>1</li>
-
-                        <!-- 다음 페이지로(>) -->
-                        <li>&gt;</li>
-                            
-                        <!-- 맨 끝으로 이동하는 버튼(>>) -->
-                        <li><a href="">&gt;&gt;</a></li>
-                    </ul>
-                	</div>
-                    </div>
+                    
+                    
+                    <c:if test="${ !empty param.searchCondition && !empty param.searchValue }">
+					<c:set var="searchParam" value="&searchCondition=${ param.searchCondition }&searchValue=${ param.searchValue }"/>
+					</c:if>
+                    <div class="book_pages">
+						<ul class="book_paging">
+						<!-- 맨 처음으로 이동하는 버튼(<<) -->	
+						<li><a href="${ contextPath }/book/list?page=1${ searchParam }">&lt;&lt;</a></li>
+						
+						<!-- 이전 페이지로(<) -->
+						<li>
+						<c:choose>
+							<c:when test="${ pi.page > 1 }"><a href="${ contextPath }/book/list?page=${ pi.page - 1 }${ searchParam }">&lt;</a></c:when>
+							<c:otherwise><a href="#">&lt;</a></c:otherwise>
+						</c:choose>
+						</li>
+						
+						<!-- 최대 10개의 페이지 목록 -->
+			            <c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+			            <li>
+			            <c:choose>
+					         <c:when test="${ p eq pi.page }">
+					         <a href="#" class="current_page">${ p }</a>
+					         </c:when>            
+				             <c:otherwise>
+				             <a href="${contextPath }/book/list?page=${ p }${ searchParam }">${ p }</a>
+				             </c:otherwise>
+			            </c:choose>
+			            </li>
+			            </c:forEach>
+						
+						<!-- 다음 페이지로(>) -->
+						<li>
+						<c:choose>
+							<c:when test="${ pi.page < pi.maxPage }"><a href="${ contextPath }/book/list?page=${ pi.page + 1 }${ searchParam }">&gt;</a></c:when>
+							<c:otherwise><a href ="#">&gt;</a></c:otherwise>
+						</c:choose>
+						</li>
+						
+						<!-- 맨 끝으로 이동하는 버튼(>>) -->
+		            	<li><a href="${ contextPath }/book/list?page=${ pi.maxPage }${ searchParam }">&gt;&gt;</a></li>
+						</ul>
+					</div>
 				</div>
+			  </div>
 			</div>
 			<%@ include file="/WEB-INF/views/common/adArea.jsp" %>
 		</div>

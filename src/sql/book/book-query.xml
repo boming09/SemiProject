@@ -38,22 +38,16 @@
 	                       BOOK_ID
 	                     , BOOK_NAME
 	                     , CATEGORY_ID
-	                     , USER_NAME
+	                     , CATEGORY_NAME
+	                     , AUTHOR
 	                     , EDITOR
 	                     , PUBLICATION_DATE
 	                     , PUBLISHER
-	                     , PRICE
-	                     , STOCK
-	                     , SALE_RATE
 	                     , SALE_PRICE
-	                     , BOOK_INTRO
-	                     , BOOK_URL
-	                     , FILE_PATH
-	                     , AUTHOR_INTRO
 	                     , BOOK_IMG
 	                     , STAR_SCORE
-	                     FROM BOOK B
-	                     JOIN MEMBER ON(AUTHOR = USER_NO)
+	                     FROM BOOK
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
 	                     ORDER BY PUBLICATION_DATE DESC) A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
@@ -66,22 +60,14 @@
 	                     , BOOK_NAME
 	                     , CATEGORY_ID
 	                     , CATEGORY_NAME
-	                     , USER_NO
 	                     , AUTHOR
 	                     , EDITOR
 	                     , PUBLICATION_DATE
 	                     , PUBLISHER
-	                     , PRICE
-	                     , STOCK
-	                     , SALE_RATE
 	                     , SALE_PRICE
-	                     , BOOK_INTRO
-	                     , BOOK_URL
-	                     , FILE_PATH
-	                     , AUTHOR_INTRO
 	                     , BOOK_IMG
 	                     , STAR_SCORE
-	                     FROM BOOK
+	                     FROM BOOK B
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
 	                     WHERE BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%'
 	                     ORDER BY PUBLICATION_DATE DESC) A)
@@ -96,22 +82,14 @@
 	                     , BOOK_NAME
 	                     , CATEGORY_ID
 	                     , CATEGORY_NAME
-	                     , USER_NO
 	                     , AUTHOR
 	                     , EDITOR
 	                     , PUBLICATION_DATE
 	                     , PUBLISHER
-	                     , PRICE
-	                     , STOCK
-	                     , SALE_RATE
 	                     , SALE_PRICE
-	                     , BOOK_INTRO
-	                     , BOOK_URL
-	                     , FILE_PATH
-	                     , AUTHOR_INTRO
 	                     , BOOK_IMG
 	                     , STAR_SCORE
-	                     FROM BOOK
+	                     FROM BOOK B
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
 	                     WHERE BOOK_NAME LIKE '%' || ? || '%'
 	                     ORDER BY PUBLICATION_DATE DESC) A)
@@ -126,22 +104,14 @@
 	                     , BOOK_NAME
 	                     , CATEGORY_ID
 	                     , CATEGORY_NAME
-	                     , USER_NO
 	                     , AUTHOR
 	                     , EDITOR
 	                     , PUBLICATION_DATE
 	                     , PUBLISHER
-	                     , PRICE
-	                     , STOCK
-	                     , SALE_RATE
 	                     , SALE_PRICE
-	                     , BOOK_INTRO
-	                     , BOOK_URL
-	                     , FILE_PATH
-	                     , AUTHOR_INTRO
 	                     , BOOK_IMG
 	                     , STAR_SCORE
-	                     FROM BOOK
+	                     FROM BOOK B
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
 	                     WHERE AUTHOR LIKE '%' || ? || '%'
 	                     ORDER BY PUBLICATION_DATE DESC) A)
@@ -212,4 +182,5 @@ SELECT
     WHERE BOOK_ID = ?
 </entry>
 
+<!-- sort -->
 </properties>

@@ -18,17 +18,17 @@ public class BookService {
 	// BookList
 	public Map<String, Object> selectList(int page, Search search) {
 		Connection conn = getConnection();
-		Map<String, Object> returnMap = new HashMap<>();
 		
 		// 1. 게시글 총 개수 구하기
 		int listCount = bookDao.getListCount(conn, search);
 		
 		// 2. PageInfo 객체 만들기
-		PageInfo pi = new PageInfo(page, listCount, 10, 10);
+		PageInfo pi = new PageInfo(page, listCount, 7, 7);
 		
 		// 3. 페이징 처리된 게시글 목록 조회
 		List<Book> bookList = bookDao.selectList(conn, pi, search);
 		
+		Map<String, Object> returnMap = new HashMap<>();
 		returnMap.put("pi", pi);
 		returnMap.put("bookList", bookList);
 		
