@@ -31,6 +31,12 @@
 						<li><a href="${ contextPath }/admin/ship">배송 관리</a></li>
 						<li><a href="${ contextPath }/admin/refund">환불 관리</a></li>
 					</ul>
+					<li class="group">
+					<div class="title">홈페이지 관리</div>
+					<ul class="sub">
+						<li><a href="${ contextPath }/admin/insertbook">책 등록</a></li>
+						<li><a href="${ contextPath }/admin/todaybook">오늘의 책</a></li>
+					</ul>
 				</li>
 			</ul>
 		</aside>

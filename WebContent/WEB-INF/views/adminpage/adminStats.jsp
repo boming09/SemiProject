@@ -29,7 +29,6 @@
 		</div>
 	</div>
 </div>
-<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 	
 	<script>
 		let salesChart = document.getElementById('salesChart').getContext('2d');

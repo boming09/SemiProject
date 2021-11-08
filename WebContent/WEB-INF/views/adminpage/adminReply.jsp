@@ -29,7 +29,7 @@ hr{
 <br>
 	<h2>문의 답변</h2>
 <br>
-	<hr /><br>
+	<hr />
 	ㅇㅇㅇㅁㅁㄴㅁㄴㄴㅁ
 </div>
 
@@ -42,6 +42,5 @@ hr{
 
 
 </div>
-<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
 </html>
