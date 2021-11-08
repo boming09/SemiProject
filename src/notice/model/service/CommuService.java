@@ -54,23 +54,34 @@ public class CommuService {
 
 	
 	// 소통게시판 총 게시글 리스트
-	public Map<String, Object> selectList(int page) {
+	public Map<String, Object> selectList(int page, int user_no) {
 		Connection conn = getConnection();
+		int listCount = 0;
+		PageInfo pi =null;
+		List<Commu> commuList = null;
 		
-		// 1. 게시글 총 개수 구하기
-		int listCount = commuDao.getListCount(conn);
-		
-		// System.out.println(listCount); 
-		// => ㅇㅇ
-		
-		// 2. PageInfo 객체 만들기
-		PageInfo pi = new PageInfo(page, listCount, 5, 10);
-		// page : 클릭한 페이지 바
-		// listCount : db에 있는 게시글 총 수
-		// 첫번째 5 : 페이지 바를 5개씩 두겠다 (ex 1~5 / 6~10) = pageLimit
-		// 두번째 10 : 리스트를 10개씩 보여주겠다 = boardLimit
-		
-		List<Commu> commuList = commuDao.selectList(conn, pi);
+		if(user_no > 0) {
+			// 1. 내가 쓴 게시글 총 개수 구하기
+			listCount = commuDao.getMyListCount(conn, user_no);
+			// 2. PageInfo 객체 만들기
+			pi = new PageInfo(page, listCount, 5, 10);
+			// 3. 내가 쓴 게시글 총 리스트 가져오기
+			commuList = commuDao.selecMytList(conn, pi, user_no);
+		} else {
+			// 1. 게시글 총 개수 구하기
+			listCount = commuDao.getListCount(conn);
+			// System.out.println(listCount); 
+			
+			// 2. PageInfo 객체 만들기
+			pi = new PageInfo(page, listCount, 5, 10);
+			// page : 클릭한 페이지 바
+			// listCount : db에 있는 게시글 총 수
+			// 첫번째 5 : 페이지 바를 5개씩 두겠다 (ex 1~5 / 6~10) = pageLimit
+			// 두번째 10 : 리스트를 10개씩 보여주겠다 = boardLimit
+			
+			// 3. 총 리스트 가져오기
+			commuList = commuDao.selectList(conn, pi);
+		}
 		
 		Map<String, Object> returnMap = new HashMap<>();
 		

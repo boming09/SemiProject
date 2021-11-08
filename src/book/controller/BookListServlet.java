@@ -42,14 +42,19 @@ public class BookListServlet extends HttpServlet {
 		
 		String searchCondition = request.getParameter("searchCondition");
 		String searchValue = request.getParameter("searchValue");
+		Search search = new Search(searchCondition, searchValue);
 		
-		Map<String, Object> map = new BookService().selectList(page, new Search(searchCondition, searchValue));
+		Map<String, Object> map = new BookService().selectList(page, search);
+		List<String> categoryList = new BookService().categoryList(search);
 		
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("bookList", map.get("bookList"));
+		request.setAttribute("categoryList", categoryList);
+		
 		System.out.println(map.get("pi"));
 		System.out.println(map.get("bookList"));
-		request.getRequestDispatcher("/WEB-INF/views/book/bookList.jsp").forward(request, response);
+		System.out.println(categoryList);
+		request.getRequestDispatcher("/WEB-INF/views/book/bookListView.jsp").forward(request, response);
 	}
 
 	/**

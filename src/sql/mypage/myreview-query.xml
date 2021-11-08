@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM
+"http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="getListCount">
+		SELECT
+				COUNT(*)
+		   FROM MYREVIEW
+		  WHERE MTYPE = 1
+		    AND STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectList">
+	SELECT *
+			FROM (SELECT ROWNUM RUNM, A.*
+				 FROM(SELECT
+				        MID
+				      , MTYPE
+				      , CATEGORY_NAME
+				      , MTITLE
+				      , MCONTENT
+				      , USER_NAME
+				      , MCOUNT
+				      , CREATE_DATE
+				      , M.MODIFY_DATE
+				      , M.STATUS
+				   FROM MYREVIEW M
+				   JOIN B_CATEGORY USING(CATEGORY_ID)
+				   JOIN MEMBER ON(MWRITER = USER_NO)
+				  WHERE MTYPE = 1
+				    AND M.STATUS = 'Y'
+				  ORDER BY MID DESC) A
+				 )
+			WHERE RUNM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="increaseCount">
+		UPDATE MYREVIEW
+		   SET MCOUNT = MCOUNT + 1
+		 WHERE MID = ?
+	</entry>
+	
+	<entry key="selectMyreview">
+		SELECT
+		         MID
+		       , CATEGORY_ID
+		       , CATEGORY_NAME
+		       , MTITLE
+		       , MCONTENT
+		       , MWRITER
+		       , USER_NAME
+		       , MCOUNT
+		       , CREATE_DATE
+		       , M.MODIFY_DATE
+		    FROM MYREVIEW M
+		    JOIN B_CATEGORY USING(CATEGORY_ID)
+		    JOIN MEMBER ON(MWRITER = USER_NO)
+		   WHERE M.STATUS = 'Y'
+		     AND MID = ?
+	</entry>
+	
+	<entry key="insertMyreview">
+		INSERT
+			  INTO MYREVIEW
+			 (
+			 	MID
+			  , MTYPE
+			  ,	CATEGORY_ID
+			  , MTITLE
+			  , MCONTENT
+			  , MWRITER
+			  , MCOUNT
+			  , CREATE_DATE
+			  , MODIFY_DATE
+			  , STATUS
+			 )
+			 VALUES
+			 (
+			 	  SEQ_MID.NEXTVAL
+			 	, ?
+			 	, ?
+			 	, ?
+			 	, ?
+			 	, ?
+			 	, DEFAULT
+			 	, SYSDATE
+			 	, SYSDATE
+			 	, DEFAULT
+			 )		 
+	</entry>
+</properties>

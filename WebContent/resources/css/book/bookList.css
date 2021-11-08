@@ -22,10 +22,15 @@
 
 /* 도서 목록 영역*/
 .cLi {
-	display: flex;
     list-style: none;
-    justify-content: space-around;  /* 공간을 균등하게  */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  	text-align: center;
+    /* justify-content: space-around; */  /* 공간을 균등하게  */
     padding: 10px;
+}
+.cLi li {
+	padding: 10px 0;
 }
 .cLi li:hover {
     color: #acadadd0;
@@ -58,7 +63,6 @@
     display: block;
     padding: 10% 0;
 }
-
 .img_wrap img {	/* td1 - 이미지 크기*/
 	width: 152px;
 	height: 200px;
@@ -158,29 +162,31 @@
     margin: 10px;
 }
 
+/* 페이징 영역 */
 .book_paging {
-    height: 50px;
-    line-height: 50px;
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    width: 480px;
-    margin: auto;
+	height: 50px;
+	line-height: 50px;
+	display: flex;
+	justify-content: center;
+	list-style: none;
+	width: 480px;
+	margin: auto;
 }
 
 .book_paging a {
-    text-decoration: none;
-    color: black;
-    width: 45px;
-    display: block;
-    text-align: center;
+	text-decoration: none;
+	color: #282A35;
+	width: 40px;
+	display: block;
+	text-align: center;
 }
 
 .book_paging a.current_page {
-    border-bottom: 2px solid rgba(196, 217, 195, 1);
-    font-weight: bold;
+	border-bottom: 2px solid rgba(73, 125, 78, 1);
+	font-weight: bold;
 }
 
+/* 별점 영역 */
 .star-input>.input,
 .star-input>.input>label:hover,
 .star-input>.input>input:focus+label,
@@ -205,10 +211,12 @@
 .star-input>.input>label[for="p9"]{width:135px;z-index:2;}
 .star-input>.input>label[for="p10"]{width:150px;z-index:1;}
 .star-input>output{display:inline-block;width:20px; font-size:18px;text-align:right; vertical-align:middle;}
-
 .star-input input[type="radio"] + label {
 	border: none;
     border-bottom: white;
     color:white;
-    background: transparent;	/* 투명 */
+    background: transparent; /* 투명 */
+}
+.noneArea {
+    pointer-events: none;
 }

@@ -12,7 +12,7 @@
 }
 
 .wrapper{
-	height: 90vh;
+	height: 100vh;
 }
 
 /* 컨텐츠 헤더 */
@@ -58,22 +58,11 @@
     margin-right: 30px;
 }
 
-.center_to1 {
-    width: 30%;
-	height: 40px;
-    border : 1px solid #1b6bbb;
-	background: #1b6bbb;
-	color:white;
-	text-aling : center;
-	padding-left: 60px;
-	padding-top: 10px;
-}
-
-.center_to2 {
+#tab02 {
     width: 300px;
     height: 40px;
     border : 1px solid #1b6bbb;
-    background: white;
+    background: #1b6bbb;
     color: black;
     text-aling : center;
     padding-left: 35px;
@@ -82,7 +71,7 @@
 
 /* 경고 */
 .returnlabel{
-	margin-left : 120px;
+	margin-left : 140px;
 	font-weight : bold;
 	font-size: 15px;
 	color:red;
@@ -213,6 +202,47 @@
 	text-align : left;
 	padding: 0 10px;
 }
+
+input[type="radio"] { display:none; } /* input을 안보이게 처리 */
+
+input[type="radio"] + label {
+    display:inline-block; 
+    width:253.8px; 
+    padding:12px; 
+    border: #1b6bbb 3px solid; 
+    border-bottom: #1b6bbb; 
+    color:white; 
+    background-color:#1b6bbb; 
+    font-size:13px;
+    cursor:pointer;
+    text-align: center;
+} /* label에 대한 버튼속성 */
+
+.return_tab{
+	display:inline-block; 
+    width:253.8px; 
+    padding:12px; 
+    border: #1b6bbb 3px solid; 
+    border-bottom: #1b6bbb; 
+    color:white; 
+    background-color:#1b6bbb; 
+    font-size:13px;
+    cursor:pointer;
+    text-align: center;
+}
+
+
+input[type="radio"]:checked + label {
+    background:white; 
+    color:#000;
+}
+
+#tab01, #tab02{
+	background-color:#1b6bbb; 
+}
+
+input[id="tab01"]:checked ~ .con1 {display:block;} /* 인풋에 체크가 해당 요소보이게 설정 */
+input[id="tab02"]:checked ~ .con2 {display:block;}
 
 /* 마우스 오버시 */
 .review_list:hover {

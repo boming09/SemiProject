@@ -22,11 +22,11 @@
 		<%@ include file="/WEB-INF/views/mypage/mypage-category.jsp" %>		
 		<!-- 헤더 div -->
 		<div class="content">            
-           	<h4>고객님, 안녕하세요.</h4><br>
+           	<h4>${ loginUser.userNickname } 고객님, 안녕하세요.</h4><br>
             <header>
             	<div class="hdcenter">
             		<div class="left">
-            		<h3>멤버십 등급 : 일반</h3>
+            		<h3>멤버십 등급 : ${ loginUser.userGrade }</h3>
             		봄숲 멤버십 회원이 되신걸 환영합니다.<br>
             		구매 금액의 1~3% 추가 마일리지 및 쿠폰 혜택을 받으실수 있습니다.
             		</div>

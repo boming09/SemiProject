@@ -77,6 +77,22 @@ a {
     font-weight : bold;
 }
 
+/* 성별 */
+#male2{
+	margin-left : 20px;
+}
+
+/* 개인정보 라디오 버튼 */
+#interest{
+	margin-left : 20px;
+	margin-right: 5px;
+}
+
+#interest2{
+	margin-right: 5px;
+}
+
+
 /* 아이디 찾기 버튼*/
 .idb {
     width : 145px;
@@ -253,7 +269,7 @@ buttom{
     width : 300px;
     height : 100px;
     position : absolute;
-            top : 677px;
+            top : 715px;
             left : 600px;
     background :#497D4E;
     color : white;

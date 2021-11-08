@@ -102,6 +102,8 @@
 .wcheck_title {
     width: 57%;
     border-right: 1px solid lightgray;
+    text-align : left;
+    padding-left : 10px;
     
 }
 .wcheck_user {
@@ -117,4 +119,37 @@
 .wcheck_status {
     width: 10%;
    
+}
+
+/* 마우스 오버시 */
+.wcheck_list:hover {
+    background: #f3f5f7;
+}
+
+/* 페이징 영역 */
+.pagingarea {
+	margin: 10px 30px;
+	margin-bottom : 80px;
+	height : 50px;
+	display : flex;
+	justify-content : center;
+    align-items: center;
+}
+.pagingarea ul {
+	list-style : none;
+	display : flex;
+	justify-content : center;
+    align-items: center;
+    width : 400px;
+    height : 50px;  
+}
+
+.pagingarea ul li {
+	width: 40px;
+	text-align : center;
+}
+
+.current_page {
+	border-bottom: 2px solid black;
+	font-weight: bold;
 }

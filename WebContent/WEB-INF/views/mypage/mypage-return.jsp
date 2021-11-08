@@ -34,8 +34,11 @@
             </header>
             <br><br><br>
             <div class="center_to">
-            	<div class="center_to1">반품 / 환불내역</div>            	
-            	<div class="center_to2">교환 / 추가배송(누락) / 회수내역</div> 
+            	<input type="radio" name="tabment" class="return_tab" id="tab01" checked>
+            	<label for="tab01">반품 / 환불내역</label>           	
+            	
+            	<input type="radio" name="tabment" class="return_tab" id="tab02">
+            	<label for="tab02">교환 / 추가배송(누락) / 회수내역</label>
             </div>
             	<div class="topline2"></div>
             	<br><br>     

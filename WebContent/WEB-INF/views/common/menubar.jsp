@@ -202,7 +202,15 @@ scope="application"/>
                     <% } else { %>
                     <li><a href="<%= request.getContextPath() %>/memberinformation">정보수정</a></li>
                     <li><a href="<%= request.getContextPath() %>/logout">로그아웃</a></li>
-                    <li><a href="<%= request.getContextPath() %>/mypage">마이페이지</a></li>
+                    <c:choose>
+				    	<c:when test="${ loginUser.userGrade == 10 }">
+				    		<!-- 일반회원등급 = 10 -->
+		                    <li><a href="<%= request.getContextPath() %>/mypage">마이페이지</a></li>
+				    	</c:when>
+				    	<c:otherwise>
+				    		<li><a href="<%= request.getContextPath() %>/w-mypage">마이페이지</a></li>
+				    	</c:otherwise>
+				    </c:choose>
                     <li><a href="<%= request.getContextPath() %>/cart">장바구니</a></li>
                     <li><a href="<%= request.getContextPath() %>/cs">고객센터</a></li>
                     <% } %>

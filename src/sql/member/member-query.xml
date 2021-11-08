@@ -8,12 +8,15 @@
 			  , USER_ID
 			  , USER_PWD
 			  , USER_NAME
+			  , GENDER
 			  , USER_EMAIL
 			  , USER_PHONE
 			  , USER_ADDRESS
 			  , USER_GRADE
 			  , ENROLL_DATE
 			  , STATUS
+			  , USER_CERTIFY
+			  , USER_NICKNAME
 	       FROM MEMBER
 	      WHERE USER_ID = ?
 	        AND USER_PWD = ?
@@ -28,12 +31,15 @@
 				, USER_ID
 				, USER_PWD
 				, USER_NAME
+				, GENDER
 				, USER_EMAIL
 				, USER_PHONE
 				, USER_ADDRESS
 				, USER_GRADE
 				, ENROLL_DATE
 				, STATUS
+				, USER_CERTIFY
+			    , USER_NICKNAME
 			)
 			VALUES
 			(
@@ -44,8 +50,11 @@
 			   , ?
 			   , ?
 			   , ?
-			   , 1
+			   , ?
+			   , 10
 			   , SYSDATE
+			   , DEFAULT
+			   , DEFAULT
 			   , DEFAULT
 			)
 	</entry>
@@ -57,6 +66,7 @@
 			  , USER_PHONE = ?
 			  , USER_EMAIL = ?
 		      , USER_ADDRESS = ?
+		      , USER_NICKNAME = ?
 		  WHERE USER_NO = ? 
 	</entry>
 	
@@ -66,12 +76,15 @@
 			  , USER_ID
 			  , USER_PWD
 			  , USER_NAME
+			  , GENDER
 			  , USER_EMAIL
 			  , USER_PHONE
 			  , USER_ADDRESS
 			  , USER_GRADE
 			  , ENROLL_DATE
 			  , STATUS
+			  , USER_CERTIFY
+			  , USER_NICKNAME
 	       FROM MEMBER
 	      WHERE USER_NO = ?
 	        AND STATUS = 'Y'

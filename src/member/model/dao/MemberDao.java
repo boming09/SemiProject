@@ -47,12 +47,15 @@ public class MemberDao {
 									 , rset.getString("user_id")
 									 , rset.getString("user_pwd")
 									 , rset.getString("user_name")
+									 , rset.getString("gender")
 									 , rset.getString("user_email")
 									 , rset.getString("user_phone")
 									 , rset.getString("user_address")
 									 , rset.getInt("user_grade")
 									 , rset.getDate("enroll_date")
-									 , rset.getString("status"));
+									 , rset.getString("status")
+									 , rset.getString("user_certify")
+									 , rset.getString("user_nickname"));
 			}			
 			
 		} catch (SQLException e) {
@@ -77,9 +80,10 @@ public class MemberDao {
 			pstmt.setString(1, member.getUserId());
 			pstmt.setString(2, member.getUserPwd());
 			pstmt.setString(3, member.getUserName());
-			pstmt.setString(4, member.getUserEmail());
-			pstmt.setString(5, member.getUserPhone());
-			pstmt.setString(6, member.getUserAddress());
+			pstmt.setString(4, member.getGender());
+			pstmt.setString(5, member.getUserEmail());
+			pstmt.setString(6, member.getUserPhone());
+			pstmt.setString(7, member.getUserAddress());
 			
 			result = pstmt.executeUpdate();		
 			
@@ -103,7 +107,8 @@ public class MemberDao {
 			pstmt.setString(2, member.getUserPhone());
 			pstmt.setString(3, member.getUserEmail());
 			pstmt.setString(4, member.getUserAddress());
-			pstmt.setInt(5, member.getUserNo());
+			pstmt.setString(5, member.getUserNickname());
+			pstmt.setInt(6, member.getUserNo());
 			
 			result = pstmt.executeUpdate();
 						
@@ -133,12 +138,15 @@ public class MemberDao {
 									 , rset.getString("user_id")
 									 , rset.getString("user_pwd")
 									 , rset.getString("user_name")
+									 , rset.getString("gender")
 									 , rset.getString("user_email")
 									 , rset.getString("user_phone")
 									 , rset.getString("user_address")
 									 , rset.getInt("user_grade")
 									 , rset.getDate("enroll_date")
-									 , rset.getString("status"));
+									 , rset.getString("status")
+									 , rset.getString("user_certify")
+									 , rset.getString("user_nickname"));
 			
 			}
 		} catch (SQLException e) {
@@ -197,4 +205,39 @@ public class MemberDao {
 		
 	}
 
+	public Member searchId(Connection conn, String userName, String userEmail) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = memberQuery.getProperty("searchId");
+		Member member = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userName);
+			pstmt.setString(2, userEmail);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				member = new Member();
+				member.setUserId(rset.getString("userId"));
+				member.setUserPwd(rset.getString("userPwd"));
+				member.setUserName(rset.getString("userName"));
+				member.setUserEmail(rset.getString("userEmail"));
+				member.setUserPhone(rset.getString("userPhone"));
+				member.setEnrollDate(rset.getDate("enrollDate"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			close(rset);
+			close(pstmt);
+		}		
+		
+		return member;
+	}
+
+		
 }

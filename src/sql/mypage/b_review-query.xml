@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM
+"http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectList">
+	<!-- REVIEW_NO	NUMBER
+		 BOOK_ID	NUMBER
+		 USER_NO	NUMBER
+		 DATE	DATE
+		 CONTENT	VARCHAR2(200 BYTE)
+		 RATING	NUMBER
+	     REF_NO	NUMBER -->
+		SELECT
+			    REVIEW_NO
+			  , BOOK_ID
+			  , USER_NO
+			  , DATE
+			  , CONTENT
+			  , RATING
+			  , REF_NO
+		   FROM B_REVIEW
+		  WHERE DATE = 'Y'
+		  ORDER BY REVIEW_NO DESC 
+	</entry>
+</properties>

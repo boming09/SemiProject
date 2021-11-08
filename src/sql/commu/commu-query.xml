@@ -85,5 +85,32 @@
 		 ORDER BY CREATE_DATE DESC
 	</entry>
 	
+	<entry key="getMyListCount">
+		SELECT
+		       COUNT(*)
+		  FROM COMMU
+		 WHERE USER_NO = ?
+	</entry>
+	
+	<entry key="selectMyList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.* 
+			        FROM(SELECT
+			               COMMU_NO
+			             , TITLE
+			             , CONTENT
+			             , C.USER_NO
+			             , CREATE_DATE
+			             , REPLY
+			             , COUNT
+			             , C.WRITER_NO
+			             , W.USER_NAME 
+			             , C.STATUS
+			          FROM COMMU C
+			          JOIN MEMBER W ON(C.WRITER_NO = W.USER_NO)
+			         WHERE C.USER_NO = ?
+			         ORDER BY CREATE_DATE DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
 
 </properties>

@@ -47,16 +47,17 @@ public class JoinMemberShipServlet extends HttpServlet {
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");
 		String userName = request.getParameter("userName");
-		String userPhone = request.getParameter("phone");
+		String gender = request.getParameter("gender");
 		String userEmail = request.getParameter("email");
+		String userPhone = request.getParameter("phone");
 		String[] addressArr = request.getParameterValues("address");
 		
 		String address = "";
-					
+		
 		if(addressArr != null && !addressArr[0].equals(""))
 			address = String.join("|", addressArr);
 					
-		Member member = new Member(userId, userPwd, userName, userPhone, userEmail, address);
+		Member member = new Member(userId, userPwd, userName, gender, userPhone, userEmail, address);
 		
 		int result = new MemberService().insertMember(member);
 		

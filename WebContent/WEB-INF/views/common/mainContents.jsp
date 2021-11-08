@@ -50,7 +50,7 @@ https://github.com/filipelinhares/ress-->
             </div>
             <div class="conbox con3">
                 <ul class="recomm">
-                    <li><a href="#"><img class="book book1" src="<%= request.getContextPath() %>/resources/images/pop1.png"></a></li>
+                    <li><a href="<%= request.getContextPath() %>/book/detail"><img class="book book1" src="<%= request.getContextPath() %>/resources/images/pop1.png"></a></li>
                     <li><a href="#"><img class="book" src="<%= request.getContextPath() %>/resources/images/pop2.png"></a></li>
                     <li><a href="#"><img class="book book3" src="<%= request.getContextPath() %>/resources/images/pop3.png"></a></li>
                 </ul>  
@@ -102,7 +102,7 @@ https://github.com/filipelinhares/ress-->
 	                <tr>
 	                    <td><b>1</b><br>-</td>
 	                    <td><a href=""><img class="bsb" src="<%= request.getContextPath() %>/resources/images/pop1.png"></a></td>
-	                    <td><a href=""><span class="bsn">킹덤</span><br><span class="bsw">요네스뵈 저</span></a></td>
+	                    <td><a href="<%= request.getContextPath() %>/book/detail"><span class="bsn">킹덤</span><br><span class="bsw">요네스뵈 저</span></a></td>
 	                </tr>
 	                <tr>
 	                    <td><b>2</b><br>-</td>

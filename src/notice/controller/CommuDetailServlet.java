@@ -41,8 +41,8 @@ public class CommuDetailServlet extends HttpServlet {
 			request.setAttribute("commu", commu);
 			request.getRequestDispatcher("/WEB-INF/views/notice/commuDetailView.jsp").forward(request, response);
 		} else {
-			request.getSession().setAttribute("msg", "실패^^~~");
-			request.getRequestDispatcher("/WEB-INF/views/notice/commuView.jsp").forward(request, response);
+			request.getSession().setAttribute("msg", "실패9ㅅ9");
+			request.getRequestDispatcher("/WEB-INF/views/notice/csPageView.jsp").forward(request, response);
 		}
 		
 	}

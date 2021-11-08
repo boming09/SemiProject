@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,31 +25,32 @@
 
             <form class="order" action="<%= request.getContextPath() %>/payment"
 			method="post">
-            
-           
+          
      		  <div class="od_info">주문 상품 정보</div>
 			  <div class="od_contain">
-
+ 		
 			  		<div class="item">상품명</div>
 			  		<div class="item">가격</div>
 			  		<div class="item">수량</div>
-
+		
 			  </div>
 			  <div class="od_container">
+			   <c:forEach var="cart" items="${ cartOrderList }">
 					<div class="item">
-						<b>[국내도서] 어떻게 쓰지 않을 수 있겠어요</b>
+						<b>[국내도서] ${cart.book_name }</b>
 					</div>
 			
 					<div class="item">
-						<b>27,000원</b> / 1,485원(5%)
+						<b><fmt:formatNumber value="${cart.sale_price}" type="number"/></b> / <fmt:parseNumber value="${cart.price * 0.05}" integerOnly="true" />원(5%)
 					</div>
 					<div class="item">
 					
-						<b>1</b>
-					
+						<b> ${cart.amount}</b>
+           		
 					</div>
+			</c:forEach>
 					
-					<div class="item">
+	<!-- 				<div class="item">
 						<b>[국내도서] 어떻게 쓰지 않을 수 있겠어요2</b>
 					</div>
 					<div class="item">
@@ -82,7 +85,7 @@
 						<b>1</b>
 						
 					</div>
-					
+					-->
 					
 
 		</div>

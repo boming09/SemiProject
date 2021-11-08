@@ -125,7 +125,19 @@ public class BookDao {
 	         
 	         while(rset.next()) {
 	            Book book = new Book();
+	            book.setBid(rset.getInt("book_id"));
+	            book.setBtitle(rset.getString("book_name"));
+	            book.setCid(rset.getInt("category_id"));
+	            book.setCname(rset.getString("category_name"));
+	            book.setAuthor(rset.getString("author"));
+	            book.setEditor(rset.getString("editor"));
+	            book.setPublicationDate(rset.getDate("publication_date"));
+	            book.setPublisher(rset.getString("publisher"));
+	            book.setSalePrice(rset.getInt("sale_price"));
+	            book.setBimg(rset.getString("book_img"));
+	            book.setStarScore(rset.getInt("star_score"));
 	            
+	            bookList.add(book);
 	         }
 	      } catch (SQLException e) {
 	         e.printStackTrace();
@@ -135,6 +147,98 @@ public class BookDao {
 	      }
 		
 		return bookList;
+	}
+
+	public List<String> categoryList(Connection conn, Search search) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = bookQuery.getProperty("categoryList");
+		List<String> categoryList = new ArrayList<>();
+		
+		// 검색 시 수행할 쿼리문 변경
+		if (search.getSearchCondition() != null && search.getSearchValue() != null) {
+			if (search.getSearchCondition().equals("search")) {
+				sql = bookQuery.getProperty("searchCategoryList");
+			} else if (search.getSearchCondition().equals("title")) {
+				sql = bookQuery.getProperty("titleCategoryList");
+			} else if (search.getSearchCondition().equals("author")) {
+				sql = bookQuery.getProperty("authorCategoryList");
+			}
+		}
+		
+		try {
+	         pstmt = conn.prepareStatement(sql);
+	         
+	         /* 추가 : 변수로 처리 1, 2, 3 물음표 순서가 달라지니까 */
+	         int index = 1;
+	         // 검색 sql 실행 시
+	         if(search.getSearchCondition() != null && search.getSearchValue() != null) {
+	        	 if(sql.equals(bookQuery.getProperty("searchCategoryList"))) {
+	        		 pstmt.setString(index++, search.getSearchValue());	// 후위 연산 됨
+	        		 pstmt.setString(index, search.getSearchValue());
+	        	 } else if(sql.equals(bookQuery.getProperty("titleCategoryList"))){
+	        		 pstmt.setString(index, search.getSearchValue());
+	        	 } else if(sql.equals(bookQuery.getProperty("authorCategoryList"))) {
+	        		 pstmt.setString(index, search.getSearchValue());
+	        	 }
+	         }
+
+	         rset = pstmt.executeQuery();
+	         
+	         while(rset.next()) {
+	        	 categoryList.add(rset.getString("category_name"));
+	         }
+		  } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+		
+		return categoryList;
+	}
+
+	public Book selectBook(Connection conn, int bid) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = bookQuery.getProperty("selectBook");
+		Book book = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bid);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				book = new Book(rset.getInt("book_id")
+							  , rset.getString("book_name")
+							  , rset.getInt("category_id")
+							  , rset.getString("category_name")
+							  , rset.getInt("user_no")
+							  , rset.getString("author")
+							  , rset.getString("editor")
+							  , rset.getDate("publication_date")
+							  , rset.getString("publisher")
+							  , rset.getInt("price")
+							  , rset.getInt("stock")
+							  , rset.getDouble("sale_rate")
+							  , rset.getInt("sale_price")
+							  , rset.getString("book_intro")
+							  , rset.getString("book_url")
+							  , rset.getString("file_path")
+							  , rset.getString("author_intro")
+							  , rset.getString("book_img")
+							  , rset.getInt("star_score")
+							  , rset.getDouble("avg_score"));
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return book;
 	}
 
 }
