@@ -93,22 +93,6 @@ public class MemberService {
 		return result;
 	}
 
-	public Member searchId(String userName, String userEmail) {
-		Connection conn = getConnection();
-		
-		int result = memberDao.searchId(conn, userName, userEmail);
-		
-		if(result > 0) {
-			commit(conn);
-		} else {
-			rollback(conn);
-		}
-		
-		close(conn);
-		
-		return result;
-	}
-
 	
 
 }
