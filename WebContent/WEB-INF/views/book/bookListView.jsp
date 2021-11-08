@@ -77,7 +77,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                                    <!-- <span class="reviewCount"></span>
                                         <span class="reviewRating"></span> -->
 				                        <span id="spanBkRating">
-				                            <span class="star-input">
+				                            <span class="star-input noneArea">
 				                                <span class="input">
 				                                    <input type="radio" name="star-input" value="1" id="p1">
 				                                    <label for="p1">1</label>
@@ -89,7 +89,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 				                                    <label for="p4">4</label>
 				                                    <input type="radio" name="star-input" value="5" id="p5">
 				                                    <label for="p5">5</label>
-				                                    <input type="radio" name="star-input" value="6" id="p6">
+				                                    <input type="radio" name="star-input" value="6" id="p6" checked>
 				                                    <label for="p6">6</label>
 				                                    <input type="radio" name="star-input" value="7" id="p7">
 				                                    <label for="p7">7</label>
@@ -100,10 +100,11 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 				                                    <input type="radio" name="star-input" value="10" id="p10">
 				                                    <label for="p10">10</label>
 				                                  </span>
-				                                  <output for="star-input"><b>9</b>점</output>						
+				                                  <output for="star-input"><b>0</b>점</output>						
 				                            </span>
 				                        </span>
 			                        </div>
+			                        
                                     <div class="info_etc">
                                         <span>배송안내</span>
                                        	<span>무료</span>

@@ -35,7 +35,7 @@ crossorigin="anonymous"></script>
 
             <div class="topColLft"> <!-- top left -->
                 <div class="bookImgArea">   <!-- book image -->
-                    <img name="bookname" src="${contextPath}/resources/images/book/pop1.png" alt="book">
+                    <img name="bookname" src="${contextPath}/resources/images/book/${ book.bimg }" alt="book">
                 </div>
             </div>
             <div class="topColRft"> <!-- top right -->
@@ -54,7 +54,7 @@ crossorigin="anonymous"></script>
                     </div>
                     <div class="ratingArea">
                         <span id="spanBkRating">
-                            <span class="star-input">
+                            <span class="star-input noneArea">
                                 <span class="input">
                                     <input type="radio" name="star-input" value="1" id="p1">
                                     <label for="p1">1</label>
@@ -66,7 +66,7 @@ crossorigin="anonymous"></script>
                                     <label for="p4">4</label>
                                     <input type="radio" name="star-input" value="5" id="p5">
                                     <label for="p5">5</label>
-                                    <input type="radio" name="star-input" value="6" id="p6">
+                                    <input type="radio" name="star-input" value="6" id="p6" checked>
                                     <label for="p6">6</label>
                                     <input type="radio" name="star-input" value="7" id="p7">
                                     <label for="p7">7</label>
@@ -79,7 +79,7 @@ crossorigin="anonymous"></script>
                                   </span>
                                   <output for="star-input"><b>0</b>점</output>						
                             </span>
-                        </span><!-- 별점으로 넣어야 함 -->
+                          </span>
                         <span class="reviewCount">
                             <a href="#review">리뷰(<em>10</em>)</a> <!-- 리뷰로 이동 -->
                         </span>
@@ -194,7 +194,7 @@ crossorigin="anonymous"></script>
                     <div class="authCont">
                         <div class="authImg"><img src="${contextPath}/resources/images/author/auth.jpg"></div>
                         <div class="authTxtWrap">
-                            <div class="authTit"><h5 class="authorName">요 네스뵈</h5></div>
+                            <div class="authTit"><h5 class="authorName">${ book.author }</h5></div>
                             <span class="authTxt">
                                 <p>${ book.aintro }</p>
                             </span>
@@ -212,7 +212,7 @@ crossorigin="anonymous"></script>
                             <p class="reviewTop">봄숲 회원이 평가한 평균 별점</p>
                             <div class="book_rating">
                                 <span class="total_rating">
-                                    <span class="star-input">
+                                    <span class="star-input noneArea">
                                         <span class="input">
                                             <input type="radio" name="star-input" value="1" id="p1">
                                             <label for="p1">1</label>
@@ -226,7 +226,7 @@ crossorigin="anonymous"></script>
                                             <label for="p5">5</label>
                                             <input type="radio" name="star-input" value="6" id="p6">
                                             <label for="p6">6</label>
-                                            <input type="radio" name="star-input" value="7" id="p7">
+                                            <input type="radio" name="star-input" value="7" id="p7" checked>
                                             <label for="p7">7</label>
                                             <input type="radio" name="star-input" value="8" id="p8">
                                             <label for="p8">8</label>
@@ -293,7 +293,7 @@ crossorigin="anonymous"></script>
                             <div class="reviewInfoTop">
                                 <div class="cmt_rating">
                                     <span class="rating">
-                                        <span class="star-input">
+                                        <span class="star-input noneArea">
                                             <span class="input">
                                                 <input type="radio" name="star-input" value="1" id="p1">
                                                 <label for="p1">1</label>
@@ -303,7 +303,7 @@ crossorigin="anonymous"></script>
                                                 <label for="p3">3</label>
                                                 <input type="radio" name="star-input" value="4" id="p4">
                                                 <label for="p4">4</label>
-                                                <input type="radio" name="star-input" value="5" id="p5">
+                                                <input type="radio" name="star-input" value="5" id="p5" checked>
                                                 <label for="p5">5</label>
                                                 <input type="radio" name="star-input" value="6" id="p6">
                                                 <label for="p6">6</label>
@@ -316,7 +316,7 @@ crossorigin="anonymous"></script>
                                                 <input type="radio" name="star-input" value="10" id="p10">
                                                 <label for="p10">10</label>
                                             </span>
-                                            <!-- <output for="star-input"><b></b></output> -->						
+                                            <output for="star-input"><b></b></output>					
                                         </span>
                                     </span>
                                 </div>
@@ -346,7 +346,7 @@ crossorigin="anonymous"></script>
                                 </span>
                             </div>
                             <div class="reviewInfoBot">
-                                <span class="txt_id">l*****3&nbsp;<i class="fas fa-check-circle"></i></span>
+                                <span class="txt_id">${ book.author }&nbsp;<i class="fas fa-check-circle"></i></span>
                                 <span class="txt_esc">|</span>
                                 <span class="txt_date">2021-10-28</span>
                             </div>
@@ -358,7 +358,7 @@ crossorigin="anonymous"></script>
                             <div class="reviewInfoTop">
                                 <div class="cmt_rating">
                                     <span class="rating">
-                                        <span class="star-input">
+                                        <span class="star-input noneArea">
                                             <span class="input">
                                                 <input type="radio" name="star-input" value="1" id="p1">
                                                 <label for="p1">1</label>
@@ -376,12 +376,12 @@ crossorigin="anonymous"></script>
                                                 <label for="p7">7</label>
                                                 <input type="radio" name="star-input" value="8" id="p8">
                                                 <label for="p8">8</label>
-                                                <input type="radio" name="star-input" value="9" id="p9">
+                                                <input type="radio" name="star-input" value="9" id="p9" checked>
                                                 <label for="p9">9</label>
                                                 <input type="radio" name="star-input" value="10" id="p10">
                                                 <label for="p10">10</label>
                                             </span>
-                                            <!-- <output for="star-input"><b></b></output> -->
+                                            <output for="star-input"><b></b></output>
                                         </span>
                                     </span>
                                 </div>
@@ -408,7 +408,7 @@ crossorigin="anonymous"></script>
                                 </span>
                             </div>
                             <div class="reviewInfoBot">
-                                <span class="txt_id">l*****3&nbsp;<i class="fas fa-check-circle"></i></span>
+                                <span class="txt_id">${ book.author }&nbsp;<i class="fas fa-check-circle"></i></span>
                                 <span class="txt_esc">|</span>
                                 <span class="txt_date">2021-10-28</span>
                             </div>
