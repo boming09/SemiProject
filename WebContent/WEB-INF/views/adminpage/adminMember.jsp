@@ -14,7 +14,7 @@
 	width: 90vh;
 	height: 60vh;
 	margin: 5px;
-	border: 3px solid rgb(196, 217, 195);
+	
 }
 hr{
 	border: 1px solid rgb(196, 217, 195);
@@ -58,8 +58,8 @@ hr{
 	text-overflow: ellipsis;
 }
 
-.board_list .pwd {
-	width: 100px;
+.board_list .nickname {
+	width: 90px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
@@ -88,73 +88,10 @@ hr{
 }
 
 .board_list .status {
-	width: 80px;
-}
-
-.board_ul:hover {
-	background: #f3f5f7;
-	cursor: pointer;
-}
-
-.board_paging {
-	height: 50px;
-	line-height: 50px;
-	display: flex;
-	justify-content: center;
-	list-style: none;
-	width: 480px;
-	margin: auto;
-}
-
-.board_paging a {
-	text-decoration: none;
-	color: #282A35;
-	width: 40px;
-	display: block;
-	text-align: center;
-}
-
-.board_paging a.current_page {
-	border-bottom: 2px solid #282A35;
-	font-weight: bold;
-}
-
-.search_area {
-	text-align: center;
-	padding: 30px;
-}
-
-.search_area select {
-	width: 150px;
-	height: 30px;
-	border: 0px;
-}
-
-.input_area {
-	border: solid 1px #dadada;
-	padding: 10px 10px 14px 10px;
-	margin-right: 20px;
-	background: white;
-}
-
-.input_area input {
-	width: 250px;
-	height: 30px;
-	border: 0px;
-}
-
-.input_area input:focus, .search_area select:focus {
-	outline: none;
-}
-
-.search_area button {
 	width: 100px;
-	height: 35px;
-	border: 0px;
-	color: white;
-	background: #282A35;
-	margin: 5px;
 }
+
+
 </style>
 </head>
 <body>
@@ -164,191 +101,42 @@ hr{
 
 <div class="memberList">
 <br>
-	<h2>계정 관리</h2>
+	<h2>탈퇴 신청</h2>
 <br>
 	<hr />
 	<div class="board_list">
 				<ul class="board_header">
 					<li class="id">아이디</li>
-					<li class="pwd">비밀번호</li>
+					<li class="nickname">닉네임</li>
 					<li class="name">이름</li>
 					<li class="gender">성별</li>
 					<li class="address">주소</li>
 					<li class="phone">전화번호</li>
 					<li class="date">가입일</li>
-					<li class="status">회원상태</li>
+					<li class="status">관리</li>
 				</ul>
 			<hr />
+			<c:forEach var="board" items="${ adminMemberList }">
 				<ul class="board_ul">
-					<li class="id">admin</li>
-					<li class="pwd">admin</li>
-					<li class="name">관리자</li>
-					<li class="gender">남</li>
-					<li class="address">서울시 양천구 목동 어쩌고 저쩌고</li>
-					<li class="phone">010-1212-3434</li>
-					<li class="date">2021-11-04</li>
-					<li class="status"></li>
+					<li class="id"></li>
+					<li class="nickname"></li>
+					<li class="name"></li>
+					<li class="gender"></li>
+					<li class="address"></li>
+					<li class="phone"></li>
+					<li class="date"></li>
+					<form method="get" action="${ contextPath }">
+					<li class="status">
+						<select name="statusa" style="border: 1px solid rgb(196, 217, 195);">
+							<option selected>탈퇴신청</option>
+							<option value="10">신청취소</option>
+							<option value="20">탈퇴</option>
+						</select>
+						<button input type="submit" style="border: 1px solid rgb(196, 217, 195); border-radius: 10px;">변경</button>						
+					</li>
+					</form>
 				</ul>
-				<ul class="board_ul">
-					<li class="id">admin</li>
-					<li class="pwd">admin</li>
-					<li class="name">관리자</li>
-					<li class="gender">남</li>
-					<li class="address">서울시 양천구 목동 어쩌고 저쩌고</li>
-					<li class="phone">010-1212-3434</li>
-					<li class="date">2021-11-04</li>
-					<li class="status"></li>
-				</ul>
-				<ul class="board_ul">
-					<li class="id">admin</li>
-					<li class="pwd">admin</li>
-					<li class="name">관리자</li>
-					<li class="gender">남</li>
-					<li class="address">서울시 양천구 목동 어쩌고 저쩌고</li>
-					<li class="phone">010-1212-3434</li>
-					<li class="date">2021-11-04</li>
-					<li class="status"></li>
-				</ul>
-				<ul class="board_ul">
-					<li class="id">admin</li>
-					<li class="pwd">admin</li>
-					<li class="name">관리자</li>
-					<li class="gender">남</li>
-					<li class="address">서울시 양천구 목동 어쩌고 저쩌고</li>
-					<li class="phone">010-1212-3434</li>
-					<li class="date">2021-11-04</li>
-					<li class="status"></li>
-				</ul>
-				<ul class="board_ul">
-					<li class="id">admin</li>
-					<li class="pwd">admin</li>
-					<li class="name">관리자</li>
-					<li class="gender">남</li>
-					<li class="address">서울시 양천구 목동 어쩌고 저쩌고</li>
-					<li class="phone">010-1212-3434</li>
-					<li class="date">2021-11-04</li>
-					<li class="status"></li>
-				</ul>
-				<ul class="board_ul">
-					<li class="id">admin</li>
-					<li class="pwd">admin</li>
-					<li class="name">관리자</li>
-					<li class="gender">남</li>
-					<li class="address">서울시 양천구 목동 어쩌고 저쩌고</li>
-					<li class="phone">010-1212-3434</li>
-					<li class="date">2021-11-04</li>
-					<li class="status"></li>
-				</ul>
-				<ul class="board_ul">
-					<li class="id">admin</li>
-					<li class="pwd">admin</li>
-					<li class="name">관리자</li>
-					<li class="gender">남</li>
-					<li class="address">서울시 양천구 목동 어쩌고 저쩌고</li>
-					<li class="phone">010-1212-3434</li>
-					<li class="date">2021-11-04</li>
-					<li class="status"></li>
-				</ul>
-				<ul class="board_ul">
-					<li class="id">admin</li>
-					<li class="pwd">admin</li>
-					<li class="name">관리자</li>
-					<li class="gender">남</li>
-					<li class="address">서울시 양천구 목동 어쩌고 저쩌고</li>
-					<li class="phone">010-1212-3434</li>
-					<li class="date">2021-11-04</li>
-					<li class="status"></li>
-				</ul>
-				<ul class="board_ul">
-					<li class="id">admin</li>
-					<li class="pwd">admin</li>
-					<li class="name">관리자</li>
-					<li class="gender">남</li>
-					<li class="address">서울시 양천구 목동 어쩌고 저쩌고</li>
-					<li class="phone">010-1212-3434</li>
-					<li class="date">2021-11-04</li>
-					<li class="status"></li>
-				</ul>
-				<ul class="board_ul">
-					<li class="id">admin</li>
-					<li class="pwd">admin</li>
-					<li class="name">관리자</li>
-					<li class="gender">남</li>
-					<li class="address">서울시 양천구 목동 어쩌고 저쩌고</li>
-					<li class="phone">010-1212-3434</li>
-					<li class="date">2021-11-04</li>
-					<li class="status"></li>
-				</ul>
-				<ul class="board_ul">
-					<li class="id">admin</li>
-					<li class="pwd">admin</li>
-					<li class="name">관리자</li>
-					<li class="gender">남</li>
-					<li class="address">서울시 양천구 목동 어쩌고 저쩌고</li>
-					<li class="phone">010-1212-3434</li>
-					<li class="date">2021-11-04</li>
-					<li class="status"></li>
-				</ul>
-				<ul class="board_ul">
-					<li class="id">admin</li>
-					<li class="pwd">admin</li>
-					<li class="name">관리자</li>
-					<li class="gender">남</li>
-					<li class="address">서울시 양천구 목동 어쩌고 저쩌고</li>
-					<li class="phone">010-1212-3434</li>
-					<li class="date">2021-11-04</li>
-					<li class="status"></li>
-				</ul>
-				<ul class="board_ul">
-					<li class="id">admin</li>
-					<li class="pwd">admin</li>
-					<li class="name">관리자</li>
-					<li class="gender">남</li>
-					<li class="address">서울시 양천구 목동 어쩌고 저쩌고</li>
-					<li class="phone">010-1212-3434</li>
-					<li class="date">2021-11-04</li>
-					<li class="status"></li>
-				</ul>
-				<ul class="board_ul">
-					<li class="id">admin</li>
-					<li class="pwd">admin</li>
-					<li class="name">관리자</li>
-					<li class="gender">남</li>
-					<li class="address">서울시 양천구 목동 어쩌고 저쩌고</li>
-					<li class="phone">010-1212-3434</li>
-					<li class="date">2021-11-04</li>
-					<li class="status"></li>
-				</ul>
-				
-			<div style="position: static;">
-				<hr />
-				<ul class="board_paging">
-				<!-- 맨 처음으로 이동하는 버튼(<<) -->	
-				<li><a href="">&lt;&lt;</a></li>
-				
-				<!-- 이전 페이지로(<) -->
-				<li>
-				<c:choose>
-					<c:when test=""><a href="">&lt;</a></c:when>
-					<c:otherwise><a href="#">&lt;</a></c:otherwise>
-				</c:choose>
-				</li>
-				
-				
-				
-				
-				<!-- 다음 페이지로(>) -->
-				<li>
-				<c:choose>
-					<c:when test=""><a href="">&gt;</a></c:when>
-					<c:otherwise><a href ="#">&gt;</a></c:otherwise>
-				</c:choose>
-				</li>
-				
-				<!-- 맨 끝으로 이동하는 버튼(>>) -->
-            	<li><a href="">&gt;&gt;</a></li>
-				</ul>
-			</div>
+			</c:forEach>
 	</div>
 </div>
 
@@ -360,6 +148,5 @@ hr{
 
 
 </div>
-<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
 </html>

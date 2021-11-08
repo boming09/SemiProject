@@ -166,7 +166,7 @@ hr{
 <br>
 	<h2>등급 관리</h2>
 <br>
-	<hr /><br>
+	<hr />
 	<div class="board_list">
 				<ul class="board_header">
 					<li class="id">아이디</li>
@@ -361,6 +361,5 @@ hr{
 
 
 </div>
-<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
 </html>

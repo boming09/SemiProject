@@ -68,6 +68,7 @@ https://github.com/filipelinhares/ress-->
 					    </td>
 					    <td>
 					        <b>오늘의 책</b>
+					        <button type="button" style="border: 1px solid black; width: 30px; background: pink; color: white; margin-left: 10px;">edit</button>
 					    </td>
 					</tr>
 					<tr>
