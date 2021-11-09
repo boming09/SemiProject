@@ -58,7 +58,7 @@
 	                        <li class="commu_no">${ commu.commu_no }</li>
 	                        <li class="commu_writer writer2">${ commu.cwriter_name }</li>
 	                        <li class="commu_title title2">${ commu.ctitle }</li>
-	                        <li class="commu_user user2">${ commu.user_nickname }</li>
+	                        <li class="commu_user user2">${ commu.user_id }</li>
 	                        <li class="commu_date">${ commu.create_date }</li>
 	                        <li class="commu_status" id="commuStatus" value="${ commu.status }">
 	                        	<c:choose>

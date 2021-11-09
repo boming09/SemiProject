@@ -55,7 +55,7 @@
 			             , TITLE
 			             , CONTENT
 			             , C.USER_NO
-			             , M.USER_NICKNAME
+			             , M.USER_ID
 			             , CREATE_DATE
 			             , REPLY
 			             , COUNT
@@ -75,7 +75,7 @@
 		     , TITLE
 		     , CONTENT
 		     , C.USER_NO
-		     , M.USER_NICKNAME
+		     , M.USER_ID
 		     , CREATE_DATE
 		     , REPLY
 		     , COUNT
@@ -104,7 +104,7 @@
 			             , TITLE
 			             , CONTENT
 			             , C.USER_NO
-			             , M.USER_NICKNAME
+			             , M.USER_ID
 			             , CREATE_DATE
 			             , REPLY
 			             , COUNT
