@@ -38,7 +38,7 @@ public class IdServlet extends HttpServlet {
 		String userEmail = request.getParameter("userEmail");
 		
 		Member member = new Member();
-		int result = MemberService.searchId(userName, userEmail);
+		// int result = MemberService.searchId(userName, userEmail);
 		
 		if(member != null) {
 		// 로그인 화면에서 아이디 찾기 클릭시 단순 이동
