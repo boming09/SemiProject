@@ -21,7 +21,14 @@
         
         <div class="content">
         	<header class="review_header">
-                <div>${ loginUser.userNickname }님 의 리뷰</div>
+        	<c:choose>
+           	<c:when test="${ loginUser.userNickname != null}">
+           	<div>${ loginUser.userNickname }님 의 리뷰</div>
+            </c:when>
+            <c:otherwise>
+            <div>${ loginUser.userName }님 의 리뷰</div>
+            </c:otherwise>
+            </c:choose>                
                 <!-- 
                 <div class="review_commu">
                     <button onclick="location.href='${ contextPath }/commu'">전체<br>소통게시판</button>
@@ -35,7 +42,7 @@
                     <input type="checkbox" name="mylist" value=""><label>내가 쓴 글만 보기</label>
                     <button type="button">글 작성</button>
                 </span> -->
-            </div>
+            </div>            
 
             <div class="review_area2">
                 <div class="review_listarea">
@@ -53,7 +60,16 @@
                 		<li class="review_no">${ review.mid }</li>
                 		<li class="review_classification">${ review.category_name }</li>
                 		<li class="review_title">${ review.mtitle }</li>
-                		<li class="review_writer">${ review.user_nickname }</li>
+                		
+                		<c:choose>
+			           	<c:when test="${ review.user_nickname != null}">
+			           	<li class="review_writer">${ review.user_nickname }</li>
+			            </c:when>
+			            <c:otherwise>
+			            <li class="review_writer">${ loginUser.userName }</li>
+			            </c:otherwise>
+			            </c:choose>                		
+                		
                 		<li class="review_views">${ review.mcount }</li>
                 		<li class="review_date">${ review.create_Date }</li>
                 		<li class="review_status"></li>

@@ -34,7 +34,26 @@
 		  FROM FAQ_CATEGORY
 	</entry>
 
-
+	<entry key="insertFaq">
+		INSERT INTO FAQ
+		(
+		    FAQ_NO
+		  , TITLE
+		  , REPLY
+		  , CATEGORY_NO
+		  , MANAGER_NO
+		  , COUNT
+		)
+		VALUES
+		(
+		    SEQ_CATEGORY_NO.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  , 1
+		  , DEFAULT
+		)
+	</entry>
 
 
 </properties>

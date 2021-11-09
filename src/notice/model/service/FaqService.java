@@ -65,6 +65,23 @@ public class FaqService {
 	}
 	
 	
+	// faq 작성하기
+	public int insertFaq(Faq faq) {
+		Connection conn = getConnection();
+		
+		int result = faqDao.insertFaq(conn, faq);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+	
+	
 	
 	
 	

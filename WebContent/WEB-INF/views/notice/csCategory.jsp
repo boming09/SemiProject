@@ -24,15 +24,15 @@
 <c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" scope="application"/>
 	<div id="csct_area">
 	    <aside class="category">
-	        <div class="ca-head">고객센터</div>
+	        <div class="ca-head"><a href="${ contextPath }/faq/insert">고객센터</a></div>
 	        <!-- 어떤거 클릭했는지 정보 보내기 -->
 	        <div class="area1"><a class="ca-top" href="${ contextPath }/cs">FAQ</a>
 	            <ul class="ca-list">
 	                <li>
 	                	<a href="${ contextPath }/faqA">주문/결제</a>
 	                </li>
-	                <li>
-	                	<a href="${ contextPath }/faqB">취소/교환/반품</a>
+	                <li onclick="faqB()">
+	                	<a>취소/교환/반품</a>
 	                </li>
 	                <li >
 	                	<a href="${ contextPath }/faqC">배송</a>
@@ -88,5 +88,11 @@
 			</script>
 		</c:otherwise>
 	</c:choose>
+	
+	<script>
+		function faqB(){
+			location.href="${ contextPath}/faqB?atype=6";
+		};
+	</script>
 </body>
 </html>

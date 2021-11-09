@@ -145,7 +145,7 @@ public class CommuDao {
 				commu.setCtitle(rset.getString("title"));
 				commu.setCcontent(rset.getString("content"));
 				commu.setUser_no(rset.getInt("user_no"));
-				commu.setUser_nickname(rset.getString("user_nickname"));
+				commu.setUser_id(rset.getString("user_id"));
 				commu.setCreate_date(rset.getDate("create_date"));
 				commu.setCreply(rset.getString("reply"));
 				commu.setCount(rset.getInt("count"));
@@ -187,7 +187,7 @@ public class CommuDao {
 				commu.setCtitle(rset.getString("title"));
 				commu.setCcontent(rset.getString("content"));
 				commu.setUser_no(rset.getInt("user_no"));
-				commu.setUser_nickname(rset.getString("user_nickname"));
+				commu.setUser_id(rset.getString("user_id"));
 				commu.setCreate_date(rset.getDate("create_date"));
 				commu.setCreply(rset.getString("reply"));
 				commu.setCount(rset.getInt("count"));
@@ -265,7 +265,7 @@ public class CommuDao {
 				commu.setCtitle(rset.getString("title"));
 				commu.setCcontent(rset.getString("content"));
 				commu.setUser_no(rset.getInt("user_no"));
-				commu.setUser_nickname(rset.getString("user_nickname"));
+				commu.setUser_id(rset.getString("user_id"));
 				commu.setCreate_date(rset.getDate("create_date"));
 				commu.setCreply(rset.getString("reply"));
 				commu.setCount(rset.getInt("count"));

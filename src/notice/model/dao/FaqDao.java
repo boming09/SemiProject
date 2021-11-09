@@ -138,6 +138,31 @@ public class FaqDao {
 		
 		return fcate;
 	}
+
+	
+	// faq 작성하기
+	public int insertFaq(Connection conn, Faq faq) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = faqQuery.getProperty("insertFaq");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, faq.getTitle());
+			pstmt.setString(2, faq.getReply());
+			pstmt.setInt(3, faq.getFref_no());
+			
+			result = pstmt.executeUpdate();
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 	
