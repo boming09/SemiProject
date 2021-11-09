@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import order.model.service.CartService;
 import order.model.vo.Cart;
@@ -51,7 +52,7 @@ public class orderServlet extends HttpServlet {
 		
 		
 		
-		String[] str = request.getParameterValues("cart_chk");
+		String[] str = request.getParameterValues("cart_check"); //cart_chk에서 이름바꿈
 		
 		int[] cartNo = new int[str.length];
 		
@@ -64,6 +65,10 @@ public class orderServlet extends HttpServlet {
 		List<Cart> cartOrderList = new CartService().selectOrderList(cartNo);
 		
 		System.out.println(cartOrderList);
+		
+		//HttpSession session = request.getSession();
+		//session.setAttribute("cartOrderList", cartOrderList);
+		// 위 두 줄 추가 무쓸모
 		
 		request.setAttribute("cartOrderList", cartOrderList);
 		request.getRequestDispatcher("/WEB-INF/views/order/order.jsp").forward(request, response);

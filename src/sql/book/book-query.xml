@@ -30,6 +30,14 @@
    WHERE AUTHOR LIKE '%' || ? || '%'
 </entry>
 
+<entry key="getCategoryListCount">
+  SELECT
+         COUNT(*)
+    FROM BOOK
+    JOIN B_CATEGORY USING(CATEGORY_ID)
+   WHERE CATEGORY_ID = ? OR REF_ID = ?
+</entry>
+
 <!-- book List -->
 <entry key="selectList">
 	SELECT * 
@@ -47,8 +55,7 @@
 	                     , BOOK_IMG
 	                     , STAR_SCORE
 	                     FROM BOOK
-	                     JOIN B_CATEGORY USING(CATEGORY_ID)
-	                     ORDER BY PUBLICATION_DATE DESC) A)
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)) A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 
@@ -69,8 +76,7 @@
 	                     , STAR_SCORE
 	                     FROM BOOK B
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
-	                     WHERE BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%'
-	                     ORDER BY PUBLICATION_DATE DESC) A)
+	                     WHERE BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%') A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 
@@ -91,8 +97,7 @@
 	                     , STAR_SCORE
 	                     FROM BOOK B
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
-	                     WHERE BOOK_NAME LIKE '%' || ? || '%'
-	                     ORDER BY PUBLICATION_DATE DESC) A)
+	                     WHERE BOOK_NAME LIKE '%' || ? || '%') A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 
@@ -113,21 +118,41 @@
 	                     , STAR_SCORE
 	                     FROM BOOK B
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
-	                     WHERE AUTHOR LIKE '%' || ? || '%'
-	                     ORDER BY PUBLICATION_DATE DESC) A)
+	                     WHERE AUTHOR LIKE '%' || ? || '%') A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 
-<!-- category List -->
-<entry key="categoryList">
+<entry key="selectCategoryList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                    WHERE CATEGORY_ID = ? OR REF_ID = ?) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<!-- section category List -->
+<entry key="getCategoryList">
 SELECT
-       CATEGORY_NAME
+	   CATEGORY_NAME
   FROM BOOK
   JOIN B_CATEGORY USING(CATEGORY_ID)
  GROUP BY CATEGORY_NAME
 </entry>
 
-<entry key="searchCategoryList">
+<entry key="getSearchCategoryList">
 SELECT
        CATEGORY_NAME
   FROM BOOK
@@ -136,7 +161,7 @@ SELECT
  GROUP BY CATEGORY_NAME
 </entry>
 
-<entry key="titleCategoryList">
+<entry key="getTitleCategoryList">
 SELECT
        CATEGORY_NAME
   FROM BOOK
@@ -145,13 +170,22 @@ SELECT
  GROUP BY CATEGORY_NAME
 </entry>
 
-<entry key="authorCategoryList">
+<entry key="getAuthorCategoryList">
 SELECT
        CATEGORY_NAME
   FROM BOOK
   JOIN B_CATEGORY USING(CATEGORY_ID)
  WHERE AUTHOR LIKE '%' || ? || '%'
  GROUP BY CATEGORY_NAME
+</entry>
+
+<entry key="getMainCategoryList">
+  SELECT
+         CATEGORY_NAME
+    FROM BOOK
+    JOIN B_CATEGORY USING(CATEGORY_ID)
+   WHERE CATEGORY_ID = ? OR REF_ID = ?
+   GROUP BY CATEGORY_NAME
 </entry>
 
 <!-- select Book -->
@@ -182,5 +216,570 @@ SELECT
     WHERE BOOK_ID = ?
 </entry>
 
-<!-- sort -->
+<!-- sort:popular -->
+<entry key="selectPopularList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                    WHERE STAR_SCORE IS NOT NULL
+	                    ORDER BY STAR_SCORE DESC NULLS LAST) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectPopularSearchList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK B
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%'
+	                     ORDER BY STAR_SCORE DESC NULLS LAST) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectPopularTitleList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK B
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE BOOK_NAME LIKE '%' || ? || '%'
+	                       AND STAR_SCORE IS NOT NULL
+	                     ORDER BY STAR_SCORE DESC NULLS LAST) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectPopularAuthorList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK B
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE AUTHOR LIKE '%' || ? || '%'
+	                       AND STAR_SCORE IS NOT NULL
+	                     ORDER BY STAR_SCORE DESC NULLS LAST) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectPopularCategoryList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK B
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE CATEGORY_ID = ? OR REF_ID = ?
+	                     ORDER BY STAR_SCORE DESC NULLS LAST) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<!-- sort:new -->
+<entry key="selectNewList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                    ORDER BY PUBLICATION_DATE DESC NULLS LAST) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectNewSearchList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK B
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%'
+	                     ORDER BY PUBLICATION_DATE DESC NULLS LAST) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectNewTitleList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK B
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE BOOK_NAME LIKE '%' || ? || '%'
+	                     ORDER BY PUBLICATION_DATE DESC NULLS LAST) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectNewAuthorList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK B
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE AUTHOR LIKE '%' || ? || '%'
+	                     ORDER BY PUBLICATION_DATE DESC NULLS LAST) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectNewCategoryList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK B
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE CATEGORY_ID = ? OR REF_ID = ?
+	                     ORDER BY PUBLICATION_DATE DESC NULLS LAST) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<!-- sort:highest -->
+<entry key="selectHighestList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                    ORDER BY SALE_PRICE DESC NULLS LAST) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectHighestSearchList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK B
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%'
+	                     ORDER BY SALE_PRICE DESC NULLS LAST) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectHighestTitleList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK B
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE BOOK_NAME LIKE '%' || ? || '%'
+	                     ORDER BY SALE_PRICE DESC NULLS LAST) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectHighestAuthorList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK B
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE AUTHOR LIKE '%' || ? || '%'
+	                     ORDER BY SALE_PRICE DESC NULLS LAST) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectHighestCategoryList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK B
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE CATEGORY_ID = ? OR REF_ID = ?
+	                     ORDER BY SALE_PRICE DESC NULLS LAST) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<!-- sort:lowest -->
+<entry key="selectLowestList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                    ORDER BY SALE_PRICE ASC NULLS LAST) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectLowestSearchList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK B
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%'
+	                     ORDER BY SALE_PRICE ASC NULLS LAST) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectLowestTitleList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK B
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE BOOK_NAME LIKE '%' || ? || '%'
+	                     ORDER BY SALE_PRICE ASC NULLS LAST) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectLowestAuthorList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK B
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE AUTHOR LIKE '%' || ? || '%'
+	                     ORDER BY SALE_PRICE ASC NULLS LAST) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectLowestCategoryList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK B
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE CATEGORY_ID = ? OR REF_ID = ?
+	                     ORDER BY SALE_PRICE ASC NULLS LAST) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<!-- search&category Count -->
+<entry key="getCategoryBookListCount">
+  SELECT
+         COUNT(*)
+    FROM BOOK
+    JOIN B_CATEGORY USING(CATEGORY_ID)
+   WHERE CATEGORY_NAME = ?
+</entry>
+
+<entry key="getSearchCategoryBookListCount">
+  SELECT
+         COUNT(*)
+    FROM BOOK
+    JOIN B_CATEGORY USING(CATEGORY_ID)
+   WHERE BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%'
+     AND CATEGORY_NAME = ?
+</entry>
+
+<entry key="getTitleCategoryBookListCount">
+  SELECT
+         COUNT(*)
+    FROM BOOK
+    JOIN B_CATEGORY USING(CATEGORY_ID)
+   WHERE BOOK_NAME LIKE '%' || ? || '%'
+     AND CATEGORY_NAME = ?
+</entry>
+
+<entry key="getAuthorCategoryBookListCount">
+  SELECT
+         COUNT(*)
+    FROM BOOK
+    JOIN B_CATEGORY USING(CATEGORY_ID)
+   WHERE AUTHOR LIKE '%' || ? || '%'
+     AND CATEGORY_NAME = ?
+</entry>
+
+<!-- search&category BookList -->
+<entry key="selectCategoryBookList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK B
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                    WHERE CATEGORY_NAME = ?) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectSearchCategoryBookList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK B
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%'
+	                       AND CATEGORY_NAME = ?) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectTitleCategoryBookList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK B
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE BOOK_NAME LIKE '%' || ? || '%'
+	                       AND CATEGORY_NAME = ?) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectAuthorCategoryBookList">
+	SELECT * 
+	     FROM (SELECT ROWNUM RNUM, A.*
+		      FROM (SELECT
+	                       BOOK_ID
+	                     , BOOK_NAME
+	                     , CATEGORY_ID
+	                     , CATEGORY_NAME
+	                     , AUTHOR
+	                     , EDITOR
+	                     , PUBLICATION_DATE
+	                     , PUBLISHER
+	                     , SALE_PRICE
+	                     , BOOK_IMG
+	                     , STAR_SCORE
+	                     FROM BOOK B
+	                     JOIN B_CATEGORY USING(CATEGORY_ID)
+	                     WHERE AUTHOR LIKE '%' || ? || '%'
+	                       AND CATEGORY_NAME = ?) A)
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
 </properties>

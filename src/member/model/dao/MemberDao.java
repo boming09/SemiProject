@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import admin.model.vo.GradeList;
 import member.model.vo.Member;
 
 public class MemberDao {
@@ -91,6 +92,7 @@ public class MemberDao {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
+			close(rset);
 		}
 		
 		return result;
@@ -244,7 +246,176 @@ public class MemberDao {
 		return member;
 	}
 
-	
+
+	public List<Member> nSelectList(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = memberQuery.getProperty("nSelectList");
+		List<Member> memberList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Member member = new Member();
+				member.setUserNo(rset.getInt("user_No"));
+				member.setUserId(rset.getString("user_Id"));
+				member.setUserNickname(rset.getString("user_NickName"));
+				member.setUserName(rset.getString("user_Name"));
+				member.setGender(rset.getString("gender"));
+				member.setUserAddress(rset.getString("user_Address"));
+				member.setUserPhone(rset.getString("user_Phone"));
+				member.setEnrollDate(rset.getDate("enroll_Date"));
+				
+				memberList.add(member);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return memberList;
+	}
+
+	public int nUpdateMember(Connection conn, int userNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = memberQuery.getProperty("nUpdateMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, userNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int uDeleteMember(Connection conn, int userNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = memberQuery.getProperty("nDeleteMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, userNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+
+	public List<GradeList> gSelectList(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<GradeList> gradeList = new ArrayList<>();
+		String sql = memberQuery.getProperty("gSelectList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				GradeList grade = new GradeList();
+				
+				grade.setwNo(rset.getInt("wck_no"));
+				grade.setuNo(rset.getInt("user_no"));
+				grade.setTitle(rset.getString("title"));
+				grade.setUserId(rset.getString("user_Id"));
+				grade.setUserNickName(rset.getString("user_NickName"));
+				grade.setUserName(rset.getString("user_name"));
+				grade.setCreate_date(rset.getDate("create_date"));
+				
+				gradeList.add(grade);
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		
+		return gradeList;
+	}
+
+	public int gUpdateMember(Connection conn, int uNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = memberQuery.getProperty("gUpdateMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, uNo);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int gUpdate2Member(Connection conn, int wNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = memberQuery.getProperty("gUpdate2Member");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, wNo);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int gDeleteMember(Connection conn, int wNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = memberQuery.getProperty("gDeleteMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, wNo);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 
 		
 }

@@ -34,13 +34,14 @@ public class cartServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//db에서 카트 목록 조회해오기
-		List<Cart> cartList = new CartService().selectList();
-		//System.out.println(cartList);
+		String orderby = request.getParameter("orderby");
+		List<Cart> cartList = new CartService().selectList(orderby);
+		System.out.println(cartList);
 		
 		// 셋 어트리뷰트해서 카트 페이지에 해당 db전달
 		request.setAttribute("cartList", cartList);
 		request.getRequestDispatcher("/WEB-INF/views/order/cart.jsp").forward(request, response);
-	
+		//response.sendRedirect(request.getContextPath() + "/cart");
 		
 		/*RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/order/cart.jsp");
 		view.forward(request, response);*/

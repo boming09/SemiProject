@@ -119,4 +119,56 @@
 		   FROM MEMBER
 		  WHERE USER_ID = ?	
 	</entry>
+	<entry key="nSelectList">
+		SELECT
+			   USER_NO
+			 , USER_ID
+			 , USER_NICKNAME
+			 , USER_NAME
+			 , GENDER
+			 , USER_ADDRESS
+			 , USER_PHONE
+			 , ENROLL_DATE
+		  FROM MEMBER
+		 WHERE STATUS = 'N'
+	</entry>
+	<entry key="nUpdateMember">
+		UPDATE MEMBER
+   		   SET STATUS = 'Y'
+   		 WHERE USER_NO = ?
+	</entry>
+	<entry key="nDeleteMember">
+		DELETE
+		  FROM MEMBER
+		 WHERE USER_NO = ?
+	</entry>
+	
+	<entry key="gSelectList">
+		SELECT
+		       WCK_NO
+		     , W.USER_NO
+		     , TITLE
+		     , USER_ID
+		     , USER_NICKNAME
+		     , USER_NAME
+		     , CREATE_DATE
+		  FROM WCHECK W
+		  JOIN MEMBER M ON(W.USER_NO = M.USER_NO)
+		 WHERE W.STATUS = 'N'
+	</entry>
+	<entry key="gUpdateMember">
+		UPDATE MEMBER
+		   SET USER_GRADE = 20
+		 WHERE USER_NO = ?
+	</entry>
+	<entry key="gUpdate2Member">
+		UPDATE WCHECK
+		   SET STATUS = 'Y'
+		 WHERE WCK_NO = ?
+	</entry>
+	<entry key="gDeleteMember">
+		DELETE
+		  FROM WCHECK
+		 WHERE WCK_NO = ?
+	</entry>
 </properties>

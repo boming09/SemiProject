@@ -48,13 +48,17 @@
 .q-list li:hover {
     background: white;
     position: relative;
-
+    cursor: pointer;
 }
     
 .category a {
     text-decoration : none;
     text-align : center;
     color : black;
+}
+
+.category a:hover {
+    text-decoration: underline;
 }
 
 .sublist {
@@ -79,7 +83,6 @@
 
 .sublist-title {
     padding-left: 30px;
-    text-decoration: underline;
     display: inline;
 }
 

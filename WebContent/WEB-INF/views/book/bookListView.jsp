@@ -26,11 +26,13 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 <jsp:include page="/WEB-INF/views/common/menubar.jsp"/>
 <div class="csarea wrapper">
 <jsp:include page="/WEB-INF/views/common/category.jsp"/>
+<c:set var="searchParam" value="&searchCondition=${ param.searchCondition }&searchValue=${ param.searchValue }"/>
+<c:set var="categoryParam" value="&category=${ param.category }"/>
 		<div class="content">
             <div class="book_category">
                 <ul class="cLi">
                     <c:forEach var="category" items="${ categoryList }">
-                    <li onclick="seachCategory('${ category }')">${ category }</li>
+                    <li><a href="${ contextPath }/book/category?category=${ category }${ searchParam }">${ category }</a></li>
                     </c:forEach>
                 </ul>
             </div>
@@ -38,11 +40,18 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                 <div class="bookSort">
                     <h2>검색 결과</h2>
                     <ul class="sortLi">
-                    <!-- ajax로 해야하나? -->
-                        <li><a href="${ contextPath }/book/sort?sort=popular&bookList">인기순</a></li><label> | </label>
-                        <li><a href="${ contextPath }/book/sort?sort=new">신상품순</a></li><label> | </label>
-                        <li><a href="${ contextPath }/book/sort?sort=highest">최고가순</a></li><label> | </label>
-                        <li><a href="${ contextPath }/book/sort?sort=lowest">최저가순</a></li>
+                        <li>
+                        	<a href="${ contextPath }/book/sort?sort=popular${ searchParam }${ categoryParam }">인기순</a>
+                        </li><label> | </label>
+                        <li>
+                        	<a href="${ contextPath }/book/sort?sort=new${ searchParam }${ categoryParam }">신상품순</a>
+                        </li><label> | </label>
+                        <li>
+                        	<a href="${ contextPath }/book/sort?sort=highest${ searchParam }${ categoryParam }">최고가순</a>
+                        </li><label> | </label>
+                        <li>
+                        	<a href="${ contextPath }/book/sort?sort=lowest${ searchParam }${ categoryParam }">최저가순</a>
+                        </li>
                     </ul>
                 </div>
 				<div class="book_list">
@@ -61,7 +70,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                                     </div>
                                 </td>
                                 <td class="book_info">
-                                    <div class="book_title"><span onclick="detailView(${ book.bid })">[ ${ book.cname }]${ book.btitle }</span></div>
+                                    <div class="book_title"><span onclick="detailView(${ book.bid })">[${ book.cname }]${ book.btitle }</span></div>
                                     <div class="info">
                                         <span class="writer">${ book.author }</span> | 
                                         <span class="publisher">${ book.publisher }</span> | 
@@ -139,46 +148,123 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                     
                     
                     
-                    <c:if test="${ !empty param.searchCondition && !empty param.searchValue }">
-					<c:set var="searchParam" value="&searchCondition=${ param.searchCondition }&searchValue=${ param.searchValue }"/>
-					</c:if>
                     <div class="book_pages">
 						<ul class="book_paging">
-						<!-- 맨 처음으로 이동하는 버튼(<<) -->	
-						<li><a href="${ contextPath }/book/list?page=1${ searchParam }">&lt;&lt;</a></li>
-						
-						<!-- 이전 페이지로(<) -->
-						<li>
 						<c:choose>
-							<c:when test="${ pi.page > 1 }"><a href="${ contextPath }/book/list?page=${ pi.page - 1 }${ searchParam }">&lt;</a></c:when>
-							<c:otherwise><a href="#">&lt;</a></c:otherwise>
+							<c:when test="${ !empty sort }"><!-- sort -->
+								<!-- 맨 처음으로 이동하는 버튼(<<) -->
+								<li><a href="${ contextPath }/book/sort?sort=${ sort }&page=1${ searchParam }">&lt;&lt;</a></li>
+								
+								<!-- 이전 페이지로(<) -->
+								<li>
+								<c:choose>
+								<c:when test="${ pi.page > 1 }"><a href="${ contextPath }/book/sort?sort=${ sort }&page=${ pi.page - 1 }${ searchParam }">&lt;</a></c:when>
+								<c:otherwise><a href="#">&lt;</a></c:otherwise>
+								</c:choose>
+								</li>
+							
+								<!-- 최대 10개의 페이지 목록 -->
+					            <c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+					            <li>
+					            <c:choose>
+							         <c:when test="${ p eq pi.page }">
+							         <a href="#" class="current_page">${ p }</a>
+							         </c:when>            
+						             <c:otherwise>
+						             <a href="${contextPath }/book/sort?sort=${ sort }&page=${ p }${ searchParam }">${ p }</a>
+						             </c:otherwise>
+					            </c:choose>
+					            </li>
+					            </c:forEach>
+					            
+					            <!-- 다음 페이지로(>) -->
+					            <li>
+								<c:choose>
+									<c:when test="${ pi.page < pi.maxPage }"><a href="${ contextPath }/book/sort?sort=${ sort }&page=${ pi.page + 1 }${ searchParam }">&gt;</a></c:when>
+									<c:otherwise><a href ="#">&gt;</a></c:otherwise>
+								</c:choose>
+								</li>
+					            
+					            <!-- 맨 끝으로 이동하는 버튼(>>) -->
+					            <li><a href="${ contextPath }/book/sort?sort=${ sort }&page=${ pi.maxPage }${ searchParam }">&gt;&gt;</a></li>
+							</c:when>
+							
+							<c:when test="${ !empty categoryid }"><!-- category -->
+								<!-- 맨 처음으로 이동하는 버튼(<<) -->
+								<li><a href="${ contextPath }/book/category/list?categoryid=${ categoryid }&page=1">&lt;&lt;</a></li>
+								
+								<!-- 이전 페이지로(<) -->
+								<li>
+								<c:choose>
+								<c:when test="${ pi.page > 1 }"><a href="${ contextPath }/book/category/list?categoryid=${ categoryid }&page=${ pi.page - 1 }">&lt;</a></c:when>
+								<c:otherwise><a href="#">&lt;</a></c:otherwise>
+								</c:choose>
+								</li>
+							
+								<!-- 최대 10개의 페이지 목록 -->
+					            <c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+					            <li>
+					            <c:choose>
+							         <c:when test="${ p eq pi.page }">
+							         <a href="#" class="current_page">${ p }</a>
+							         </c:when>            
+						             <c:otherwise>
+						             <a href="${contextPath }/book/category/list?categoryid=${ categoryid }&page=${ p }">${ p }</a>
+						             </c:otherwise>
+					            </c:choose>
+					            </li>
+					            </c:forEach>
+					            
+					            <!-- 다음 페이지로(>) -->
+					            <li>
+								<c:choose>
+									<c:when test="${ pi.page < pi.maxPage }"><a href="${ contextPath }/book/category/list?categoryid=${ categoryid }&page=${ pi.page + 1 }">&gt;</a></c:when>
+									<c:otherwise><a href ="#">&gt;</a></c:otherwise>
+								</c:choose>
+								</li>
+					            
+					            <!-- 맨 끝으로 이동하는 버튼(>>) -->
+					            <li><a href="${ contextPath }/book/category/list?categoryid=${ categoryid }&page=${ pi.maxPage }">&gt;&gt;</a></li>
+							</c:when>
+							
+							<c:otherwise><!-- list -->
+								<!-- 맨 처음으로 이동하는 버튼(<<) -->
+								<li><a href="${ contextPath }/book/list?page=1${ searchParam }">&lt;&lt;</a></li>
+								
+								<!-- 이전 페이지로(<) -->
+								<li>
+								<c:choose>
+								<c:when test="${ pi.page > 1 }"><a href="${ contextPath }/book/list?page=${ pi.page - 1 }${ searchParam }">&lt;</a></c:when>
+								<c:otherwise><a href="#">&lt;</a></c:otherwise>
+								</c:choose>
+								</li>
+								
+								<!-- 최대 10개의 페이지 목록 -->
+					            <c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+					            <li>
+					            <c:choose>
+							         <c:when test="${ p eq pi.page }">
+							         <a href="#" class="current_page">${ p }</a>
+							         </c:when>            
+						             <c:otherwise>
+						             <a href="${contextPath }/book/list?page=${ p }${ searchParam }">${ p }</a>
+						             </c:otherwise>
+					            </c:choose>
+					            </li>
+					            </c:forEach>
+					            
+					            <!-- 다음 페이지로(>) -->
+					            <li>
+					            <c:choose>
+								<c:when test="${ pi.page < pi.maxPage }"><a href="${ contextPath }/book/list?page=${ pi.page + 1 }${ searchParam }">&gt;</a></c:when>
+								<c:otherwise><a href ="#">&gt;</a></c:otherwise>
+								</c:choose>
+					            </li>
+			            		
+			            		<!-- 맨 끝으로 이동하는 버튼(>>) -->
+			            		<li><a href="${ contextPath }/book/list?page=${ pi.maxPage }${ searchParam }">&gt;&gt;</a></li>
+							</c:otherwise>
 						</c:choose>
-						</li>
-						
-						<!-- 최대 10개의 페이지 목록 -->
-			            <c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
-			            <li>
-			            <c:choose>
-					         <c:when test="${ p eq pi.page }">
-					         <a href="#" class="current_page">${ p }</a>
-					         </c:when>            
-				             <c:otherwise>
-				             <a href="${contextPath }/book/list?page=${ p }${ searchParam }">${ p }</a>
-				             </c:otherwise>
-			            </c:choose>
-			            </li>
-			            </c:forEach>
-						
-						<!-- 다음 페이지로(>) -->
-						<li>
-						<c:choose>
-							<c:when test="${ pi.page < pi.maxPage }"><a href="${ contextPath }/book/list?page=${ pi.page + 1 }${ searchParam }">&gt;</a></c:when>
-							<c:otherwise><a href ="#">&gt;</a></c:otherwise>
-						</c:choose>
-						</li>
-						
-						<!-- 맨 끝으로 이동하는 버튼(>>) -->
-		            	<li><a href="${ contextPath }/book/list?page=${ pi.maxPage }${ searchParam }">&gt;&gt;</a></li>
 						</ul>
 					</div>
 				</div>
@@ -194,11 +280,10 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 		location.href="${contextPath}/book/detail?bid=" + bid;
 	}
 	
-	function seachCategory(category){
-		location.href="${contextPath}/book/categorylist?category=" + category;
+	function sectionCategory(category){
+		location.href="${contextPath}/book/search/categorylist?category=" + category;
 	}
 </script>
-
 
 <c:choose>
 <c:when test="${ !empty loginUser }">

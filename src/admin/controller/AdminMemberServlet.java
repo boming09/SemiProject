@@ -33,10 +33,10 @@ public class AdminMemberServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		List<Member> memberList = new MemberService().nSelectList();
 		
-		
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/adminpage/adminMember.jsp");
-		view.forward(request, response);
+		request.setAttribute("memberList", memberList);
+		request.getRequestDispatcher("/WEB-INF/views/adminpage/adminMember.jsp").forward(request, response);
 	}
 
 	/**

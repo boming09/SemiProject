@@ -11,20 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import book.model.service.BookService;
-import book.model.vo.Book;
 import book.model.vo.Search;
 
 /**
- * Servlet implementation class BookListServlet
+ * Servlet implementation class BookSortListServlet
  */
-@WebServlet("/book/list")
-public class BookListServlet extends HttpServlet {
+@WebServlet("/book/sort")
+public class BookSortListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BookListServlet() {
+    public BookSortListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,20 +39,19 @@ public class BookListServlet extends HttpServlet {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
 		
+		String sort = request.getParameter("sort");
 		String searchCondition = request.getParameter("searchCondition");
 		String searchValue = request.getParameter("searchValue");
-		Search search = new Search(searchCondition, searchValue);
+		Search search = new Search(searchCondition, searchValue, sort);
 		
-		Map<String, Object> map = new BookService().selectList(page, search);
+		Map<String, Object> map = new BookService().selectSortList(page, search);
 		List<String> categoryList = new BookService().categoryList(search);
 		
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("bookList", map.get("bookList"));
 		request.setAttribute("categoryList", categoryList);
+		request.setAttribute("sort", sort);
 		
-//		System.out.println(map.get("pi"));
-//		System.out.println(map.get("bookList"));
-//		System.out.println(categoryList);
 		request.getRequestDispatcher("/WEB-INF/views/book/bookListView.jsp").forward(request, response);
 	}
 
