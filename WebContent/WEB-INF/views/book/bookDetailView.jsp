@@ -141,7 +141,7 @@ crossorigin="anonymous"></script>
 			                            
                           <c:if test="${ ! empty loginUser}">
                           <form action="${ contextPath }/cart" method="post">
-                          <input type="hidden" name="book_id" value="14"> <!--  name=${ book.book_id }-->
+                          <input type="hidden" name="book_id" value="${book_id}">
 	                            <div class="btn_count">
 	                                <input type="number" name="count" value="1" min="1" max="50" size="5">
 	                            </div>
