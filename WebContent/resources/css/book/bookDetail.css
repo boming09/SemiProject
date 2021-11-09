@@ -335,10 +335,12 @@ table {
 .star-input>.input>label[for="p9"]{width:135px;z-index:2;}
 .star-input>.input>label[for="p10"]{width:150px;z-index:1;}
 .star-input>output{display:inline-block;width:20px; font-size:18px;text-align:right; vertical-align:middle;}
-
 .star-input input[type="radio"] + label {
 	border: none;
     border-bottom: white;
     color:white;
     background: transparent;	/* 투명 */
+}
+.noneArea {
+    pointer-events: none;
 }

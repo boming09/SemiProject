@@ -1,5 +1,7 @@
 package notice.model.dao;
 
+import static common.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -9,10 +11,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import static common.JDBCTemplate.*;
+
 import member.model.vo.Member;
 import notice.model.vo.Commu;
 import notice.model.vo.PageInfo;
+import writer.model.vo.WProfile;
 
 public class CommuDao {
 	
@@ -142,6 +145,7 @@ public class CommuDao {
 				commu.setCtitle(rset.getString("title"));
 				commu.setCcontent(rset.getString("content"));
 				commu.setUser_no(rset.getInt("user_no"));
+				commu.setUser_id(rset.getString("user_id"));
 				commu.setCreate_date(rset.getDate("create_date"));
 				commu.setCreply(rset.getString("reply"));
 				commu.setCount(rset.getInt("count"));
@@ -183,6 +187,7 @@ public class CommuDao {
 				commu.setCtitle(rset.getString("title"));
 				commu.setCcontent(rset.getString("content"));
 				commu.setUser_no(rset.getInt("user_no"));
+				commu.setUser_id(rset.getString("user_id"));
 				commu.setCreate_date(rset.getDate("create_date"));
 				commu.setCreply(rset.getString("reply"));
 				commu.setCount(rset.getInt("count"));
@@ -260,6 +265,7 @@ public class CommuDao {
 				commu.setCtitle(rset.getString("title"));
 				commu.setCcontent(rset.getString("content"));
 				commu.setUser_no(rset.getInt("user_no"));
+				commu.setUser_id(rset.getString("user_id"));
 				commu.setCreate_date(rset.getDate("create_date"));
 				commu.setCreply(rset.getString("reply"));
 				commu.setCount(rset.getInt("count"));
@@ -278,6 +284,91 @@ public class CommuDao {
 		}		
 		
 		return commuMyList;
+	}
+
+	// 작가소개 페이지 리스트 총 개수 구하기
+	public int selectWriterCount(Connection conn, String w_name) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = commuQuery.getProperty("selectWriterCount");
+		int listCount = 0;
+		
+		// 검색값이 null이 아닌경우
+		if(w_name != null) {
+			sql = commuQuery.getProperty("selectSearchWriterCount");
+		}
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			if(w_name != null) {
+				pstmt.setString(1, w_name);
+			}
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}	
+		
+		return listCount;
+	}
+
+	// 페이징처리된 작가리스트 가져오기
+	public List<WProfile> selectWriterList(Connection conn, PageInfo pi, String w_name) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = commuQuery.getProperty("selectWriterList");
+		
+		List<WProfile> writerList = new ArrayList<>();
+		
+		if(w_name != null) {
+			sql = commuQuery.getProperty("selectSearchWriterList");
+		}
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			int index = 1;
+			// 작가 검색시
+			if(w_name != null) {
+				pstmt.setString(index++, w_name);
+			}
+			
+			pstmt.setInt(index++, startRow);
+			pstmt.setInt(index, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				WProfile wprofile = new WProfile();
+				wprofile.setWriter_no(rset.getInt("user_no"));
+				wprofile.setWriter_name(rset.getString("user_name"));
+				wprofile.setFile_path(rset.getString("file_path"));
+				wprofile.setGreeting(rset.getString("greeting"));
+				wprofile.setOrigin_file(rset.getString("origin_file"));
+				wprofile.setChange_file(rset.getString("change_file"));
+				
+				writerList.add(wprofile);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}		
+		
+		return writerList;
 	}
 
 

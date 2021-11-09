@@ -4,16 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<style>
-.wrapper2 {
-    max-width: 1100px;
-    margin: 0 auto;
-    height: 75vh;
-}
-</style>
 <title>SemiProject</title>
 <style>
-.wrapper2
+.wrapper2 {
 	max-width: 1100px;
 	margin: 0 auto;
 	height: 80vh;

@@ -33,10 +33,10 @@
                 </div>
                 <br>
                 <div class="id3">
-                    <input type="checkbox" checked="checked">휴대전화 번호
+                    <input type="radio" name="rb" checked>휴대전화 번호
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox">E-mail 주소                    
+                    <input type="radio" name="rb">E-mail 주소                    
                     <br><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

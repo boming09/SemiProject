@@ -9,6 +9,15 @@
 <!-- 외부 스타일 시트 -->
 <link href="${ contextPath }/resources/css/writer/wmyCategory.css" rel="stylesheet">
 <title>w_mypage_category</title>
+<!-- alert 창 출력 -->
+<% if(session.getAttribute("msg") != null) { %>
+<script>
+	alert('<%= session.getAttribute("msg") %>');
+</script>
+<% 
+	session.removeAttribute("msg");
+	}
+%>
 </head>
 <body>
 <c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" scope="application"/>
@@ -18,13 +27,12 @@
 	        <div class="area1"><p class="ca-top">회원 정보</p>
 	            <ul class="ca-list">
 	                <li><a href="${ contextPath }/w-mypage">MY 정보</a></li>
-	                <li><a href="#">회원 탈퇴</a></li>
 	            </ul>
 	        </div>
 	        <div class="area2"><p class="ca-top">MY 도서</p>
 	            <ul class="ca-list">
 	                <li><a href="${ contextPath }/w-mybook">도서 리스트</a></li>
-	                <li><a href="${ contextPath }/w-unreview">미답변 리뷰</a></li>
+	                <%-- <li><a href="${ contextPath }/w-unreview">미답변 리뷰</a></li> --%>
 	            </ul>
 	        </div>
 	        <div class="area3"><p class="ca-top">MY 소통게시판</p>

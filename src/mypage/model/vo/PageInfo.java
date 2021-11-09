@@ -10,7 +10,8 @@ public class PageInfo {
 	private int endPage;				// 하단에 보여질 페이지 목록 끝 값
 	
 	public PageInfo(int page, int listCount, int pageLimit, int mypagemyreviewLimit) {
-		this.endPage = page;
+		
+		this.page = page;
 		this.listCount = listCount;
 		this.pageLimit = pageLimit;
 		this.mypagemyreviewLimit = mypagemyreviewLimit;

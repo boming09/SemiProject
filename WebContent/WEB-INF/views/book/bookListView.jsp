@@ -26,11 +26,13 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 <jsp:include page="/WEB-INF/views/common/menubar.jsp"/>
 <div class="csarea wrapper">
 <jsp:include page="/WEB-INF/views/common/category.jsp"/>
+<c:set var="searchParam" value="&searchCondition=${ param.searchCondition }&searchValue=${ param.searchValue }"/>
+<c:set var="categoryParam" value="&category=${ param.category }"/>
 		<div class="content">
             <div class="book_category">
                 <ul class="cLi">
                     <c:forEach var="category" items="${ categoryList }">
-                    <li onclick="seachCategory('${ category }')">${ category }</li>
+                    <li><a href="${ contextPath }/book/category?category=${ category }${ searchParam }">${ category }</a></li>
                     </c:forEach>
                 </ul>
             </div>
@@ -38,11 +40,18 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                 <div class="bookSort">
                     <h2>검색 결과</h2>
                     <ul class="sortLi">
-                    <!-- ajax로 해야하나? -->
-                        <li><a href="${ contextPath }/book/popular">인기순</a></li><label> | </label>
-                        <li><a href="${ contextPath }/book/new">신상품순</a></li><label> | </label>
-                        <li><a href="${ contextPath }/book/highest">최고가순</a></li><label> | </label>
-                        <li><a href="${ contextPath }/book/lowest">최저가순</a></li>
+                        <li>
+                        	<a href="${ contextPath }/book/sort?sort=popular${ searchParam }${ categoryParam }">인기순</a>
+                        </li><label> | </label>
+                        <li>
+                        	<a href="${ contextPath }/book/sort?sort=new${ searchParam }${ categoryParam }">신상품순</a>
+                        </li><label> | </label>
+                        <li>
+                        	<a href="${ contextPath }/book/sort?sort=highest${ searchParam }${ categoryParam }">최고가순</a>
+                        </li><label> | </label>
+                        <li>
+                        	<a href="${ contextPath }/book/sort?sort=lowest${ searchParam }${ categoryParam }">최저가순</a>
+                        </li>
                     </ul>
                 </div>
 				<div class="book_list">
@@ -61,7 +70,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                                     </div>
                                 </td>
                                 <td class="book_info">
-                                    <div class="book_title"><span onclick="detailView(${ book.bid })">[ ${ book.cname }]${ book.btitle }</span></div>
+                                    <div class="book_title"><span onclick="detailView(${ book.bid })">[${ book.cname }]${ book.btitle }</span></div>
                                     <div class="info">
                                         <span class="writer">${ book.author }</span> | 
                                         <span class="publisher">${ book.publisher }</span> | 
@@ -77,44 +86,58 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                                    <!-- <span class="reviewCount"></span>
                                         <span class="reviewRating"></span> -->
 				                        <span id="spanBkRating">
-				                            <span class="star-input">
+				                            <span class="star-input noneArea">
 				                                <span class="input">
-				                                    <input type="radio" name="star-input" value="1" id="p1">
+				                                    <input type="radio" name="${ book.bid }" value="1" id="p1"
+				                                    <c:if test="${ book.starScore == '1' }">checked</c:if>>
 				                                    <label for="p1">1</label>
-				                                    <input type="radio" name="star-input" value="2" id="p2">
+				                                    <input type="radio" name="${ book.bid }" value="2" id="p2"
+				                                    <c:if test="${ book.starScore == '2' }">checked</c:if>>
 				                                    <label for="p2">2</label>
-				                                    <input type="radio" name="star-input" value="3" id="p3">
+				                                    <input type="radio" name="${ book.bid }" value="3" id="p3"
+				                                    <c:if test="${ book.starScore == '3' }">checked</c:if>>
 				                                    <label for="p3">3</label>
-				                                    <input type="radio" name="star-input" value="4" id="p4">
+				                                    <input type="radio" name="${ book.bid }" value="4" id="p4"
+				                                    <c:if test="${ book.starScore == '4' }">checked</c:if>>
 				                                    <label for="p4">4</label>
-				                                    <input type="radio" name="star-input" value="5" id="p5">
+				                                    <input type="radio" name="${ book.bid }" value="5" id="p5"
+				                                    <c:if test="${ book.starScore == '5' }">checked</c:if>>
 				                                    <label for="p5">5</label>
-				                                    <input type="radio" name="star-input" value="6" id="p6">
+				                                    <input type="radio" name="${ book.bid }" value="6" id="p6"
+				                                    <c:if test="${ book.starScore == '6' }">checked</c:if>>
 				                                    <label for="p6">6</label>
-				                                    <input type="radio" name="star-input" value="7" id="p7">
+				                                    <input type="radio" name="${ book.bid }" value="7" id="p7"
+				                                    <c:if test="${ book.starScore == '7' }">checked</c:if>>
 				                                    <label for="p7">7</label>
-				                                    <input type="radio" name="star-input" value="8" id="p8">
+				                                    <input type="radio" name="${ book.bid }" value="8" id="p8"
+				                                    <c:if test="${ book.starScore == '8' }">checked</c:if>>
 				                                    <label for="p8">8</label>
-				                                    <input type="radio" name="star-input" value="9" id="p9">
+				                                    <input type="radio" name="${ book.bid }" value="9" id="p9"
+				                                    <c:if test="${ book.starScore == '9' }">checked</c:if>>
 				                                    <label for="p9">9</label>
-				                                    <input type="radio" name="star-input" value="10" id="p10">
+				                                    <input type="radio" name="${ book.bid }" value="10" id="p10"
+				                                    <c:if test="${ book.starScore == '10' }">checked</c:if>>
 				                                    <label for="p10">10</label>
 				                                  </span>
-				                                  <output for="star-input"><b>9</b>점</output>						
+				                                  <output for="${ book.bid }"><b>${ book.starScore }</b>점</output>						
 				                            </span>
 				                        </span>
 			                        </div>
+			                        
                                     <div class="info_etc">
                                         <span>배송안내</span>
                                        	<span>무료</span>
                                     </div>
                                 </td>
                                 <td class="book_btns">
-                                    <div class="btn_count">
-                                        <input type="number" name="count" value="0" min="0" max="50" size="5">
-                                    </div>
-                                    <button id="basket" type="button" onclick="">장바구니</button>
-                                    <button id="buy" type="button" onclick="">바로구매</button>
+                          			<form name="acForm" method="post">
+                          	 				<input type="hidden" name="book_id" value="${ book.bid }">
+                                    	<div class="btn_count">
+                                        	<input type="number" name="count" value="1" min="1" max="50" size="5">
+                                    	</div>
+	                            		<button id="basket" type="button" onclick="cart()">장바구니</button>
+	                            		<button id="buy" type="button" onclick="direct()">바로구매</button>
+                          			</form>
                                 </td>
                             </tr>
                             <tr>
@@ -122,27 +145,130 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                             </tr>
                         </c:forEach>
                     </table>
-                <div class="book_pages">
-                    <ul class="book_paging">
-                        <!-- 맨 처음으로 이동하는 버튼(<<) -->	
-                        <li><a href="#">&lt;&lt;</a></li>
                     
-                        <!-- 이전 페이지로(<) -->
-                        <li>&lt;</li>
-                        
-                        <!-- 최대 10개의 페이지 목록 -->
-                        <li>${ p }</li>
-                        <li>1</li>
-
-                        <!-- 다음 페이지로(>) -->
-                        <li>&gt;</li>
-                            
-                        <!-- 맨 끝으로 이동하는 버튼(>>) -->
-                        <li><a href="">&gt;&gt;</a></li>
-                    </ul>
-                </div>
-                    </div>
+                    
+                    
+                    <div class="book_pages">
+						<ul class="book_paging">
+						<c:choose>
+							<c:when test="${ !empty sort }"><!-- sort -->
+								<!-- 맨 처음으로 이동하는 버튼(<<) -->
+								<li><a href="${ contextPath }/book/sort?sort=${ sort }&page=1${ searchParam }">&lt;&lt;</a></li>
+								
+								<!-- 이전 페이지로(<) -->
+								<li>
+								<c:choose>
+								<c:when test="${ pi.page > 1 }"><a href="${ contextPath }/book/sort?sort=${ sort }&page=${ pi.page - 1 }${ searchParam }">&lt;</a></c:when>
+								<c:otherwise><a href="#">&lt;</a></c:otherwise>
+								</c:choose>
+								</li>
+							
+								<!-- 최대 10개의 페이지 목록 -->
+					            <c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+					            <li>
+					            <c:choose>
+							         <c:when test="${ p eq pi.page }">
+							         <a href="#" class="current_page">${ p }</a>
+							         </c:when>            
+						             <c:otherwise>
+						             <a href="${contextPath }/book/sort?sort=${ sort }&page=${ p }${ searchParam }">${ p }</a>
+						             </c:otherwise>
+					            </c:choose>
+					            </li>
+					            </c:forEach>
+					            
+					            <!-- 다음 페이지로(>) -->
+					            <li>
+								<c:choose>
+									<c:when test="${ pi.page < pi.maxPage }"><a href="${ contextPath }/book/sort?sort=${ sort }&page=${ pi.page + 1 }${ searchParam }">&gt;</a></c:when>
+									<c:otherwise><a href ="#">&gt;</a></c:otherwise>
+								</c:choose>
+								</li>
+					            
+					            <!-- 맨 끝으로 이동하는 버튼(>>) -->
+					            <li><a href="${ contextPath }/book/sort?sort=${ sort }&page=${ pi.maxPage }${ searchParam }">&gt;&gt;</a></li>
+							</c:when>
+							
+							<c:when test="${ !empty categoryid }"><!-- category -->
+								<!-- 맨 처음으로 이동하는 버튼(<<) -->
+								<li><a href="${ contextPath }/book/category/list?categoryid=${ categoryid }&page=1">&lt;&lt;</a></li>
+								
+								<!-- 이전 페이지로(<) -->
+								<li>
+								<c:choose>
+								<c:when test="${ pi.page > 1 }"><a href="${ contextPath }/book/category/list?categoryid=${ categoryid }&page=${ pi.page - 1 }">&lt;</a></c:when>
+								<c:otherwise><a href="#">&lt;</a></c:otherwise>
+								</c:choose>
+								</li>
+							
+								<!-- 최대 10개의 페이지 목록 -->
+					            <c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+					            <li>
+					            <c:choose>
+							         <c:when test="${ p eq pi.page }">
+							         <a href="#" class="current_page">${ p }</a>
+							         </c:when>            
+						             <c:otherwise>
+						             <a href="${contextPath }/book/category/list?categoryid=${ categoryid }&page=${ p }">${ p }</a>
+						             </c:otherwise>
+					            </c:choose>
+					            </li>
+					            </c:forEach>
+					            
+					            <!-- 다음 페이지로(>) -->
+					            <li>
+								<c:choose>
+									<c:when test="${ pi.page < pi.maxPage }"><a href="${ contextPath }/book/category/list?categoryid=${ categoryid }&page=${ pi.page + 1 }">&gt;</a></c:when>
+									<c:otherwise><a href ="#">&gt;</a></c:otherwise>
+								</c:choose>
+								</li>
+					            
+					            <!-- 맨 끝으로 이동하는 버튼(>>) -->
+					            <li><a href="${ contextPath }/book/category/list?categoryid=${ categoryid }&page=${ pi.maxPage }">&gt;&gt;</a></li>
+							</c:when>
+							
+							<c:otherwise><!-- list -->
+								<!-- 맨 처음으로 이동하는 버튼(<<) -->
+								<li><a href="${ contextPath }/book/list?page=1${ searchParam }">&lt;&lt;</a></li>
+								
+								<!-- 이전 페이지로(<) -->
+								<li>
+								<c:choose>
+								<c:when test="${ pi.page > 1 }"><a href="${ contextPath }/book/list?page=${ pi.page - 1 }${ searchParam }">&lt;</a></c:when>
+								<c:otherwise><a href="#">&lt;</a></c:otherwise>
+								</c:choose>
+								</li>
+								
+								<!-- 최대 10개의 페이지 목록 -->
+					            <c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+					            <li>
+					            <c:choose>
+							         <c:when test="${ p eq pi.page }">
+							         <a href="#" class="current_page">${ p }</a>
+							         </c:when>            
+						             <c:otherwise>
+						             <a href="${contextPath }/book/list?page=${ p }${ searchParam }">${ p }</a>
+						             </c:otherwise>
+					            </c:choose>
+					            </li>
+					            </c:forEach>
+					            
+					            <!-- 다음 페이지로(>) -->
+					            <li>
+					            <c:choose>
+								<c:when test="${ pi.page < pi.maxPage }"><a href="${ contextPath }/book/list?page=${ pi.page + 1 }${ searchParam }">&gt;</a></c:when>
+								<c:otherwise><a href ="#">&gt;</a></c:otherwise>
+								</c:choose>
+					            </li>
+			            		
+			            		<!-- 맨 끝으로 이동하는 버튼(>>) -->
+			            		<li><a href="${ contextPath }/book/list?page=${ pi.maxPage }${ searchParam }">&gt;&gt;</a></li>
+							</c:otherwise>
+						</c:choose>
+						</ul>
+					</div>
 				</div>
+			  </div>
 			</div>
 			<%@ include file="/WEB-INF/views/common/adArea.jsp" %>
 		</div>
@@ -154,10 +280,42 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 		location.href="${contextPath}/book/detail?bid=" + bid;
 	}
 	
-	function seachCategory(category){
-		location.href="${contextPath}/book/categorylist?category=" + category;
+	function sectionCategory(category){
+		location.href="${contextPath}/book/search/categorylist?category=" + category;
 	}
 </script>
+
+<c:choose>
+<c:when test="${ !empty loginUser }">
+<script>            
+    function direct() {
+      document.forms.acForm.action="${ contextPath }/order/direct" //바로구매 서블릿만들기
+      document.forms.acForm.submit();
+      return true;
+    }
+    
+    function cart() {
+    	document.forms.acForm.action="${ contextPath }/cart";
+    	document.forms.acForm.submit();
+    }
+</script>
+</c:when>
+<c:otherwise>
+<script>
+	function direct(){
+		alert('로그인 후 이용 가능합니다.');
+		location.href="${contextPath}/login";
+	}
+	
+	function cart(){
+		alert('로그인 후 이용 가능합니다.');
+		location.href="${contextPath}/login";
+	}
+</script>
+</c:otherwise>
+</c:choose>
+
+
 <script src="${contextPath}/resources/js/star/jquery-1.11.3.min.js"></script>
 <script src="${contextPath}/resources/js/star/star.js"></script>
 </body>

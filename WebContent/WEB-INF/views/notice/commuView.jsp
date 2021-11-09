@@ -37,8 +37,9 @@
             <div class="commu_area1">
                 <span>소통 리스트</span>
                 <span>
-                    <input type="checkbox" id="cMypost"><label>내가 쓴 글만 보기</label>
-                    <button type="button" onclick="loginCheck()">글 작성</button>
+                    <input type="checkbox" id="cMypost" value="${ loginUser.userNo }"<c:if test="${ !empty param.user_no }">checked</c:if>>
+                    <label>내가 쓴 글만 보기</label>
+                    <button type="button" onclick="cmloginCheck()">글 작성</button>
                 </span>
             </div>
 
@@ -57,7 +58,7 @@
 	                        <li class="commu_no">${ commu.commu_no }</li>
 	                        <li class="commu_writer writer2">${ commu.cwriter_name }</li>
 	                        <li class="commu_title title2">${ commu.ctitle }</li>
-	                        <li class="commu_user user2">${ commu.user_no }</li>
+	                        <li class="commu_user user2">${ commu.user_id }</li>
 	                        <li class="commu_date">${ commu.create_date }</li>
 	                        <li class="commu_status" id="commuStatus" value="${ commu.status }">
 	                        	<c:choose>
@@ -69,13 +70,18 @@
                     </c:forEach>
                 </div>
                 
+                <!-- 내가쓴글 체크시 -->
+				<c:if test="${ !empty param.user_no }">
+					<c:set var="searchParam" value="&user_no=${ loginUser.userNo }"/>
+				</c:if> 
+                
                 <div class="pagingarea">
                     <ul class="commu_paging">
 		            	<!-- 앞으로 이동하는 버튼(<) -->
 		            	<li>
 						<c:choose>
 							<c:when test="${ pi.page > 1 }">
-								<a href="${ contextPath }/commu?page=${ pi.page - 1}">&lt;</a>
+								<a href="${ contextPath }/commu?page=${ pi.page - 1}${ searchParam }">&lt;</a>
 							</c:when>
 							<c:otherwise>
 								<a href="#">&lt;</a>
@@ -91,7 +97,7 @@
 										<a href="#" class="current_page">${ p }</a>
 									</c:when>
 									<c:otherwise>
-										<a href="${ contextPath }/commu?page=${ p }">${ p }</a>
+										<a href="${ contextPath }/commu?page=${ p }${ searchParam }">${ p }</a>
 									</c:otherwise>
 								</c:choose>
 							</li>
@@ -101,7 +107,7 @@
 						<li>
 							<c:choose>
 								<c:when test="${ pi.page < pi.maxPage }">
-									<a href="${ contextPath }/commu?page=${ pi.page + 1}">&gt;</a>
+									<a href="${ contextPath }/commu?page=${ pi.page + 1}${ searchParam }">&gt;</a>
 								</c:when>
 								<c:otherwise>
 									<a href="#">&gt;</a>
@@ -120,12 +126,7 @@
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
-	<!-- 체크박스 클릭시(내가쓴글) 회원번호 넘기기 -->
-	<form name="cMypostForm" method="get">
-			<input type="hidden" name="userNo" value="${ loginUser.userNo }">
-	</form>
 
-	
 	<script>
 		function detailView(communo){
 			location.href='${ contextPath }/commu/detail?commu_no=' + communo;
@@ -136,22 +137,23 @@
 	<c:choose>
 		<c:when test="${ !empty loginUser }">
 			<script>
-				function loginCheck(){
+				function cmloginCheck(){
 					location.href='${ contextPath }/commu/insert';
 				}
-				// 체크박스는 로그인 시만
-				// 2페이지 넘어가면 풀린다....
+	
+				// 내가 쓴 글 클릭시 = 로그인 되어있어야...
 				$("#cMypost").click(function(){
 					if($("#cMypost").prop("checked")) {
-						document.forms.cMypostForm.action = "${ contextPath }/commu";
-						document.forms.cMypostForm.submit(); 
-					} 
+						location.href='${ contextPath }/commu?page=1&user_no=' + $("#cMypost").val();
+					} else {
+						location.href='${ contextPath }/commu';
+					}
 				});
 			</script>
 		</c:when>
 		<c:otherwise>
 			<script>
-				function loginCheck(){
+				function cmloginCheck(){
 					alert("로그인 후 이용 가능합니다.");
 					location.href='${ contextPath }/login';
 				}

@@ -35,14 +35,12 @@ crossorigin="anonymous"></script>
 
             <div class="topColLft"> <!-- top left -->
                 <div class="bookImgArea">   <!-- book image -->
-                    <img name="bookname" src="${contextPath}/resources/images/book/pop1.png" alt="book">
+                    <img name="bookname" src="${contextPath}/resources/images/book/${ book.bimg }" alt="book">
                 </div>
             </div>
             <div class="topColRft"> <!-- top right -->
                 <div class="infoTop">   <!-- 도서정보 top: 정보관련 -->
-
                     <div class="titleArea"><h2 class="titleName">${ book.btitle }</h2></div>
-
                     <div class="pubArea">
                         <span class="book_auth">${ book.author }&nbsp;${ book.editor }</span>
                         <span>|</span>
@@ -54,39 +52,50 @@ crossorigin="anonymous"></script>
                     </div>
                     <div class="ratingArea">
                         <span id="spanBkRating">
-                            <span class="star-input">
+                            <span class="star-input noneArea">
                                 <span class="input">
-                                    <input type="radio" name="star-input" value="1" id="p1">
+                                	<!-- name 값 따로 주기 -->
+                                    <input type="radio" name="starScore" value="1" id="p1"
+                                    <c:if test="${ book.starScore == '1' }">checked</c:if>>
                                     <label for="p1">1</label>
-                                    <input type="radio" name="star-input" value="2" id="p2">
+                                    <input type="radio" name="starScore" value="2" id="p2"
+                                    <c:if test="${ book.starScore == '2' }">checked</c:if>>
                                     <label for="p2">2</label>
-                                    <input type="radio" name="star-input" value="3" id="p3">
+                                    <input type="radio" name="starScore" value="3" id="p3"
+                                    <c:if test="${ book.starScore == '3' }">checked</c:if>>
                                     <label for="p3">3</label>
-                                    <input type="radio" name="star-input" value="4" id="p4">
+                                    <input type="radio" name="starScore" value="4" id="p4"
+                                    <c:if test="${ book.starScore == '4' }">checked</c:if>>
                                     <label for="p4">4</label>
-                                    <input type="radio" name="star-input" value="5" id="p5">
+                                    <input type="radio" name="starScore" value="5" id="p5"
+                                    <c:if test="${ book.starScore == '5' }">checked</c:if>>
                                     <label for="p5">5</label>
-                                    <input type="radio" name="star-input" value="6" id="p6">
+                                    <input type="radio" name="starScore" value="6" id="p6"
+                                    <c:if test="${ book.starScore == '6' }">checked</c:if>>
                                     <label for="p6">6</label>
-                                    <input type="radio" name="star-input" value="7" id="p7">
+                                    <input type="radio" name="starScore" value="7" id="p7"
+                                    <c:if test="${ book.starScore == '7' }">checked</c:if>>
                                     <label for="p7">7</label>
-                                    <input type="radio" name="star-input" value="8" id="p8">
+                                    <input type="radio" name="starScore" value="8" id="p8"
+                                    <c:if test="${ book.starScore == '8' }">checked</c:if>>
                                     <label for="p8">8</label>
-                                    <input type="radio" name="star-input" value="9" id="p9">
+                                    <input type="radio" name="starScore" value="9" id="p9"
+                                    <c:if test="${ book.starScore == '9' }">checked</c:if>>
                                     <label for="p9">9</label>
-                                    <input type="radio" name="star-input" value="10" id="p10">
+                                    <input type="radio" name="starScore" value="10" id="p10"
+                                    <c:if test="${ book.starScore == '10' }">checked</c:if>>
                                     <label for="p10">10</label>
                                   </span>
-                                  <output for="star-input"><b>0</b>점</output>						
+                                  <output for="starScore"><b>${ book.starScore }</b>점</output>						
                             </span>
-                        </span><!-- 별점으로 넣어야 함 -->
+                          </span>
                         <span class="reviewCount">
-                            <a href="#review">리뷰(<em>10</em>)</a> <!-- 리뷰로 이동 -->
+                            <a href="#review">리뷰(<em>10</em>)</a><!-- 리뷰로 이동 -->
                         </span>
                     </div>
                 </div>
                 <div class="infoBotWrap">
-                    <div class="infoBot">   <!-- 도서 정보 bottom: 구매관련 -->
+                    <div class="infoBot"><!-- 도서 정보 bottom: 구매관련 -->
                         <div class="priArea">
                             <table>
                                 <colgroup>
@@ -128,28 +137,16 @@ crossorigin="anonymous"></script>
 	                    </div>
                         <!-- 구매 영역 -->
                         <div class="acArea">
-                        
-                        
-                        <!-- 로그인 하지 않으면 장바구니/구매 버튼 보이지 않는 처리와 버튼과 페이지 연결  -->
-						<script>            
-				            function submit2(frm) {
-				              frm.action="${ contextPath }/order/direct" //바로구매 서블릿만들기
-				              frm.submit();
-				              return true;
-				            }                 
-			         	 </script>
-			                            
-                          <c:if test="${ ! empty loginUser}">
-                          <form action="${ contextPath }/cart" method="post">
-                          <input type="hidden" name="book_id" value="${book_id}">
+
+                          <form name="acForm" method="post">
+                          	 	<input type="hidden" name="book_id" value="${ book.bid }">
+
 	                            <div class="btn_count">
 	                                <input type="number" name="count" value="1" min="1" max="50" size="5">
 	                            </div>
-	                            <button id="basket" type="submit">장바구니</button>
-	                            <button id="buy" type="button" onclick="return submit2(this.form);">바로구매</button>
+	                            <button id="basket" type="button" onclick="cart()">장바구니</button>
+	                            <button id="buy" type="button" onclick="direct()">바로구매</button>
                           </form>
-                          </c:if> 
-                                              
                         </div>
                     </div>
                 </div>
@@ -194,7 +191,7 @@ crossorigin="anonymous"></script>
                     <div class="authCont">
                         <div class="authImg"><img src="${contextPath}/resources/images/author/auth.jpg"></div>
                         <div class="authTxtWrap">
-                            <div class="authTit"><h5 class="authorName">요 네스뵈</h5></div>
+                            <div class="authTit"><h5 class="authorName">${ book.author }</h5></div>
                             <span class="authTxt">
                                 <p>${ book.aintro }</p>
                             </span>
@@ -212,34 +209,44 @@ crossorigin="anonymous"></script>
                             <p class="reviewTop">봄숲 회원이 평가한 평균 별점</p>
                             <div class="book_rating">
                                 <span class="total_rating">
-                                    <span class="star-input">
+                                    <span class="star-input noneArea">
                                         <span class="input">
-                                            <input type="radio" name="star-input" value="1" id="p1">
-                                            <label for="p1">1</label>
-                                            <input type="radio" name="star-input" value="2" id="p2">
-                                            <label for="p2">2</label>
-                                            <input type="radio" name="star-input" value="3" id="p3">
-                                            <label for="p3">3</label>
-                                            <input type="radio" name="star-input" value="4" id="p4">
-                                            <label for="p4">4</label>
-                                            <input type="radio" name="star-input" value="5" id="p5">
-                                            <label for="p5">5</label>
-                                            <input type="radio" name="star-input" value="6" id="p6">
-                                            <label for="p6">6</label>
-                                            <input type="radio" name="star-input" value="7" id="p7">
-                                            <label for="p7">7</label>
-                                            <input type="radio" name="star-input" value="8" id="p8">
-                                            <label for="p8">8</label>
-                                            <input type="radio" name="star-input" value="9" id="p9">
-                                            <label for="p9">9</label>
-                                            <input type="radio" name="star-input" value="10" id="p10">
-                                            <label for="p10">10</label>
-                                        </span>
-                                        <output for="star-input"><b>0</b></output>						
+                                            <!-- name 값 따로 주기 -->
+		                                    <input type="radio" name="starScore2" value="1" id="p1"
+		                                    <c:if test="${ book.starScore == '1' }">checked</c:if>>
+		                                    <label for="p1">1</label>
+		                                    <input type="radio" name="starScore2" value="2" id="p2"
+		                                    <c:if test="${ book.starScore == '2' }">checked</c:if>>
+		                                    <label for="p2">2</label>
+		                                    <input type="radio" name="starScore2" value="3" id="p3"
+		                                    <c:if test="${ book.starScore == '3' }">checked</c:if>>
+		                                    <label for="p3">3</label>
+		                                    <input type="radio" name="starScore2" value="4" id="p4"
+		                                    <c:if test="${ book.starScore == '4' }">checked</c:if>>
+		                                    <label for="p4">4</label>
+		                                    <input type="radio" name="starScore2" value="5" id="p5"
+		                                    <c:if test="${ book.starScore == '5' }">checked</c:if>>
+		                                    <label for="p5">5</label>
+		                                    <input type="radio" name="starScore2" value="6" id="p6"
+		                                    <c:if test="${ book.starScore == '6' }">checked</c:if>>
+		                                    <label for="p6">6</label>
+		                                    <input type="radio" name="starScore2" value="7" id="p7"
+		                                    <c:if test="${ book.starScore == '7' }">checked</c:if>>
+		                                    <label for="p7">7</label>
+		                                    <input type="radio" name="starScore2" value="8" id="p8"
+		                                    <c:if test="${ book.starScore == '8' }">checked</c:if>>
+		                                    <label for="p8">8</label>
+		                                    <input type="radio" name="starScore2" value="9" id="p9"
+		                                    <c:if test="${ book.starScore == '9' }">checked</c:if>>
+		                                    <label for="p9">9</label>
+		                                    <input type="radio" name="starScore2" value="10" id="p10"
+		                                    <c:if test="${ book.starScore == '10' }">checked</c:if>>
+		                                    <label for="p10">10</label>
+		                                  </span>
+		                                  <output for="starScore2"><b>${ book.starScore }</b>점</output>							
                                     </span>
                                 </span><!-- 별 -->
-                                <em class="bom_b"></em><!-- 9.8점 -->
-                                <em class="bom_m">/10</em><!-- 10점 만점 -->
+                                <P class="bom_m">/10</P><!-- 10점 만점 -->
                             </div>
                         </div>
                     </div>
@@ -293,7 +300,7 @@ crossorigin="anonymous"></script>
                             <div class="reviewInfoTop">
                                 <div class="cmt_rating">
                                     <span class="rating">
-                                        <span class="star-input">
+                                        <span class="star-input noneArea">
                                             <span class="input">
                                                 <input type="radio" name="star-input" value="1" id="p1">
                                                 <label for="p1">1</label>
@@ -303,7 +310,7 @@ crossorigin="anonymous"></script>
                                                 <label for="p3">3</label>
                                                 <input type="radio" name="star-input" value="4" id="p4">
                                                 <label for="p4">4</label>
-                                                <input type="radio" name="star-input" value="5" id="p5">
+                                                <input type="radio" name="star-input" value="5" id="p5" checked>
                                                 <label for="p5">5</label>
                                                 <input type="radio" name="star-input" value="6" id="p6">
                                                 <label for="p6">6</label>
@@ -316,7 +323,7 @@ crossorigin="anonymous"></script>
                                                 <input type="radio" name="star-input" value="10" id="p10">
                                                 <label for="p10">10</label>
                                             </span>
-                                            <!-- <output for="star-input"><b></b></output> -->						
+                                            <output for="star-input"><b></b></output>					
                                         </span>
                                     </span>
                                 </div>
@@ -346,7 +353,7 @@ crossorigin="anonymous"></script>
                                 </span>
                             </div>
                             <div class="reviewInfoBot">
-                                <span class="txt_id">l*****3&nbsp;<i class="fas fa-check-circle"></i></span>
+                                <span class="txt_id">${ book.author }&nbsp;<i class="fas fa-check-circle"></i></span>
                                 <span class="txt_esc">|</span>
                                 <span class="txt_date">2021-10-28</span>
                             </div>
@@ -358,7 +365,7 @@ crossorigin="anonymous"></script>
                             <div class="reviewInfoTop">
                                 <div class="cmt_rating">
                                     <span class="rating">
-                                        <span class="star-input">
+                                        <span class="star-input noneArea">
                                             <span class="input">
                                                 <input type="radio" name="star-input" value="1" id="p1">
                                                 <label for="p1">1</label>
@@ -376,12 +383,12 @@ crossorigin="anonymous"></script>
                                                 <label for="p7">7</label>
                                                 <input type="radio" name="star-input" value="8" id="p8">
                                                 <label for="p8">8</label>
-                                                <input type="radio" name="star-input" value="9" id="p9">
+                                                <input type="radio" name="star-input" value="9" id="p9" checked>
                                                 <label for="p9">9</label>
                                                 <input type="radio" name="star-input" value="10" id="p10">
                                                 <label for="p10">10</label>
                                             </span>
-                                            <!-- <output for="star-input"><b></b></output> -->
+                                            <output for="star-input"><b></b></output>
                                         </span>
                                     </span>
                                 </div>
@@ -408,7 +415,7 @@ crossorigin="anonymous"></script>
                                 </span>
                             </div>
                             <div class="reviewInfoBot">
-                                <span class="txt_id">l*****3&nbsp;<i class="fas fa-check-circle"></i></span>
+                                <span class="txt_id">${ book.author }&nbsp;<i class="fas fa-check-circle"></i></span>
                                 <span class="txt_esc">|</span>
                                 <span class="txt_date">2021-10-28</span>
                             </div>
@@ -454,5 +461,35 @@ crossorigin="anonymous"></script>
         });
     });
 </script>
+
+<c:choose>
+<c:when test="${ !empty loginUser }">
+<script>            
+    function direct() {
+      document.forms.acForm.action="${ contextPath }/order/direct" //바로구매 서블릿만들기
+      document.forms.acForm.submit();
+      return true;
+    }
+    
+    function cart() {
+    	document.forms.acForm.action="${ contextPath }/cart";
+    	document.forms.acForm.submit();
+    }
+</script>
+</c:when>
+<c:otherwise>
+<script>
+	function direct(){
+		alert('로그인 후 이용 가능합니다.');
+		location.href="${contextPath}/login";
+	}
+	
+	function cart(){
+		alert('로그인 후 이용 가능합니다.');
+		location.href="${contextPath}/login";
+	}
+</script>
+</c:otherwise>
+</c:choose>
 </body>
 </html>

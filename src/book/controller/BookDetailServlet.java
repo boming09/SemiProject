@@ -31,7 +31,7 @@ public class BookDetailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int bid = Integer.parseInt(request.getParameter("bid"));
 		Book book = new BookService().selectBook(bid);
-		System.out.println(book);
+		
 		
 		request.setAttribute("book", book);
 		request.getRequestDispatcher("/WEB-INF/views/book/bookDetailView.jsp").forward(request, response);

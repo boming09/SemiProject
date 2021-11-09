@@ -16,16 +16,16 @@ import notice.model.service.FaqService;
 import notice.model.vo.Fcategory;
 
 /**
- * Servlet implementation class FaqNoticeServlet
+ * Servlet implementation class FaqANoticeServlet
  */
-@WebServlet("/faq")
-public class FaqNoticeServlet extends HttpServlet {
+@WebServlet("/faqA")
+public class FaqANoticeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FaqNoticeServlet() {
+    public FaqANoticeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -61,7 +61,7 @@ public class FaqNoticeServlet extends HttpServlet {
 		
 		
 		// 고객센터 FAQ-주문/결제 클릭시 화면 페이지로 단순 이동
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/faqNoticeView.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/faqANoticeView.jsp");
 		view.forward(request, response);
 	}
 

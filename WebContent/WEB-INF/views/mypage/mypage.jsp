@@ -21,17 +21,24 @@
 		<!-- mypage-category 카테고리 추가 -->
 		<%@ include file="/WEB-INF/views/mypage/mypage-category.jsp" %>		
 		<!-- 헤더 div -->
-		<div class="content">            
-           	<h4>${ loginUser.userNickname } 고객님, 안녕하세요.</h4><br>
+		<div class="content">
+			<c:choose>
+           	<c:when test="${ loginUser.userNickname != null}">
+           	<h4>${ loginUser.userNickname} 고객님, 안녕하세요.</h4><br>
+            </c:when>
+            <c:otherwise>
+            <h4>${ loginUser.userName} 고객님, 안녕하세요.</h4><br>
+            </c:otherwise>
+            </c:choose>
             <header>
             	<div class="hdcenter">
             		<div class="left">
             		<h3>멤버십 등급 : ${ loginUser.userGrade }</h3>
             		봄숲 멤버십 회원이 되신걸 환영합니다.<br>
             		구매 금액의 1~3% 추가 마일리지 및 쿠폰 혜택을 받으실수 있습니다.
-            		</div>
+            		</div>z
             		<div class="right">
-            		<h3>내 문의 사항</h3>
+            		<h3><a href="<%= request.getContextPath() %>/one">내 문의 사항</a></h3>
             		내문의 사항 내용을 볼수 있습니다.
             		</div>
             	</div>

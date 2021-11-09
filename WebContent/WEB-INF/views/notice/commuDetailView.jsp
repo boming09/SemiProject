@@ -36,7 +36,7 @@
                         <th class="commu_title">제목</th>
                         <td class="title"><div>${ commu.ctitle }</div></td>         
                         <th class="commu_user">작성자</th>
-                        <td class="user">${ commu.user_no }</td>
+                        <td class="user">${ commu.user_id }</td>
                     </tr>
                     <tr class="liarea">
                         <th class="commu_writer">소통작가</th>

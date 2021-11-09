@@ -13,6 +13,5 @@
 	<div class="csarea wrapper">
 	<jsp:include page="/WEB-INF/views/adminpage/adminCategory.jsp" />
 	</div>
-	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
 </html>

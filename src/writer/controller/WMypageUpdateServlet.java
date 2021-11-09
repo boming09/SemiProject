@@ -109,8 +109,8 @@ public class WMypageUpdateServlet extends HttpServlet {
 		// 사진 + 자기소개 		
 		// 처음으로 프로필과 자기소개 수정했을때(처음에는 정보 없음)
 		if(mRequest.getFilesystemName("inprofile") != null && mRequest.getParameter("ingreeting") != null) {
-			System.out.println(mRequest.getFilesystemName("inprofile"));
-			System.out.println(mRequest.getParameter("ingreeting"));
+			//System.out.println(mRequest.getFilesystemName("inprofile"));
+			//System.out.println(mRequest.getParameter("ingreeting"));
 			
 			wprofile.setFile_path("/resources/uploadFiles/writer/wProfile/");
 			wprofile.setOrigin_file(mRequest.getOriginalFileName("inprofile"));

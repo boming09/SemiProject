@@ -15,20 +15,20 @@ public class BookService {
 	
 	private BookDao bookDao = new BookDao();
 	
-	// BookList
+	// select bookList
 	public Map<String, Object> selectList(int page, Search search) {
 		Connection conn = getConnection();
-		Map<String, Object> returnMap = new HashMap<>();
 		
 		// 1. 게시글 총 개수 구하기
 		int listCount = bookDao.getListCount(conn, search);
 		
 		// 2. PageInfo 객체 만들기
-		PageInfo pi = new PageInfo(page, listCount, 10, 10);
+		PageInfo pi = new PageInfo(page, listCount, 7, 7);
 		
 		// 3. 페이징 처리된 게시글 목록 조회
 		List<Book> bookList = bookDao.selectList(conn, pi, search);
 		
+		Map<String, Object> returnMap = new HashMap<>();
 		returnMap.put("pi", pi);
 		returnMap.put("bookList", bookList);
 		
@@ -37,7 +37,7 @@ public class BookService {
 		return returnMap;
 	}
 	
-	// List category
+	// category List - search
 	public List<String> categoryList(Search search) {
 		Connection conn = getConnection();
 		List<String> categoryList = bookDao.categoryList(conn, search);
@@ -47,7 +47,7 @@ public class BookService {
 		return categoryList;
 	}
 	
-	// detailBook
+	// select Book
 	public Book selectBook(int bid) {
 		Connection conn = getConnection();
 		Book book = bookDao.selectBook(conn, bid);
@@ -57,5 +57,57 @@ public class BookService {
 		return book;
 	}
 	
+	// sort bookList
+	public Map<String, Object> selectSortList(int page, Search search) {
+		Connection conn = getConnection();
+		List<Book> bookList = null;
+		
+		// 1. 게시글 총 개수 구하기
+		int listCount = bookDao.getListCount(conn, search);
+		
+		// 2. PageInfo 객체 만들기
+		PageInfo pi = new PageInfo(page, listCount, 7, 7);
+		
+		// 3. 페이징 처리&정렬된 게시글 목록 조회
+		if(search.getSort().equals("popular")) {
+			bookList = bookDao.selectPopularList(conn, pi, search);
+		} else if(search.getSort().equals("new")) {
+			bookList = bookDao.selectNewList(conn, pi, search);
+		} else if(search.getSort().equals("highest")) {
+			bookList = bookDao.selectHighestList(conn, pi, search);
+		} else if(search.getSort().equals("lowest")) {
+			bookList = bookDao.selectLowestList(conn, pi, search);
+		}
+		
+		Map<String, Object> returnSortMap = new HashMap<>();
+		returnSortMap.put("pi", pi);
+		returnSortMap.put("bookList", bookList);
+		
+		close(conn);
+		
+		return returnSortMap;
+	}
+	
+	// 검색 목록&카테고리 선택
+	public Map<String, Object> selectCategoryBookList(int page, Search search) {
+		Connection conn = getConnection();
+		
+		// 1. 게시글 총 개수 구하기
+		int listCount = bookDao.getCategoryBookListCount(conn, search);
+		
+		// 2. PageInfo 객체 만들기
+		PageInfo pi = new PageInfo(page, listCount, 7, 7);
+		
+		// 3. 검색 목록&카테고리 선택한 게시글 목록 조회
+		List<Book> bookList = bookDao.selectCategoryBookList(conn, pi, search);
+		
+		Map<String, Object> returnMap = new HashMap<>();
+		returnMap.put("pi", pi);
+		returnMap.put("bookList", bookList);
+		
+		close(conn);
+		
+		return returnMap;
+	}
 	
 }

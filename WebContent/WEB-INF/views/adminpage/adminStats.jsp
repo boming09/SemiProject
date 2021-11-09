@@ -29,8 +29,6 @@
 		</div>
 	</div>
 </div>
-<%@ include file="/WEB-INF/views/common/footer.jsp"%>
-	
 	<script>
 		let salesChart = document.getElementById('salesChart').getContext('2d');
 		
@@ -38,7 +36,8 @@
 			type: 'line',
 			data: {
 				labels : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-				datasets : [{
+				datasets : [
+					{
 					label: '매출',
 					data : [3000000, 200000, 1500000, 1000000, 1300000, 3500000, 4000000],
 					backgroundColor:[
@@ -50,7 +49,7 @@
 						'pink',
 						'black'
 					]
-				}]
+				}],
 			}
 		});
 	
@@ -59,42 +58,59 @@
 		let genderChart = document.getElementById('genderChart').getContext('2d');
 		
 		let gdChart = new Chart(genderChart, {
-			type: 'bar',
+			type: 'line',
 			data: {
-				labels : ['남자', '여자'],
+				labels : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 				datasets : [{
-					label: '가입자 성별 통계',
-					data : [30, 25],
-					backgroundColor:[
-						'blue',
-						'red'
-					]
-				}],
+					label: '남자',
+					data : [30, 25, 15, 20, 35, 40, 17],
+					backgroundColor: 'blue',
+					boderColor: 'blue',
+					borderWidth: 1
+				},
+				{
+					label: '여자',
+					data : [17, 22, 10, 40, 32, 27, 13],
+					backgroundColor: 'red',
+					boderColor: 'red',
+					borderWidth: 1
+				}
+				],
 			}
 		});
 		
-		
+
 		
 		
 		let addressChart = document.getElementById('addressChart').getContext('2d');
 		
 		let adChart = new Chart(addressChart, {
-			type: 'pie',
+			type: 'bar',
 			data: {
 				labels : ['서울', '경기', '전라도', '경상도', '충청도', '강원도', '제주'],
 				datasets : [{
 					label: '가입자 지역 통계',
-					data : [30, 25, 20, 32, 12, 24, 17],
-					backgroundColor:[
-						'red',
-						'blue',
-						'gray',
-						'skyblue',
-						'yellow',
-						'pink',
-						'black'
-					]
+					data : [ 30, 25, 20, 32, 12, 24, 17],
+					backgroundColor: [ 'rgba(255, 99, 132, 0.2)'
+						, 'rgba(54, 162, 235, 0.2)'
+						, 'rgba(255, 206, 86, 0.2)'
+						, 'rgba(75, 192, 192, 0.2)'
+						, 'rgba(153, 102, 255, 0.2)'
+						, 'rgba(255, 159, 64, 0.2)' ]
+						, borderColor: [ 'rgba(255, 99, 132, 1)'
+						, 'rgba(54, 162, 235, 1)'
+						, 'rgba(255, 206, 86, 1)'
+						, 'rgba(75, 192, 192, 1)'
+						, 'rgba(153, 102, 255, 1)'
+						, 'rgba(255, 159, 64, 1)' ]
 				}]
+			},
+			options: {
+				responsive: true, 
+				legend: false, 
+				maintainAspectRatio : false, 
+				animation: false, 
+				pieceLabel: { mode:"label", position:"outside", fontSize: 11, fontStyle: 'bold' }
 			}
 		});
 	</script>

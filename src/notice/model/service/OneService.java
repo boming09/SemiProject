@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import admin.model.vo.OneList;
 import notice.model.dao.OneDao;
 import notice.model.vo.One;
 import notice.model.vo.PageInfo;
@@ -83,5 +84,17 @@ public class OneService {
 		
 		return one;
 	}
+
+
+	public List<OneList> oSelectList() {
+		Connection conn = getConnection();
+		
+		List<OneList> oneList = oneDao.oSelectList(conn);
+		
+		close(conn);
+		
+		return oneList;
+	}
+
 	
 }

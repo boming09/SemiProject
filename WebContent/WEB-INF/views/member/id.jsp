@@ -16,6 +16,11 @@
 <body>
 	<!-- 메뉴바 -->
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>    
+        
+        <form name="searchFrm">
+        	<input type="hidden" name="userName">
+        	<input type="hidden" name="userEmail">
+        </form>
         <div class="id0">
         <div class="id1">
             	아이디 찾기
@@ -29,12 +34,14 @@
                 <div class="topline">
                 </div>
                 <br>
+                <form name="idfindscreen" method="post">
                 <div class="id3">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label>이름</label> <input type="text" class="id1text" size="10"><br><br>
-                    <label>E-mail 주소</label> <input type="text" class="id1text" size="10"><br><br>
-                    <a href="id2"><button id="Confirmbut">가입여부 확인하기</button></a><br>
+                    <label>이름</label> <input type="text" name="userName" class="id1text" size="10"><br><br>
+                    <label>E-mail 주소</label> <input type="text" name="userEmail" class="id1text" size="10"><br><br>
+                    <a href="id2"><button id="Confirmbut" name="enter" onClick="id_search();">가입여부 확인하기</button></a><br>
                 </div>
+                </form>
                 <br><div class="topline">
                 </div><br>
                 &nbsp;&nbsp;&nbsp;<label>고객센터 1544 - 0000</label>
@@ -52,5 +59,35 @@
         </div>  
     <!-- footer -->
 	<jsp:include page="/WEB-INF/views/member/footer.jsp" />
+	
+	<script>
+		function searchId(){
+			var userName = document.getElementById("userName").value;
+			var userEmail = document.getElementById("userEmail").value;
+			if(userName == "" && userEmail == ""){
+				alert("이름과 이메일을 입력해주세요.")
+				return;
+			}
+			
+			var url = "/id";
+			
+			var title="searchId";
+			
+			var status = "left=50%, top=50%, height=400px, menubar-no, status=no, scrollbar=yes";
+			
+			var popup = window.open("", title, status);
+			
+			searchFrm.userName.value=userName;
+			searchFrm.userEmail.value=userEmail;
+			
+			searchFrm.target = title;
+			searchFrm.action = url;
+			searchFrm.method="post";
+			
+			searchFrm.submit();			
+		}
+	</script>
+	
+	
 </body>
 </html>

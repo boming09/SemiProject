@@ -21,6 +21,8 @@ public class Book {
 	private String filepath;		// 상세이미지
 	private String aintro;			// 저자소개
 	private String bimg;			// 도서 이미지
+	private int starScore;			// 별점
+	private double avgScore;		// 평점
 //	BOOK_ID	NUMBER
 //	BOOK_NAME	VARCHAR2(20 BYTE)
 //	CATEGORY_ID	NUMBER
@@ -42,7 +44,7 @@ public class Book {
 
 	public Book(int bid, String btitle, int cid, String cname, int userNo, String author, String editor,
 			Date publicationDate, String publisher, int price, int stock, double saleRate, int salePrice, String bintro,
-			String burl, String filepath, String aintro, String bimg) {
+			String burl, String filepath, String aintro, String bimg, int starScore, double avgScore) {
 		super();
 		this.bid = bid;
 		this.btitle = btitle;
@@ -62,6 +64,8 @@ public class Book {
 		this.filepath = filepath;
 		this.aintro = aintro;
 		this.bimg = bimg;
+		this.starScore = starScore;
+		this.avgScore = avgScore;
 	}
 
 	public int getBid() {
@@ -208,15 +212,29 @@ public class Book {
 		this.bimg = bimg;
 	}
 
+	public int getStarScore() {
+		return starScore;
+	}
+
+	public void setStarScore(int starScore) {
+		this.starScore = starScore;
+	}
+
+	public double getAvgScore() {
+		return avgScore;
+	}
+
+	public void setAvgScore(double avgScore) {
+		this.avgScore = avgScore;
+	}
+
 	@Override
 	public String toString() {
 		return "Book [bid=" + bid + ", btitle=" + btitle + ", cid=" + cid + ", cname=" + cname + ", userNo=" + userNo
-				+ ", author=" + author + ", editor=" + editor + ", publicationDate=" + publicationDate
-				+ ", publisher=" + publisher + ", price=" + price + ", stock=" + stock + ", saleRate=" + saleRate
-				+ ", salePrice=" + salePrice + ", bintro=" + bintro + ", burl=" + burl + ", filepath=" + filepath
-				+ ", aintro=" + aintro + ", bimg=" + bimg + "]";
+				+ ", author=" + author + ", editor=" + editor + ", publicationDate=" + publicationDate + ", publisher="
+				+ publisher + ", price=" + price + ", stock=" + stock + ", saleRate=" + saleRate + ", salePrice="
+				+ salePrice + ", bintro=" + bintro + ", burl=" + burl + ", filepath=" + filepath + ", aintro=" + aintro
+				+ ", bimg=" + bimg + ", starScore=" + starScore + ", avgScore=" + avgScore + "]";
 	}
-
-	
 	
 }

@@ -18,7 +18,7 @@ public class Commu {
 	private String ctitle;		// 제목
 	private String ccontent;	// 내용
 	private int user_no;		// 작성자
-	private String user_nickname;	// 작성자 닉네임
+	private String user_id;	// 작성자 id
 	private Date create_date;	// 등록일
 	private String creply;		// 답변
 	private int count;			// 조회수
@@ -28,14 +28,14 @@ public class Commu {
 	
 	public Commu() {}
 
-	public Commu(int commu_no, String ctitle, String ccontent, int user_no, String user_nickname, Date create_date,
+	public Commu(int commu_no, String ctitle, String ccontent, int user_no, String user_id, Date create_date,
 			String creply, int count, int cwriter_no, String cwriter_name, String status) {
 		super();
 		this.commu_no = commu_no;
 		this.ctitle = ctitle;
 		this.ccontent = ccontent;
 		this.user_no = user_no;
-		this.user_nickname = user_nickname;
+		this.user_id = user_id;
 		this.create_date = create_date;
 		this.creply = creply;
 		this.count = count;
@@ -77,12 +77,12 @@ public class Commu {
 	}
 
 	
-	public String getUser_nickname() {
-		return user_nickname;
+	public String getUser_id() {
+		return user_id;
 	}
 
-	public void setUser_nickname(String user_nickname) {
-		this.user_nickname = user_nickname;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 
 	public Date getCreate_date() {
@@ -136,7 +136,7 @@ public class Commu {
 	@Override
 	public String toString() {
 		return "Commu [commu_no=" + commu_no + ", ctitle=" + ctitle + ", ccontent=" + ccontent + ", user_no=" + user_no
-				+ ", user_nickname=" + user_nickname + ", create_date=" + create_date + ", creply=" + creply
+				+ ", user_id=" + user_id + ", create_date=" + create_date + ", creply=" + creply
 				+ ", count=" + count + ", cwriter_no=" + cwriter_no + ", cwriter_name=" + cwriter_name + ", status="
 				+ status + "]";
 	}

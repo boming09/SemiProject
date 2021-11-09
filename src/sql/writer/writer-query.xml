@@ -2,7 +2,7 @@
 <!DOCTYPE properties SYSTEM
 "http://java.sun.com/dtd/properties.dtd">
 <properties>
-	<entry key="selectWriter">
+	<!-- <entry key="selectWriter">
 		SELECT
 		       USER_NO
 		     , USER_ID
@@ -17,7 +17,7 @@
 		  FROM MEMBER
 		 WHERE USER_NO = ?
 		   AND STATUS = 'Y'	
-	</entry>
+	</entry> -->
 	
 	<entry key="selectWProfile">
 		SELECT
@@ -94,6 +94,37 @@
 	      WHERE USER_NO = ?
 	        AND STATUS = 'Y'
 	</entry>
-
-
+	
+	<entry key="deleteInfo">
+		UPDATE MEMBER
+		   SET STATUS = 'N'
+		 WHERE USER_NO = ?
+	</entry>
+	
+	<entry key="getListCount">
+		SELECT
+		       COUNT(*)
+		  FROM BOOK
+		  JOIN W_BOOK USING(BOOK_ID)
+		  JOIN WCHECK W USING(WCK_NO)
+		 WHERE W.USER_NO = ?
+		 ORDER BY BOOK_NAME
+	</entry>
+	
+	<entry key="selectWBookList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.* 
+		            FROM(SELECT
+		                   BOOK_ID
+		                 , BOOK_NAME
+		                 , PUBLICATION_DATE
+		                 , PUBLISHER
+		                 , BOOK_IMG
+		              FROM BOOK
+		              JOIN W_BOOK USING(BOOK_ID)
+		              JOIN WCHECK W USING(WCK_NO)
+		             WHERE W.USER_NO = ?
+		             ORDER BY BOOK_NAME) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
 </properties>

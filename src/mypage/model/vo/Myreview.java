@@ -20,31 +20,32 @@ public class Myreview {
 	 */
 	private int mid;			
 	private int mtype;		
-	private int cid;	
-	private String mname;			
+	private int category_id;			// b_category 테이블 조인 결과 값 
+	private String category_name;		// b_category 테이블 조인 결과 값
 	private String mtitle;		
-	private String mcontent;			
-	private int mwriter;			
-	private String userName;		
+	private String mcontent;		
+	private int mwriter;				// user_no 참조 값
+	private String user_nickname;		// member 테이블 조인 결과 값
 	private int mcount;
 	private Date create_Date;
 	private Date modify_Date;
 	private String status;
 	
+	
 	public Myreview() {}
 
-	
-	public Myreview(int mid, int mtype, int cid, String mname, String mtitle, String mcontent, int mwriter,
-			String userName, int mcount, Date create_Date, Date modify_Date, String status) {
+
+	public Myreview(int mid, int mtype, int category_id, String category_name, String mtitle, String mcontent,
+			int mwriter, String user_nickname, int mcount, Date create_Date, Date modify_Date, String status) {
 		super();
 		this.mid = mid;
 		this.mtype = mtype;
-		this.cid = cid;
-		this.mname = mname;
+		this.category_id = category_id;
+		this.category_name = category_name;
 		this.mtitle = mtitle;
 		this.mcontent = mcontent;
 		this.mwriter = mwriter;
-		this.userName = userName;
+		this.user_nickname = user_nickname;
 		this.mcount = mcount;
 		this.create_Date = create_Date;
 		this.modify_Date = modify_Date;
@@ -72,23 +73,23 @@ public class Myreview {
 	}
 
 
-	public int getCid() {
-		return cid;
+	public int getCategory_id() {
+		return category_id;
 	}
 
 
-	public void setCid(int cid) {
-		this.cid = cid;
+	public void setCategory_id(int category_id) {
+		this.category_id = category_id;
 	}
 
 
-	public String getMname() {
-		return mname;
+	public String getCategory_name() {
+		return category_name;
 	}
 
 
-	public void setMname(String mname) {
-		this.mname = mname;
+	public void setCategory_name(String category_name) {
+		this.category_name = category_name;
 	}
 
 
@@ -122,13 +123,13 @@ public class Myreview {
 	}
 
 
-	public String getUserName() {
-		return userName;
+	public String getUser_nickname() {
+		return user_nickname;
 	}
 
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUser_nickname(String user_nickname) {
+		this.user_nickname = user_nickname;
 	}
 
 
@@ -174,9 +175,10 @@ public class Myreview {
 
 	@Override
 	public String toString() {
-		return "Mypagemyreview [mid=" + mid + ", mtype=" + mtype + ", cid=" + cid + ", mname=" + mname + ", mtitle="
-				+ mtitle + ", mcontent=" + mcontent + ", mwriter=" + mwriter + ", userName=" + userName + ", mcount="
-				+ mcount + ", create_Date=" + create_Date + ", modify_Date=" + modify_Date + ", status=" + status + "]";
+		return "Myreview [mid=" + mid + ", mtype=" + mtype + ", category_id=" + category_id + ", category_name="
+				+ category_name + ", mtitle=" + mtitle + ", mcontent=" + mcontent + ", mwriter=" + mwriter
+				+ ", user_nickname=" + user_nickname + ", mcount=" + mcount + ", create_Date=" + create_Date
+				+ ", modify_Date=" + modify_Date + ", status=" + status + "]";
 	}
 
 

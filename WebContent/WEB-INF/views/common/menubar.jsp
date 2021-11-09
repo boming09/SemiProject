@@ -76,6 +76,12 @@ a {
 
 .search_area select {
     margin-right: 10px;
+    border-bottom: 3px solid rgba(196, 217, 195, 1);
+	cursor: pointer;
+}
+
+#searchCondition option {
+	text-align: center;
 }
 
 .input_area {
@@ -187,13 +193,14 @@ a {
 </head>
 <body>
 <!-- page의 application의 contextPath -->
-<c:set var="contextPath" value="${ pageContext.servletContext.contextPath }"
-scope="application"/>
+<c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" scope="application"/>
     <div id="top">
         <header class="page-header">
             <nav>
                 <ul class="main-nav">
+                <c:if test="${ !empty loginUser && loginUser.userId == 'admin' }">
                 	<li><a href="<%= request.getContextPath() %>/admin/main">관리자페이지</a></li>
+                </c:if>
                 	<% if(loginUser == null) { %>
                     <li><a href="<%= request.getContextPath() %>/login">로그인</a></li>
                     <li><a href="<%= request.getContextPath() %>/joinmembership">회원가입</a></li>
@@ -202,7 +209,15 @@ scope="application"/>
                     <% } else { %>
                     <li><a href="<%= request.getContextPath() %>/memberinformation">정보수정</a></li>
                     <li><a href="<%= request.getContextPath() %>/logout">로그아웃</a></li>
-                    <li><a href="<%= request.getContextPath() %>/mypage">마이페이지</a></li>
+                    <c:choose>
+				    	<c:when test="${ loginUser.userGrade == 10 }">
+				    		<!-- 일반회원등급 = 10 -->
+		                    <li><a href="<%= request.getContextPath() %>/mypage">마이페이지</a></li>
+				    	</c:when>
+				    	<c:otherwise>
+				    		<li><a href="<%= request.getContextPath() %>/w-mypage">마이페이지</a></li>
+				    	</c:otherwise>
+				    </c:choose>
                     <li><a href="<%= request.getContextPath() %>/cart">장바구니</a></li>
                     <li><a href="<%= request.getContextPath() %>/cs">고객센터</a></li>
                     <% } %>
@@ -227,10 +242,10 @@ scope="application"/>
                         <c:if test="${ param.searchCondition == 'title' }">selected</c:if>>제목</option>
                         <option value="author"
                         <c:if test="${ param.searchCondition == 'author' }">selected</c:if>>작가</option>
-                    </select> 
+                    </select>
                     <span class="input_area">
-                    <input type="search" name="searchValue" value="${ param.searchValue }"
-                    placeholder="검색할 내용을 입력하세요.">
+                    <input type="search" name="searchValue" 
+                    <c:if test="${ param.searchCondition != 'category' }">value="${ param.searchValue }"</c:if> placeholder="검색할 내용을 입력하세요.">
                     <button id="search_btn" type="submit" onclick="search()"><i class="fas fa-search"></i></button>
                     </span>
                 </form>
