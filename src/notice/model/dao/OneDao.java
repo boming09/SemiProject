@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import admin.model.vo.OneList;
 import notice.model.vo.One;
 import notice.model.vo.PageInfo;
 
@@ -173,6 +174,43 @@ public class OneDao {
 		}
 		
 		return one;
+	}
+
+
+	public List<OneList> oSelectList(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<OneList> oneList = new ArrayList<>();
+		String sql = oneQuery.getProperty("oSelectList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				OneList one = new OneList();
+				
+				one.setoNo(rset.getInt("one_no"));
+				one.setoId(rset.getString("user_id"));
+				one.setoTitle(rset.getString("title"));
+				one.setoNickName(rset.getString("user_nickname"));
+				one.setoName(rset.getString("user_name"));
+				one.setOdate(rset.getDate("create_date"));
+				
+				oneList.add(one);
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		
+		return oneList;
 	}
 	
 	

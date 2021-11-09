@@ -76,4 +76,17 @@
 		 WHERE ONE_NO = ?
 	</entry>
 
+	<entry key="oSelectList">
+		SELECT
+			   ONE_NO
+		     , USER_ID
+		     , USER_NAME
+		     , USER_NICKNAME
+		     , TITLE
+		     , CREATE_DATE
+		  FROM ONEQUESTION O
+		  JOIN MEMBER M
+		  ON(O.USER_NO = M.USER_NO)
+		 WHERE O.STATUS='N'
+	</entry>
 </properties>
