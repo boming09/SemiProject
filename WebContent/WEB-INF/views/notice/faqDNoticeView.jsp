@@ -35,21 +35,13 @@
         
             <div class="typearea">
             	<div class="type_area">
-	                <select class="atype" name="atype" >
-	                	<!-- 반복문 돌려서 대분류 가져오기 -->
-	                    <%-- <c:forEach var="cate" items="${ fcate }">
-	                		<c:set var="ref" value="${ cate.fref_no }"/>
-		                	<c:if test="${ ref eq '0' }">
-			                	<option value="${ cate.fcate_no }" class="acate">${ cate.fcate_no }</option>
-		                	</c:if>
-	                	</c:forEach> --%>
-	           
+	                <select class="atype" name="atype" id="atype" >
 	                	<!-- valeu값 = db category_no -->
 	                	<option value="0" class="a0">전체</option>
 	                    <option value="1" class="a1">주문/결제</option>
 	                    <option value="6" class="a6">취소/교환/반품</option>
 	                    <option value="10" class="a10">배송</option>
-	                    <option value="14" class="a14">회원관리</option>
+	                    <option value="14" class="a14" selected>회원관리</option>
 	                </select>
 	                <div class="faqarrow">
 	                	<img src="${ contextPath }/resources/images/notice/faqarrow.png">
@@ -58,15 +50,6 @@
                 <span class="typearrow">〉</span>
                 <div class="type_area">
 	                <select class="btype" name="btype">
-	                	<!-- 반복문 돌려서 소분류 가져오기 -->
-	                	<%-- <option value="0">전체</option>
-	                	<c:forEach var="cate" items="${ fcate }">
-	                		<c:set var="ref" value="${ cate.fref_no }"/>	                		
-		                	<c:if test="${ ref ne '0' }">
-			                	<option value="${ cate.fref_no }" class="bcate">${ cate.fcate_type }</option>
-		                	</c:if> 
-	                	</c:forEach> --%>
-	                
 	                	<option value="0" class="a0">전체</option>
 	                    <option value="2" class="a1">주문/주문확인</option>
 	                    <option value="3" class="a1">주문변경</option>
@@ -206,23 +189,17 @@
 			}
 		});	
 		
+	
+		if($('#atype').val() == 14){
+			$('.btype').val(0);
+			$('.btype').find('.a1').hide();
+			$('.btype').find('.a6').hide();
+			$('.btype').find('.a10').hide();
+			$('.btype').find('.a14').show();
+		} 
 		
-		
-		/* 카테고리 분류 */
-		/*
-		$('.atype').change(function() {
-			
-			//console.log($(this).val());
-			if($(this).val() == 1) {
-				//$("btype").find("option[value!=1]").detach();
-				console.log($('.btype').val());
-			}
-		}) 
-		*/
-		
-		
+	
 		$(document).on('change', '.atype', bChange);
-		
 		function bChange() {
 			if($(this).val() == 0) {
 				$('.btype').val(0);
@@ -257,14 +234,7 @@
 			}
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
+
 	</script>
 </body>
 </html>

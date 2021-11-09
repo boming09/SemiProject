@@ -101,6 +101,7 @@
 	width : 140px;
 	height : 140px;
 	border-radius: 50%;
+	border : 1px solid rgb(73, 125, 78);
 }
 
 /* 작가 소개 영역 */
@@ -110,17 +111,16 @@
 }
 
 .w_introduce span:first-child {
-    width: 130px;
-    border-bottom: 2px solid rgb(117, 117, 117);
+    width: 300px;
     font-size: 0.95rem;
     font-weight : bold;
-    text-align: center;
+    text-align : left;
     padding-top: 10px;
     padding-bottom: 10px;
     /* 사진 가운데로 */
-    display: flex;
+   /*  display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 .w_introduce span:last-child {
@@ -131,4 +131,32 @@
 /* 작가 인증 체크아이콘 */
 i {
 	font-size : 1rem;
+}
+
+/* 페이징 영역 */
+.pagingarea {
+	margin: 10px 30px;
+	margin-bottom : 80px;
+	height : 50px;
+	display : flex;
+	justify-content : center;
+    align-items: center;
+}
+.pagingarea ul {
+	list-style : none;
+	display : flex;
+	justify-content : center;
+    align-items: center;
+    width : 400px;
+    height : 50px;  
+}
+
+.pagingarea ul li {
+	width: 40px;
+	text-align : center;
+}
+
+.current_page {
+	border-bottom: 2px solid black;
+	font-weight: bold;
 }

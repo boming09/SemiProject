@@ -11,7 +11,7 @@ public class WProfile {
 	*/
 	private int pro_no;
 	private int writer_no;      // 작가 회원번호
-	private int writer_name;    // 작가 이름
+	private String writer_name;    // 작가 이름
 	private String file_path; 
 	private String greeting;     // 인사말
 	private String origin_file;
@@ -20,7 +20,7 @@ public class WProfile {
 	
 	public WProfile() {}
 
-	public WProfile(int pro_no, int writer_no, int writer_name, String file_path, String greeting, String origin_file,
+	public WProfile(int pro_no, int writer_no, String writer_name, String file_path, String greeting, String origin_file,
 			String change_file, String delete_file) {
 		super();
 		this.pro_no = pro_no;
@@ -50,11 +50,11 @@ public class WProfile {
 		this.writer_no = writer_no;
 	}
 
-	public int getWriter_name() {
+	public String getWriter_name() {
 		return writer_name;
 	}
 
-	public void setWriter_name(int writer_name) {
+	public void setWriter_name(String writer_name) {
 		this.writer_name = writer_name;
 	}
 
