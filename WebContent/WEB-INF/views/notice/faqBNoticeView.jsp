@@ -38,10 +38,15 @@
 	                <select class="atype" name="atype" id="atype" >
 	                	<!-- valeu값 = db category_no -->
 	                	<option value="0" class="a0">전체</option>
-	                    <option value="1" class="a1">주문/결제</option>
+	                    <!-- <option value="1" class="a1">주문/결제</option>
 	                    <option value="6" class="a6" selected>취소/교환/반품</option>
 	                    <option value="10" class="a10">배송</option>
-	                    <option value="14" class="a14">회원관리</option>
+	                    <option value="14" class="a14">회원관리</option> -->
+	                    <c:forEach var="c" items="${ fcate }">
+	                    	<c:if test="${ c.fref_no == 0 }">
+		                    	<option value="${ c.fcate_no }" <c:if test="${ param.atype == c.fcate_no }">selected</c:if>>${ c.fcate_type }</option>
+	                    	</c:if>
+	                    </c:forEach>
 	                </select>
 	                <div class="faqarrow">
 	                	<img src="${ contextPath }/resources/images/notice/faqarrow.png">
@@ -50,6 +55,14 @@
                 <span class="typearrow">〉</span>
                 <div class="type_area">
 	                <select class="btype" name="btype">
+	                	<%-- <c:forEach var="c" items="${ fcate }">
+	                    	<c:if test="${ c.fref_no != 0 }">
+		                    	<option value="${ c.fcate_no }" <c:if test="${ c.fcate_no eq 6 }">selected</c:if>>${ c.fcate_type }</option>
+	                    	</c:if>
+	                    </c:forEach> --%>
+	                
+	                
+	                
 	                	<option value="0" class="a0">전체</option>
 	                    <option value="2" class="a1">주문/주문확인</option>
 	                    <option value="3" class="a1">주문변경</option>
@@ -114,13 +127,17 @@
             	
             </div>
             
+            <c:if test="${ !empty param.atype }">
+				<c:set var="searchParam" value="&atype=${ param.atype }"/>
+			</c:if> 
+            
             <div class="pagingarea">
 	            <ul class="faq_paging">
 	            	<!-- 앞으로 이동하는 버튼(<) -->
 	            	<li>
 					<c:choose>
 						<c:when test="${ pi.page > 1 }">
-							<a href="${ contextPath }/faq?page=${ pi.page - 1}">&lt;</a>
+							<a href="${ contextPath }/faqB?page=${ pi.page - 1}${ searchParam }">&lt;</a>
 						</c:when>
 						<c:otherwise>
 							<a href="#">&lt;</a>
@@ -136,7 +153,7 @@
 									<a href="#" class="current_page">${ p }</a>
 								</c:when>
 								<c:otherwise>
-									<a href="${ contextPath }/faq?page=${ p }">${ p }</a>
+									<a href="${ contextPath }/faqB?page=${ p }${ searchParam }">${ p }</a>
 								</c:otherwise>
 							</c:choose>
 						</li>
@@ -146,7 +163,7 @@
 					<li>
 						<c:choose>
 							<c:when test="${ pi.page < pi.maxPage }">
-								<a href="${ contextPath }/faq?page=${ pi.page + 1}">&gt;</a>
+								<a href="${ contextPath }/faqB?page=${ pi.page + 1}${ searchParam }">&gt;</a>
 							</c:when>
 							<c:otherwise>
 								<a href="#">&gt;</a>
@@ -189,7 +206,7 @@
 			}
 		});	
 		
-	
+		
 		if($('#atype').val() == 6){
 			$('.btype').val(0);
 			$('.btype').find('.a1').hide();
@@ -197,44 +214,26 @@
 			$('.btype').find('.a10').hide();
 			$('.btype').find('.a14').hide();
 		} 
-		
-	
 		$(document).on('change', '.atype', bChange);
 		function bChange() {
 			if($(this).val() == 0) {
-				$('.btype').val(0);
-				$('.btype').find('.a1').hide();
-				$('.btype').find('.a6').hide();
-				$('.btype').find('.a10').hide();
-				$('.btype').find('.a14').hide();
+				//location.href="${ contextPath }/faqA?atype=1";
 			} else if($(this).val() == 1) {
-				$('.btype').val(0);
-				$('.btype').find('.a1').show();
-				$('.btype').find('.a6').hide();
-				$('.btype').find('.a10').hide();
-				$('.btype').find('.a14').hide();
+				location.href="${ contextPath }/faqA?atype=1";
+				
 			} else if($(this).val() == 6) {
-				$('.btype').val(0);
-				$('.btype').find('.a1').hide();
-				$('.btype').find('.a6').show();
-				$('.btype').find('.a10').hide();
-				$('.btype').find('.a14').hide();
+				location.href="${ contextPath }/faqB?atype=6";
+				
 			} else if($(this).val() == 10) {
-				$('.btype').val(0);
-				$('.btype').find('.a1').hide();
-				$('.btype').find('.a6').hide();
-				$('.btype').find('.a10').show();
-				$('.btype').find('.a14').hide();
+				location.href="${ contextPath }/faqC?atype=10";
+				
 			} else {
-				$('.btype').val(0);
-				$('.btype').find('.a1').hide();
-				$('.btype').find('.a6').hide();
-				$('.btype').find('.a10').hide();
-				$('.btype').find('.a14').show();
+				location.href="${ contextPath }/faqD?atype=14";
+				
 			}
 		}
 		
-
+		
 	</script>
 </body>
 </html>
