@@ -119,7 +119,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 				                                    <c:if test="${ book.starScore == '10' }">checked</c:if>>
 				                                    <label for="p10">10</label>
 				                                  </span>
-				                                  <output for="${ book.bid }"><b>${ book.avgScore }</b></output>						
+				                                  <output for="${ book.bid }"><b>&nbsp;${ book.avgScore }&nbsp;</b></output>						
 				                            </span>
 				                        </span>
 			                        </div>

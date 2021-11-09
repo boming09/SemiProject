@@ -51,7 +51,8 @@ public class BookService {
 	public Book selectBook(int bid) {
 		Connection conn = getConnection();
 		Book book = bookDao.selectBook(conn, bid);
-		
+		/* 댓글 조회 추가 */
+		book.setReplyList(bookDao.selectReplyList(conn, bid));
 		close(conn);
 		
 		return book;

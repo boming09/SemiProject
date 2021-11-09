@@ -1,6 +1,7 @@
 package book.model.vo;
 
 import java.util.Date;
+import java.util.List;
 
 public class Book {
 	private int bid;				// 도서 번호
@@ -23,6 +24,8 @@ public class Book {
 	private String bimg;			// 도서 이미지
 	private int starScore;			// 별점
 	private double avgScore;		// 평점
+	
+	private List<Reply> replyList;	// 댓글목록
 //	BOOK_ID	NUMBER
 //	BOOK_NAME	VARCHAR2(20 BYTE)
 //	CATEGORY_ID	NUMBER
@@ -43,29 +46,31 @@ public class Book {
 	public Book() {}
 
 	public Book(int bid, String btitle, int cid, String cname, int userNo, String author, String editor,
-			Date publicationDate, String publisher, int price, int stock, double saleRate, int salePrice, String bintro,
-			String burl, String filepath, String aintro, String bimg, int starScore, double avgScore) {
-		super();
-		this.bid = bid;
-		this.btitle = btitle;
-		this.cid = cid;
-		this.cname = cname;
-		this.userNo = userNo;
-		this.author = author;
-		this.editor = editor;
-		this.publicationDate = publicationDate;
-		this.publisher = publisher;
-		this.price = price;
-		this.stock = stock;
-		this.saleRate = saleRate;
-		this.salePrice = salePrice;
-		this.bintro = bintro;
-		this.burl = burl;
-		this.filepath = filepath;
-		this.aintro = aintro;
-		this.bimg = bimg;
-		this.starScore = starScore;
-		this.avgScore = avgScore;
+		Date publicationDate, String publisher, int price, int stock, double saleRate, int salePrice, String bintro,
+		String burl, String filepath, String aintro, String bimg, int starScore, double avgScore,
+		List<Reply> replyList) {
+	super();
+	this.bid = bid;
+	this.btitle = btitle;
+	this.cid = cid;
+	this.cname = cname;
+	this.userNo = userNo;
+	this.author = author;
+	this.editor = editor;
+	this.publicationDate = publicationDate;
+	this.publisher = publisher;
+	this.price = price;
+	this.stock = stock;
+	this.saleRate = saleRate;
+	this.salePrice = salePrice;
+	this.bintro = bintro;
+	this.burl = burl;
+	this.filepath = filepath;
+	this.aintro = aintro;
+	this.bimg = bimg;
+	this.starScore = starScore;
+	this.avgScore = avgScore;
+	this.replyList = replyList;
 	}
 
 	public int getBid() {
@@ -227,6 +232,14 @@ public class Book {
 	public void setAvgScore(double avgScore) {
 		this.avgScore = avgScore;
 	}
+	
+	public List<Reply> getReplyList() {
+		return replyList;
+	}
+
+	public void setReplyList(List<Reply> replyList) {
+		this.replyList = replyList;
+	}
 
 	@Override
 	public String toString() {
@@ -234,7 +247,8 @@ public class Book {
 				+ ", author=" + author + ", editor=" + editor + ", publicationDate=" + publicationDate + ", publisher="
 				+ publisher + ", price=" + price + ", stock=" + stock + ", saleRate=" + saleRate + ", salePrice="
 				+ salePrice + ", bintro=" + bintro + ", burl=" + burl + ", filepath=" + filepath + ", aintro=" + aintro
-				+ ", bimg=" + bimg + ", starScore=" + starScore + ", avgScore=" + avgScore + "]";
+				+ ", bimg=" + bimg + ", starScore=" + starScore + ", avgScore=" + avgScore + ", replyList=" + replyList
+				+ "]";
 	}
-	
+
 }

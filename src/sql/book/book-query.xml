@@ -204,33 +204,6 @@ SELECT
    GROUP BY CATEGORY_NAME
 </entry>
 
-<!-- select Book -->
-<entry key="selectBook">
-SELECT
-       BOOK_ID
-     , BOOK_NAME
-     , CATEGORY_ID
-     , CATEGORY_NAME
-     , USER_NO
-     , AUTHOR
-     , EDITOR
-     , PUBLICATION_DATE
-     , PUBLISHER
-     , PRICE
-     , STOCK
-     , SALE_RATE
-     , SALE_PRICE
-     , BOOK_INTRO
-     , BOOK_URL
-     , FILE_PATH
-     , AUTHOR_INTRO
-     , BOOK_IMG
-     , STAR_SCORE
-     , AVG_SCORE
-     FROM BOOK
-     JOIN B_CATEGORY USING(CATEGORY_ID)
-    WHERE BOOK_ID = ?
-</entry>
 
 <!-- sort:popular -->
 <entry key="selectPopularList">
@@ -837,5 +810,46 @@ SELECT
 	                     WHERE CATEGORY_NAME = ?
 	                       AND AUTHOR LIKE '%' || ? || '%') A)
 	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<!-- select Book -->
+<entry key="selectBook">
+SELECT
+       BOOK_ID
+     , BOOK_NAME
+     , CATEGORY_ID
+     , CATEGORY_NAME
+     , USER_NO
+     , AUTHOR
+     , EDITOR
+     , PUBLICATION_DATE
+     , PUBLISHER
+     , PRICE
+     , STOCK
+     , SALE_RATE
+     , SALE_PRICE
+     , BOOK_INTRO
+     , BOOK_URL
+     , FILE_PATH
+     , AUTHOR_INTRO
+     , BOOK_IMG
+     , STAR_SCORE
+     , AVG_SCORE
+     FROM BOOK
+     JOIN B_CATEGORY USING(CATEGORY_ID)
+    WHERE BOOK_ID = ?
+</entry>
+
+<entry key="selectReplyList">
+	SELECT
+		   REVIEW_ID
+		 , BOOK_ID
+		 , USER_NO
+		 , CREATE_DATE
+		 , CONTENT
+		 , RATING
+		 , REF_NO
+	FROM B_REVIEW
+   WHERE BOOK_ID = ?
 </entry>
 </properties>

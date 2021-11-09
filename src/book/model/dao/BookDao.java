@@ -14,6 +14,7 @@ import java.util.Properties;
 
 import book.model.vo.Book;
 import book.model.vo.PageInfo;
+import book.model.vo.Reply;
 import book.model.vo.Search;
 
 public class BookDao {
@@ -207,50 +208,6 @@ public class BookDao {
 	      }
 		
 		return categoryList;
-	}
-	
-	// 도서 상세
-	public Book selectBook(Connection conn, int bid) {
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = bookQuery.getProperty("selectBook");
-		Book book = null;
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, bid);
-			
-			rset = pstmt.executeQuery();
-			if(rset.next()) {
-				book = new Book(rset.getInt("book_id")
-							  , rset.getString("book_name")
-							  , rset.getInt("category_id")
-							  , rset.getString("category_name")
-							  , rset.getInt("user_no")
-							  , rset.getString("author")
-							  , rset.getString("editor")
-							  , rset.getDate("publication_date")
-							  , rset.getString("publisher")
-							  , rset.getInt("price")
-							  , rset.getInt("stock")
-							  , rset.getDouble("sale_rate")
-							  , rset.getInt("sale_price")
-							  , rset.getString("book_intro")
-							  , rset.getString("book_url")
-							  , rset.getString("file_path")
-							  , rset.getString("author_intro")
-							  , rset.getString("book_img")
-							  , rset.getInt("star_score")
-							  , rset.getDouble("avg_score"));
-				
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		return book;
 	}
 	
 	// 인기순 정렬
@@ -637,6 +594,79 @@ public class BookDao {
 	      }
 		
 		return bookList;
+	}
+//----------------------------------------------------------------------------------
+	// 도서 상세 조회
+	public Book selectBook(Connection conn, int bid) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = bookQuery.getProperty("selectBook");
+		Book book = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bid);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+	            book.setBid(rset.getInt("book_id"));
+	            book.setBtitle(rset.getString("book_name"));
+	            book.setCid(rset.getInt("category_id"));
+	            book.setCname(rset.getString("category_name"));
+	            book.setUserNo(rset.getInt("user_no"));
+	            book.setAuthor(rset.getString("author"));
+	            book.setEditor(rset.getString("editor"));
+	            book.setPublicationDate(rset.getDate("publication_date"));
+	            book.setPublisher(rset.getString("publisher"));
+	            book.setPrice(rset.getInt("price"));
+	            book.setSalePrice(rset.getInt("sale_price"));
+	            book.setBintro(rset.getString("book_intro"));
+	            book.setBurl(rset.getString("book_url"));
+	            book.setFilepath(rset.getString("file_path"));
+	            book.setAintro(rset.getString("author_intro"));
+	            book.setBimg(rset.getString("book_img"));
+	            book.setStarScore(rset.getInt("star_score"));
+	            book.setAvgScore(rset.getDouble("avg_score"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return book;
+	}
+	
+	// 도서 댓글 조회
+	public List<Reply> selectReplyList(Connection conn, int bid) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = bookQuery.getProperty("selectReplyList");
+		List<Reply> replyList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bid);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				replyList.add(new Reply(rset.getInt("review_no")
+									  , rset.getInt("book_id")
+									  , rset.getInt("user_no")
+									  , rset.getDate("create_date")
+									  , rset.getString("content")
+									  , rset.getDouble("rating")
+									  , rset.getInt("ref_no")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return replyList;
 	}
 
 }
