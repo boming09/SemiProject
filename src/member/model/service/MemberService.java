@@ -108,7 +108,7 @@ public class MemberService {
 	public List<Member> nSelectList() {
 		Connection conn = getConnection();
 		List<Member> memberList = memberDao.nSelectList(conn);
-				
+				 
 		close(conn);		
 		
 		return memberList;
