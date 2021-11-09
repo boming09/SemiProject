@@ -119,7 +119,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 				                                    <c:if test="${ book.starScore == '10' }">checked</c:if>>
 				                                    <label for="p10">10</label>
 				                                  </span>
-				                                  <output for="${ book.bid }"><b>${ book.starScore }</b>점</output>						
+				                                  <output for="${ book.bid }"><b>${ book.avgScore }</b></output>						
 				                            </span>
 				                        </span>
 			                        </div>
@@ -288,14 +288,14 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 <c:choose>
 <c:when test="${ !empty loginUser }">
 <script>            
-    function direct() {
+    function direct(bid) {
       document.forms.acForm.action="${ contextPath }/order/direct" //바로구매 서블릿만들기
       document.forms.acForm.submit();
       return true;
     }
     
-    function cart() {
-    	document.forms.acForm.action="${ contextPath }/cart";
+    function cart(bid) {
+    	document.forms.acForm.action="${ contextPath }/cart?";
     	document.forms.acForm.submit();
     }
 </script>

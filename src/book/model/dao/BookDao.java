@@ -60,10 +60,10 @@ public class BookDao {
 			// 검색 SQL문을 실행하는 경우 검색 값 설정
 			int index = 1;
 			if (search.getSearchCondition() != null && search.getSearchValue() != null) {
-				pstmt.setString(1, search.getSearchValue());
+				pstmt.setString(index++, search.getSearchValue());
 				
 				if(sql.equals(bookQuery.getProperty("getSearchListCount")) || sql.equals(bookQuery.getProperty("getCategoryListCount"))) {
-					pstmt.setString(++index, search.getSearchValue());
+					pstmt.setString(index, search.getSearchValue());
 				}
 	         }
 			
@@ -140,6 +140,7 @@ public class BookDao {
 	            book.setSalePrice(rset.getInt("sale_price"));
 	            book.setBimg(rset.getString("book_img"));
 	            book.setStarScore(rset.getInt("star_score"));
+	            book.setAvgScore(rset.getDouble("avg_score"));
 	            
 	            bookList.add(book);
 	         }
@@ -308,6 +309,7 @@ public class BookDao {
 	            book.setSalePrice(rset.getInt("sale_price"));
 	            book.setBimg(rset.getString("book_img"));
 	            book.setStarScore(rset.getInt("star_score"));
+	            book.setAvgScore(rset.getDouble("avg_score"));
 	            bookList.add(book);
 	         }
 	      } catch (SQLException e) {
@@ -374,6 +376,7 @@ public class BookDao {
 	            book.setSalePrice(rset.getInt("sale_price"));
 	            book.setBimg(rset.getString("book_img"));
 	            book.setStarScore(rset.getInt("star_score"));
+	            book.setAvgScore(rset.getDouble("avg_score"));
 	            bookList.add(book);
 	         }
 	      } catch (SQLException e) {
@@ -440,6 +443,7 @@ public class BookDao {
 	            book.setSalePrice(rset.getInt("sale_price"));
 	            book.setBimg(rset.getString("book_img"));
 	            book.setStarScore(rset.getInt("star_score"));
+	            book.setAvgScore(rset.getDouble("avg_score"));
 	            bookList.add(book);
 	         }
 	      } catch (SQLException e) {
@@ -506,6 +510,7 @@ public class BookDao {
 	            book.setSalePrice(rset.getInt("sale_price"));
 	            book.setBimg(rset.getString("book_img"));
 	            book.setStarScore(rset.getInt("star_score"));
+	            book.setAvgScore(rset.getDouble("avg_score"));
 	            bookList.add(book);
 	         }
 	      } catch (SQLException e) {
@@ -516,7 +521,7 @@ public class BookDao {
 	      }
 		return bookList;
 	}
-// ------------------------------------------------------------------------------------------------	
+//------------------------------------------------------------------------------------------------	
 	// 검색 목록 & 카테고리 선택한 총 갯수
 	public int getCategoryBookListCount(Connection conn, Search search) {
 		PreparedStatement pstmt = null;
@@ -540,15 +545,15 @@ public class BookDao {
 			
 			// 검색 SQL문을 실행하는 경우 검색 값 설정
 			int index = 1;
-			if (search.getSearchCondition() != null && search.getSearchValue() != null) {
+			pstmt.setString(index++, search.getCategory());
+			
+			if (search.getSearchCondition() != null && search.getSearchValue() != null && !search.getSearchCondition().equals("category")) {
 				pstmt.setString(index++, search.getSearchValue());
 				
 				if(sql.equals(bookQuery.getProperty("getSearchCategoryBookListCount"))) {
-					pstmt.setString(index++, search.getSearchValue());
+					pstmt.setString(index, search.getSearchValue());
 				}
 	         }
-			
-			pstmt.setString(index, search.getCategory());
 			
 			rset = pstmt.executeQuery();
 
@@ -565,7 +570,8 @@ public class BookDao {
 
 		return listCount;
 	}
-
+	
+	// 검색 목록 & 카테고리 선택한 도서 목록 조회
 	public List<Book> selectCategoryBookList(Connection conn, PageInfo pi, Search search) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -592,19 +598,18 @@ public class BookDao {
 	         /* 추가 : 변수로 처리 1, 2, 3 물음표 순서가 달라지니까 */
 	         int index = 1;
 	         // 검색 sql 실행 시
-	         if(search.getSearchCondition() != null && search.getSearchValue() != null) {
+	         pstmt.setString(index++, search.getCategory());
+	         
+	         if(search.getSearchCondition() != null && search.getSearchValue() != null && !search.getSearchCondition().equals("category")) {
 	        	 pstmt.setString(index++, search.getSearchValue());	// 후위 연산 됨
-	        	 
 	        	 if(sql.equals(bookQuery.getProperty("selectSearchCategoryBookList"))) {
 	        		 pstmt.setString(index++, search.getSearchValue());
 	        	 }
 	         }
 	         
-	         pstmt.setString(index++, search.getCategory());
 	         pstmt.setInt(index++, startRow);
 	         pstmt.setInt(index, endRow);
 	         
-
 	         rset = pstmt.executeQuery();
 	         
 	         while(rset.next()) {
@@ -620,6 +625,7 @@ public class BookDao {
 	            book.setSalePrice(rset.getInt("sale_price"));
 	            book.setBimg(rset.getString("book_img"));
 	            book.setStarScore(rset.getInt("star_score"));
+	            book.setAvgScore(rset.getDouble("avg_score"));
 	            
 	            bookList.add(book);
 	         }

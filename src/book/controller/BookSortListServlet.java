@@ -39,13 +39,18 @@ public class BookSortListServlet extends HttpServlet {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
 		
+		BookService bookService = new BookService();
+		
+		// if(request.getParameter("category") != null) -> if문 통과 시 값 추출
+		
+		
 		String sort = request.getParameter("sort");
 		String searchCondition = request.getParameter("searchCondition");
 		String searchValue = request.getParameter("searchValue");
 		Search search = new Search(searchCondition, searchValue, sort);
 		
-		Map<String, Object> map = new BookService().selectSortList(page, search);
-		List<String> categoryList = new BookService().categoryList(search);
+		List<String> categoryList = bookService.categoryList(search);
+		Map<String, Object> map = bookService.selectSortList(page, search);
 		
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("bookList", map.get("bookList"));

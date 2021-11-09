@@ -32,7 +32,11 @@
 .cLi li {
 	padding: 10px 0;
 }
-.cLi li:hover {
+.cLi a{
+	text-decoration: none;
+	color: black;
+}
+.cLi a:hover {
     color: #acadadd0;
     cursor: pointer;
 }
