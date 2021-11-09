@@ -198,7 +198,9 @@ a {
         <header class="page-header">
             <nav>
                 <ul class="main-nav">
+                <c:if test="${ !empty loginUser && loginUser.userId == 'admin' }">
                 	<li><a href="<%= request.getContextPath() %>/admin/main">관리자페이지</a></li>
+                </c:if>
                 	<% if(loginUser == null) { %>
                     <li><a href="<%= request.getContextPath() %>/login">로그인</a></li>
                     <li><a href="<%= request.getContextPath() %>/joinmembership">회원가입</a></li>

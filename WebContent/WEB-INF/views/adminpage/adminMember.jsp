@@ -14,7 +14,6 @@
 	width: 90vh;
 	height: 60vh;
 	margin: 5px;
-	
 }
 hr{
 	border: 1px solid rgb(196, 217, 195);
@@ -116,25 +115,26 @@ hr{
 					<li class="status">관리</li>
 				</ul>
 			<hr />
-			<c:forEach var="board" items="${ adminMemberList }">
+			<c:forEach var="member" items="${ memberList }">
 				<ul class="board_ul">
-					<li class="id"></li>
-					<li class="nickname"></li>
-					<li class="name"></li>
-					<li class="gender"></li>
-					<li class="address"></li>
-					<li class="phone"></li>
-					<li class="date"></li>
-					<form method="get" action="${ contextPath }">
+					<li class="id">${ member.userId }</li>
+					<li class="nickname">${ member.userNickname }</li>
+					<li class="name">${ member.userName }</li>
+					<li class="gender">${ member.gender }</li>
+					<li class="address">${ member.userAddress }</li>
+					<li class="phone">${ member.userPhone }</li>
+					<li class="date">${ member.enrollDate }</li>
 					<li class="status">
+					<form method="post" action="${contextPath}/admin/memberdelete">
+						<input type="hidden" name="mNo" value="${ member.userNo }">
 						<select name="statusa" style="border: 1px solid rgb(196, 217, 195);">
-							<option selected>탈퇴신청</option>
+							<option value="1" selected hidden>탈퇴신청</option>
 							<option value="10">신청취소</option>
 							<option value="20">탈퇴</option>
 						</select>
 						<button input type="submit" style="border: 1px solid rgb(196, 217, 195); border-radius: 10px;">변경</button>						
-					</li>
 					</form>
+					</li>
 				</ul>
 			</c:forEach>
 	</div>

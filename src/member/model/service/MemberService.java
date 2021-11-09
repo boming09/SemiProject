@@ -6,7 +6,9 @@ import static common.JDBCTemplate.getConnection;
 import static common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.List;
 
+import admin.model.vo.GradeList;
 import member.model.dao.MemberDao;
 import member.model.vo.Member;
 
@@ -82,6 +84,82 @@ public class MemberService {
 		
 		int result = memberDao.deleteAccount(conn, userNo);
 		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
+	public List<Member> nSelectList() {
+		Connection conn = getConnection();
+		List<Member> memberList = memberDao.nSelectList(conn);
+		
+		
+		close(conn);
+		
+		
+		return memberList;
+	}
+
+	public int nUpdateMember(int userNo) {
+		Connection conn = getConnection();
+		int result = memberDao.nUpdateMember(conn, userNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
+
+	public int nDeleteMember(int userNo) {
+		Connection conn = getConnection();
+		int result = memberDao.uDeleteMember(conn, userNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		return result;
+	}
+
+	public List<GradeList> gSelectList() {
+		Connection conn = getConnection();
+		List<GradeList> gradeList = memberDao.gSelectList(conn);
+		
+		close(conn);
+		
+		return gradeList;
+	}
+
+	public int gUpdateMember(int uNo, int wNo) {
+		Connection conn = getConnection();
+		int result = memberDao.gUpdateMember(conn, uNo);
+		int result2 = memberDao.gUpdate2Member(conn, wNo);
+		if(result > 0 && result2 > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
+	public int gDeleteMember(int wNo) {
+		Connection conn= getConnection();
+		int result = memberDao.gDeleteMember(conn, wNo);
 		if(result > 0) {
 			commit(conn);
 		} else {
