@@ -76,6 +76,12 @@ a {
 
 .search_area select {
     margin-right: 10px;
+    border-bottom: 3px solid rgba(196, 217, 195, 1);
+	cursor: pointer;
+}
+
+#searchCondition option {
+	text-align: center;
 }
 
 .input_area {
@@ -187,8 +193,7 @@ a {
 </head>
 <body>
 <!-- page의 application의 contextPath -->
-<c:set var="contextPath" value="${ pageContext.servletContext.contextPath }"
-scope="application"/>
+<c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" scope="application"/>
     <div id="top">
         <header class="page-header">
             <nav>
@@ -227,10 +232,10 @@ scope="application"/>
                         <c:if test="${ param.searchCondition == 'title' }">selected</c:if>>제목</option>
                         <option value="author"
                         <c:if test="${ param.searchCondition == 'author' }">selected</c:if>>작가</option>
-                    </select> 
+                    </select>
                     <span class="input_area">
-                    <input type="search" name="searchValue" value="${ param.searchValue }"
-                    placeholder="검색할 내용을 입력하세요.">
+                    <input type="search" name="searchValue" 
+                    <c:if test="${ param.searchCondition != 'category' }">value="${ param.searchValue }"</c:if> placeholder="검색할 내용을 입력하세요.">
                     <button id="search_btn" type="submit" onclick="search()"><i class="fas fa-search"></i></button>
                     </span>
                 </form>
