@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import book.model.vo.Search;
 import mypage.model.vo.Myreview;
 import mypage.model.vo.PageInfo;
 
@@ -29,14 +30,28 @@ public class MyreviewDao {
 		}
 	}
 	
-	public int getListCount(Connection conn) {
+	public int getListCount(Connection conn, Search search) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		int listCount = 0;
 		String sql = myreviewQuery.getProperty("getListCount");	
 		
+		if(search.getSearchCondition() != null && search.getSearchValue() != null) {
+			if(search.getSearchCondition().equals("title")) {
+				sql = myreviewQuery.getProperty("getTitleListCount");
+			} else if(search.getSearchCondition().equals("content")) {
+				sql = myreviewQuery.getProperty("getContentListCount");
+			} else if(search.getSearchCondition().equals("writer")) {
+				sql = myreviewQuery.getProperty("getWriterListCount");
+			}
+		}
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			if(search.getSearchCondition() != null && search.getSearchValue() != null) {
+				pstmt.setString(1, search.getSearchValue());
+			}
 			
 			rset = pstmt.executeQuery();
 			
@@ -54,11 +69,22 @@ public class MyreviewDao {
 		return listCount;
 	}
 
-	public List<Myreview> selectList(Connection conn, PageInfo pi) {
+	public List<Myreview> selectList(Connection conn, PageInfo pi, Search search) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = myreviewQuery.getProperty("selectList");
 		List<Myreview> myreviewList = new ArrayList<>();
+		
+		
+		if(search.getSearchCondition() != null && search.getSearchValue() != null) {
+			if(search.getSearchCondition().equals("title")) {
+				sql = myreviewQuery.getProperty("selectTitleList");
+			} else if(search.getSearchCondition().equals("content")) {
+				sql = myreviewQuery.getProperty("selectContentList");
+			} else if(search.getSearchCondition().equals("writer")) {
+				sql = myreviewQuery.getProperty("selectWriterList");
+			}		
+		}
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -66,8 +92,13 @@ public class MyreviewDao {
 			int startRow = (pi.getPage() - 1) * pi.getMypagemyreviewLimit() + 1;
 			int endRow = startRow + pi.getMypagemyreviewLimit() - 1;
 			
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
+			int index = 1;
+			if(search.getSearchCondition() != null && search.getSearchValue() != null) {
+				pstmt.setString(index++, search.getSearchValue());
+			}
+			
+			pstmt.setInt(index++, startRow);
+			pstmt.setInt(index, endRow);
 			
 			rset = pstmt.executeQuery();
 			
@@ -76,9 +107,10 @@ public class MyreviewDao {
 				myreview.setMid(rset.getInt("mid"));
 				myreview.setCategory_name(rset.getString("category_name"));								
 				myreview.setMtitle(rset.getString("mtitle"));				
-				myreview.setUserName(rset.getString("user_name"));
+				myreview.setUser_nickname(rset.getString("user_nickname"));
 				myreview.setMcount(rset.getInt("mcount"));
 				myreview.setCreate_Date(rset.getDate("create_date"));
+				// myreview.setUserNickname(rset.getString("user_nickname"));
 				myreviewList.add(myreview);
 			}
 			
@@ -131,7 +163,7 @@ public class MyreviewDao {
 				myreview.setMtitle(rset.getString("Mtitle"));
 				myreview.setMcontent(rset.getString("Mcontent"));
 				myreview.setMwriter(rset.getInt("mwriter"));
-				myreview.setUserName(rset.getString("user_name"));
+				myreview.setUser_nickname(rset.getString("user_nickname"));
 				myreview.setMcount(rset.getInt("mcount"));
 				myreview.setCreate_Date(rset.getTimestamp("create_date"));
 				myreview.setModify_Date(rset.getTimestamp("modify_date"));
@@ -160,6 +192,51 @@ public class MyreviewDao {
 			pstmt.setString(3, myreview.getMtitle());
 			pstmt.setString(4, myreview.getMcontent());
 			pstmt.setInt(5, myreview.getMwriter());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}	
+		
+		return result;
+	}
+
+	public int deleteMyreview(Connection conn, int mid) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = myreviewQuery.getProperty("deleteMyreview");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, mid);
+						
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}	
+		
+		return result;
+	}
+
+	public int updateMyreview(Connection conn, Myreview myreview) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = myreviewQuery.getProperty("updateMyreview");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, myreview.getCategory_id());
+			pstmt.setString(2, myreview.getMtitle());
+			pstmt.setString(3, myreview.getMcontent());
+			pstmt.setInt(4, myreview.getMid());
 			
 			result = pstmt.executeUpdate();
 			

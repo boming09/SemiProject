@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,39 +25,41 @@
             </header>
             
             <div class="wcommu_area">게시글 내용</div>
-            <form method="post" action="${ contextPath }/myreviewinsertview">
+            <form method="post" action="${ contextPath }/myreview/update">
+            <input type="hidden" name="mid" value="${ myreview.mid }">
             <div class="wcommu_conarea">
                 <table>
                     <tr class="liarea">
                         <th class="wcommu_title" rowspan="3">제목</th>
                         <td class="title" name="title" rowspan="3">
-                            <div><input type="text" name="title" required></div>
+                            <div><input type="text" name="title" value="${ myreview.mtitle }" required></div>
                         </td>         
                         <th class="wcommu_user">작성자</th>
-                        <td class="user">${ member.user_nickname }</td>
+                        <td class="user">${ myreview.user_nickname }</td>
                     </tr>
                     <tr class="liarea">
                     	<th class="wcommu_date">등록일</th>
-                        <td class="date">${ member.create_Date }</td>                        
+                        <td class="date">${ myreview.create_Date }</td>                        
                     </tr>
                     <tr class="liarea">
                     	<th class="wcommu_date">분류</th>
                         <td class="date">
-                        <input type="text" name="category" required>${ member.category_name }</td>
+                        <input type="text" name="category" required><br>
+                        ${ myreview.category_name }</td>
                     </tr>
                                       
                     <tr class="liarea2">
                         <th class="wcommu_content">내용</th>
                         <td class="wcontent" name="content" colspan="3">
                         <textarea class="textarea" rows="15" cols="60" name="content"
-								required></textarea>
+								required>${ myreview.mcontent }</textarea>
                         </td>
                     </tr>
                 </table>
             </div>
             <div class="wcommu_btn">
                 <button type="button" onclick="location.href='${ contextPath }/mypagemyreview'">돌아가기</button>
-                <button type="sumbit">등록하기</button>
+                <button type="sumbit">수정하기</button>
             </div>
             </form>           
 		</div>

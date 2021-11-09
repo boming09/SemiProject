@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import book.model.vo.Search;
 import mypage.model.service.MyreviewService;
 
 
@@ -42,7 +43,11 @@ public class MypageMyreviewServlet extends HttpServlet {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
 		
-		Map<String, Object> map = new MyreviewService().selectList(page);
+		String searchCondition = request.getParameter("searchCondition");
+		String searchValue = request.getParameter("searchValue");
+		
+		Map<String, Object> map 
+		= new MyreviewService().selectList(page, new Search(searchCondition, searchValue));
 		
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("myreviewList", map.get("myreviewList"));

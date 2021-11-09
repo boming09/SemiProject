@@ -1,5 +1,7 @@
 package member.model.dao;
 
+import static common.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -7,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
-import static common.JDBCTemplate.*;
+
 import member.model.vo.Member;
 
 public class MemberDao {
@@ -201,39 +203,16 @@ public class MemberDao {
 		
 	}
 
-	public Member searchId(Connection conn, String userName, String userEmail) {
+	public String findld(String userName, String userEmail) {
 		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = memberQuery.getProperty("searchId");
-		Member member = null;
+		String sql = memberQuery.getProperty("findld");
 		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, userName);
-			pstmt.setString(2, userEmail);
-			
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				member = new Member();
-				member.setUserId(rset.getString("userId"));
-				member.setUserPwd(rset.getString("userPwd"));
-				member.setUserName(rset.getString("userName"));
-				member.setUserEmail(rset.getString("userEmail"));
-				member.setUserPhone(rset.getString("userPhone"));
-				member.setEnrollDate(rset.getDate("enrollDate"));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally{
-			close(rset);
-			close(pstmt);
-		}		
 		
-		return member;
+		
+		return null;
 	}
+
+	
 
 		
 }
