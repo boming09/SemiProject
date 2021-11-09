@@ -29,16 +29,16 @@
 	        <div class="area1"><a class="ca-top" href="${ contextPath }/cs">FAQ</a>
 	            <ul class="ca-list">
 	                <li>
-	                	<a href="${ contextPath }/faq">주문/결제</a>
+	                	<a href="${ contextPath }/faqA">주문/결제</a>
 	                </li>
 	                <li>
-	                	<a href="#">취소/교환/반품</a>
+	                	<a href="${ contextPath }/faqB">취소/교환/반품</a>
 	                </li>
 	                <li >
-	                	<a href="#">배송</a>
+	                	<a href="${ contextPath }/faqC">배송</a>
 	                </li>
 	                <li >
-	                	<a href="#">회원관리</a>
+	                	<a href="${ contextPath }/faqD">회원관리</a>
 	                </li>
 	            </ul>
 	        </div>
@@ -49,7 +49,7 @@
 	            </ul>
 	        </div>
 	        <div class="area3"><p class="ca-top">작가 소통게시판</p>
-	            <ul class="ca-list" onclick="loginChcek()">
+	            <ul class="ca-list">
 	            	<li><a href="${ contextPath }/commu">소통 게시판</a></li>
 	                <li><a href="${ contextPath }/commu/w-info">작가 소개</a></li>
 	            </ul>

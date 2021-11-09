@@ -21,19 +21,6 @@ public class WriterService {
 	
 	WriterDao writerDao = new WriterDao();
 	
-	// 작가 회원 정보 가져오기(등급 20 => 이건 로그인 후 마이페이지 버튼 클릭시 걸러줌)
-	/*
-	public WriterInfo selectWriter(int user_no) {
-		Connection conn = getConnection();
-		
-		WriterInfo writer = writerDao.selectWriter(conn, user_no);
-		
-		//조회기 때문에 커밋 롤백 필요 없음
-		close(conn);		
-		
-		return writer;
-	}
-	*/
 	// 작가 프로필 + 자기소개 들고오기(회원번호)
 	public WProfile selectWProfile(int user_no) {
 		Connection conn = getConnection();

@@ -27,7 +27,7 @@
                 <div class="ct-area1">
                     <div class="ct-top">주문/결제</div>
                     <ul class="ct-list">
-                        <li><a href="#">주문/주문확인</a></li>
+                        <li><a href="#" onclick="Atype2()">주문/주문확인</a></li>
                         <li><a href="#">주문 변경</a></li>
                         <li><a href="#">결제 정보</a></li>
                         <li><a href="#">세금계산서/영수증</a></li>
@@ -66,5 +66,10 @@
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
+	<script>
+		function Atype2() {
+			location.href="${ contextPath }/faqA?=" + 2;
+		}
+	</script>
 </body>
 </html>

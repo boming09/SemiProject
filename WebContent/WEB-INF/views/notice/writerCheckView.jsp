@@ -32,9 +32,9 @@
             <div class="wcheck_area1">
                 <span>인증 리스트</span>
                 <span>
-                    <input type="checkbox" id="mypost" name="mypost">
+                    <input type="checkbox" id="mypost" value="${ loginUser.userNo }" <c:if test="${ !empty param.user_no }">checked</c:if>>
                     	<label>내가 쓴 글만 보기</label>
-                    <button type="button" onclick="loginCheck()">글 작성</button>
+                    <button type="button" onclick="wcloginCheck()">글 작성</button>
                 </span>
             </div>
 
@@ -63,10 +63,8 @@
                     </c:forEach>
                 </div>
                 
-             	<%-- <c:if test="${ !empty param.userNo }">
-					<c:set var="searchParam" value="&user_no=${ loginUser.userNo }"/>
-				</c:if>  --%>
-				<c:if test="${ param.mypost == loginUser.userNo}">
+        		<!-- 내가쓴글 체크시 -->
+				<c:if test="${ !empty param.user_no }">
 					<c:set var="searchParam" value="&user_no=${ loginUser.userNo }"/>
 				</c:if> 
                 
@@ -92,7 +90,7 @@
 										<a href="#" class="current_page">${ p }</a>
 									</c:when>
 									<c:otherwise>
-										<a href="${ contextPath }/w-check?page=${ p }">${ p }</a>
+										<a href="${ contextPath }/w-check?page=${ p }${ searchParam }">${ p }</a>
 									</c:otherwise>
 								</c:choose>
 							</li>
@@ -121,25 +119,21 @@
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
-	<!-- 체크박스 클릭시(내가쓴글) 회원번호 넘기기 -->
-	<form name="mypostForm" method="get">
-			<input type="hidden" name="user_no" value="${ loginUser.userNo }">
-	</form> 
-	
 	<!-- 로그인 체크 -->
 	<c:choose>
 		<c:when test="${ !empty loginUser }">
 			<script>
 				// 인증게시판 글쓰기 로그인 후 이용가능
-				function loginCheck() {
+				function wcloginCheck() {
 					location.href='${ contextPath }/w-check/insert';
 				}
 				// 내가 쓴 글 클릭시 = 로그인 되어있어야...
 				$("#mypost").click(function(){
 					if($("#mypost").prop("checked")) {
-						document.forms.mypostForm.action = "${ contextPath }/w-check";
-						document.forms.mypostForm.submit();  
-					} 
+						location.href='${ contextPath }/w-check?page=1&user_no=' + $("#mypost").val();
+					} else {
+						location.href='${ contextPath }/w-check';
+					}
 				});
 				
 				function loginCheckDetail(wckno) {
@@ -150,7 +144,7 @@
 		</c:when>
 		<c:otherwise>
 			<script>
-				function loginCheck() {
+				function wcloginCheck() {
 					alert("로그인 후 이용 가능합니다.");
 					location.href='${ contextPath }/login';
 				}	

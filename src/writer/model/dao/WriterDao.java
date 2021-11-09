@@ -33,45 +33,6 @@ public class WriterDao {
 		}
 	}
 
-	// 작가 회원정보 가져오기
-	/*
-	public WriterInfo selectWriter(Connection conn, int user_no) {
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = writerQuery.getProperty("selectWriter");
-		
-		WriterInfo writer = null;
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setInt(1, user_no);
-			
-			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
-				writer = new WriterInfo();
-				writer.setUser_no(rset.getInt("user_no"));
-				writer.setId(rset.getString("user_id"));
-				writer.setPwd(rset.getString("user_pwd"));
-				writer.setName(rset.getString("user_name"));
-				writer.setEmail(rset.getString("user_email"));
-				writer.setPhone(rset.getString("user_phone"));
-				writer.setAddress(rset.getString("user_grade"));
-				writer.setEnrolldate(rset.getDate("enroll_date"));
-				writer.setStatus(rset.getString("status"));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		return writer;
-	}
-	*/
 	
 	// 작가 프로필 + 자기소개 들고오기(회원번호)
 	public WProfile selecWProfile(Connection conn, int user_no) {

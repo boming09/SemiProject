@@ -37,8 +37,8 @@ public class CommuServlet extends HttpServlet {
 		
 		// 내가 쓴 글 체크시
 		int user_no = 0;
-		if(request.getParameter("userNo") != null) {
-			user_no = Integer.parseInt(request.getParameter("userNo"));
+		if(request.getParameter("user_no") != null) {
+			user_no = Integer.parseInt(request.getParameter("user_no"));
 			//System.out.println(user_no);
 		}
 		

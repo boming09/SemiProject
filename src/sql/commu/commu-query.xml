@@ -55,6 +55,7 @@
 			             , TITLE
 			             , CONTENT
 			             , C.USER_NO
+			             , M.USER_NICKNAME
 			             , CREATE_DATE
 			             , REPLY
 			             , COUNT
@@ -62,6 +63,7 @@
 			             , W.USER_NAME 
 			             , C.STATUS
 			          FROM COMMU C
+			          JOIN MEMBER M ON(C.USER_NO = M.USER_NO)
 			          JOIN MEMBER W ON(C.WRITER_NO = W.USER_NO)
 			         ORDER BY CREATE_DATE DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
@@ -73,6 +75,7 @@
 		     , TITLE
 		     , CONTENT
 		     , C.USER_NO
+		     , M.USER_NICKNAME
 		     , CREATE_DATE
 		     , REPLY
 		     , COUNT
@@ -80,6 +83,7 @@
 		     , W.USER_NAME 
 		     , C.STATUS
 		  FROM COMMU C
+		  JOIN MEMBER M ON(C.USER_NO = M.USER_NO)
 		  JOIN MEMBER W ON(C.WRITER_NO = W.USER_NO)
 		 WHERE COMMU_NO = ?
 		 ORDER BY CREATE_DATE DESC
@@ -100,6 +104,7 @@
 			             , TITLE
 			             , CONTENT
 			             , C.USER_NO
+			             , M.USER_NICKNAME
 			             , CREATE_DATE
 			             , REPLY
 			             , COUNT
@@ -107,10 +112,66 @@
 			             , W.USER_NAME 
 			             , C.STATUS
 			          FROM COMMU C
+			          JOIN MEMBER M ON(C.USER_NO = M.USER_NO)
 			          JOIN MEMBER W ON(C.WRITER_NO = W.USER_NO)
 			         WHERE C.USER_NO = ?
 			         ORDER BY CREATE_DATE DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 
+	<entry key="selectWriterCount">
+		SELECT
+		       COUNT(*)
+		  FROM MEMBER
+		 WHERE USER_GRADE = 20
+		   AND STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectSearchWriterCount">
+		SELECT
+		       COUNT(*)
+		  FROM MEMBER
+		 WHERE USER_GRADE = 20
+		   AND STATUS = 'Y'
+		   AND USER_NAME LIKE '%' || ? || '%'
+	</entry>
+	
+	<entry key="selectWriterList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.* 
+		            FROM(SELECT
+		                   M.USER_NO
+		                 , M.USER_NAME
+		                 , W.FILE_PATH
+		                 , W.GREETING
+		                 , W.ORIGIN_FILE
+		                 , W.CHANGE_FILE
+		              FROM MEMBER M, W_PROFILE W
+		             WHERE M.USER_NO = W.WRITER_NO(+)
+		               AND USER_GRADE = 20
+		             ORDER BY USER_NAME) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectSearchWriterList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.* 
+		            FROM(SELECT
+		                   M.USER_NO
+		                 , M.USER_NAME
+		                 , W.FILE_PATH
+		                 , W.GREETING
+		                 , W.ORIGIN_FILE
+		                 , W.CHANGE_FILE
+		              FROM MEMBER M, W_PROFILE W
+		             WHERE M.USER_NO = W.WRITER_NO(+)
+		               AND USER_GRADE = 20
+		               AND USER_NAME LIKE '%' || ? || '%'
+		             ORDER BY USER_NAME) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	
+	
+	
 </properties>
