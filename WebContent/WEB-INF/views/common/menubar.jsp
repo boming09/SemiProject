@@ -77,6 +77,7 @@ a {
 .search_area select {
     margin-right: 10px;
     border-bottom: 3px solid rgba(196, 217, 195, 1);
+    padding: 3px;
 	cursor: pointer;
 }
 
@@ -245,7 +246,8 @@ a {
                     </select>
                     <span class="input_area">
                     <input type="search" name="searchValue" 
-                    <c:if test="${ param.searchCondition != 'category' }">value="${ param.searchValue }"</c:if> placeholder="검색할 내용을 입력하세요.">
+                    <c:if test="${ param.searchCondition != 'category' }">value="${ param.searchValue }"</c:if> 
+                    placeholder="검색할 내용을 입력하세요." required>
                     <button id="search_btn" type="submit" onclick="search()"><i class="fas fa-search"></i></button>
                     </span>
                 </form>

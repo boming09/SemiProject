@@ -54,6 +54,9 @@ public class BookCategoryServlet extends HttpServlet {
 		request.setAttribute("bookList", map.get("bookList"));
 		request.setAttribute("categoryList", categoryList);
 		
+		
+		System.out.println(map.get("bookList"));
+		System.out.println(map.get("pi"));
 		if(map != null) {
 			request.getRequestDispatcher("/WEB-INF/views/book/bookListView.jsp").forward(request, response);
 		}

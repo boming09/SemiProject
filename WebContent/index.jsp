@@ -8,7 +8,7 @@
 .wrapper2 {
     max-width: 1100px;
     margin: 0 auto;
-    height: 75vh;
+    height: 80vh;
 }
 </style>
 <title>SemiProject</title>
