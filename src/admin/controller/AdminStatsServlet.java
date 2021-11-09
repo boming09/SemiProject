@@ -28,6 +28,7 @@ public class AdminStatsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//aaa
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/adminpage/adminStats.jsp");
 		view.forward(request, response);
 	}
