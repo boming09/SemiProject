@@ -25,15 +25,32 @@ public class cartDao {
 		}
 	}
 
-	public List<Cart> selectList(Connection conn) {
+	public List<Cart> selectList(Connection conn, String orderby) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		List<Cart> cartList = new ArrayList<>();
 		String sql = cartQuery.getProperty("selectList");
 		
 		try {
-			pstmt = conn.prepareStatement(sql);
 			
+			
+			
+			if(orderby != null){
+				
+				if(orderby.equals("low")) {
+					sql = cartQuery.getProperty("selectSortListLow");
+				} else if(orderby.equals("high")) {
+					sql = cartQuery.getProperty("selectSortListHigh");
+				} else if(orderby.equals("name")) {
+					sql = cartQuery.getProperty("selectSortListName");
+				} else if(orderby.equals("rel")) {
+					sql = cartQuery.getProperty("selectSortListRel");
+				}
+				
+			}
+			
+			pstmt = conn.prepareStatement(sql);
+		
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -170,6 +187,58 @@ public class cartDao {
 		}
 		
 		return cartList;
+	}
+
+	public List<Cart> selectSortList(Connection conn, String orderby) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Cart> cartSortList = new ArrayList<>();
+		String sql = null;
+		
+		if(orderby != null){
+			
+			if(orderby.equals("low")) {
+				sql = cartQuery.getProperty("selectSortListLow");
+			} else if(orderby.equals("high")) {
+				sql = cartQuery.getProperty("selectSortListHigh");
+			} else if(orderby.equals("name")) {
+				sql = cartQuery.getProperty("selectSortListName");
+			} else if(orderby.equals("rel")) {
+				sql = cartQuery.getProperty("selectSortListRel");
+			}
+			
+		}
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+
+			while(rset.next()) {
+				cartSortList.add(new Cart(rset.getString("book_name")
+									, rset.getInt("category_id")
+									, rset.getString("author")
+									, rset.getString("publisher")
+									, rset.getInt("sale_price")
+									, rset.getInt("price")
+									, rset.getInt("stock")
+									, rset.getString("book_img")
+									, rset.getInt("cart_no")
+									, rset.getInt("book_id")
+									, rset.getInt("user_no")
+									, rset.getInt("amount")));
+
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}  finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return cartSortList;
 	}
 
 }

@@ -226,6 +226,14 @@
 	border:1px solid gray;
 }
 
+
+#needPass{
+	/*display:none;*/
+}
+
+#free{
+	/*display:none;*/
+}
 /*------------------footer--------------*/
 .footer2 {
 	position:relative;

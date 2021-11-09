@@ -11,10 +11,10 @@ public class CartService {
 
 	private cartDao cartDao = new cartDao();
 	
-	public List<Cart> selectList() {
+	public List<Cart> selectList(String orderby) {
 		Connection conn = getConnection();
 		
-		List<Cart> cartList = cartDao.selectList(conn);
+		List<Cart> cartList = cartDao.selectList(conn,orderby);
 		
 		close(conn);
 
@@ -76,6 +76,16 @@ public class CartService {
 		close(conn);
 
 		return cartList;
+	}
+
+	public List<Cart> selectSortList(String orderby) {
+		Connection conn = getConnection();
+		
+		List<Cart> cartSortList = cartDao.selectSortList(conn,orderby);
+		
+		close(conn);
+
+		return cartSortList;
 	}
 
 }

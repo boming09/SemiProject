@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="order.model.vo.Cart"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,8 @@
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
 <link href="<%= request.getContextPath() %>/resources/css/order/payment.css" rel="stylesheet">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
 	<!-- 메뉴바 -->
@@ -25,14 +27,14 @@
             <!--<form class="order" action="<%= request.getContextPath() %>/api"
 			method="post">  -->
 		
-            
+  
        		
      		  <div class="od_info">추가 할인 받기</div>
      		  <div class="tst">
 	     		  <div class="discount">
 	     		  	<span class="align_ct"><b>쿠폰</b></span><hr><br>
 	     		  	<span class="align_ct"><b>보유 쿠폰: <span>0</span>장</b><br></span>
-	     		  	<button class="dis_btn" id="couponBtn">쿠폰 조회/적용</button><br>
+	     		  	<button class="dis_btn" id="couponBtn" onclick="openChild()">쿠폰 조회/적용</button><br>
 	     		  	<span class="align_ct bold">할인금액:<span> 0</span></span>
 	     		  </div>
 	     		  <div class="discount white">
@@ -55,13 +57,17 @@
         			<div>주문 상품 금액 정보</div>
         		</div>
         		<div class="o_item">
-        			<span class="address">총 2권, 41,400원 </span>
+        			<span class="address">총 권,
+        			<c:forEach var="cart" items="${ amounts }">
+        			${amounts}
+        			</c:forEach>
+        			 41,400원 </span>
         		</div>
         	</div>
         	
         	<div class="od_ttt">
         		<div class="o_item">상품 주문 총액</div>
-        		<div class="o_item br">41,400원</div>
+        		<div class="o_item br"><fmt:formatNumber value="${sum}" type="number"/></div>
         		<div class="o_item">쿠폰 할인 금액</div>
         		<div class="o_item ">0원</div>
         		<div class="o_item">배송료</div>
@@ -114,6 +120,21 @@
      				 } 
      			});
      		
+     			
+     	        var openWin;
+     	       
+     	        function openChild(){
+     	            // window.name = "부모창 이름"; 
+     	            window.name = "parentForm";
+     	            // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+     	            openWin = window.open("Child.html",
+     	                    "childForm", "width=570, height=350, resizable = no, scrollbars = no");    
+     	        }
+     	        
+     	        function setChildText(){
+     	            openWin.document.getElementById("cInput").value = document.getElementById("pInput").value;
+     	        }
+
      				 
      			
      		</script>
