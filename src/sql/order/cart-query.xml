@@ -65,4 +65,32 @@
 	     WHERE CART_NO = ?
 	</entry>
 
+	<entry key="selectSortListLow">
+		SELECT * 
+		  FROM BOOK
+		  JOIN CART USING(BOOK_ID)
+		 ORDER BY SALE_PRICE
+	</entry>
+	
+	<entry key="selectSortListHigh">
+		SELECT * 
+		  FROM BOOK
+		  JOIN CART USING(BOOK_ID)
+		 ORDER BY SALE_PRICE DESC
+	</entry>
+	
+	<entry key="selectSortListName">
+		SELECT * 
+		  FROM BOOK
+		  JOIN CART USING(BOOK_ID)
+		 ORDER BY BOOK_NAME
+	</entry>
+	
+	<entry key="selectSortListRel">
+		SELECT * 
+		  FROM BOOK 
+		  JOIN CART USING(BOOK_ID)
+		 ORDER BY PUBLICATION_DATE DESC
+	</entry>
+	
 </properties>
