@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,10 +53,10 @@
                 		<li class="review_no">${ review.mid }</li>
                 		<li class="review_classification">${ review.category_name }</li>
                 		<li class="review_title">${ review.mtitle }</li>
-                		<li class="review_writer">${ review.userName }</li>
+                		<li class="review_writer">${ review.user_nickname }</li>
                 		<li class="review_views">${ review.mcount }</li>
                 		<li class="review_date">${ review.create_Date }</li>
-                		<li class="review_status">@@@@@</li>
+                		<li class="review_status"></li>
                 	</ul>
                     </c:forEach>
                     <!-- 반복문 --> 
@@ -108,14 +109,18 @@
                      -->
                 </div>
                 
+                <c:if test="${ !empty param.searchCondition && !empty param.searchValue }">
+              		 <c:set var="searchParam" value="&searchCondition=${ param.searchCondition }&searchValue=${ param.searchValue }"/>
+           		</c:if>  
+                
                 <div class="wcommu_page">
-                    <!-- 페이지 바 영역 => 나중에 작성 -->
-                    <li><a href="${ contextPath }/mypagemyreview?page=1">&lt;&lt;</a></li>
+                    <!-- 페이지 바 영역  -->
+                    <li><a href="${ contextPath }/mypagemyreview?page=1${ searchParam }">&lt;&lt;</a></li>
                     
                     <li>                    
                     <c:choose>
                     	<c:when test="${ pi.page > 1 }">
-                    	<a href="${ contextPath }/}/mypagemyreview?page=${ pi.page - 1 }">&lt;</a>
+                    	<a href="${ contextPath }/}/mypagemyreview?page=${ pi.page - 1 }${ searchParam }">&lt;</a>
                     	</c:when>
                     	<c:otherwise>
                     	<a href="#">&lt;</a>
@@ -131,7 +136,7 @@
                     	<a href="#" class="current_page">${ p }</a>
                     	</c:when>
                     	<c:otherwise>
-                    	<a href="${ contextPath }/mypagemyreview?page=${ p }">${ p }</a>
+                    	<a href="${ contextPath }/mypagemyreview?page=${ p }${ searchParam }">${ p }</a>
                     	</c:otherwise>
                     </c:choose>
                     </li>
@@ -140,29 +145,35 @@
                     <li>                    
                     <c:choose>
                     	<c:when test="${ pi.page < pi.maxPage }">
-                    	<a href="${ contextPath }/mypagemyreview?page=${ pi.page + 1 }">&gt;</c:when>
+                    	<a href="${ contextPath }/mypagemyreview?page=${ pi.page + 1 }${ searchParam }">&gt;</c:when>
                     	<c:otherwise>
                     	<a href="#">&gt;</a>
                     	</c:otherwise>
                     </c:choose>
                     </li>  
                           
-                    <li><a href="${ contextPath }/mypagemyreview?page=${ pi.maxPage}">&gt;&gt;</a></li>
+                    <li><a href="${ contextPath }/mypagemyreview?page=${ pi.maxPage}${ searchParam }">&gt;&gt;</a></li>
                 </div>
+                <!-- 페이지 이동 끝 -->
                 
                 <!-- 검색, 작성하기 -->
                 <div class="search_area2">
-				<form method="get" action="#">
-					<select id="searchCondition2" name="searchCondition2">
+				<form method="get" action="${ contextPath }/mypagemyreview">
+					<select id="searchCondition" name="searchCondition">
 						<option value="title" 
 						<c:if test="${ param.searchCondition == 'title' }">selected</c:if>>제목</option>
 						<option value="content"
 						<c:if test="${ param.searchCondition == 'content' }">selected</c:if>>내용</option>
+						<option value="writer"
+						<c:if test="${ param.searchCondition == 'writer' }">selected</c:if>>작성자</option>
 					</select> 
+					
 					<span class="input_area2"> 
-					<input type="search" name="searchValue" value="${ param.searchValue }" required>
+					<input type="search" name="searchValue" value="${ param.searchValue }">
 					</span>
+					
 					<button type="submit" class="noticeInsert" id="noticeInsert">검색하기</button>
+										
 					<c:if test="${ !empty loginUser }">
 					<button id="noticeInsert" type="button" class="noticeInsert"
 					onclick="location.href='${ contextPath }/myreviewinsertview'">작성하기</button>
