@@ -102,14 +102,14 @@ public class MemberService {
 		
 		close(conn);
 				
-
+		return result;
+	}
+	
 	public List<Member> nSelectList() {
 		Connection conn = getConnection();
 		List<Member> memberList = memberDao.nSelectList(conn);
-		
-		
-		close(conn);
-		
+				 
+		close(conn);		
 		
 		return memberList;
 	}
