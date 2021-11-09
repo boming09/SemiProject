@@ -25,7 +25,7 @@
             
        		 <label class="hidden"> cart_select</label>
        		 
-       		 <button id="delete_btn">선택상품삭제</button>
+       		 <button id="delete_btn" onclick="deleteChecked()">선택상품삭제</button>
       
        			<select id="cart_sel"name="cart_sel" onchange="sortList()">
            		 <option value="new" selected>최근담은순</option>
@@ -231,7 +231,7 @@
 			        
 			        
 			        
-			        function test2() {
+			        function test2() { // 체크된 목록 넘기기
 			           var obj_length = document.getElementsByName("cart_chk").length;
 			      
 			            for (var i=0; i<obj_length; i++) {
@@ -255,7 +255,7 @@
 			        }
 			        
 			        
-			    	function sortList() {
+			    	function sortList() { //정렬
 			    		
 		    	   	   var sort =  $("#cart_sel option:selected").val();
 		    	   	 
@@ -273,6 +273,29 @@
 		    	   	 	orderby.submit();
 			    	}
 		    	 
+			    	function deleteChecked() { //선택삭제
+			    		 var obj_length = document.getElementsByName("cart_chk").length;
+					      
+				            for (var i=0; i<obj_length; i++) {
+				                if (document.getElementsByName("cart_chk")[i].checked == true) {
+				                    //alert(document.getElementsByName("cart_chk")[i].value);
+				                    //알러트 말고 태그에 어떻게 넣니
+				                
+				                   var input = document.createElement('input'); 
+
+						           input.setAttribute("type", "hidden");
+						           input.setAttribute("name", "cart_check"); 
+						           input.setAttribute("value", document.getElementsByName("cart_chk")[i].value); 
+			
+						           chkDel.appendChild(input);
+			
+						           document.body.appendChild(chkDel); 
+			
+						           chkDel.submit();
+				           	 	}
+				        	}
+			    		
+			    	}
 		    	    
 			</script>
 			<form name="chekchk" method="post" action="${contextPath}/order">
@@ -280,6 +303,10 @@
 			
 			</form> 
 
+			<form name="chkDel" method="post" action="${contextPath}/cart/delete">
+				<!--  <input type="hidden" id="cart_check" name="cart_check" value=""/>-->
+			
+			</form> 
 	  
 			</div>
 			            
