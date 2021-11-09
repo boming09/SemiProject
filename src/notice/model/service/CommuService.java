@@ -14,6 +14,7 @@ import member.model.vo.Member;
 import notice.model.dao.CommuDao;
 import notice.model.vo.Commu;
 import notice.model.vo.PageInfo;
+import writer.model.vo.WProfile;
 
 public class CommuService {
 
@@ -103,6 +104,26 @@ public class CommuService {
 		close(conn);
 		
 		return commu;
+	}
+
+
+	// 작가소개 페이지 -> 작가리스트
+	public Map<String, Object> selectWriterList(int page, String w_name) {
+		Connection conn = getConnection();
+	
+		// 게시글 총 개수 구하기
+		int listCount = commuDao.selectWriterCount(conn, w_name);
+		// 페이징 처리
+		PageInfo pi = new PageInfo(page, listCount, 10, 5);
+		// 페이징 처리 된 리스트 조회
+		List<WProfile> writerList = commuDao.selectWriterList(conn, pi, w_name);
+		
+		Map<String, Object> returnMap = new HashMap<>();
+		
+		returnMap.put("pi", pi);
+		returnMap.put("writerList", writerList);
+		
+		return returnMap;
 	}
 
 	

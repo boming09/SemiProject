@@ -25,16 +25,18 @@ public class Myreview {
 	private String mtitle;		
 	private String mcontent;		
 	private int mwriter;				// user_no 참조 값
-	private String userName;			// member 테이블 조인 결과 값
+	private String user_nickname;		// member 테이블 조인 결과 값
 	private int mcount;
 	private Date create_Date;
 	private Date modify_Date;
 	private String status;
 	
+	
 	public Myreview() {}
 
+
 	public Myreview(int mid, int mtype, int category_id, String category_name, String mtitle, String mcontent,
-			int mwriter, String userName, int mcount, Date create_Date, Date modify_Date, String status) {
+			int mwriter, String user_nickname, int mcount, Date create_Date, Date modify_Date, String status) {
 		super();
 		this.mid = mid;
 		this.mtype = mtype;
@@ -43,117 +45,141 @@ public class Myreview {
 		this.mtitle = mtitle;
 		this.mcontent = mcontent;
 		this.mwriter = mwriter;
-		this.userName = userName;
+		this.user_nickname = user_nickname;
 		this.mcount = mcount;
 		this.create_Date = create_Date;
 		this.modify_Date = modify_Date;
 		this.status = status;
 	}
+
 
 	public int getMid() {
 		return mid;
 	}
 
+
 	public void setMid(int mid) {
 		this.mid = mid;
 	}
+
 
 	public int getMtype() {
 		return mtype;
 	}
 
+
 	public void setMtype(int mtype) {
 		this.mtype = mtype;
 	}
+
 
 	public int getCategory_id() {
 		return category_id;
 	}
 
+
 	public void setCategory_id(int category_id) {
 		this.category_id = category_id;
 	}
+
 
 	public String getCategory_name() {
 		return category_name;
 	}
 
+
 	public void setCategory_name(String category_name) {
 		this.category_name = category_name;
 	}
+
 
 	public String getMtitle() {
 		return mtitle;
 	}
 
+
 	public void setMtitle(String mtitle) {
 		this.mtitle = mtitle;
 	}
+
 
 	public String getMcontent() {
 		return mcontent;
 	}
 
+
 	public void setMcontent(String mcontent) {
 		this.mcontent = mcontent;
 	}
+
 
 	public int getMwriter() {
 		return mwriter;
 	}
 
+
 	public void setMwriter(int mwriter) {
 		this.mwriter = mwriter;
 	}
 
-	public String getUserName() {
-		return userName;
+
+	public String getUser_nickname() {
+		return user_nickname;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+
+	public void setUser_nickname(String user_nickname) {
+		this.user_nickname = user_nickname;
 	}
+
 
 	public int getMcount() {
 		return mcount;
 	}
 
+
 	public void setMcount(int mcount) {
 		this.mcount = mcount;
 	}
+
 
 	public Date getCreate_Date() {
 		return create_Date;
 	}
 
+
 	public void setCreate_Date(Date create_Date) {
 		this.create_Date = create_Date;
 	}
+
 
 	public Date getModify_Date() {
 		return modify_Date;
 	}
 
+
 	public void setModify_Date(Date modify_Date) {
 		this.modify_Date = modify_Date;
 	}
+
 
 	public String getStatus() {
 		return status;
 	}
 
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
 
 	@Override
 	public String toString() {
 		return "Myreview [mid=" + mid + ", mtype=" + mtype + ", category_id=" + category_id + ", category_name="
 				+ category_name + ", mtitle=" + mtitle + ", mcontent=" + mcontent + ", mwriter=" + mwriter
-				+ ", userName=" + userName + ", mcount=" + mcount + ", create_Date=" + create_Date + ", modify_Date="
-				+ modify_Date + ", status=" + status + "]";
+				+ ", user_nickname=" + user_nickname + ", mcount=" + mcount + ", create_Date=" + create_Date
+				+ ", modify_Date=" + modify_Date + ", status=" + status + "]";
 	}
-
 
 
 }

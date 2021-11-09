@@ -33,16 +33,16 @@
                             <div><input type="text" name="title" required></div>
                         </td>         
                         <th class="wcommu_user">작성자</th>
-                        <td class="user"></td>
+                        <td class="user">${ member.user_nickname }</td>
                     </tr>
                     <tr class="liarea">
                     	<th class="wcommu_date">등록일</th>
-                        <td class="date"></td>                        
+                        <td class="date">${ member.create_Date }</td>                        
                     </tr>
                     <tr class="liarea">
                     	<th class="wcommu_date">분류</th>
                         <td class="date">
-                        <input type="text" name="category" required></td>
+                        <input type="text" name="category" required>${ member.category_name }</td>
                     </tr>
                                       
                     <tr class="liarea2">
@@ -55,7 +55,7 @@
                 </table>
             </div>
             <div class="wcommu_btn">
-                <button type="button" onclick="location.href='${ contextPath }/mypagemyreview'">취소</button>
+                <button type="button" onclick="location.href='${ contextPath }/mypagemyreview'">돌아가기</button>
                 <button type="sumbit">등록하기</button>
             </div>
             </form>           

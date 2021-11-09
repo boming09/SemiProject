@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +33,7 @@
                             <div> ${ myreview.mtitle }</div>
                         </td>         
                         <th class="wcommu_user">작성자</th>
-                        <td class="user"> ${ myreview.userName }</td>
+                        <td class="user">${ myreview.user_nickname }</td>
                     </tr>
                     <tr class="liarea">
                     	<th class="wcommu_date">등록일</th>
@@ -52,8 +53,12 @@
             </div>
                        
             <div class="wcommu_btn">
-                <button type="button" onclick="location.href='${ contextPath }/mypagemyreview'">취소</button>
-                <button type="submin">수정하기</button>
+                <button type="button" onclick="location.href='${ contextPath }/mypagemyreview'">돌아가기</button>
+                <!-- 이게시글을 쓴 사람과 로그인한 유저가 같아 야한다 -->
+                <c:if test="${ loginUser.userNo == myreview.mwriter }">
+                <button type="button" onclick="updateMyreviewView();">수정하기</button>
+                <button type="button" onclick="deleteMyreview();">삭제하기</button>
+                </c:if>
             </div>
 		</div>
 		
@@ -63,5 +68,24 @@
 	
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	
+	<c:if test="${ loginUser.userNo == myreview.mwriter }">
+	<form name="myreviewForm" method="post">
+		<input type="hidden" name="mid" value="${ myreview.mid }">
+	</form>
+	<script>
+		function updateMyreviewView(){
+			document.forms.myreviewForm.action = "${contextPath}/myreview/updateView";
+			document.forms.myreviewForm.submit();
+		}
+		
+		function deleteMyreview(){
+			if(confirm("이 게시글을 삭제하시겠습니까?")){
+				document.forms.myreviewForm.action = "${contextPath}/myreview/delete";
+				document.forms.myreviewForm.submit();
+			}
+		}
+	</script>
+	</c:if>
 </body>
 </html>

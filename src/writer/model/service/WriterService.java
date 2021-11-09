@@ -1,9 +1,18 @@
 package writer.model.service;
 
-import static common.JDBCTemplate.*;
-import java.sql.Connection;
+import static common.JDBCTemplate.close;
+import static common.JDBCTemplate.commit;
+import static common.JDBCTemplate.getConnection;
+import static common.JDBCTemplate.rollback;
 
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import book.model.vo.Book;
 import member.model.vo.Member;
+import notice.model.vo.PageInfo;
 import writer.model.dao.WriterDao;
 import writer.model.vo.WProfile;
 import writer.model.vo.WriterInfo;
@@ -11,18 +20,6 @@ import writer.model.vo.WriterInfo;
 public class WriterService {
 	
 	WriterDao writerDao = new WriterDao();
-	
-	// 작가 회원 정보 가져오기(등급 20 => 이건 로그인 후 마이페이지 버튼 클릭시 걸러줌)
-	public WriterInfo selectWriter(int user_no) {
-		Connection conn = getConnection();
-		
-		WriterInfo writer = writerDao.selectWriter(conn, user_no);
-		
-		//조회기 때문에 커밋 롤백 필요 없음
-		close(conn);		
-		
-		return writer;
-	}
 	
 	// 작가 프로필 + 자기소개 들고오기(회원번호)
 	public WProfile selectWProfile(int user_no) {
@@ -95,5 +92,61 @@ public class WriterService {
 		
 		return writer;
 	}
+
+	// 작가 회원 탈퇴
+	public int deleteInfo(int user_no) {
+		Connection conn = getConnection();
+		
+		int result = writerDao.deleteInfo(conn, user_no);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+
+	// 작가 내도서 리스트
+	public Map<String, Object> selectWBookList(int page, int user_no) {
+		Connection conn = getConnection();
+	
+		PageInfo pi = null;
+		
+		// 1. 도서 총 개수 구하기
+		int listCount = writerDao.getListCount(conn, user_no);
+		// 2. PageInfo 객체 만들기
+		pi = new PageInfo(page, listCount, 5, 10);
+		// 3. 도서 리스트 구하기		
+		List<Book> wbookList = writerDao.selectWBookList(conn, pi, user_no);
+		
+		Map<String, Object> returnMap = new HashMap<>();
+		
+		returnMap.put("pi", pi);
+		returnMap.put("wbookList", wbookList);
+				
+		close(conn);
+		
+		return returnMap;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
