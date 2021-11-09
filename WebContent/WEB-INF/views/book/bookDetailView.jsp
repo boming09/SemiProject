@@ -86,7 +86,7 @@ crossorigin="anonymous"></script>
                                     <c:if test="${ book.starScore == '10' }">checked</c:if>>
                                     <label for="p10">10</label>
                                   </span>
-                                  <output for="starScore"><b>${ book.starScore }</b>점</output>						
+                                  <output for="starScore"><b>&nbsp;${ book.avgScore }&nbsp;</b></output>						
                             </span>
                           </span>
                         <span class="reviewCount">
@@ -252,6 +252,7 @@ crossorigin="anonymous"></script>
                     </div>
                     <!-- 2 -->
                     <div class="reviewWrite">
+                   		<form method="post" name="reviewForm">
                         <div class="writeRating">
                             <span>평점&nbsp;</span>
                             <span class="starGrp">
@@ -292,6 +293,7 @@ crossorigin="anonymous"></script>
                             </div>
                             <button class="writeBtn" onclick="ajaxUse();">등록</button>
                         </div>
+                   	</form>
                     </div>
                     <!-- 3 reviewList -->
                     <div class="reviewContentList">
@@ -302,28 +304,28 @@ crossorigin="anonymous"></script>
                                     <span class="rating">
                                         <span class="star-input noneArea">
                                             <span class="input">
-                                                <input type="radio" name="star-input" value="1" id="p1">
+                                                <input type="radio" name="userNo" value="1" id="p1">
                                                 <label for="p1">1</label>
-                                                <input type="radio" name="star-input" value="2" id="p2">
+                                                <input type="radio" name="userNo" value="2" id="p2">
                                                 <label for="p2">2</label>
-                                                <input type="radio" name="star-input" value="3" id="p3">
+                                                <input type="radio" name="userNo" value="3" id="p3">
                                                 <label for="p3">3</label>
-                                                <input type="radio" name="star-input" value="4" id="p4">
+                                                <input type="radio" name="userNo" value="4" id="p4">
                                                 <label for="p4">4</label>
-                                                <input type="radio" name="star-input" value="5" id="p5" checked>
+                                                <input type="radio" name="userNo" value="5" id="p5" checked>
                                                 <label for="p5">5</label>
-                                                <input type="radio" name="star-input" value="6" id="p6">
+                                                <input type="radio" name="userNo" value="6" id="p6">
                                                 <label for="p6">6</label>
-                                                <input type="radio" name="star-input" value="7" id="p7">
+                                                <input type="radio" name="userNo" value="7" id="p7">
                                                 <label for="p7">7</label>
-                                                <input type="radio" name="star-input" value="8" id="p8">
+                                                <input type="radio" name="userNo" value="8" id="p8">
                                                 <label for="p8">8</label>
-                                                <input type="radio" name="star-input" value="9" id="p9">
+                                                <input type="radio" name="userNo" value="9" id="p9">
                                                 <label for="p9">9</label>
-                                                <input type="radio" name="star-input" value="10" id="p10">
+                                                <input type="radio" name="userNo" value="10" id="p10">
                                                 <label for="p10">10</label>
                                             </span>
-                                            <output for="star-input"><b></b></output>					
+                                            <output for="userNo"><b></b></output>					
                                         </span>
                                     </span>
                                 </div>
@@ -367,28 +369,28 @@ crossorigin="anonymous"></script>
                                     <span class="rating">
                                         <span class="star-input noneArea">
                                             <span class="input">
-                                                <input type="radio" name="star-input" value="1" id="p1">
+                                                <input type="radio" name="userNo2" value="1" id="p1">
                                                 <label for="p1">1</label>
-                                                <input type="radio" name="star-input" value="2" id="p2">
+                                                <input type="radio" name="userNo2" value="2" id="p2">
                                                 <label for="p2">2</label>
-                                                <input type="radio" name="star-input" value="3" id="p3">
+                                                <input type="radio" name="userNo2" value="3" id="p3">
                                                 <label for="p3">3</label>
-                                                <input type="radio" name="star-input" value="4" id="p4">
+                                                <input type="radio" name="userNo2" value="4" id="p4">
                                                 <label for="p4">4</label>
-                                                <input type="radio" name="star-input" value="5" id="p5">
+                                                <input type="radio" name="userNo2" value="5" id="p5">
                                                 <label for="p5">5</label>
-                                                <input type="radio" name="star-input" value="6" id="p6">
+                                                <input type="radio" name="userNo2" value="6" id="p6">
                                                 <label for="p6">6</label>
-                                                <input type="radio" name="star-input" value="7" id="p7">
+                                                <input type="radio" name="userNo2" value="7" id="p7">
                                                 <label for="p7">7</label>
-                                                <input type="radio" name="star-input" value="8" id="p8">
+                                                <input type="radio" name="userNo2" value="8" id="p8">
                                                 <label for="p8">8</label>
-                                                <input type="radio" name="star-input" value="9" id="p9" checked>
+                                                <input type="radio" name="userNo2" value="9" id="p9" checked>
                                                 <label for="p9">9</label>
-                                                <input type="radio" name="star-input" value="10" id="p10">
+                                                <input type="radio" name="userNo2" value="10" id="p10">
                                                 <label for="p10">10</label>
                                             </span>
-                                            <output for="star-input"><b></b></output>
+                                            <output for="userNo2"><b></b></output>
                                         </span>
                                     </span>
                                 </div>
