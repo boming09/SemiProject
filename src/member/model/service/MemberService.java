@@ -93,6 +93,16 @@ public class MemberService {
 		return result;
 	}
 
+	public Member searchId(String userName, String userEmail) {
+		Connection conn = getConnection();
+		
+		Member result = memberDao.searchId(conn, userName, userEmail);
+		
+		close(conn);
+				
+		return result;
+	}
+
 
 
 }

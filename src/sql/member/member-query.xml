@@ -32,8 +32,8 @@
 				, USER_PWD
 				, USER_NAME
 				, GENDER
-				, USER_EMAIL
 				, USER_PHONE
+				, USER_EMAIL
 				, USER_ADDRESS
 				, USER_GRADE
 				, ENROLL_DATE
@@ -103,6 +103,14 @@
 				MEMBER
 			SET STATUS = 'N'
 		  WHERE USER_NO = ?
+	</entry>
+	
+	<entry key="searchId">
+		SEELCT
+			*
+		FROM MEMBER
+	   WHERE USER_NAME = ?
+	     AND USER_EMAIL = ?
 	</entry>
 	
 	<entry key="idCheck">

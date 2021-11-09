@@ -8,6 +8,11 @@
 <!-- 외부 스타일 시트 -->
 <link href="${ contextPath }/resources/css/mypage/mypage-mycoupon2.css" rel="stylesheet">
 <title>내 쿠폰</title>
+<style>
+#cp{
+	display: inline-block;
+}
+</style>
 </head>
 <body>
 	<!-- 메뉴바 -->
@@ -39,13 +44,13 @@
                 <div class="area2_center">
                 	봄숲 쿠폰<br>
                 	상품금액 : <label class="bookware"></label> - 할인금액 : <label class="disamount"></label><br>
-                	<input type="checkbox"> 선택 안 함
+                	<input type="radio" name="cp" id="cp"> 선택 안 함
                 </div>
                 <div class="coupon_center">
 	                <div class="coupon_no">
 	                	<div class="left">
 	                		<div class="left_ckeck">
-	                			<input type="checkbox">
+	                			<input type="radio" name="cp" id="cp">
 	                		</div>
 	                		<div class="left_coupon">
 	                			<h4>신규 가입 할인 쿠폰</h4>                			

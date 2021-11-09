@@ -16,6 +16,11 @@
 <body>
 	<!-- 메뉴바 -->
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>    
+        
+        <form name="searchFrm">
+        	<input type="hidden" name="userName">
+        	<input type="hidden" name="userEmail">
+        </form>
         <div class="id0">
         <div class="id1">
             	아이디 찾기
@@ -56,23 +61,33 @@
 	<jsp:include page="/WEB-INF/views/member/footer.jsp" />
 	
 	<script>
-		function id_search(){
-			var frm = document.idfindscreen;
-			
-			if(frm.userName.value.length < 1){
-				alert("이름을 입력해주세요");
+		function searchId(){
+			var userName = document.getElementById("userName").value;
+			var userEmail = document.getElementById("userEmail").value;
+			if(userName == "" && userEmail == ""){
+				alert("이름과 이메일을 입력해주세요.")
 				return;
 			}
 			
-			if(frm.userEmail.value.length < 1){
-				alert("이메일을 입력해주세요.")
-				return;
-			}
+			var url = "/id";
 			
-			frm.method="post";
-			frm.action="/WEB-INF/views/member/id2.jsp";
-			frm.submit();
+			var title="searchId";
+			
+			var status = "left=50%, top=50%, height=400px, menubar-no, status=no, scrollbar=yes";
+			
+			var popup = window.open("", title, status);
+			
+			searchFrm.userName.value=userName;
+			searchFrm.userEmail.value=userEmail;
+			
+			searchFrm.target = title;
+			searchFrm.action = url;
+			searchFrm.method="post";
+			
+			searchFrm.submit();			
 		}
 	</script>
+	
+	
 </body>
 </html>

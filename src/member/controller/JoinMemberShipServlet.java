@@ -48,8 +48,8 @@ public class JoinMemberShipServlet extends HttpServlet {
 		String userPwd = request.getParameter("userPwd");
 		String userName = request.getParameter("userName");
 		String gender = request.getParameter("gender");
-		String userEmail = request.getParameter("email");
 		String userPhone = request.getParameter("phone");
+		String userEmail = request.getParameter("email");
 		String[] addressArr = request.getParameterValues("address");
 		
 		String address = "";
