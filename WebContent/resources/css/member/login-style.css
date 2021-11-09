@@ -529,6 +529,21 @@ footer {
 	text-align : center;
 }
 
+#idUserName{
+	color : red;
+	text-align : center;
+	font-size: 15px;
+}
+
+#idUserId{
+	text-align : center;
+}
+
+#idButton{
+	margin-left : 70px;
+	margin-top : 20px;
+}
+
 
 /*--------------------------------------------------------------------*/
 footer {

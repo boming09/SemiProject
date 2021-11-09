@@ -95,6 +95,14 @@ public class MemberService {
 		return result;
 	}
 
+	public Member searchId(String userName, String userEmail) {
+		Connection conn = getConnection();
+		
+		Member result = memberDao.searchId(conn, userName, userEmail);
+		
+		close(conn);
+				
+
 	public List<Member> nSelectList() {
 		Connection conn = getConnection();
 		List<Member> memberList = memberDao.nSelectList(conn);
@@ -168,6 +176,7 @@ public class MemberService {
 		
 		close(conn);
 		
+
 		return result;
 	}
 
