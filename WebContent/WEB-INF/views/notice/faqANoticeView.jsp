@@ -103,7 +103,7 @@
 	                    <li class="faq_icon">▼</li>
 	                </ul>
 	                <div class="total_a">
-	                	<div class="total_answer">${ faq.reply }</div>
+	                	<div class="total_answer"><p style="white-space: pre=line;">${ faq.reply }</p></div>
 	                	<div class="total_service">
 	                		<img src="${ contextPath }/resources/images/notice/callcenter.png">
 	                		<p>추가로 자세한 상담을 원하신다면 1:1문의를 이용해주세요</p>
@@ -120,7 +120,7 @@
 	            	<li>
 					<c:choose>
 						<c:when test="${ pi.page > 1 }">
-							<a href="${ contextPath }/faq?page=${ pi.page - 1}">&lt;</a>
+							<a href="${ contextPath }/faqA?page=${ pi.page - 1}">&lt;</a>
 						</c:when>
 						<c:otherwise>
 							<a href="#">&lt;</a>
@@ -136,7 +136,7 @@
 									<a href="#" class="current_page">${ p }</a>
 								</c:when>
 								<c:otherwise>
-									<a href="${ contextPath }/faq?page=${ p }">${ p }</a>
+									<a href="${ contextPath }/faqA?page=${ p }">${ p }</a>
 								</c:otherwise>
 							</c:choose>
 						</li>
@@ -146,7 +146,7 @@
 					<li>
 						<c:choose>
 							<c:when test="${ pi.page < pi.maxPage }">
-								<a href="${ contextPath }/faq?page=${ pi.page + 1}">&gt;</a>
+								<a href="${ contextPath }/faqA?page=${ pi.page + 1}">&gt;</a>
 							</c:when>
 							<c:otherwise>
 								<a href="#">&gt;</a>
@@ -197,40 +197,22 @@
 			$('.btype').find('.a10').hide();
 			$('.btype').find('.a14').hide();
 		} 
-		
-	
 		$(document).on('change', '.atype', bChange);
 		function bChange() {
 			if($(this).val() == 0) {
-				$('.btype').val(0);
-				$('.btype').find('.a1').hide();
-				$('.btype').find('.a6').hide();
-				$('.btype').find('.a10').hide();
-				$('.btype').find('.a14').hide();
+				//location.href="${ contextPath }/faqA?atype=1";
+				
 			} else if($(this).val() == 1) {
-				$('.btype').val(0);
-				$('.btype').find('.a1').show();
-				$('.btype').find('.a6').hide();
-				$('.btype').find('.a10').hide();
-				$('.btype').find('.a14').hide();
+				location.href="${ contextPath }/faqA?atype=1";
+				
 			} else if($(this).val() == 6) {
-				$('.btype').val(0);
-				$('.btype').find('.a1').hide();
-				$('.btype').find('.a6').show();
-				$('.btype').find('.a10').hide();
-				$('.btype').find('.a14').hide();
+				location.href="${ contextPath }/faqB?atype=6";
+				
 			} else if($(this).val() == 10) {
-				$('.btype').val(0);
-				$('.btype').find('.a1').hide();
-				$('.btype').find('.a6').hide();
-				$('.btype').find('.a10').show();
-				$('.btype').find('.a14').hide();
+				location.href="${ contextPath }/faqC?atype=10";
+				
 			} else {
-				$('.btype').val(0);
-				$('.btype').find('.a1').hide();
-				$('.btype').find('.a6').hide();
-				$('.btype').find('.a10').hide();
-				$('.btype').find('.a14').show();
+				location.href="${ contextPath }/faqD?atype=14";
 			}
 		}
 		
