@@ -29,30 +29,29 @@
                     <li>봄숲 에서는 E-Mail주소로 로그인할 수 있습니다.<br></li>
                     <li>이름과 E-Mail 주소를 입력 후 "가입 여부 확인하기"<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        버튼을 클릭해 주시면 가입 여부를 알려드립니다.</li><br>
+                       	 버튼을 클릭해 주시면 가입 여부를 알려드립니다.</li><br>
                 </ul>                
                 <div class="topline">
                 </div>
                 <br>
-                <form name="idfindscreen" method="post">
+                <!-- <form name="idfindscreen" action="<%= request.getContextPath() %>/searchid"
+				method="post" onsubmit="return searchId();">
+                -->
                 <div class="id3">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <label>이름</label> <input type="text" name="userName" class="id1text" size="10"><br><br>
                     <label>E-mail 주소</label> <input type="text" name="userEmail" class="id1text" size="10"><br><br>
-                    <a href="id2"><button id="Confirmbut" name="enter" onClick="id_search();">가입여부 확인하기</button></a><br>
+                    <a href="searchid">
+                    <button id="searchIdUpdateForm">가입여부 확인하기</button>
+                    </a><br>
                 </div>
                 </form>
                 <br><div class="topline">
                 </div><br>
-                &nbsp;&nbsp;&nbsp;<label>고객센터 1544 - 0000</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;
-              
+                <label class="servicec">고객센터 1544 - 0000</label>
+                              
                 <a href="emailconsulting"><button id="emailquestion">E-mail로 문의하기</button></a><br>
-              
-                
+                              
                 <label id="idnologin">로그인 필요 없음</label>
             </div>
         </div> 
@@ -86,6 +85,26 @@
 			
 			searchFrm.submit();			
 		}
+		
+		// 사용자 입력 값 유효성 검사용 함수
+		function validate(){
+			return true;
+		}
+		
+		/*
+		// 비밀번호 변경 팝업창 호출
+		function openPopup(url, title, width, height) {
+			
+			var left = (document.body.clientWidth/2)-(width/2);
+			//left += window.screenLeft;	// 듀얼 모니터
+			var top = (screen.availHeight/2)-(height/2);
+			
+			var options = "width="+width+",height="+height+",left="+left+",top="+top;
+			
+			window.open(url, title, options);
+		}
+		*/
+		
 	</script>
 	
 	
