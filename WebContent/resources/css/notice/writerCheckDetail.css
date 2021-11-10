@@ -88,8 +88,9 @@ td {
 .writer {
     width: 18%;
 }
-.ocontent {
+.wcontent {
     width: 88%;
+    vertical-align: top;
 }
 
 /* 테두리 */

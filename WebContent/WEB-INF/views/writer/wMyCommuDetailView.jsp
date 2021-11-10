@@ -20,18 +20,12 @@
 	
 	<div class="csarea wrapper">
 		<!-- cs 카테고리 -->
-		<jsp:include page="/WEB-INF/views/notice/csCategory.jsp" />
+		<jsp:include page="/WEB-INF/views/writer/wmyCategory.jsp" />
 		
 		<div class="content">
             <header class="commu_header">
                 <div>소통게시판</div>
             </header>
-            <div class="commu_ment">
-                <ul>
-                    <li>이 게시판은 작가와 소통할 수 있는 봄숲만의 특별한 게시판 입니다.</li>
-                    <li>작가에게 그동안 궁금했던 질문들을 직접 질문해 보세요.</li>
-                </ul>
-            </div>
             
             <div class="commu_area">소통 내역</div>
             <div class="commu_conarea">
@@ -57,10 +51,8 @@
             
                        
             <div class="commu_btn">
-                <button type="button" onclick="location.href='${ contextPath }/commu'">취소</button>
-                <c:if test="${ loginUser.userNo == commu.user_no }">
-	                <button type="button" onclick="location.href='#'">수정하기</button>
-                </c:if>
+                <button type="button" onclick="location.href='${ contextPath }/w-commu'">취소</button>
+           		<button type="button" onclick="location.href='${ contextPath }/w-commu/insert?commu_no=${ commu.commu_no }'">답변작성</button>
             </div>
            
             

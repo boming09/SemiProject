@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%
+	pageContext.setAttribute("newReply", "\n");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +44,7 @@
                     </tr>         
                     <tr class="liarea2">
                         <th class="one_content">내용</th>
-                        <td class="ocontent" colspan="3">${ one.ocontent }</td>
+                        <td class="ocontent" colspan="3">${ fn:replace(one.ocontent, newReply, '<br>')}</td>
                     </tr>
                     <tr class="liarea3">
                         <th class="one_file">첨부파일</th>

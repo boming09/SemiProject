@@ -177,17 +177,6 @@
     font-weight: bold;
 }
 
-/* 
-.board_list>ul.last {
-    border: 0;
-}
-*/
-
-/* 이건 분류영역 따로 지정 */
-/* .faq_type {
-	width : 20%;
-	text-align: right;	
-} */
 .faq_q {
 	width : 95%;	
 	text-align: left;

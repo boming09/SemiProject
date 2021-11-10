@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%
+	pageContext.setAttribute("newReply", "\n");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +47,7 @@
                     </tr>         
                     <tr class="liarea2">
                         <th class="wc_content">내용</th>
-                        <td class="wcontent" colspan="3">${ wcheck.wcontent }</td>
+                        <td class="wcontent" colspan="3">${ fn:replace(wcheck.wcontent, newReply, '<br>')}</td>
                     </tr>
                     <tr class="">
                     	<th class="wc_book">MY도서</th>
