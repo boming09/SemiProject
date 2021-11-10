@@ -446,6 +446,30 @@ public class CommuDao {
 	}
 
 
+	// 작가 답변 insert
+	public int updateWCommu(Connection conn, int commu_no, String reply) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = commuQuery.getProperty("updateWCommu");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, reply);
+			pstmt.setInt(2, commu_no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}	
+		
+		return result;
+	}
+
+
 
 	
 	

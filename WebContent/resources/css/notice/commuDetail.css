@@ -106,6 +106,34 @@ th, td {
     border-bottom: 1px solid lightgray;
 }
 
+/* 답변 영역 */
+.commu_reply {
+    border-bottom: 1px solid lightgray;
+    margin: 20px 30px 10px 30px;
+    padding-left : 10px;
+    padding-bottom : 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+.reply {
+	display : flex;
+	justify-content :center;
+	margin: 0px 30px 10px 30px;
+	border-bottom: 1px solid lightgray;
+}
+
+.reply div {
+	border: 1px solid lightgray;
+	margin-bottom : 10px;
+    width: 100%;
+    padding : 10px;
+    font-size: 0.95rem;
+    vertical-align: top;
+    line-height: 20px;
+    padding-bottom : 50px;
+}
+
+
 /* 취소/답변작성 버튼 */
 .commu_btn {
     display : flex;
