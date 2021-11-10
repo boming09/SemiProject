@@ -20,6 +20,14 @@ public class Search {
 		this.searchValue = searchValue;
 		this.sort = sort;
 	}
+	
+	public Search(String searchCondition, String searchValue, String sort, String category) {
+		super();
+		this.searchCondition = searchCondition;
+		this.searchValue = searchValue;
+		this.sort = sort;
+		this.category = category;
+	}
 
 	public String getSearchCondition() {
 		return searchCondition;

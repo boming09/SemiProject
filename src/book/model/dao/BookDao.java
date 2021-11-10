@@ -595,7 +595,16 @@ public class BookDao {
 		
 		return bookList;
 	}
-//----------------------------------------------------------------------------------
+	
+	// 검색&카테고리&정렬한 도서 목록
+	public List<Book> selectCategorySortBookList(Connection conn, PageInfo pi, Search search) {
+		
+		return null;
+	}
+	
+	
+	
+//----- Detail -----------------------------------------------------------------------------
 	// 도서 상세 조회
 	public Book selectBook(Connection conn, int bid) {
 		PreparedStatement pstmt = null;
@@ -669,5 +678,5 @@ public class BookDao {
 		}
 		return replyList;
 	}
-
+	
 }
