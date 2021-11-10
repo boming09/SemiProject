@@ -66,7 +66,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                             <tr>
                                 <td class="book_img">
                                   	<div class="img_wrap" onclick="detailView(${ book.bid })">
-                                        <img src="${ contextPath }/resources/images/book/${ book.bimg }" alt="도서 이미지">
+                                        <img src="${ contextPath }${ book.bimg }" alt="도서 이미지">
                                     </div>
                                 </td>
                                 <td class="book_info">
