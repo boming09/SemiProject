@@ -250,7 +250,7 @@ crossorigin="anonymous"></script>
                     </div>
                     <!-- 2 -->
                     <div class="reviewWrite">
-                   		<form method="post" name="reviewForm">
+                   		<form method="post" name="reviewForm" action="${ contextPath }/reply/insert">
                         <div class="writeRating">
                             <span>평점&nbsp;</span>
                             <span class="starGrp">
@@ -277,19 +277,20 @@ crossorigin="anonymous"></script>
                                         <input type="radio" name="inputScore" value="10" id="p10">
                                         <label for="p10">10</label>
                                     </span>
-                                    <output for="inputScore"><b></b></output>						
+                                    <output for="inputScore"><b>9</b></output>						
                                 </span>
                             </span>
                         </div>
                         <div class="writeArea_wrap">
                             <div class="writeArea">
-                                <textarea id="replyCont" rows="5" cols="70" style="resize:none;" maxlength="149" 
+                                <textarea id="replyCont" name="replyCont" rows="5" cols="70" style="resize:none;" maxlength="149" 
                                 placeholder="한글 기준 150자까지 작성 가능" onkeydown="calc()" onkeyup="calc()" onkeypress="calc()"></textarea>
                                 <span class="wordCount">
                                     <input type="number" id="count" value="0" min="0" max="150" readonly>/150
                                 </span>
                             </div>
-                            <button class="writeBtn" onclick="addReply(${ book.bid });">등록</button>
+                            <input type="hidden" name="bid" value="${ book.bid }">
+                            <button class="writeBtn" type="submit">등록</button>
                         </div>
                    	</form>
                     </div>
