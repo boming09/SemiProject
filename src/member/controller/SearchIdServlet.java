@@ -9,21 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.model.dao.MemberDao;
 import member.model.service.MemberService;
 import member.model.vo.Member;
 
 /**
- * Servlet implementation class IdServlet
+ * Servlet implementation class SearchIdServlet
  */
-@WebServlet("/id")
-public class IdServlet extends HttpServlet {
+@WebServlet("/searchid")
+public class SearchIdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IdServlet() {
+    public SearchIdServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,25 +31,11 @@ public class IdServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// request.setCharacterEncoding("utf-8");
+		// 팝업창 화면 보여주기
 		
-		// String userName = request.getParameter("userName");
-		// String userEmail = request.getParameter("userEmail");
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/searchIdForm.jsp");
+		view.forward(request, response);
 		
-		// Member member = MemberService.searchId(userName, userEmail);
-		
-		//if(member != null) {
-		// 로그인 화면에서 아이디 찾기 클릭시 단순 이동
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/id.jsp");
-		view.forward(request, response);		
-		
-		/*
-		} else {
-			request.setAttribute("message", "아이디 찾기에 실패하였습니다.<br> 정보를 다시 확인해 주세요.");
-			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/errorpage.jsp");
-			view.forward(request, response);
-		}
-		*/
 	}
 
 	/**
@@ -64,11 +49,8 @@ public class IdServlet extends HttpServlet {
 		
 		Member member = new MemberService().searchId(userName, userEmail);
 		
-		System.out.println("member : " + member);
-		
 		if(member != null) {
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/searchIdForm.jsp");
-		request.setAttribute("member", member);
 		view.forward(request, response);		
 		 
 		} else {
@@ -76,5 +58,6 @@ public class IdServlet extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/errorpage.jsp");
 			view.forward(request, response);
 		}
-	}	
+	}
+
 }

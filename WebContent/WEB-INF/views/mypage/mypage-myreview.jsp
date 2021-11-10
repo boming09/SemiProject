@@ -55,6 +55,7 @@
                         <li class="review_date">등록일</li>
                         <li class="review_status">평점</li>
                     </ul>
+                    <c:if test="${ !empty loginUser }">
                 	<c:forEach var="review" items="${ myreviewList }">
                 	<ul class="review_list" onclick="detailView(${ review.mid })">
                 		<li class="review_no">${ review.mid }</li>
@@ -75,6 +76,7 @@
                 		<li class="review_status"></li>
                 	</ul>
                     </c:forEach>
+                    </c:if>
                     <!-- 반복문 --> 
                     <!-- 가데이터 -->
                     <!-- 

@@ -103,7 +103,7 @@ tr, th, td {
 }
 
 #pwdUpdateBtn{
-	width : 150px;
+	width : 90px;
 	height : 30px;
 	background: #497d42;
     color: white;
@@ -113,7 +113,7 @@ tr, th, td {
 }
 
 .tb0{
-	width : 150px;
+	width : 90px;
 	height : 30px;
 	background: #497d42;
     color: white;
@@ -176,6 +176,14 @@ tr, th, td {
     padding-left: 10px;
 }
 
+/* 성별 */
+.tdgender {
+	padding-left: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    height : 40px;
+}
+
 .postcodify_address{
 	border : 1px solid black;
 	border-radius : 10%;
@@ -197,12 +205,23 @@ tr, th, td {
 }
 
 #postcodify_search_button{
-	width : 150px;
+	width : 90px;
 	height : 30px;
 	background: #497d42;
     color: white;
     font-weight: bold;
     border-radius: 15px; 
+}
+
+/* 서재 닉네임 버튼 */
+#nicknameCheck{
+	width: 90px;
+    height: 30px;
+    background: #497d42;
+    color: white;
+    font-weight: bold;
+    margin-left: 15px;
+    border-radius: 15px;
 }
 
 /* 수정하기 버튼 */
