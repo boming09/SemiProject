@@ -601,7 +601,7 @@ public class BookDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = bookQuery.getProperty("selectBook");
-		Book book = null;
+		Book book = new Book();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -654,9 +654,10 @@ public class BookDao {
 				replyList.add(new Reply(rset.getInt("review_no")
 									  , rset.getInt("book_id")
 									  , rset.getInt("user_no")
+									  , rset.getString("user_id")
 									  , rset.getDate("create_date")
 									  , rset.getString("content")
-									  , rset.getDouble("rating")
+									  , rset.getInt("rating")
 									  , rset.getInt("ref_no")));
 			}
 			

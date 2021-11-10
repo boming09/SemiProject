@@ -35,7 +35,7 @@ crossorigin="anonymous"></script>
 
             <div class="topColLft"> <!-- top left -->
                 <div class="bookImgArea">   <!-- book image -->
-                    <img name="bookname" src="${contextPath}/resources/images/book/${ book.bimg }" alt="book">
+                    <img name="bookname" src="${contextPath}${ book.bimg }" alt="book">
                 </div>
             </div>
             <div class="topColRft"> <!-- top right -->
@@ -181,7 +181,7 @@ crossorigin="anonymous"></script>
             <div class="info_img information">
                 <div class="infoSet"><h4>상세 이미지</h4></div>
                 <div class="infoSetCont_wrap">
-                    <div class="infoImgWrap"><img src="${contextPath}/resources/images/detailBook/${ book.filepath }" alt="detailView"></div>
+                    <div class="infoImgWrap"><img src="${ contextPath }${ book.filepath }" alt="detailView"></div>
                 </div>
             </div>
 
@@ -189,17 +189,15 @@ crossorigin="anonymous"></script>
                 <div class="infoSet"><h4>저자 소개</h4></div>
                 <div class="infoSetCont_wrap">
                     <div class="authCont">
-                        <div class="authImg"><img src="${contextPath}/resources/images/author/auth.jpg"></div>
+                        <%-- <div class="authImg"><img src="${contextPath}/resources/images/author/auth.jpg"></div> --%>
                         <div class="authTxtWrap">
                             <div class="authTit"><h5 class="authorName">${ book.author }</h5></div>
-                            <span class="authTxt">
-                                <p>${ book.aintro }</p>
-                            </span>
+                            <span class="authTxt"><p>${ book.aintro }</p> </span>
                         </div>
                     </div>
                 </div>
             </div>
-
+			<%-- sort --%>
             <div class="info_review information">
                 <div class="infoSet" id="review"><h4>회원 리뷰</h4></div>
                 <div class="infoSetCont_wrap">
@@ -246,7 +244,7 @@ crossorigin="anonymous"></script>
 		                                  <output for="starScore2"><b>${ book.starScore }</b>점</output>							
                                     </span>
                                 </span><!-- 별 -->
-                                <P class="bom_m">/10</P><!-- 10점 만점 -->
+                                <span class="bom_m">/10</span><!-- 10점 만점 -->
                             </div>
                         </div>
                     </div>
@@ -258,28 +256,28 @@ crossorigin="anonymous"></script>
                             <span class="starGrp">
                                 <span class="star-input">
                                     <span class="input">
-                                        <input type="radio" name="star-input" value="1" id="p1">
+                                        <input type="radio" name="inputScore" value="1" id="p1">
                                         <label for="p1">1</label>
-                                        <input type="radio" name="star-input" value="2" id="p2">
+                                        <input type="radio" name="inputScore" value="2" id="p2">
                                         <label for="p2">2</label>
-                                        <input type="radio" name="star-input" value="3" id="p3">
+                                        <input type="radio" name="inputScore" value="3" id="p3">
                                         <label for="p3">3</label>
-                                        <input type="radio" name="star-input" value="4" id="p4">
+                                        <input type="radio" name="inputScore" value="4" id="p4">
                                         <label for="p4">4</label>
-                                        <input type="radio" name="star-input" value="5" id="p5">
+                                        <input type="radio" name="inputScore" value="5" id="p5">
                                         <label for="p5">5</label>
-                                        <input type="radio" name="star-input" value="6" id="p6">
+                                        <input type="radio" name="inputScore" value="6" id="p6">
                                         <label for="p6">6</label>
-                                        <input type="radio" name="star-input" value="7" id="p7">
+                                        <input type="radio" name="inputScore" value="7" id="p7">
                                         <label for="p7">7</label>
-                                        <input type="radio" name="star-input" value="8" id="p8">
+                                        <input type="radio" name="inputScore" value="8" id="p8">
                                         <label for="p8">8</label>
-                                        <input type="radio" name="star-input" value="9" id="p9">
+                                        <input type="radio" name="inputScore" value="9" id="p9">
                                         <label for="p9">9</label>
-                                        <input type="radio" name="star-input" value="10" id="p10">
+                                        <input type="radio" name="inputScore" value="10" id="p10">
                                         <label for="p10">10</label>
                                     </span>
-                                    <output for="star-input"><b></b></output>						
+                                    <output for="inputScore"><b></b></output>						
                                 </span>
                             </span>
                         </div>
@@ -291,59 +289,75 @@ crossorigin="anonymous"></script>
                                     <input type="number" id="count" value="0" min="0" max="150" readonly>/150
                                 </span>
                             </div>
-                            <button class="writeBtn" onclick="ajaxUse();">등록</button>
+                            <button class="writeBtn" onclick="addReply(${ book.bid });">등록</button>
                         </div>
                    	</form>
                     </div>
                     <!-- 3 reviewList -->
+                    <c:if test="${ !empty book.replyList }">
+                   	<c:forEach var="reply" items="${ book.replyList }">
                     <div class="reviewContentList">
-                        <!-- c:forEach -->
                         <div class="reviewInfoGrp">
                             <div class="reviewInfoTop">
                                 <div class="cmt_rating">
                                     <span class="rating">
                                         <span class="star-input noneArea">
                                             <span class="input">
-                                                <input type="radio" name="userNo" value="1" id="p1">
+                                                <input type="radio" name="${ reply.rid }" value="1" id="p1"
+                                                <c:if test="${ reply.starScore == '1' }">checked</c:if>>
                                                 <label for="p1">1</label>
-                                                <input type="radio" name="userNo" value="2" id="p2">
+                                                <input type="radio" name="${ reply.rid }" value="2" id="p2"
+                                                <c:if test="${ reply.starScore == '2' }">checked</c:if>>
                                                 <label for="p2">2</label>
-                                                <input type="radio" name="userNo" value="3" id="p3">
+                                                <input type="radio" name="${ reply.rid }" value="3" id="p3"
+                                                <c:if test="${ reply.starScore == '3' }">checked</c:if>>
                                                 <label for="p3">3</label>
-                                                <input type="radio" name="userNo" value="4" id="p4">
+                                                <input type="radio" name="${ reply.rid }" value="4" id="p4"
+                                                <c:if test="${ reply.starScore == '4' }">checked</c:if>>
                                                 <label for="p4">4</label>
-                                                <input type="radio" name="userNo" value="5" id="p5" checked>
+                                                <input type="radio" name="${ reply.rid }" value="5" id="p5"
+                                                <c:if test="${ reply.starScore == '5' }">checked</c:if>>
                                                 <label for="p5">5</label>
-                                                <input type="radio" name="userNo" value="6" id="p6">
+                                                <input type="radio" name="${ reply.rid }" value="6" id="p6"
+                                                <c:if test="${ reply.starScore == '6' }">checked</c:if>>
                                                 <label for="p6">6</label>
-                                                <input type="radio" name="userNo" value="7" id="p7">
+                                                <input type="radio" name="${ reply.rid }" value="7" id="p7"
+                                                <c:if test="${ reply.starScore == '7' }">checked</c:if>>
                                                 <label for="p7">7</label>
-                                                <input type="radio" name="userNo" value="8" id="p8">
+                                                <input type="radio" name="${ reply.rid }" value="8" id="p8"
+                                                <c:if test="${ reply.starScore == '8' }">checked</c:if>>
                                                 <label for="p8">8</label>
-                                                <input type="radio" name="userNo" value="9" id="p9">
+                                                <input type="radio" name="${ reply.rid }" value="9" id="p9"
+                                                <c:if test="${ reply.starScore == '9' }">checked</c:if>>
                                                 <label for="p9">9</label>
-                                                <input type="radio" name="userNo" value="10" id="p10">
+                                                <input type="radio" name="${ reply.rid }" value="10" id="p10"
+                                                <c:if test="${ reply.starScore == '10' }">checked</c:if>>
                                                 <label for="p10">10</label>
                                             </span>
-                                            <output for="userNo"><b></b></output>					
+                                            <output for="${ reply.userNo }"><b>${ reply.starScore }</b></output>					
                                         </span>
                                     </span>
+                                    <div>
+                                    <%-- <c:if test="${ loginUser.userNo == reply.userNo }"> --%>
+					                <!-- <button type="button" onclick="updateBoardView();">수정하기</button>
+					                <button type="button" onclick="deleteBoard();">삭제하기</button> -->
+					                <%-- </c:if> --%>
+                                    </div>
                                 </div>
                                 <div class="cmt_cont">
-                                    <span class="txt_cont">
-					                                    노르웨이의 문학을 세계에 알린 공로를 인정받아 2013년 페르귄트상을,
-	                                  2015년 상트페테르부르크상을, 2016년 리버튼 공로상을 수상했다.
-					                                    몸이 열 개라도 모자랄 것 같은 작가 요 네스뵈는 그러나 뮤지션으로도 매우 활발히 활동하고 있다.
-					                                    실제로 그는 노르웨이의 록밴
-                                    </span>
+                                    <span class="txt_cont">${ reply.rcontent }</span>
                                 </div>
                             </div>
                             <div class="reviewInfoBot">
-                                <span class="txt_id">l*****3</span>
+                                <span class="txt_id">${ reply.userId }</span>
                                 <span class="txt_esc">|</span>
-                                <span class="txt_date">2021-10-28</span>
+                                <span class="txt_date">
+                                	<fmt:formatDate value="${ reply.createDate }" type="date" pattern="yyyy-MM-dd"/>
+                                </span>
                             </div>
                         </div>
+                        
+                        
                         <div class="authReply">작가 댓글 보기&nbsp;<i class="fas fa-caret-down"></i></div>
                         <div class="replyCmt">
                             <div class="cmt_cont">
@@ -361,69 +375,9 @@ crossorigin="anonymous"></script>
                             </div>
                         </div>
                     </div>
-                    <div class="reviewContentList">
-                        <!-- c:forEach -->
-                        <div class="reviewInfoGrp">
-                            <div class="reviewInfoTop">
-                                <div class="cmt_rating">
-                                    <span class="rating">
-                                        <span class="star-input noneArea">
-                                            <span class="input">
-                                                <input type="radio" name="userNo2" value="1" id="p1">
-                                                <label for="p1">1</label>
-                                                <input type="radio" name="userNo2" value="2" id="p2">
-                                                <label for="p2">2</label>
-                                                <input type="radio" name="userNo2" value="3" id="p3">
-                                                <label for="p3">3</label>
-                                                <input type="radio" name="userNo2" value="4" id="p4">
-                                                <label for="p4">4</label>
-                                                <input type="radio" name="userNo2" value="5" id="p5">
-                                                <label for="p5">5</label>
-                                                <input type="radio" name="userNo2" value="6" id="p6">
-                                                <label for="p6">6</label>
-                                                <input type="radio" name="userNo2" value="7" id="p7">
-                                                <label for="p7">7</label>
-                                                <input type="radio" name="userNo2" value="8" id="p8">
-                                                <label for="p8">8</label>
-                                                <input type="radio" name="userNo2" value="9" id="p9" checked>
-                                                <label for="p9">9</label>
-                                                <input type="radio" name="userNo2" value="10" id="p10">
-                                                <label for="p10">10</label>
-                                            </span>
-                                            <output for="userNo2"><b></b></output>
-                                        </span>
-                                    </span>
-                                </div>
-                                <div class="cmt_cont">
-                                    <span class="txt_cont">
-					                                        노르웨이의 문학을 세계에 알린 공로를 인정받아 2013년 페르귄트상을, 2015년 상트페테르부르크상을, 2016년 리버튼 공로상을 수상했다.
-					                                        몸이 열 개라도 모자랄 것 같은 작가 요 네스뵈는 그러나 뮤지션으로도 매우 활발히 활동하고 있다. 실제로 그는 노르웨이의 록밴
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="reviewInfoBot">
-                                <span class="txt_id">l*****3</span>
-                                <span class="txt_esc">|</span>
-                                <span class="txt_date">2021-10-28</span>
-                            </div>
-                        </div>
-                        <!-- 작가계정 : 답글 달기 button -->
-                        <div class="authReply">작가 댓글 보기&nbsp;<i class="fas fa-caret-down" onclick="closeMsg();"></i></div>
-                        <div class="replyCmt">
-                            <div class="cmt_cont">
-                                <span class="txt_cont">
-				                                        노르웨이의 문학을 세계에 알린 공로를 인정받아 2013년 페르귄트상을, 2015년 상트페테르부르크상을, 2016년 리버튼 공로상을 수상했다.
-				                                        몸이 열 개라도 모자랄 것 같은 작가 요 네스뵈는 그러나 뮤지션으로도 매우 활발히 활동하고 있다. 실제로 그는 노르웨이의 록밴
-                                </span>
-                            </div>
-                            <div class="reviewInfoBot">
-                                <span class="txt_id">${ book.author }&nbsp;<i class="fas fa-check-circle"></i></span>
-                                <span class="txt_esc">|</span>
-                                <span class="txt_date">2021-10-28</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- sort ... -->
+                    <!-- 작가 계정 답글 달기 버튼 ... -->
+                   </c:forEach>
+                  </c:if>
                 </div>
             </div>  
         </div>

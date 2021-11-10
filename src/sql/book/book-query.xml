@@ -812,7 +812,7 @@ SELECT
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 
-<!-- select Book -->
+<!-- SELECT BOOK -->
 <entry key="selectBook">
 SELECT
        BOOK_ID
@@ -839,17 +839,19 @@ SELECT
      JOIN B_CATEGORY USING(CATEGORY_ID)
     WHERE BOOK_ID = ?
 </entry>
-
+<!-- SELECT REPLY LIST -->
 <entry key="selectReplyList">
 	SELECT
-		   REVIEW_ID
+		   REVIEW_NO
 		 , BOOK_ID
 		 , USER_NO
+         , USER_ID
 		 , CREATE_DATE
 		 , CONTENT
 		 , RATING
 		 , REF_NO
 	FROM B_REVIEW
+    JOIN MEMBER USING(USER_NO)
    WHERE BOOK_ID = ?
 </entry>
 </properties>

@@ -6,9 +6,10 @@ public class Reply {
 	private int rid;			// 리뷰번호
 	private int bid;			// 도서번호
 	private int userNo;			// 작성자(MEMBER 참조 값)
+	private String userId;		// 작성자 ID
 	private Date createDate;	// 작성일
 	private String rcontent;	// 내용
-	private double avgScore;	// 평점
+	private int starScore;	// 평점
 	private int refRid;			// 참조리뷰번호
 //	REVIEW_NO	NUMBER
 //	BOOK_ID	NUMBER
@@ -18,20 +19,24 @@ public class Reply {
 //	RATING	NUMBER
 //	REF_NO	NUMBER
 	
-	public Reply(int rid, int bid, int userNo, Date createDate, String rcontent, double avgScore, int refRid) {
+	public Reply() {}
+
+	public Reply(int rid, int bid, int userNo, String userId, Date createDate, String rcontent, int starScore, int refRid) {
 		super();
 		this.rid = rid;
 		this.bid = bid;
 		this.userNo = userNo;
+		this.userId = userId;
 		this.createDate = createDate;
 		this.rcontent = rcontent;
-		this.avgScore = avgScore;
+		this.starScore = starScore;
 		this.refRid = refRid;
 	}
 
 	public int getRid() {
 		return rid;
 	}
+
 
 	public void setRid(int rid) {
 		this.rid = rid;
@@ -52,6 +57,14 @@ public class Reply {
 	public void setUserNo(int userNo) {
 		this.userNo = userNo;
 	}
+	
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
 	public Date getCreateDate() {
 		return createDate;
@@ -69,12 +82,12 @@ public class Reply {
 		this.rcontent = rcontent;
 	}
 
-	public double getAvgScore() {
-		return avgScore;
+	public int getStarScore() {
+		return starScore;
 	}
 
-	public void setAvgScore(double avgScore) {
-		this.avgScore = avgScore;
+	public void setStarScore(int starScore) {
+		this.starScore = starScore;
 	}
 
 	public int getRefRid() {
@@ -87,8 +100,9 @@ public class Reply {
 
 	@Override
 	public String toString() {
-		return "Reply [rid=" + rid + ", bid=" + bid + ", userNo=" + userNo + ", createDate=" + createDate
-				+ ", rcontent=" + rcontent + ", avgScore=" + avgScore + ", refRid=" + refRid + "]";
+		return "Reply [rid=" + rid + ", bid=" + bid + ", userNo=" + userNo + ", userId=" + userId + ", createDate="
+				+ createDate + ", rcontent=" + rcontent + ", starScore=" + starScore + ", refRid=" + refRid + "]";
 	}
+	
 	
 }
