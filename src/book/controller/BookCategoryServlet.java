@@ -38,14 +38,11 @@ public class BookCategoryServlet extends HttpServlet {
 		if(request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
-		
-		String category = request.getParameter("category");
-		String searchCondition = request.getParameter("searchCondition");
-		String searchValue = request.getParameter("searchValue");
+
 		Search search = new Search();
-		search.setSearchCondition(searchCondition);
-		search.setSearchValue(searchValue);
-		search.setCategory(category);
+		search.setSearchCondition(request.getParameter("searchCondition"));
+		search.setSearchValue(request.getParameter("searchValue"));
+		search.setCategory(request.getParameter("category"));
 		
 		Map<String, Object> map = new BookService().selectCategoryBookList(page, search);
 		List<String> categoryList = new BookService().categoryList(search);
@@ -55,8 +52,9 @@ public class BookCategoryServlet extends HttpServlet {
 		request.setAttribute("categoryList", categoryList);
 		
 		
-		System.out.println(map.get("bookList"));
+		// System.out.println(map.get("bookList"));
 		System.out.println(map.get("pi"));
+		
 		if(map != null) {
 			request.getRequestDispatcher("/WEB-INF/views/book/bookListView.jsp").forward(request, response);
 		}

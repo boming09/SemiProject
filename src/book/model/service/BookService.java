@@ -1,6 +1,7 @@
 package book.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -96,8 +97,7 @@ public class BookService {
 		Connection conn = getConnection();
 		
 		// 1. 게시글 총 개수 구하기
-		int listCount = bookDao.getCategoryBookListCount(conn, search);
-		
+		int listCount = bookDao.getListCount(conn, search);
 		// 2. PageInfo 객체 만들기
 		PageInfo pi = new PageInfo(page, listCount, 7, 7);
 		
@@ -120,13 +120,23 @@ public class BookService {
 		Connection conn = getConnection();
 		
 		// 1. 게시글 총 개수 구하기
-		int listCount = bookDao.getCategoryBookListCount(conn, search);
+		int listCount = bookDao.getListCount(conn, search);
 		
 		// 2. PageInfo 객체 만들기
 		PageInfo pi = new PageInfo(page, listCount, 7, 7);
 		
-		// 3. 검색 목록&카테고리&정렬 선택한 게시글 목록 조회
-		List<Book> bookList = bookDao.selectCategorySortBookList(conn, pi, search);
+		// 3. 검색&카테고리&정렬한 도서 목록
+		List<Book> bookList = new ArrayList<>();
+		
+		if(search.getSort().equals("popular")) {
+			bookList = bookDao.selectPopularList(conn, pi, search);
+		} else if(search.getSort().equals("new")) {
+			bookList = bookDao.selectNewList(conn, pi, search);
+		} else if(search.getSort().equals("highest")) {
+			bookList = bookDao.selectHighestList(conn, pi, search);
+		} else if(search.getSort().equals("lowest")) {
+			bookList = bookDao.selectLowestList(conn, pi, search);
+		}
 		
 		Map<String, Object> returnMap = new HashMap<>();
 		returnMap.put("pi", pi);
@@ -136,6 +146,4 @@ public class BookService {
 		
 		return returnMap;
 	}
-	
-	
 }
