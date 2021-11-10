@@ -49,13 +49,13 @@ public class BookSortListServlet extends HttpServlet {
 			search.setCategory(category);
 		}
 		
-		System.out.println(search);
+		// System.out.println(search);
 		
 		Map<String, Object> map = new BookService().selectSortList(page, search);
 		List<String> categoryList = new BookService().categoryList(search);
 		
-		System.out.println(map.get("bookList"));
-		System.out.println(map.get("pi"));
+		// System.out.println(map.get("bookList"));
+		// System.out.println(map.get("pi"));
 		
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("bookList", map.get("bookList"));
