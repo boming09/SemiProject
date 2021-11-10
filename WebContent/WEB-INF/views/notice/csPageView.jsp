@@ -27,34 +27,34 @@
                 <div class="ct-area1">
                     <div class="ct-top">주문/결제</div>
                     <ul class="ct-list">
-                        <li><a href="#" onclick="Atype2()">주문/주문확인</a></li>
-                        <li><a href="#">주문 변경</a></li>
-                        <li><a href="#">결제 정보</a></li>
-                        <li><a href="#">세금계산서/영수증</a></li>
+                        <li><a href="${ contextPath }/faqA?atype=1&btype=2">주문/주문확인</a></li>
+                        <li><a href="${ contextPath }/faqA?atype=1&btype=3">주문 변경</a></li>
+                        <li><a href="${ contextPath }/faqA?atype=1&btype=4">결제 정보</a></li>
+                        <li><a href="${ contextPath }/faqA?atype=1&btype=5">세금계산서/영수증</a></li>
                     </ul>
                 </div>
                 <div class="ct-area2">
                     <div class="ct-top">취소/교환/반품</div>
                     <ul class="ct-list">
-                        <li><a href="#">취소/취소환불</a></li>
-                        <li><a href="#">교환</a></li>
-                        <li><a href="#">반품/반품환불</a></li>
+                        <li><a href="${ contextPath }/faqB?atype=6&btype=7">취소/취소환불</a></li>
+                        <li><a href="${ contextPath }/faqB?atype=6&btype=8">교환</a></li>
+                        <li><a href="${ contextPath }/faqB?atype=6&btype=9">반품/반품환불</a></li>
                     </ul>
                 </div>
                 <div class="ct-area3">
                     <div class="ct-top">배송</div>
                     <ul class="ct-list">
-                        <li><a href="#">배송정보</a></li>
-                        <li><a href="#">해외배송</a></li>
-                        <li><a href="#">배송비</a></li>
+                        <li><a href="${ contextPath }/faqC?atype=10&btype=11">배송정보</a></li>
+                        <li><a href="${ contextPath }/faqC?atype=10&btype=12">해외배송</a></li>
+                        <li><a href="${ contextPath }/faqC?atype=10&btype=13">배송비</a></li>
                     </ul>
                 </div>
                 <div class="ct-area4">
                     <div class="ct-top">회원관리</div>
                     <ul class="ct-list">
-                        <li><a href="#">회원가입/탈퇴</a></li>
-                        <li><a href="#">회원정보 확인/변경</a></li>
-                        <li><a href="#">작가회원 인증</a></li>
+                        <li><a href="${ contextPath }/faqD?atype=14&btype=15">회원가입/탈퇴</a></li>
+                        <li><a href="${ contextPath }/faqD?atype=14&btype=16">회원정보 확인/변경</a></li>
+                        <li><a href="${ contextPath }/faqD?atype=14&btype=17">작가회원 인증</a></li>
                     </ul>
                 </div>
             </div>
@@ -66,10 +66,5 @@
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-	<script>
-		function Atype2() {
-			location.href="${ contextPath }/faqA?=" + 2;
-		}
-	</script>
 </body>
 </html>

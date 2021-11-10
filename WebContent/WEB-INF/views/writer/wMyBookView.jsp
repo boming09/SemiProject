@@ -41,7 +41,7 @@
 		                    <td class="wb_name">
 			                    <div class="wb_namearea" onclick="detailView(${ wbook.bid })">
 			                    	<a>
-				                        <img class="wb_img" src="${ contextPath }/resources/images/book/${ wbook.bimg }">
+				                        <img class="wb_img" src="${ contextPath }${ wbook.bimg }">
 				                        <span>${ wbook.btitle }</span>
 			                    	</a>
 			                    </div>

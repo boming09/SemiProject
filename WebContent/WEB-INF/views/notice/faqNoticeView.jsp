@@ -31,10 +31,10 @@
             <div class="typearea">
             	<div class="type_area">
 	                <select class="atype" name="atype" id="atype" >
-	                	<option value="0" class="a0">전체</option>
+	                	<option value="0" class="a0" selected>전체</option>
 	                    <c:forEach var="c" items="${ fcate }">
 	                    	<c:if test="${ c.fref_no == 0 }">
-		                    	<option value="${ c.fcate_no }" <c:if test="${ param.atype == c.fcate_no }">selected</c:if>>${ c.fcate_type }</option>
+		                    	<option value="${ c.fcate_no }">${ c.fcate_type }</option>
 	                    	</c:if>
 	                    </c:forEach>
 	                </select>
@@ -46,11 +46,6 @@
                 <div class="type_area">
 	                <select class="btype" name="btype" onchange="btypeChange()">
 	                	<option value="0" class="a0">전체</option>
-	                	<c:forEach var="c" items="${ fcate }">
-	                    	<c:if test="${ c.fref_no == param.atype }">
-		                    	<option value="${ c.fcate_no }" <c:if test="${ param.btype == c.fcate_no }">selected</c:if>>${ c.fcate_type }</option>
-	                    	</c:if>
-	                    </c:forEach>   
 	                </select>
 	                <div class="faqarrow">
 	                	<img src="${ contextPath }/resources/images/notice/faqarrow.png">
@@ -102,7 +97,7 @@
 	            	<li>
 					<c:choose>
 						<c:when test="${ pi.page > 1 }">
-							<a href="${ contextPath }/faqA?page=${ pi.page - 1}">&lt;</a>
+							<a href="${ contextPath }/faq?page=${ pi.page - 1}">&lt;</a>
 						</c:when>
 						<c:otherwise>
 							<a href="#">&lt;</a>
@@ -118,7 +113,7 @@
 									<a href="#" class="current_page">${ p }</a>
 								</c:when>
 								<c:otherwise>
-									<a href="${ contextPath }/faqA?page=${ p }">${ p }</a>
+									<a href="${ contextPath }/faq?page=${ p }">${ p }</a>
 								</c:otherwise>
 							</c:choose>
 						</li>
@@ -128,7 +123,7 @@
 					<li>
 						<c:choose>
 							<c:when test="${ pi.page < pi.maxPage }">
-								<a href="${ contextPath }/faqA?page=${ pi.page + 1}">&gt;</a>
+								<a href="${ contextPath }/faq?page=${ pi.page + 1}">&gt;</a>
 							</c:when>
 							<c:otherwise>
 								<a href="#">&gt;</a>
@@ -170,6 +165,7 @@
 			}
 		});	
 		
+	
 		$(document).on('change', '.atype', bChange);
 		function bChange() {
 			if($(this).val() == 0) {
@@ -185,10 +181,6 @@
 			}
 		}
 		
-		// btype 바뀔시
-		function btypeChange() {
-			location.href="${ contextPath }/faqA?atype=1&btype=" + $('.btype').val();
-		}
 	</script>
 	
 	<c:choose>

@@ -17,16 +17,16 @@ import notice.model.vo.Faq;
 import notice.model.vo.Fcategory;
 
 /**
- * Servlet implementation class FaqBNoticeServlet
+ * Servlet implementation class FaqNoticeServlet
  */
-@WebServlet("/faqB")
-public class FaqBNoticeServlet extends HttpServlet {
+@WebServlet("/faq")
+public class FaqNoticeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FaqBNoticeServlet() {
+    public FaqNoticeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,33 +39,25 @@ public class FaqBNoticeServlet extends HttpServlet {
 		List<Fcategory> fcate = new ArrayList<>();
 		fcate = new FaqService().selectCateList();
 		request.setAttribute("fcate", fcate);
-
+		
 		// top3 가져오기
-		int cate_no = Integer.parseInt(request.getParameter("btype"));
-		List<Faq> topList = null;
-		if(cate_no == 0) {
-			topList = new FaqService().selectBAlltopList();
-		} else {
-			topList = new FaqService().selectBtopList(cate_no);
-		}
+		List<Faq> topList = new FaqService().selectAlltopList();
 		request.setAttribute("topList", topList);
 		
 		// total List 가져오기
-		// faqB => category_no = 6 인거 = 안변함 
-		// 현재 페이지
+		// faq => category_no 전부 
 		int page = 1;
 		if(request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
 		
-		Map<String, Object> map = new FaqService().selectBList(page);
+		Map<String, Object> map = new FaqService().selectAllList(page);
 		
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("faqList", map.get("faqList"));
-
 		
-		// 취소/교환/반품
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/faqBNoticeView.jsp");
+		// 고객센터 FAQ-주문/결제 클릭시 화면 페이지로 단순 이동
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/faqNoticeView.jsp");
 		view.forward(request, response);
 	}
 
@@ -73,8 +65,7 @@ public class FaqBNoticeServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
 
 }

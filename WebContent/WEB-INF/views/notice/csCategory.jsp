@@ -28,18 +28,10 @@
 	        <!-- 어떤거 클릭했는지 정보 보내기 -->
 	        <div class="area1"><a class="ca-top" href="${ contextPath }/cs">FAQ</a>
 	            <ul class="ca-list">
-	                <li>
-	                	<a href="${ contextPath }/faqA">주문/결제</a>
-	                </li>
-	                <li onclick="faqB()">
-	                	<a>취소/교환/반품</a>
-	                </li>
-	                <li >
-	                	<a href="${ contextPath }/faqC">배송</a>
-	                </li>
-	                <li >
-	                	<a href="${ contextPath }/faqD">회원관리</a>
-	                </li>
+	                <li onclick="faqA()"><a>주문/결제</a></li>
+	                <li onclick="faqB()"><a>취소/교환/반품</a></li>
+	                <li onclick="faqC()"><a>배송</a></li>
+	                <li onclick="faqD()"><a>회원관리</a></li>
 	            </ul>
 	        </div>
 	        <div class="area2"><p class="ca-top">1:1 문의</p>
@@ -90,8 +82,17 @@
 	</c:choose>
 	
 	<script>
+		function faqA(){
+			location.href="${ contextPath}/faqA?atype=1&btype=0";
+		};
 		function faqB(){
-			location.href="${ contextPath}/faqB?atype=6";
+			location.href="${ contextPath}/faqB?atype=6&btype=0";
+		};
+		function faqC(){
+			location.href="${ contextPath}/faqC?atype=10&btype=0";
+		};
+		function faqD(){
+			location.href="${ contextPath}/faqD?atype=14&btype=0";
 		};
 	</script>
 </body>
