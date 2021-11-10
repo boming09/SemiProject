@@ -197,8 +197,15 @@
 		              JOIN MEMBER W ON(C.WRITER_NO = W.USER_NO)
 		              JOIN MEMBER M ON(M.USER_NO = C.USER_NO)
 		             WHERE C.WRITER_NO = ?
+		               AND C.STATUS = 'N'
 		             ORDER BY CREATE_DATE DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
+	<entry key="updateWCommu">
+		UPDATE COMMU
+		   SET REPLY = ?
+		     , STATUS = 'Y'
+		 WHERE COMMU_NO = ?
+	</entry>
 </properties>

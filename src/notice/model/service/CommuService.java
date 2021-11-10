@@ -147,6 +147,23 @@ public class CommuService {
 	}
 
 	
+	// 작가 답변 insert
+	public int updateWCommu(int commu_no, String reply) {
+		Connection conn = getConnection();
+		
+		int result = commuDao.updateWCommu(conn, commu_no, reply);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+
+	
 	
 	
 	

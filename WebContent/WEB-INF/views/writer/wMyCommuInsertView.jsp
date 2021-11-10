@@ -49,15 +49,17 @@
                 </table>
             </div>
             
-            <div class="wcommu_area">답변 작성</div>
-            <div class="wcommu_reply">
-                <textarea></textarea>
-            </div>
-            
-            <div class="wcommu_btn">
-                <button type="button" onclick="location.href='${ contextPath }/w-commu/detail?commu_no=${ commu.commu_no }'">취소</button>
-                <button type="button">등록하기</button>
-            </div>
+            <form method="post" action="${ contextPath }/w-commu/insert?commu_no=${ commu.commu_no }">
+	            <div class="wcommu_area">답변 작성</div>
+	            <div class="wcommu_reply">
+	                <textarea name="reply"></textarea>
+	            </div>
+	            
+	            <div class="wcommu_btn">
+	                <button type="button" onclick="location.href='${ contextPath }/w-commu/detail?commu_no=${ commu.commu_no }'">취소</button>
+	                <button type="submit">등록하기</button>
+	            </div>
+            </form>
 		</div>
 		
 		<!-- 광고  -->

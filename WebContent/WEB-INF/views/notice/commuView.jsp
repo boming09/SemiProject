@@ -60,12 +60,15 @@
 	                        <li class="commu_title title2">${ commu.ctitle }</li>
 	                        <li class="commu_user user2">${ commu.user_id }</li>
 	                        <li class="commu_date">${ commu.create_date }</li>
-	                        <li class="commu_status" id="commuStatus" value="${ commu.status }">
-	                        	<c:choose>
-		                        	<c:when test="${ commu.status == 'N' }">미답변</c:when>
-		                        	<c:otherwise>답변완료</c:otherwise>
-		                        </c:choose>
-	                        </li>
+                        	<c:choose>
+	                        	<c:when test="${ commu.status == 'N' }">
+	                        		<li class="commu_status" value="${ commu.status }" style="color:red;">미답변</li>
+	                        	</c:when>
+	                        	<c:otherwise>
+	                        		<li class="commu_status" value="${ commu.status }" style="color:rgb(73, 125, 78);">답변완료</li>
+	                        	</c:otherwise>
+	                        </c:choose>
+	                      
 	                    </ul>                    
                     </c:forEach>
                 </div>

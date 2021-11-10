@@ -55,6 +55,11 @@
                 </table>
             </div>
             
+            <c:if test="${ !empty commu.creply }">
+	            <div class="commu_reply">작가님 답변</div>
+	            <div class="reply"><div>${ fn:replace(commu.creply, newReply, '<br>')}</div></div>
+            </c:if>
+            
                        
             <div class="commu_btn">
                 <button type="button" onclick="location.href='${ contextPath }/commu'">취소</button>
