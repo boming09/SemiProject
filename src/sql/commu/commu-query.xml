@@ -171,7 +171,34 @@
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
-	
-	
+	<entry key="selectWCommuCount">
+		SELECT
+		       COUNT(*)
+		  FROM COMMU
+		 WHERE WRITER_NO = ?
+		 AND STATUS = 'N'
+	</entry>
+	<entry key="selectWCommuList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.* 
+		            FROM(SELECT
+		                   COMMU_NO
+		                 , TITLE
+		                 , CONTENT
+		                 , C.USER_NO
+		                 , M.USER_ID
+		                 , CREATE_DATE
+		                 , REPLY
+		                 , COUNT
+		                 , C.WRITER_NO
+		                 , W.USER_NAME 
+		                 , C.STATUS
+		              FROM COMMU C
+		              JOIN MEMBER W ON(C.WRITER_NO = W.USER_NO)
+		              JOIN MEMBER M ON(M.USER_NO = C.USER_NO)
+		             WHERE C.WRITER_NO = ?
+		             ORDER BY CREATE_DATE DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
 	
 </properties>

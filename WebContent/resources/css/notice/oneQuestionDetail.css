@@ -88,6 +88,7 @@ td {
 }
 .ocontent {
     width: 88%;
+    vertical-align: top;
 }
 
 /* 테두리 */
