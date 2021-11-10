@@ -53,7 +53,7 @@ public class BookCategoryServlet extends HttpServlet {
 		
 		
 		// System.out.println(map.get("bookList"));
-		System.out.println(map.get("pi"));
+		// System.out.println(map.get("pi"));
 		
 		if(map != null) {
 			request.getRequestDispatcher("/WEB-INF/views/book/bookListView.jsp").forward(request, response);
