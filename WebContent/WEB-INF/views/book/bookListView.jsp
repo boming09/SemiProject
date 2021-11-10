@@ -153,12 +153,12 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 						<c:choose>
 							<c:when test="${ !empty sort }"><!-- sort -->
 								<!-- 맨 처음으로 이동하는 버튼(<<) -->
-								<li><a href="${ contextPath }/book/sort?sort=${ sort }&page=1${ searchParam }">&lt;&lt;</a></li>
+								<li><a href="${ contextPath }/book/sort?sort=${ sort }&page=1${ searchParam }${ categoryParam }">&lt;&lt;</a></li>
 								
 								<!-- 이전 페이지로(<) -->
 								<li>
 								<c:choose>
-								<c:when test="${ pi.page > 1 }"><a href="${ contextPath }/book/sort?sort=${ sort }&page=${ pi.page - 1 }${ searchParam }">&lt;</a></c:when>
+								<c:when test="${ pi.page > 1 }"><a href="${ contextPath }/book/sort?sort=${ sort }&page=${ pi.page - 1 }${ searchParam }${ categoryParam }">&lt;</a></c:when>
 								<c:otherwise><a href="#">&lt;</a></c:otherwise>
 								</c:choose>
 								</li>
@@ -171,7 +171,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 							         <a href="#" class="current_page">${ p }</a>
 							         </c:when>            
 						             <c:otherwise>
-						             <a href="${contextPath }/book/sort?sort=${ sort }&page=${ p }${ searchParam }">${ p }</a>
+						             <a href="${contextPath }/book/sort?sort=${ sort }&page=${ p }${ searchParam }${ categoryParam }">${ p }</a>
 						             </c:otherwise>
 					            </c:choose>
 					            </li>
@@ -180,7 +180,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 					            <!-- 다음 페이지로(>) -->
 					            <li>
 								<c:choose>
-									<c:when test="${ pi.page < pi.maxPage }"><a href="${ contextPath }/book/sort?sort=${ sort }&page=${ pi.page + 1 }${ searchParam }">&gt;</a></c:when>
+									<c:when test="${ pi.page < pi.maxPage }"><a href="${ contextPath }/book/sort?sort=${ sort }&page=${ pi.page + 1 }${ searchParam }${ categoryParam }">&gt;</a></c:when>
 									<c:otherwise><a href ="#">&gt;</a></c:otherwise>
 								</c:choose>
 								</li>
@@ -189,14 +189,15 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 					            <li><a href="${ contextPath }/book/sort?sort=${ sort }&page=${ pi.maxPage }${ searchParam }">&gt;&gt;</a></li>
 							</c:when>
 							
-							<c:when test="${ !empty categoryid }"><!-- category -->
+							
+							<c:when test="${ !empty category }"><!-- category -->
 								<!-- 맨 처음으로 이동하는 버튼(<<) -->
-								<li><a href="${ contextPath }/book/category/list?categoryid=${ categoryid }&page=1">&lt;&lt;</a></li>
+								<li><a href="${ contextPath }/book/category/list?category=${ category }&page=1">&lt;&lt;</a></li>
 								
 								<!-- 이전 페이지로(<) -->
 								<li>
 								<c:choose>
-								<c:when test="${ pi.page > 1 }"><a href="${ contextPath }/book/category/list?categoryid=${ categoryid }&page=${ pi.page - 1 }">&lt;</a></c:when>
+								<c:when test="${ pi.page > 1 }"><a href="${ contextPath }/book/category/list?category=${ category }&page=${ pi.page - 1 }">&lt;</a></c:when>
 								<c:otherwise><a href="#">&lt;</a></c:otherwise>
 								</c:choose>
 								</li>
@@ -209,7 +210,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 							         <a href="#" class="current_page">${ p }</a>
 							         </c:when>            
 						             <c:otherwise>
-						             <a href="${contextPath }/book/category/list?categoryid=${ categoryid }&page=${ p }">${ p }</a>
+						             <a href="${contextPath }/book/category/list?category=${ category }&page=${ p }">${ p }</a>
 						             </c:otherwise>
 					            </c:choose>
 					            </li>
@@ -218,7 +219,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 					            <!-- 다음 페이지로(>) -->
 					            <li>
 								<c:choose>
-									<c:when test="${ pi.page < pi.maxPage }"><a href="${ contextPath }/book/category/list?categoryid=${ categoryid }&page=${ pi.page + 1 }">&gt;</a></c:when>
+									<c:when test="${ pi.page < pi.maxPage }"><a href="${ contextPath }/book/category/list?category=${ category }&page=${ pi.page + 1 }">&gt;</a></c:when>
 									<c:otherwise><a href ="#">&gt;</a></c:otherwise>
 								</c:choose>
 								</li>
@@ -226,6 +227,9 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 					            <!-- 맨 끝으로 이동하는 버튼(>>) -->
 					            <li><a href="${ contextPath }/book/category/list?categoryid=${ categoryid }&page=${ pi.maxPage }">&gt;&gt;</a></li>
 							</c:when>
+							
+							
+							
 							
 							<c:otherwise><!-- list -->
 								<!-- 맨 처음으로 이동하는 버튼(<<) -->

@@ -46,12 +46,28 @@ public class BookDao {
 		if (search.getSearchCondition() != null && search.getSearchValue() != null) {
 			if (search.getSearchCondition().equals("search")) {
 				sql = bookQuery.getProperty("getSearchListCount");
+				
+				if(search.getCategory() != null) {
+					sql = bookQuery.getProperty("getSearchCategoryListCount");
+				}
 			} else if (search.getSearchCondition().equals("title")) {
 				sql = bookQuery.getProperty("getTitleListCount");
+				
+				if(search.getCategory() != null) {
+					sql = bookQuery.getProperty("getTitleCategoryListCount");
+				}
 			} else if (search.getSearchCondition().equals("author")) {
 				sql = bookQuery.getProperty("getAuthorListCount");
+				
+				if(search.getCategory() != null) {
+					sql = bookQuery.getProperty("getAuthorCategoryListCount");
+				}
 			} else if (search.getSearchCondition().equals("category")) {
 				sql = bookQuery.getProperty("getCategoryListCount");
+				
+				if(search.getCategory() != null) {
+					sql = bookQuery.getProperty("getMainCategoryListCount");
+				}
 			}
 		}
 		
@@ -61,9 +77,13 @@ public class BookDao {
 			// 검색 SQL문을 실행하는 경우 검색 값 설정
 			int index = 1;
 			if (search.getSearchCondition() != null && search.getSearchValue() != null) {
+				if(search.getCategory() != null) {
+	        		 pstmt.setString(index++, search.getCategory());
+	        	 }
+				
 				pstmt.setString(index++, search.getSearchValue());
 				
-				if(sql.equals(bookQuery.getProperty("getSearchListCount")) || sql.equals(bookQuery.getProperty("getCategoryListCount"))) {
+				if(search.getSearchCondition().equals("search") || search.getSearchCondition().equals("category")) {
 					pstmt.setString(index, search.getSearchValue());
 				}
 	         }
@@ -221,12 +241,28 @@ public class BookDao {
 		if (search.getSearchCondition() != null && search.getSearchValue() != null) {
 			if (search.getSearchCondition().equals("search")) {
 				sql = bookQuery.getProperty("selectPopularSearchList");
+				
+				if(search.getCategory() != null) {
+					sql = bookQuery.getProperty("selectPopularSearchCategoryBookList");
+				}
 			} else if (search.getSearchCondition().equals("title")) {
 				sql = bookQuery.getProperty("selectPopularTitleList");
+				
+				if(search.getCategory() != null) {
+					sql = bookQuery.getProperty("selectPopularTitleCategoryBookList");
+				}
 			} else if (search.getSearchCondition().equals("author")) {
 				sql = bookQuery.getProperty("selectPopularAuthorList");
+				
+				if(search.getCategory() != null) {
+					sql = bookQuery.getProperty("selectPopularAuthorCategoryBookList");
+				}
 			} else if (search.getSearchCondition().equals("category")) {
 				sql = bookQuery.getProperty("selectPopularCategoryList");
+				
+				if(search.getCategory() != null) {
+					sql = bookQuery.getProperty("selectPopularMainCategoryBookList");
+				}
 			} 
 		}
 		
@@ -240,9 +276,13 @@ public class BookDao {
 	         int index = 1;
 	         // 검색 sql 실행 시
 	         if(search.getSearchCondition() != null && search.getSearchValue() != null) {
+	        	 if(search.getCategory() != null) {
+	        		 pstmt.setString(index++, search.getCategory());
+	        	 }
+	        	 
 	        	 pstmt.setString(index++, search.getSearchValue());	// 후위 연산 됨
 	        	 
-	        	 if(sql.equals(bookQuery.getProperty("selectPopularSearchList")) || sql.equals(bookQuery.getProperty("selectPopularCategoryList"))) {
+	        	 if(search.getSearchCondition().equals("search") || search.getSearchCondition().equals("category")) {
 	        		 pstmt.setString(index++, search.getSearchValue());
 	        	 }
 	        	
@@ -289,12 +329,28 @@ public class BookDao {
 		if (search.getSearchCondition() != null && search.getSearchValue() != null) {
 			if (search.getSearchCondition().equals("search")) {
 				sql = bookQuery.getProperty("selectNewSearchList");
+				
+				if(search.getCategory() != null) {
+					sql = bookQuery.getProperty("selectNewSearchCategoryBookList");
+				}
 			} else if (search.getSearchCondition().equals("title")) {
 				sql = bookQuery.getProperty("selectNewTitleList");
+				
+				if(search.getCategory() != null) {
+					sql = bookQuery.getProperty("selectNewTitleCategoryBookList");
+				}
 			} else if (search.getSearchCondition().equals("author")) {
 				sql = bookQuery.getProperty("selectNewAuthorList");
+				
+				if(search.getCategory() != null) {
+					sql = bookQuery.getProperty("selectNewAuthorCategoryBookList");
+				}
 			} else if (search.getSearchCondition().equals("category")) {
 				sql = bookQuery.getProperty("selectNewCategoryList");
+				
+				if(search.getCategory() != null) {
+					sql = bookQuery.getProperty("selectNewMainCategoryBookList");
+				}
 			}
 		}
 		
@@ -308,9 +364,13 @@ public class BookDao {
 	         int index = 1;
 	         // 검색 sql 실행 시
 	         if(search.getSearchCondition() != null && search.getSearchValue() != null) {
+	        	 if(search.getCategory() != null) {
+	        		 pstmt.setString(index++, search.getCategory());
+	        	 }
+	        	 
 	        	 pstmt.setString(index++, search.getSearchValue());	// 후위 연산 됨
 	        	 
-	        	 if(sql.equals(bookQuery.getProperty("selectNewSearchList")) || sql.equals(bookQuery.getProperty("selectNewCategoryList"))) {
+	        	 if(search.getSearchCondition().equals("search") || search.getSearchCondition().equals("category")) {
 	        		 pstmt.setString(index++, search.getSearchValue());
 	        	 }
 	         }
@@ -356,12 +416,28 @@ public class BookDao {
 		if (search.getSearchCondition() != null && search.getSearchValue() != null) {
 			if (search.getSearchCondition().equals("search")) {
 				sql = bookQuery.getProperty("selectHighestSearchList");
+				
+				if(search.getCategory() != null) {
+					sql = bookQuery.getProperty("selectHighestSearchCategoryBookList");
+				}
 			} else if (search.getSearchCondition().equals("title")) {
 				sql = bookQuery.getProperty("selectHighestTitleList");
+				
+				if(search.getCategory() != null) {
+					sql = bookQuery.getProperty("selectHighestTitleCategoryBookList");
+				}
 			} else if (search.getSearchCondition().equals("author")) {
 				sql = bookQuery.getProperty("selectHighestAuthorList");
+				
+				if(search.getCategory() != null) {
+					sql = bookQuery.getProperty("selectHighestAuthorCategoryBookList");
+				}
 			} else if (search.getSearchCondition().equals("category")) {
 				sql = bookQuery.getProperty("selectHighestCategoryList");
+				
+				if(search.getCategory() != null) {
+					sql = bookQuery.getProperty("selectHighestMainCategoryBookList");
+				}
 			}
 		}
 		
@@ -375,9 +451,13 @@ public class BookDao {
 	         int index = 1;
 	         // 검색 sql 실행 시
 	         if(search.getSearchCondition() != null && search.getSearchValue() != null) {
+	        	 if(search.getCategory() != null) {
+	        		 pstmt.setString(index++, search.getCategory());
+	        	 }
+	        	 
 	        	 pstmt.setString(index++, search.getSearchValue());	// 후위 연산 됨
 	        	 
-	        	 if(sql.equals(bookQuery.getProperty("selectHighestSearchList")) || sql.equals(bookQuery.getProperty("selectHighestCategoryList"))) {
+	        	 if(search.getSearchCondition().equals("search") || search.getSearchCondition().equals("category")) {
 	        		 pstmt.setString(index++, search.getSearchValue());
 	        	 }
 	         }
@@ -423,12 +503,28 @@ public class BookDao {
 		if (search.getSearchCondition() != null && search.getSearchValue() != null) {
 			if (search.getSearchCondition().equals("search")) {
 				sql = bookQuery.getProperty("selectLowestSearchList");
+				
+				if(search.getCategory() != null) {
+					sql = bookQuery.getProperty("selectLowestSearchCategoryBookList");
+				}
 			} else if (search.getSearchCondition().equals("title")) {
 				sql = bookQuery.getProperty("selectLowestTitleList");
+				
+				if(search.getCategory() != null) {
+					sql = bookQuery.getProperty("selectLowestTitleCategoryBookList");
+				}
 			} else if (search.getSearchCondition().equals("author")) {
 				sql = bookQuery.getProperty("selectLowestAuthorList");
+				
+				if(search.getCategory() != null) {
+					sql = bookQuery.getProperty("selectLowestAuthorCategoryBookList");
+				}
 			} else if (search.getSearchCondition().equals("category")) {
 				sql = bookQuery.getProperty("selectLowestCategoryList");
+				
+				if(search.getCategory() != null) {
+					sql = bookQuery.getProperty("selectLowestMainCategoryBookList");
+				}
 			}
 		}
 		
@@ -442,9 +538,13 @@ public class BookDao {
 	         int index = 1;
 	         // 검색 sql 실행 시
 	         if(search.getSearchCondition() != null && search.getSearchValue() != null) {
+	        	 if(search.getCategory() != null) {
+	        		 pstmt.setString(index++, search.getCategory());
+	        	 }
+	        	 
 	        	 pstmt.setString(index++, search.getSearchValue());	// 후위 연산 됨
 	        	 
-	        	 if(sql.equals(bookQuery.getProperty("selectLowestSearchList")) || sql.equals(bookQuery.getProperty("selectLowestCategoryList"))) {
+	        	 if(search.getSearchCondition().equals("search") || search.getSearchCondition().equals("category")) {
 	        		 pstmt.setString(index++, search.getSearchValue());
 	        	 }
 	         }
@@ -478,57 +578,10 @@ public class BookDao {
 	      }
 		return bookList;
 	}
-//------------------------------------------------------------------------------------------------	
-	// 검색 목록 & 카테고리 선택한 총 갯수
-	public int getCategoryBookListCount(Connection conn, Search search) {
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		int listCount = 0;
-		String sql = bookQuery.getProperty("getCategoryBookListCount");
-		
-		// 검색 시 수행할 쿼리문 변경
-		if (search.getSearchCondition() != null && search.getSearchValue() != null) {
-			if (search.getSearchCondition().equals("search")) {
-				sql = bookQuery.getProperty("getSearchCategoryBookListCount");
-			} else if (search.getSearchCondition().equals("title")) {
-				sql = bookQuery.getProperty("getTitleCategoryBookListCount");
-			} else if (search.getSearchCondition().equals("author")) {
-				sql = bookQuery.getProperty("getAuthorCategoryBookListCount");
-			}
-		}
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			// 검색 SQL문을 실행하는 경우 검색 값 설정
-			int index = 1;
-			pstmt.setString(index++, search.getCategory());
-			
-			if (search.getSearchCondition() != null && search.getSearchValue() != null && !search.getSearchCondition().equals("category")) {
-				pstmt.setString(index++, search.getSearchValue());
-				
-				if(sql.equals(bookQuery.getProperty("getSearchCategoryBookListCount"))) {
-					pstmt.setString(index, search.getSearchValue());
-				}
-	         }
-			
-			rset = pstmt.executeQuery();
 
-			if(rset.next()) {
-				listCount = rset.getInt(1);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-	         close(rset);
-	         close(pstmt);
-	    }
-
-		return listCount;
-	}
+	/* 검색&카테고리 */
 	
-	// 검색 목록 & 카테고리 선택한 도서 목록 조회
+	// 검색 &카테고리 도서 목록
 	public List<Book> selectCategoryBookList(Connection conn, PageInfo pi, Search search) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -596,14 +649,6 @@ public class BookDao {
 		return bookList;
 	}
 	
-	// 검색&카테고리&정렬한 도서 목록
-	public List<Book> selectCategorySortBookList(Connection conn, PageInfo pi, Search search) {
-		
-		return null;
-	}
-	
-	
-	
 //----- Detail -----------------------------------------------------------------------------
 	// 도서 상세 조회
 	public Book selectBook(Connection conn, int bid) {
@@ -669,7 +714,6 @@ public class BookDao {
 									  , rset.getInt("rating")
 									  , rset.getInt("ref_no")));
 			}
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
