@@ -24,6 +24,7 @@ public class Book {
 	private String bimg;			// 도서 이미지
 	private int starScore;			// 별점
 	private double avgScore;		// 평점
+	private int reviewCount;        // 작가마이페이지 내도서 리뷰
 	
 	private List<Reply> replyList;	// 댓글목록
 //	BOOK_ID	NUMBER
@@ -47,7 +48,7 @@ public class Book {
 
 	public Book(int bid, String btitle, int cid, String cname, int userNo, String author, String editor,
 		Date publicationDate, String publisher, int price, int stock, double saleRate, int salePrice, String bintro,
-		String burl, String filepath, String aintro, String bimg, int starScore, double avgScore,
+		String burl, String filepath, String aintro, String bimg, int starScore, double avgScore, int reviewCount,
 		List<Reply> replyList) {
 	super();
 	this.bid = bid;
@@ -70,6 +71,7 @@ public class Book {
 	this.bimg = bimg;
 	this.starScore = starScore;
 	this.avgScore = avgScore;
+	this.reviewCount = reviewCount;
 	this.replyList = replyList;
 	}
 
@@ -233,6 +235,14 @@ public class Book {
 		this.avgScore = avgScore;
 	}
 	
+	public int getReviewCount() {
+		return reviewCount;
+	}
+
+	public void setReviewCount(int reviewCount) {
+		this.reviewCount = reviewCount;
+	}
+
 	public List<Reply> getReplyList() {
 		return replyList;
 	}
@@ -247,8 +257,8 @@ public class Book {
 				+ ", author=" + author + ", editor=" + editor + ", publicationDate=" + publicationDate + ", publisher="
 				+ publisher + ", price=" + price + ", stock=" + stock + ", saleRate=" + saleRate + ", salePrice="
 				+ salePrice + ", bintro=" + bintro + ", burl=" + burl + ", filepath=" + filepath + ", aintro=" + aintro
-				+ ", bimg=" + bimg + ", starScore=" + starScore + ", avgScore=" + avgScore + ", replyList=" + replyList
-				+ "]";
+				+ ", bimg=" + bimg + ", starScore=" + starScore + ", avgScore=" + avgScore + ", reviewCount="
+				+ reviewCount + ", replyList=" + replyList + "]";
 	}
 
 }
