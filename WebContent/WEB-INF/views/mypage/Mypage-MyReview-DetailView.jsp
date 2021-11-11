@@ -42,7 +42,9 @@
                     </tr>
                     <tr class="liarea">
                     	<th class="wcommu_date">분류</th>
-                        <td class="date" name="category"> ${ myreview.mtype }</td>
+                        <td class="date" name="category">
+                        ${ myreview.category_name }
+                        </td>
                     </tr>
                                       
                     <tr class="liarea2">

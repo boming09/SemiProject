@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.service.MemberService;
+import member.model.vo.Member;
+
 /**
  * Servlet implementation class PasswordServlet
  */
@@ -37,8 +40,21 @@ public class PasswordServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("utf-8");
+		
+		String userId = request.getParameter("userId");
+		String userName = request.getParameter("userName");
+		String userEmail = request.getParameter("userEmail");
+		
+		Member member = new MemberService().searchPw(userId, userName, userEmail);
+		
+		if(member != null) {
+			
+		} else {
+			request.setAttribute("message", "비밀번호 찾기에 실패하였습니다.<br>다시 정보입력을 확인해 주세요.");
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/errorpage.jsp");
+			view.forward(request, response);
+		}
 	}
 
 }

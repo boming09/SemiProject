@@ -37,6 +37,11 @@ public class MypageMyreviewServlet extends HttpServlet {
 		/*RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/mypage-myreview.jsp");
 		view.forward(request, response);
 		*/
+		int user_no = 0;
+		if(request.getParameter("user_no") != null) {
+			user_no = Integer.parseInt(request.getParameter("user_no"));
+		}
+		
 		int page = 1;
 		
 		if(request.getParameter("page") != null) {

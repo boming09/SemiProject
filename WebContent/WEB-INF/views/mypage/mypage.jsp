@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -33,7 +34,19 @@
             <header>
             	<div class="hdcenter">
             		<div class="left">
-            		<h3>멤버십 등급 : ${ loginUser.userGrade }</h3>
+            		<h3>멤버십 등급 : 
+	            		<c:choose>
+		            		<c:when test="${ loginUser.userGrade == 10 }">
+		            		일반 회원
+		            		</c:when>
+		            		<c:when test="${ loginUser.userGrade == 20 }">
+		            		작가 회원
+		            		</c:when>
+		            		<c:otherwise>
+		            		관리자
+		            		</c:otherwise>
+	            		</c:choose>
+            		</h3>
             		봄숲 멤버십 회원이 되신걸 환영합니다.<br>
             		구매 금액의 1~3% 추가 마일리지 및 쿠폰 혜택을 받으실수 있습니다.
             		</div>z
