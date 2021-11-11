@@ -96,6 +96,23 @@ public class OneService {
 		return oneList;
 	}
 
+
+	public int adminOneReply(int oNo, String reply) {
+		Connection conn = getConnection();
+		
+		int result = oneDao.adminOneReply(conn, oNo, reply);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
 	
 	// 게시글 삭제하기
 	public int deleteOne(int one_no) {

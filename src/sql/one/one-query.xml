@@ -89,8 +89,17 @@
 		  ON(O.USER_NO = M.USER_NO)
 		 WHERE O.STATUS='N'
 	</entry>
+
+	<entry key="adminOneReply">
+		UPDATE ONEQUESTION
+		   SET STATUS = 'Y'
+		     , REPLY = ?
+		 WHERE ONE_NO = ?
+	</entry>
+
 	
 	
 	
 	
+
 </properties>
