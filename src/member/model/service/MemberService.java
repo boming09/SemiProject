@@ -13,7 +13,7 @@ import member.model.dao.MemberDao;
 import member.model.vo.Member;
 
 public class MemberService {
-	
+		
 	private MemberDao memberDao = new MemberDao();
 
 	public Member loginMember(String userId, String userPwd) {
@@ -95,13 +95,32 @@ public class MemberService {
 		return result;
 	}
 
+	public Member searchId(String userName, String userEmail) {
+		Connection conn = getConnection();
+		
+		Member result = memberDao.searchId(conn, userName, userEmail);
+		
+		close(conn);
+				
+		return result;
+	}	
+
+	public Member searchPw(String userId, String userName, String userEmail) {
+		Connection conn = getConnection();
+		
+		Member result = memberDao.searchPw(conn, userId, userName, userEmail);
+		
+		close(conn);		
+		
+		return null;
+	}
+	
+	
 	public List<Member> nSelectList() {
 		Connection conn = getConnection();
 		List<Member> memberList = memberDao.nSelectList(conn);
-		
-		
-		close(conn);
-		
+				 
+		close(conn);		
 		
 		return memberList;
 	}
@@ -168,9 +187,28 @@ public class MemberService {
 		
 		close(conn);
 		
+
 		return result;
 	}
 
+	public int idCheck(String userId) {
+		Connection conn = getConnection();
+		
+		int result = memberDao.idCheck(conn, userId);
+		
+		close(conn);
+		
+		return result;
+	}
 
+	public int nicknameCheck(String userNickname) {
+		Connection conn = getConnection();
+		
+		int result = memberDao.nicknameCheck(conn, userNickname);
+		
+		close(conn);
+		
+		return result;
+	}
 
 }

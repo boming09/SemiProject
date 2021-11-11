@@ -46,17 +46,18 @@
                     </ul>
                     <!-- 반복문 -->
                     <c:forEach var="one" items="${ oneList }">
-	                    <%-- <c:set var="index" value="${ index + 1 }"/> --%>
 	                    <ul class="one_list" onclick="detailView(${ one.one_no })">
 	                        <li class="one_no">${ one.one_no }</li>
 	                        <li class="one_title title2">${ one.otitle }</li>
 	                        <li class="one_date">${ one.odate }</li>
-	                        <li class="one_status">
-		                        <c:choose>
-		                        	<c:when test="${ one.status == 'N' }">미답변</c:when>
-		                        	<c:otherwise>답변완료</c:otherwise>
-		                        </c:choose>
-	                        </li>
+	                        <c:choose>
+	                        	<c:when test="${ one.status == 'N' }">
+	                        		<li class="one_status" style="color:red;">미답변</li>
+	                        	</c:when>
+	                        	<c:otherwise>
+	                        		<li class="one_status" style="color:rgb(73, 125, 78);">답변완료</li>
+	                        	</c:otherwise>
+	                        </c:choose>
 	                    </ul>
                     </c:forEach>
                 </div>

@@ -88,4 +88,20 @@ public class CartService {
 		return cartSortList;
 	}
 
+	public int deleteCartList(int[] cartNo) {
+		Connection conn = getConnection();
+		
+		int result = cartDao.deleteCartList(conn, cartNo);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
 }

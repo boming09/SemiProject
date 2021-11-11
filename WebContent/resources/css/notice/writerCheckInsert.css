@@ -87,8 +87,9 @@
     border: 1px solid rgb(239, 239, 239);
     margin: 10px 10px;
     resize: none;
-    padding-left : 10px;
+    padding : 10px;
     font-size: 0.9rem;
+    line-height: 20px;
 }
 
 /* 도서 인증 영역 */

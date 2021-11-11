@@ -32,9 +32,13 @@ public class BookDetailServlet extends HttpServlet {
 		int bid = Integer.parseInt(request.getParameter("bid"));
 		Book book = new BookService().selectBook(bid);
 		
-		
-		request.setAttribute("book", book);
-		request.getRequestDispatcher("/WEB-INF/views/book/bookDetailView.jsp").forward(request, response);
+		if(book != null ) {
+			request.setAttribute("book", book);
+			request.getRequestDispatcher("/WEB-INF/views/book/bookDetailView.jsp").forward(request, response);
+		} else {
+			request.setAttribute("message", "도서 상세 조회에 실패하였습니다.");
+			request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
+		}
 	}
 
 	/**

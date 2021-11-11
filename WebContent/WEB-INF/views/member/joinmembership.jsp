@@ -31,38 +31,38 @@
             </div>
             <table class="lotb">
                 <tr>
-                    <th>아이디</th>
+                    <th>* 아이디</th>
                     <td class="id_name">
-                    	<input type="text" class="lomb" name="userId" placeholder="아이디 10글자 이내">&nbsp;
-                        <a href="#"><input type="button" class="check" value="중복 확인"></a></td>
+                    	<input type="text" class="lomb" name="userId" placeholder="아이디 10글자 이내" required>
+                        <button id="idCheck" type="button">중복확인</button></td>
                 </tr>                
                 <tr>
-                    <th>비밀번호</th>
+                    <th>* 비밀번호</th>
                     <td class="id_name">
-                    <input type="password" class="lomb" size="30" name="userPwd" placeholder="영문,숫자,특수문자 포함 8자 이상">
+                    <input type="password" class="lomb" size="30" name="userPwd" placeholder="영문,숫자,특수문자 포함 8자 이상" required>
                         </input>
                     </td>
                 </tr>
                 <tr>
-                    <th>비밀번호 확인</th>
+                    <th>* 비밀번호 확인</th>
                     <td class="id_name">
-                    <input type="password" class="lomb" name="userPwd2" size="30"></td>
+                    <input type="password" class="lomb" name="userPwd2" size="30" required></td>
                 </tr>
                 <tr>
-                    <th>이름</th>
+                    <th>* 이름</th>
                     <td class="id_name">
-                    <input type="text" class="lomb" name="userName" size="30"></td>
+                    <input type="text" class="lomb" name="userName" size="30" required></td>
                 </tr>
                 <tr>
-                    <th>휴대전화</th>
+                    <th>* 휴대전화</th>
                     <td class="id_name">
-                    <input type="text" class="lomb" maxlength="11" name="phone" size="20">                        
+                    <input type="text" class="lomb" maxlength="11" name="phone" size="20" required>                        
                     </td>
                 </tr>
                 <tr>
-                    <th>이메일</th>
+                    <th>* 이메일</th>
                     <td class="id_name">
-                    <input type="email" id="email1" name="email" class="lomb"  size="20">&nbsp;
+                    <input type="email" id="email1" name="email" class="lomb"  size="20" required>&nbsp;
                         <select  class="lomb2" name="emailSelection" id="emailSelection">
                             <option value="naver.com">naver.com</option>
                             <option value="daum.com">daum.com</option>
@@ -98,7 +98,7 @@
             <legend id="lolegend">부가 정보 입력</legend>
             <table class="lotb2">
                 <tr>
-                    <th class="address_name">주소</th>
+                    <th class="address_name">* 주소</th>
                     <td><input type="text" class="postcodify_postcode5" name="address" id="lobm2" size="10"></td>
                     <td><a href="#"><button type="button" id="postcodify_search_button">주소검색</button></a></td>                    
                 </tr>
@@ -167,12 +167,11 @@
 		function validate(){
 			return true;
 		}
-
+	
 		$("#idCheck").on('click', function(){
 			
 			var userId = $("[name=userId]");
-			/* 아이디 중복 시 false, 아이디 사용 가능 시 true 값을 가지는 변수*/
-			var isUsable = false;
+			var isUsable =false;
 			
 			if(!userId || userId.val().length < 4){
 				alert("아이디는 최소 4자리 이상이어야 합니다.");
@@ -189,21 +188,15 @@
 							userId.focus();
 						} else {
 							if(confirm("사용 가능한 아이디 입니다. 사용하시겠습니까?")){
-								/* 더 이상 아이디 입력 공간을 바꿀 수 없도록 처리 */
 								userId.attr('readonly', true);
-								/* 사용 가능한 아이디라는 flag */
 								isUsable = true;
 							} else {
-								/* 다시 아이디 입력 공간을 바꿀수 있도록 처리 */
 								userId.attr('readonly', false);
 								userId.focus();
-								/* 사용 불가능한 아이디라는 flag */
 								isUsable = false;
 							}
 						}
-						
-						/* 아이디 중복 체크 후 중복이 아니면 사용하겠다고 선택한 경우 
-						버튼의 disabled 속성 제거 */						
+									
 						if(isUsable){
 							$("#joinBtn").removeAttr("disabled");
 						} else {
@@ -216,6 +209,7 @@
 				});
 			}			
 		});
+		
 	</script>
 
 </body>

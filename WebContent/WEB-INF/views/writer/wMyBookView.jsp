@@ -41,7 +41,7 @@
 		                    <td class="wb_name">
 			                    <div class="wb_namearea" onclick="detailView(${ wbook.bid })">
 			                    	<a>
-				                        <img class="wb_img" src="${ contextPath }/resources/images/book/${ wbook.bimg }">
+				                        <img class="wb_img" src="${ contextPath }${ wbook.bimg }">
 				                        <span>${ wbook.btitle }</span>
 			                    	</a>
 			                    </div>
@@ -49,7 +49,7 @@
 		                    </td>
 		                    <td class="wb_pub">${ wbook.publisher }</td>
 		                    <td class="wb_date">${ wbook.publicationDate }</td>
-		                    <td class="wb_review">아직</td>
+		                    <td class="wb_review">${ wbook.reviewCount }</td>
 		                </tr>
 	                </c:forEach>
 	            </table>

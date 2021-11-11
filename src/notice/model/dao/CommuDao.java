@@ -145,7 +145,7 @@ public class CommuDao {
 				commu.setCtitle(rset.getString("title"));
 				commu.setCcontent(rset.getString("content"));
 				commu.setUser_no(rset.getInt("user_no"));
-				commu.setUser_nickname(rset.getString("user_nickname"));
+				commu.setUser_id(rset.getString("user_id"));
 				commu.setCreate_date(rset.getDate("create_date"));
 				commu.setCreply(rset.getString("reply"));
 				commu.setCount(rset.getInt("count"));
@@ -187,7 +187,7 @@ public class CommuDao {
 				commu.setCtitle(rset.getString("title"));
 				commu.setCcontent(rset.getString("content"));
 				commu.setUser_no(rset.getInt("user_no"));
-				commu.setUser_nickname(rset.getString("user_nickname"));
+				commu.setUser_id(rset.getString("user_id"));
 				commu.setCreate_date(rset.getDate("create_date"));
 				commu.setCreply(rset.getString("reply"));
 				commu.setCount(rset.getInt("count"));
@@ -259,13 +259,12 @@ public class CommuDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				
 				Commu commu = new Commu();
 				commu.setCommu_no(rset.getInt("commu_no"));
 				commu.setCtitle(rset.getString("title"));
 				commu.setCcontent(rset.getString("content"));
 				commu.setUser_no(rset.getInt("user_no"));
-				commu.setUser_nickname(rset.getString("user_nickname"));
+				commu.setUser_id(rset.getString("user_id"));
 				commu.setCreate_date(rset.getDate("create_date"));
 				commu.setCreply(rset.getString("reply"));
 				commu.setCount(rset.getInt("count"));
@@ -369,6 +368,105 @@ public class CommuDao {
 		}		
 		
 		return writerList;
+	}
+
+	
+	// 작가마이페이지-소통리스트 총 갯수
+	public int selectWCommuCount(Connection conn, int writer) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = commuQuery.getProperty("selectWCommuCount");
+		int listCount = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, writer);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+
+	// 작가마이페이지-소통리스트 총 리스트(페이징처리)
+	public List<Commu> selectWCommuList(Connection conn, PageInfo pi, int writer) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = commuQuery.getProperty("selectWCommuList");
+		
+		List<Commu> WCommuList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, writer);
+			
+			// 페이지 설정
+			int startRow = (pi.getPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(2, startRow); // 페이지 시작 값
+			pstmt.setInt(3, endRow);  // 페이지 끝 값
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Commu commu = new Commu();
+				commu.setCommu_no(rset.getInt("commu_no"));
+				commu.setCtitle(rset.getString("title"));
+				commu.setCcontent(rset.getString("content"));
+				commu.setUser_no(rset.getInt("user_no"));
+				commu.setUser_id(rset.getString("user_id"));
+				commu.setCreate_date(rset.getDate("create_date"));
+				commu.setCreply(rset.getString("reply"));
+				commu.setCount(rset.getInt("count"));
+				commu.setCwriter_no(rset.getInt("writer_no"));
+				commu.setCwriter_name(rset.getString("user_name"));
+				commu.setStatus(rset.getString("status"));
+				
+				WCommuList.add(commu);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return WCommuList;
+	}
+
+
+	// 작가 답변 insert
+	public int updateWCommu(Connection conn, int commu_no, String reply) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = commuQuery.getProperty("updateWCommu");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, reply);
+			pstmt.setInt(2, commu_no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}	
+		
+		return result;
 	}
 
 

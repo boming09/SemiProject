@@ -39,18 +39,28 @@ public class BookSortListServlet extends HttpServlet {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
 		
-		String sort = request.getParameter("sort");
 		String searchCondition = request.getParameter("searchCondition");
 		String searchValue = request.getParameter("searchValue");
+		String sort = request.getParameter("sort");
 		Search search = new Search(searchCondition, searchValue, sort);
+		
+		if(!request.getParameter("category").contentEquals("")) {	// -> if문 통과 시 값 추출
+			String category = request.getParameter("category");
+			search.setCategory(category);
+		}
+		
+		// System.out.println(search);
 		
 		Map<String, Object> map = new BookService().selectSortList(page, search);
 		List<String> categoryList = new BookService().categoryList(search);
 		
+		// System.out.println(map.get("bookList"));
+		// System.out.println(map.get("pi"));
+		
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("bookList", map.get("bookList"));
 		request.setAttribute("categoryList", categoryList);
-		request.setAttribute("sort", sort);
+		request.setAttribute("sort", sort);	// search로 바꿔서 search.sort로 조건문 확인하기
 		
 		request.getRequestDispatcher("/WEB-INF/views/book/bookListView.jsp").forward(request, response);
 	}

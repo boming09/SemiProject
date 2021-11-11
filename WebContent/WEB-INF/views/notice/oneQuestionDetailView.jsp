@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%
+	pageContext.setAttribute("newReply", "\n");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +54,6 @@
 </style>
 </head>
 <body>
-	<!-- 고객센터 사이드 FAQ-주문/결제 클릭시 첫 화면 -->
 	<!-- 메뉴바 -->
 	<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 	
@@ -80,7 +83,7 @@
                     </tr>         
                     <tr class="liarea2">
                         <th class="one_content">내용</th>
-                        <td class="ocontent" colspan="3">${ one.ocontent }</td>
+                        <td class="ocontent" colspan="3">${ fn:replace(one.ocontent, newReply, '<br>')}</td>
                     </tr>
                     <tr class="liarea3">
                         <th class="one_file">첨부파일</th>
@@ -89,10 +92,14 @@
                 </table>
             </div>
             
+
             <c:if test="${ empty one.oreply && loginUser.userId != 'admin' }">
+
             <div class="one_btn">
                 <button type="button" onclick="location.href='${ contextPath }/one'">취소</button>
-                <button type="button" onclick="location.href='#'">수정하기</button>
+                <c:if test="${ empty one.oreply }">
+	                <button type="button" onclick="oneDelete(${ one.one_no})">삭제하기</button>
+                </c:if>
             </div>
             </c:if>
             <c:if test="${ !empty one.oreply }">
@@ -124,6 +131,14 @@
 	
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-
+	
+	<script>
+		// 삭제하기
+		function oneDelete(oneNo) {
+			if(confirm("게시글을 삭제하시겠습니까?")) {
+				location.href='${ contextPath }/one/delete?one_no=' + oneNo;
+			}
+		}
+	</script>
 </body>
 </html>

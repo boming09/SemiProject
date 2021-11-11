@@ -53,12 +53,14 @@
 	                        <li class="wcheck_title">${ wcheck.wtitle }</li>
 	                        <li class="wcheck_user">${ wcheck.user_name }</li>
 	                        <li class="wcheck_date">${ wcheck.create_date }</li>
-	                        <li class="wcheck_status" value="${ wcheck.status }">
-	                        	<c:choose>
-		                        	<c:when test="${ wcheck.status == 'N' }">미확인</c:when>
-		                        	<c:otherwise>확인완료</c:otherwise>
-		                        </c:choose>
-	                        </li>
+                        	<c:choose>
+	                        	<c:when test="${ wcheck.status == 'N' }">
+	                        		<li class="wcheck_status" value="${ wcheck.status }" style="color:red;">미확인</li>
+	                        	</c:when>
+	                        	<c:otherwise>
+	                        		<li class="wcheck_status" value="${ wcheck.status }" style="color:rgb(73, 125, 78);">확인완료</li>
+	                        	</c:otherwise>
+	                        </c:choose>
 	                    </ul>
                     </c:forEach>
                 </div>

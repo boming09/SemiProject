@@ -29,8 +29,8 @@ public class Id2Servlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 아이디 찾기 화면에서 가입여부 확인 화면으로 클릭시 단순 이동
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/id2.jsp");
-		view.forward(request, response);
+		// RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/id2.jsp");
+		// view.forward(request, response);
 	}
 
 	/**

@@ -189,7 +189,7 @@ public class cartDao {
 		return cartList;
 	}
 
-	public List<Cart> selectSortList(Connection conn, String orderby) {
+	public List<Cart> selectSortList(Connection conn, String orderby) { //여기 필요 없음
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		List<Cart> cartSortList = new ArrayList<>();
@@ -239,6 +239,36 @@ public class cartDao {
 		
 		
 		return cartSortList;
+	}
+
+	public int deleteCartList(Connection conn, int[] cartNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+	//	String sql = cartQuery.getProperty("deleteCartList");
+		
+		String params = "";
+		
+		for(int i=0; i<cartNo.length; i++) {
+			params += cartNo[i];
+			
+			if(i< cartNo.length-1)
+					params += ",";
+		}
+		String sql =  "DELETE FROM CART WHERE CART_NO IN ("+params+")";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}  finally {
+			close(pstmt);
+		}
+		
+		
+		return result;
+		
 	}
 
 }

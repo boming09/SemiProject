@@ -281,13 +281,17 @@ table {
 /* 리뷰 - 댓글 목록 */
 .reviewContentList {
     margin: 40px 0;
-    padding: 20px 10px;
+    padding: 0px 10px 20px 10px;
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
     position: relative;
 }
 .reviewInfoGrp{
-    padding: 30px 0;
+    margin: 30px 10px;
+}
+.cmt_rating{
+	display:flex;
+	justify-content: space-between;
 }
 .cmt_cont{
     padding: 10px 20px;
@@ -298,6 +302,9 @@ table {
 }
 .reviewInfoBot span{
     padding: 0 5px;
+}
+.txt_id {
+	font-weight: bold;
 }
 /* 리뷰 - 작가댓글 */
 .fas fa-check-circle{

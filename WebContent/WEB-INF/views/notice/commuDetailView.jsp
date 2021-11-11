@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%
+	pageContext.setAttribute("newReply", "\n");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +40,7 @@
                         <th class="commu_title">제목</th>
                         <td class="title"><div>${ commu.ctitle }</div></td>         
                         <th class="commu_user">작성자</th>
-                        <td class="user">${ commu.user_nickname }</td>
+                        <td class="user">${ commu.user_id }</td>
                     </tr>
                     <tr class="liarea">
                         <th class="commu_writer">소통작가</th>
@@ -46,16 +50,24 @@
                     </tr>         
                     <tr class="liarea2">
                         <th class="commu_content">내용</th>
-                        <td class="ccontent" colspan="3">${ commu.ccontent }</td>
+                        <td class="ccontent" colspan="3">${ fn:replace(commu.ccontent, newReply, '<br>')}</td>
                     </tr>
                 </table>
             </div>
             
+            <c:if test="${ !empty commu.creply }">
+	            <div class="commu_reply">작가님 답변</div>
+	            <div class="reply"><div>${ fn:replace(commu.creply, newReply, '<br>')}</div></div>
+            </c:if>
+            
                        
             <div class="commu_btn">
                 <button type="button" onclick="location.href='${ contextPath }/commu'">취소</button>
-                <c:if test="${ loginUser.userNo == commu.user_no }">
+                <c:if test="${ loginUser.userNo == commu.user_no && empty commu.creply }">
 	                <button type="button" onclick="location.href='#'">수정하기</button>
+                </c:if>
+                <c:if test="${ loginUser.userNo == commu.user_no }">
+                	<button type="button" onclick="location.href='#'">삭제하기</button>
                 </c:if>
             </div>
            

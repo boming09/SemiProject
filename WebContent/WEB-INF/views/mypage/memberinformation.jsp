@@ -71,6 +71,10 @@
 	            			value="<%= loginUser.getUserEmail() != null ? loginUser.getUserEmail() : "" %>"></td>
 	            	</tr>
 	            	<tr>
+	            		<th>성  별</th>
+	            		<td class="tdgender">&nbsp;&nbsp;<%= loginUser.getGender() %></td>
+	            	</tr>
+	            	<tr>
 	            		<% 
 	            			String[] address;
 	            			if(loginUser.getUserAddress() != null){
@@ -106,7 +110,7 @@
 	            		<td>&nbsp;&nbsp;
 	            			<input type="text" class="tb3" name="userNickname"
 	            			value="<%= loginUser.getUserNickname() != null ? loginUser.getUserNickname() : "" %>" required>
-	            			&nbsp;&nbsp;&nbsp;&nbsp;	            			
+	            			<button id="nicknameCheck" type="button">중복확인</button>
 		            		서재 닉네임은 100자평, 마이리뷰, 이벤트 댓글에 사용됩니다.</td>
 	            	</tr>
 	            </table>
@@ -185,9 +189,57 @@
 			var options = "width="+width+",height="+height+",left="+left+",top="+top;
 			
 			window.open(url, title, options);
+		}		
+	</script>
+	<script>
+		function validate(){
+			return true;
 		}
-		
+	
+		$("#nicknameCheck").on('click', function(){
+			
+			var userNickname = $("[name=userNickname]");
+			var isUsable =false;
+			
+			if(!userNickname || userNickname.val().length < 2){
+				alert("닉네임은 최소 2자리 이상이어야 합니다.");
+				userId.focus();
+			} else {
+				$.ajax({
+					url : "${contextPath}/NicknameCheck",
+					type : "post",
+					data : { userNickname : userNickname.val() },
+					success : function(result){
+						console.log(result);
+						if(result == "fail"){
+							alert("사용할 수 없는 닉네임 입니다.");
+							userNickname.focus();
+						} else {
+							if(confirm("사용 가능한 닉네임 입니다. 사용하시겠습니까?")){
+								userNickname.attr('readonly', true);
+								isUsable = true;
+							} else {
+								userNickname.attr('readonly', false);
+								userNickname.focus();
+								isUsable = false;
+							}
+						}
+									
+						if(isUsable){
+							$("#joinBtn").removeAttr("disabled");
+						} else {
+							$("#joinBtn").attr("disabled", true);
+						}
+					},
+					error : function(e){
+						console.log(e);
+					}
+				});
+			}			
+		});
 		
 	</script>
+	
+	
 </body>
 </html>

@@ -40,7 +40,7 @@
         </div>
         <div class="area4"><a class="ca-top">고객센터</a>
 	        <ul class="ca-list">
-	            <li><a href="#">자주 묻는 질문 FAQ</a></li>
+	            <li><a href="<%= request.getContextPath() %>/cs">자주 묻는 질문 FAQ</a></li>
 	            <li><a href="<%= request.getContextPath() %>/one/insert">1:1 고객상담</a></li>
 	        </ul>
 	    </div>        

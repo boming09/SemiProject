@@ -223,7 +223,7 @@ a {
 }
 
 /* 중복확인 */
-.check {
+#idCheck {
     width: 100px;
     background: #497d42;
     color: white;
@@ -336,7 +336,7 @@ footer {
 }
 
 /* 가입 여부 확인하기*/
-#Confirmbut {
+#searchIdForm {
     background : #497D4E;
     color : white;
     width : 230px;
@@ -349,13 +349,14 @@ footer {
     width : 150px;
     height : 30px;
     font-size : 14px;
+    margin-bottom : 10px;
 }
 
 /* 로그인 필요 없음*/
 #idnologin{
     font-size : 12px;
     padding-left: 443px;
-    padding-to: 10px;
+    padding-to: 10px;    
 }
 
 .id3 {
@@ -444,6 +445,18 @@ footer {
     color : red;
 }
 
+/* 비밀번호 찾기 아이디,이름,이메일 */
+.psid{
+	margin-left : 56px;
+}
+
+.psname{
+	margin-left : 56px;
+}
+
+.psemail{
+	
+}
 /*--------------------------------------------------------------------*/
 /* 이메일 상담 div */
 .emailconsulting {
@@ -509,7 +522,7 @@ footer {
 }
 
 /* 에러페이지 */
-#errorcenter{
+#errorc{
 	    height: 70vh;
 }
 
@@ -529,6 +542,29 @@ footer {
 	text-align : center;
 }
 
+#idUserName{
+	color : red;
+	text-align : center;
+	font-size: 15px;
+}
+
+#idUserId{
+	text-align : center;
+}
+
+#idButton{
+	margin-left : 70px;
+	margin-top : 20px;
+}
+
+.servicec{
+	margin-left : 20px;
+	margin-right: 175px;
+}
+
+.errordiv{
+	height: 59vh;
+}
 
 /*--------------------------------------------------------------------*/
 footer {

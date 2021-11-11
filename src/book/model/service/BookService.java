@@ -1,6 +1,7 @@
 package book.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +16,7 @@ public class BookService {
 	
 	private BookDao bookDao = new BookDao();
 	
-	// select bookList
+	// 도서 검색
 	public Map<String, Object> selectList(int page, Search search) {
 		Connection conn = getConnection();
 		
@@ -37,7 +38,7 @@ public class BookService {
 		return returnMap;
 	}
 	
-	// category List - search
+	// 검색한 카테고리 리스트
 	public List<String> categoryList(Search search) {
 		Connection conn = getConnection();
 		List<String> categoryList = bookDao.categoryList(conn, search);
@@ -47,17 +48,18 @@ public class BookService {
 		return categoryList;
 	}
 	
-	// select Book
+	// 도서 상세
 	public Book selectBook(int bid) {
 		Connection conn = getConnection();
 		Book book = bookDao.selectBook(conn, bid);
-		
+		/* 댓글 조회 추가 */
+		book.setReplyList(bookDao.selectReplyList(conn, bid));
 		close(conn);
 		
 		return book;
 	}
 	
-	// sort bookList
+	// 도서 정렬
 	public Map<String, Object> selectSortList(int page, Search search) {
 		Connection conn = getConnection();
 		List<Book> bookList = null;
@@ -88,13 +90,14 @@ public class BookService {
 		return returnSortMap;
 	}
 	
-	// 검색 목록&카테고리 선택
+	/* 검색&카테고리 */
+	
+	// 검색&카테고리 선택한 도서목록
 	public Map<String, Object> selectCategoryBookList(int page, Search search) {
 		Connection conn = getConnection();
 		
 		// 1. 게시글 총 개수 구하기
-		int listCount = bookDao.getCategoryBookListCount(conn, search);
-		
+		int listCount = bookDao.getListCount(conn, search);
 		// 2. PageInfo 객체 만들기
 		PageInfo pi = new PageInfo(page, listCount, 7, 7);
 		
@@ -110,4 +113,37 @@ public class BookService {
 		return returnMap;
 	}
 	
+	/* 검색&카테고리&정렬 */
+	
+	// 검색&카테고리&정렬 선택한 도서 목록
+	public Map<String, Object> selectCategorySortList(int page, Search search) {
+		Connection conn = getConnection();
+		
+		// 1. 게시글 총 개수 구하기
+		int listCount = bookDao.getListCount(conn, search);
+		
+		// 2. PageInfo 객체 만들기
+		PageInfo pi = new PageInfo(page, listCount, 7, 7);
+		
+		// 3. 검색&카테고리&정렬한 도서 목록
+		List<Book> bookList = new ArrayList<>();
+		
+		if(search.getSort().equals("popular")) {
+			bookList = bookDao.selectPopularList(conn, pi, search);
+		} else if(search.getSort().equals("new")) {
+			bookList = bookDao.selectNewList(conn, pi, search);
+		} else if(search.getSort().equals("highest")) {
+			bookList = bookDao.selectHighestList(conn, pi, search);
+		} else if(search.getSort().equals("lowest")) {
+			bookList = bookDao.selectLowestList(conn, pi, search);
+		}
+		
+		Map<String, Object> returnMap = new HashMap<>();
+		returnMap.put("pi", pi);
+		returnMap.put("bookList", bookList);
+		
+		close(conn);
+		
+		return returnMap;
+	}
 }

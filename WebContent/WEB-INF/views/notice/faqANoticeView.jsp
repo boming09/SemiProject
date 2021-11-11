@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%
+	pageContext.setAttribute("newReply", "\n");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +16,6 @@
 <title>고객센터_FAQ</title>
 </head>
 <body>
-	<!-- 고객센터 사이드 FAQ-주문/결제 클릭시 첫 화면 -->
 	<!-- 메뉴바 -->
 	<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 	
@@ -23,25 +26,17 @@
 		<div class="content">
 			 <header class="faqheader">
                 <div>FAQ</div>
-                <div class="faqsearch">
-                	<form class="faqsearch">
-	                    <input type="text" placeholder="FAQ 검색"></input>
-	                    <button>
-	                    	<img src="${ contextPath }/resources/images/notice/magnifier.png">
-	                   	</button>
-                	</form>
-                </div>
             </header>
         
             <div class="typearea">
             	<div class="type_area">
 	                <select class="atype" name="atype" id="atype" >
-	                	<!-- valeu값 = db category_no -->
 	                	<option value="0" class="a0">전체</option>
-	                    <option value="1" class="a1" selected>주문/결제</option>
-	                    <option value="6" class="a6">취소/교환/반품</option>
-	                    <option value="10" class="a10">배송</option>
-	                    <option value="14" class="a14">회원관리</option>
+	                    <c:forEach var="c" items="${ fcate }">
+	                    	<c:if test="${ c.fref_no == 0 }">
+		                    	<option value="${ c.fcate_no }" <c:if test="${ param.atype == c.fcate_no }">selected</c:if>>${ c.fcate_type }</option>
+	                    	</c:if>
+	                    </c:forEach>
 	                </select>
 	                <div class="faqarrow">
 	                	<img src="${ contextPath }/resources/images/notice/faqarrow.png">
@@ -49,21 +44,13 @@
             	</div>
                 <span class="typearrow">〉</span>
                 <div class="type_area">
-	                <select class="btype" name="btype">
+	                <select class="btype" name="btype" onchange="btypeChange()">
 	                	<option value="0" class="a0">전체</option>
-	                    <option value="2" class="a1">주문/주문확인</option>
-	                    <option value="3" class="a1">주문변경</option>
-	                    <option value="4" class="a1">결제정보</option>
-	                    <option value="5" class="a1">세금계산서/영수증</option>
-	                    <option value="7" class="a6">취소/취소환불</option>
-	                    <option value="8" class="a6">교환</option>
-	                    <option value="9" class="a6">반품/반품환불</option>    
-	                    <option value="11" class="a10">배송정보</option>
-	                    <option value="12" class="a10">해외배송</option>
-	                    <option value="13" class="a10">배송비</option>
-	                    <option value="15" class="a14">회원가입/탈퇴</option>
-	                    <option value="16" class="a14">회원정보 확인/변경</option>
-	                    <option value="17" class="a14">작가회원 인증</option>                
+	                	<c:forEach var="c" items="${ fcate }">
+	                    	<c:if test="${ c.fref_no == param.atype }">
+		                    	<option value="${ c.fcate_no }" <c:if test="${ param.btype == c.fcate_no }">selected</c:if>>${ c.fcate_type }</option>
+	                    	</c:if>
+	                    </c:forEach>   
 	                </select>
 	                <div class="faqarrow">
 	                	<img src="${ contextPath }/resources/images/notice/faqarrow.png">
@@ -73,23 +60,20 @@
         	
             <div class="top3">TOP 3</div>
             <div class="top3_list">
-            	<div>
+            	<c:forEach var="top" items="${ topList }">
 	                <ul class="top3_ul">
-	                    <li class="faq_type">[세금계산서]</li>
-                    	<li class="faq_q">총 리스트영역 여긴 나중에 반복문 돌려돌려</li>
+                    	<li class="faq_q">[${ top.fcategory }]&nbsp;&nbsp;${ top.title }</li>
 	                    <li class="faq_icon">▼</li>
 	                </ul>
 	                <div class="top3_a">
-	                	<div class="top3_answer"></div>
+	                	<div class="top3_answer">${ fn:replace(top.reply, newReply, '<br>')}</div>
 	                	<div class="top3_service">
 	                		<img src="${ contextPath }/resources/images/notice/callcenter.png">
 	                		<p>추가로 자세한 상담을 원하신다면 1:1문의를 이용해주세요</p>
-	                		<button>1:1문의</button>
+	                		<button onclick="goOne()">1:1문의</button>
 	                	</div>
 	                </div>
-            	</div>
-            	
-	               
+            	</c:forEach>
             </div>
         
         	<!-- 영역을 더 잡아?? -->
@@ -98,20 +82,18 @@
             	<!-- 여기서 itmes는 서블릿에서 attr에 저장한 이름 = faqList -->
             	<c:forEach var="faq" items="${ faqList }">
 	                <ul class="total_ul">
-	                   <%--  <li class="faq_type">[${ faq.fcategory }]</li> --%>
 	                    <li class="faq_q">[${ faq.fcategory }]&nbsp;&nbsp;${ faq.title }</li>
 	                    <li class="faq_icon">▼</li>
 	                </ul>
 	                <div class="total_a">
-	                	<div class="total_answer">${ faq.reply }</div>
+	                	<div class="total_answer"><p style="white-space: pre=line;">${ faq.reply }</p></div>
 	                	<div class="total_service">
 	                		<img src="${ contextPath }/resources/images/notice/callcenter.png">
 	                		<p>추가로 자세한 상담을 원하신다면 1:1문의를 이용해주세요</p>
-	                		<button>1:1문의</button>
+	                		<button onclick="goOne()">1:1문의</button>
 	                	</div>
 	                </div>
             	</c:forEach>
-            	
             </div>
             
             <div class="pagingarea">
@@ -120,7 +102,7 @@
 	            	<li>
 					<c:choose>
 						<c:when test="${ pi.page > 1 }">
-							<a href="${ contextPath }/faq?page=${ pi.page - 1}">&lt;</a>
+							<a href="${ contextPath }/faqA?page=${ pi.page - 1}">&lt;</a>
 						</c:when>
 						<c:otherwise>
 							<a href="#">&lt;</a>
@@ -136,7 +118,7 @@
 									<a href="#" class="current_page">${ p }</a>
 								</c:when>
 								<c:otherwise>
-									<a href="${ contextPath }/faq?page=${ p }">${ p }</a>
+									<a href="${ contextPath }/faqA?page=${ p }">${ p }</a>
 								</c:otherwise>
 							</c:choose>
 						</li>
@@ -146,7 +128,7 @@
 					<li>
 						<c:choose>
 							<c:when test="${ pi.page < pi.maxPage }">
-								<a href="${ contextPath }/faq?page=${ pi.page + 1}">&gt;</a>
+								<a href="${ contextPath }/faqA?page=${ pi.page + 1}">&gt;</a>
 							</c:when>
 							<c:otherwise>
 								<a href="#">&gt;</a>
@@ -183,58 +165,48 @@
 			if($(this).next($('div')).css('display') == 'none') {
 				$('div.total_a').slideUp();
 				$(this).next($('div')).slideDown();
-				/* $(this).css({background:'#f3f5f7'}); */
 			} else {
 				$(this).next($('div')).slideUp();
 			}
 		});	
 		
-	
-		if($('#atype').val() == 1){
-			$('.btype').val(0);
-			$('.btype').find('.a1').show();
-			$('.btype').find('.a6').hide();
-			$('.btype').find('.a10').hide();
-			$('.btype').find('.a14').hide();
-		} 
-		
-	
 		$(document).on('change', '.atype', bChange);
 		function bChange() {
 			if($(this).val() == 0) {
-				$('.btype').val(0);
-				$('.btype').find('.a1').hide();
-				$('.btype').find('.a6').hide();
-				$('.btype').find('.a10').hide();
-				$('.btype').find('.a14').hide();
+				location.href="${ contextPath }/faq?atype=0";
 			} else if($(this).val() == 1) {
-				$('.btype').val(0);
-				$('.btype').find('.a1').show();
-				$('.btype').find('.a6').hide();
-				$('.btype').find('.a10').hide();
-				$('.btype').find('.a14').hide();
+				location.href="${ contextPath }/faqA?atype=1&btype=0";
 			} else if($(this).val() == 6) {
-				$('.btype').val(0);
-				$('.btype').find('.a1').hide();
-				$('.btype').find('.a6').show();
-				$('.btype').find('.a10').hide();
-				$('.btype').find('.a14').hide();
+				location.href="${ contextPath }/faqB?atype=6&btype=0";
 			} else if($(this).val() == 10) {
-				$('.btype').val(0);
-				$('.btype').find('.a1').hide();
-				$('.btype').find('.a6').hide();
-				$('.btype').find('.a10').show();
-				$('.btype').find('.a14').hide();
-			} else {
-				$('.btype').val(0);
-				$('.btype').find('.a1').hide();
-				$('.btype').find('.a6').hide();
-				$('.btype').find('.a10').hide();
-				$('.btype').find('.a14').show();
+				location.href="${ contextPath }/faqC?atype=10&btype=0";
+			} else if($(this).val() == 14) {
+				location.href="${ contextPath }/faqD?atype=14&btype=0";
 			}
 		}
 		
-
+		// btype 바뀔시
+		function btypeChange() {
+			location.href="${ contextPath }/faqA?atype=1&btype=" + $('.btype').val();
+		}
 	</script>
+	
+	<c:choose>
+		<c:when test="${ !empty loginUser }">
+			<script>
+				function goOne() {
+					location.href="${ contextPath }/one/insert";
+				}
+			</script>
+		</c:when>
+		<c:otherwise>
+			<script>
+				function goOne() {
+					alert("로그인 후 이용 가능합니다.");
+					location.href='${ contextPath }/login';
+				}
+			</script>
+		</c:otherwise>
+	</c:choose>
 </body>
 </html>

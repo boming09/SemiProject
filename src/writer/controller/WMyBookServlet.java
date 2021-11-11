@@ -50,7 +50,7 @@ public class WMyBookServlet extends HttpServlet {
 		
 		request.setAttribute("wbookList", map.get("wbookList"));
 		request.setAttribute("pi", map.get("pi"));
-		
+				
 		// 작가 소개 페이지 이동
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/writer/wMyBookView.jsp");
 		view.forward(request, response);

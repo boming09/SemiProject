@@ -19,12 +19,14 @@
 <body>    
 	<!-- 메뉴바 -->
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
+	<div class="errordiv">
 	<div id="errorcenter">
 		<div id="imageArea">
 			<img id="errorImage"
 			src="<%= request.getContextPath() %>/resources/images/logo.png">
 		</div>
 	<h1 id="msgArea"><%= msg %></h1>
+	</div>
 	</div>
 	<br><br><br>
     <!-- footer -->

@@ -82,8 +82,8 @@ public class MemberDao {
 			pstmt.setString(2, member.getUserPwd());
 			pstmt.setString(3, member.getUserName());
 			pstmt.setString(4, member.getGender());
-			pstmt.setString(5, member.getUserEmail());
-			pstmt.setString(6, member.getUserPhone());
+			pstmt.setString(5, member.getUserPhone());
+			pstmt.setString(6, member.getUserEmail());
 			pstmt.setString(7, member.getUserAddress());
 			
 			result = pstmt.executeUpdate();		
@@ -207,13 +207,85 @@ public class MemberDao {
 		
 	}
 
-	public String findld(String userName, String userEmail) {
+	public Member searchId(Connection conn, String userName, String userEmail) {
 		PreparedStatement pstmt = null;
-		String sql = memberQuery.getProperty("findld");
+		ResultSet rset = null;
+		String sql = memberQuery.getProperty("searchId");
+		Member member = null;
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userName);
+			pstmt.setString(2, userEmail);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				member.setUserNo(rset.getInt("user_no"));
+				member.setUserId(rset.getString("user_id"));
+				member.setUserPwd(rset.getString("user_pwd"));
+				member.setUserName(rset.getString("user_name"));
+				member.setGender(rset.getString("gender"));
+				member.setUserEmail(rset.getString("user_email"));
+				member.setUserPhone(rset.getString("user_phone"));
+				member.setUserAddress(rset.getString("user_address"));
+				member.setUserGrade(rset.getInt("user_grade"));
+				member.setEnrollDate(rset.getDate("enroll_date"));
+				member.setStatus(rset.getString("status"));
+				member.setUserCertify(rset.getString("user_certify"));
+				member.setUserNickname(rset.getString("user_nickname"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}		
 		
+		return member;
+	}
+	
+	public Member searchPw(Connection conn, String userId, String userName, String userEmail) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = memberQuery.getProperty("searchPw");
+		Member member = null;
 		
-		return null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userName);
+			pstmt.setString(3, userEmail);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+						member.setUserNo(rset.getInt("user_no"));
+						member.setUserId(rset.getString("user_id"));
+						member.setUserPwd(rset.getString("user_pwd"));
+						member.setUserName(rset.getString("user_name"));
+						member.setGender(rset.getString("gender"));
+						member.setUserEmail(rset.getString("user_email"));
+						member.setUserPhone(rset.getString("user_phone"));
+						member.setUserAddress(rset.getString("user_address"));
+						member.setUserGrade(rset.getInt("user_grade"));
+						member.setEnrollDate(rset.getDate("enroll_date"));
+						member.setStatus(rset.getString("status"));
+						member.setUserCertify(rset.getString("user_certify"));
+						member.setUserNickname(rset.getString("user_nickname"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}	
+		
+		return member;
 	}
 
 
@@ -386,6 +458,58 @@ public class MemberDao {
 		return result;
 	}
 
+	public int idCheck(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		String sql = memberQuery.getProperty("idCheck");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}		
+		
+		return result;
+	}
 
+	public int nicknameCheck(Connection conn, String userNickname) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		String sql = memberQuery.getProperty("nicknameCheck");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userNickname);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}		
+		
+		return result;
+	}
 		
 }

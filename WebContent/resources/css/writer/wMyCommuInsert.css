@@ -33,7 +33,14 @@
     font-weight: bold;
 }
 /* 내용 영역 */
+.wcommu_conarea {
+	display : flex;
+    justify-content : space-between;	
+    align-items: center;
+}
+ 
 .wcommu_conarea table {
+	width : 100%;
     font-size: 0.9rem;
     margin: 0px 30px 10px 30px;
     /*  테이블 간격 없애기 */
@@ -58,7 +65,7 @@ td {
     height: 300px;;
 }
 /* 너비 */
-.wcommu_title, .wcommu_user, .wcommu_date, .wcommu_content {
+.wcommu_title, .wcommu_user, .wcommu_writer, .wcommu_date, .wcommu_content {
     width: 12%;
     text-align: center;
     background: rgb(239, 239, 239);         
@@ -71,6 +78,7 @@ td {
 }
 .wcontent {
     width: 88%;
+    vertical-align: top;
 }
 
 /* 테두리 */
@@ -81,7 +89,7 @@ th, td {
     border: 0;
 }
 
-.wcommu_title, .title, .wcommu_date, .date,
+.wcommu_title, .title, .wcommu_date, .date, .wcommu_writer, .writer,
 .wcommu_user, .user {
     border-bottom: 1px solid lightgray;
 }
@@ -100,7 +108,9 @@ th, td {
     resize: none;
     width: 95%;
     height: 200px;
-    padding-left : 10px;
+    padding : 10px;
+    font-size : 0.9rem;
+    line-height : 20px;
 }
 
 /* 취소/답변작성 버튼 */

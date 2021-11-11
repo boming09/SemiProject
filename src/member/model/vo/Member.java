@@ -11,8 +11,8 @@ public class Member {
 	private String userPwd;			// 회원 비밀번호
 	private String userName;		// 회원 이름
 	private String gender;			// 성별
-	private String userEmail;		// 회원 이메일
 	private String userPhone;		// 회원 휴대폰
+	private String userEmail;		// 회원 이메일
 	private String userAddress;		// 회원 주소
 	private int userGrade;			// 회원 등급
 	private Date enrollDate;		// 회원 가입일
@@ -49,13 +49,19 @@ public class Member {
 	}
 	
 	
-	public Member(String userId, String userPwd, String userName, String userEmail, String userPhone, Date enrollDate) {
+	public Member(String userName, String userEmail) {
+		super();
+		this.userName = userName;
+		this.userEmail = userEmail;
+	}
+
+	public Member(String userId, String userPwd, String userName, String userPhone, String userEmail, Date enrollDate) {
 		super();
 		this.userId = userId;
 		this.userPwd = userPwd;
 		this.userName = userName;
-		this.userEmail = userEmail;
 		this.userPhone = userPhone;
+		this.userEmail = userEmail;
 		this.enrollDate = enrollDate;
 	}
 
@@ -95,7 +101,7 @@ public class Member {
 
 
 
-	public Member(int userNo, String userId, String userPwd, String userName, String userPhone, String userEmail,
+	public Member(int userNo, String userId, String userPwd, String userName, String userEmail, String userPhone,
 			String userAddress, int userGrade, Date enrollDate, String status) {
 		super();
 		this.userNo = userNo;
@@ -110,8 +116,8 @@ public class Member {
 		this.status = status;
 	}	
 
-	public Member(int userNo, String userId, String userPwd, String userName, String gender, String userPhone,
-			String userEmail, String userAddress, int userGrade, Date enrollDate, String status, String userCertify,
+	public Member(int userNo, String userId, String userPwd, String userName, String gender, 
+			String userEmail, String userPhone, String userAddress, int userGrade, Date enrollDate, String status, String userCertify,
 			String userNickname) {
 		super();
 		this.userNo = userNo;

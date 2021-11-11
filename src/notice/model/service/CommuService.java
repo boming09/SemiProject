@@ -127,6 +127,43 @@ public class CommuService {
 	}
 
 	
+	// 작가마이페이지-소통리스트
+	public Map<String, Object> selectWCommuList(int page, int writer) {
+		Connection conn = getConnection();
+		
+		// 게시글 총 개수 구하기
+		int listCount = commuDao.selectWCommuCount(conn, writer);
+		// 페이징 처리
+		PageInfo pi = new PageInfo(page, listCount, 10, 10);
+		// 페이징 처리 된 리스트 조회
+		List<Commu> wCommuList = commuDao.selectWCommuList(conn, pi, writer);
+		
+		Map<String, Object> returnMap = new HashMap<>();
+		
+		returnMap.put("pi", pi);
+		returnMap.put("wCommuList", wCommuList);
+		
+		return returnMap;
+	}
+
+	
+	// 작가 답변 insert
+	public int updateWCommu(int commu_no, String reply) {
+		Connection conn = getConnection();
+		
+		int result = commuDao.updateWCommu(conn, commu_no, reply);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+
+	
 	
 	
 	

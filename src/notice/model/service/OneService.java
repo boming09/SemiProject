@@ -114,4 +114,21 @@ public class OneService {
 	}
 
 	
+	// 게시글 삭제하기
+	public int deleteOne(int one_no) {
+		Connection conn = getConnection();
+		
+		int result = oneDao.deleteOne(conn, one_no);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+
+	
 }
