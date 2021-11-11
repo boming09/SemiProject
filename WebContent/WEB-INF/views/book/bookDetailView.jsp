@@ -249,7 +249,7 @@ crossorigin="anonymous"></script>
                     </div>
                     <!-- 2 -->
                     <div class="reviewWrite">
-                   		<form method="post" name="replyForm" action="${ contextPath }/reply/insert">
+                   		<form method="post" name="replyForm">
                         <div class="writeRating">
                             <span>평점&nbsp;</span>
                             <span class="starGrp">
@@ -288,9 +288,8 @@ crossorigin="anonymous"></script>
                                     <input type="number" id="count" value="0" min="0" max="150" readonly>/150
                                 </span>
                             </div>
-                            <input type="hidden" name="bid" value="${ book.bid }">
-                            <button class="writeBtn" type="submit">등록</button>
-                            <!-- <button class="writeBtn" type="button" onclick="reply()">등록</button> -->
+                            <%-- <input type="hidden" name="bid" value="${ book.bid }"> --%>
+                            <button class="writeBtn" type="button" onclick="reply(${ book.bid })">등록</button>
                         </div>
                    	</form>
                     </div>
@@ -340,8 +339,8 @@ crossorigin="anonymous"></script>
                                     </span>
                                     <div>
                                     <c:if test="${ loginUser.userNo == reply.userNo }">
-					                <button type="button" onclick="updateReply();">수정하기</button>
-					                <button type="button" onclick="deleteReply();">삭제하기</button>
+					                	<button type="button" onclick="updateReply();">수정하기</button>
+					                	<button type="button" onclick="deleteReply();">삭제하기</button>
  					                </c:if>
                                	</div>
                                 </div>
@@ -432,8 +431,8 @@ crossorigin="anonymous"></script>
     	document.forms.acForm.submit();
     }
     
-    function reply(){
-    	document.forms.replyForm.action="${ contextPath }/reply/insert";
+    function reply(bid){
+    	document.forms.replyForm.action="${ contextPath }/reply/insert?bid=" + bid;
     	document.forms.replyForm.submit();
     }
 </script>
@@ -450,9 +449,15 @@ crossorigin="anonymous"></script>
 		location.href="${contextPath}/login";
 	}
 	
-	function reply(){
-		alert('로그인 후 이용 가능합니다.');
-		location.href="${contextPath}/login";
+	function reply(bid){
+		let result = confirm('로그인 후 이용 가능합니다.');
+		
+		if(result){
+			location.href="${contextPath}/login";
+		} else {
+			location.href="${contextPath}/book/detail?bid=" + bid + "#review";
+		}
+		
 	}
 </script>
 </c:otherwise>
