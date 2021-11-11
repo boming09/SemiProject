@@ -212,6 +212,29 @@ public class OneDao {
 		
 		return oneList;
 	}
+
+
+	public int adminOneReply(Connection conn, int oNo, String reply) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = oneQuery.getProperty("adminOneReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, reply);
+			pstmt.setInt(2, oNo);
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 	

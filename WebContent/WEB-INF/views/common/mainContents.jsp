@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,7 +69,9 @@ https://github.com/filipelinhares/ress-->
 					    </td>
 					    <td>
 					        <b>오늘의 책</b>
+					        <c:if test="${ !empty loginUser && loginUser.userId == 'admin' }">
 					        <button type="button" style="border: 1px solid black; width: 30px; background: pink; color: white; margin-left: 10px;">edit</button>
+					        </c:if>
 					    </td>
 					</tr>
 					<tr>

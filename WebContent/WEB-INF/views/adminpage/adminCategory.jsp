@@ -36,6 +36,7 @@
 					<ul class="sub">
 						<li><a href="${ contextPath }/admin/insertbook">책 등록</a></li>
 						<li><a href="${ contextPath }/admin/todaybook">오늘의 책</a></li>
+						<li><a href="${ contextPath }/faq/insert">자주하는 질문</a></li>
 					</ul>
 				</li>
 			</ul>
