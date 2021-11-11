@@ -250,40 +250,40 @@ crossorigin="anonymous"></script>
                     </div>
                     <!-- 2 -->
                     <div class="reviewWrite">
-                   		<form method="post" name="reviewForm" action="${ contextPath }/reply/insert">
+                   		<form method="post" name="replyForm" action="${ contextPath }/reply/insert">
                         <div class="writeRating">
                             <span>평점&nbsp;</span>
                             <span class="starGrp">
-                                <span class="star-input">
-                                    <span class="input">
-                                        <input type="radio" name="inputScore" value="1" id="p1">
-                                        <label for="p1">1</label>
-                                        <input type="radio" name="inputScore" value="2" id="p2">
-                                        <label for="p2">2</label>
-                                        <input type="radio" name="inputScore" value="3" id="p3">
-                                        <label for="p3">3</label>
-                                        <input type="radio" name="inputScore" value="4" id="p4">
-                                        <label for="p4">4</label>
-                                        <input type="radio" name="inputScore" value="5" id="p5">
-                                        <label for="p5">5</label>
-                                        <input type="radio" name="inputScore" value="6" id="p6">
-                                        <label for="p6">6</label>
-                                        <input type="radio" name="inputScore" value="7" id="p7">
-                                        <label for="p7">7</label>
-                                        <input type="radio" name="inputScore" value="8" id="p8">
-                                        <label for="p8">8</label>
-                                        <input type="radio" name="inputScore" value="9" id="p9">
-                                        <label for="p9">9</label>
-                                        <input type="radio" name="inputScore" value="10" id="p10">
-                                        <label for="p10">10</label>
-                                    </span>
-                                    <output for="inputScore"><b>9</b></output>						
-                                </span>
+                                <span class="rstarScore">
+									<span class="score">
+										<input type="radio" name="rstarScore" value="1" id="s1">
+										<label for="s1">1</label>
+										<input type="radio" name="rstarScore" value="2" id="s2">
+										<label for="s2">2</label>
+										<input type="radio" name="rstarScore" value="3" id="s3">
+										<label for="s3">3</label>
+										<input type="radio" name="rstarScore" value="4" id="s4">
+										<label for="s4">4</label>
+										<input type="radio" name="rstarScore" value="5" id="s5">
+										<label for="s5">5</label>
+										<input type="radio" name="rstarScore" value="6" id="s6">
+										<label for="s6">6</label>
+										<input type="radio" name="rstarScore" value="7" id="s7">
+										<label for="s7">7</label>
+										<input type="radio" name="rstarScore" value="8" id="s8">
+										<label for="s8">8</label>
+										<input type="radio" name="rstarScore" value="9" id="s9">
+										<label for="s9">9</label>
+										<input type="radio" name="rstarScore" value="10" id="s10">
+										<label for="s10">10</label>
+									</span>
+									<output for="rstarScore"><b id="b">0</b>점</output>					
+								</span>
                             </span>
                         </div>
                         <div class="writeArea_wrap">
                             <div class="writeArea">
-                                <textarea id="replyCont" name="replyCont" rows="5" cols="70" style="resize:none;" maxlength="149" 
+                                <textarea id="replyCont" name="rcontent" rows="5" cols="70" style="resize:none;" maxlength="149" 
                                 placeholder="한글 기준 150자까지 작성 가능" onkeydown="calc()" onkeyup="calc()" onkeypress="calc()"></textarea>
                                 <span class="wordCount">
                                     <input type="number" id="count" value="0" min="0" max="150" readonly>/150
@@ -291,6 +291,7 @@ crossorigin="anonymous"></script>
                             </div>
                             <input type="hidden" name="bid" value="${ book.bid }">
                             <button class="writeBtn" type="submit">등록</button>
+                            <!-- <button class="writeBtn" type="button" onclick="reply()">등록</button> -->
                         </div>
                    	</form>
                     </div>
@@ -339,11 +340,11 @@ crossorigin="anonymous"></script>
                                         </span>
                                     </span>
                                     <div>
-                                    <%-- <c:if test="${ loginUser.userNo == reply.userNo }"> --%>
-					                <!-- <button type="button" onclick="updateBoardView();">수정하기</button>
-					                <button type="button" onclick="deleteBoard();">삭제하기</button> -->
-					                <%-- </c:if> --%>
-                                    </div>
+                                    <c:if test="${ loginUser.userNo == reply.userNo }">
+					                <button type="button" onclick="updateReply();">수정하기</button>
+					                <button type="button" onclick="deleteReply();">삭제하기</button>
+ 					                </c:if>
+                               	</div>
                                 </div>
                                 <div class="cmt_cont">
                                     <span class="txt_cont">${ reply.rcontent }</span>
@@ -398,7 +399,6 @@ crossorigin="anonymous"></script>
             $(this).siblings('.replyCmt').slideUp();    // display=none 이 아닐 때 클릭 시 위로 올라가게
         }
     });
-</script>
 <script>
     function calc(){
         document.getElementById('count').value = 
@@ -432,6 +432,11 @@ crossorigin="anonymous"></script>
     	document.forms.acForm.action="${ contextPath }/cart";
     	document.forms.acForm.submit();
     }
+    
+    function reply(){
+    	document.forms.replyForm.action="${ contextPath }/reply/insert";
+    	document.forms.replyForm.submit();
+    }
 </script>
 </c:when>
 <c:otherwise>
@@ -442,6 +447,11 @@ crossorigin="anonymous"></script>
 	}
 	
 	function cart(){
+		alert('로그인 후 이용 가능합니다.');
+		location.href="${contextPath}/login";
+	}
+	
+	function reply(){
 		alert('로그인 후 이용 가능합니다.');
 		location.href="${contextPath}/login";
 	}

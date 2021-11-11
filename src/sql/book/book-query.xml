@@ -1248,7 +1248,8 @@ SELECT
      JOIN B_CATEGORY USING(CATEGORY_ID)
     WHERE BOOK_ID = ?
 </entry>
-<!-- SELECT REPLY LIST -->
+
+<!-- REPLY -->
 <entry key="selectReplyList">
 	SELECT
 		   REVIEW_NO
@@ -1262,5 +1263,25 @@ SELECT
 	FROM B_REVIEW
     JOIN MEMBER USING(USER_NO)
    WHERE BOOK_ID = ?
+</entry>
+
+<entry key="insertReply">
+INSERT INTO B_REVIEW(
+    REVIEW_NO
+  , BOOK_ID
+  , USER_NO
+  , CREATE_DATE
+  , CONTENT
+  , RATING
+  , REF_NO
+  ) VALUES (
+    SEQ_REVIEW_NO.NEXTVAL
+  , ?
+  , ?
+  , SYSDATE
+  , ?
+  , ?
+  , NULL
+  )
 </entry>
 </properties>

@@ -318,6 +318,7 @@ table {
     cursor: pointer;
 }
 
+/* 별점 보여주기 */
 .star-input>.input,
 .star-input>.input>label:hover,
 .star-input>.input>input:focus+label,
@@ -349,5 +350,37 @@ table {
     background: transparent;	/* 투명 */
 }
 .noneArea {
-    pointer-events: none;
+    pointer-events: none;	/* 이벤트 막기 */
+}
+
+/* 별점 입력하기 */
+.rstarScore>.score,
+.rstarScore>.score>label:hover,
+.rstarScore>.score>input:focus+label,
+.rstarScore>.score>input:checked+label{display: inline-block;vertical-align:middle;background:url('/bomsoop/resources/images/star/grade_img.png')no-repeat;}
+.rstarScore{display:inline-block; white-space:nowrap;width:200px;height:40px;padding:0px;line-height:30px;}
+.rstarScore>.score{display:inline-block;width:150px;background-size:150px;height:28px;white-space:nowrap;overflow:hidden;position: relative;}
+.rstarScore>.score>input{position:absolute;width:1px;height:1px;opacity:0;}
+.rstarScore>.score.starFocus{outline:1px dotted #ddd;}
+.rstarScore>.score>label{width:30px;height:0;padding:28px 0 0 0;overflow: hidden;float:left;cursor: pointer;position: absolute;top: 0;left: 0;}
+.rstarScore>.score>label:hover,
+.rstarScore>.score>input:focus+label,
+.rstarScore>.score>input:checked+label{background-size: 150px;background-position: 0 bottom;}
+.rstarScore>.score>label:hover~label{background-image: none;}
+.rstarScore>.score>label[for="s1"]{width:15px;z-index:10;}
+.rstarScore>.score>label[for="s2"]{width:30px;z-index:9;}
+.rstarScore>.score>label[for="s3"]{width:45px;z-index:8;}
+.rstarScore>.score>label[for="s4"]{width:60px;z-index:7;}
+.rstarScore>.score>label[for="s5"]{width:75px;z-index:6;}
+.rstarScore>.score>label[for="s6"]{width:90px;z-index:5;}
+.rstarScore>.score>label[for="s7"]{width:105px;z-index:4;}
+.rstarScore>.score>label[for="s8"]{width:120px;z-index:3;}
+.rstarScore>.score>label[for="s9"]{width:135px;z-index:2;}
+.rstarScore>.score>label[for="s10"]{width:150px;z-index:1;}
+.rstarScore>output{display:inline-block;width:20px; font-size:18px;text-align:right; vertical-align:middle;}
+.rstarScore input[type="radio"] + label {
+	border: none;
+    border-bottom: white;
+    color:white;
+    background: transparent;	/* 투명 */
 }

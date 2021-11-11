@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import book.model.service.BookService;
-import book.model.vo.Book;
 import book.model.vo.Search;
 
 /**
@@ -51,9 +50,6 @@ public class BookListServlet extends HttpServlet {
 		request.setAttribute("bookList", map.get("bookList"));
 		request.setAttribute("categoryList", categoryList);
 		
-//		System.out.println(map.get("pi"));
-//		System.out.println(map.get("bookList"));
-//		System.out.println(categoryList);
 		request.getRequestDispatcher("/WEB-INF/views/book/bookListView.jsp").forward(request, response);
 	}
 
