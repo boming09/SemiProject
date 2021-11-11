@@ -89,4 +89,8 @@
 		  ON(O.USER_NO = M.USER_NO)
 		 WHERE O.STATUS='N'
 	</entry>
+	
+	
+	
+	
 </properties>

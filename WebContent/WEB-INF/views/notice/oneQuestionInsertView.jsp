@@ -10,7 +10,6 @@
 <title>고객센터_1:1문의</title>
 </head>
 <body>
-	<!-- 고객센터 사이드 FAQ-주문/결제 클릭시 첫 화면 -->
 	<!-- 메뉴바 -->
 	<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 	
@@ -50,9 +49,7 @@
                     <span class="q_file">파일 첨부</span>
                     <div class="q_file2">
                         <span class="q_uplode"><input type="file" name="file" accept="image/gif,image/jpeg,image/png"></span>
-                        <!-- <span class="q_uplode"><input type="file" name="file2"></span> -->
                         <ul>
-                            <!-- <li>첨부가능 용량은 파일당 5MB 미만이며, 최대 2개까지 가능합니다.</li> -->
                             <li>첨부가능 용량은 10MB 미만입니다.</li>
                             <li>첨부가능 파일확장자 : jpg, gif, bmp, png</li>
                             <li>첨부파일 중 개인정보가 포함되어 있는 파일은 상담 완료 후 즉각 파기하며, 상담 외의 목적으로는 사용되지 않습니다.</li>

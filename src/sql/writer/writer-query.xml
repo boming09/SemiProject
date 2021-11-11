@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM
 "http://java.sun.com/dtd/properties.dtd">
-<properties>
-	<!-- <entry key="selectWriter">
-		SELECT
-		       USER_NO
-		     , USER_ID
-		     , USER_PWD
-		     , USER_NAME
-		     , USER_EMAIL
-		     , USER_PHONE
-		     , USER_ADDRESS
-		     , USER_GRADE
-		     , ENROLL_DATE
-		     , STATUS
-		  FROM MEMBER
-		 WHERE USER_NO = ?
-		   AND STATUS = 'Y'	
-	</entry> -->
-	
+<properties>	
 	<entry key="selectWProfile">
 		SELECT
 		       PRO_NO
@@ -115,15 +98,18 @@
 		SELECT *
 		  FROM (SELECT ROWNUM RNUM, A.* 
 		            FROM(SELECT
-		                   BOOK_ID
-		                 , BOOK_NAME
-		                 , PUBLICATION_DATE
-		                 , PUBLISHER
-		                 , BOOK_IMG
-		              FROM BOOK
-		              JOIN W_BOOK USING(BOOK_ID)
-		              JOIN WCHECK W USING(WCK_NO)
-		             WHERE W.USER_NO = ?
+				               BOOK_ID
+			                 , BOOK_NAME
+			                 , PUBLICATION_DATE
+			                 , PUBLISHER
+			                 , BOOK_IMG 
+			                 , COUNT(REVIEW_NO)
+			              FROM BOOK B
+			              JOIN W_BOOK USING(BOOK_ID)
+			              JOIN WCHECK W USING(WCK_NO)
+			              FULL OUTER JOIN B_REVIEW USING(BOOK_ID)
+			             WHERE W.USER_NO = ?
+			             GROUP BY BOOK_ID, BOOK_NAME, PUBLICATION_DATE, PUBLISHER, BOOK_IMG
 		             ORDER BY BOOK_NAME) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
