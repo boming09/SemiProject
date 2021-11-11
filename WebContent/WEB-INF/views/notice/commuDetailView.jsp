@@ -63,8 +63,11 @@
                        
             <div class="commu_btn">
                 <button type="button" onclick="location.href='${ contextPath }/commu'">취소</button>
-                <c:if test="${ loginUser.userNo == commu.user_no }">
+                <c:if test="${ loginUser.userNo == commu.user_no && empty commu.creply }">
 	                <button type="button" onclick="location.href='#'">수정하기</button>
+                </c:if>
+                <c:if test="${ loginUser.userNo == commu.user_no }">
+                	<button type="button" onclick="location.href='#'">삭제하기</button>
                 </c:if>
             </div>
            

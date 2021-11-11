@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 	pageContext.setAttribute("newReply", "\n");
@@ -14,7 +15,6 @@
 <title>고객센터_1:1문의</title>
 </head>
 <body>
-	<!-- 고객센터 사이드 FAQ-주문/결제 클릭시 첫 화면 -->
 	<!-- 메뉴바 -->
 	<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 	
@@ -53,10 +53,17 @@
                 </table>
             </div>
             
+            <c:if test="${ !empty one.oreply }">
+	            <div class="one_reply">봄숲 답변</div>
+	            <div class="reply"><div>${ fn:replace(one.oreply, newReply, '<br>')}</div></div>
+            </c:if>
                        
             <div class="one_btn">
                 <button type="button" onclick="location.href='${ contextPath }/one'">취소</button>
-                <button type="button" onclick="location.href='#'">수정하기</button>
+                <c:if test="${ empty one.oreply }">
+	                <button type="button" onclick="location.href='#'">수정하기</button>
+                </c:if>
+                <button type="button" onclick="location.href='#'">삭제하기</button>
             </div>
            
             
