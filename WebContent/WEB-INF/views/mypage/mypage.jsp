@@ -49,7 +49,7 @@
             		</h3>
             		봄숲 멤버십 회원이 되신걸 환영합니다.<br>
             		구매 금액의 1~3% 추가 마일리지 및 쿠폰 혜택을 받으실수 있습니다.
-            		</div>z
+            		</div>
             		<div class="right">
             		<h3><a href="<%= request.getContextPath() %>/one">내 문의 사항</a></h3>
             		내문의 사항 내용을 볼수 있습니다.

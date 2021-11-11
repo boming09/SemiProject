@@ -103,7 +103,7 @@
                     </tr>
                 </table>
             </div>
-            <c:if test="${ empty one.oreply }">
+            <c:if test="${ empty one.oreply && loginUser.userId != 'admin' }">
             	<div class="one_btn">
                		<button type="button" onclick="location.href='${ contextPath }/one'">취소</button>
             	</div>
