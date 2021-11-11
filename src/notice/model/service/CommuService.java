@@ -140,18 +140,57 @@ public class CommuService {
 		
 		Map<String, Object> returnMap = new HashMap<>();
 		
-		returnMap.put("pi", pi);
-		returnMap.put("wCommuList", wCommuList);
-		
+		if(listCount == 0) {
+			returnMap.put("pi", null);
+			returnMap.put("wCommuList", null);
+		} else {			
+			returnMap.put("pi", pi);
+			returnMap.put("wCommuList", wCommuList);
+		}
+		close(conn);
+		 
 		return returnMap;
 	}
 
 	
-	// 작가 답변 insert
+	// 작가 답변 update
 	public int updateWCommu(int commu_no, String reply) {
 		Connection conn = getConnection();
 		
 		int result = commuDao.updateWCommu(conn, commu_no, reply);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+
+	
+	// 게시글 수정
+	public int updateCommu(int commu_no, String title, String content) {
+		Connection conn = getConnection();
+		
+		int result = commuDao.updateCommu(conn, commu_no, title, content);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+
+	// 게시글 삭제
+	public int deleteCommu(int commu_no) {
+		Connection conn = getConnection();
+		
+		int result = commuDao.deleteCommu(conn, commu_no);
 		
 		if(result > 0) {
 			commit(conn);

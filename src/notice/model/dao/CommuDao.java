@@ -446,7 +446,7 @@ public class CommuDao {
 	}
 
 
-	// 작가 답변 insert
+	// 작가 답변 update
 	public int updateWCommu(Connection conn, int commu_no, String reply) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -470,22 +470,51 @@ public class CommuDao {
 	}
 
 
+	// 게시글 수정
+	public int updateCommu(Connection conn, int commu_no, String title, String content) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = commuQuery.getProperty("updateCommu");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, commu_no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	// 게시글 삭제
+	public int deleteCommu(Connection conn, int commu_no) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = commuQuery.getProperty("deleteCommu");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, commu_no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 	
 }

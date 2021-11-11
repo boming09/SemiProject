@@ -13,16 +13,16 @@ import notice.model.service.CommuService;
 import notice.model.vo.Commu;
 
 /**
- * Servlet implementation class WMyCommuInsertServlet
+ * Servlet implementation class WMyCommuUpdateServlet
  */
-@WebServlet("/w-commu/insert")
-public class WMyCommuInsertServlet extends HttpServlet {
+@WebServlet("/w-commu/update")
+public class WMyCommuUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public WMyCommuInsertServlet() {
+    public WMyCommuUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,7 +39,7 @@ public class WMyCommuInsertServlet extends HttpServlet {
 		request.setAttribute("commu", commu);
 		
 		// 작가소통게시판 게시글 답변상세 페이지
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/writer/wMyCommuInsertView.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/writer/wMyCommuUpdateView.jsp");
 		view.forward(request, response);
 	}
 

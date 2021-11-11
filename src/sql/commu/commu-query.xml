@@ -45,6 +45,7 @@
 		SELECT
 		       COUNT(*)
 		  FROM COMMU
+		 WHERE DELETED = 'N'
 	</entry>
 
 	<entry key="selectList">
@@ -65,6 +66,7 @@
 			          FROM COMMU C
 			          JOIN MEMBER M ON(C.USER_NO = M.USER_NO)
 			          JOIN MEMBER W ON(C.WRITER_NO = W.USER_NO)
+			         WHERE DELETED = 'N'
 			         ORDER BY CREATE_DATE DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
@@ -94,6 +96,7 @@
 		       COUNT(*)
 		  FROM COMMU
 		 WHERE USER_NO = ?
+		   AND DELETED = 'N'
 	</entry>
 	
 	<entry key="selectMyList">
@@ -115,6 +118,7 @@
 			          JOIN MEMBER M ON(C.USER_NO = M.USER_NO)
 			          JOIN MEMBER W ON(C.WRITER_NO = W.USER_NO)
 			         WHERE C.USER_NO = ?
+			           AND DELETED = 'N'
 			         ORDER BY CREATE_DATE DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
@@ -177,6 +181,7 @@
 		  FROM COMMU
 		 WHERE WRITER_NO = ?
 		 AND STATUS = 'N'
+		 AND DELETED = 'N'
 	</entry>
 	<entry key="selectWCommuList">
 		SELECT *
@@ -198,6 +203,7 @@
 		              JOIN MEMBER M ON(M.USER_NO = C.USER_NO)
 		             WHERE C.WRITER_NO = ?
 		               AND C.STATUS = 'N'
+		               AND C.DELETED = 'N'
 		             ORDER BY CREATE_DATE DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
@@ -206,6 +212,19 @@
 		UPDATE COMMU
 		   SET REPLY = ?
 		     , STATUS = 'Y'
+		 WHERE COMMU_NO = ?
+	</entry>
+	
+	<entry key="updateCommu">
+		UPDATE COMMU
+		   SET TITLE = ?
+		     , CONTENT = ?
+		 WHERE COMMU_NO = ?
+	</entry>
+	
+	<entry key="deleteCommu">
+		UPDATE COMMU
+		   SET DELETED = 'Y'
 		 WHERE COMMU_NO = ?
 	</entry>
 </properties>

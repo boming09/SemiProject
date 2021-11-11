@@ -52,7 +52,7 @@
                        
             <div class="commu_btn">
                 <button type="button" onclick="location.href='${ contextPath }/w-commu'">취소</button>
-           		<button type="button" onclick="location.href='${ contextPath }/w-commu/insert?commu_no=${ commu.commu_no }'">답변작성</button>
+           		<button type="button" onclick="location.href='${ contextPath }/w-commu/update?commu_no=${ commu.commu_no }'">답변작성</button>
             </div>
            
             
