@@ -27,7 +27,9 @@
     resize: none;
     width: 95%;
     height: 200px;
-    padding-left : 10px;
+    padding : 10px;
+    line-height: 20px;
+    font-size: 0.95rem;
 }
 
 /* 취소/답변작성 버튼 */
@@ -87,25 +89,34 @@
                     </tr>
                     <tr class="liarea3">
                         <th class="one_file">첨부파일</th>
-                        <td class="ofile" colspan="3">${ one.origin_file }</td>
+                        <td class="ofile" colspan="3">
+                        	<c:choose>
+                        		<c:when test="${ !empty one.origin_file }">
+		                        	<div class="onedown">
+			                        	<p>${ one.origin_file }<p>
+			              				<p><button onclick="location.href='${ contextPath }/one/download?one_no=${ one.one_no }'">다운로드</button></p>
+		                        	</div>
+                        		</c:when>
+                        		<c:otherwise>첨부파일 없음</c:otherwise>
+                        	</c:choose>
+                        </td>
                     </tr>
                 </table>
             </div>
-            
-
-            <c:if test="${ empty one.oreply && loginUser.userId != 'admin' }">
-
-            <div class="one_btn">
-                <button type="button" onclick="location.href='${ contextPath }/one'">취소</button>
-                <c:if test="${ empty one.oreply }">
-	                <button type="button" onclick="oneDelete(${ one.one_no})">삭제하기</button>
-                </c:if>
-            </div>
+            <c:if test="${ empty one.oreply }">
+            	<div class="one_btn">
+               		<button type="button" onclick="location.href='${ contextPath }/one'">취소</button>
+            	</div>
             </c:if>
+            
+            
             <c:if test="${ !empty one.oreply }">
             <div class="one_area">1:1 문의 답변</div>
             <div class="unre_reply">
                 <textarea readonly>${ one.oreply }</textarea>
+            </div>
+            <div class="one_btn">
+                <button type="button" onclick="location.href='${ contextPath }/one'">취소</button>
             </div>
             </c:if>
             <c:if test="${ loginUser.userId == 'admin' && one.status == 'N' }">

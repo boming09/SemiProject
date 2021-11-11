@@ -104,31 +104,24 @@ th, td {
     border-bottom: 1px solid lightgray;
 }
 
-/* 답변 영역 */
-.one_reply {
-    border-bottom: 1px solid lightgray;
-    margin: 20px 30px 10px 30px;
-    padding-left : 10px;
-    padding-bottom : 10px;
-    font-size: 0.9rem;
-    font-weight: bold;
-}
-.reply {
+/* 파일 다운로드 버튼 */
+.onedown {
 	display : flex;
-	justify-content :center;
-	margin: 0px 30px 10px 30px;
-	border-bottom: 1px solid lightgray;
+	align-items: center;
 }
-
-.reply div {
-	border: 1px solid lightgray;
-	margin-bottom : 10px;
-    width: 100%;
-    padding : 10px;
-    font-size: 0.95rem;
-    vertical-align: top;
-    line-height: 20px;
-    padding-bottom : 50px;
+.onedown p {
+	margin-right : 10px;
+}
+.onedown button {
+	background: rgb(73, 125, 78);
+    color: white;
+    width: 60px;
+    height: 25px;
+    font-size: 0.8rem;
+}
+.onedown button:hover {
+	background-color: rgb(196, 217, 195);
+    color: black;
 }
 
 /* 취소/답변작성 버튼 */
