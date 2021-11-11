@@ -45,6 +45,7 @@
 	<scripit src="<%= request.getContextPath() %>/resources/js/login/rememberUserId.js"></scripit>	
 	
 	<!-- 카카오 간편로그인 -->
+	<!-- 
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script>
 		// dfeffb0d0cd1f04335779fda1d08bc4f
@@ -66,5 +67,6 @@
 			});
 		}
 	</script>
+	 -->
 </body>
 </html>

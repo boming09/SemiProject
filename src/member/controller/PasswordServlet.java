@@ -49,7 +49,9 @@ public class PasswordServlet extends HttpServlet {
 		Member member = new MemberService().searchPw(userId, userName, userEmail);
 		
 		if(member != null) {
-			
+			request.setAttribute("member", member);
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/password2.jsp");
+			view.forward(request, response);
 		} else {
 			request.setAttribute("message", "비밀번호 찾기에 실패하였습니다.<br>다시 정보입력을 확인해 주세요.");
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/errorpage.jsp");

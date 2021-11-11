@@ -79,9 +79,10 @@
 
 	<div class="outerid">
 	<h1 id="searchh1">아이디 찾기</h1>
-	
+	<!-- 
 	<form id="updateSearchIdForm" action="<%= request.getContextPath() %>/password"
 	method="post" onsubmit="return searchId();">
+	 -->
 			<div class="wrap">
 				<div id="userId">${ member.userName }님의 아이디는 ${ member.userId } 입니다.</div>
 				
@@ -89,7 +90,7 @@
 				<a href="password"><button id="updatePwdBtn">비밀번호 찾기</button></a>
 				</div>
 			</div>
-	</form>
+	<!--  </form> -->
 	</div>
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/member/footer.jsp" />

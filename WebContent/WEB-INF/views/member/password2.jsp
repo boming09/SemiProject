@@ -34,13 +34,7 @@
                 <div class="topline">
                 </div>
                 <br>
-                <div class="id3">
-                    <input type="radio" id="#" name="rb" value="phone" checked="checked">&nbsp;&nbsp;휴대전화 번호                  
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" id="#" name="rb" value="email">&nbsp;&nbsp;E-mail 주소
-                    <br><br>
-                    
+                <div class="id3"> 
                     <label>E-mail 주소</label> <input type="text" class="id1text" size="10"><br><br>
                     <a href="login"><button class="id2pagebut">다음단계</button></a><br><br>
                     <label id="ps2explanation">휴대전화 번호가 바뀌어도 본인 명의의 휴대폰으로 본인인증을<br>
