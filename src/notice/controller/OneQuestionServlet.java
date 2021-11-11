@@ -49,7 +49,7 @@ public class OneQuestionServlet extends HttpServlet {
 		Map<String, Object> map = new OneService().selectList(ouser, page);
 				
 		// 만약 1:1문의 내역 없을경우 => oneQuestionView.jsp
-		// 내역 있을경우 => oneQuestionViewList.jsp
+		// 내역 있을경우 => oneQuestionListView.jsp
 		String forpage = "";
 				
 		if(map.get("oneList") != null) { 

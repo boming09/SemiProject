@@ -64,10 +64,10 @@
             <div class="commu_btn">
                 <button type="button" onclick="location.href='${ contextPath }/commu'">취소</button>
                 <c:if test="${ loginUser.userNo == commu.user_no && empty commu.creply }">
-	                <button type="button" onclick="location.href='#'">수정하기</button>
+	                <button type="button" onclick="location.href='${ contextPath }/commu/update?commu_no=${ commu.commu_no }'">수정하기</button>
                 </c:if>
                 <c:if test="${ loginUser.userNo == commu.user_no }">
-                	<button type="button" onclick="location.href='#'">삭제하기</button>
+                	<button type="button" onclick="commuDelete(${ commu.commu_no })">삭제하기</button>
                 </c:if>
             </div>
            
@@ -80,5 +80,14 @@
 	
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	
+	<script>
+		// 게시글 삭제하기
+		function commuDelete(commu_no) {
+			if(confirm("게시글 삭제 하시겠습니까?")) {
+				location.href='${ contextPath }/commu/delete?commu_no=' + commu_no;
+			}
+		}
+	</script>
 </body>
 </html>
