@@ -73,7 +73,6 @@ a {
 /* 아이디 이메일 저장 */
 #remember {
     font-size : 12px;
-    margin-left : 30px;
     font-weight : bold;
 }
 
@@ -101,7 +100,7 @@ a {
     color: red;
     padding : 15px 20px;
     border-radius: 5px;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     margin-left : 20px;
     font-weight : bold;
 }
@@ -118,48 +117,55 @@ a {
     margin-left : 20px;
     font-weight : bold;
 }
+.loginArea {
+	display : flex;
+}
+.loginArea2 {
+	display : flex;
+	justify-content: center;
+	align-items: center;
+	margin-top : 20px;
+}
 
 /* 로그인 버튼 */
 #lobut {
     width : 150px;
     height : 105px;
-    position : absolute;
-            top : 348px;
-            right : 730px;
     background :#497D4E;
     color : white;
     text-align: center;
     font-size : 35px;
     padding : 20px;
     font-weight : bold;
+    margin-right : 50px;
 }
 
 /* 회원가입 버튼 */
 .mbjoin{
     background-color: #c4d9c3;
     color : white;
-    margin: 22px;
     font-weight : bold;
     width : 400px;
     height : 75px;
-    margin-left: 90px;
     font-size: 30px;
 }
 
 /* 간편로그인 */
-.naverlogo {
-    width : 100px;
-    height : 100px;
-}
-
-.kakaologo {
-    width : 130px;
-    height : 130px;
-}
-
 .imgdiv {
-    text-align : center;
+	display : flex;
+	justify-content: center;
+	align-items: center;
 }
+.naverlogo, .kakaologo {
+    width : 60px;
+    height : 60px;
+    margin-top : 30px;
+}
+.naverlogo {
+	margin-right : 20px;
+}
+
+
 
 /* 회원가입 */
 /* 회원가입 테이블 */
