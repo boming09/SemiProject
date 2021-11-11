@@ -19,7 +19,7 @@
 <body>
     <!-- 메뉴바 -->
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
-    <div class="id0">
+    <div class="id000">
     <div class="main-center2">
         <h1>봄숲 개인 회원가입</h1>
         <br>        

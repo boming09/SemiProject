@@ -218,7 +218,7 @@
 	border: 0px;
 }
 
-.input_area2 {
+.review_input_area2 {
 	width: 250px;
 	border: solid 1px #dadada;
 	padding: 10px 10px 14px 10px;
@@ -226,13 +226,13 @@
 	background: white;
 }
 
-.input_area2 input {
+.review_input_area2 input {
 	width: 250px;
 	height: 30px;
 	border: 0px;
 }
 
-.input_area2 input:focus, .search_area2 select:focus {
+.review_input_area2 input:focus, .search_area2 select:focus {
 	outline: none;
 }
 

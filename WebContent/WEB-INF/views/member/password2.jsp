@@ -18,16 +18,19 @@
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
         <div class="id0">
         <div class="ps3">
-            	비밀번호 재설정
+           <h1 id="emailh1">비밀번호 재설정</h1>
             <div class="ps4">
                 <br>
-                &nbsp;&nbsp;본인인증 수단으로 비밀번호 재설정 하기
-                <p>
-                    <font size="1">
-                        실명인증 또는 본인인증된 계정은 아이핀 또는 본인 명의의 휴대폰으로 인증할수 있습니다.<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;본인인증 수단을 선택하신 후, 봄숲에 가입된 이메일주소를 입력해주세요.<br>
+                	<div class="id4div">
+                 	본인인증 수단으로 비밀번호 재설정 하기<br><br>
+                    <p>
+                    <font size="2">
+		                        실명인증 또는 본인인증된 계정은 이메일로 인증할수 있습니다.<br>
+		            &nbsp;봄숲에 가입된 이메일주소를 입력해주세요.<br>
                     </font size>    
-                </p><br>              
+                	</p>
+                	</div>
+                <br>              
                 <div class="topline">
                 </div>
                 <br>

@@ -37,11 +37,7 @@
             </header>
         
             <div class="review_area1">
-                <span>마이리뷰 목록</span>
-                <!-- <span>
-                    <input type="checkbox" name="mylist" value=""><label>내가 쓴 글만 보기</label>
-                    <button type="button">글 작성</button>
-                </span> -->
+                <span>마이리뷰 목록</span>                
             </div>            
 
             <div class="review_area2">
@@ -63,12 +59,12 @@
                 		<li class="review_title">${ review.mtitle }</li>
                 		
                 		<c:choose>
-			           	<c:when test="${ review.user_nickname != null}">
-			           	<li class="review_writer">${ review.user_nickname }</li>
-			            </c:when>
-			            <c:otherwise>
-			            <li class="review_writer">${ loginUser.userName }</li>
-			            </c:otherwise>
+				           	<c:when test="${ review.user_nickname != null}">
+				           	<li class="review_writer">${ review.user_nickname }</li>
+				            </c:when>
+				            <c:otherwise>
+				            <li class="review_writer">${ loginUser.userName }</li>
+				            </c:otherwise>
 			            </c:choose>                		
                 		
                 		<li class="review_views">${ review.mcount }</li>
@@ -186,10 +182,10 @@
 						<c:if test="${ param.searchCondition == 'writer' }">selected</c:if>>작성자</option>
 					</select> 
 					
-					<span class="input_area2"> 
-					<input type="search" name="searchValue" value="${ param.searchValue }">
-					</span>
-					
+					<span class="review_input_area2"> 
+					<input type="search" name="searchValue" id="reviewsearch"
+						value="${ param.searchValue }">
+					</span>					
 					<button type="submit" class="noticeInsert" id="noticeInsert">검색하기</button>
 										
 					<c:if test="${ !empty loginUser }">
@@ -208,13 +204,14 @@
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
-	<c:choose>
-		<c:when test="${ !empty loginUser }">
-			<script>
+	<script>
 				function detailView(mid){
 					location.href='${contextPath}/mypagemyreviewdetail?mid=' + mid;
 				}
-			</script>
+	</script>
+	
+	<c:choose>
+		<c:when test="${ !empty loginUser }">			
 		</c:when>
 		<c:otherwise>
 			<script>
@@ -227,6 +224,7 @@
 	</c:choose>
 	
 	<script>
+	/*	
 		let rating = new Rating();//별점 인스턴스 생성
 		//별점 마킹 모듈 프로토타입으로 생성
 		function Rating(){};
@@ -253,6 +251,7 @@
 		        }
 		    })
 		});
+	*/
 	</script>
 </body>
 </html>
