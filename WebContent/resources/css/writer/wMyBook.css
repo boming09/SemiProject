@@ -42,7 +42,7 @@
 .wbook_listarea {
 	width : 100%;
     margin: 0px 30px 10px 30px;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     /*  테이블 간격 없애기 */
     border-collapse: collapse; 
     border-spacing: 0;
@@ -76,6 +76,7 @@
 /* 마우스 오버시 */
 .wbook_content:hover {
     background: #f3f5f7;
+    font-weight : bold;
 }
 
 /* 도서 내용 */

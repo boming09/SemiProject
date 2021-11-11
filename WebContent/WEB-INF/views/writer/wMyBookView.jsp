@@ -49,7 +49,7 @@
 		                    </td>
 		                    <td class="wb_pub">${ wbook.publisher }</td>
 		                    <td class="wb_date">${ wbook.publicationDate }</td>
-		                    <td class="wb_review">아직</td>
+		                    <td class="wb_review">${ wbook.reviewCount }</td>
 		                </tr>
 	                </c:forEach>
 	            </table>

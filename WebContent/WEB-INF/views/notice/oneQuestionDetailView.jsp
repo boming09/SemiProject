@@ -61,9 +61,8 @@
             <div class="one_btn">
                 <button type="button" onclick="location.href='${ contextPath }/one'">취소</button>
                 <c:if test="${ empty one.oreply }">
-	                <button type="button" onclick="location.href='#'">수정하기</button>
+	                <button type="button" onclick="oneDelete(${ one.one_no})">삭제하기</button>
                 </c:if>
-                <button type="button" onclick="location.href='#'">삭제하기</button>
             </div>
            
             
@@ -75,6 +74,14 @@
 	
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-
+	
+	<script>
+		// 삭제하기
+		function oneDelete(oneNo) {
+			if(confirm("게시글을 삭제하시겠습니까?")) {
+				location.href='${ contextPath }/one/delete?one_no=' + oneNo;
+			}
+		}
+	</script>
 </body>
 </html>

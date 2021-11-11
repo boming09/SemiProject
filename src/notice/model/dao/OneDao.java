@@ -207,10 +207,19 @@ public class OneDao {
 			close(rset);
 			close(pstmt);
 		}
-		
-		
-		
 		return oneList;
+	}
+
+	
+	// 게시글 삭제하기
+	public int deleteOne(Connection conn, int one_no) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = oneQuery.getProperty("deleteOne");
+		
+		
+		
+		return 0;
 	}
 	
 	

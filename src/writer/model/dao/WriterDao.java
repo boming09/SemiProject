@@ -286,6 +286,7 @@ public class WriterDao {
 				wbook.setPublicationDate(rset.getDate("publication_date"));
 				wbook.setPublisher(rset.getString("publisher"));
 				wbook.setBimg(rset.getString("book_img"));
+				wbook.setReviewCount(rset.getInt("count(review_no)"));
 				
 				wbookList.add(wbook);
 			}
@@ -299,21 +300,5 @@ public class WriterDao {
 		return wbookList;
 	}
 
-
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

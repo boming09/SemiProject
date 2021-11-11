@@ -34,7 +34,7 @@
 	            			</div>
 	            			<!-- label의 for속성 이름과 input id이름이 같아야 연동된다~~ -->
 			                <label for="upprofile">프로필이미지 변경</label>
-			                <input type="file" name="upprofile" id="upprofile" name="profile">
+			                <input type="file" name="upprofile" id="upprofile">
 			                <div class="wmy_self">
 			                	<span>&nbsp;자기소개</span>
 			                	<textarea rows="6" cols="60" name="upgreeting">${ wprofile.greeting }</textarea>
