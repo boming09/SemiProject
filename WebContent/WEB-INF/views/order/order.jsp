@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +20,7 @@
 	<div class="ct_wrapper content">
 		<div id="orderForm">
 		<div class="cart_bl">
-            <div id="order">주문하기</div>
+            <div id="order">주문하기 </div>
                
  			<!-- 어디로갈지쓰셈 -->
 
@@ -39,13 +40,13 @@
 					<div class="item">
 						<b>[국내도서] ${cart.book_name }</b>
 					</div>
-			
+		
 					<div class="item">
 						<b><fmt:formatNumber value="${cart.sale_price}" type="number"/></b> / <fmt:parseNumber value="${cart.price * 0.05}" integerOnly="true" />원(5%)
 					</div>
 					<div class="item">
 					
-						<b> ${cart.amount}</b>
+						<b>${cart.amount}</b>
            		
 					</div>
 					
@@ -154,11 +155,20 @@
 				 	if(loginUser.getUserAddress() != null) {
 						address = loginUser.getUserAddress().split("\\|");				 		
 				 	} else {
-				 		address = new String[] {"", "", ""}; //주소값 없는경우 null 표시 방지
+				 		address = new String[] {"", "", ""}; //주소값 없는경우 null 표시 방지 
+				 		//address1,2,3으로 나눠도 갠찮니?
 				 	}
 				 %>
         	
-        	
+        		<%
+        		  String email;
+        		  if(loginUser.getUserEmail() != null) {
+        				email = loginUser.getUserEmail();
+        		  } else {
+        			  email = "email";
+        		  }
+        		%>
+        		<input type="hidden" name="email" value="email">
 
         	<div class="od_tt">
         		<div class="o_item">
@@ -185,20 +195,20 @@
         			<div><b>주소 *</b></div>
         		</div>
         		<div class="o_item">
-	        		<span class="address name"><input type="text" name="address" class="postcodify_postcode5 nm_area" value="<%= address[0] %>" readonly></span>
+	        		<span class="address name"><input type="text" name="address1" class="postcodify_postcode5 nm_area" value="<%= address[0] %>" readonly></span>
 					<button type="button" id="postcodify_search_button"><b>검색</b></button>
 				</div>
 				<div class="o_item">
 					<div></div>
 				</div>
 				<div class="o_item">
-					<span class="address name"><input type="text" name="address" class="postcodify_address add_area" value="<%= address[1] %>" readonly></span>
+					<span class="address name"><input type="text" name="address2" class="postcodify_address add_area" value="<%= address[1] %>" readonly></span>
 				</div>
 				<div class="o_item">
 					<div></div>
 				</div>
 				<div class="o_item">
-				<span class="address name"><input type="text" name="address" class="postcodify_details add_area" value="<%= address[2] %>" required></span>
+				<span class="address name"><input type="text" name="address3" class="postcodify_details add_area" value="<%= address[2] %>" required></span>
         		</div>
         	</div>
         	
@@ -249,12 +259,12 @@
      		<!--  <input type="hidden" value="${ cartOrderList }">-->
      		
      	  	 <c:forEach var="cart" items="${ cartOrderList }">
-     			 <input type="hidden" name="book_id" value="${ cart.book_id }">
+     			 <input type="hidden" name="book_id" value="${cart.book_id}">
 				 <input type="hidden" name="sale_price" value="${cart.sale_price}">
-				 <input type="hidden" name="amount" value=" ${cart.amount}">	
-				 <input type="hidden" name="cart_no" value=" ${cart.cart_no}">		
+				 <input type="hidden" name="amount" value="${cart.amount}">	
+				 <input type="hidden" name="cart_no" value="${cart.cart_no}">		
 			</c:forEach> 
-			
+			<!-- "" 이 사이에 절대 공백 넣지 말것 -->
 		
      		
      		  		<!-- 총 상품 가격 계산 -->

@@ -93,4 +93,52 @@
 		 ORDER BY PUBLICATION_DATE DESC
 	</entry>
 	
+	<entry key="insertOrder">
+		INSERT
+			INTO ORDER_DETAIL
+			(
+			    BOOK_ID
+			  , AMOUNT
+			  , ORDER_NO
+			  , ORDER_ID
+			)
+			VALUES
+			(
+			    ?
+			  , ?
+			  , SEQ_ORDER_NO.NEXTVAL
+			  , ORDER_ID.NEXTVAL
+			)
+	</entry>
+	
+	<entry key="selectAbook">
+		SELECT 
+		       BOOK_NAME
+		     , CATEGORY_ID
+		     , AUTHOR
+		     , SALE_PRICE
+		     , PRICE
+		     , BOOK_ID
+		  FROM BOOK
+	     WHERE BOOK_ID = ?
+	</entry>
+	
+	<entry key="insertOrderDetail">
+		INSERT
+			INTO ORDER_DETAIL
+			(
+			    BOOK_ID
+			  , AMOUNT
+			  , ORDER_NO
+			  , ORDER_ID
+			)
+			VALUES
+			(
+			    ?
+			  , ?
+			  , SEQ_ORDER_NO.NEXTVAL
+			  , ORDER_ID.NEXTVAL
+			)
+	</entry>
+	
 </properties>

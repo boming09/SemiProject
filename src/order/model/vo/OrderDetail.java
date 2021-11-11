@@ -1,6 +1,12 @@
 package order.model.vo;
 
-public class OrderDetail {
+import java.io.Serializable;
+
+public class OrderDetail implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int bookId;
 	private int orderNo;
 	private int amount;
@@ -16,6 +22,14 @@ public class OrderDetail {
 		this.orderNo = orderNo;
 		this.amount = amount;
 	}
+	
+
+	public OrderDetail(int bookId, int amount) {
+		super();
+		this.bookId = bookId;
+		this.amount = amount;
+	}
+
 
 	public OrderDetail() {
 		// TODO Auto-generated constructor stub

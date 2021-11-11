@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="order.model.vo.Cart"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,14 +28,20 @@
             <!--<form class="order" action="<%= request.getContextPath() %>/api"
 			method="post">  -->
 		
-  
+  			<script>
+					function coupon(){
+						window.open("couponPopup.jsp", "coupon", "width=640, height=400")
+					}
+  			
+  			</script>
+  			
        		
      		  <div class="od_info">추가 할인 받기</div>
      		  <div class="tst">
 	     		  <div class="discount">
 	     		  	<span class="align_ct"><b>쿠폰</b></span><hr><br>
 	     		  	<span class="align_ct"><b>보유 쿠폰: <span>0</span>장</b><br></span>
-	     		  	<button class="dis_btn" id="couponBtn" onclick="openChild()">쿠폰 조회/적용</button><br>
+	     		  	<button class="dis_btn" id="couponBtn" onclick="openChild();">쿠폰 조회/적용</button><br>
 	     		  	<span class="align_ct bold">할인금액:<span> 0</span></span>
 	     		  </div>
 	     		  <div class="discount white">
@@ -50,6 +57,7 @@
 
         	<form class="order" action="<%= request.getContextPath() %>/order/paying"
 			method="post">
+			<input type="hidden" name="eamail" value="${loginUser.userEmail}">
         	
         	<div class="od_info">결제 내역 확인</div>
         	<div class="pay_tt">
@@ -57,17 +65,17 @@
         			<div>주문 상품 금액 정보</div>
         		</div>
         		<div class="o_item">
-        			<span class="address">총 권,
-        			<c:forEach var="cart" items="${ amounts }">
-        			${amounts}
-        			</c:forEach>
-        			 41,400원 </span>
+        			<span class="address">총 ${od.amount}권,
+        			<!--<c:forEach var="cart" items="${ amounts }">-->
+        			
+        			<!--</c:forEach>-->
+        			 <fmt:formatNumber value="${ od.sale_price }" type="number"/>원 </span>
         		</div>
         	</div>
         	
         	<div class="od_ttt">
         		<div class="o_item">상품 주문 총액</div>
-        		<div class="o_item br"><fmt:formatNumber value="${sum}" type="number"/></div>
+        		<div class="o_item br"><fmt:formatNumber value="${ od.sale_price }" type="number"/>원</div>
         		<div class="o_item">쿠폰 할인 금액</div>
         		<div class="o_item ">0원</div>
         		<div class="o_item">배송료</div>
@@ -75,7 +83,7 @@
         		<div class="o_item">적립금 결제 금액</div>
         		<div class="o_item">0원</div>
         		<div class="o_item">결제 총액</div>
-        		<div class="o_item">41,400원</div>
+        		<div class="o_item"><fmt:formatNumber value="${ od.sale_price }" type="number"/>원</div> <!-- 할인 있으면 차감해 -->
         	</div>
         	
         	
@@ -85,7 +93,7 @@
         		</div>
         		<div class="o_item">
         		
-        			<b>41,400원</b>
+        			<b><fmt:formatNumber value="${ od.sale_price }" type="number"/>원</b> <!-- 할인금액있으면 빼기  -->
         		</div>
         	</div>
         	
@@ -127,7 +135,7 @@
      	            // window.name = "부모창 이름"; 
      	            window.name = "parentForm";
      	            // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-     	            openWin = window.open("Child.html",
+     	            openWin = window.open("coupon",
      	                    "childForm", "width=570, height=350, resizable = no, scrollbars = no");    
      	        }
      	        
@@ -136,6 +144,7 @@
      	        }
 
      				 
+     	      
      			
      		</script>
      		

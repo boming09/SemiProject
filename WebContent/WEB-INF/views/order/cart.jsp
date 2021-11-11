@@ -28,8 +28,8 @@
        		 <button id="delete_btn" onclick="deleteChecked()">선택상품삭제</button>
       
        			<select id="cart_sel"name="cart_sel" onchange="sortList()">
-           		 <option value="new" selected>최근담은순</option>
-           		 <option value="low">저가격순</option>
+           		 <option value="new" >최근담은순</option>
+           		 <option value="low" >저가격순</option>
             	 <option value='high'>고가격순</option>
             	 <option value="name">이름순</option>
             	 <option value="rel">출간일순</option>

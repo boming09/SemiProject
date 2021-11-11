@@ -6,6 +6,7 @@ import static common.JDBCTemplate.*;
 
 import order.model.dao.cartDao;
 import order.model.vo.Cart;
+import order.model.vo.OrderDetail;
 
 public class CartService {
 
@@ -92,6 +93,48 @@ public class CartService {
 		Connection conn = getConnection();
 		
 		int result = cartDao.deleteCartList(conn, cartNo);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
+	public int insertOrder(Cart cart) { //필요 x
+		Connection conn = getConnection();
+		
+		int result = cartDao.insertOrder(conn, cart);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
+	public Cart selectAbook(int book_id) {
+		Connection conn = getConnection();
+		
+		
+		Cart direct = cartDao.selectAbook(conn,book_id);
+		close(conn);
+
+		return direct;
+	}
+
+	public int insertOrderDetail(List<OrderDetail> orderDt) {
+		Connection conn = getConnection();
+		
+		int result = cartDao.insertOrderDetail(conn, orderDt);
 		
 		if(result > 0) {
 			commit(conn);
