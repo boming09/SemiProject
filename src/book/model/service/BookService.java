@@ -9,6 +9,7 @@ import java.util.Map;
 import book.model.dao.BookDao;
 import book.model.vo.Book;
 import book.model.vo.PageInfo;
+import book.model.vo.Reply;
 import book.model.vo.Search;
 
 import static common.JDBCTemplate.*;
@@ -145,5 +146,21 @@ public class BookService {
 		close(conn);
 		
 		return returnMap;
+	}
+	
+	// 도서 댓글
+	public int insertReply(Reply reply) {
+		Connection conn = getConnection();
+		int result = bookDao.insertReply(conn, reply);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
 	}
 }

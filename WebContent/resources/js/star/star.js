@@ -36,3 +36,41 @@ var $star = $(".star-input"),
 };
 
 starRating();
+
+var starScore = function(){
+var $rStar = $(".rstarScore"),
+    $rResult = $rStar.find("output>b");
+	
+  	$(document)
+	.on("focusin", ".rstarScore>.score", 
+		function(){
+   		 $(this).addClass("starFocus");
+ 	})
+		 
+   	.on("focusout", ".rstarScore>.score", function(){
+    	var $this = $(this);
+    	setTimeout(function(){
+      		if($this.find(":focus").length === 0){
+       			$this.removeClass("starFocus");
+     	 	}
+   		}, 100);
+ 	 })
+  
+    .on("change", ".rstarScore :radio", function(){
+    	$rResult.text($(this).next().text());
+  	})
+    .on("mouseover", ".rstarScore label", function(){
+    	$rResult.text($(this).text());
+    })
+    .on("mouseleave", ".rstarScore>.input", function(){
+    	var $checked = $rStar.find(":checked");
+    		if($checked.length === 0){
+    			$rResult.text("0");
+   		 	} else {
+   		 		$rResult.text($checked.next().text());
+    		}
+  	});
+};
+
+starScore();
+

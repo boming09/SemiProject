@@ -14,16 +14,16 @@ import book.model.service.BookService;
 import book.model.vo.Search;
 
 /**
- * Servlet implementation class BookSortListServlet
+ * Servlet implementation class BookSortServlet
  */
 @WebServlet("/book/sort")
-public class BookSortListServlet extends HttpServlet {
+public class BookSortServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BookSortListServlet() {
+    public BookSortServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
