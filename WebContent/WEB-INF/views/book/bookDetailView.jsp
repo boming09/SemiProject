@@ -139,8 +139,7 @@ crossorigin="anonymous"></script>
                         <div class="acArea">
 
                           <form name="acForm" method="post">
-                          	 	<input type="hidden" name="book_id" value="${ book.bid }">
-
+                          	 	<input type="hidden" name="book_id" value="${ book.bid }">            
 	                            <div class="btn_count">
 	                                <input type="number" name="count" value="1" min="1" max="50" size="5">
 	                            </div>

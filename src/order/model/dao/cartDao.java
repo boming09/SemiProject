@@ -9,8 +9,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+
+
 import static common.JDBCTemplate.close;
 import order.model.vo.Cart;
+import order.model.vo.OrderDetail;
 
 public class cartDao {
 	private Properties cartQuery = new Properties();
@@ -269,6 +272,83 @@ public class cartDao {
 		
 		return result;
 		
+	}
+
+	public int insertOrder(Connection conn, Cart cart) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = cartQuery.getProperty("insertOrder");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, cart.getBook_id());
+			pstmt.setInt(2, cart.getAmount());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	public Cart selectAbook(Connection conn, int book_id) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Cart direct = null;
+		String sql = cartQuery.getProperty("selectAbook");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, book_id);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				direct = new Cart();
+				direct.setBook_name(rset.getString("book_name"));
+				direct.setCategory_id(rset.getInt("category_id"));
+				direct.setAuthor(rset.getString("author"));
+				//direct.setPublisher(rset.getString("publisher"));
+				direct.setSale_price(rset.getInt("sale_price"));
+				direct.setPrice(rset.getInt("price"));
+				//direct.setStock(rset.getInt("stock"));
+				//direct.setBook_img(rset.getString("book_img"));
+				//direct.setCart_no(rset.getInt("cart_no"));
+				direct.setBook_id(rset.getInt("book_id"));
+				//direct.setUser_no(rset.getInt("user_no"));
+				//direct.setAmount(rset.getInt("amount"));					
+			
+				
+			}	
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return direct;
+	}
+
+	public int insertOrderDetail(Connection conn, List<OrderDetail> orderDt) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = cartQuery.getProperty("insertOrderDetail");
+		
+		//list에 담아오지 말고 객체에 담ㅇ아서 처음꺼는 nextval 다음거부턴 currval하면 될까?
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, ((OrderDetail) orderDt).getBookId());
+			pstmt.setInt(2, ((OrderDetail) orderDt).getAmount());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 }

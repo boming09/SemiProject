@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String orderEmail = (String)session.getAttribute("orderEmail");
+	String postCode = (String)session.getAttribute("postCode");
+	String orderName = (String)session.getAttribute("orderName");
+	String orderAddr = (String)session.getAttribute("orderAddr");
+	String orderPhone = (String)session.getAttribute("orderPhone");
+	
+%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +44,7 @@
 					<div>11월 2일</div>
 					<div>11월 3일</div>
 					<div>서울 강남구 테헤란로 14길 6 7층 그랑프리 빌딩</div>
-					<div>010-1234-5678</div>
+					<div>${orderPhone}</div>
 					<div>카카오페이</div>
 				</div>
 			</div>
