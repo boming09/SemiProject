@@ -31,7 +31,7 @@
                     <li>이름과 E-Mail 주소를 입력 후 "가입 여부 확인하기"<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                        	 버튼을 클릭해 주시면 가입 여부를 알려드립니다.</li><br>
-                </ul>                
+                </ul>
                 <div class="topline">
                 </div>
                 <br>
