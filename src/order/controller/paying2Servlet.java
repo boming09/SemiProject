@@ -10,21 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import member.model.vo.Member;
-import order.model.service.CartService;
-import order.model.vo.Order;
-
 /**
- * Servlet implementation class payingServlet
+ * Servlet implementation class paying2Servlet
  */
-@WebServlet("/order/paying")
-public class payingServlet extends HttpServlet {
+@WebServlet("/order/paying2")
+public class paying2Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public payingServlet() {
+    public paying2Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,18 +29,14 @@ public class payingServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 		//여기서 결제수단 저장해야한다
 
-	String pay = request.getParameter("pay");
-	HttpSession session = request.getSession();
-	session.setAttribute("pay", pay);
-	
-	RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/order/paying.jsp"); //여기
-	view.forward(request, response);
-	
+		String pay = request.getParameter("pay");
+		HttpSession session = request.getSession();
+		session.setAttribute("pay", pay);
 		
-	
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/order/paying2.jsp"); //여기
+		view.forward(request, response);
 	}
 
 	/**

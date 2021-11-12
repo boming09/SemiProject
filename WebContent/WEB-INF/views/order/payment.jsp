@@ -55,10 +55,9 @@
      	
    
 
-        	<form class="order" action="<%= request.getContextPath() %>/order/paying"
-			method="post">
-			<input type="hidden" name="eamail" value="${loginUser.userEmail}">
         	
+        	<!-- <form name="order" class="order" action="<%= request.getContextPath() %>/order/paying" method="post">-->
+        	<form name="order" class="order" method="post">
         	<div class="od_info">결제 내역 확인</div>
         	<div class="pay_tt">
         		<div class="o_item">
@@ -102,9 +101,8 @@
         	<div class="pay">
         		<div><b>일반 결제</b></div>
         		<div><strong>
-	        		<span><input type="radio" name="pay" value="naverpay">네이버페이</span>
-	        		<span><input type="radio" name="pay" value="kakaopay">카카오페이</span>
-	        		<span><input type="radio" name="pay" value="credit">신용카드</span>
+	        		<span><input type="radio" name="pay" id="kakao" value="kakaopay">카카오페이</span>
+	        		<span><input type="radio" name="pay" id="credit" value="credit">신용카드</span>
         			</strong>
         		</div>
         	</div>
@@ -123,11 +121,33 @@
      		<script>
      			$("#ct_order_btn").click(function(){
      				 if($("#agreebox").is(":checked") == false){ 
-      					alert("구매에 동의하셔야 결제가 진행됩니다.")	;
+      					alert("구매에 동의하셔야 결제가 진행됩니다.");
       					return;
-     				 } 
+     				 } /*else if($("#agreebox").is(":checked") == true){
+     					if($("#kakao").is(":checked") == true){
+         					location.href="${contextPath}/order/paying";
+         					order.submit();
+         				 } else if($("#credit").is(":checked") == true) {
+         					location.href="${contextPath}/order/paying2";
+         					order.submit();
+         				 } 
+     				 }*/
+     				
      			});
-     		
+     			
+     			$("#ct_order_btn").click(function(){
+     				 if($("#kakao").is(":checked") == true){
+     					document.forms.order.action="${ contextPath }/order/paying";
+     			    	document.forms.order.submit();
+     				 } else if($("#credit").is(":checked") == true) {
+     					document.forms.order.action="${ contextPath }/order/paying2";
+     			    	document.forms.order.submit();
+     				 } else if($("#kakao").is(":checked") == false){
+     					 alert("결제 수단을 선택하세요");
+     					 return;
+     				 }
+     			});
+     			
      			
      	        var openWin;
      	       

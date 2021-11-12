@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*,order.model.vo.Order" %>
 <%
 	String orderEmail = (String)session.getAttribute("orderEmail");
 	String postCode = (String)session.getAttribute("postCode");
 	String orderName = (String)session.getAttribute("orderName");
 	String orderAddr = (String)session.getAttribute("orderAddr");
 	String orderPhone = (String)session.getAttribute("orderPhone");
+	String pay = (String)session.getAttribute("pay");
+	
+	Order order = (Order)session.getAttribute("order"); //엥?
 	
 %>   
 <!DOCTYPE html>
@@ -39,13 +43,13 @@
 			</div>
 			<div class="complete_block2">
 				<div class="cp_item">
-					<div>001-A03</div>
-					<div>2021년 11월 1일 월요일 7시 10분</div>
-					<div>11월 2일</div>
+					<div>001-A03</div><!-- 주문 번호 부여한거 어케 가져옴 -->
+					<div>2021년 11월 1일 월요일 7시 10분</div><!-- 날짜포맷 -->
+					<div>11월 2일 ${order.rel_date}</div>
 					<div>11월 3일</div>
 					<div>서울 강남구 테헤란로 14길 6 7층 그랑프리 빌딩</div>
 					<div>${orderPhone}</div>
-					<div>카카오페이</div>
+					<div>카카오페이 ${pay}</div>
 				</div>
 			</div>
 			

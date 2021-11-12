@@ -64,7 +64,7 @@ public class orderServlet extends HttpServlet {
 		
 		List<Cart> cartOrderList = new CartService().selectOrderList(cartNo);
 		
-		System.out.println(cartOrderList);
+		//System.out.println(cartOrderList);
 		
 		//HttpSession session = request.getSession();
 		//session.setAttribute("cartOrderList", cartOrderList);

@@ -36,7 +36,7 @@ public class cartServlet extends HttpServlet {
 		//db에서 카트 목록 조회해오기
 		String orderby = request.getParameter("orderby");
 		List<Cart> cartList = new CartService().selectList(orderby);
-		System.out.println(cartList);
+		//System.out.println(cartList);
 		
 		// 셋 어트리뷰트해서 카트 페이지에 해당 db전달
 		request.setAttribute("cartList", cartList);
@@ -66,7 +66,7 @@ public class cartServlet extends HttpServlet {
 		
 		int result = new CartService().insertCart(cart);
 		
-		System.out.println(result);
+		//System.out.println(result);
 		
 		if(result > 0) {
 			request.getSession().setAttribute("message", "장바구니에 담겼습니다");

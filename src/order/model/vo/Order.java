@@ -16,6 +16,9 @@ public class Order {
 	private String delivery_number;		// 운송장 번호
 	private int user_no;				// 회원 번호
 	
+	//주문이름
+	//우편번호
+	
 	private List<OrderDetail> orderDetail;
 	
 	/*

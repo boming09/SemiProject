@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import static common.JDBCTemplate.close;
 import order.model.vo.Cart;
+import order.model.vo.Order;
 import order.model.vo.OrderDetail;
 
 public class cartDao {
@@ -331,7 +332,7 @@ public class cartDao {
 		return direct;
 	}
 
-	public int insertOrderDetail(Connection conn, List<OrderDetail> orderDt) {
+	/*public int insertOrderDetail(Connection conn, List<OrderDetail> orderDt) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String sql = cartQuery.getProperty("insertOrderDetail");
@@ -346,6 +347,50 @@ public class cartDao {
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+		
+		return result;
+	}*/
+
+	public int insertFinalOrder(Connection conn, Order order) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = cartQuery.getProperty("insertFinalOrder");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, order.getAddress());
+			pstmt.setString(2, order.getPhone());
+			pstmt.setString(3, order.getPayment());
+			pstmt.setInt(4, order.getUser_no());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int insertOrderDetail(Connection conn, OrderDetail orderDetail) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = cartQuery.getProperty("insertOrderDetail");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, orderDetail.getBookId());
+			pstmt.setInt(2, orderDetail.getAmount());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
 		}
 		
 		return result;

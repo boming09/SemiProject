@@ -6,6 +6,7 @@ import static common.JDBCTemplate.*;
 
 import order.model.dao.cartDao;
 import order.model.vo.Cart;
+import order.model.vo.Order;
 import order.model.vo.OrderDetail;
 
 public class CartService {
@@ -131,7 +132,7 @@ public class CartService {
 		return direct;
 	}
 
-	public int insertOrderDetail(List<OrderDetail> orderDt) {
+	/*public int insertOrderDetail(List<OrderDetail> orderDt) {
 		Connection conn = getConnection();
 		
 		int result = cartDao.insertOrderDetail(conn, orderDt);
@@ -144,6 +145,41 @@ public class CartService {
 		
 		close(conn);
 		
+		return result;
+	}*/
+
+	public int insertFinalOrder(Order order) {
+		Connection conn = getConnection();
+		
+		//오더 삽입
+		int orderResult = cartDao.insertFinalOrder(conn, order);
+		
+		/*if(orderResult > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return orderResult;*/
+		
+		//오더디테일 삽입
+		int orderDetailResult = 0;
+		
+		for(OrderDetail orderDetail : order.getOrderDetail()) {
+			orderDetailResult += cartDao.insertOrderDetail(conn, orderDetail);
+		}
+		
+		int result = 0;
+		
+		if(orderResult > 0 && orderDetailResult == order.getOrderDetail().size()) {
+			commit(conn);
+			result = 1;
+		} else {
+			rollback(conn);
+		}
+		close(conn);
 		return result;
 	}
 

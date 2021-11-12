@@ -122,7 +122,35 @@
 		  FROM BOOK
 	     WHERE BOOK_ID = ?
 	</entry>
+
 	
+	<entry key="insertFinalOrder">
+		INSERT 
+			INTO "ORDER"
+			(
+				ORDER_NO
+			  , ORDER_DATE
+			  , REL_DATE
+			  , RECEIPTE_DATE
+			  , ADDRESS
+			  , PHONE
+			  , PAYMENT
+			  , USER_NO
+			)
+			VALUES
+			(
+			  SEQ_ORDER_NO.NEXTVAL
+			, SYSDATE
+			, SYSDATE+1
+			, SYSDATE+2
+			, ?
+			, ?
+			, ?
+			, ?
+			)
+	</entry>
+	
+		
 	<entry key="insertOrderDetail">
 		INSERT
 			INTO ORDER_DETAIL
@@ -136,9 +164,8 @@
 			(
 			    ?
 			  , ?
-			  , SEQ_ORDER_NO.NEXTVAL
+			  , SEQ_ORDER_NO.CURRVAL
 			  , ORDER_ID.NEXTVAL
 			)
 	</entry>
-	
 </properties>
