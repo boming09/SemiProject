@@ -48,6 +48,8 @@ public class PasswordServlet extends HttpServlet {
 		
 		Member member = new MemberService().searchPw(userId, userName, userEmail);
 		
+		// System.out.println("member : " + member);
+		
 		if(member != null) {
 			request.setAttribute("member", member);
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/password2.jsp");

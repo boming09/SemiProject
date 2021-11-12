@@ -92,10 +92,8 @@
             </table>
         </fieldset>
         <div class="topline">
-        </div> 
-        <br>
+        </div>
         <fieldset class="lofd">
-            <legend id="lolegend">부가 정보 입력</legend>
             <table class="lotb2">
                 <tr>
                     <th class="address_name">* 주소</th>

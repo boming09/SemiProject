@@ -112,6 +112,16 @@ public class MemberService {
 		
 		close(conn);		
 		
+		return result;
+	}
+	
+	public Member memberLogin(String userId, String userName, String userEmail) {
+		Connection conn = getConnection();
+		
+		Member result = memberDao.memberLogin(conn, userId, userName, userEmail);
+		
+		close(conn);
+		
 		return null;
 	}
 	
