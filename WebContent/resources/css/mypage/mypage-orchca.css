@@ -27,16 +27,20 @@
 	display : flex;
 	align-items: baseline;
 }
-h4, h5 {
+h4{
 	padding-left: 30px;
     margin-bottom : 10px;
 }
-
-.order {
+p {
+	padding-left: 10px;
+	font-size : 0.85rem;
+}
+.order, .orderlist {
 	display : flex;
 	justify-content : center;	
     align-items: center;
     margin : 0 30px;
+    list-style: none;
 }
 
 .date, .orderNo, .orderInfo, .delivery,
@@ -62,13 +66,16 @@ h4, h5 {
 	width : 15%;
 }
 .orderNo, .orderNo2 {
-	width : 18%;
+	width : 13%;
 }
 .orderInfo, .orderInfo2 {
-	width : 39%;
+	width : 41%;
 }
 .delivery, .delivery2 {
-	width : 10%;
+	width : 13%;
+}
+.delivery2 {
+	font-weight : bold;
 }
 .deliveryNum, .deliveryNum2 {
 	/* width : 15%; */
@@ -80,7 +87,40 @@ h4, h5 {
 	border-right : 0px;
 }
  */
+ 
+/* 리스트 마우스 오버시 */
+.orderlist:hover {
+    background: #f3f5f7;
+    font-weight : bold;
+    cursor : pointer;
+}
 
+/* 페이징 영역 */
+.pagingarea {
+	margin: 10px 30px;
+	margin-bottom : 80px;
+	height : 50px;
+	display : flex;
+	justify-content : center;
+    align-items: center;
+}
+.pagingarea ul {
+	list-style : none;
+	display : flex;
+	justify-content : center;
+    align-items: center;
+    width : 400px;
+    height : 50px;  
+}
 
+.pagingarea ul li {
+	width: 40px;
+	text-align : center;
+}
+
+.current_page {
+	border-bottom: 2px solid black;
+	font-weight: bold;
+}
 
 

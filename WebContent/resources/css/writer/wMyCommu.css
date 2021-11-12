@@ -112,6 +112,8 @@
 /* 마우스 오버시 */
 .wcommu_list:hover {
     background: #f3f5f7;
+    font-weight : bold;
+    cursor : pointer;
 }
 
 /* 페이징 영역 */

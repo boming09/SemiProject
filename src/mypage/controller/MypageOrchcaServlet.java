@@ -2,6 +2,7 @@ package mypage.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,12 +38,22 @@ public class MypageOrchcaServlet extends HttpServlet {
     	// 주문 조회/주문 취소(= delevery가 배송중이면 못함/배송전이면 주문 취소 요청) or 컬럼 한개 추가??
     	// 반품/교환 신청 내역 = 배송완료 후 => 버튼 만들어서 delevery 반품/교환 변경 or 컬럼 한개 추가???
     	
+    	// page : 현재 요청 페이지
+		int page = 1;
+		// 하지만 페이지 전환 시 view 화면에서 전달 받은 현재 페이지가 있을 경우 해당 페이지를 page로 적용
+		if(request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+    	
     	// 유저정보 가져오기
     	int user_no = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
     	//System.out.println(user_no);
-    	List<MyOrder> orderList = new MyOrderService().selectMyOrderList(user_no);
+    	//List<MyOrder> orderList = new MyOrderService().selectMyOrderList(user_no);
+    	Map<String, Object> map =new MyOrderService().selectMyOrderList(page, user_no);
+    	
     	//System.out.println(orderList);
-    	request.setAttribute("orderList", orderList);
+    	request.setAttribute("pi", map.get("pi"));
+    	request.setAttribute("orderList", map.get("orderList"));
     	
     	// 마이페이지의 주문/변경/취소 클릭 시 주문/변경/취소로 단순 이동
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/mypage-orchca.jsp");

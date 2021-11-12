@@ -27,28 +27,76 @@
            	<header class="orderheader"><h3>주문조회 / 취소</h3></header>
         	<div class="hArea">
 	            <h4>주문 리스트</h4>
-	            <h5>배송상태 : 상품준비중(주문취소 가능) / 배송중, 배송완료(주문취소 불가)</h5>          
+	            <p>배송상태 : 상품준비중(주문취소 가능) / 배송중, 배송완료(주문취소 불가)</p>          
         	</div>
-            <div class="order">
-            	<div class="date">주문일</div>
-            	<div class="orderNo">주문번호</div>
-            	<div class="orderInfo">주문내역</div>
-            	<div class="delivery">배송상태</div>
-            	<div class="deliveryNum">운송장번호</div>
-            	<!-- <div class="change">주문취소</div> -->
-            </div>
-            <c:forEach var="order" items="${ orderList }">
-	            <div class="order">
-	            	<div class="date2">${ order.order_date }</div>
-	            	<div class="orderNo2">${ order.order_no }</div>
-	            	<div class="orderInfo2">대표도서 외 ${ order.detailCount }</div>
-	            	<div class="delivery2">${ order.delivery }</div>
-	            	<div class="deliveryNum2">${ order.delivery_number }</div>
-	            	<!-- <div class="change2">주문취소</div> -->
-	            </div>
-            </c:forEach>
+        	<div>
+	            <ul class="order">
+	            	<li class="date">주문일</li>
+	            	<li class="orderNo">주문번호</li>
+	            	<li class="orderInfo">주문내역</li>
+	            	<li class="delivery">배송상태</li>
+	            	<li class="deliveryNum">운송장번호</li>
+	            	<!-- <div class="change">주문취소</div> -->
+	            </ul>
+	            <c:forEach var="order" items="${ orderList }">
+		            <ul class="orderlist" onclick="myDetail(${ order.order_no })">
+		            	<li class="date2">${ order.order_date }</li>
+		            	<li class="orderNo2">${ order.order_no }</li>
+		            	<li class="orderInfo2">총  ${ order.detailCount }종류의 도서 구매</li>
+		            	<c:choose>
+			            	<c:when test="${ order.delivery == '상품준비중' }">
+			            		<li class="delivery2" style="color:rgb(73, 125, 78);">${ order.delivery }</li>
+			            	</c:when>
+			            	<c:otherwise>
+			            		<li class="delivery2" style="color:#D25832;;">${ order.delivery }</li>
+			            	</c:otherwise>
+		            	</c:choose>
+		            	<li class="deliveryNum2">${ order.delivery_number }</li>
+		            </ul>
+	            </c:forEach>
+        	</div>
        
-    
+    		 <div class="pagingarea">
+                    <ul class="wcheck_paging">
+		            	<!-- 앞으로 이동하는 버튼(<) -->
+		            	<li>
+						<c:choose>
+							<c:when test="${ pi.page > 1 }">
+								<a href="${ contextPath }/w-check?page=${ pi.page - 1}${ searchParam }">&lt;</a>
+							</c:when>
+							<c:otherwise>
+								<a href="#">&lt;</a>
+							</c:otherwise>
+						</c:choose>
+						</li>
+		            
+		            	<!-- 최대5개의 페이지 바 -->
+						<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+							<li>
+								<c:choose>
+									<c:when test="${ p eq pi.page }">
+										<a href="#" class="current_page">${ p }</a>
+									</c:when>
+									<c:otherwise>
+										<a href="${ contextPath }/w-check?page=${ p }${ searchParam }">${ p }</a>
+									</c:otherwise>
+								</c:choose>
+							</li>
+						</c:forEach>
+		            	
+		            	<!-- 다음 페이지로(>) -->                     
+						<li>
+							<c:choose>
+								<c:when test="${ pi.page < pi.maxPage }">
+									<a href="${ contextPath }/w-check?page=${ pi.page + 1}${ searchParam }">&gt;</a>
+								</c:when>
+								<c:otherwise>
+									<a href="#">&gt;</a>
+								</c:otherwise>
+							</c:choose>
+						</li>
+	           		</ul>
+               </div>
        
         </div>        
         <!-- 광고  -->
@@ -56,5 +104,12 @@
 	</div>	
     <!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	
+	<script>
+		function myDetail(order_no) {
+			location.href = "${ contextPath }/myorder/detail?order_no=" + order_no;
+		}
+	</script>
+	
 </body>
 </html>
