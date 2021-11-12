@@ -126,7 +126,7 @@
         	</div>
         	
 	   		<div class="btnArea">
-	    		<button id="ct_order_btn" onclick="location.href='${ contextPath }/mypageorchca'">목록으로</button>
+	    		<button id="ct_order_btn" onclick="location.href='${ contextPath }/myorder'">목록으로</button>
 	   			<c:if test="${ myorder.delivery == '상품준비중' }">
 	   				<button id="ct_order_btn" onclick="location.href='#'">주문 취소</button>
 	   			</c:if>
