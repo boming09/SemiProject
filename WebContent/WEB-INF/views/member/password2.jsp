@@ -35,10 +35,10 @@
                 </div>
                 <br>
                 <div class="id3"> 
-                    <label>E-mail 주소</label> <input type="text" class="id1text" size="10"><br><br>
-                    <a href="login"><button class="id2pagebut">다음단계</button></a><br><br>
-                    <label id="ps2explanation">휴대전화 번호가 바뀌어도 본인 명의의 휴대폰으로 본인인증을<br>
-                    할수 있습니다.</label>
+                    <label>E-mail 주소 : </label> ${ member.userEmail }
+                    <!-- <input type="text" class="id1text" size="10" value="${ member.userEmail }"> --><br><br>
+                    <a href="login"><button class="id2pagebut">메일로 임시 비밀번호 보내기</button></a><br><br>
+                    <label id="ps2explanation">등록된 이메일로 임시 비밀번호를 보내드립니다.</label>
                 
                 </div>
                 <br><div class="topline">

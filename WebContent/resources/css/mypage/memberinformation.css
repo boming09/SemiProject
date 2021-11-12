@@ -176,12 +176,17 @@ tr, th, td {
     padding-left: 10px;
 }
 
-/* 성별 */
-.tdgender {
-	padding-left: 10px;
+/* 개인정보 */
+.privacy {
+	padding-left: 20px;
     font-size: 15px;
     font-weight: bold;
     height : 40px;
+    line-height : 25px;
+}
+
+.detaillabel{
+	padding-left: 40px;
 }
 
 .postcodify_address{

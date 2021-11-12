@@ -213,7 +213,7 @@ a {
                     <c:choose>
 				    	<c:when test="${ loginUser.userGrade == 10 }">
 				    		<!-- 일반회원등급 = 10 -->
-		                    <li><a href="<%= request.getContextPath() %>/mypage">마이페이지</a></li>
+		                    <li><a href="<%= request.getContextPath() %>/memberinformationdetail">마이페이지</a></li>
 				    	</c:when>
 				    	<c:otherwise>
 				    		<li><a href="<%= request.getContextPath() %>/w-mypage">마이페이지</a></li>

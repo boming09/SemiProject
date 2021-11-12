@@ -57,6 +57,7 @@
 			</h4>
 			<br>
 			<div class="center">
+			<form action="${ contextPath }/accountDelete" method="post">
 				<div class="temp-box-left">
 					<label>1. 상품관련</label>
 				</div>
@@ -145,11 +146,12 @@
 				  탈퇴하기 클릭시 탈퇴가능하게 만들예정. -->
 			<div class="h5go">
 				<h4 class="h5go">
-					비밀번호 : <input type="password" id="out"> 
+					비밀번호 : <input type="password" id="check_pw" name="chkPw"> 
 					<button id="deleteBtn" type="button"
 					onclick="confirmAccountDelete();">탈퇴하기</button>
 				</h4>
 			</div>
+			</form>
 			<br>
 		</div>
 
