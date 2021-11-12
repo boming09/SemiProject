@@ -69,6 +69,30 @@ public class MyOrderService {
 		return result;
 	}
 
+	// 취소/변경/반품 리스트 가져가기
+	public Map<String, Object> selectOrderChangeList(int page, int user_no) {
+		Connection conn = getConnection();
+		
+		// 내 주문내역 개수 들고오기
+		int listCount = orderDao.selectOrderChangeCount(conn, user_no); 
+		
+		// 2. PageInfo 객체 만들기
+		PageInfo pi = new PageInfo(page, listCount, 10, 10);
+		
+		// oder 테이블 가져오기
+		List<MyOrder> changeList = orderDao.selectOrderChangeList(conn, pi, user_no);
+		
+		// 정보 넣기
+		Map<String, Object> returnMap = new HashMap<>();
+		
+		returnMap.put("pi", pi);
+		returnMap.put("changeList", changeList);
+		
+		close(conn);		
+		
+		return returnMap;
+	}
+
 	
 	
 	

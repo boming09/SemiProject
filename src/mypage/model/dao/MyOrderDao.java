@@ -208,6 +208,82 @@ private static Properties orderQuery = new Properties();
 		
 		return result;
 	}
+
+	
+	
+	public int selectOrderChangeCount(Connection conn, int user_no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int listCount = 0;
+		String sql = orderQuery.getProperty("selectOrderChangeCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, user_no);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}	
+		
+		return listCount;
+	}
+
+	public List<MyOrder> selectOrderChangeList(Connection conn, PageInfo pi, int user_no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = orderQuery.getProperty("selectOrderChangeList");
+		
+		List<MyOrder> changeList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			// 페이지 설정
+			int startRow = (pi.getPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, user_no);
+			pstmt.setInt(2, startRow); // 페이지 시작 값
+			pstmt.setInt(3, endRow);  // 페이지 끝 값
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				MyOrder order = new MyOrder();
+				order.setOrder_no(rset.getInt("order_no"));
+				order.setOrder_date(rset.getDate("order_date"));
+				order.setRel_date(rset.getDate("rel_date"));
+				order.setReceipte_date(rset.getDate("receipte_date"));
+				order.setAddress(rset.getString("address"));
+				order.setPhone(rset.getString("phone"));
+				order.setPayment(rset.getString("payment"));
+				order.setDelivery(rset.getString("delivery"));
+				order.setDelivery_number(rset.getInt("delivery_number"));
+				order.setUser_no(rset.getInt("user_no"));
+				order.setOrderchange(rset.getInt("orderchange"));
+				order.setDetailCount(rset.getInt("count(d.book_id)"));
+				
+				changeList.add(order);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return changeList;
+	}
 	
 
 	

@@ -88,8 +88,48 @@
 		 WHERE ORDER_NO = ?
 	</entry>
 
-
-
+	<entry key="selectOrderChangeCount">
+		SELECT 
+		       COUNT(*)
+		  FROM "ORDER"
+		 WHERE USER_NO = ?
+		   AND ORDERCHANGE != 0
+	</entry>
+	<entry key="selectOrderChangeList">
+		SELECT * 
+			FROM(SELECT ROWNUM RNUM, A.* 
+			       FROM (SELECT
+			                    O.ORDER_NO
+			                  , ORDER_DATE
+			                  , REL_DATE
+			                  , RECEIPTE_DATE
+			                  , ADDRESS
+			                  , PHONE
+			                  , PAYMENT
+			                  , DELIVERY
+			                  , DELIVERY_NUMBER
+			                  , O.USER_NO
+			                  , ORDERCHANGE
+			                  , COUNT(D.BOOK_ID)
+			              FROM "ORDER" O
+			              JOIN ORDER_DETAIL D ON(O.ORDER_NO = D.ORDER_NO)
+			              JOIN BOOK B ON(B.BOOK_ID = D.BOOK_ID)
+			             WHERE O.USER_NO = ?
+			               AND ORDERCHANGE != 0
+			             GROUP BY O.ORDER_NO
+			                    , ORDER_DATE
+			                    , REL_DATE
+			                    , RECEIPTE_DATE
+			                    , ADDRESS
+			                    , PHONE
+			                    , PAYMENT
+			                    , DELIVERY
+			                    , DELIVERY_NUMBER
+			                    , O.USER_NO
+			                    , ORDERCHANGE
+			             ORDER BY ORDER_DATE DESC) A)
+			WHERE RNUM BETWEEN ? AND ?
+	</entry>
 
 
 

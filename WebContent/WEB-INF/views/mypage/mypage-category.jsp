@@ -28,7 +28,7 @@
         <div class="area2"><a class="ca-top">주문내역</a>
             <ul class="ca-list">
                 <li><a href="<%= request.getContextPath() %>/myorder">주문 조회</a></li>
-                <li><a href="<%= request.getContextPath() %>/mypagereturn">취소/반품/교환 내역</a></li>
+                <li><a href="<%= request.getContextPath() %>/myorder/change">취소/반품/교환 내역</a></li>
             </ul>
         </div>
         <div class="area3"><a class="ca-top">소통게시판 바로가기</a>
