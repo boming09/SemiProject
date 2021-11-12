@@ -18,38 +18,40 @@
 <title>Insert title here</title>
 </head>
 <body>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<script>
-  
 
-    var IMP = window.IMP; 
-    IMP.init('imp38325940'); 
-    IMP.request_pay({
-    	pg : "kakaopay", 
-        pay_method : 'card',
-        merchant_uid : 'merchant_' + new Date().getTime(),
-        name : '봄숲 결제',
-        amount : '1', //여기가 가격임
-        buyer_email : '${orderEmail}', 
-        buyer_name : '${orderName}',
-        buyer_tel : '${orderPhone}',
-        buyer_addr : '${orderAddr}',
-        buyer_postcode : '${postCode}',
-        m_redirect_url : 'redirect url'
-    }, function(rsp) {
-        if ( rsp.success ) {
-            var msg = '결제가 완료되었습니다.';
-            location.href='<%= request.getContextPath() %>/order/complete';
-            // 인서트 하기 위해/order/ing으로 한번 더 거칠것
-            buyerInfo.submit();
-        } else {
-            var msg = '결제에 실패하였습니다.';
-            rsp.error_msg;
-            location.href='<%= request.getContextPath() %>/payment';
-            
-        }
-    });
+<script>
+IMP.init('imp38325940');
+
+IMP.request_pay({
+    pg : 'html5_inicis',
+    pay_method : 'card',
+    merchant_uid : 'merchant_' + new Date().getTime(),
+    name : '주문명:결제테스트',
+    amount : '100', //판매 가격
+    buyer_email : '${orderEmail}',
+    buyer_name : '${orderName}',
+    buyer_tel : '${orderPhone}',
+    buyer_addr : '${orderAddr}',
+    buyer_postcode : '${postCode}',
+}, function(rsp) {
+    if ( rsp.success ) {
+        var msg = '결제가 완료되었습니다.';
+        msg += '고유ID : ' + rsp.imp_uid;
+        msg += '상점 거래ID : ' + rsp.merchant_uid;
+        msg += '결제 금액 : ' + rsp.paid_amount;
+        msg += '카드 승인번호 : ' + rsp.apply_num;
+        
+        location.href='<%= request.getContextPath() %>/order/complete';
+        buyerInfo.submit();
+    } else {
+        var msg = '결제에 실패하였습니다.';
+        msg += '에러내용 : ' + rsp.error_msg;
+        location.href='<%= request.getContextPath() %>/payment';
+    }
+    alert(msg);
+});
 
 
     </script>
