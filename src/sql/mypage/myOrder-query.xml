@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM
+"http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectMyOrderList">
+		SELECT
+		        O.ORDER_NO
+		      , ORDER_DATE
+		      , REL_DATE
+		      , RECEIPTE_DATE
+		      , ADDRESS
+		      , PHONE
+		      , PAYMENT
+		      , DELIVERY
+		      , DELIVERY_NUMBER
+		      , USER_NO
+		      , ORDERCHANGE
+		      , COUNT(BOOK_ID)
+		  FROM "ORDER" O
+		  JOIN ORDER_DETAIL D ON(O.ORDER_NO = D.ORDER_NO)
+		 WHERE USER_NO = ?
+		 GROUP BY O.ORDER_NO
+		 		, ORDER_DATE
+		 		, REL_DATE
+		 		, RECEIPTE_DATE
+		 		, ADDRESS
+		 		, PHONE
+		 		, PAYMENT
+		 		, DELIVERY
+		 		, DELIVERY_NUMBER
+		 		, USER_NO
+		 		, ORDERCHANGE
+	</entry>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</properties>

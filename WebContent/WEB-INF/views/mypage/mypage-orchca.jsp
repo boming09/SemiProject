@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -14,6 +15,7 @@
     <link href="<%= request.getContextPath() %>/resources/css/mypage/mypage-orchca.css" rel="stylesheet">
 </head>
 <body>
+<c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" scope="application"/>
     <!-- 메뉴바 -->
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
         
@@ -22,113 +24,32 @@
 		<%@ include file="/WEB-INF/views/mypage/mypage-category.jsp" %>		
 		<!-- 헤더 div -->
 		<div class="content">            
-           	<h2 id="hi">${ loginUser.userNickname } 고객님, 안녕하세요.</h2><br>
-           	<div class="content_li">
-           		<ul>
-           			<li>배송 문의 : 익일택배 OO택배(1588-0000) / 당일택배 XX택배 (1588-1111) / 편의점 택배(1588-2222)</li>
-           			<li>(배송 방법 : 주문조회 / 변경 / 취소 클릭후 확인)</li>
-           		</ul>
-           	</div>
-           	<br><br>
-            <header>
-            	<div class="hdcenter">
-            		<div class="left">
-            		<h3>멤버십 등급 : 일반</h3>
-            		봄숲 멤버십 회원이 되신걸 환영합니다.<br>
-            		구매 금액의 1~3% 추가 마일리지 및 쿠폰 혜택을 받으실수 있습니다.
-            		</div>
-            		<div class="right">
-            		<h3>내 문의 사항</h3>
-            		내문의 사항 내용을 볼수 있습니다.
-            		</div>
-            	</div>
-            </header>
-            
-            <!-- center div -->
-            <br>
-            <br>
-            <h4>전체 주문내역</h4>
-            <br>
-            <div class="center">
-            	<div class="center0">
-	            	<div class="cenleft">
-		            	<div class="centerdiv1">
-		            		<select class="selectbox" id="sb1" name="sb1">
-		                        <option value="">전체보기</option>
-		                        <option value="">제목</option>
-		                        <option value="">내용</option>
-		                    </select>                
-		            		<select class="selectbox" id="sb2" name="sb2">
-		                        <option value="">전체보기</option>
-		                        <option value="">제목</option>
-		                        <option value="">내용</option>
-		                    </select>
-		                </div>
-		                <div class="centerdiv3">
-		                <label>주문검색</label>
-		            		<select class="selectbox" id="sb3" name="sb3">
-		                        <option value="">주문상품</option>
-		                        <option value="">제목</option>
-		                        <option value="">내용</option>
-		                    </select>                
-		            		<select class="selectbox" id="sb4" name="sb4">
-		                        <option value=""></option>
-		                        <option value="">제목</option>
-		                        <option value="">내용</option>
-		                    </select>
-		                </div>
-	                </div>
-	                <div class="cenright">
-		                <div class="centerdiv5">
-		                	<label>판매자별 조회</label>
-		            		<select class="selectbox" id="sb5" name="sb5">
-		                        <option value="">전체보기</option>
-		                        <option value="">제목</option>
-		                        <option value="">내용</option>
-		                    </select>
-		                </div>
-		                <div class="centerdiv6">
-		                <label>배송 상태별 조회</label>
-		            		<select class="selectbox" id="sb6" name="sb6">
-		                        <option value="">전체보기</option>
-		                        <option value="">제목</option>
-		                        <option value="">내용</option>
-		                    </select>
-		                </div>
-	                </div>
+           	<header class="orderheader"><h3>주문조회 / 취소</h3></header>
+        	<div class="hArea">
+	            <h4>주문 리스트</h4>
+	            <h5>배송상태 : 상품준비중(주문취소 가능) / 배송중, 배송완료(주문취소 불가)</h5>          
+        	</div>
+            <div class="order">
+            	<div class="date">주문일</div>
+            	<div class="orderNo">주문번호</div>
+            	<div class="orderInfo">주문내역</div>
+            	<div class="delivery">배송상태</div>
+            	<div class="deliveryNum">운송장번호</div>
+            	<!-- <div class="change">주문취소</div> -->
+            </div>
+            <c:forEach var="order" items="${ orderList }">
+	            <div class="order">
+	            	<div class="date2">${ order.order_date }</div>
+	            	<div class="orderNo2">${ order.order_no }</div>
+	            	<div class="orderInfo2">대표도서 외 ${ order.detailCount }</div>
+	            	<div class="delivery2">${ order.delivery }</div>
+	            	<div class="deliveryNum2">${ order.delivery_number }</div>
+	            	<!-- <div class="change2">주문취소</div> -->
 	            </div>
-	                <div class="searchbut"><a href="">찾기</a></div>
-            </div>
-            <br>
-            <br>
-            <div class="df1">
-            	<div id="df1">주문일</div>
-            	<div id="df2">주문번호</div>
-            	<div id="df3">수령인</div>
-            	<div id="df4">주문상품</div>
-            	<div id="df5">조회 및 증빙 서류</div>
-            	<div id="df6">비고</div>
-            </div>
-            <div class="df2">
-            	<div id="df2-1"></div>
-            	<div id="df2-2"></div>
-            	<div id="df2-3"></div>
-            	<div id="df2-4"></div>
-            	<div id="df2-5"></div>
-            	<div id="df2-6"></div>
-            </div>
-            <br>
-            <h2 id="hi2">영수증 출력(카드 매출 전표 출력)</h2>
-            <br>
-            <div class="content_li">
-            	<ul>
-            		<li>'영수증'과 '카드전표'버튼을 클릭하세요(단, 발송 이후의 주문만 가능하며, 선물 주문의 영수증은 주문인 이름으로 발급합니다.)</li>
-            		<li>결제된 카드매출전표는 Aladin의 신용카드 결제대행에서 제공하는 화면으로 Aladin에서의 구입내역을 해당카드로 결제하였음을 확인</li>
-            		<li>하는 자료로 사용하실 수 있습니다.</li>
-            	</ul>
-            </div>
-            <br>
-            
+            </c:forEach>
+       
+    
+       
         </div>        
         <!-- 광고  -->
 		<%@ include file="/WEB-INF/views/common/adArea.jsp" %>
