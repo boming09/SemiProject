@@ -1,4 +1,4 @@
-package notice.controller;
+package mypage.controller;
 
 import java.io.IOException;
 
@@ -8,20 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import notice.model.service.WCheckService;
-import notice.model.vo.WCheck;
+import mypage.model.service.MyOrderService;
 
 /**
- * Servlet implementation class WriterCheckDetailServlet
+ * Servlet implementation class MypageOrderDeleteServlet
  */
-@WebServlet("/w-check/detail")
-public class WriterCheckDetailServlet extends HttpServlet {
+@WebServlet("/myorder/delete")
+public class MypageOrderDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public WriterCheckDetailServlet() {
+    public MypageOrderDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,24 +29,18 @@ public class WriterCheckDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 몇번 게시글인지 가져오기
-		int wck_no = Integer.parseInt(request.getParameter("wck_no"));
-		//System.out.println(wck_no);
+		// 주문번호 가져오기
+		int order_no = Integer.parseInt(request.getParameter("order_no"));
 		
-		WCheck wcheck = new WCheckService().selectWCheck(wck_no);
+		int result = new MyOrderService().deleteMyOrder(order_no);
 		
-		//System.out.println(wcheck);
-		
-		if(wcheck != null) {
-			request.setAttribute("wcheck", wcheck);
-			// 작가인증게시판 상세페이지 이동
-			request.getRequestDispatcher("/WEB-INF/views/notice/writerCheckDetailView.jsp").forward(request, response);
+		if(result > 0) {
+			request.getSession().setAttribute("message", "주문이 취소되었습니다.");
+			response.sendRedirect(request.getContextPath());
 		} else {
-			request.getSession().setAttribute("massage", "실패^^");
-			request.getRequestDispatcher("/WEB-INF/views/notice/csPageView.jsp").forward(request, response);
+			request.getSession().setAttribute("message", "실패9ㅅ9");
+			request.getRequestDispatcher("/WEB-INF/views/mypage/mypage.jsp").forward(request, response);
 		}
-		
-		
 	}
 
 	/**

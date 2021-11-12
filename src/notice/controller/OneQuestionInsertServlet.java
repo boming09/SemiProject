@@ -55,7 +55,7 @@ public class OneQuestionInsertServlet extends HttpServlet {
 		
 		if(!ServletFileUpload.isMultipartContent(request)) {
 			// 잘못된경로면 일단 cs페이지로...
-			request.getSession().setAttribute("msg", "잘못된 전송입니다.");
+			request.getSession().setAttribute("massage", "잘못된 전송입니다.");
 			request.getRequestDispatcher("/WEB-INF/views/notice/csPageView.jsp").forward(request, response);
 			return;
 		}
@@ -97,7 +97,7 @@ public class OneQuestionInsertServlet extends HttpServlet {
 		
 		if(result > 0) {
 			// 문의내역 목록 재요청
-			request.getSession().setAttribute("msg", "게시글이 등록 되었습니다.");
+			request.getSession().setAttribute("massage", "게시글이 등록 되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/one");
 		} else {
 			// 실패시 저장 된 사진 삭제

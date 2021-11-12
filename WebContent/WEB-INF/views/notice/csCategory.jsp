@@ -11,12 +11,12 @@
 <link href="<%= request.getContextPath() %>/resources/css/notice/csCategory.css" rel="stylesheet">
 <title>cs_category</title>
 <!-- alert 창 출력 -->
-<% if(session.getAttribute("msg") != null) { %>
+<% if(session.getAttribute("massage") != null) { %>
 <script>
-	alert('<%= session.getAttribute("msg") %>');
+	alert('<%= session.getAttribute("massage") %>');
 </script>
 <% 
-	session.removeAttribute("msg");
+	session.removeAttribute("massage");
 	}
 %>
 </head>

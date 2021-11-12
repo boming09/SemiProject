@@ -52,10 +52,10 @@ public class CommuUpdateServlet extends HttpServlet {
 		int result = new CommuService().updateCommu(commu_no, title, content);
 		
 		if(result > 0) {
-			request.getSession().setAttribute("msg", "게시글이 수정되었습니다.");
+			request.getSession().setAttribute("massage", "게시글이 수정되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/commu/detail?commu_no=" + commu_no);
 		} else {
-			request.getSession().setAttribute("msg", "실패9ㅅ9");
+			request.getSession().setAttribute("massage", "실패9ㅅ9");
 			request.getRequestDispatcher("/WEB-INF/views/notice/commuView.jsp").forward(request, response);
 		}
 		

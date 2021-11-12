@@ -84,7 +84,7 @@
                 <div class="wmy_emailarea">
                     <span class="wmy_email">이메일</span>
                     <span class="wmy_email2">
-                    	<input type="text" name="email" value="${ writer.userEmail }" required>
+                    	<input type="email" name="email" value="${ writer.userEmail }" required>
                     </span>
                 </div>
     			
