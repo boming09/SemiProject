@@ -33,8 +33,18 @@ public class AccoutDeleteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		/* 탈퇴 유저에 대해서 처리할 수 있는 값 추출 */
 		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
+		// request에 담긴 값 꺼내서 변수에 저장
+		String[] dissatisfactionArr = request.getParameterValues("dissatisfaction");
 		
-		int result = new MemberService().deleteAccount(userNo);
+		String dissatisfaction = "";
+		
+		// 체크박스가 체크 된 경우 문자열 합치기
+		if(dissatisfaction != null)
+			dissatisfaction = String.join("|", dissatisfactionArr);
+		
+		Member member = new Member(userNo, dissatisfaction);
+		
+		int result = new MemberService().deleteAccount(userNo, dissatisfaction);
 		
 		if(result > 0) {
 			request.getSession().removeAttribute("loginUser");	// 로그인 세션 정보 삭제

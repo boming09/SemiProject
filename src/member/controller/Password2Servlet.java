@@ -40,7 +40,6 @@ public class Password2Servlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 비밀번호 찾기 에서 비밀번호 찾기2 클릭시 단순 이동
 		
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/password.jsp");
 		view.forward(request, response);		
@@ -85,9 +84,9 @@ public class Password2Servlet extends HttpServlet {
                 props.put("mail.smtp.ssl.enable", "true");
                 
                 //인증 번호 생성기
-                StringBuffer temp =new StringBuffer();
+                StringBuffer temp = new StringBuffer();
                 Random rnd = new Random();
-                for(int i=0;i<10;i++)
+                for(int i = 0; i < 10; i++)
                 {
                     int rIndex = rnd.nextInt(3);
                     switch (rIndex) {

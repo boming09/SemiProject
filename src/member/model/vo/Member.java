@@ -19,6 +19,7 @@ public class Member {
 	private String status;			// 회원 탈퇴 여부
 	private String userCertify;		// 본인인증
 	private String userNickname;	// 닉네임
+	private String dissatisfaction; // 탈퇴 사유
 	
 	/*
 	 *  USER_NO	NUMBER	No		1	회원번호
@@ -39,6 +40,26 @@ public class Member {
 	
 	public Member() {}		
 
+	public Member(int userNo, String userId, String userPwd, String userName, String gender, String userPhone,
+			String userEmail, String userAddress, int userGrade, Date enrollDate, String status, String userCertify,
+			String userNickname, String dissatisfaction) {
+		super();
+		this.userNo = userNo;
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.gender = gender;
+		this.userPhone = userPhone;
+		this.userEmail = userEmail;
+		this.userAddress = userAddress;
+		this.userGrade = userGrade;
+		this.enrollDate = enrollDate;
+		this.status = status;
+		this.userCertify = userCertify;
+		this.userNickname = userNickname;
+		this.dissatisfaction = dissatisfaction;
+	}
+
 	public Member(int userNo, String userName, String userPhone, String userEmail, String userAddress) {
 		super();
 		this.userNo = userNo;
@@ -46,13 +67,12 @@ public class Member {
 		this.userPhone = userPhone;
 		this.userEmail = userEmail;
 		this.userAddress = userAddress;
-	}
-	
-	
-	public Member(String userName, String userEmail) {
+	}	
+
+	public Member(int userNo, String dissatisfaction) {
 		super();
-		this.userName = userName;
-		this.userEmail = userEmail;
+		this.userNo = userNo;
+		this.dissatisfaction = dissatisfaction;
 	}
 
 	public Member(String userId, String userPwd, String userName, String userPhone, String userEmail, Date enrollDate) {
@@ -239,12 +259,19 @@ public class Member {
 		this.status = status;
 	}
 
+	public String getDissatisfaction() {
+		return dissatisfaction;
+	}
+
+	public void setDissatisfaction(String dissatisfaction) {
+		this.dissatisfaction = dissatisfaction;
+	}
+
 	@Override
 	public String toString() {
-		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName
-				+ ", gender=" + gender + ", userPhone=" + userPhone + ", userEmail=" + userEmail + ", userAddress="
-				+ userAddress + ", userGrade=" + userGrade + ", enrollDate=" + enrollDate + ", status=" + status
-				+ ", userCertify=" + userCertify + ", userNickname=" + userNickname + "]";
+		return "Member [userNo=" + userNo + ", dissatisfaction=" + dissatisfaction + "]";
 	}
+
+	
 
 }

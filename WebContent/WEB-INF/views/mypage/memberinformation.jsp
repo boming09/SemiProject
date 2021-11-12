@@ -39,40 +39,41 @@
 	            <table class="ctable" id="table1">
 	            	<tr>
 	            		<th class="tbtd">아이디</th>
-	            		<td>&nbsp;&nbsp;
+	            		<td class="privacy">
 	            			<input type="text" class="tb3" name="userId" 
 	            			value="<%= loginUser.getUserId() %>" readonly></td>
 	            	</tr>
 	            	<tr>
 	            		<th>비밀번호</th>
-	            		<td>&nbsp;&nbsp;
+	            		<td class="privacy">
 	            			<input type="text" class="tb3" name="userPwd" readonly> 
 	            			<button id="pwdUpdateBtn" type="button"
 	            			onclick="openPopup('<%= request.getContextPath() %>/pwdModify', 'pwdModify', 480, 480);">비밀번호 변경</button></td>           			
 	            	</tr>	            	
 	            	<tr>
 	            		<th>성  명</th>
-	            		<td>&nbsp;&nbsp;
+	            		<td class="privacy">
 	            			<input type="text" class="tb3" name="userName"
 	            			value="<%= loginUser.getUserName() %>" required></td>
 	            	</tr>
 	            	<tr>
 	            		<th>휴대전화</th>
-	            		<td>&nbsp;&nbsp;
+	            		<td class="privacy">
 	            			<input type="text" class="tb3"  name="phone"
 	            			value="<%= loginUser.getUserPhone() != null ? loginUser.getUserPhone() : "" %>">	            			
-	            			&nbsp;&nbsp;&nbsp;&nbsp;
-	            			주문배송 SMS, ARS상담시 본인 확인용으로 사용</td>
+	            			<label class="detaillabel">
+	            			주문배송 SMS, ARS상담시 본인 확인용으로 사용</label>
+	            		</td>
 	            	</tr>
 	            	<tr>
 	            		<th>이메일 주소</th>
-	            		<td>&nbsp;&nbsp;
+	            		<td class="privacy">
 	            			<input type="text" class="tb3" name="email"
 	            			value="<%= loginUser.getUserEmail() != null ? loginUser.getUserEmail() : "" %>"></td>
 	            	</tr>
 	            	<tr>
 	            		<th>성  별</th>
-	            		<td class="tdgender">&nbsp;&nbsp;<%= loginUser.getGender() %></td>
+	            		<td class="privacy"><%= loginUser.getGender() %></td>
 	            	</tr>
 	            	<tr>
 	            		<% 
@@ -84,34 +85,34 @@
 	            			}
 	            		%>
 	            		<th class="address_name">주   소</th>
-	            		<td>&nbsp;&nbsp;
+	            		<td class="privacy">
 	            			<input type="text" class="postcodify_postcode5" name="address" size="15"
 	            			value="<%= address[0] %>" readonly><br>
-	            			&nbsp;&nbsp;
+	            			
 	            			<input type="text" class="postcodify_address" name="address" size="35"
 	            			value="<%= address[1] %>" readonly><br>
-	            			&nbsp;&nbsp;
+	            			
 	            			<input type="text" class="postcodify_extra_details" name="address" size="35"
 	            			value="<%= address[2] %>">
-	            			&nbsp;&nbsp;&nbsp;&nbsp;
+	            			
 	            			<button type="button" id="postcodify_search_button">변경하기</button></td>
 	            	</tr>
 	            	<tr>
 	            		<th>본인인증</th>
-	            		<td>&nbsp;&nbsp;
-	            			<input type="text" class="tb3">
-	            			&nbsp;&nbsp;&nbsp;&nbsp;
-	            			<input type="button" class="tb1" id="tb1phone" value="휴대전화로 본인 인증하기">
-	            			&nbsp;&nbsp;&nbsp;&nbsp;
-	            			<input type="button" class="tb1" id="tb1ip" value="아이핀 인증하기"></td>
+	            		<td class="privacy">
+	            			<input type="text" class="tb3">	            			
+	            			<input type="button" class="tb1" id="tb1phone" value="휴대전화로 본인 인증하기">	            			
+	            			<input type="button" class="tb1" id="tb1ip" value="아이핀 인증하기">
+	            		</td>
 	            	</tr>            	
 	            	<tr>
 	            		<th rowspan="">서재 닉네임</th>
-	            		<td>&nbsp;&nbsp;
-	            			<input type="text" class="tb3" name="userNickname"
+	            		<td class="privacy">
+	            			<input type="text" class="tb9" name="userNickname"
 	            			value="<%= loginUser.getUserNickname() != null ? loginUser.getUserNickname() : "" %>" required>
 	            			<button id="nicknameCheck" type="button">중복확인</button>
-		            		서재 닉네임은 100자평, 마이리뷰, 이벤트 댓글에 사용됩니다.</td>
+		            		<label class="detaillabel2">서재 닉네임은 100자평, 마이리뷰, 이벤트 댓글에 사용됩니다.</label>
+		            	</td>
 	            	</tr>
 	            </table>
 	            <br>

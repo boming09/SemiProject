@@ -102,6 +102,7 @@
 		UPDATE
 				MEMBER
 			SET STATUS = 'N'
+			SET DISSATISFACTION = ?
 		  WHERE USER_NO = ?
 	</entry>
 	

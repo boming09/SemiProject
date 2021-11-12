@@ -92,14 +92,12 @@
 	            <br>
 	            <h3>계정 연동여부</h3>
 	            <br>
-	            <table class="ctable" id="table2">
+	            <table class="ctable2" id="table2">
 	            	<tr>
 	            		<th>카카오</th>
-	            		<td>&nbsp;&nbsp;&nbsp;&nbsp;
-	            			<input type="button" class="tb0" id="tb0" value="변경하기"></td>
+	            		<td></td>
 	            		<th>네이버</th>
-	            		<td>&nbsp;&nbsp;&nbsp;&nbsp;
-	            			<input type="button" class="tb0" id="tb0" value="변경하기"></td>
+	            		<td></td>
 	            	</tr>
 	            </table>
 	            <br>
