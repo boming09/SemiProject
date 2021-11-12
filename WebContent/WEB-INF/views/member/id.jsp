@@ -22,7 +22,7 @@
         	<input type="hidden" name="userName">
         	<input type="hidden" name="userEmail">
         </form>
-        <div class="id0">
+        <div class="id0"> 
         <div class="id1">
             	<h1 id="emailh1">아이디 찾기</h1>
             <div class="id2">
