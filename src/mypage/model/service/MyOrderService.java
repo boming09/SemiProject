@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import static common.JDBCTemplate.*;
 import mypage.model.dao.MyOrderDao;
 import mypage.model.vo.MyDetail;
 import mypage.model.vo.MyOrder;
@@ -52,6 +52,21 @@ public class MyOrderService {
 		close(conn);		
 		
 		return myorder;
+	}
+
+	// 주문취소하기
+	public int deleteMyOrder(int order_no) {
+		Connection conn = getConnection();
+		
+		int result = orderDao.deleteMyOrder(conn, order_no);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		return result;
 	}
 
 	

@@ -67,7 +67,7 @@ public class WMypageUpdateServlet extends HttpServlet {
 		/* enctype이 multipart/form-data로 전송 되었는지 확인하고 아닐 경우 에러페이지 이동 */
 		if(!ServletFileUpload.isMultipartContent(request)) {
 			// 잘못된경로면 일단 cs페이지로...
-			request.getSession().setAttribute("msg", "잘못된 전송입니다.");
+			request.getSession().setAttribute("massage", "잘못된 전송입니다.");
 			request.getRequestDispatcher("/WEB-INF/views/writer/wMyPageView.jsp").forward(request, response);
 			return;
 		}
@@ -149,8 +149,7 @@ public class WMypageUpdateServlet extends HttpServlet {
 				File deletedFile = new File(savePath + wprofile.getDelete_file());
 				deletedFile.delete();
 			}
-			// 회원정보 페이지로 이동...왜 갑자기 안돼???
-			//request.getSession().setAttribute("msg", "수정 되었습니다.");
+			request.getSession().setAttribute("massage", "회원정보가 수정 되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/w-mypage");
 		} else {
 			// 수정 실패시 첨부된 파일 삭제

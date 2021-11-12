@@ -21,7 +21,8 @@
 			              FROM "ORDER" O
 			              JOIN ORDER_DETAIL D ON(O.ORDER_NO = D.ORDER_NO)
 			              JOIN BOOK B ON(B.BOOK_ID = D.BOOK_ID)
-			             WHERE O.USER_NO = ?                      
+			             WHERE O.USER_NO = ? 
+			               AND ORDERCHANGE = 0                     
 			             GROUP BY O.ORDER_NO
 			                    , ORDER_DATE
 			                    , REL_DATE
@@ -81,7 +82,11 @@
 		 WHERE ORDER_NO = ?
 	</entry>
 
-
+	<entry key="deleteMyOrder">
+		UPDATE "ORDER"
+		   SET ORDERCHANGE = 10
+		 WHERE ORDER_NO = ?
+	</entry>
 
 
 

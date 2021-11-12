@@ -10,12 +10,12 @@
 <link href="${ contextPath }/resources/css/writer/wmyCategory.css" rel="stylesheet">
 <title>w_mypage_category</title>
 <!-- alert 창 출력 -->
-<% if(session.getAttribute("msg") != null) { %>
+<% if(session.getAttribute("massage") != null) { %>
 <script>
-	alert('<%= session.getAttribute("msg") %>');
+	alert('<%= session.getAttribute("massage") %>');
 </script>
 <% 
-	session.removeAttribute("msg");
+	session.removeAttribute("massage");
 	}
 %>
 </head>

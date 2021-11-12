@@ -40,13 +40,13 @@ public class WMypageDeleteServlet extends HttpServlet {
 		if(result > 0) {
 			// 로그인 세션 정보 삭제
 			request.getSession().removeAttribute("loginUser");
-			// 메뉴바에서 alert창 수행 => 왜 한박자 느리지?
-			// request.getSession().setAttribute("msg", "회원 탈퇴가 완료 되었습니다.");
+			
+			request.getSession().setAttribute("massage", "회원 탈퇴가 완료 되었습니다.");
 			// 메인 화면으로 이동 (서버 재요청-redirect)
 			response.sendRedirect(request.getContextPath());
 		} else {
 			/* 실패한 경우 "회원 탈퇴에 실패하였습니다" 메세지 가지고 에러 페이지로 이동 */
-			request.getSession().setAttribute("msg", "실패9ㅅ9");
+			request.getSession().setAttribute("massage", "실패9ㅅ9");
 			request.getRequestDispatcher("/WEB-INF/views/writer/wMyPageView.jsp").forward(request, response);
 		}
 

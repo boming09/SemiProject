@@ -35,10 +35,10 @@ public class CommuDeleteServlet extends HttpServlet {
 		
 
 		if(result > 0) {
-			request.getSession().setAttribute("msg", "게시글이 삭제되었습니다.");
+			request.getSession().setAttribute("massage", "게시글이 삭제되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/commu");
 		} else {
-			request.getSession().setAttribute("msg", "실패9ㅅ9");
+			request.getSession().setAttribute("massage", "실패9ㅅ9");
 			request.getRequestDispatcher("/WEB-INF/views/notice/commuView.jsp").forward(request, response);
 		}
 		

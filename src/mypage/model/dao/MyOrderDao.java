@@ -186,6 +186,28 @@ private static Properties orderQuery = new Properties();
 		
 		return mydetail;
 	}
+
+	// 주문 취소
+	public int deleteMyOrder(Connection conn, int order_no) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = orderQuery.getProperty("deleteMyOrder");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, order_no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 
 	

@@ -55,7 +55,7 @@ public class WMyCommuUpdateServlet extends HttpServlet {
 		int result = new CommuService().updateWCommu(commu_no, reply);
 		
 		if(result > 0) {
-			request.getSession().setAttribute("msg", "답변 등록이 완료되었습니다.");
+			request.getSession().setAttribute("massage", "답변 등록이 완료되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/w-commu");
 		} else {
 			request.getSession().setAttribute("msg", "실패9ㅅ9");

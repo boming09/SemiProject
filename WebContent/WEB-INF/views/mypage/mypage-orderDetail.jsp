@@ -128,7 +128,7 @@
 	   		<div class="btnArea">
 	    		<button id="ct_order_btn" onclick="location.href='${ contextPath }/myorder'">목록으로</button>
 	   			<c:if test="${ myorder.delivery == '상품준비중' }">
-	   				<button id="ct_order_btn" onclick="location.href='#'">주문 취소</button>
+	   				<button id="ct_order_btn" onclick="myorderDelete(${ myorder.order_no })">주문 취소</button>
 	   			</c:if>
 	   		</div>
 	   		
@@ -149,6 +149,14 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 	<!-- 여러 버전의 제이쿼리 넣지 말아라 3버전 넣고싶으면 첫번째꺼 지우셈 -->
-
+	<script>
+		function myorderDelete(orderNo) {
+			if(confirm) {
+				alert('정말로 주문 취소하시겠습니까?')
+				location.href='${ contextPath }/myorder/delete?order_no=' + orderNo;
+			}
+		}
+		
+	</script>
 </body>
 </html>
