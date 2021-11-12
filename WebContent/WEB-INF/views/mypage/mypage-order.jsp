@@ -12,7 +12,7 @@
     <!-- favicon (Real Favicon Generator 등에서 가공 필요) -->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
     <!-- 외부 스타일 시트 -->
-    <link href="<%= request.getContextPath() %>/resources/css/mypage/mypage-orchca.css" rel="stylesheet">
+    <link href="<%= request.getContextPath() %>/resources/css/mypage/mypage-order.css" rel="stylesheet">
 </head>
 <body>
 <c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" scope="application"/>

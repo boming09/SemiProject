@@ -16,16 +16,16 @@ import mypage.model.service.MyOrderService;
 import mypage.model.vo.MyOrder;
 
 /**
- * Servlet implementation class MypageOrchcaServlet
+ * Servlet implementation class MypageOrderServlet
  */
-@WebServlet("/mypageorchca")
-public class MypageOrchcaServlet extends HttpServlet {
+@WebServlet("/myorder")
+public class MypageOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MypageOrchcaServlet() {
+    public MypageOrderServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -56,7 +56,7 @@ public class MypageOrchcaServlet extends HttpServlet {
     	request.setAttribute("orderList", map.get("orderList"));
     	
     	// 마이페이지의 주문/변경/취소 클릭 시 주문/변경/취소로 단순 이동
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/mypage-orchca.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/mypage-order.jsp");
 		view.forward(request, response);
 	}
 

@@ -48,9 +48,9 @@
 	                        <li class="wcommu_title title2">${ wcommu.ctitle }</li>
 	                        <li class="wcommu_user">${ wcommu.user_id }</li>
 	                        <li class="wcommu_date">${ wcommu.create_date }</li>
-	                        <li class="wcommu_status" value="${ wcommu.status }">
-	                        	<c:if test="${ wcommu.status == 'N' }">미답변</c:if>
-	                        </li>
+	                        <c:if test="${ wcommu.status == 'N' }" >
+	                       		<li class="wcommu_status" value="${ wcommu.status }" style="color:red;">미답변</li>
+	                        </c:if>
 	                        
 	                    </ul>
                     </c:forEach>

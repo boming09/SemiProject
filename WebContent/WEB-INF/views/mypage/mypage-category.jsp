@@ -27,21 +27,20 @@
         </div>
         <div class="area2"><a class="ca-top">주문내역</a>
             <ul class="ca-list">
-                <li><a href="<%= request.getContextPath() %>/mypageorchca">주문 조회/변경/취소</a></li>
-                <li><a href="<%= request.getContextPath() %>/mypagereturn">반품/교환 내역</a></li>
-                <li><a href="<%= request.getContextPath() %>/mypagecancel">취소 주문내역</a></li>
+                <li><a href="<%= request.getContextPath() %>/myorder">주문 조회</a></li>
+                <li><a href="<%= request.getContextPath() %>/mypagereturn">취소/반품/교환 내역</a></li>
             </ul>
         </div>
-        <div class="area3"><a class="ca-top">작가 소통게시판</a>
+        <div class="area3"><a class="ca-top">소통게시판 바로가기</a>
             <ul class="ca-list">
-                <li><a href="<%= request.getContextPath() %>/commu/w-info">내 작가 리스트</a></li>
+                <li><a href="<%= request.getContextPath() %>/commu/w-info">작가 리스트</a></li>
                 <li><a href="<%= request.getContextPath() %>/commu">작가 소통 게시판</a></li>
             </ul>
         </div>
-        <div class="area4"><a class="ca-top">고객센터</a>
+        <div class="area4"><a class="ca-top">고객센터 바로가기</a>
 	        <ul class="ca-list">
-	            <li><a href="<%= request.getContextPath() %>/cs">자주 묻는 질문 FAQ</a></li>
-	            <li><a href="<%= request.getContextPath() %>/one/insert">1:1 고객상담</a></li>
+	            <li><a href="<%= request.getContextPath() %>/cs">FAQ</a></li>
+	            <li><a href="<%= request.getContextPath() %>/one/insert">1:1 문의하기</a></li>
 	        </ul>
 	    </div>        
     	<div class="cs_ad">
