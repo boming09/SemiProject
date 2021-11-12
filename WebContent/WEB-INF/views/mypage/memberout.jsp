@@ -49,33 +49,42 @@
 					<br>
 				</header>
 			</div>
-			<div class="topline"></div>
+			<div class="topline">
+			</div>
 			<!-- center div -->
 			<br>
+			<div>
+			<form action="${ contextPath }/accountDelete" method="post">
 			<h4 class="h4go">
 				고객님께서 느끼신 봄숲의 부족한 점을 지적해 주세요.<br> 소중하게 반영하겠습니다.
 			</h4>
 			<br>
 			<div class="center">
-			<form action="${ contextPath }/accountDelete" method="post">
+			<!-- 
+			 -->
 				<div class="temp-box-left">
 					<label>1. 상품관련</label>
 				</div>
 				<div class="temp-box-right">
 					<div class="rightdiv">
-						<input type="checkbox"> 가격불만
+						<input type="checkbox" id="price" name="dissatisfaction" value="가격불만"> 
+						<label for="price">가격불만</label>
 					</div>
 					<div class="rightdiv">
-						<input type="checkbox"> 상품 품질 불만
+						<input type="checkbox" id="wares" name="dissatisfaction" value="상품 품질 불만">
+						<label for="wares">상품 품질 불만</label>
 					</div>
 					<div class="rightdiv">
-						<input type="checkbox"> 찾는 상품 없음
+						<input type="checkbox" id="nix" name="dissatisfaction" value="찾는 상품 없음"> 
+						<label for="nix">찾는 상품 없음</label>
 					</div>
 					<div class="rightdiv">
-						<input type="checkbox"> 상품 정보 부족
+						<input type="checkbox" id="productno" name="dissatisfaction" value="상품 정보 부족">
+						<label for="productno">상품 정보 부족</label>
 					</div>
 					<div class="rightdiv">
-						<input type="checkbox"> 그외
+						<input type="checkbox" id="nix_ect" name="dissatisfaction" value="그외">
+						<label for="nix_ect">그외</label>
 					</div>
 				</div>
 				<div class="temp-box-left">
@@ -83,28 +92,36 @@
 				</div>
 				<div class="temp-box-right">
 					<div class="rightdiv">
-						<input type="checkbox"> 결제불안
+						<input type="checkbox" id="payment" name="dissatisfaction" value="결제불안">
+						<label for="payment">결제불안</label>
 					</div>
 					<div class="rightdiv">
-						<input type="checkbox"> 회원 특혜 부족
+						<input type="checkbox" id="preference" name="dissatisfaction" value="회원 특혜 부족">
+						<label for="preference">회원 특혜 부족</label>
 					</div>
 					<div class="rightdiv">
-						<input type="checkbox"> 불친절
+						<input type="checkbox" id="unkind" name="dissatisfaction" value="불친절">
+						<label for="unkind">불친절</label>
 					</div>
 					<div class="rightdiv">
-						<input type="checkbox"> 배송 상태 불안
+						<input type="checkbox" id="shipping" name="dissatisfaction" value="배송상태 불안">
+						<label for="shipping">배송상태 불안</label>
 					</div>
 					<div class="rightdiv">
-						<input type="checkbox"> 배송 시간 지연
+						<input type="checkbox" id="shippingtime" name="dissatisfaction" value="배송 시간 지연">
+						<label for="shippingtime">배송 시간 지연</label>
 					</div>
 					<div class="rightdiv">
-						<input type="checkbox"> 사이트 불편
+						<input type="checkbox" id="site" name="dissatisfaction" value="사이트 불편">
+						<label for="site">사이트 불편</label>
 					</div>
 					<div class="rightdiv">
-						<input type="checkbox"> 컨텐츠 불만
+						<input type="checkbox" id="contentdi" name="dissatisfaction" value="컨텐츠 불만">
+						<label for="contentdi">컨텐츠 불만</label>
 					</div>
 					<div class="rightdiv">
-						<input type="checkbox"> 그외
+						<input type="checkbox" id="service_ect" name="dissatisfaction" value="그외">
+						<label for="service_ect">그외</label>
 					</div>
 				</div>
 				<div class="temp-box-left">
@@ -112,31 +129,31 @@
 				</div>
 				<div class="temp-box-right">
 					<div class="rightdiv">
-						<input type="checkbox"> 시스템 에러
+						<input type="checkbox" id="error" name="dissatisfaction" value="시스템 에러">
+						<label for="error">시스템 에러</label>
 					</div>
 					<div class="rightdiv">
-						<input type="checkbox"> 상품 검색 불편
+						<input type="checkbox" id="searchno" name="dissatisfaction" value="상품 검색 불편">
+						<label for="searchno">상품 검색 불편</label>
 					</div>
 					<div class="rightdiv">
-						<input type="checkbox"><label class="sizeplz">개인정보 & 불안 보안</label>
+						<input type="checkbox" id="privacyno" name="dissatisfaction" value="개인정보 & 불안 보안">
+						<label for="privacyno">개인정보 & 불안 보안</label>
 					</div>
 					<div class="rightdiv">
-						<input type="checkbox"> 유명도가 낮아서
+						<input type="checkbox" id="fame" name="dissatisfaction" value="유명도가 낮아서">
+						<label for="fame">유명도가 낮아서</label>
 					</div>
 					<div class="rightdiv">
-						<input type="checkbox"><label class="sizeplz">봄숲은 사용하지 않음</label>
+						<input type="checkbox" id="notused" name="dissatisfaction" value="봄숲은 사용하지 않음">
+						<label for="notused">봄숲은 사용하지 않음</label>
 					</div>
 					<div class="rightdiv">
-						<input type="checkbox"> 그외
+						<input type="checkbox" id="system_ect" name="dissatisfaction" value="그외">
+						<label for="system_ect">그외</label>
 					</div>
 				</div>
-				<div class="temp-box-left">
-					<label>4. 봄숲에 한마디<br>부탁 드립니다.
-					</label>
-				</div>
-				<div class="temp-box-right1">
-					<input type="textarea" id="ta">
-				</div>
+				
 			</div>
 			<br> <label class="end">탈퇴하시면 봄숲과 봄숲마켓에서 동시에 계정이 삭제되며,
 				나의 계정과 나의 서재 등</label><br> <label class="end">모든 DB가 자동 삭제 됩니다.
@@ -151,8 +168,11 @@
 					onclick="confirmAccountDelete();">탈퇴하기</button>
 				</h4>
 			</div>
-			</form>
+			<!-- 
+			-->
 			<br>
+			</form> 
+			</div>
 		</div>
 
 		<!-- 광고  -->

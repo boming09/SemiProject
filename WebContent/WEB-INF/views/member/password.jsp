@@ -41,10 +41,10 @@
                 
                 <div class="id3">
                     
-                    <label class="psid">&nbsp;&nbsp;ID</label> <input type="text" name="userId" class="id1text" size="10"><br><br>
-                    <label class="psname">이름</label> <input type="text" name="userName" class="id1text" size="10"><br><br>
+                    <label class="psid">&nbsp;&nbsp;ID</label> <input type="text" name="userId" class="id1text" size="10" required><br><br>
+                    <label class="psname">이름</label> <input type="text" name="userName" class="id1text" size="10" required><br><br>
                     
-                    <label class="psemail">E-mail 주소</label> <input type="text" name="userEmail" class="id1text" size="10"><br><br>
+                    <label class="psemail">E-mail 주소</label> <input type="text" name="userEmail" class="id1text" size="10" required><br><br>
                     <a href="login"><button class="id2pagebut">다음단계</button></a><br>
                 </div>
                 </form>

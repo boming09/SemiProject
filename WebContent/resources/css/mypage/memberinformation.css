@@ -55,6 +55,24 @@ h3 {
 	font-weight : bold;
 }
 
+.ctable2 {
+	border : 1px solid lightskyblue;
+	background-color : white;
+	width : 700px;
+	height: 50px;
+	font-size : 10px;
+	border-collapse: collapse;
+	font-weight : bold;
+}
+
+.ctable2 th {
+	width : 12%;
+}
+
+.ctable2 td {
+	width : 38%;
+}
+
 .tbtd{
 	height: 30px;
 }
@@ -85,12 +103,14 @@ tr, th, td {
 }
 
 #tb1phone{
-	width : 150px;
+	width : 180px;
 	height : 30px;
 	background: #497d42;
     color: white;
     font-weight: bold;
-    border-radius: 15px; 
+    border-radius: 5px;
+    margin-left : 10px;
+    margin-right : 10px;
 }
 
 #tb1ip{
@@ -99,17 +119,17 @@ tr, th, td {
 	background: #497d42;
     color: white;
     font-weight: bold;
-    border-radius: 15px; 
+    border-radius: 5px; 
 }
 
 #pwdUpdateBtn{
-	width : 90px;
+	width : 100px;
 	height : 30px;
 	background: #497d42;
     color: white;
     font-weight: bold;
     margin-left : 15px;
-    border-radius: 15px; 
+    border-radius: 5px; 
 }
 
 .tb0{
@@ -118,7 +138,8 @@ tr, th, td {
 	background: #497d42;
     color: white;
     font-weight: bold;
-    border-radius: 15px;   
+    font-size : 15px;
+    border-radius: 5px;   
 }
 
 #tb0{
@@ -139,6 +160,17 @@ tr, th, td {
 	border : 1px solid black;
 	border-radius : 10%;
 	width : 150px;
+	height : 30px;
+	margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 13px;
+    padding-left: 10px;
+}
+
+.tb9{
+	border : 1px solid black;
+	border-radius : 10%;
+	width : 90px;
 	height : 30px;
 	margin-bottom: 5px;
     margin-top: 5px;
@@ -189,6 +221,10 @@ tr, th, td {
 	padding-left: 40px;
 }
 
+.detaillabel2{
+	padding-left: 15px;
+}
+
 .postcodify_address{
 	border : 1px solid black;
 	border-radius : 10%;
@@ -197,6 +233,7 @@ tr, th, td {
     margin-top: 5px;
     font-size: 13px;
     padding-left: 10px;
+    width : 300px;
 }
 
 .postcodify_extra_details{
@@ -207,6 +244,7 @@ tr, th, td {
     margin-top: 5px;
     font-size: 13px;
     padding-left: 10px;
+    width : 300px;
 }
 
 #postcodify_search_button{
@@ -215,7 +253,8 @@ tr, th, td {
 	background: #497d42;
     color: white;
     font-weight: bold;
-    border-radius: 15px; 
+    border-radius: 5px;
+    margin-left : 10px;
 }
 
 /* 서재 닉네임 버튼 */
@@ -226,7 +265,7 @@ tr, th, td {
     color: white;
     font-weight: bold;
     margin-left: 15px;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
 /* 수정하기 버튼 */
