@@ -3,8 +3,51 @@
 "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<entry key="selectMyOrderList">
+		SELECT * 
+			FROM(SELECT ROWNUM RNUM, A.* 
+			       FROM (SELECT
+			                    O.ORDER_NO
+			                  , ORDER_DATE
+			                  , REL_DATE
+			                  , RECEIPTE_DATE
+			                  , ADDRESS
+			                  , PHONE
+			                  , PAYMENT
+			                  , DELIVERY
+			                  , DELIVERY_NUMBER
+			                  , O.USER_NO
+			                  , ORDERCHANGE
+			                  , COUNT(D.BOOK_ID)
+			              FROM "ORDER" O
+			              JOIN ORDER_DETAIL D ON(O.ORDER_NO = D.ORDER_NO)
+			              JOIN BOOK B ON(B.BOOK_ID = D.BOOK_ID)
+			             WHERE O.USER_NO = ?                      
+			             GROUP BY O.ORDER_NO
+			                    , ORDER_DATE
+			                    , REL_DATE
+			                    , RECEIPTE_DATE
+			                    , ADDRESS
+			                    , PHONE
+			                    , PAYMENT
+			                    , DELIVERY
+			                    , DELIVERY_NUMBER
+			                    , O.USER_NO
+			                    , ORDERCHANGE
+			             ORDER BY ORDER_DATE DESC) A)
+			WHERE RNUM BETWEEN ? AND ?
+	</entry>
+
+	<entry key="selectMyOrderCount">
+		SELECT 
+		       COUNT(*)
+		  FROM "ORDER"
+		 WHERE USER_NO = ?
+		   AND ORDERCHANGE = 0
+	</entry>
+
+	<entry key="selectMyOrder">
 		SELECT
-		        O.ORDER_NO
+		        ORDER_NO
 		      , ORDER_DATE
 		      , REL_DATE
 		      , RECEIPTE_DATE
@@ -15,28 +58,28 @@
 		      , DELIVERY_NUMBER
 		      , USER_NO
 		      , ORDERCHANGE
-		      , COUNT(BOOK_ID)
-		  FROM "ORDER" O
-		  JOIN ORDER_DETAIL D ON(O.ORDER_NO = D.ORDER_NO)
-		 WHERE USER_NO = ?
-		 GROUP BY O.ORDER_NO
-		 		, ORDER_DATE
-		 		, REL_DATE
-		 		, RECEIPTE_DATE
-		 		, ADDRESS
-		 		, PHONE
-		 		, PAYMENT
-		 		, DELIVERY
-		 		, DELIVERY_NUMBER
-		 		, USER_NO
-		 		, ORDERCHANGE
+		  FROM "ORDER"
+		 WHERE ORDER_NO = ?
 	</entry>
 
-
-
-
-
-
+	<entry key="selectMyDetail">
+		SELECT
+		       BOOK_ID
+		     , ORDER_NO
+		     , AMOUNT
+		     , ORDER_ID
+		     , BOOK_NAME
+		     , CATEGORY_NAME
+		     , AUTHOR
+		     , PUBLISHER
+		     , PRICE
+		     , SALE_PRICE 
+		     , BOOK_IMG   
+		  FROM ORDER_DETAIL
+		  JOIN BOOK USING(BOOK_ID)
+		  JOIN B_CATEGORY USING(CATEGORY_ID)
+		 WHERE ORDER_NO = ?
+	</entry>
 
 
 
