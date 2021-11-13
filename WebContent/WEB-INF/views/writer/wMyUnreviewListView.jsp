@@ -39,15 +39,13 @@
 	
 	                <!-- 반복문 돌릴 애들 -->
 	                <c:forEach var="review" items="${ reviewList }">
-	                	<c:if test="${ review.review_no != review.ref_no  }">
-			                <tr class="unreview_content" onclick="location.href='${ contextPath }/w-unreview/detail?review_no=${ review.review_no }'">
-			                    <td class="unre_no">${ review.review_no }</td>
-			                    <td class="unre_name"><div>${ review.book_name }</div></td>
-			                    <td class="unre_user">${ review.user_id }</td>
-			                    <td class="unre_date">${ review.create_date }</td>
-			                    <td class="unre_status status2" style="color:red;">미답변</td>
-			                </tr>
-	                	</c:if>
+		                <tr class="unreview_content" onclick="location.href='${ contextPath }/w-unreview/detail?review_no=${ review.review_no }'">
+		                    <td class="unre_no">${ review.review_no }</td>
+		                    <td class="unre_name"><div>${ review.book_name }</div></td>
+		                    <td class="unre_user">${ review.user_id }</td>
+		                    <td class="unre_date">${ review.create_date }</td>
+		                    <td class="unre_status status2" style="color:red;">미답변</td>
+		                </tr>
 	                </c:forEach>
 	            </table>
 			</div>
