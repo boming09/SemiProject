@@ -43,32 +43,32 @@
             <div class="review_area2">
                 <div class="review_listarea">
                     <ul class="review_listtop">
-                        <li class="review_no">글번호</li>
-                        <li class="review_classification">분류</li>
-                        <li class="review_title">제목</li>
-                        <li class="review_writer">작성자</li>
-                        <li class="review_views">조회수</li>
-                        <li class="review_date">등록일</li>
-                        <li class="review_status">평점</li>
+                        <li class="review_no">리뷰번호</li>
+                        <li class="review_classification">도서코드</li>
+                        <li class="review_title">회원번호</li>
+                        <li class="review_writer">작성일</li>
+                        <li class="review_views">내용</li>
+                        <li class="review_date">평점</li>
+                        <li class="review_status">참조리뷰번호</li>
                     </ul>
                     <c:if test="${ !empty loginUser }">
-                	<c:forEach var="review" items="${ myreviewList }">
-                	<ul class="review_list" onclick="detailView(${ review.mid })">
-                		<li class="review_no">${ review.mid }</li>
-                		<li class="review_classification">${ review.category_name }</li>
-                		<li class="review_title">${ review.mtitle }</li>
+                	<c:forEach var="review" items="${ b_reviewList }">
+                	<ul class="review_list" onclick="detailView(${ b_review.review_no })">
+                		<li class="review_no">${ b_review.review_no }</li>
+                		<li class="review_classification">${ b_review.book_id }</li>
+                		<li class="review_title">${ b_review.user_no }</li>
                 		
                 		<c:choose>
-				           	<c:when test="${ review.user_nickname != null}">
-				           	<li class="review_writer">${ review.user_nickname }</li>
+				           	<c:when test="${ b_review.user_no != null}">
+				           	<li class="review_writer">${ b_review.user_no }</li>
 				            </c:when>
 				            <c:otherwise>
 				            <li class="review_writer">${ loginUser.userName }</li>
 				            </c:otherwise>
 			            </c:choose>                		
                 		
-                		<li class="review_views">${ review.mcount }</li>
-                		<li class="review_date">${ review.create_Date }</li>
+                		<li class="review_views">${ b_review.count }</li>
+                		<li class="review_date">${ b_review.rating }</li>
                 		<li class="review_status"></li>
                 	</ul>
                     </c:forEach>
@@ -205,8 +205,8 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
 	<script>
-				function detailView(mid){
-					location.href='${contextPath}/mypagemyreviewdetail?mid=' + mid;
+				function detailView(review_no){
+					location.href='${contextPath}/mypagemyreviewdetail?review_no=' + review_no;
 				}
 	</script>
 	
@@ -215,7 +215,7 @@
 		</c:when>
 		<c:otherwise>
 			<script>
-				function detailView(mid){
+				function detailView(review_no){
 					alert('로그인 후 이용 가능합니다');
 					location.href='${contextPath}/login';
 				}

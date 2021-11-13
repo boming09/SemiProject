@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mypage.model.service.B_ReviewService;
 import mypage.model.service.MyreviewService;
+import mypage.model.vo.B_Review;
 import mypage.model.vo.Myreview;
 
 /**
@@ -37,12 +39,12 @@ public class MyreviewUpdateViewServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int mid = Integer.parseInt(request.getParameter("mid"));
+		int review_no = Integer.parseInt(request.getParameter("review_no"));
 		
-		Myreview myreview = new MyreviewService().selectMyreview(mid);
+		B_Review b_review = new B_ReviewService().selectB_Review(review_no);
 		
-		if(myreview != null) {
-			request.setAttribute("myreview", myreview);
+		if(b_review != null) {
+			request.setAttribute("b_review", b_review);
 			request.getRequestDispatcher("/WEB-INF/views/mypage/myreviewUpdateView.jsp").forward(request, response);
 		} else {
 			request.setAttribute("message", "게시글 수정에 실패하였습니다.");
