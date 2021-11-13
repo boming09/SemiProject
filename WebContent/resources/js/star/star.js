@@ -62,13 +62,14 @@ var $rStar = $(".rstarScore"),
     .on("mouseover", ".rstarScore label", function(){
     	$rResult.text($(this).text());
     })
-    .on("mouseleave", ".rstarScore>.input", function(){
+    .on("mouseleave", ".rstarScore>.score", function(){
     	var $checked = $rStar.find(":checked");
     		if($checked.length === 0){
     			$rResult.text("0");
    		 	} else {
    		 		$rResult.text($checked.next().text());
     		}
+    		
   	});
 };
 
