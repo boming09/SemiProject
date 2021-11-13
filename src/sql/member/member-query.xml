@@ -102,8 +102,9 @@
 		UPDATE
 				MEMBER
 			SET STATUS = 'N'
-			SET DISSATISFACTION = ?
+			<!-- SET DISSATISFACTION = ?  -->
 		  WHERE USER_NO = ?
+			SET USER_PWD = ?
 	</entry>
 	
 	<entry key="searchId">

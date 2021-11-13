@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mypage.model.service.MyreviewService;
+import mypage.model.service.B_ReviewService;
 
 /**
  * Servlet implementation class MyreviewDeleteServlet
@@ -36,9 +36,9 @@ public class MyreviewDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int mid = Integer.parseInt(request.getParameter("mid"));
+		int review_no = Integer.parseInt(request.getParameter("review_no"));
 		
-		int result = new MyreviewService().deletemyreview(mid);
+		int result = new B_ReviewService().deleteb_review(review_no);
 		
 		/* 삭제 성공 시 성공 메세지 alert 후 게시판 목록으로
 		 * 삭제 실패 시 실패 메세지 가지고 에러페이지로 */
