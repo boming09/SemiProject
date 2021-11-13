@@ -1,11 +1,18 @@
 package order.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import member.model.vo.Member;
+import order.model.service.CartService;
+
+import order.model.vo.Coupon;
 
 /**
  * Servlet implementation class couponServlet
@@ -26,7 +33,17 @@ public class couponServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/order/coupon.html").forward(request, response);
+		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
+		
+		//Coupon coupon = new Coupon();
+		
+		//쿠폰이 여러개이면 어쩔건데ㅡㅡ
+	//	Coupon coupon = new CartService().selectCoupon(userNo);
+		List<Coupon> couponList = new CartService().selectCoupon(userNo);
+
+		
+		request.setAttribute("couponList",  couponList);
+		request.getRequestDispatcher("/WEB-INF/views/order/coupon.jsp").forward(request, response);
 	}
 
 	/**

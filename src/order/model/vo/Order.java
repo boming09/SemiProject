@@ -20,6 +20,7 @@ public class Order {
 	//우편번호
 	
 	private List<OrderDetail> orderDetail;
+	private int couponNo;
 	
 	/*
 	 *  ORDER_NO	NUMBER
@@ -40,6 +41,26 @@ public class Order {
 
 
 	
+	public Order(int order_no, Date order_date, Date rel_date, Date receipte_date, String address, String phone,
+			String payment, String delivery, String delivery_number, int user_no, List<OrderDetail> orderDetail,
+			int couponNo) {
+		super();
+		this.order_no = order_no;
+		this.order_date = order_date;
+		this.rel_date = rel_date;
+		this.receipte_date = receipte_date;
+		this.address = address;
+		this.phone = phone;
+		this.payment = payment;
+		this.delivery = delivery;
+		this.delivery_number = delivery_number;
+		this.user_no = user_no;
+		this.orderDetail = orderDetail;
+		this.couponNo = couponNo;
+	}
+
+
+
 	public Order(int order_no, Date order_date, Date rel_date, Date receipte_date, String address, String phone,
 			String payment, String delivery, String delivery_number, int user_no, List<OrderDetail> orderDetail) {
 		super();
@@ -76,6 +97,18 @@ public class Order {
 
 	public List<OrderDetail> getOrderDetail() {
 		return orderDetail;
+	}
+
+
+
+	public int getCouponNo() {
+		return couponNo;
+	}
+
+
+
+	public void setCouponNo(int couponNo) {
+		this.couponNo = couponNo;
 	}
 
 
@@ -192,8 +225,10 @@ public class Order {
 		return "Order [order_no=" + order_no + ", order_date=" + order_date + ", rel_date=" + rel_date
 				+ ", receipte_date=" + receipte_date + ", address=" + address + ", phone=" + phone + ", payment="
 				+ payment + ", delivery=" + delivery + ", delivery_number=" + delivery_number + ", user_no=" + user_no
-				+ ", orderDetail=" + orderDetail + "]";
+				+ ", orderDetail=" + orderDetail + ", couponNo=" + couponNo + "]";
 	}
+
+
 
 
 	

@@ -168,4 +168,14 @@
 			  , ORDER_ID.NEXTVAL
 			)
 	</entry>
+	
+	<entry key="selectCoupon">
+		SELECT *
+		      FROM CUPON
+		 WHERE USER_NO = ?
+		  AND STATUS = 'Y'	
+	</entry>
+	
+	
+	
 </properties>

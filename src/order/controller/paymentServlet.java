@@ -63,6 +63,10 @@ public class paymentServlet extends HttpServlet {
 		
 		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
 		
+		//쿠폰
+	//	int couponNo =  Integer.parseInt(request.getParameter("couponNo"));
+	//	int couponDis = Integer.parseInt(request.getParameter("couponDis"));
+		
 		//결제수단
 		//String pay = request.getParameter("pay"); //아니 페이는 다음 서블릿에서 해야지
 	     /* amount : '1',
@@ -158,6 +162,13 @@ public class paymentServlet extends HttpServlet {
 			tamount += amounts[i];
 		}
 		//System.out.println(tamount);
+		
+		// 할인 후
+		/*int dis = 0;
+		int aftDis = 0;
+		dis= sum * couponDis / 100;
+		aftDis = sum-aftDis;
+		System.out.println(aftDis);*/
 		
 		// 총가격과 수량 보내기
 		OrderDirect od = new OrderDirect();
