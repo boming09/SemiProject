@@ -101,7 +101,7 @@
 				               BOOK_ID
 			                 , BOOK_NAME
 			                 , PUBLICATION_DATE
-			                 , PUBLISHER
+			                 , PUBLISHER두
 			                 , BOOK_IMG 
 			                 , COUNT(REVIEW_NO)
 			              FROM BOOK B
@@ -113,4 +113,87 @@
 		             ORDER BY BOOK_NAME) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
+	
+	<entry key="getReviewCount">
+		SELECT
+		       COUNT(*)
+		  FROM B_REVIEW R
+		  JOIN BOOK B ON(B.BOOK_ID = R.BOOK_ID)
+		  JOIN MEMBER M ON(M.USER_NO = R.USER_NO)
+		  JOIN W_BOOK WB ON(WB.BOOK_ID = R.BOOK_ID)
+		  JOIN WCHECK W ON(WB.WCK_NO = W.WCK_NO)
+		 WHERE W.USER_NO = ?
+	</entry>
+	
+	<entry key="selectReviewList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.* 
+		        FROM (SELECT
+					       REVIEW_NO
+					     , BOOK_ID
+					     , BOOK_NAME
+					     , R.USER_NO
+					     , M.USER_ID
+					     , R.CREATE_DATE
+					     , R.CONTENT
+					     , RATING
+					     , REF_NO    
+					     , R.STATUS
+					  FROM B_REVIEW R
+					  JOIN BOOK B ON(B.BOOK_ID = R.BOOK_ID)
+					  JOIN MEMBER M ON(M.USER_NO = R.USER_NO)
+					  JOIN W_BOOK WB ON(WB.BOOK_ID = R.BOOK_ID)
+					  JOIN WCHECK W ON(WB.WCK_NO = W.WCK_NO)
+					 WHERE W.USER_NO = ?
+					  AND REF_NO IS NULL
+					  AND R.STATUS = 'Y'
+					 ORDER BY R.CREATE_DATE DESC, REVIEW_NO DESC) A)
+			WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectReview">
+		SELECT
+		       REVIEW_NO
+		     , BOOK_ID
+		     , BOOK_NAME
+		     , R.USER_NO
+		     , M.USER_ID
+		     , R.CREATE_DATE
+		     , R.CONTENT
+		     , RATING
+		     , REF_NO    
+		     , R.STATUS
+		  FROM B_REVIEW R
+		  JOIN BOOK B ON(B.BOOK_ID = R.BOOK_ID)
+		  JOIN MEMBER M ON(M.USER_NO = R.USER_NO)
+		  JOIN W_BOOK WB ON(WB.BOOK_ID = R.BOOK_ID)
+		  JOIN WCHECK W ON(WB.WCK_NO = W.WCK_NO)
+		 WHERE REVIEW_NO = ?
+	</entry>
+	
+	<entry key="insertReply">
+		INSERT INTO B_REVIEW
+		(
+		    REVIEW_NO
+		  , BOOK_ID
+		  , USER_NO
+		  , CREATE_DATE
+		  , CONTENT
+		  , RATING
+		  , REF_NO    
+		  , STATUS
+		)
+		VALUES
+		(
+		    SEQ_REVIEW_NO.NEXTVAL
+		  , ?
+		  , ?
+		  , SYSDATE
+		  , ?
+		  , DEFAULT
+		  , ?
+		  , DEFAULT
+		)
+	</entry>
+	
 </properties>

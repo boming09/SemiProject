@@ -58,7 +58,7 @@ public class WMyCommuUpdateServlet extends HttpServlet {
 			request.getSession().setAttribute("massage", "답변 등록이 완료되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/w-commu");
 		} else {
-			request.getSession().setAttribute("msg", "실패9ㅅ9");
+			request.getSession().setAttribute("message", "실패9ㅅ9");
 			request.getRequestDispatcher("/WEB-INF/views/writer/wMyPageView.jsp").forward(request, response);
 		}
 	

@@ -15,6 +15,7 @@ import member.model.vo.Member;
 import notice.model.vo.PageInfo;
 import writer.model.dao.WriterDao;
 import writer.model.vo.WProfile;
+import writer.model.vo.WReview;
 import writer.model.vo.WriterInfo;
 
 public class WriterService {
@@ -78,6 +79,7 @@ public class WriterService {
 		} else {
 			rollback(conn);
 		}
+		close(conn);
 		
 		return result;
 	}
@@ -130,6 +132,60 @@ public class WriterService {
 		close(conn);
 		
 		return returnMap;
+	}
+
+	
+	// 미답변 리뷰리스트 가져오기
+	public Map<String, Object> selectReviewList(int page, int user_no) {
+		Connection conn = getConnection();
+		
+		// 1. 리뷰 총 개수 구하기
+		int listCount = writerDao.getReviewCount(conn, user_no);
+		// 2. PageInfo 객체 만들기
+		PageInfo pi = new PageInfo(page, listCount, 10, 10);
+		// 3. 도서 리스트 구하기		
+		List<WReview> reviewList = writerDao.selectReviewList(conn, pi, user_no);
+		
+		Map<String, Object> returnMap = new HashMap<>();
+		
+		if(listCount == 0) {
+			returnMap.put("pi", null);
+			returnMap.put("reviewList", null);
+		} else {
+			returnMap.put("pi", pi);
+			returnMap.put("reviewList", reviewList);			
+		}
+		close(conn);
+		
+		return returnMap;
+	}
+
+	// 리뷰 디테일 페이지
+	public WReview selectReview(int review_no) {
+		Connection conn = getConnection();
+		
+		WReview review = writerDao.selectReview(conn, review_no);
+		
+		close(conn);
+		
+		return review;
+	}
+
+	
+	// 답변 업데이트
+	public int insertReply(WReview newreply) {
+		Connection conn = getConnection();
+		
+		int result = writerDao.insertReply(conn, newreply);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
 	}
 	
 	

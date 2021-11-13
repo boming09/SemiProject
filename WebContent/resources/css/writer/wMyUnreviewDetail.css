@@ -76,7 +76,7 @@ td {
     height: 50px;
 }
 .liarea2 {
-    height: 200px;;
+    height: 250px;;
 }
 /* 너비 */
 .unre_name, .unre_user, .unre_date, .unre_rating, .unre_content {
@@ -92,6 +92,7 @@ td {
 }
 .rcontent {
     width: 88%;
+    vertical-align: top;
 }
 
 /* 테두리 */
