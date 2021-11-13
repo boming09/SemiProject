@@ -70,6 +70,10 @@ public class orderServlet extends HttpServlet {
 		//session.setAttribute("cartOrderList", cartOrderList);
 		// 위 두 줄 추가 무쓸모
 		
+		//밑에 두줄 일단 더해놨는데....
+		HttpSession session = request.getSession();
+		session.setAttribute("cartOrderList", cartOrderList);
+		
 		request.setAttribute("cartOrderList", cartOrderList);
 		request.getRequestDispatcher("/WEB-INF/views/order/order.jsp").forward(request, response);
 		

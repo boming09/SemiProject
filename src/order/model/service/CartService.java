@@ -2,10 +2,14 @@ package order.model.service;
 
 import java.sql.Connection;
 import java.util.List;
+
+import member.model.vo.Member;
+
 import static common.JDBCTemplate.*;
 
 import order.model.dao.cartDao;
 import order.model.vo.Cart;
+import order.model.vo.Coupon;
 import order.model.vo.Order;
 import order.model.vo.OrderDetail;
 
@@ -154,16 +158,6 @@ public class CartService {
 		//오더 삽입
 		int orderResult = cartDao.insertFinalOrder(conn, order);
 		
-		/*if(orderResult > 0) {
-			commit(conn);
-		} else {
-			rollback(conn);
-		}
-		
-		close(conn);
-		
-		return orderResult;*/
-		
 		//오더디테일 삽입
 		int orderDetailResult = 0;
 		
@@ -181,6 +175,16 @@ public class CartService {
 		}
 		close(conn);
 		return result;
+	}
+
+	public List<Coupon> selectCoupon(int userNo) {
+		Connection conn = getConnection();
+		
+		List<Coupon> couponList = cartDao.selectCoupon(conn, userNo);
+
+		close(conn);
+		
+		return couponList;
 	}
 
 }

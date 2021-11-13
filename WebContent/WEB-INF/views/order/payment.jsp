@@ -41,7 +41,8 @@
 	     		  <div class="discount">
 	     		  	<span class="align_ct"><b>쿠폰</b></span><hr><br>
 	     		  	<span class="align_ct"><b>보유 쿠폰: <span>0</span>장</b><br></span>
-	     		  	<button class="dis_btn" id="couponBtn" onclick="openChild();">쿠폰 조회/적용</button><br>
+	     		  	<!-- <button class="dis_btn" id="couponBtn" onclick="openChild();">쿠폰 조회/적용</button><br>-->
+	     		  	<button class="dis_btn" id="couponBtn" onclick="openPopup('<%= request.getContextPath()%>/coupon', 'coupon', 640, 350);">쿠폰 조회/적용</button><br>
 	     		  	<span class="align_ct bold">할인금액:<span> 0</span></span>
 	     		  </div>
 	     		  <div class="discount white">
@@ -84,6 +85,10 @@
         		<div class="o_item">결제 총액</div>
         		<div class="o_item"><fmt:formatNumber value="${ od.sale_price }" type="number"/>원</div> <!-- 할인 있으면 차감해 -->
         	</div>
+        	
+        	<input type="hidden" id="aInput">
+			<input type="hidden" id="bInput">
+		
         	
         	
         	<div class="od_ttt fs">
@@ -156,14 +161,38 @@
      	            window.name = "parentForm";
      	            // window.open("open할 window", "자식창 이름", "팝업창 옵션");
      	            openWin = window.open("coupon",
-     	                    "childForm", "width=570, height=350, resizable = no, scrollbars = no");    
+     	                    "childForm", "width=640, height=350, resizable = no, scrollbars = no");    
      	        }
      	        
      	        function setChildText(){
-     	            openWin.document.getElementById("cInput").value = document.getElementById("pInput").value;
+     	            openWin.document.getElementById("checkCoupon").value = document.getElementById("aInput").value;
+     	           openWin.document.getElementById("couponDis").value = document.getElementById("bInput").value;
+     	          openWin.document.getElementById("couponNo").value = document.getElementById("dInput").value;
      	        }
 
      				 
+     	      // 쿠폰할인
+     	       	function couponDis(){
+     	       	  var dis = document.getElementById("aInput").value;
+     	       	  var to = ${ od.sale_price };
+     	       	var todi = to * dis / 100;
+     	       document.getElementById("aInput").value = todi;
+     	     
+     	       	  
+     	      }
+     	      
+     	      function openPopup(url, title, width, height) {
+     	    	  
+     	    	  var left = (document.body.clientWidth/2)-(width/2);
+     	    	  left += window.screenLeft; //듀얼 모니터
+				  var top = (screen.availHeight/2) - (height/2);
+     	    	  
+     	    	  var options = "width="+width+",height="+height+",left="+left+",top="+top;
+     	    	  
+     	    	  window.open(url, title, options);
+     	    	  
+     	      }
+     	      
      	      
      			
      		</script>

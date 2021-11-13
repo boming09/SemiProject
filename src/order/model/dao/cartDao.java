@@ -7,12 +7,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
 
 import static common.JDBCTemplate.close;
 import order.model.vo.Cart;
+import order.model.vo.Coupon;
 import order.model.vo.Order;
 import order.model.vo.OrderDetail;
 
@@ -394,6 +396,36 @@ public class cartDao {
 		}
 		
 		return result;
+	}
+
+	public List<Coupon> selectCoupon(Connection conn, int userNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Coupon> couponList = new ArrayList<>();
+		String sql = cartQuery.getProperty("selectCoupon");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				couponList.add(new Coupon(rset.getInt("coupon_no")
+									, rset.getString("coupon_name")
+									, rset.getString("coupon_content")
+									, rset.getInt("discount")
+									, rset.getDate("expdate")
+									, rset.getInt("user_no")));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return couponList;
 	}
 
 }
