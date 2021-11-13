@@ -128,7 +128,7 @@
             </div>
             
             <div class="unre_btn">
-                <button type="button" onclick="location.href='${ contextPath }/one/detail'">취소</button>
+                <button type="button" onclick="location.href='${ contextPath }/admin/reply'">취소</button>
                 <button type="submit">답변등록</button>
             </div>
             </form>
