@@ -58,7 +58,7 @@
                 		<li class="review_classification">${ b_review.book_id }</li>
                 		<li class="review_title">${ b_review.user_no }</li>
                 		
-                		<c:choose>
+                		<c:choose> 
 				           	<c:when test="${ b_review.user_no != null}">
 				           	<li class="review_writer">${ b_review.user_no }</li>
 				            </c:when>
