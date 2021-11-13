@@ -101,7 +101,7 @@
 				               BOOK_ID
 			                 , BOOK_NAME
 			                 , PUBLICATION_DATE
-			                 , PUBLISHER두
+			                 , PUBLISHER
 			                 , BOOK_IMG 
 			                 , COUNT(REVIEW_NO)
 			              FROM BOOK B
@@ -109,6 +109,7 @@
 			              JOIN WCHECK W USING(WCK_NO)
 			              FULL OUTER JOIN B_REVIEW USING(BOOK_ID)
 			             WHERE W.USER_NO = ?
+			               AND REF_NO IS NULL
 			             GROUP BY BOOK_ID, BOOK_NAME, PUBLICATION_DATE, PUBLISHER, BOOK_IMG
 		             ORDER BY BOOK_NAME) A)
 		WHERE RNUM BETWEEN ? AND ?
@@ -123,6 +124,10 @@
 		  JOIN W_BOOK WB ON(WB.BOOK_ID = R.BOOK_ID)
 		  JOIN WCHECK W ON(WB.WCK_NO = W.WCK_NO)
 		 WHERE W.USER_NO = ?
+		   AND REVIEW_NO NOT IN (SELECT R.REVIEW_NO
+                    FROM B_REVIEW R
+                    JOIN B_REVIEW RE ON(R.REVIEW_NO = RE.REF_NO))
+		   AND REF_NO IS NULL
 	</entry>
 	
 	<entry key="selectReviewList">
@@ -145,6 +150,9 @@
 					  JOIN W_BOOK WB ON(WB.BOOK_ID = R.BOOK_ID)
 					  JOIN WCHECK W ON(WB.WCK_NO = W.WCK_NO)
 					 WHERE W.USER_NO = ?
+					  AND REVIEW_NO NOT IN (SELECT R.REVIEW_NO
+						                      FROM B_REVIEW R
+						                      JOIN B_REVIEW RE ON(R.REVIEW_NO = RE.REF_NO))
 					  AND REF_NO IS NULL
 					  AND R.STATUS = 'Y'
 					 ORDER BY R.CREATE_DATE DESC, REVIEW_NO DESC) A)

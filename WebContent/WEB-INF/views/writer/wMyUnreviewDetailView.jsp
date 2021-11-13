@@ -53,7 +53,7 @@
                 </table>
             </div>
             <div class="unre_btn">
-                <button type="button" onclick="location.href='${ contextPath }/w-unreview/detail?review_no=${ review.review_no }'">취소</button>
+                <button type="button" onclick="location.href='${ contextPath }/w-unreview'">취소</button>
                 <button type="button" onclick="location.href='${ contextPath }/w-unreview/insert?review_no=${ review.review_no }'">답변작성</button>
             </div>
             

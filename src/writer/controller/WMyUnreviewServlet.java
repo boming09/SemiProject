@@ -56,7 +56,7 @@ public class WMyUnreviewServlet extends HttpServlet {
     		forpage = "/WEB-INF/views/mypage/wMyPageView.jsp";
     	}
     	
-    	System.out.println(map.get("reviewList"));
+    	//System.out.println(map.get("reviewList"));
     	request.getRequestDispatcher(forpage).forward(request, response);
 		
 	}
