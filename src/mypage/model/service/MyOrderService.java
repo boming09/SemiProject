@@ -32,8 +32,13 @@ public class MyOrderService {
 		// 정보 넣기
 		Map<String, Object> returnMap = new HashMap<>();
 		
-		returnMap.put("pi", pi);
-		returnMap.put("orderList", orderList);
+		if(listCount == 0) {
+			returnMap.put("pi", null);
+			returnMap.put("orderList", null);
+		} else {
+			returnMap.put("pi", pi);
+			returnMap.put("orderList", orderList);
+		}
 		
 		close(conn);		
 		
@@ -85,12 +90,47 @@ public class MyOrderService {
 		// 정보 넣기
 		Map<String, Object> returnMap = new HashMap<>();
 		
-		returnMap.put("pi", pi);
-		returnMap.put("changeList", changeList);
+		if(listCount == 0) {
+			returnMap.put("pi", null);
+			returnMap.put("changeList", null);
+		} else {
+			returnMap.put("pi", pi);
+			returnMap.put("changeList", changeList);
+		}
 		
 		close(conn);		
 		
 		return returnMap;
+	}
+
+	// 교환 신청
+	public int changeMyOrder(int order_no) {
+		Connection conn = getConnection();
+		
+		int result = orderDao.changeMyOrder(conn, order_no);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		return result;
+	}
+
+	// 반품 신청
+	public int returnMyOrder(int order_no) {
+		Connection conn = getConnection();
+		
+		int result = orderDao.returnMyOrder(conn, order_no);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		return result;
 	}
 
 	

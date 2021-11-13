@@ -51,13 +51,17 @@ public class MypageOrderServlet extends HttpServlet {
     	//List<MyOrder> orderList = new MyOrderService().selectMyOrderList(user_no);
     	Map<String, Object> map =new MyOrderService().selectMyOrderList(page, user_no);
     	
-    	//System.out.println(orderList);
-    	request.setAttribute("pi", map.get("pi"));
-    	request.setAttribute("orderList", map.get("orderList"));
+    	String forpage = ""; 	
+    	if(map.get("orderList") != null) {
+    		request.setAttribute("pi", map.get("pi"));
+        	request.setAttribute("orderList", map.get("orderList"));
+        	
+        	forpage = "/WEB-INF/views/mypage/mypage-order.jsp";
+    	} else {
+    		forpage = "/WEB-INF/views/mypage/mypage-orderNone.jsp";
+    	}
     	
-    	// 마이페이지의 주문/변경/취소 클릭 시 주문/변경/취소로 단순 이동
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/mypage-order.jsp");
-		view.forward(request, response);
+    	request.getRequestDispatcher(forpage).forward(request, response);
 	}
 
 	/**

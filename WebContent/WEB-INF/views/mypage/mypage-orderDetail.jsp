@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>cart</title>
+<title>마이페이지-주문내역</title>
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
 <link href="<%= request.getContextPath() %>/resources/css/mypage/mypage-orderDetail.css" rel="stylesheet">
@@ -126,10 +126,23 @@
         	</div>
         	
 	   		<div class="btnArea">
-	    		<button id="ct_order_btn" onclick="location.href='${ contextPath }/myorder'">목록으로</button>
-	   			<c:if test="${ myorder.delivery == '상품준비중' }">
-	   				<button id="ct_order_btn" onclick="myorderDelete(${ myorder.order_no })">주문 취소</button>
-	   			</c:if>
+	   			<c:choose>
+	   				<c:when test="${ myorder.orderchange == 0 }">
+			    		<button id="ct_order_btn" onclick="location.href='${ contextPath }/myorder'">목록으로</button>	   				
+	   				</c:when>
+	   				<c:otherwise>
+	   					<button id="ct_order_btn" onclick="location.href='${ contextPath }/myorder/change'">목록으로</button>
+	   				</c:otherwise>
+	   			</c:choose>
+	   			<c:choose>
+	   				<c:when test="${ myorder.delivery == '상품준비중' && myorder.orderchange == 0 }">
+		   				<button id="ct_order_btn" onclick="myorderDelete(${ myorder.order_no })">주문 취소</button>
+	   				</c:when>
+	   				<c:when test="${ myorder.delivery == '배송완료' && myorder.orderchange == 0 }">
+	   					<button id="ct_order_btn" onclick="myorderChange(${ myorder.order_no })">교환 요청</button>
+	   					<button id="ct_order_btn" onclick="myorderReturn(${ myorder.order_no })">반품 요청</button>
+	   				</c:when>
+	   			</c:choose>
 	   		</div>
 	   		
          </div>
@@ -152,8 +165,22 @@
 	<script>
 		function myorderDelete(orderNo) {
 			if(confirm) {
-				alert('정말로 주문 취소하시겠습니까?')
+				alert('정말로 주문 취소하시겠습니까?');
 				location.href='${ contextPath }/myorder/delete?order_no=' + orderNo;
+			}
+		}
+		
+		function myorderChange(orderNo) {
+			if(confirm) {
+				alert('교환 요청 하시겠습니까?');
+				location.href='${ contextPath }/myorder/pChange?order_no=' + orderNo;
+			}
+		}
+		
+		function myorderReturn(orderNo) {
+			if(confirm) {
+				alert('반품 요청 하시겠습니까?');
+				location.href='${ contextPath }/myorder/pReturn?order_no=' + orderNo;
 			}
 		}
 		
