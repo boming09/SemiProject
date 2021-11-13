@@ -148,10 +148,41 @@ public class BookService {
 		return returnMap;
 	}
 	
-	// 도서 댓글
+	// 도서 댓글 등록
 	public int insertReply(Reply reply) {
 		Connection conn = getConnection();
 		int result = bookDao.insertReply(conn, reply);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
+	// 도서 댓글 삭제
+	public int deleteReply(int rid) {
+		Connection conn = getConnection();
+		int result = bookDao.deleteReply(conn, rid);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+
+	// 작가 댓글 등록
+	public int insertAddReply(Reply reply) {
+		Connection conn = getConnection();
+		int result = bookDao.insertAddReply(conn, reply);
 		
 		if(result > 0) {
 			commit(conn);

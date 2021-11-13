@@ -269,21 +269,27 @@ table {
 .wordCount {
     padding: 0 5px
 }
-.writeBtn {
+#writeBtn {
     width: 100px;
     height: 120px;
     background-color: rgba(73, 125, 78, 1);
+    border: 2px solid rgba(73, 125, 78, 1);
     color: white;
     font-size: 20px;
+    font-weight: bold;
     margin: 0 30px;
+}
+#writeBtn:hover {
+	background-color: white;
+    border: 2px solid rgba(73, 125, 78, 1);
+    color: rgba(73, 125, 78, 1);
 }
 
 /* 리뷰 - 댓글 목록 */
 .reviewContentList {
-    margin: 40px 0;
-    padding: 0px 10px 20px 10px;
+    padding: 0px 10px;
     border-top: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
+    /* border-bottom: 1px solid lightgray; */
     position: relative;
 }
 .reviewInfoGrp{
@@ -312,10 +318,15 @@ table {
 }
 .replyCmt{
     display: none;
-    padding: 0 30px;
+    padding: 0 30px 20px 30px;
+    /* transition-duration: 5s; */
+}
+.authReplyDiv{
+	margin: 10px 0;
 }
 .authReply{
     cursor: pointer;
+    margin: 10px 30px;
 }
 
 /* 별점 보여주기 */

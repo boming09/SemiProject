@@ -4,29 +4,30 @@ import java.util.Date;
 import java.util.List;
 
 public class Book {
-	private int bid;				// 도서 번호
-	private String btitle;			// 도서 제목
-	private int cid;				// 카테고리 번호
-	private String cname;			// 카테고리 이름(카테고리 번호 참조 값)
-	private int userNo;				// 저자(= user_no 참조 값) null
-	private String author;			// 저자 이름 not null
-	private String editor;			// 역자
-	private Date publicationDate;	// 출판일
-	private String publisher;		// 출판사
-	private int price;				// 정가
-	private int stock;				// 재고
-	private double saleRate;		// 할인률
-	private int salePrice;			// 할인가
-	private String bintro;			// 책소개
-	private String burl;			// URL
-	private String filepath;		// 상세이미지
-	private String aintro;			// 저자소개
-	private String bimg;			// 도서 이미지
-	private int starScore;			// 별점
-	private double avgScore;		// 평점
-	private int reviewCount;        // 작가마이페이지 내도서 리뷰
+	private int bid;					// 도서 번호
+	private String btitle;				// 도서 제목
+	private int cid;					// 카테고리 번호
+	private String cname;				// 카테고리 이름(카테고리 번호 참조 값)
+	private int userNo;					// 저자(= user_no 참조 값) null
+	private String author;				// 저자 이름 not null
+	private String editor;				// 역자
+	private Date publicationDate;		// 출판일
+	private String publisher;			// 출판사
+	private int price;					// 정가
+	private int stock;					// 재고
+	private double saleRate;			// 할인률
+	private int salePrice;				// 할인가
+	private String bintro;				// 책소개
+	private String burl;				// URL
+	private String filepath;			// 상세이미지
+	private String aintro;				// 저자소개
+	private String bimg;				// 도서 이미지
+	private int starScore;				// 별점
+	private double avgScore;			// 평점
+	private int reviewCount;        	// 작가마이페이지 내도서 리뷰
 	
-	private List<Reply> replyList;	// 댓글목록
+	private List<Reply> replyList;		// 댓글목록
+	private List<Reply> addReplyList;	// 작가 댓글 목록
 //	BOOK_ID	NUMBER
 //	BOOK_NAME	VARCHAR2(20 BYTE)
 //	CATEGORY_ID	NUMBER
@@ -49,7 +50,7 @@ public class Book {
 	public Book(int bid, String btitle, int cid, String cname, int userNo, String author, String editor,
 		Date publicationDate, String publisher, int price, int stock, double saleRate, int salePrice, String bintro,
 		String burl, String filepath, String aintro, String bimg, int starScore, double avgScore, int reviewCount,
-		List<Reply> replyList) {
+		List<Reply> replyList, List<Reply> addReplyList) {
 	super();
 	this.bid = bid;
 	this.btitle = btitle;
@@ -73,7 +74,10 @@ public class Book {
 	this.avgScore = avgScore;
 	this.reviewCount = reviewCount;
 	this.replyList = replyList;
-	}
+	this.addReplyList = addReplyList;
+}
+
+
 
 	public int getBid() {
 		return bid;
@@ -250,6 +254,14 @@ public class Book {
 	public void setReplyList(List<Reply> replyList) {
 		this.replyList = replyList;
 	}
+	
+	public List<Reply> getAddReplyList() {
+		return addReplyList;
+	}
+
+	public void setAddReplyList(List<Reply> addReplyList) {
+		this.addReplyList = addReplyList;
+	}
 
 	@Override
 	public String toString() {
@@ -258,7 +270,9 @@ public class Book {
 				+ publisher + ", price=" + price + ", stock=" + stock + ", saleRate=" + saleRate + ", salePrice="
 				+ salePrice + ", bintro=" + bintro + ", burl=" + burl + ", filepath=" + filepath + ", aintro=" + aintro
 				+ ", bimg=" + bimg + ", starScore=" + starScore + ", avgScore=" + avgScore + ", reviewCount="
-				+ reviewCount + ", replyList=" + replyList + "]";
+				+ reviewCount + ", replyList=" + replyList + ", addReplyList=" + addReplyList + "]";
 	}
+
+	
 
 }

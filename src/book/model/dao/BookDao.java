@@ -723,7 +723,7 @@ public class BookDao {
 		return replyList;
 	}
 
-	// 도서 댓글
+	// 도서 댓글 등록
 	public int insertReply(Connection conn, Reply reply) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -745,4 +745,45 @@ public class BookDao {
 		return result;
 	}
 	
+	// 도서 댓글 삭제
+	public int deleteReply(Connection conn, int rid) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = bookQuery.getProperty("deleteReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rid);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	// 작가 대댓글 등록
+	public int insertAddReply(Connection conn, Reply reply) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = bookQuery.getProperty("insertAddReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, reply.getBid());
+			pstmt.setInt(2, reply.getUserNo());
+			pstmt.setString(3, reply.getRcontent());
+			pstmt.setInt(4, reply.getRefRid());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 }
