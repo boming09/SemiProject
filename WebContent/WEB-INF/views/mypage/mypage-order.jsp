@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bomsoup login</title>
+    <title>마이페이지-주문내역</title>
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
     <!-- favicon (Real Favicon Generator 등에서 가공 필요) -->
     <link rel="icon" type="image/x-icon" href="resources/image/khfavicon.ico">
@@ -24,7 +24,7 @@
 		<%@ include file="/WEB-INF/views/mypage/mypage-category.jsp" %>		
 		<!-- 헤더 div -->
 		<div class="content">            
-           	<header class="orderheader"><h3>주문조회 / 취소</h3></header>
+           	<header class="orderheader"><h3>주문조회</h3></header>
         	<div class="hArea">
 	            <h4>주문 리스트</h4>
 	            <p>배송상태 : 상품준비중(주문취소 가능) / 배송중, 배송완료(주문취소 불가)</p>          
@@ -36,7 +36,6 @@
 	            	<li class="orderInfo">주문내역</li>
 	            	<li class="delivery">배송상태</li>
 	            	<li class="deliveryNum">운송장번호</li>
-	            	<!-- <div class="change">주문취소</div> -->
 	            </ul>
 	            <c:forEach var="order" items="${ orderList }">
 		            <ul class="orderlist" onclick="myDetail(${ order.order_no })">

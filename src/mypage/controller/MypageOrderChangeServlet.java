@@ -47,21 +47,23 @@ public class MypageOrderChangeServlet extends HttpServlet {
     	//List<MyOrder> orderList = new MyOrderService().selectMyOrderList(user_no);
     	Map<String, Object> map =new MyOrderService().selectOrderChangeList(page, user_no);
     	
-    	//System.out.println(orderList);
-    	request.setAttribute("pi", map.get("pi"));
-    	request.setAttribute("changeList", map.get("changeList"));
-    	    	
-    	// 마이페이지 에서 반품주문내역 클릭 시 반품주문내역 으로 단순 이동
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/mypage-orderChange.jsp");
-		view.forward(request, response);
+    	String forpage = ""; 	
+    	if(map.get("orderList") != null) {
+    		request.setAttribute("pi", map.get("pi"));
+        	request.setAttribute("changeList", map.get("changeList"));
+        	
+        	forpage = "/WEB-INF/views/mypage/mypage-orderChange.jsp";
+    	} else {
+    		forpage = "/WEB-INF/views/mypage/mypage-orderChangeNone.jsp";
+    	}
+    	request.getRequestDispatcher(forpage).forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
 
 }

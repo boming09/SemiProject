@@ -130,7 +130,18 @@
 			             ORDER BY ORDER_DATE DESC) A)
 			WHERE RNUM BETWEEN ? AND ?
 	</entry>
-
+	
+	<entry key="changeMyOrder">
+		UPDATE "ORDER"
+		   SET ORDERCHANGE = 20
+		 WHERE ORDER_NO = ?
+	</entry>
+	
+	<entry key="returnMyOrder">
+		UPDATE "ORDER"
+		   SET ORDERCHANGE = 30
+		 WHERE ORDER_NO = ?
+	</entry>
 
 
 

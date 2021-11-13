@@ -284,19 +284,50 @@ private static Properties orderQuery = new Properties();
 		
 		return changeList;
 	}
-	
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	// 교환 신청
+	public int changeMyOrder(Connection conn, int order_no) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = orderQuery.getProperty("changeMyOrder");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, order_no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	// 반품 신청
+	public int returnMyOrder(Connection conn, int order_no) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = orderQuery.getProperty("returnMyOrder");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, order_no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+		
 }
