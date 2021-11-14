@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>cart</title>
+<title>order</title>
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
 <link href="<%= request.getContextPath() %>/resources/css/order/order.css" rel="stylesheet">
@@ -103,7 +103,8 @@
 					// }
 					
 					  $(orderForm).find('input[type=text]').each(function(){ $(this).val(''); });
-
+					  // 텍스트 박스까지 지워버림
+					  //	$(orderForm).find('input[type=text]').each(function(){ $(this).detach(); });
 				  }
 				}
 				

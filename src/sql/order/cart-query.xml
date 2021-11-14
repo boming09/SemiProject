@@ -180,9 +180,7 @@
 		UPDATE BOOK 
 		   SET SALE_RATE = SALE_RATE + ?
 		 WHERE BOOK_ID = ?
-	</entry>
-	
-	
+	</entry>	
 	
 	<entry key="wBookList">
 		SELECT * 
