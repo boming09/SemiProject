@@ -164,13 +164,19 @@ public class CartService {
 		//오더디테일 삽입
 		int orderDetailResult = 0;
 		
+		//북테이블에 판매수량 증가
+		int addSaleRateResult = 0;
+		
 		for(OrderDetail orderDetail : order.getOrderDetail()) {
 			orderDetailResult += cartDao.insertOrderDetail(conn, orderDetail);
+		
+			//amount add
+			addSaleRateResult += cartDao.updateBookSaleRate(conn, orderDetail);
 		}
 		
 		int result = 0;
 		
-		if(orderResult > 0 && orderDetailResult == order.getOrderDetail().size()) {
+		if(orderResult > 0 && orderDetailResult == order.getOrderDetail().size() && addSaleRateResult == order.getOrderDetail().size()) {
 			commit(conn);
 			result = 1;
 		} else {
