@@ -499,9 +499,9 @@ crossorigin="anonymous"></script>
         });
     });
     
-	$(function() {	/* 스크롤 500 멀어지면 보이기 */
+	$(function() {	/* 스크롤 600 멀어지면 보이기 */
        $(window).scroll(function() {
-           if ($(this).scrollTop() > 500) {
+           if ($(this).scrollTop() > 600) {
                $('#moveA').fadeIn();
            } else {
                $('#moveA').fadeOut();
