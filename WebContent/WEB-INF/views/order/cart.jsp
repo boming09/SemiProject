@@ -241,7 +241,7 @@
 			        
 			        
 			        
-			        function test2() { // 체크된 목록 넘기기
+			       /* function test2() { // 체크된 목록 넘기기
 			           var obj_length = document.getElementsByName("cart_chk").length;
 			      
 			            for (var i=0; i<obj_length; i++) {
@@ -262,7 +262,7 @@
 					           chekchk.submit();
 			           	 	}
 			        	}
-			        }
+			        }*/
 			        
 			        
 			    	function sortList() { //정렬
@@ -308,6 +308,51 @@
 			    	}
 		    	    
 			</script>
+			
+			<c:choose>
+			<c:when test="${ !empty loginUser }">
+			<script>
+			//로그인했을때 스크립트
+			function test2() { // 체크된 목록 넘기기
+		           var obj_length = document.getElementsByName("cart_chk").length;
+		      
+		            for (var i=0; i<obj_length; i++) {
+		                if (document.getElementsByName("cart_chk")[i].checked == true) {
+		                    //alert(document.getElementsByName("cart_chk")[i].value);
+		                    //알러트 말고 태그에 어떻게 넣니
+		                
+		                   var input = document.createElement('input'); 
+
+				           input.setAttribute("type", "hidden");
+				           input.setAttribute("name", "cart_check"); 
+				           input.setAttribute("value", document.getElementsByName("cart_chk")[i].value); 
+	
+				           chekchk.appendChild(input);
+	
+				           document.body.appendChild(chekchk); 
+	
+				           chekchk.submit();
+		           	 	}
+		        	}
+		        }
+		        
+			</script>
+			</c:when>
+			<c:otherwise>
+			<script>
+			//로그인 안했을때 로그인 페이지로 넘기기
+			function test2(){
+					alert('로그인 후 이용 가능합니다.');
+					location.href="${contextPath}/login";
+				}
+			
+			</script>
+			</c:otherwise>
+			</c:choose>
+		
+			
+			
+			
 			<form name="chekchk" method="post" action="${contextPath}/order">
 				<!--  <input type="hidden" id="cart_check" name="cart_check" value=""/>-->
 			
