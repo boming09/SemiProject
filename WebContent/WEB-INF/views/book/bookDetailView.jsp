@@ -31,7 +31,7 @@ crossorigin="anonymous"></script>
 <jsp:include page="/WEB-INF/views/common/menubar.jsp"/>
 
 
-<div class="csarea wrapper">
+<div class="csarea wrapper" id="moveTop">
     <div class="content">
         <div class="detailTopWrap">
 
@@ -92,7 +92,7 @@ crossorigin="anonymous"></script>
                             </span>
                           </span>
                         <span class="reviewCount">
-                            <a href="#review">리뷰(${ book.reviewCount })</a><!-- 리뷰로 이동 -->
+                            <a href="#review" id="moveReview">리뷰(${ book.reviewCount })</a><!-- 리뷰로 이동 -->
                         </span>
                     </div>
                 </div>
@@ -451,8 +451,9 @@ crossorigin="anonymous"></script>
         </div>
     </div>
     <%@ include file="/WEB-INF/views/common/adArea.jsp" %>
+    <a href="#" id="moveA"><i class="fas fa-long-arrow-alt-up"></i></a>
 </div>
-<!-- footer -->
+<%-- footer --%>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 <script src="${contextPath}/resources/js/star/jquery-1.11.3.min.js"></script>
 <script src="${contextPath}/resources/js/star/star.js"></script>
@@ -498,8 +499,33 @@ crossorigin="anonymous"></script>
         });
     });
     
-</script>
+	$(function() {	/* 스크롤 500 멀어지면 보이기 */
+       $(window).scroll(function() {
+           if ($(this).scrollTop() > 500) {
+               $('#moveA').fadeIn();
+           } else {
+               $('#moveA').fadeOut();
+           }
+       });
+ 	        
+   });
+	
+    $("#moveA").click(function() {	/* 천천히 올라가기 */
+           $('html, body').animate({
+               scrollTop : 0
+           }, 600);
+           return false;
+       });
+    
+    $("#moveReview").click(function() {	/* 천천히 리뷰 이동 */
+    	var offset = $("#review").offset();
 
+        $('html, body').animate({
+        	scrollTop : offset.top
+        }, 600);
+        return false;
+    });
+</script>
 <c:choose>
 <c:when test="${ !empty loginUser }">
 <script>            
