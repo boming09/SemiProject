@@ -271,30 +271,6 @@ public class FaqService {
 		close(conn);		
 		
 		return returnMap;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 
 }

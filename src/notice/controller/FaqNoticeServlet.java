@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
+
 import notice.model.service.FaqService;
 import notice.model.vo.Faq;
 import notice.model.vo.Fcategory;
