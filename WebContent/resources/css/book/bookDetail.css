@@ -345,6 +345,19 @@ table {
     text-decoration: underline;	
 }
 
+/* top 이동 버튼*/
+#moveA {
+	width: 30px;
+	display: none;
+	height: 30px;
+	border: 1px solid lightgray;
+	border-radius: 30px;
+	text-align: center;
+	padding: 5px 5px;
+	position: fixed;
+	right: 370px;
+}
+
 /* 별점 보여주기 */
 .star-input>.input,
 .star-input>.input>label:hover,
