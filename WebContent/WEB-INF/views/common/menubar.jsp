@@ -244,6 +244,7 @@ a {
                         <option value="author"
                         <c:if test="${ param.searchCondition == 'author' }">selected</c:if>>작가</option>
                     </select>
+                    <i class="fas fa-caret-down"></i>&nbsp;
                     <span class="input_area">
                     <input type="search" name="searchValue" 
                     <c:if test="${ param.searchCondition != 'category' }">value="${ param.searchValue }"</c:if> 
