@@ -251,8 +251,8 @@
      	  	 <c:forEach var="cart" items="${ cartOrderList }">
      			 <input type="hidden" name="book_id" value="${ cart.book_id }">
 				 <input type="hidden" name="sale_price" value="${cart.sale_price}">
-				 <input type="hidden" name="amount" value=" ${cart.amount}">	
-				 <input type="hidden" name="cart_no" value=" ${cart.cart_no}">		
+				 <input type="hidden" name="amount" value="${cart.amount}">	
+				 <input type="hidden" name="cart_no" value="${cart.cart_no}">		
 			</c:forEach> 
 			
 		

@@ -550,6 +550,25 @@ public class cartDao {
 		return pBookList;
 	}
 
+	public int updateBookSaleRate(Connection conn, OrderDetail orderDetail) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = cartQuery.getProperty("updateBookSaleRate");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, orderDetail.getAmount());
+			pstmt.setInt(2, orderDetail.getBookId());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 	
 
 }
