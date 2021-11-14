@@ -17,27 +17,27 @@ public class B_Review {
 	private int review_no;
 	private int book_id;
 	private int user_no;
-	private Date date;
+	private Date create_date;
 	private String content;
 	private int rating;
 	private int ref_no;
 	private String status;
 	
 	public B_Review() {}
-		
-	public B_Review(int review_no, int book_id, int user_no, Date date, String content, int rating, int ref_no,
+
+	public B_Review(int review_no, int book_id, int user_no, Date create_date, String content, int rating, int ref_no,
 			String status) {
 		super();
 		this.review_no = review_no;
 		this.book_id = book_id;
 		this.user_no = user_no;
-		this.date = date;
+		this.create_date = create_date;
 		this.content = content;
 		this.rating = rating;
 		this.ref_no = ref_no;
 		this.status = status;
 	}
-	
+
 	public int getReview_no() {
 		return review_no;
 	}
@@ -62,12 +62,12 @@ public class B_Review {
 		this.user_no = user_no;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getCreate_date() {
+		return create_date;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setCreate_date(Date create_date) {
+		this.create_date = create_date;
 	}
 
 	public String getContent() {
@@ -104,9 +104,10 @@ public class B_Review {
 
 	@Override
 	public String toString() {
-		return "B_Review [review_no=" + review_no + ", book_id=" + book_id + ", user_no=" + user_no + ", date=" + date
-				+ ", content=" + content + ", rating=" + rating + ", ref_no=" + ref_no + ", status=" + status + "]";
+		return "B_Review [review_no=" + review_no + ", book_id=" + book_id + ", user_no=" + user_no + ", create_date="
+				+ create_date + ", content=" + content + ", rating=" + rating + ", ref_no=" + ref_no + ", status="
+				+ status + "]";
 	}
-	
+		
 	
 }

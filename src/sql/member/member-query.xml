@@ -99,10 +99,17 @@
 	</entry>
 	
 	<entry key="deleteAccount">
-		DELETE
-	    FROM MEMBER
-	WHERE USER_NO = ?
-      AND USER_PWD = ?
+		UPDATE
+				MEMBER
+			SET STATUS = 'N'
+		  WHERE USER_NO = ?
+	</entry>
+	
+	<entry key="deleteAccount2">
+		SELECT
+			USER_PWD
+		FROM MEMBER
+		WHERE USER_NO = ?
 	</entry>
 	
 	

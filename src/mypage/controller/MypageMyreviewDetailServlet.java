@@ -34,6 +34,7 @@ public class MypageMyreviewDetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int review_no = Integer.parseInt(request.getParameter("review_no"));
+		
 		B_ReviewService b_reviewService = new B_ReviewService();
 					
 		B_Review b_review = b_reviewService.selectB_review(review_no);

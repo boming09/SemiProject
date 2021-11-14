@@ -184,7 +184,7 @@ public class MemberDao {
 		return result;
 	}
 	
-	public int deleteAccount(Connection conn, int userNo, String userPwd/*, String dissatisfaction*/) {
+	public int deleteAccount(Connection conn, int userNo/*, String dissatisfaction*/) {
 		
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -194,7 +194,6 @@ public class MemberDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, userNo);
-			pstmt.setString(2, userPwd);
 			// pstmt.setString(2, dissatisfaction);
 			
 			result = pstmt.executeUpdate();

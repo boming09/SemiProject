@@ -55,8 +55,10 @@
 			<!-- center div -->
 			<br>
 			<div>
+			
 			<form action="${ contextPath }/accountDelete" method="post"
 			onSubmit="return checkit();">
+			
 			<h4 class="h4go">
 				고객님께서 느끼신 봄숲의 부족한 점을 지적해 주세요.<br> 소중하게 반영하겠습니다.
 			</h4>

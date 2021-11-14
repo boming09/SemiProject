@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기</title>
+<title>회원 삭제 처리</title>
 <style>
 	.outer{
 		width:90%;
@@ -78,18 +78,40 @@
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>    
 
 	<div class="outerid">
-	<h1 id="searchh1">아이디 찾기</h1>
+	<h1 id="searchh1">회원탈퇴</h1>
 	<!-- 
 	<form id="updateSearchIdForm" action="<%= request.getContextPath() %>/password"
 	method="post" onsubmit="return searchId();">
 	 -->
-			<div class="wrap">
-				<div id="userId">${ member.userName }님의 아이디는 ${ member.userId } 입니다.</div>
-				
-				<div class="btnArea">
-				<a href="password"><button id="updatePwdBtn">비밀번호 찾기</button></a>
-				</div>
-			</div>
+			<%
+        String id= (String)session.getAttribute("sessionID"); 
+        String pw = request.getParameter("password");
+        
+        // 세션에서 아이디를, DeleteForm.jsp에서 입력받은 비밀번호를 가져온다.
+        // 가져온 결과를 가지고 회원정보를 삭제한다. - 삭제결과를 반환
+        Member member = new Member();
+        member = MemberService().deleteMember(id, pw);
+        
+        if(member == 1){
+            session.invalidate(); // 삭제했다면 세션정보를 삭제한다.
+    %>
+        <br><br>
+        <b><font size="4" color="gray">회원정보가 삭제되었습니다.</font></b>
+        <br><br><br>
+    
+        <input type="button" value="확인" onclick="javascript:window.location='index.jsp'">
+    
+    <%    
+         // 비밀번호가 틀릴경우 - 삭제가 안되었을 경우
+        }else{
+    %>
+        <script>
+            alert("비밀번호가 맞지 않습니다.");
+            history.go(-1);
+        </script>
+    <%
+        } 
+    %>
 	<!--  </form> -->
 	</div>
 	<!-- footer -->

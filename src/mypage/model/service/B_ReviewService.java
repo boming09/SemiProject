@@ -104,7 +104,9 @@ public class B_ReviewService {
 
 	public B_Review selectB_review(int review_no) {
 		Connection conn = getConnection();
+		
 		B_Review b_review = b_reviewDao.selectB_review(conn, review_no);
+		
 		close(conn);		
 		
 		return b_review;
