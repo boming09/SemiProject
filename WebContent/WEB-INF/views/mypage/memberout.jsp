@@ -166,8 +166,8 @@
 			<div class="h5go">
 				<h4 class="h5go">
 					비밀번호 : <input type="password" id="check_pw" name="check_pw" required><!-- required 비밀번호 삭제 되면 넣기 --> 
-					<button id="deleteBtn" type="button"
-					onclick="confirmAccountDelete();">탈퇴하기</button>
+					<button id="deleteBtn" type="button" onclick="confirmAccountDelete();">탈퇴하기</button>
+					
 				</h4>
 			</div>
 			<!-- 
@@ -189,13 +189,13 @@
 		}
 	</script>
 	<script>
-	/*	
+		
 	function checkit(){
 			alert("비밀번호를 입력하지 않으셨습니다.");
 			document.deleteForm.check_pw.focus();
 			return false;
 		}
-	*/
+	
 	</script>
 </body>
 </html>

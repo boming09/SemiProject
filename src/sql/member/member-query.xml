@@ -99,13 +99,12 @@
 	</entry>
 	
 	<entry key="deleteAccount">
-		UPDATE
-				MEMBER
-			SET STATUS = 'N'
-			<!-- SET DISSATISFACTION = ?  -->
-		  WHERE USER_NO = ?
-			SET USER_PWD = ?
+		DELETE
+	    FROM MEMBER
+	WHERE USER_NO = ?
+      AND USER_PWD = ?
 	</entry>
+	
 	
 	<entry key="searchId">
 		SELECT
