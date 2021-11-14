@@ -550,6 +550,48 @@ public class cartDao {
 		return pBookList;
 	}
 
+	public List<Book> selectBestList(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Book> bestList = new ArrayList<>();
+		String sql = cartQuery.getProperty("bestList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+	            Book book = new Book();
+	            book.setBid(rset.getInt("book_id"));
+	            book.setBtitle(rset.getString("book_name"));
+	            //book.setCid(rset.getInt("category_id"));
+	            // book.setCname(rset.getString("category_name"));
+	            book.setAuthor(rset.getString("author"));
+	            //book.setEditor(rset.getString("editor"));
+	           // book.setPublicationDate(rset.getDate("publication_date"));
+	            //book.setPublisher(rset.getString("publisher"));
+	            //book.setSalePrice(rset.getInt("sale_price"));
+	            book.setBimg(rset.getString("book_img"));
+	           // book.setStarScore(rset.getInt("star_score"));
+	            //book.setAvgScore(rset.getDouble("avg_score"));
+	            book.setSaleRate(rset.getInt("sale_rate"));
+	            
+	            bestList.add(book);
+	         }
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}  finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+		
+		return bestList;
+	}
+
+	
+	
 	public int updateBookSaleRate(Connection conn, OrderDetail orderDetail) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -569,6 +611,7 @@ public class cartDao {
 		return result;
 	}
 
+	
 	
 
 }

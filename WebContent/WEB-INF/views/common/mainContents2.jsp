@@ -121,12 +121,15 @@ https://github.com/filipelinhares/ress-->
 	            <p id="bs">주간 베스트 셀러</p><br>
 	    
 	            <table id="bs_tb">
+	            	<c:forEach var="b" items="${ bestList }">
+	                <c:set var="i" value="${i+1}"/>
 	                <tr>
-	                    <td><b>1</b><br>-</td>
-	                    <td><a href=""><img class="bsb" src="<%= request.getContextPath() %>/resources/images/pop1.png"></a></td>
-	                    <td><a href="<%= request.getContextPath() %>/book/detail"><span class="bsn">킹덤</span><br><span class="bsw">요네스뵈 저</span></a></td>
+	                    <td><b>${i}</b><br>-</td>
+	                    <td><a href="${contextPath}/book/detail?bid=${b.bid}"><img class="bsb" src="<%= request.getContextPath() %>${b.bimg}"></a></td>
+	                    <td><a href="${contextPath}/book/detail?bid=${b.bid}"><span class="bsn">${b.btitle}</span><br><span class="bsw">${b.author} 저</span></a></td>
 	                </tr>
-	                <tr>
+	                </c:forEach>
+	               <!--   <tr>
 	                    <td><b>2</b><br>-</td>
 	                    <td><a href=""><img class="bsb" src="<%= request.getContextPath() %>/resources/images/pop2.png"></a></td>
 	                    <td><a href=""><span class="bsn">나와 밍들의 세계</span><br><span class="bsw">천선란 저</span></a></td>
@@ -145,7 +148,7 @@ https://github.com/filipelinhares/ress-->
 	                    <td><b>5</b><br>-</td>
 	                    <td><a href=""><img class="bsb" src="<%= request.getContextPath() %>/resources/images/thisweek1.png"></a></td>
 	                    <td><a href=""><span class="bsn">은밀한 결정</span><br><span class="bsw">오가와 요코</span></a></td>
-	                </tr>
+	                </tr>-->
 	            </table>
 	        </div>
 		</div> 

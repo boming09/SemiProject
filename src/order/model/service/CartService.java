@@ -206,11 +206,14 @@ public class CartService {
 		List<Book> WeekBookList = cartDao.selectWBookList(conn);
 		List<Book> NewBookList = cartDao.selectNBookList(conn);
 		List<Book> PopBookList = cartDao.selectPBookList(conn);
+		List<Book> bestList = cartDao.selectBestList(conn);
+		
 		
 		//rd에 리스트들 넣어라
 		recommend.setWBookList(WeekBookList);
 		recommend.setNBookList(NewBookList);
 		recommend.setPBookList(PopBookList);
+		recommend.setBestList(bestList);
 		
 		close(conn);
 

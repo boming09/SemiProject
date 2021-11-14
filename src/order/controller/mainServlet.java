@@ -42,6 +42,7 @@ public class mainServlet extends HttpServlet {
 		List<Book> wBookList = recommend.getWBookList();
 		List<Book> nBookList = recommend.getNBookList();
 		List<Book> pBookList = recommend.getPBookList();
+		List<Book> bestList = recommend.getBestList();
 		
 		//세션에 저장 맞냐고
 		//HttpSession session = request.getSession();
@@ -50,6 +51,7 @@ public class mainServlet extends HttpServlet {
 		request.setAttribute("wBookList", wBookList);
 		request.setAttribute("nBookList", nBookList);
 		request.setAttribute("pBookList", pBookList);
+		request.setAttribute("bestList", bestList);
 		
 		request.getRequestDispatcher("/WEB-INF/views/main/main.jsp").forward(request, response);
 	}
