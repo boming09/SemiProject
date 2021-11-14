@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+.csarea {
+    /* 챙겨가야하는 놈 */
+    /* 카테고리 + 컨텐츠 영역 flex 용도 */
+    display: flex;
+}
+.content {
+    /* 챙겨가야하는 놈 */
+    width: 72%;
+    margin-left : 15px;
+    margin-right : 15px;
+}
+
+/* 컨텐츠 헤더 */
+.wcommu_header {
+    height: 70px;
+    display : flex;
+    justify-content : space-between;	
+    align-items: center;
+    margin: 0px 0px 10px 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+} 
+.wcommu_header div:first-child {
+    font-size: 1.1rem;
+    font-weight : bold;
+}
+/* 전체 소통게시판 버튼 */
+.wcommu_commu button {
+    width: 100px;
+    height: 40px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 0px 10px;
+    background: rgb(73, 125, 78);
+    color: white;
+    line-height : 20px;
+}
+.wcommu_commu button:hover {
+    background-color: rgb(196, 217, 195);
+    color: black;
+}
+
+/* 문의내역 없을시 */
+.wcommu_none_ment {
+    margin: 30px 0px;
+}
+
+.wcommu_none_ment span {
+    display: block;
+    text-align: center;
+    background: rgb(239, 239, 239);
+    margin: 0px 30px 0px 30px;
+}
+
+.none_span1 {
+    padding-top: 60px;
+    padding-bottom: 30px;
+    font-size: 1rem;
+    font-weight : bold;
+    
+}
+
+.none_span2 {
+    padding-bottom: 60px;
+    font-size: 0.8rem;
+}
