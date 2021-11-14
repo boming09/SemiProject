@@ -424,14 +424,14 @@ td {
 }
 
 #goOrderDetail {
-	padding:5px;
+	padding:7.5px;
 	border:1px solid black;
 	font-weight:bold;
 }
 
 #gohome {
 	font-weight:bold;
-	padding:5px;
+	padding:8px;
 	color:white;
 	background:rgb(73, 125, 78);
 }

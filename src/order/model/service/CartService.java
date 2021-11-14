@@ -221,4 +221,16 @@ public class CartService {
 		return recommend;
 	}
 
+	public Order selectUpOrder(int userNo) {
+		Connection conn = getConnection();
+		
+		Order upOrder = new Order();
+		
+		upOrder = cartDao.selectUpOrder(conn, userNo);
+		
+		close(conn);
+		
+		return upOrder;
+	}
+
 }

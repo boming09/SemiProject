@@ -611,6 +611,40 @@ public class cartDao {
 		return result;
 	}
 
+	public Order selectUpOrder(Connection conn, int userNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Order upOrder = null;
+		String sql = cartQuery.getProperty("selectUpOrder");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				upOrder = new Order();
+				upOrder.setOrder_no(rset.getInt("order_no"));
+				upOrder.setOrder_date(rset.getDate("order_date"));
+				upOrder.setRel_date(rset.getDate("rel_date"));
+				upOrder.setReceipte_date(rset.getDate("receipte_date"));
+				upOrder.setAddress(rset.getString("address"));
+				upOrder.setPhone(rset.getString("phone"));
+				upOrder.setPayment(rset.getString("payment"));
+			
+			}	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+		
+		
+		return upOrder;
+	}
+
 	
 	
 

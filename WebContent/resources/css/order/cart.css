@@ -40,7 +40,7 @@
 #cart_sel {
 	position: relative;
 	border:1px solid black;
-	left:83%;
+	left:82%;
 	margin-top:10px;
 	padding:6.6px;
 	text-align-last: center;
@@ -54,7 +54,7 @@
 
 	margin-top:10px;
 	margin-bottom:20px;
-	padding:9px;
+	padding:9.1px;
 	font-size:0.9rem;
 	
 	background:rgba(73, 125, 78, 1);
