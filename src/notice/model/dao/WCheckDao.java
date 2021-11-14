@@ -438,6 +438,30 @@ public class WCheckDao {
 		return upload;
 	}
 
+	
+	// 작가인증게시판 내도서 => book 테이블 - user_no 에 넣기
+	public int updateBook(Connection conn, WBook book) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = wcQuery.getProperty("updateBook");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, book.getUser_no());
+			pstmt.setInt(2, book.getBid());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 
 	
 	
