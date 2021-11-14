@@ -210,6 +210,23 @@
 	<![CDATA[WHERE ROWNUM <= 3]]>
 	</entry>
 	
+	<entry key="bestList">
+		SELECT *
+		   FROM (
+				SELECT 
+				      DISTINCT BOOK_ID
+				    , BOOK_NAME
+				    , AUTHOR
+				    , BOOK_IMG
+				    , SALE_RATE
+				  FROM BOOK
+				  JOIN ORDER_DETAIL USING(BOOK_ID)
+				  JOIN "ORDER" USING(ORDER_NO)
+				  WHERE ORDER_DATE >= TO_CHAR(SYSDATE-7,'YYYYMMDD')
+				  ORDER BY SALE_RATE DESC
+				)
+		<![CDATA[WHERE ROWNUM <= 5]]>
+	</entry>
 	
 	
 </properties>
