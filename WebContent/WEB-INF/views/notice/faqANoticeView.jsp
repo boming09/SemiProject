@@ -59,7 +59,7 @@
             </div>
         	
             <div class="top3">TOP 3</div>
-            <div class="top3_list">
+            <div class="top3_list" id="faqAtop" onclick="faqAcount()">
             	<c:forEach var="top" items="${ topList }">
 	                <ul class="top3_ul">
                     	<li class="faq_q">[${ top.fcategory }]&nbsp;&nbsp;${ top.title }</li>
@@ -78,7 +78,7 @@
         
         	<!-- 영역을 더 잡아?? -->
             <div class="total">LIST</div>
-            <div class="total_list">
+            <div class="total_list" id="faqAtotal">
             	<!-- 여기서 itmes는 서블릿에서 attr에 저장한 이름 = faqList -->
             	<c:forEach var="faq" items="${ faqList }">
 	                <ul class="total_ul">
@@ -102,7 +102,7 @@
 	            	<li>
 					<c:choose>
 						<c:when test="${ pi.page > 1 }">
-							<a href="${ contextPath }/faqA?page=${ pi.page - 1}">&lt;</a>
+							<a href="${ contextPath }/faqA?page=${ pi.page - 1}&atype=1&btype=${ param.btype }">&lt;</a>
 						</c:when>
 						<c:otherwise>
 							<a href="#">&lt;</a>
@@ -118,7 +118,7 @@
 									<a href="#" class="current_page">${ p }</a>
 								</c:when>
 								<c:otherwise>
-									<a href="${ contextPath }/faqA?page=${ p }">${ p }</a>
+									<a href="${ contextPath }/faqA?page=${ p }&atype=1&btype=${ param.btype }">${ p }</a>
 								</c:otherwise>
 							</c:choose>
 						</li>
@@ -128,7 +128,7 @@
 					<li>
 						<c:choose>
 							<c:when test="${ pi.page < pi.maxPage }">
-								<a href="${ contextPath }/faqA?page=${ pi.page + 1}">&gt;</a>
+								<a href="${ contextPath }/faqA?page=${ pi.page + 1}&atype=1&btype=${ param.btype }">&gt;</a>
 							</c:when>
 							<c:otherwise>
 								<a href="#">&gt;</a>
@@ -189,6 +189,8 @@
 		function btypeChange() {
 			location.href="${ contextPath }/faqA?atype=1&btype=" + $('.btype').val();
 		}
+		
+		
 	</script>
 	
 	<c:choose>
