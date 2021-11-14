@@ -97,6 +97,16 @@
 								<option value="8" <c:if test="${ cart.amount eq 8}">selected</c:if>>8</option>
 								<option value="9" <c:if test="${ cart.amount eq 9}">selected</c:if>>9</option>
 								<option value="10" <c:if test="${ cart.amount eq 10}">selected</c:if>>10</option>
+								<option value="11" <c:if test="${ cart.amount eq 11}">selected</c:if>>11</option>
+								<option value="12" <c:if test="${ cart.amount eq 12}">selected</c:if>>12</option>
+								<option value="13" <c:if test="${ cart.amount eq 13}">selected</c:if>>13</option>
+								<option value="14" <c:if test="${ cart.amount eq 14}">selected</c:if>>14</option>
+								<option value="15" <c:if test="${ cart.amount eq 15}">selected</c:if>>15</option>
+								<option value="16" <c:if test="${ cart.amount eq 16}">selected</c:if>>16</option>
+								<option value="17" <c:if test="${ cart.amount eq 17}">selected</c:if>>17</option>
+								<option value="18" <c:if test="${ cart.amount eq 18}">selected</c:if>>18</option>
+								<option value="19" <c:if test="${ cart.amount eq 19}">selected</c:if>>19</option>
+								<option value="20" <c:if test="${ cart.amount eq 20}">selected</c:if>>20</option>
 							</select> 
 							
 							<!--  <select class="form-control" id="test" name="amount" onchange="this.form.submit()">
