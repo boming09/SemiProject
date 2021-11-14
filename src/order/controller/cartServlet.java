@@ -39,7 +39,7 @@ public class cartServlet extends HttpServlet {
 		//System.out.println(cartList);
 		
 		//정렬 기준 고정 위해
-		request.setAttribute("orderby", orderby);
+		request.setAttribute("orderby1", orderby);
 		
 		
 		// 셋 어트리뷰트해서 카트 페이지에 해당 db전달

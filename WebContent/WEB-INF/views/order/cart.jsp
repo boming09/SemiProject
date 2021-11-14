@@ -28,11 +28,11 @@
        		 <button id="delete_btn" onclick="deleteChecked()">선택상품삭제</button>
       
        			<select id="cart_sel"name="cart_sel" onchange="sortList()">
-           		 <option value="new" ${ orderby eq 'new' ? 'selected="selected"' : ''} id="new">최근담은순</option>
-           		 <option value="low" ${ orderby eq 'low' ? 'selected="selected"' : ''} id="low">저가격  순</option>
-            	 <option value='high' ${ orderby eq 'high' ? 'selected="selected"' : ''} id="high">고가격  순</option>
-            	 <option value="name" ${ orderby eq 'name' ? 'selected="selected"' : ''} id="name">이름  순</option>
-            	 <option value="rel" ${ orderby eq 'rel' ? 'selected="selected"' : ''} id="rel">출간일 순</option>
+           		 <option value="new" ${ orderby1 eq 'new' ? 'selected="selected"' : ''} id="new">최근담은순</option>
+           		 <option value="low" ${ orderby1 eq 'low' ? 'selected="selected"' : ''} id="low">저가격  순</option>
+            	 <option value='high' ${ orderby1 eq 'high' ? 'selected="selected"' : ''} id="high">고가격  순</option>
+            	 <option value="name" ${ orderby1 eq 'name' ? 'selected="selected"' : ''} id="name">이름  순</option>
+            	 <option value="rel" ${ orderby1 eq 'rel' ? 'selected="selected"' : ''} id="rel">출간일 순</option>
         	    </select>
     	    
     	    <!-- <form name="orderby" action="<%= request.getContextPath() %>/cart/sort" method="post">-->
