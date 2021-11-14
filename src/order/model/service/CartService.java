@@ -175,7 +175,7 @@ public class CartService {
 		}
 		
 		int result = 0;
-		
+		//&& addSaleRateResult == order.getOrderDetail().size()
 		if(orderResult > 0 && orderDetailResult == order.getOrderDetail().size() && addSaleRateResult == order.getOrderDetail().size()) {
 			commit(conn);
 			result = 1;

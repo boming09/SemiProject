@@ -36,12 +36,12 @@ public class payingServlet extends HttpServlet {
 	
 		//여기서 결제수단 저장해야한다
 
-	String pay = request.getParameter("pay");
-	HttpSession session = request.getSession();
-	session.setAttribute("pay", pay);
-	
-	RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/order/paying.jsp"); //여기
-	view.forward(request, response);
+		String pay = request.getParameter("pay");
+		HttpSession session = request.getSession();
+		session.setAttribute("pay", pay);
+		
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/order/paying.jsp"); //여기
+		view.forward(request, response);
 	
 		
 	

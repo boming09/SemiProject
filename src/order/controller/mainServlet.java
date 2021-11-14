@@ -37,7 +37,7 @@ public class mainServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//List<Book> rBookList = new CartService().selectBookList();
 		Recommend recommend = new CartService().selectBookList();
-		System.out.println(recommend);
+		//System.out.println(recommend);
 		
 		List<Book> wBookList = recommend.getWBookList();
 		List<Book> nBookList = recommend.getNBookList();

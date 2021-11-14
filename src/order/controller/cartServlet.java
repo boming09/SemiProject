@@ -38,6 +38,10 @@ public class cartServlet extends HttpServlet {
 		List<Cart> cartList = new CartService().selectList(orderby);
 		//System.out.println(cartList);
 		
+		//정렬 기준 고정 위해
+		request.setAttribute("orderby1", orderby);
+		
+		
 		// 셋 어트리뷰트해서 카트 페이지에 해당 db전달
 		request.setAttribute("cartList", cartList);
 		request.getRequestDispatcher("/WEB-INF/views/order/cart.jsp").forward(request, response);

@@ -28,11 +28,11 @@
        		 <button id="delete_btn" onclick="deleteChecked()">선택상품삭제</button>
       
        			<select id="cart_sel"name="cart_sel" onchange="sortList()">
-           		 <option value="new" >최근담은순</option>
-           		 <option value="low" >저가격순</option>
-            	 <option value='high'>고가격순</option>
-            	 <option value="name">이름순</option>
-            	 <option value="rel">출간일순</option>
+           		 <option value="new" ${ orderby1 eq 'new' ? 'selected="selected"' : ''} id="new">최근담은순</option>
+           		 <option value="low" ${ orderby1 eq 'low' ? 'selected="selected"' : ''} id="low">저가격  순</option>
+            	 <option value='high' ${ orderby1 eq 'high' ? 'selected="selected"' : ''} id="high">고가격  순</option>
+            	 <option value="name" ${ orderby1 eq 'name' ? 'selected="selected"' : ''} id="name">이름  순</option>
+            	 <option value="rel" ${ orderby1 eq 'rel' ? 'selected="selected"' : ''} id="rel">출간일 순</option>
         	    </select>
     	    
     	    <!-- <form name="orderby" action="<%= request.getContextPath() %>/cart/sort" method="post">-->
@@ -46,15 +46,15 @@
         
      
 			  <div class="ct_container">
-			  		<div class="item"></div>
-			  		<div class="item">상품명</div>
-			  		<div class="item">가격</div>
-			  		<div class="item">수량</div>
-			  		<div class="item">선택</div>
-			  		<div class="item"><input type='checkbox' onclick='selectAll(this)' checked/></div>
+			  		<div class="item mg"></div>
+			  		<div class="item mg">상품명</div>
+			  		<div class="item mg">가격</div>
+			  		<div class="item mg">수량</div>
+			  		<div class="item mg">선택</div>
+			  		<div class="item mg"><input type='checkbox' onclick='selectAll(this)' checked/></div>
 			  	
 			<c:forEach var="cart" items="${ cartList }">
-	
+			
 					<div class="item">
 						<span class="thum"><img class="cart_thum" src="<%= request.getContextPath() %>${cart.book_img}"></span>	
 					</div>
@@ -96,17 +96,17 @@
 								<option value="7" <c:if test="${ cart.amount eq 7}">selected</c:if>>7</option>
 								<option value="8" <c:if test="${ cart.amount eq 8}">selected</c:if>>8</option>
 								<option value="9" <c:if test="${ cart.amount eq 9}">selected</c:if>>9</option>
-								<option value="10" <c:if test="${ cart.amount eq 10}">selected</c:if>>10</option>
-								<option value="11" <c:if test="${ cart.amount eq 11}">selected</c:if>>11</option>
-								<option value="12" <c:if test="${ cart.amount eq 12}">selected</c:if>>12</option>
-								<option value="13" <c:if test="${ cart.amount eq 13}">selected</c:if>>13</option>
-								<option value="14" <c:if test="${ cart.amount eq 14}">selected</c:if>>14</option>
-								<option value="15" <c:if test="${ cart.amount eq 15}">selected</c:if>>15</option>
-								<option value="16" <c:if test="${ cart.amount eq 16}">selected</c:if>>16</option>
-								<option value="17" <c:if test="${ cart.amount eq 17}">selected</c:if>>17</option>
-								<option value="18" <c:if test="${ cart.amount eq 18}">selected</c:if>>18</option>
-								<option value="19" <c:if test="${ cart.amount eq 19}">selected</c:if>>19</option>
-								<option value="20" <c:if test="${ cart.amount eq 20}">selected</c:if>>20</option>
+							   <option value="10" <c:if test="${ cart.amount eq 10}">selected</c:if>>10</option>
+							   <option value="11" <c:if test="${ cart.amount eq 11}">selected</c:if>>11</option>
+							   <option value="12" <c:if test="${ cart.amount eq 12}">selected</c:if>>12</option>
+							   <option value="13" <c:if test="${ cart.amount eq 13}">selected</c:if>>13</option>
+							   <option value="14" <c:if test="${ cart.amount eq 14}">selected</c:if>>14</option>
+							   <option value="15" <c:if test="${ cart.amount eq 15}">selected</c:if>>15</option>
+							   <option value="16" <c:if test="${ cart.amount eq 16}">selected</c:if>>16</option>
+							   <option value="17" <c:if test="${ cart.amount eq 17}">selected</c:if>>17</option>
+							   <option value="18" <c:if test="${ cart.amount eq 18}">selected</c:if>>18</option>
+							   <option value="19" <c:if test="${ cart.amount eq 19}">selected</c:if>>19</option>
+							   <option value="20" <c:if test="${ cart.amount eq 20}">selected</c:if>>20</option>
 							</select> 
 							
 							<!--  <select class="form-control" id="test" name="amount" onchange="this.form.submit()">
@@ -237,39 +237,11 @@
 		//	        }
 		//	        }
 			        
-			        
-			        
-			        
-			        
-			       /* function test2() { // 체크된 목록 넘기기
-			           var obj_length = document.getElementsByName("cart_chk").length;
-			      
-			            for (var i=0; i<obj_length; i++) {
-			                if (document.getElementsByName("cart_chk")[i].checked == true) {
-			                    //alert(document.getElementsByName("cart_chk")[i].value);
-			                    //알러트 말고 태그에 어떻게 넣니
-			                
-			                   var input = document.createElement('input'); 
-
-					           input.setAttribute("type", "hidden");
-					           input.setAttribute("name", "cart_check"); 
-					           input.setAttribute("value", document.getElementsByName("cart_chk")[i].value); 
-		
-					           chekchk.appendChild(input);
-		
-					           document.body.appendChild(chekchk); 
-		
-					           chekchk.submit();
-			           	 	}
-			        	}
-			        }*/
-			        
-			        
+	        
 			    	function sortList() { //정렬
 			    		
 		    	   	   var sort =  $("#cart_sel option:selected").val();
-		    	   	 
-		    	   	   console.log(sort);
+		    	   	  // console.log(sort);
 		    	   	   var input = document.createElement('input'); 
 
 				           input.setAttribute("type", "hidden");
@@ -288,8 +260,6 @@
 					      
 				            for (var i=0; i<obj_length; i++) {
 				                if (document.getElementsByName("cart_chk")[i].checked == true) {
-				                    //alert(document.getElementsByName("cart_chk")[i].value);
-				                    //알러트 말고 태그에 어떻게 넣니
 				                
 				                   var input = document.createElement('input'); 
 
@@ -318,8 +288,6 @@
 		      
 		            for (var i=0; i<obj_length; i++) {
 		                if (document.getElementsByName("cart_chk")[i].checked == true) {
-		                    //alert(document.getElementsByName("cart_chk")[i].value);
-		                    //알러트 말고 태그에 어떻게 넣니
 		                
 		                   var input = document.createElement('input'); 
 
@@ -393,9 +361,9 @@
      					<c:set var="discounts" value="${ discounts + (cart.price - cart.sale_price) }"/>
      				</c:forEach>
 	            
-		            <div>총 상품 가격 : <span class="price"><fmt:formatNumber value="${sum}" type="number"/></span>원 (총 <span> ${amounts}</span>권 <span><fmt:formatNumber value="${discounts}" type="number"/> </span> 할인) + 배송비 <span>0원</span> </div>
-		            <div>적립 예상 마일리지 : 상품 구매(<span class="green"><fmt:formatNumber value="${msum div 20}" type="number"/>원</span>)</div>
-		            <div>수령 예상일: 지금 주문하면 <span class="price">내일</span> 받을 수 있습니다.</div>
+		            <div class="amg">총 상품 가격 : <span class="price"><fmt:formatNumber value="${sum}" type="number"/></span>원 (총 <span> ${amounts}</span>권 <span><fmt:formatNumber value="${discounts}" type="number"/> </span> 할인) + 배송비 <span>0원</span> </div>
+		            <div class="amg">적립 예상 마일리지 : 상품 구매(<span class="green"><fmt:formatNumber value="${msum div 20}" type="number"/>원</span>)</div>
+		            <div class="amg">수령 예상일: 지금 주문하면 <span class="price">모레</span> 받을 수 있습니다.</div>
 		        </div>
      		</div>
      

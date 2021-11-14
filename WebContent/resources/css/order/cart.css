@@ -40,23 +40,32 @@
 #cart_sel {
 	position: relative;
 	border:1px solid black;
-	left:84%;
+	left:83%;
 	margin-top:10px;
-	padding:3px;
+	padding:6.6px;
+	text-align-last: center;
 	font-size:0.9rem;
 }
 
 #delete_btn {
 	position: relative;
-	border:1px solid black;
-	left:83%;
+	/*border:1px solid black;*/
+	left:82%;
 
 	margin-top:10px;
 	margin-bottom:20px;
-	padding:3px;
+	padding:9px;
 	font-size:0.9rem;
 	
+	background:rgba(73, 125, 78, 1);
+	color:white;
 }
+
+.mg{
+	margin-top:6px;
+	margin-bottom:8px;
+}
+
 
 .btn {
 	background:gray;
@@ -120,6 +129,7 @@ ul,ol,li {
 
 .price {
 	color:#D25832;
+	font-size:1rem;
 }
 
 .green {
@@ -181,7 +191,7 @@ ul,ol,li {
 	grid-template-columns: 5fr 5fr;
 	padding-left:36px;
 	padding-top:15px;
-	padding-bottom:20px;
+	padding-bottom:15px;
 	border-top:dotted 1px gray;
 }
 
@@ -194,13 +204,18 @@ ul,ol,li {
 .c_item {
 
 	align-self:end;
-	font-size:0.9rem;
+	font-size:0.93rem;
+	line-height:17px;
 }
 
 .d_item {
 
 	align-self:end;
-	font-size:1rem;
+	font-size:0.95rem;
+}
+
+.amg {
+	/*margin-top:55px;*/
 }
 
 #ct_order_btn {
