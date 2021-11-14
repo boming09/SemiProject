@@ -16,7 +16,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Order complete</title>
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
 <link href="<%= request.getContextPath() %>/resources/css/order/payment.css" rel="stylesheet">
@@ -43,20 +43,26 @@
 			</div>
 			<div class="complete_block2">
 				<div class="cp_item">
-					<div>001-A03</div><!-- 주문 번호 부여한거 어케 가져옴 -->
-					<div>2021년 11월 1일 월요일 7시 10분</div><!-- 날짜포맷 -->
-					<div>11월 2일 ${order.rel_date}</div>
-					<div>11월 3일</div>
-					<div>서울 강남구 테헤란로 14길 6 7층 그랑프리 빌딩</div>
+					<div>001-A03${upOrder.order_no}</div><!-- 인서트 한거 다시 조회해서 가져오기-->
+					<div>${upOrder.order_date}<!--2021년 11월 1일 월요일 7시 10분--></div><!-- 날짜포맷 -->
+					<div>${upOrder.rel_date}</div>
+					<div>${upOrder.receipte_date}</div>
+					<div>${upOrder.address}<!--서울 강남구 테헤란로 14길 6 7층 그랑프리 빌딩--></div>
 					<div>${orderPhone}</div>
-					<div>카카오페이 ${pay}</div>
+					<div><!-- 카카오페이 ${upOrder.payment}-->
+					<c:choose>
+						<c:when test="${upOrder.payment eq 'kakaopay'}">카카오페이</c:when>
+						<c:when test="${upOrder.payment eq 'credit'}">신용카드</c:when>
+					</c:choose>
+					
+					</div>
 				</div>
 			</div>
 			
-			
-			<div><button id="goOrderDetail">주문내역보기</button>
-			<button id="gohome">홈으로 가기</button>
+			<div><button id="goOrderDetail" onclick="location.href='${contextPath}/myorder'">주문내역보기</button>
+			<button id="gohome" onclick="location.href='${contextPath}/main'">홈으로 가기</button>
 			</div>
+			
 			
 			
 		</div>

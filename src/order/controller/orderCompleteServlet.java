@@ -60,17 +60,21 @@ public class orderCompleteServlet extends HttpServlet {
 		
 		int result = new CartService().insertFinalOrder(order);
 	
+		//인서트 한 결과  다시 불러와서 오더컴플릿 페이지에 뿌려야함 
+		// 같은 서비스에 안해도 되겠지
+		Order updOrder = new CartService().selectUpOrder(userNo);
+		
+		
 		if(result > 0) {
-			//request.getSession().setAttribute("message", "삭제 되었습니다.");
-			//response.sendRedirect(request.getContextPath() + "/cart");
+	
+			request.setAttribute("upOrder", updOrder);
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/order/order_complete.jsp"); //여기
 			view.forward(request, response);
 			//System.out.println(pay);
 			System.out.println(order);
 
 		} else {
-			//request.getRequestDispatcher("/WEB-INF/views/common/errorpage.jsp").forward(request, response);
-			//request.getSession().setAttribute("message", "주문 저장 실패");
+
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/order/order_complete.jsp"); //여기
 			view.forward(request, response);
 		}

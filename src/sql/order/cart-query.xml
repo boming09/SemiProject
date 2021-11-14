@@ -182,6 +182,23 @@
 		 WHERE BOOK_ID = ?
 	</entry>	
 	
+	
+	<entry key="selectUpOrder">
+	SELECT * FROM
+			(SELECT ORDER_NO 
+		      , ORDER_DATE
+		      , REL_DATE
+		      , RECEIPTE_DATE
+		      , ADDRESS
+		      , PHONE
+		      , PAYMENT
+		  FROM "ORDER"
+		 WHERE USER_NO = ?
+		  ORDER BY ORDER_DATE DESC)
+		<![CDATA[WHERE ROWNUM <= 1]]>
+	</entry>
+	
+	
 	<entry key="wBookList">
 		SELECT * 
    		FROM (SELECT * 
