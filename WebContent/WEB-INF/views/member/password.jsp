@@ -24,10 +24,9 @@
                 <div class="id4div">
                                            봄숲에 등록된 개인정보로 비밀번호 재설정 하기<br><br>
                 <p>
-                    <font size="2">
-                        2가지 인증 방식 중 하나를 선택해 주세요.<br>
-                                                가입 정보에 저장된 휴대전화를 현재 사용하고 있지 않으면"E-mail"주소 를 체크합니다.<br>
-                        (2가지 인증 방식 모두 가입된 E-mail주소는 입력해야 합니다.)
+                    <font size="2">                        
+                                                가입 정보에 저장된 아이디, 이름, E-mail 주소를 입력해 주세요.<br>
+                                                모든 정보를 입력해야지만 다음단계로 넘어갈수 있습니다.                       
                     </font size>    
                 </p>
                 <br>              
@@ -36,7 +35,7 @@
                 </div>
                 <br>
                 
-                <form name="passwordForm" action="<%= request.getContextPath() %>/password2"
+                <form name="passwordForm" action="<%= request.getContextPath() %>/password"
 				method="post">
                 
                 <div class="id3">

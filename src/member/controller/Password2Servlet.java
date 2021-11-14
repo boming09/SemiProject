@@ -40,9 +40,10 @@ public class Password2Servlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/password.jsp");
+		/*
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/password2.jsp");
 		view.forward(request, response);		
+		*/
 	}
 	
 
@@ -50,6 +51,13 @@ public class Password2Servlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Member member = new Member();
+		
+		String userPwd = request.getParameter("userPwd");
+		
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/password2.jsp");
+		view.forward(request, response);
+		/*
 		// 깨짐 방지
 		request.setCharacterEncoding("utf-8");
 		
@@ -137,5 +145,6 @@ public class Password2Servlet extends HttpServlet {
     			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/login.jsp");
     			view.forward(request, response);
 	}
-
+	*/
+	}
 }

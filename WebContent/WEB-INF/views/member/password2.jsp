@@ -16,6 +16,7 @@
 <body>
     <!-- 메뉴바 -->
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
+	
         <div class="id0">
         <div class="ps3">
            <h1 id="emailh1">비밀번호 재설정</h1>
@@ -35,10 +36,10 @@
                 </div>
                 <br>
                 <div class="id3"> 
-                    <label>E-mail 주소 : </label> ${ member.userEmail }
+                    <label>비밀번호  : </label>${ member.userPwd }
                     <!-- <input type="text" class="id1text" size="10" value="${ member.userEmail }"> --><br><br>
-                    <a href="login"><button class="id2pagebut">메일로 임시 비밀번호 보내기</button></a><br><br>
-                    <label id="ps2explanation">등록된 이메일로 임시 비밀번호를 보내드립니다.</label>
+                    <a href="login"><button class="id2pagebut">로그인 화면으로</button></a><br><br>
+                    <label id="ps2explanation">가입시 등록한 비밀번호로 로그인해 주세요.</label>
                 
                 </div>
                 <br><div class="topline">
