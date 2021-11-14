@@ -21,7 +21,7 @@
 	
 	<entry key="getContentListCount">
 		SELECT
-				COUNT(*)
+				    COUNT(*)
 		   FROM B_REVIEW
 		  WHERE REF_NO = 1
 		    AND STATUS = 'Y'

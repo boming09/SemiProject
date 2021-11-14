@@ -55,6 +55,8 @@ public class BookService {
 		Book book = bookDao.selectBook(conn, bid);
 		/* 댓글 조회 추가 */
 		book.setReplyList(bookDao.selectReplyList(conn, bid));
+		/* 댓글 개수 */
+		book.setReviewCount(bookDao.getReviewCount(conn, bid));
 		close(conn);
 		
 		return book;
@@ -149,11 +151,12 @@ public class BookService {
 	}
 	
 	// 도서 댓글 등록
-	public int insertReply(Reply reply) {
+	public int insertReply(Reply reply, double avgScore, int starScore) {
 		Connection conn = getConnection();
 		int result = bookDao.insertReply(conn, reply);
+		int resultScore = bookDao.insertScore(conn, reply, avgScore, starScore);
 		
-		if(result > 0) {
+		if(result > 0 && resultScore > 0) {
 			commit(conn);
 		} else {
 			rollback(conn);
@@ -170,6 +173,7 @@ public class BookService {
 		int result = bookDao.deleteReply(conn, rid);
 		
 		if(result > 0) {
+			bookDao.deleteAddReply(conn, rid);	/* 도서 대댓글 함께 삭제 */
 			commit(conn);
 		} else {
 			rollback(conn);
