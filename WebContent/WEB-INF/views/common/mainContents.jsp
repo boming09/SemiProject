@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="main.model.vo.Recommend"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +37,7 @@ https://github.com/filipelinhares/ress-->
             <label for="tab03">화제의 책</label>
         	
             <div class="conbox con1">
-                <ul class="recomm">
+                <ul class="recomm">          
                     <li><a href="#"><img class="book book1" src="<%= request.getContextPath() %>/resources/images/thisweek1.png"></a></li>
                     <li><a href="#"><img class="book" src="<%= request.getContextPath() %>/resources/images/thisweek2.png"></a></li>
                     <li><a href="#"><img class="book book3" src="<%= request.getContextPath() %>/resources/images/thisweek3.png"></a></li>

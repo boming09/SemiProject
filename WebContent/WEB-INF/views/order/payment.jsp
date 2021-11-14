@@ -154,7 +154,7 @@
      			});
      			
      			
-     	        var openWin;
+     	     /*   var openWin;
      	       
      	        function openChild(){
      	            // window.name = "부모창 이름"; 
@@ -168,7 +168,7 @@
      	            openWin.document.getElementById("checkCoupon").value = document.getElementById("aInput").value;
      	           openWin.document.getElementById("couponDis").value = document.getElementById("bInput").value;
      	          openWin.document.getElementById("couponNo").value = document.getElementById("dInput").value;
-     	        }
+     	        }*/
 
      				 
      	      // 쿠폰할인

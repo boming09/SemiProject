@@ -8,23 +8,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import member.model.vo.Member;
+import book.model.vo.Book;
+import main.model.vo.Recommend;
 import order.model.service.CartService;
-
-import order.model.vo.Coupon;
+import order.model.vo.Cart;
 
 /**
- * Servlet implementation class couponServlet
+ * Servlet implementation class mainServlet
  */
-@WebServlet("/coupon")
-public class couponServlet extends HttpServlet {
+@WebServlet("/main")
+public class mainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public couponServlet() {
+    public mainServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,14 +34,24 @@ public class couponServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
+		// TODO Auto-generated method stub
+		//List<Book> rBookList = new CartService().selectBookList();
+		Recommend recommend = new CartService().selectBookList();
+		System.out.println(recommend);
 		
-
-		List<Coupon> couponList = new CartService().selectCoupon(userNo);
-
+		List<Book> wBookList = recommend.getWBookList();
+		List<Book> nBookList = recommend.getNBookList();
+		List<Book> pBookList = recommend.getPBookList();
 		
-		request.setAttribute("couponList",  couponList);
-		request.getRequestDispatcher("/WEB-INF/views/order/coupon.jsp").forward(request, response);
+		//세션에 저장 맞냐고
+		//HttpSession session = request.getSession();
+		//session.setAttribute("wBookList", wBookList);
+		
+		request.setAttribute("wBookList", wBookList);
+		request.setAttribute("nBookList", nBookList);
+		request.setAttribute("pBookList", pBookList);
+		
+		request.getRequestDispatcher("/WEB-INF/views/main/main.jsp").forward(request, response);
 	}
 
 	/**

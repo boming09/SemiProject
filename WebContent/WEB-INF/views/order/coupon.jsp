@@ -171,7 +171,7 @@ th,td {
 
 
 	   
-	    <form name="popForm" method="post">
+	    <form name="popForm" method="post" "${contextPath}/payment">
 	    <!-- 이안에 체크된거 넣을 스크립트 작성 -->
 	    <!-- 히든으로 쿠폰넘버랑 가격값은 보이게 넘겨 -->
 	    <c:forEach var="coupon" items="${ couponList }">
