@@ -78,6 +78,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                                         <fmt:formatDate value="${ book.publicationDate }" type="date" pattern="yyyy년 MM월 dd일"/></span>
                                     </div>
                                     <div class="price">
+                                    	<span>판매가&nbsp;</span>
                                         <span class="book_price">
                                         <fmt:formatNumber value="${ book.salePrice }" groupingUsed="true"/>원
                                         </span>

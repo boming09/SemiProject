@@ -24,10 +24,10 @@ public class Book {
 	private String bimg;				// 도서 이미지
 	private int starScore;				// 별점
 	private double avgScore;			// 평점
+	private int sumScore;				// 별점 합계
 	private int reviewCount;        	// 작가마이페이지 내도서 리뷰
 	
 	private List<Reply> replyList;		// 댓글목록
-	private List<Reply> addReplyList;	// 작가 댓글 목록
 //	BOOK_ID	NUMBER
 //	BOOK_NAME	VARCHAR2(20 BYTE)
 //	CATEGORY_ID	NUMBER
@@ -48,36 +48,34 @@ public class Book {
 	public Book() {}
 
 	public Book(int bid, String btitle, int cid, String cname, int userNo, String author, String editor,
-		Date publicationDate, String publisher, int price, int stock, double saleRate, int salePrice, String bintro,
-		String burl, String filepath, String aintro, String bimg, int starScore, double avgScore, int reviewCount,
-		List<Reply> replyList, List<Reply> addReplyList) {
-	super();
-	this.bid = bid;
-	this.btitle = btitle;
-	this.cid = cid;
-	this.cname = cname;
-	this.userNo = userNo;
-	this.author = author;
-	this.editor = editor;
-	this.publicationDate = publicationDate;
-	this.publisher = publisher;
-	this.price = price;
-	this.stock = stock;
-	this.saleRate = saleRate;
-	this.salePrice = salePrice;
-	this.bintro = bintro;
-	this.burl = burl;
-	this.filepath = filepath;
-	this.aintro = aintro;
-	this.bimg = bimg;
-	this.starScore = starScore;
-	this.avgScore = avgScore;
-	this.reviewCount = reviewCount;
-	this.replyList = replyList;
-	this.addReplyList = addReplyList;
-}
-
-
+			Date publicationDate, String publisher, int price, int stock, double saleRate, int salePrice, String bintro,
+			String burl, String filepath, String aintro, String bimg, int starScore, double avgScore, int sumScore,
+			int reviewCount, List<Reply> replyList) {
+		super();
+		this.bid = bid;
+		this.btitle = btitle;
+		this.cid = cid;
+		this.cname = cname;
+		this.userNo = userNo;
+		this.author = author;
+		this.editor = editor;
+		this.publicationDate = publicationDate;
+		this.publisher = publisher;
+		this.price = price;
+		this.stock = stock;
+		this.saleRate = saleRate;
+		this.salePrice = salePrice;
+		this.bintro = bintro;
+		this.burl = burl;
+		this.filepath = filepath;
+		this.aintro = aintro;
+		this.bimg = bimg;
+		this.starScore = starScore;
+		this.avgScore = avgScore;
+		this.sumScore = sumScore;
+		this.reviewCount = reviewCount;
+		this.replyList = replyList;
+	}
 
 	public int getBid() {
 		return bid;
@@ -239,6 +237,14 @@ public class Book {
 		this.avgScore = avgScore;
 	}
 	
+	public int getSumScore() {
+		return sumScore;
+	}
+
+	public void setSumScore(int sumScore) {
+		this.sumScore = sumScore;
+	}
+
 	public int getReviewCount() {
 		return reviewCount;
 	}
@@ -254,14 +260,6 @@ public class Book {
 	public void setReplyList(List<Reply> replyList) {
 		this.replyList = replyList;
 	}
-	
-	public List<Reply> getAddReplyList() {
-		return addReplyList;
-	}
-
-	public void setAddReplyList(List<Reply> addReplyList) {
-		this.addReplyList = addReplyList;
-	}
 
 	@Override
 	public String toString() {
@@ -269,10 +267,8 @@ public class Book {
 				+ ", author=" + author + ", editor=" + editor + ", publicationDate=" + publicationDate + ", publisher="
 				+ publisher + ", price=" + price + ", stock=" + stock + ", saleRate=" + saleRate + ", salePrice="
 				+ salePrice + ", bintro=" + bintro + ", burl=" + burl + ", filepath=" + filepath + ", aintro=" + aintro
-				+ ", bimg=" + bimg + ", starScore=" + starScore + ", avgScore=" + avgScore + ", reviewCount="
-				+ reviewCount + ", replyList=" + replyList + ", addReplyList=" + addReplyList + "]";
+				+ ", bimg=" + bimg + ", starScore=" + starScore + ", avgScore=" + avgScore + ", sumScore=" + sumScore
+				+ ", reviewCount=" + reviewCount + ", replyList=" + replyList + "]";
 	}
-
-	
 
 }

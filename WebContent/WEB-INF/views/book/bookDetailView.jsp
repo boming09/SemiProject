@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%
+	pageContext.setAttribute("newReply", "\n");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,7 +92,7 @@ crossorigin="anonymous"></script>
                             </span>
                           </span>
                         <span class="reviewCount">
-                            <a href="#review">리뷰(<em>10</em>)</a><!-- 리뷰로 이동 -->
+                            <a href="#review">리뷰(${ book.reviewCount })</a><!-- 리뷰로 이동 -->
                         </span>
                     </div>
                 </div>
@@ -167,7 +169,7 @@ crossorigin="anonymous"></script>
             <div class="info_introduce information">
                 <div class="infoSet"><h4>책 소개</h4></div>
                 <div class="infoSetCont_wrap">
-                    <p>${ book.bintro }</p>
+                    <p>${ fn:replace(book.bintro, newReply, '<br>')}</p>
                     <!-- iframe or 목차 넣기 -->
 	                  <div class="infoIframe">
                     	<c:if test="${ !empty book.burl }">
@@ -191,7 +193,7 @@ crossorigin="anonymous"></script>
                         <%-- <div class="authImg"><img src="${contextPath}/resources/images/author/auth.jpg"></div> --%>
                         <div class="authTxtWrap">
                             <div class="authTit"><h5 class="authorName">${ book.author }</h5></div>
-                            <span class="authTxt"><p>${ book.aintro }</p> </span>
+                            <span class="authTxt"><p>${ fn:replace(book.aintro, newReply, '<br>')}</p> </span>
                         </div>
                     </div>
                 </div>
@@ -200,9 +202,9 @@ crossorigin="anonymous"></script>
             <div class="info_review information">
                 <div class="infoSet" id="review"><h4>회원 리뷰</h4></div>
                 <div class="infoSetCont_wrap">
-                    <!-- 1 -->
+                    <%-- 1. 평균 별점 영역 --%>
                     <div class="reviewContTop">
-                        <div class="review_starWrap"><!-- 별점 영역 -->
+                        <div class="review_starWrap">
                             <p class="reviewTop">봄숲 회원이 평가한 평균 별점</p>
                             <div class="book_rating">
                                 <span class="total_rating">
@@ -240,14 +242,15 @@ crossorigin="anonymous"></script>
 		                                    <c:if test="${ book.starScore == '10' }">checked</c:if>>
 		                                    <label for="p10">10</label>
 		                                  </span>
-		                                  <output for="starScore2"><b>${ book.starScore }</b>점</output>							
+		                                  <output for="starScore2"><b>${ book.avgScore }</b></output>					
                                     </span>
-                                </span><!-- 별 -->
-                                <span class="bom_m">/10</span>
+                                </span>
+		                        <span class="bom_m">&nbsp;/10</span>
                             </div>
                         </div>
                     </div>
                     <!-- 2 -->
+                    <c:if test="${ loginUser.userNo ne book.userNo }">
                     <div class="reviewWrite">
                    		<form method="post" name="replyForm">
                         <div class="writeRating">
@@ -287,11 +290,14 @@ crossorigin="anonymous"></script>
                                 <span class="wordCount">
                                     <input type="number" id="count" value="0" min="0" max="150" readonly>/150
                                 </span>
+                                <input type="hidden" name="reviewCount" value="${ book.reviewCount }">
+                                <input type="hidden" name="sumScore" value="${ book.sumScore }">
                             </div>
                             <button id="writeBtn" type="button" onclick="reply(${ book.bid })">등록</button>
                         </div>
                    	</form>
                     </div>
+                    </c:if>
                     
                     <!-- 3 reviewList -->
                     <c:if test="${ !empty book.replyList }">
@@ -341,9 +347,11 @@ crossorigin="anonymous"></script>
                                         </span>
                                     </span>
                                     <div>
-                                    <c:if test="${ loginUser.userNo == reply.userNo }">
-					                	<button type="button" onclick="deleteReply(${ reply.rid }, ${ book.bid });">삭제하기</button>
+                                    
+                                    <c:if test="${ loginUser.userNo eq reply.userNo }">
+					                <button type="button" onclick="deleteReply(${ reply.rid }, ${ book.bid });" class="deleteBtn">삭제하기</button>
  					                </c:if>
+ 					                
                                		</div>
                                 </div>
                                 <div class="cmt_cont">
@@ -359,33 +367,22 @@ crossorigin="anonymous"></script>
                             </div>
                         </div> 
                         </div>
-                        
-                        
-                            
-							 <%--   function addReply(rid, bid){
-							    	document.forms.addReplyForm.action="${ contextPath }/addReply/insert?rid=" + rid + "&bid=" + bid;
-							    	document.forms.addReplyForm.submit();
-							    } --%>
-                        
-                        
-                        
-	                     
 	                        <c:if test="${ loginUser.userNo eq book.userNo }">
-	                  			<span class="authReply" onclick="show(${ reply.rid })">작가 댓글 등록하기&nbsp;</span>
+	                  			<span class="authReply" onclick="show(${ reply.rid })">작가 댓글 등록하기</span><div>&nbsp;</div>
 		                        <div class="replyCmt" id="replyCmt${ reply.rid }">
 			                        <form method="post" name="addReplyForm" action="${ contextPath }/addReply/insert">
-				                        <div class="writeArea_wrap">
-				                            <div class="writeArea">
-				                                <textarea id="replyCont${ reply.rid }" name="rcontent" rows="5" cols="50" style="resize:none;" maxlength="149" 
-				                                placeholder="한글 기준 150자까지 작성 가능" onkeydown="calcAuth(${ reply.rid })" onkeyup="calcAuth(${ reply.rid })" onkeypress="calcAuth(${ reply.rid })"></textarea>
-				                                <span class="wordCount">
-				                                    <input type="number" id="count${ reply.rid }" value="0" min="0" max="150" readonly>/150
-				                                </span>
-				                            </div>
-				                            <input type="hidden" name="bid" value="${ book.bid }">
-				                            <input type="hidden" name="refRid" value="${ reply.rid }">
-				                            <button id="writeBtn" type="submit" onclick="addReply(${ reply.rid }, ${ book.bid })">등록</button>
-				                        </div>
+			                        <div class="writeArea_wrap">
+			                            <div class="writeArea">
+			                                <textarea id="replyCont${ reply.rid }" name="rcontent" rows="5" cols="50" style="resize:none;" maxlength="149" 
+			                                placeholder="한글 기준 150자까지 작성 가능" onkeydown="calcAuth(${ reply.rid })" onkeyup="calcAuth(${ reply.rid })" onkeypress="calcAuth(${ reply.rid })"></textarea>
+			                                <span class="wordCount">
+			                                    <input type="number" id="count${ reply.rid }" value="0" min="0" max="150" readonly>/150
+			                                </span>
+			                            </div>
+			                            <input type="hidden" name="bid" value="${ book.bid }">
+			                            <input type="hidden" name="refRid" value="${ reply.rid }">
+			                            <button id="writeBtn" type="submit" onclick="addReply(${ reply.rid }, ${ book.bid })">등록</button>
+			                        </div>
 				                   	</form>
 	                        	</div>
 	                   		</c:if>            		
@@ -394,11 +391,15 @@ crossorigin="anonymous"></script>
 	                   		<c:choose>
 	                   			<c:when test="${ loginUser.userNo eq book.userNo and reply.refRid ne 0}">
 	                   			<div class="see">
-	                   				<span class="authReply${ reply.rid }" onclick="show(${ reply.rid })">작가 댓글 보기</span>
+	                   				<span class="authReply${ reply.rid } authReply" onclick="show(${ reply.rid })">작가 댓글 보기</span><div>&nbsp;</div>
 			                        <div class="replyCmt" id="replyCmt${ reply.rid }">
+			                        
 			                        	<c:if test="${ loginUser.userNo == reply.userNo }">
-						                	<button type="button" onclick="deleteReply(${ reply.rid }, ${ book.bid });">삭제하기</button>
+			                        	<div class="cmt_auth">
+						                <button type="button" onclick="deleteReply(${ reply.rid }, ${ book.bid });" class="deleteBtn">삭제하기</button>
+						                </div>
 	 					                </c:if>
+	 					                
 			                            <div class="cmt_cont">
 			                                <span class="txt_cont">${ reply.rcontent }</span>
 			                            </div>
@@ -439,21 +440,9 @@ crossorigin="anonymous"></script>
                   </c:if>
                   	 <script>
                			$(document).ready(function(){	// div.see의 이전(span.authReply) 이전  div(.replyCmt)를 숨기기
-               				$('.see').prev().prev().hide();
+               				$('.see').prev().prev().prev().hide();
                			
                			});
-               			
-               			/* let forms = document.querySelectorAll('form');
-               			console.log($(forms[10])); */
-               			
-               			$(document).ready(function(){
-               				/* console.log($('form')); */
-               				$('.writeBtn').click(function(){
-               					console.log($(this).parents('form'));
-               				});
-               			});
-               			
-               			
 	                </script>
                  
                   <div class="reviewContentList">&nbsp;</div>
@@ -526,8 +515,17 @@ crossorigin="anonymous"></script>
     }
     
     function reply(bid){
-    	document.forms.replyForm.action="${ contextPath }/reply/insert?bid=" + bid;
-    	document.forms.replyForm.submit();
+    	let rcontent = document.forms.replyForm.rcontent.value.length;
+    	let rstarScore = document.forms.replyForm.rstarScore.value;
+    	
+    	console.log(rstarScore);
+    	
+    	if(rcontent == 0 || rstarScore == 0){
+    		alert("별점과 내용을 입력해주세요");
+    	} else {
+	    	document.forms.replyForm.action="${ contextPath }/reply/insert?bid=" + bid;
+	    	document.forms.replyForm.submit();
+    	}
     }
     
     function deleteReply(rid, bid){

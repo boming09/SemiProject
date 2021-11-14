@@ -681,6 +681,7 @@ public class BookDao {
 	            book.setBimg(rset.getString("book_img"));
 	            book.setStarScore(rset.getInt("star_score"));
 	            book.setAvgScore(rset.getDouble("avg_score"));
+	            book.setSumScore(rset.getInt("sum_score"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -721,6 +722,32 @@ public class BookDao {
 			close(pstmt);
 		}
 		return replyList;
+	}
+	
+	// 댓글 갯수 조회
+	public int getReviewCount(Connection conn, int bid) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = bookQuery.getProperty("getReviewCount");
+		int reviewCount = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bid);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				reviewCount = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return reviewCount;
 	}
 
 	// 도서 댓글 등록
@@ -784,6 +811,44 @@ public class BookDao {
 			close(pstmt);
 		}
 		return result;
+	}
+	
+	// 도서 별점/평점 입력
+	public int insertScore(Connection conn, Reply reply, double avgScore, int starScore) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = bookQuery.getProperty("updateAvgScore");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, reply.getStarScore());
+			pstmt.setDouble(2, avgScore);
+			pstmt.setInt(3, starScore);
+			pstmt.setInt(4, reply.getBid());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public void deleteAddReply(Connection conn, int rid) {
+		PreparedStatement pstmt = null;
+		String sql = bookQuery.getProperty("deleteAddReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rid);
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
 	}
 
 }

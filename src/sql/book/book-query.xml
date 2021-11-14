@@ -1244,12 +1244,22 @@ SELECT
      , BOOK_IMG
      , STAR_SCORE
      , AVG_SCORE
+     , SUM_SCORE
      FROM BOOK
      JOIN B_CATEGORY USING(CATEGORY_ID)
     WHERE BOOK_ID = ?
 </entry>
 
 <!-- REPLY -->
+<entry key="getReviewCount">
+	SELECT
+		   COUNT(REVIEW_NO)
+	  FROM B_REVIEW
+	 WHERE REF_NO IS NULL
+	   AND STATUS = 'Y'
+	   AND BOOK_ID = ?
+</entry>
+
 <entry key="selectReplyList">
 SELECT
        REVIEW_NO
@@ -1302,10 +1312,24 @@ INSERT INTO B_REVIEW(
   )
 </entry>
 
+<entry key="updateAvgScore">
+UPDATE BOOK 
+SET SUM_SCORE = SUM_SCORE + ?
+  , AVG_SCORE = ?
+  , STAR_SCORE = ?
+WHERE BOOK_ID = ?
+</entry>
+
 <entry key="deleteReply">
 UPDATE B_REVIEW
    SET STATUS = 'N'
  WHERE REVIEW_NO = ?
+</entry>
+
+<entry key="deleteAddReply">
+UPDATE B_REVIEW
+   SET STATUS = 'N'
+ WHERE REF_NO = ?
 </entry>
 
 <entry key="insertAddReply">

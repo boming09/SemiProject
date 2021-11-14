@@ -41,16 +41,31 @@ public class ReplyInsertServlet extends HttpServlet {
 		int rstarScore = Integer.parseInt(request.getParameter("rstarScore"));
 		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
 		String rcontent = request.getParameter("rcontent");
-		// int refRid = Integer.parseInt(request.getParameter("rid"));	// 대댓글 인서트
 		
+		/* 댓글 */
 		Reply reply = new Reply();
 		reply.setBid(bid);
 		reply.setUserNo(userNo);
 		reply.setRcontent(rcontent);
 		reply.setStarScore(rstarScore);
-		// reply.setRefRid(refRid);
 		
-		int result = new BookService().insertReply(reply);
+		/* 도서 평점 계산 */
+		int sumScore = Integer.parseInt(request.getParameter("sumScore"));
+		int reviewCount = Integer.parseInt(request.getParameter("reviewCount"));
+		
+		double avgScore = (sumScore + rstarScore) / (double)(reviewCount + 1);
+		avgScore = Math.round(avgScore*10)/10.0;
+		
+		int starScore = (int) Math.floor(avgScore);
+		
+		// System.out.println(sumScore);
+		// System.out.println(rstarScore);
+		// System.out.println(reviewCount);
+		System.out.println(avgScore);
+		System.out.println(starScore);
+		// System.out.println(Math.round(avgScore*10)/10.0);
+		
+		int result = new BookService().insertReply(reply, avgScore, starScore);
 		
 		if(result > 0) {
 			response.sendRedirect(request.getContextPath() + "/book/detail?bid=" + bid + "#review");

@@ -14,7 +14,7 @@
 			    REVIEW_NO
 			  , BOOK_ID
 			  , USER_NO
-			  , DATE
+			  , CREATE_DATE
 			  , CONTENT
 			  , RATING
 			  , REF_NO

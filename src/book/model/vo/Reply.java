@@ -9,7 +9,7 @@ public class Reply {
 	private String userId;		// 작성자 ID
 	private Date createDate;	// 작성일
 	private String rcontent;	// 내용
-	private int starScore;		// 평점
+	private int starScore;		// 별점
 	private int refRid;			// 참조리뷰번호
 //	REVIEW_NO	NUMBER
 //	BOOK_ID	NUMBER
