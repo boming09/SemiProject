@@ -33,7 +33,12 @@
     font-weight: bold;
 }
 /* 내용 영역 */
+.unreview_conarea {
+	display : flex;
+	justify-content :center;
+}
 .unreview_conarea table {
+	width : 100%;
     font-size: 0.9rem;
     margin: 0px 30px 10px 30px;
     /*  테이블 간격 없애기 */
@@ -55,7 +60,7 @@ td {
     height: 50px;
 }
 .liarea2 {
-    height: 200px;;
+    height: 250px;;
 }
 /* 너비 */
 .unre_name, .unre_user, .unre_date, .unre_rating, .unre_content {
@@ -71,6 +76,7 @@ td {
 }
 .rcontent {
     width: 88%;
+    vertical-align: top;
 }
 
 /* 테두리 */
@@ -100,7 +106,9 @@ th, td {
     resize: none;
     width: 95%;
     height: 200px;
-    padding-left : 10px;
+    padding : 10px;
+    font-size: 0.9rem;
+    line-height : 20px;
 }
 
 /* 취소/답변작성 버튼 */

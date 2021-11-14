@@ -103,6 +103,7 @@ public class WriterCheckInsertServlet extends HttpServlet {
 		for(int i = 0; i < bidList.length; i++) {
 			WBook wbook = new WBook();
 			wbook.setBid(Integer.parseInt(bidList[i]));
+			wbook.setUser_no(user_no);
 			
 			wbookList.add(wbook);
 		}

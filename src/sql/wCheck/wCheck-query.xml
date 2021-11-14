@@ -195,6 +195,11 @@
 		  FROM WC_UPLOAD
 		 WHERE WCUP_NO = ?
 	</entry>
-		
+	
+	<entry key="updateBook">
+		UPDATE BOOK
+		   SET USER_NO = ?
+		 WHERE BOOK_ID = ?
+	</entry>
 	
 </properties>

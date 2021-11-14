@@ -53,10 +53,17 @@ public class WCheckService {
 			wuploadResult += wcDao.insertUpload(conn, upload);
 		}
 		
+		// BOOK 테이블에 삽입
+		int bookResult = 0;
+		for(WBook book : wcheck.getWbook()) {
+			bookResult += wcDao.updateBook(conn, book);
+		}
+		
 		// 3가지 로직이 모두 잘 수행 되었음을 나타내는 변수
 		int result = 0;		
 		
-		if(wcheckResult > 0 && wbookResult == wcheck.getWbook().size() && wuploadResult == wcheck.getWupload().size()) {
+		if(wcheckResult > 0 && wbookResult == wcheck.getWbook().size()
+			&& wuploadResult == wcheck.getWupload().size() && bookResult == wcheck.getWbook().size()) {
 			commit(conn);
 			result = 1;
 		} else {

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -54,7 +55,8 @@
 			<!-- center div -->
 			<br>
 			<div>
-			<form action="${ contextPath }/accountDelete" method="post">
+			<form action="${ contextPath }/accountDelete" method="post"
+			onSubmit="return checkit();">
 			<h4 class="h4go">
 				고객님께서 느끼신 봄숲의 부족한 점을 지적해 주세요.<br> 소중하게 반영하겠습니다.
 			</h4>
@@ -163,7 +165,7 @@
 				  탈퇴하기 클릭시 탈퇴가능하게 만들예정. -->
 			<div class="h5go">
 				<h4 class="h5go">
-					비밀번호 : <input type="password" id="check_pw" name="chkPw"> 
+					비밀번호 : <input type="password" id="check_pw" name="check_pw" required><!-- required 비밀번호 삭제 되면 넣기 --> 
 					<button id="deleteBtn" type="button"
 					onclick="confirmAccountDelete();">탈퇴하기</button>
 				</h4>
@@ -185,6 +187,15 @@
 			if(confirm("정말로 탈퇴하시겠습니까?"))
 				location.href='<%= request.getContextPath () %>/accountDelete';
 		}
+	</script>
+	<script>
+	/*	
+	function checkit(){
+			alert("비밀번호를 입력하지 않으셨습니다.");
+			document.deleteForm.check_pw.focus();
+			return false;
+		}
+	*/
 	</script>
 </body>
 </html>

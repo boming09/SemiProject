@@ -229,7 +229,7 @@ a {
         <!-- 3. 페이지 제목-->
         <div class="mainlogo wrapper">
             <div class="page-title">
-            	<a href="<%= request.getContextPath() %>">
+            	<a href="<%= request.getContextPath() %>/main"> <!-- 셀렉트 해오려면 필요 -->
                 <img src="<%= request.getContextPath() %>/resources/images/logo.png" alt="home logo">
                 <div>봄숲</div>
                 </a>

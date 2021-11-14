@@ -168,4 +168,44 @@
 			  , ORDER_ID.NEXTVAL
 			)
 	</entry>
+	
+	<entry key="selectCoupon">
+		SELECT *
+		      FROM CUPON
+		 WHERE USER_NO = ?
+		  AND STATUS = 'Y'	
+	</entry>
+	
+	
+	
+	
+	
+	<entry key="wBookList">
+		SELECT * 
+   		FROM (SELECT * 
+           FROM BOOK  
+          WHERE PUBLICATION_DATE  > ADD_MONTHS(SYSDATE,-1) 
+          ORDER BY SALE_RATE DESC)
+    <![CDATA[WHERE ROWNUM <= 3]]>
+	</entry>
+	
+	<entry key="nBookList">
+		SELECT * 
+		  FROM (SELECT * 
+		         FROM BOOK 
+		        ORDER BY PUBLICATION_DATE DESC
+		        )
+	<![CDATA[WHERE ROWNUM <= 3]]>
+	</entry>
+
+	<entry key="pBookList">
+		SELECT * 
+    	 FROM (SELECT * 
+	            FROM BOOK 
+	        ORDER BY AVG_SCORE DESC) 
+	<![CDATA[WHERE ROWNUM <= 3]]>
+	</entry>
+	
+	
+	
 </properties>

@@ -48,7 +48,7 @@ public class MypageOrderChangeServlet extends HttpServlet {
     	Map<String, Object> map =new MyOrderService().selectOrderChangeList(page, user_no);
     	
     	String forpage = ""; 	
-    	if(map.get("orderList") != null) {
+    	if(map.get("changeList") != null) {
     		request.setAttribute("pi", map.get("pi"));
         	request.setAttribute("changeList", map.get("changeList"));
         	

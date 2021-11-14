@@ -2,24 +2,194 @@
 <!DOCTYPE properties SYSTEM
 "http://java.sun.com/dtd/properties.dtd">
 <properties>
-	<entry key="selectList">
-	<!-- REVIEW_NO	NUMBER
-		 BOOK_ID	NUMBER
-		 USER_NO	NUMBER
-		 DATE	DATE
-		 CONTENT	VARCHAR2(200 BYTE)
-		 RATING	NUMBER
-	     REF_NO	NUMBER -->
+	<entry key="getListCount">
 		SELECT
-			    REVIEW_NO
-			  , BOOK_ID
-			  , USER_NO
-			  , CREATE_DATE
-			  , CONTENT
-			  , RATING
-			  , REF_NO
+				COUNT(*)
 		   FROM B_REVIEW
-		  WHERE DATE = 'Y'
-		  ORDER BY REVIEW_NO DESC 
+		  WHERE REF_NO = 1
+		    AND STATUS = 'Y'
+	</entry>
+	
+	<entry key="getTitleListCount">
+		SELECT
+				COUNT(*)
+		   FROM B_REVIEW
+		  WHERE REF_NO = 1
+		    AND STATUS = 'Y'
+		    AND MTITLE LIKE '%' || ? || '%'
+	</entry>
+	
+	<entry key="getContentListCount">
+		SELECT
+				    COUNT(*)
+		   FROM B_REVIEW
+		  WHERE REF_NO = 1
+		    AND STATUS = 'Y'
+		    AND MCONTENT LIKE '%' || ? || '%'
+	</entry>
+	
+	<entry key="getWriterListCount">
+		SELECT
+				COUNT(*)
+		   FROM B_REVIEW B
+		   JOIN MEMBER ON(B.USER_NO = USER_NO)
+		  WHERE REF_NO = 1
+		    AND B.STATUS = 'Y'
+		    AND USER_NO LIKE '%' || ? || '%'
+	</entry>
+	
+	<entry key="selectList">
+	SELECT *
+			FROM (SELECT ROWNUM RUNM, A.*
+				 FROM(SELECT
+				        REVIEW_NO
+				      , BOOK_ID
+				      , USER_NO
+				      , DATE
+				      , CONTENT
+				      , RATING
+				      , REF_NO
+				      , STATUS
+				   FROM B_REVIEW B
+				   JOIN B_CATEGORY USING(CATEGORY_ID)
+				   JOIN MEMBER ON(B.USER_NO = USER_NO)
+				  WHERE REF_NO = 1
+				    AND B.STATUS = 'Y'
+				  ORDER BY MID DESC) A
+				 )
+			WHERE RUNM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectTitleList">
+		SELECT *
+			FROM (SELECT ROWNUM RUNM, A.*
+				 FROM(SELECT
+				        REVIEW_NO
+				      , BOOK_ID
+				      , USER_NO
+				      , DATE
+				      , CONTENT
+				      , RATING
+				      , REF_NO
+				      , B.STATUS
+				   FROM B_REVIEW B
+				   JOIN B_CATEGORY USING(CATEGORY_ID)
+				   JOIN MEMBER ON(B.USER_NO = USER_NO)
+				  WHERE REF_NO = 1
+				    AND B.STATUS = 'Y'
+				    AND MTITLE LIKE '%' || ? || '%'
+				  ORDER BY MID DESC) A
+				 )
+			WHERE RUNM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectContentList">
+		SELECT *
+			FROM (SELECT ROWNUM RUNM, A.*
+				 FROM(SELECT
+				        REVIEW_NO
+				      , BOOK_ID
+				      , USER_NO
+				      , DATE
+				      , CONTENT
+				      , RATING
+				      , REF_NO
+				      , B.STATUS
+				   FROM B_REVIEW B
+				   JOIN B_CATEGORY USING(CATEGORY_ID)
+				   JOIN MEMBER ON(B.USER_NO = USER_NO)
+				  WHERE MTYPE = 1
+				    AND B.STATUS = 'Y'
+				    AND MCONTENT LIKE '%' || ? || '%'
+				  ORDER BY MID DESC) A
+				 )
+			WHERE RUNM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectWriterList">
+		SELECT *
+			FROM (SELECT ROWNUM RUNM, A.*
+				 FROM(SELECT
+				        REVIEW_NO
+				      , BOOK_ID
+				      , USER_NO
+				      , DATE
+				      , CONTENT
+				      , RATING
+				      , REF_NO
+				      , B.STATUS
+				   FROM B_REVIEW B
+				   JOIN B_CATEGORY USING(CATEGORY_ID)
+				   JOIN MEMBER ON(B.USER_NO = USER_NO)
+				  WHERE MTYPE = 1
+				    AND B.STATUS = 'Y'
+				    AND USER_NICKNAME LIKE '%' || ? || '%'
+				  ORDER BY MID DESC) A
+				 )
+			WHERE RUNM BETWEEN ? AND ?
+	</entry>
+	
+	<!-- 
+	<entry key="increaseCount">
+		UPDATE B_REVIEW
+		   SET MCOUNT = MCOUNT + 1
+		 WHERE MID = ?
+	</entry>
+	 -->
+	
+	<entry key="selectB_Review">
+		SELECT
+		         REVIEW_NO
+				 , BOOK_ID
+				 , USER_NO
+				 , DATE
+				 , CONTENT
+				 , RATING
+				 , REF_NO
+				 , B.STATUS
+		    FROM B_REVIEW B
+		    JOIN B_CATEGORY USING(CATEGORY_ID)
+		    JOIN MEMBER ON(B.USER_NO = USER_NO)
+		   WHERE B.STATUS = 'Y'
+		     AND REVIEW_NO = ?
+	</entry>
+	
+	<entry key="insertB_Review">
+		INSERT
+			  INTO B_REVIEW
+			 (
+			 	REVIEW_NO
+				, BOOK_ID
+				, USER_NO
+				, DATE
+				, CONTENT
+				, RATING
+				, REF_NO
+				, B.STATUS
+			 )
+			 VALUES
+			 (
+			 	  SEQ_REVIEW_NO.NEXTVAL
+			 	, ?
+			 	, ?
+			 	, SYSDATE
+			 	, ?
+			 	, ?
+			 	, DEFAULT
+			 )		 
+	</entry>
+	
+	<entry key="deleteb_review">
+		UPDATE B_REVIEW
+		   SET STATUS = 'N'
+		 WHERE REVIEW_NO = ?	
+	</entry>
+	
+	<entry key="updateB_Review">
+		UPDATE B_REVIEW 
+	       SET BOOK_ID = ?
+	         , CONTENT = ?
+	         , MODIFY_DATE = SYSDATE
+	     WHERE REVIEW_NO = ?
 	</entry>
 </properties>

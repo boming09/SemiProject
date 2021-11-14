@@ -7,12 +7,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
+import book.model.vo.Book;
 
 import static common.JDBCTemplate.close;
 import order.model.vo.Cart;
+import order.model.vo.Coupon;
 import order.model.vo.Order;
 import order.model.vo.OrderDetail;
 
@@ -395,5 +398,158 @@ public class cartDao {
 		
 		return result;
 	}
+
+	public List<Coupon> selectCoupon(Connection conn, int userNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Coupon> couponList = new ArrayList<>();
+		String sql = cartQuery.getProperty("selectCoupon");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				couponList.add(new Coupon(rset.getInt("coupon_no")
+									, rset.getString("coupon_name")
+									, rset.getString("coupon_content")
+									, rset.getInt("discount")
+									, rset.getDate("expdate")
+									, rset.getInt("user_no")));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return couponList;
+	}
+	
+	
+	
+	//메인 편의상 여기다
+
+	public List<Book> selectWBookList(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Book> wBookList = new ArrayList<>();
+		String sql = cartQuery.getProperty("wBookList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+	            Book book = new Book();
+	            book.setBid(rset.getInt("book_id"));
+	            book.setBtitle(rset.getString("book_name"));
+	            book.setCid(rset.getInt("category_id"));
+	           // book.setCname(rset.getString("category_name"));
+	            book.setAuthor(rset.getString("author"));
+	            book.setEditor(rset.getString("editor"));
+	            book.setPublicationDate(rset.getDate("publication_date"));
+	            book.setPublisher(rset.getString("publisher"));
+	            book.setSalePrice(rset.getInt("sale_price"));
+	            book.setBimg(rset.getString("book_img"));
+	            book.setStarScore(rset.getInt("star_score"));
+	            book.setAvgScore(rset.getDouble("avg_score"));
+	            wBookList.add(book);
+	         }
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+		
+		return wBookList;
+	}
+
+	public List<Book> selectNBookList(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Book> nBookList = new ArrayList<>();
+		String sql = cartQuery.getProperty("nBookList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+	            Book book = new Book();
+	            book.setBid(rset.getInt("book_id"));
+	            book.setBtitle(rset.getString("book_name"));
+	            book.setCid(rset.getInt("category_id"));
+	          //  book.setCname(rset.getString("category_name"));
+	            book.setAuthor(rset.getString("author"));
+	            book.setEditor(rset.getString("editor"));
+	            book.setPublicationDate(rset.getDate("publication_date"));
+	            book.setPublisher(rset.getString("publisher"));
+	            book.setSalePrice(rset.getInt("sale_price"));
+	            book.setBimg(rset.getString("book_img"));
+	            book.setStarScore(rset.getInt("star_score"));
+	            book.setAvgScore(rset.getDouble("avg_score"));
+	            nBookList.add(book);
+	         }
+		
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+		
+		
+		return nBookList;
+	}
+
+	public List<Book> selectPBookList(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Book> pBookList = new ArrayList<>();
+		String sql = cartQuery.getProperty("pBookList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+	            Book book = new Book();
+	            book.setBid(rset.getInt("book_id"));
+	            book.setBtitle(rset.getString("book_name"));
+	            book.setCid(rset.getInt("category_id"));
+	           // book.setCname(rset.getString("category_name"));
+	            book.setAuthor(rset.getString("author"));
+	            book.setEditor(rset.getString("editor"));
+	            book.setPublicationDate(rset.getDate("publication_date"));
+	            book.setPublisher(rset.getString("publisher"));
+	            book.setSalePrice(rset.getInt("sale_price"));
+	            book.setBimg(rset.getString("book_img"));
+	            book.setStarScore(rset.getInt("star_score"));
+	            book.setAvgScore(rset.getDouble("avg_score"));
+	            pBookList.add(book);
+	         }
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}  finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+		
+		return pBookList;
+	}
+
+	
 
 }

@@ -1,11 +1,18 @@
 package order.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
+
+import book.model.vo.Book;
+import main.model.vo.Recommend;
+import member.model.vo.Member;
+
 import static common.JDBCTemplate.*;
 
 import order.model.dao.cartDao;
 import order.model.vo.Cart;
+import order.model.vo.Coupon;
 import order.model.vo.Order;
 import order.model.vo.OrderDetail;
 
@@ -154,16 +161,6 @@ public class CartService {
 		//오더 삽입
 		int orderResult = cartDao.insertFinalOrder(conn, order);
 		
-		/*if(orderResult > 0) {
-			commit(conn);
-		} else {
-			rollback(conn);
-		}
-		
-		close(conn);
-		
-		return orderResult;*/
-		
 		//오더디테일 삽입
 		int orderDetailResult = 0;
 		
@@ -181,6 +178,38 @@ public class CartService {
 		}
 		close(conn);
 		return result;
+	}
+
+	public List<Coupon> selectCoupon(int userNo) {
+		Connection conn = getConnection();
+		
+		List<Coupon> couponList = cartDao.selectCoupon(conn, userNo);
+
+		close(conn);
+		
+		return couponList;
+	}
+
+	public Recommend selectBookList() {
+		Connection conn = getConnection();
+		//각각 세개씩 비아이디 받아와서 어디다 느면 되는데 
+		//아니다 이미지랑 제목같은것도 있어야됨
+	
+		Recommend recommend= new Recommend();
+		
+		List<Book> WeekBookList = cartDao.selectWBookList(conn);
+		List<Book> NewBookList = cartDao.selectNBookList(conn);
+		List<Book> PopBookList = cartDao.selectPBookList(conn);
+		
+		//rd에 리스트들 넣어라
+		recommend.setWBookList(WeekBookList);
+		recommend.setNBookList(NewBookList);
+		recommend.setPBookList(PopBookList);
+		
+		close(conn);
+
+		//rd에 넣고 리턴해라
+		return recommend;
 	}
 
 }

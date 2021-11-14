@@ -87,6 +87,8 @@
 }
 .unreview_content:hover {
     background: #f3f5f7;
+    font-weight : bold;
+    cursor : pointer;
 }
        
 /* 너비 지정 */
@@ -94,17 +96,45 @@
     width: 10%;
 }
 .unre_name {
-    width: 55%;
+    width: 52%;
 }
-/* .unre_content {
-    width: 40%;   
-} */
 .unre_user {
-    width: 10%;
+    width: 13%;
 }
 .unre_update {
     width: 15%;
 }
 .wb_status {
     width: 10%;
+}
+.status2 {
+	font-weight: bold;
+}
+
+/* 페이징 영역 */
+.pagingarea {
+	margin: 10px 30px;
+	margin-bottom : 80px;
+	height : 50px;
+	display : flex;
+	justify-content : center;
+    align-items: center;
+}
+.pagingarea ul {
+	list-style : none;
+	display : flex;
+	justify-content : center;
+    align-items: center;
+    width : 400px;
+    height : 50px;  
+}
+
+.pagingarea ul li {
+	width: 40px;
+	text-align : center;
+}
+
+.current_page {
+	border-bottom: 2px solid black;
+	font-weight: bold;
 }
