@@ -37,7 +37,7 @@
 	color: black;
 }
 .cLi a:hover {
-    color: #acadadd0;
+    color: orange;
     cursor: pointer;
 }
 
@@ -61,6 +61,7 @@
 }
 .sortLi a:hover{
     color: green;
+    cursor: pointer;
 }
 /* 도서 목록 table */
 .book_info {
@@ -194,17 +195,18 @@
 /* top 이동 버튼*/
 #moveA {
 	text-decoration: none;
-	width: 30px;
+	width: 60px;
+	height: 60px;
 	display: none;
-	height: 30px;
-	border: 1px solid lightgray;
-	border-radius: 30px;
+	font-size: 30px;
+	border: 2px solid lightgray;
+	border-radius: 100%;
 	color: rgba(73, 125, 78, 1);
 	text-align: center;
-	padding: 5px 5px;
+	padding: 15px 20px;
 	position: fixed;
-	right: 400px;
-	top: 450px;
+	right: 60px;
+	bottom: 65px;
 }
 
 /* 별점 영역 */

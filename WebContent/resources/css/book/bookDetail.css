@@ -275,7 +275,7 @@ table {
 .wordCount {
     text-align: right;
 }
-.count{
+#count{
     width: 25px;
     text-align: right;
 }
