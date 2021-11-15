@@ -23,7 +23,6 @@ a {
 }
 
 /* center  */
-
 .outer {
 	width: 50%;
 	min-width: 400px;
@@ -73,7 +72,6 @@ a {
 /* 아이디 이메일 저장 */
 #remember {
     font-size : 12px;
-    margin-left : 30px;
     font-weight : bold;
 }
 
@@ -101,7 +99,7 @@ a {
     color: red;
     padding : 15px 20px;
     border-radius: 5px;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     margin-left : 20px;
     font-weight : bold;
 }
@@ -118,48 +116,55 @@ a {
     margin-left : 20px;
     font-weight : bold;
 }
+.loginArea {
+	display : flex;
+}
+.loginArea2 {
+	display : flex;
+	justify-content: center;
+	align-items: center;
+	margin-top : 20px;
+}
 
 /* 로그인 버튼 */
 #lobut {
     width : 150px;
     height : 105px;
-    position : absolute;
-            top : 348px;
-            right : 730px;
     background :#497D4E;
     color : white;
     text-align: center;
     font-size : 35px;
     padding : 20px;
     font-weight : bold;
+    margin-right : 50px;
 }
 
 /* 회원가입 버튼 */
 .mbjoin{
     background-color: #c4d9c3;
     color : white;
-    margin: 22px;
     font-weight : bold;
     width : 400px;
     height : 75px;
-    margin-left: 90px;
     font-size: 30px;
 }
 
 /* 간편로그인 */
-.naverlogo {
-    width : 100px;
-    height : 100px;
-}
-
-.kakaologo {
-    width : 130px;
-    height : 130px;
-}
-
 .imgdiv {
-    text-align : center;
+	display : flex;
+	justify-content: center;
+	align-items: center;
 }
+.naverlogo, .kakaologo {
+    width : 60px;
+    height : 60px;
+    margin-top : 30px;
+}
+.naverlogo {
+	margin-right : 20px;
+}
+
+
 
 /* 회원가입 */
 /* 회원가입 테이블 */
@@ -305,17 +310,22 @@ footer {
 
 /* 아이디 찾기 화면 (id.html) */
 .id0{
+	min-height: 75%; 
+    position: relative;
+}
+
+.id000{
 	min-height: 100%; 
     position: relative;
 }
 /* 아이디 찾기 center div 1*/
 .id1 {
-    border : 4px solid blue;
+    border : 4px solid #497D4E;
     width : 650px;
-    height : 520px;
+    height : 570px;
     margin : 800 800;
     position: absolute;
-    top: 30%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size : 20px
@@ -323,7 +333,7 @@ footer {
 
 /* 아이디 찾기 center div 2*/
 .id2 {
-    border : 4px solid grey;
+    border : 4px solid rgba(196, 217, 195, 1);
     width : 600px;
     height : 450px;
     margin : 800 800;
@@ -333,6 +343,39 @@ footer {
     transform: translate(-50%, -50%);
     list-style-position: inside;
     text-indent: 20px;
+    margin-top : 10px;
+    padding-top : 10px;
+    line-height: 25px;
+}
+
+/* 아이디 찾기 결과 */
+.outerid{	
+	width: 50%;
+	min-width: 400px;
+	height: 600px;
+	border: 1px solid white;
+	border-radius: 10px;
+	margin: 70px auto;
+	height: 58vh;
+	justify-content: center;
+	align-items: center;
+}
+
+#searchh1{
+	text-align : center;
+}
+
+#userId{
+	margin-top : 30px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#updatePwdBtn{
+	    height: 50px;
+    background: #497d4e;
+    color: white;
+    font-weight: bold;
 }
 
 /* 가입 여부 확인하기*/
@@ -344,12 +387,37 @@ footer {
 }
 
 /* 이메일로 문의하기 */
-#emailquestion{
-    border : 1px solid black;
-    width : 150px;
+#emailquestion {
+    background : #497D4E;
+    color : white;
+    font-weight : bold;
+    width : 120px;
     height : 30px;
     font-size : 14px;
     margin-bottom : 10px;
+    margin-left : 30px;
+}
+
+#searchreturn{
+	background : #497D4E;
+    color : white;
+    font-weight : bold;
+    width : 180px;
+    height : 50px;
+    font-size : 18px;
+    margin-bottom : 10px;
+    margin-left : 30px;
+}
+
+#searchIdUpdateForm{
+	background : #497D4E;
+    color : white;
+    font-weight : bold;
+    width : 180px;
+    height : 50px;
+    font-size : 18px;
+    margin-bottom : 10px;
+    margin-left : 30px;
 }
 
 /* 로그인 필요 없음*/
@@ -365,6 +433,8 @@ footer {
 
 .id1text{
     border: 1px solid black;
+    width: 200px;
+    height: 30px;
 }
 
 /* 아이디 찾기 화면2 (id2.html) */
@@ -386,57 +456,66 @@ footer {
 
 /* 비밀번호 찾기 center div*/
 .ps1 {
-    border : 4px solid blue;
+    border : 4px solid #497D4E;
     width : 650px;
-    height : 700px;
+    height : 610px;
     margin : 800 800;
     position: absolute;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size : 20px
+    font-size : 20px;
+    padding-top : 10px;
 }
 
 /* 비밀번호 찾기 center div 2*/
 .ps2 {
-    border : 4px solid grey;
+    border : 4px solid rgba(196, 217, 195, 1);
     width : 600px;
-    height : 630px;
+    height : 490px;
     margin : 800 800;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     list-style-position: inside;
-    text-indent: 20px;
+    text-indent: 5px;
+    margin-top : 20px;
 }
 
 /* 비밀번호 찾기 화면 2(passwrord2.html)*/
 /* 비밀번호 찾기 center div*/
 .ps3 {
-    border : 4px solid blue;
+    border : 4px solid #497D4E;
     width : 650px;
-    height : 600px;
+    height : 550px;
     margin : 800 800;
     position: absolute;
-    top: 35%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size : 20px
+    font-size : 20px;
+    padding-top : 5px;
 }
 
 /* 비밀번호 찾기 center div 2*/
 .ps4 {
-    border : 4px solid grey;
+    border : 4px solid rgba(196, 217, 195, 1);
     width : 600px;
-    height : 540px;
+    height : 460px;
     margin : 800 800;
     position: absolute;
-    top: 50%;
+    top: 53%;
     left: 50%;
     transform: translate(-50%, -50%);
     list-style-position: inside;
-    text-indent: 20px;
+    text-indent: 5px;
+    
+}
+
+.id4div{
+	padding-left: 10px;
+	line-height : 20px;
 }
 
 /* 비밀번호 재설정 설명 */
@@ -462,13 +541,18 @@ footer {
 .emailconsulting {
     border : 4px solid #c4d9c3;
     width : 750px;
-    height : 600px;
+    height : 680px;
     margin : 800 800;
     position: absolute;
-    top: 35%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size : 15px;
+    line-height : 20px;
+}
+
+#emailh1{
+	margin : 10px;
 }
 
 /* 이메일 테이블 */
@@ -513,12 +597,14 @@ footer {
 
 /* 이메일 접수하기 버튼 */
 .emailbut{
-    border : 1px solid black;
+    background : #497D4E;
+    color : white;
     width: 100px;
     height: 40px;
     position: absolute;
-    top: 76%;
+    top: 84%;
     right: 48%;
+    font-weight : bold;
 }
 
 /* 에러페이지 */

@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import book.model.service.BookService;
-import book.model.vo.Book;
 import book.model.vo.Search;
 
 /**
@@ -51,10 +50,15 @@ public class BookListServlet extends HttpServlet {
 		request.setAttribute("bookList", map.get("bookList"));
 		request.setAttribute("categoryList", categoryList);
 		
-//		System.out.println(map.get("pi"));
-//		System.out.println(map.get("bookList"));
-//		System.out.println(categoryList);
-		request.getRequestDispatcher("/WEB-INF/views/book/bookListView.jsp").forward(request, response);
+		// System.out.println(!((List) map.get("bookList")).isEmpty());
+		// System.out.println(categoryList);
+		
+		if(!((List) map.get("bookList")).isEmpty()) {
+			request.getRequestDispatcher("/WEB-INF/views/book/bookListView.jsp").forward(request, response);
+		} else {
+			request.getSession().setAttribute("message", "일치하는 도서가 없습니다");
+			response.sendRedirect(request.getContextPath());
+		}
 	}
 
 	/**

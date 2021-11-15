@@ -15,6 +15,7 @@ import java.util.Properties;
 import admin.model.vo.OneList;
 import notice.model.vo.One;
 import notice.model.vo.PageInfo;
+import notice.model.vo.Upload;
 
 public class OneDao {
 	
@@ -210,19 +211,6 @@ public class OneDao {
 		return oneList;
 	}
 
-	
-	// 게시글 삭제하기
-	public int deleteOne(Connection conn, int one_no) {
-		PreparedStatement pstmt = null;
-		int result = 0;
-		String sql = oneQuery.getProperty("deleteOne");
-		
-		
-		
-		return 0;
-	}
-
-
 	public int adminOneReply(Connection conn, int oNo, String reply) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -244,20 +232,8 @@ public class OneDao {
 		
 		return result;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
 	
 
 }

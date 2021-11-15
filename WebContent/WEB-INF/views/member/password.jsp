@@ -18,28 +18,36 @@
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
         <div class="id0">
         <div class="ps1">
-            비밀번호 재설정
+            <h1 id="emailh1">비밀번호 재설정</h1>
             <div class="ps2">
                 <br>
-                &nbsp;&nbsp;봄숲에 등록된 개인정보로 비밀번호 재설정 하기
+                <div class="id4div">
+                                           봄숲에 등록된 개인정보로 비밀번호 재설정 하기<br><br>
                 <p>
-                    <font size="1">
-                        2가지 인증 방식 중 하나를 선택해 주세요.<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;가입 정보에 저장된 휴대전화를 현재 사용하고 있지 않으면"E-mail"주소 를 체크합니다.<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2가지 인증 방식 모두 가입된 E-mail주소는 입력해야 합니다.)
+                    <font size="2">                        
+                                                가입 정보에 저장된 아이디, 이름, E-mail 주소를 입력해 주세요.<br>
+                                                모든 정보를 입력해야지만 다음단계로 넘어갈수 있습니다.                       
                     </font size>    
-                </p><br>              
+                </p>
+                <br>              
+                </div>
                 <div class="topline">
                 </div>
                 <br>
+                
+                <form name="passwordForm" action="<%= request.getContextPath() %>/password"
+				method="post">
+                
                 <div class="id3">
                     
-                    <label class="psid">ID</label> <input type="text" class="id1text" size="10"><br><br>
-                    <label class="psname">이름</label> <input type="text" class="id1text" size="10"><br><br>
+                    <label class="psid">&nbsp;&nbsp;ID</label> <input type="text" name="userId" class="id1text" size="10" required><br><br>
+                    <label class="psname">이름</label> <input type="text" name="userName" class="id1text" size="10" required><br><br>
                     
-                    <label class="psemail">E-mail 주소</label> <input type="text" class="id1text" size="10"><br><br>
-                    <a href="password2"><button class="id2pagebut">다음단계</button></a><br>
+                    <label class="psemail">E-mail 주소</label> <input type="text" name="userEmail" class="id1text" size="10" required><br><br>
+                    <a href="login"><button class="id2pagebut">다음단계</button></a><br>
                 </div>
+                </form>
+                
                 <br><div class="topline">
                 </div><br>
                 <label class="servicec">고객센터 1544 - 0000</label>

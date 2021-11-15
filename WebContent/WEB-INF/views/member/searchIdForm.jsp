@@ -74,48 +74,25 @@
 </style>
 </head>
 <body>
-	<div class="outer">
-	<h1>아이디 찾기</h1>
-	
-	<form id="updateSearchIdForm" action="<%= request.getContextPath() %>/searchid"
+	<!-- 메뉴바 -->
+	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>    
+
+	<div class="outerid">
+	<h1 id="searchh1">아이디 찾기</h1>
+	<!-- 
+	<form id="updateSearchIdForm" action="<%= request.getContextPath() %>/password"
 	method="post" onsubmit="return searchId();">
+	 -->
 			<div class="wrap">
-				<div id="userId">${ loginUser.userName }님의 아이디는 ${ member.userId } 입니다.</div>
+				<div id="userId">${ member.userName }님의 아이디는 ${ member.userId } 입니다.</div>
 				
 				<div class="btnArea">
-				<button id="updatePwdBtn" onclick="location.href='/views/member/password.jsp'">비밀번호 찾기</button>
+				<a href="password"><button id="updatePwdBtn">비밀번호 찾기</button></a>
 				</div>
 			</div>
-	</form>
+	<!--  </form> -->
 	</div>
-	<!-- 
-	<script>
-		function searchId(){
-			var userName = document.getElementById("userName").value;
-			var userEmail = document.getElementById("userEmail").value;
-			if(userName == "" && userEmail == ""){
-				alert("이름과 이메일을 입력해주세요.")
-				return;
-			}
-			
-			var url = "/id";
-			
-			var title="searchId";
-			
-			var status = "left=50%, top=50%, height=400px, menubar-no, status=no, scrollbar=yes";
-			
-			var popup = window.open("", title, status);
-			
-			searchFrm.userName.value=userName;
-			searchFrm.userEmail.value=userEmail;
-			
-			searchFrm.target = title;
-			searchFrm.action = url;
-			searchFrm.method="post";
-			
-			searchFrm.submit();			
-		}
-	</script>	
-	 -->
+	<!-- footer -->
+	<jsp:include page="/WEB-INF/views/member/footer.jsp" />
 </body>
 </html>

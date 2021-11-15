@@ -18,22 +18,22 @@
 		<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
         <div class="id0">
         <div class="emailconsulting">
-            E mail 상담
+            <h1 id="emailh1">E mail 상담</h1>
             <div class="topline">
             </div>
             <table class="emailtable">
                 <tr>
                     <th>메일주소</th>
-                    <td><input type="text" class="emailaddress"><br>
-                        현재 사용중인 수신 가능한 이메일 주소를 기재해주십시오.<br>
-                        하단의 문의 내용란에는 기억나실 경우 "회원가입시 등록 이메일주소"도
-                        기재해주십시오.<br></td>
+                    <td><input type="text" class="emailaddress"><br><br>
+	                        현재 사용중인 수신 가능한 이메일 주소를 기재해주십시오.<br>
+	                        하단의 문의 내용란에는 기억나실 경우 "회원가입시 등록 이메일주소"도
+	                        기재해주십시오.<br><br></td>
                 </tr>
                 <tr>
                     <th>전화번호</th>
-                    <td><input type="text" class="emailaddress"><br>
+                    <td><input type="text" class="emailaddress"><br><br>
                         주문 문의 등 고객센터에서 문의사항을 정확하게 파악하기 위한 상세 정보를<br>
-                        최대한 입력해주시면 감사 하겠습니다</td>
+                        최대한 입력해주시면 감사 하겠습니다</td><br>
                 </tr>
                 <tr>
                     <th>문의 내용</th>

@@ -190,6 +190,23 @@
 	font-weight: bold;
 }
 
+
+/* top 이동 버튼*/
+#moveA {
+	text-decoration: none;
+	width: 30px;
+	display: none;
+	height: 30px;
+	border: 1px solid lightgray;
+	border-radius: 30px;
+	color: rgba(73, 125, 78, 1);
+	text-align: center;
+	padding: 5px 5px;
+	position: fixed;
+	right: 400px;
+	top: 450px;
+}
+
 /* 별점 영역 */
 .star-input>.input,
 .star-input>.input>label:hover,

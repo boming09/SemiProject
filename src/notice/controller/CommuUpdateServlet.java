@@ -1,8 +1,7 @@
-package writer.controller;
+package notice.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,16 +12,16 @@ import notice.model.service.CommuService;
 import notice.model.vo.Commu;
 
 /**
- * Servlet implementation class WMyCommuInsertServlet
+ * Servlet implementation class CommuUpdateServlet
  */
-@WebServlet("/w-commu/insert")
-public class WMyCommuInsertServlet extends HttpServlet {
+@WebServlet("/commu/update")
+public class CommuUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public WMyCommuInsertServlet() {
+    public CommuUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,37 +30,36 @@ public class WMyCommuInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 고객센터-소통게시판 디테일 재활용(정보 갖고가기)
+		// 게시글 번호 가져오기
 		int commu_no = Integer.parseInt(request.getParameter("commu_no"));
-				
+		
 		Commu commu = new CommuService().selectCommu(commu_no);
 		
 		request.setAttribute("commu", commu);
+		request.getRequestDispatcher("/WEB-INF/views/notice/commuUpdateView.jsp").forward(request, response);
 		
-		// 작가소통게시판 게시글 답변상세 페이지
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/writer/wMyCommuInsertView.jsp");
-		view.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 게시글 번호 + 답변 가져오기
+		// 게시글 번호 가져오기
 		int commu_no = Integer.parseInt(request.getParameter("commu_no"));
-		String reply = request.getParameter("reply");
-		//System.out.println(reply);
+		String title = request.getParameter("newTitle");
+		String content = request.getParameter("newContent");
 		
-		int result = new CommuService().updateWCommu(commu_no, reply);
+		int result = new CommuService().updateCommu(commu_no, title, content);
 		
 		if(result > 0) {
-			request.getSession().setAttribute("msg", "답변 등록이 완료되었습니다.");
-			response.sendRedirect(request.getContextPath() + "/w-commu");
+			request.getSession().setAttribute("massage", "게시글이 수정되었습니다.");
+			response.sendRedirect(request.getContextPath() + "/commu/detail?commu_no=" + commu_no);
 		} else {
-			request.getSession().setAttribute("msg", "실패9ㅅ9");
-			request.getRequestDispatcher("/WEB-INF/views/writer/wMyPageView.jsp").forward(request, response);
+			request.getSession().setAttribute("massage", "실패9ㅅ9");
+			request.getRequestDispatcher("/WEB-INF/views/notice/commuView.jsp").forward(request, response);
 		}
-	
+		
+		
 	}
 
 }

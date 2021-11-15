@@ -105,6 +105,29 @@
 		  WHERE USER_NO = ?
 	</entry>
 	
+	<entry key="deleteAccount2">
+		SELECT
+				USER_NO
+			  , USER_ID
+			  , USER_PWD
+			  , USER_NAME
+			  , GENDER
+			  , USER_EMAIL
+			  , USER_PHONE
+			  , USER_ADDRESS
+			  , USER_GRADE
+			  , ENROLL_DATE
+			  , STATUS
+			  , USER_CERTIFY
+			  , USER_NICKNAME
+			  , DISSATISFACTION
+		   FROM MEMBER
+		  WHERE DISSATISFACTION = ?
+		    AND USER_ID = ?
+		    AND USER_PWD = ?
+	</entry>
+	
+	
 	<entry key="searchId">
 		SELECT
 				USER_NO
@@ -126,6 +149,27 @@
 	</entry>
 	
 	<entry key="searchPw">
+		SELECT
+				USER_NO
+			  , USER_ID
+			  , USER_PWD
+			  , USER_NAME
+			  , GENDER
+			  , USER_EMAIL
+			  , USER_PHONE
+			  , USER_ADDRESS
+			  , USER_GRADE
+			  , ENROLL_DATE
+			  , STATUS
+			  , USER_CERTIFY
+			  , USER_NICKNAME
+		FROM MEMBER
+	   WHERE USER_ID = ?
+	     AND USER_NAME = ?
+	     AND USER_EMAIL = ?
+	</entry>
+	
+	<entry key="memberLogin">
 		SELECT
 				USER_NO
 			  , USER_ID

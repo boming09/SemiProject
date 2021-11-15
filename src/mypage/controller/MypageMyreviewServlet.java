@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import book.model.vo.Search;
+import mypage.model.service.B_ReviewService;
 import mypage.model.service.MyreviewService;
 
 
@@ -37,6 +38,11 @@ public class MypageMyreviewServlet extends HttpServlet {
 		/*RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/mypage-myreview.jsp");
 		view.forward(request, response);
 		*/
+		int user_no = 0;
+		if(request.getParameter("user_no") != null) {
+			user_no = Integer.parseInt(request.getParameter("user_no"));
+		}
+		
 		int page = 1;
 		
 		if(request.getParameter("page") != null) {
@@ -47,10 +53,10 @@ public class MypageMyreviewServlet extends HttpServlet {
 		String searchValue = request.getParameter("searchValue");
 		
 		Map<String, Object> map 
-		= new MyreviewService().selectList(page, new Search(searchCondition, searchValue));
+		= new B_ReviewService().selectList(page, new Search(searchCondition, searchValue));
 		
 		request.setAttribute("pi", map.get("pi"));
-		request.setAttribute("myreviewList", map.get("myreviewList"));
+		request.setAttribute("b_reviewList", map.get("b_reviewList"));
 		
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/mypage-myreview.jsp");
 		view.forward(request, response);

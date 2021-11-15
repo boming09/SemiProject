@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
-<link href="${ contextPath }/resources/css/writer/wMyCommuInsert.css" rel="stylesheet">
+<link href="${ contextPath }/resources/css/writer/wMyCommuUpdate.css" rel="stylesheet">
 <title>MY 소통게시판</title>
 </head>
 <body>
@@ -49,7 +49,7 @@
                 </table>
             </div>
             
-            <form method="post" action="${ contextPath }/w-commu/insert?commu_no=${ commu.commu_no }">
+            <form method="post" action="${ contextPath }/w-commu/update?commu_no=${ commu.commu_no }">
 	            <div class="wcommu_area">답변 작성</div>
 	            <div class="wcommu_reply">
 	                <textarea name="reply"></textarea>

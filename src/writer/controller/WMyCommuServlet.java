@@ -43,13 +43,20 @@ public class WMyCommuServlet extends HttpServlet {
 		
 		Map<String, Object> map = new CommuService().selectWCommuList(page, writer);
 		
-		request.setAttribute("pi", map.get("pi"));
-		request.setAttribute("wCommuList", map.get("wCommuList"));
+		// 미답변 게시글 내역 없을경우 => wMyCommuNoneView.jsp
+		// 내역 있을경우 => wMyCommuView.jsp
+		String forpage = "";
 		
+		if(map.get("wCommuList") != null) {
+			request.setAttribute("pi", map.get("pi"));
+			request.setAttribute("wCommuList", map.get("wCommuList"));
+			
+			forpage = "/WEB-INF/views/writer/wMyCommuView.jsp";
+		} else {
+			forpage = "/WEB-INF/views/writer/wMyCommuNoneView.jsp";
+		}
 		
-		// 작가소통게시판 리스트 페이지
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/writer/wMyCommuView.jsp");
-		view.forward(request, response);
+		request.getRequestDispatcher(forpage).forward(request, response);
 	}
 
 	/**

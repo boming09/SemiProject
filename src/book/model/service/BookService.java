@@ -9,6 +9,7 @@ import java.util.Map;
 import book.model.dao.BookDao;
 import book.model.vo.Book;
 import book.model.vo.PageInfo;
+import book.model.vo.Reply;
 import book.model.vo.Search;
 
 import static common.JDBCTemplate.*;
@@ -54,6 +55,8 @@ public class BookService {
 		Book book = bookDao.selectBook(conn, bid);
 		/* 댓글 조회 추가 */
 		book.setReplyList(bookDao.selectReplyList(conn, bid));
+		/* 댓글 개수 */
+		book.setReviewCount(bookDao.getReviewCount(conn, bid));
 		close(conn);
 		
 		return book;
@@ -147,6 +150,7 @@ public class BookService {
 		return returnMap;
 	}
 
+
 	public List<Book> cSelect() {
 		Connection conn = getConnection();
 		List<Book> cList = bookDao.cSelect(conn);
@@ -181,10 +185,42 @@ public class BookService {
 			rollback(conn);
 		}
 		
+
+	
+	// 도서 댓글 등록
+	public int insertReply(Reply reply, double avgScore, int starScore) {
+		Connection conn = getConnection();
+		int result = bookDao.insertReply(conn, reply);
+		int resultScore = bookDao.insertScore(conn, reply, avgScore, starScore);
+		
+		if(result > 0 && resultScore > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
 		close(conn);
 		
 		return result;
 	}
+
+	// 도서 댓글 삭제
+	public int deleteReply(int rid) {
+		Connection conn = getConnection();
+		int result = bookDao.deleteReply(conn, rid);
+		
+		if(result > 0) {
+			bookDao.deleteAddReply(conn, rid);	/* 도서 대댓글 함께 삭제 */
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+		
+		return result;
+	}
+
 
 	public Book ajaxSelect(int bNo) {
 		Connection conn = getConnection();
@@ -207,6 +243,16 @@ public class BookService {
 		if(result > 0) {
 			commit(conn);
 		}else {
+
+	// 작가 댓글 등록
+	public int insertAddReply(Reply reply) {
+		Connection conn = getConnection();
+		int result = bookDao.insertAddReply(conn, reply);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+
 			rollback(conn);
 		}
 		
@@ -215,5 +261,7 @@ public class BookService {
 		return result;
 	}
 
+
 	
+
 }

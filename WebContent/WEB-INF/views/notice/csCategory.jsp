@@ -11,12 +11,12 @@
 <link href="<%= request.getContextPath() %>/resources/css/notice/csCategory.css" rel="stylesheet">
 <title>cs_category</title>
 <!-- alert 창 출력 -->
-<% if(session.getAttribute("msg") != null) { %>
+<% if(session.getAttribute("massage") != null) { %>
 <script>
-	alert('<%= session.getAttribute("msg") %>');
+	alert('<%= session.getAttribute("massage") %>');
 </script>
 <% 
-	session.removeAttribute("msg");
+	session.removeAttribute("massage");
 	}
 %>
 </head>
@@ -24,7 +24,7 @@
 <c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" scope="application"/>
 	<div id="csct_area">
 	    <aside class="category">
-	        <div class="ca-head"><a href="${ contextPath }/faq/insert">고객센터</a></div>
+	        <div class="ca-head">고객센터</div>
 	        <!-- 어떤거 클릭했는지 정보 보내기 -->
 	        <div class="area1"><a class="ca-top" href="${ contextPath }/cs">FAQ</a>
 	            <ul class="ca-list">

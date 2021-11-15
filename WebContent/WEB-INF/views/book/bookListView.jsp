@@ -26,9 +26,11 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 <jsp:include page="/WEB-INF/views/common/menubar.jsp"/>
 <div class="csarea wrapper">
 <jsp:include page="/WEB-INF/views/common/category.jsp"/>
+
 <c:set var="searchParam" value="&searchCondition=${ param.searchCondition }&searchValue=${ param.searchValue }"/>
 <c:set var="categoryParam" value="&category=${ param.category }"/>
-		<div class="content">
+
+		<div class="content" id="moveTop">
             <div class="book_category">
                 <ul class="cLi">
                     <c:forEach var="category" items="${ categoryList }">
@@ -78,6 +80,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                                         <fmt:formatDate value="${ book.publicationDate }" type="date" pattern="yyyy년 MM월 dd일"/></span>
                                     </div>
                                     <div class="price">
+                                    	<span>판매가&nbsp;</span>
                                         <span class="book_price">
                                         <fmt:formatNumber value="${ book.salePrice }" groupingUsed="true"/>원
                                         </span>
@@ -275,6 +278,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 			  </div>
 			</div>
 			<%@ include file="/WEB-INF/views/common/adArea.jsp" %>
+			<a href="#" id="moveA"><i class="fas fa-long-arrow-alt-up"></i></a>
 		</div>
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" /> 
@@ -287,6 +291,24 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 	function sectionCategory(category){
 		location.href="${contextPath}/book/search/categorylist?category=" + category;
 	}
+	
+	$(function() {	/* 스크롤 600 멀어지면 보이기 */
+	       $(window).scroll(function() {
+	           if ($(this).scrollTop() > 600) {
+	               $('#moveA').fadeIn();
+	           } else {
+	               $('#moveA').fadeOut();
+	           }
+	       });
+	 	        
+	   });
+		
+	    $("#moveA").click(function() {	/* 천천히 올라가기 */
+	           $('html, body').animate({
+	               scrollTop : 0
+	           }, 600);
+	           return false;
+	       });
 </script>
 
 <c:choose>

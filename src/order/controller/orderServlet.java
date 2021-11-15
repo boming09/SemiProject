@@ -36,7 +36,6 @@ public class orderServlet extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/order/order.jsp");
 		view.forward(request, response);
 		
-		//order 직접 치고 들어가면 되는데 카트에서 연결이 안됨
 		
 	}
 
@@ -64,11 +63,15 @@ public class orderServlet extends HttpServlet {
 		
 		List<Cart> cartOrderList = new CartService().selectOrderList(cartNo);
 		
-		System.out.println(cartOrderList);
+		//System.out.println(cartOrderList);
 		
 		//HttpSession session = request.getSession();
 		//session.setAttribute("cartOrderList", cartOrderList);
 		// 위 두 줄 추가 무쓸모
+		
+		//밑에 두줄 일단 더해놨는데....
+		HttpSession session = request.getSession();
+		session.setAttribute("cartOrderList", cartOrderList);
 		
 		request.setAttribute("cartOrderList", cartOrderList);
 		request.getRequestDispatcher("/WEB-INF/views/order/order.jsp").forward(request, response);

@@ -8,8 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mypage.model.service.B_ReviewService;
 import mypage.model.service.MyreviewService;
-import mypage.model.vo.Myreview;
+import mypage.model.vo.B_Review;
 
 /**
  * Servlet implementation class MyreviewUpdateServlet
@@ -38,23 +39,21 @@ public class MyreviewUpdateServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int mid = Integer.parseInt(request.getParameter("mid"));
-		int category_id = Integer.parseInt(request.getParameter("category"));
-		String mtitle = request.getParameter("title");
-		String mcontent = request.getParameter("content");
+		int review_no = Integer.parseInt(request.getParameter("review_no"));
+		int book_id = Integer.parseInt(request.getParameter("book_id"));
+		String content = request.getParameter("ontent");
 		
 				
-		Myreview myreview = new Myreview();
-		myreview.setMid(mid);
-		myreview.setCategory_id(category_id);
-		myreview.setMtitle(mtitle);
-		myreview.setMcontent(mcontent);
+		B_Review b_review = new B_Review();
+		b_review.setReview_no(review_no);
+		b_review.setBook_id(book_id);
+		b_review.setContent(content);
 		
-		int result = new MyreviewService().updateMyreview(myreview);
+		int result = new B_ReviewService().updateB_Review(b_review);
 		
 		if(result > 0) {	
 			request.getSession().setAttribute("message", "게시글 수정이 완료 되었습니다.");
-			response.sendRedirect(request.getContextPath() + "/mypagemyreviewdetail?mid=" + mid);
+			response.sendRedirect(request.getContextPath() + "/mypagemyreviewdetail?review_no=" + review_no);
 		} else {		
 			request.setAttribute("message", "게시글 수정에 실패하였습니다.");
 			request.getRequestDispatcher("/WEB-INF/views/member/errorpage.jsp").forward(request, response);

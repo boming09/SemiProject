@@ -45,10 +45,10 @@
 				                <img src="${ contextPath }/resources/images/writer/prodefault.png">
 			            	</div>
 			                <!-- label의 for속성 이름과 input id이름이 같아야 연동된다~~ -->
-			                <label for="inprofile">프로필이미지 변경</label>
+			                <label for="inprofile">* 프로필이미지 변경</label>
 			                <input type="file" name="inprofile" id="inprofile" name="profile" required>
 			                <div class="wmy_self">
-			                	<span>&nbsp;자기소개</span>
+			                	<span>&nbsp;* 자기소개 (프로필이미지 / 자기소개 필수입력)</span>
 			                	<textarea rows="6" cols="60" name="ingreeting" placeholder="독자들에게 자기소개 해주세요." required></textarea>
 			                </div>
 	            		</c:otherwise>
@@ -84,7 +84,7 @@
                 <div class="wmy_emailarea">
                     <span class="wmy_email">이메일</span>
                     <span class="wmy_email2">
-                    	<input type="text" name="email" value="${ writer.userEmail }" required>
+                    	<input type="email" name="email" value="${ writer.userEmail }" required>
                     </span>
                 </div>
     			

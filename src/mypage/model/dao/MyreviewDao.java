@@ -49,6 +49,7 @@ public class MyreviewDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
+			// 검색 SQL문을 실행하는 경우 검색 값 설정
 			if(search.getSearchCondition() != null && search.getSearchValue() != null) {
 				pstmt.setString(1, search.getSearchValue());
 			}

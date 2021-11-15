@@ -37,43 +37,39 @@
             </header>
         
             <div class="review_area1">
-                <span>마이리뷰 목록</span>
-                <!-- <span>
-                    <input type="checkbox" name="mylist" value=""><label>내가 쓴 글만 보기</label>
-                    <button type="button">글 작성</button>
-                </span> -->
+                <span>마이리뷰 목록</span>                
             </div>            
 
             <div class="review_area2">
                 <div class="review_listarea">
                     <ul class="review_listtop">
-                        <li class="review_no">글번호</li>
-                        <li class="review_classification">분류</li>
-                        <li class="review_title">제목</li>
-                        <li class="review_writer">작성자</li>
-                        <li class="review_views">조회수</li>
-                        <li class="review_date">등록일</li>
-                        <li class="review_status">평점</li>
+                        <li class="review_no">리뷰번호</li>
+                        <li class="review_classification">도서코드</li>
+                        <li class="review_title">회원번호</li>
+                        <li class="review_writer">작성일</li>
+                        <li class="review_views">내용</li>
+                        <li class="review_date">평점</li>
+                        <li class="review_status">참조리뷰번호</li>
                     </ul>
                     <c:if test="${ !empty loginUser }">
-                	<c:forEach var="review" items="${ myreviewList }">
-                	<ul class="review_list" onclick="detailView(${ review.mid })">
-                		<li class="review_no">${ review.mid }</li>
-                		<li class="review_classification">${ review.category_name }</li>
-                		<li class="review_title">${ review.mtitle }</li>
+                	<c:forEach var="review" items="${ b_reviewList }">
+                	<ul class="review_list" onclick="detailView(${ b_review.review_no })">
+                		<li class="review_no">${ b_review.review_no }</li>
+                		<li class="review_classification">${ b_review.book_id }</li>
                 		
-                		<c:choose>
-			           	<c:when test="${ review.user_nickname != null}">
-			           	<li class="review_writer">${ review.user_nickname }</li>
-			            </c:when>
-			            <c:otherwise>
-			            <li class="review_writer">${ loginUser.userName }</li>
-			            </c:otherwise>
+                		<c:choose> 
+				           	<c:when test="${ b_review.user_no != null}">
+				           	<li class="review_writer">${ b_review.user_no }</li>
+				            </c:when>
+				            <c:otherwise>
+				            <li class="review_writer">${ loginUser.userName }</li>
+				            </c:otherwise>
 			            </c:choose>                		
                 		
-                		<li class="review_views">${ review.mcount }</li>
-                		<li class="review_date">${ review.create_Date }</li>
-                		<li class="review_status"></li>
+                		<li class="review_title">${ b_review.create_date }</li>
+                		<li class="review_views">${ b_review.content }</li>
+                		<li class="review_date">${ b_review.rating }</li>
+                		<li class="review_status">${ b_review.ref_no }</li>
                 	</ul>
                     </c:forEach>
                     </c:if>
@@ -186,10 +182,10 @@
 						<c:if test="${ param.searchCondition == 'writer' }">selected</c:if>>작성자</option>
 					</select> 
 					
-					<span class="input_area2"> 
-					<input type="search" name="searchValue" value="${ param.searchValue }">
-					</span>
-					
+					<span class="review_input_area2"> 
+					<input type="search" name="searchValue" id="reviewsearch"
+						value="${ param.searchValue }">
+					</span>					
 					<button type="submit" class="noticeInsert" id="noticeInsert">검색하기</button>
 										
 					<c:if test="${ !empty loginUser }">
@@ -208,17 +204,18 @@
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
-	<c:choose>
-		<c:when test="${ !empty loginUser }">
-			<script>
-				function detailView(mid){
-					location.href='${contextPath}/mypagemyreviewdetail?mid=' + mid;
+	<script>
+				function detailView(review_no){
+					location.href='${contextPath}/mypagemyreviewdetail?review_no=' + review_no;
 				}
-			</script>
+	</script>
+	
+	<c:choose>
+		<c:when test="${ !empty loginUser }">			
 		</c:when>
 		<c:otherwise>
 			<script>
-				function detailView(mid){
+				function detailView(review_no){
 					alert('로그인 후 이용 가능합니다');
 					location.href='${contextPath}/login';
 				}
@@ -227,6 +224,7 @@
 	</c:choose>
 	
 	<script>
+	/*	
 		let rating = new Rating();//별점 인스턴스 생성
 		//별점 마킹 모듈 프로토타입으로 생성
 		function Rating(){};
@@ -253,6 +251,7 @@
 		        }
 		    })
 		});
+	*/
 	</script>
 </body>
 </html>

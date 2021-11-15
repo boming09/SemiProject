@@ -8,6 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import member.model.vo.Member;
+import order.model.service.CartService;
+import order.model.vo.Order;
 
 /**
  * Servlet implementation class payingServlet
@@ -28,8 +33,18 @@ public class payingServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/order/paying.jsp");
+	
+		//여기서 결제수단 저장해야한다
+
+		String pay = request.getParameter("pay");
+		HttpSession session = request.getSession();
+		session.setAttribute("pay", pay);
+		
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/order/paying.jsp"); //여기
 		view.forward(request, response);
+	
+		
+	
 	}
 
 	/**

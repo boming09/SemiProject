@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%
+	pageContext.setAttribute("newReply", "\n");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +31,7 @@ crossorigin="anonymous"></script>
 <jsp:include page="/WEB-INF/views/common/menubar.jsp"/>
 
 
-<div class="csarea wrapper">
+<div class="csarea wrapper" id="moveTop">
     <div class="content">
         <div class="detailTopWrap">
 
@@ -90,7 +92,7 @@ crossorigin="anonymous"></script>
                             </span>
                           </span>
                         <span class="reviewCount">
-                            <a href="#review">리뷰(<em>10</em>)</a><!-- 리뷰로 이동 -->
+                            <a href="#review" id="moveReview">리뷰(${ book.reviewCount })</a><!-- 리뷰로 이동 -->
                         </span>
                     </div>
                 </div>
@@ -139,8 +141,7 @@ crossorigin="anonymous"></script>
                         <div class="acArea">
 
                           <form name="acForm" method="post">
-                          	 	<input type="hidden" name="book_id" value="${ book.bid }">
-
+                          	 	<input type="hidden" name="book_id" value="${ book.bid }">            
 	                            <div class="btn_count">
 	                                <input type="number" name="count" value="1" min="1" max="50" size="5">
 	                            </div>
@@ -168,7 +169,7 @@ crossorigin="anonymous"></script>
             <div class="info_introduce information">
                 <div class="infoSet"><h4>책 소개</h4></div>
                 <div class="infoSetCont_wrap">
-                    <p>${ book.bintro }</p>
+                    <p>${ fn:replace(book.bintro, newReply, '<br>')}</p>
                     <!-- iframe or 목차 넣기 -->
 	                  <div class="infoIframe">
                     	<c:if test="${ !empty book.burl }">
@@ -192,7 +193,7 @@ crossorigin="anonymous"></script>
                         <%-- <div class="authImg"><img src="${contextPath}/resources/images/author/auth.jpg"></div> --%>
                         <div class="authTxtWrap">
                             <div class="authTit"><h5 class="authorName">${ book.author }</h5></div>
-                            <span class="authTxt"><p>${ book.aintro }</p> </span>
+                            <span class="authTxt"><p>${ fn:replace(book.aintro, newReply, '<br>')}</p> </span>
                         </div>
                     </div>
                 </div>
@@ -201,9 +202,9 @@ crossorigin="anonymous"></script>
             <div class="info_review information">
                 <div class="infoSet" id="review"><h4>회원 리뷰</h4></div>
                 <div class="infoSetCont_wrap">
-                    <!-- 1 -->
+                    <%-- 1. 평균 별점 영역 --%>
                     <div class="reviewContTop">
-                        <div class="review_starWrap"><!-- 별점 영역 -->
+                        <div class="review_starWrap">
                             <p class="reviewTop">봄숲 회원이 평가한 평균 별점</p>
                             <div class="book_rating">
                                 <span class="total_rating">
@@ -241,64 +242,71 @@ crossorigin="anonymous"></script>
 		                                    <c:if test="${ book.starScore == '10' }">checked</c:if>>
 		                                    <label for="p10">10</label>
 		                                  </span>
-		                                  <output for="starScore2"><b>${ book.starScore }</b>점</output>							
+		                                  <output for="starScore2"><b>${ book.avgScore }</b></output>					
                                     </span>
-                                </span><!-- 별 -->
-                                <span class="bom_m">/10</span><!-- 10점 만점 -->
+                                </span>
+		                        <span class="bom_m">&nbsp;/10</span>
                             </div>
                         </div>
                     </div>
                     <!-- 2 -->
+                    <c:if test="${ loginUser.userNo ne book.userNo }">
                     <div class="reviewWrite">
-                   		<form method="post" name="reviewForm" action="${ contextPath }/reply/insert">
+                   		<form method="post" name="replyForm">
                         <div class="writeRating">
                             <span>평점&nbsp;</span>
                             <span class="starGrp">
-                                <span class="star-input">
-                                    <span class="input">
-                                        <input type="radio" name="inputScore" value="1" id="p1">
-                                        <label for="p1">1</label>
-                                        <input type="radio" name="inputScore" value="2" id="p2">
-                                        <label for="p2">2</label>
-                                        <input type="radio" name="inputScore" value="3" id="p3">
-                                        <label for="p3">3</label>
-                                        <input type="radio" name="inputScore" value="4" id="p4">
-                                        <label for="p4">4</label>
-                                        <input type="radio" name="inputScore" value="5" id="p5">
-                                        <label for="p5">5</label>
-                                        <input type="radio" name="inputScore" value="6" id="p6">
-                                        <label for="p6">6</label>
-                                        <input type="radio" name="inputScore" value="7" id="p7">
-                                        <label for="p7">7</label>
-                                        <input type="radio" name="inputScore" value="8" id="p8">
-                                        <label for="p8">8</label>
-                                        <input type="radio" name="inputScore" value="9" id="p9">
-                                        <label for="p9">9</label>
-                                        <input type="radio" name="inputScore" value="10" id="p10">
-                                        <label for="p10">10</label>
-                                    </span>
-                                    <output for="inputScore"><b>9</b></output>						
-                                </span>
+                                <span class="rstarScore">
+									<span class="score">
+										<input type="radio" name="rstarScore" value="1" id="s1">
+										<label for="s1">1</label>
+										<input type="radio" name="rstarScore" value="2" id="s2">
+										<label for="s2">2</label>
+										<input type="radio" name="rstarScore" value="3" id="s3">
+										<label for="s3">3</label>
+										<input type="radio" name="rstarScore" value="4" id="s4">
+										<label for="s4">4</label>
+										<input type="radio" name="rstarScore" value="5" id="s5">
+										<label for="s5">5</label>
+										<input type="radio" name="rstarScore" value="6" id="s6">
+										<label for="s6">6</label>
+										<input type="radio" name="rstarScore" value="7" id="s7">
+										<label for="s7">7</label>
+										<input type="radio" name="rstarScore" value="8" id="s8">
+										<label for="s8">8</label>
+										<input type="radio" name="rstarScore" value="9" id="s9">
+										<label for="s9">9</label>
+										<input type="radio" name="rstarScore" value="10" id="s10">
+										<label for="s10">10</label>
+									</span>
+									<output for="rstarScore"><b id="b">0</b>점</output>					
+								</span>
                             </span>
                         </div>
                         <div class="writeArea_wrap">
                             <div class="writeArea">
-                                <textarea id="replyCont" name="replyCont" rows="5" cols="70" style="resize:none;" maxlength="149" 
+                                <textarea id="replyCont" name="rcontent" rows="5" cols="70" style="resize:none;" maxlength="150" 
                                 placeholder="한글 기준 150자까지 작성 가능" onkeydown="calc()" onkeyup="calc()" onkeypress="calc()"></textarea>
-                                <span class="wordCount">
-                                    <input type="number" id="count" value="0" min="0" max="150" readonly>/150
-                                </span>
+                                <div class="wordCount">
+                                	<input type="text" id="count" value="0">/150
+                                </div>
+                                <input type="hidden" name="reviewCount" value="${ book.reviewCount }">
+                                <input type="hidden" name="sumScore" value="${ book.sumScore }">
                             </div>
-                            <input type="hidden" name="bid" value="${ book.bid }">
-                            <button class="writeBtn" type="submit">등록</button>
+                            <button id="writeBtn" type="button" onclick="reply(${ book.bid })">등록</button>
                         </div>
                    	</form>
                     </div>
+                    </c:if>
+                    
                     <!-- 3 reviewList -->
                     <c:if test="${ !empty book.replyList }">
                    	<c:forEach var="reply" items="${ book.replyList }">
-                    <div class="reviewContentList">
-                        <div class="reviewInfoGrp">
+                   	<c:choose>
+                   		
+                   		<c:when test="${ reply.refRid eq 0 }">
+                   		<div class="reviewContentList">
+						<div class="reviewInfoGrp">
                             <div class="reviewInfoTop">
                                 <div class="cmt_rating">
                                     <span class="rating">
@@ -339,11 +347,12 @@ crossorigin="anonymous"></script>
                                         </span>
                                     </span>
                                     <div>
-                                    <%-- <c:if test="${ loginUser.userNo == reply.userNo }"> --%>
-					                <!-- <button type="button" onclick="updateBoardView();">수정하기</button>
-					                <button type="button" onclick="deleteBoard();">삭제하기</button> -->
-					                <%-- </c:if> --%>
-                                    </div>
+                                    
+                                    <c:if test="${ loginUser.userNo eq reply.userNo }">
+					                <button type="button" onclick="deleteReply(${ reply.rid }, ${ book.bid });" class="deleteBtn">삭제하기</button>
+ 					                </c:if>
+ 					                
+                               		</div>
                                 </div>
                                 <div class="cmt_cont">
                                     <span class="txt_cont">${ reply.rcontent }</span>
@@ -356,50 +365,125 @@ crossorigin="anonymous"></script>
                                 	<fmt:formatDate value="${ reply.createDate }" type="date" pattern="yyyy-MM-dd"/>
                                 </span>
                             </div>
+                        </div> 
                         </div>
+	                        <c:if test="${ loginUser.userNo eq book.userNo }">
+	                  			<span class="authReply" onclick="show(${ reply.rid })">작가 댓글 등록하기</span><div>&nbsp;</div>
+		                        <div class="replyCmt" id="replyCmt${ reply.rid }">
+			                        <form method="post" name="addReplyForm" action="${ contextPath }/addReply/insert">
+			                        <div class="writeArea_wrap">
+			                            <div class="writeArea">
+			                                <textarea id="replyCont${ reply.rid }" name="rcontent" rows="4" cols="50" style="resize:none;" maxlength="150" 
+			                                placeholder="한글 기준 150자까지 작성 가능" onkeydown="calcAuth(${ reply.rid })" onkeyup="calcAuth(${ reply.rid })" onkeypress="calcAuth(${ reply.rid })"></textarea>
+			                                <div class="wordCount">
+			                                    <input type="text" id="count${ reply.rid }" class="count" value="0">/150
+			                                </div>
+			                            </div>
+			                            <input type="hidden" name="bid" value="${ book.bid }">
+			                            <input type="hidden" name="refRid" value="${ reply.rid }">
+			                            <button id="writeBtn" type="submit" onclick="addReply(${ reply.rid }, ${ book.bid })">등록</button>
+			                        </div>
+				                   	</form>
+	                        	</div>
+	                   		</c:if>            		
+                   		</c:when>
+                   		<c:otherwise>
+	                   		<c:choose>
+	                   			<c:when test="${ loginUser.userNo eq book.userNo and reply.refRid ne 0}">
+	                   			<div class="see">
+	                   				<span class="authReply${ reply.rid } authReply" onclick="show(${ reply.rid })">작가 댓글 보기</span><div>&nbsp;</div>
+			                        <div class="replyCmt" id="replyCmt${ reply.rid }">
+			                        
+			                        	<c:if test="${ loginUser.userNo == reply.userNo }">
+			                        	<div class="cmt_auth">
+						                <button type="button" onclick="deleteReply(${ reply.rid }, ${ book.bid });" class="deleteBtn">삭제하기</button>
+						                </div>
+	 					                </c:if>
+	 					                
+			                            <div class="cmt_cont">
+			                                <span class="txt_cont">${ reply.rcontent }</span>
+			                            </div>
+			                            <div class="reviewInfoBot">
+			                                <span class="txt_id">${ book.author }&nbsp;<i class="fas fa-check-circle"></i></span>
+			                                <span class="txt_esc">|</span>
+			                                <span class="txt_date">
+			                                	<fmt:formatDate value="${ reply.createDate }" type="date" pattern="yyyy-MM-dd"/>
+											</span>
+			                            </div>
+	                        		</div>
+	                        		</div>
+	                        	
+	                   			
+	                   			</c:when>
+	                   			
+	                   			<c:when test="${ loginUser.userNo ne book.userNo }">
+	                   				<span class="authReply" onclick="show(${ reply.rid })">작가 댓글 보기&nbsp;<i class="fas fa-caret-down"></i></span><div>&nbsp;</div>
+		                        	<div class="replyCmt"  id="replyCmt${ reply.rid }">
+			                            <div class="cmt_cont">
+			                                <span class="txt_cont">${ reply.rcontent }</span>
+			                            </div>
+			                            <div class="reviewInfoBot">
+			                                <span class="txt_id">${ book.author }&nbsp;<i class="fas fa-check-circle"></i></span>
+			                                <span class="txt_esc">|</span>
+			                                <span class="txt_date">
+			                                	<fmt:formatDate value="${ reply.createDate }" type="date" pattern="yyyy-MM-dd"/>
+											</span>
+			                            </div>
+	                        		</div>
+	                   			</c:when>
+	                   		</c:choose> 
+                   		</c:otherwise>
+                   		
+                   	</c:choose>
                         
-                        
-                        <div class="authReply">작가 댓글 보기&nbsp;<i class="fas fa-caret-down"></i></div>
-                        <div class="replyCmt">
-                            <div class="cmt_cont">
-                                <span class="txt_cont">
-				                                    노르웨이의 문학을 세계에 알린 공로를 인정받아 2013년 페르귄트상을,
-                                  2015년 상트페테르부르크상을, 2016년 리버튼 공로상을 수상했다.
-				                                    몸이 열 개라도 모자랄 것 같은 작가 요 네스뵈는 그러나 뮤지션으로도 매우 활발히 활동하고 있다.
-				                                    실제로 그는 노르웨이의 록밴
-                                </span>
-                            </div>
-                            <div class="reviewInfoBot">
-                                <span class="txt_id">${ book.author }&nbsp;<i class="fas fa-check-circle"></i></span>
-                                <span class="txt_esc">|</span>
-                                <span class="txt_date">2021-10-28</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 작가 계정 답글 달기 버튼 ... -->
                    </c:forEach>
                   </c:if>
+                  	 <script>
+               			$(document).ready(function(){	// div.see의 이전(span.authReply) 이전  div(.replyCmt)를 숨기기
+               				$('.see').prev().prev().prev().hide();
+               			
+               			});
+	                </script>
+                 
+                  <div class="reviewContentList">&nbsp;</div>
                 </div>
             </div>  
         </div>
     </div>
     <%@ include file="/WEB-INF/views/common/adArea.jsp" %>
+    <a href="#" id="moveA"><i class="fas fa-long-arrow-alt-up"></i></a>
 </div>
-<!-- footer -->
+<%-- footer --%>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 <script src="${contextPath}/resources/js/star/jquery-1.11.3.min.js"></script>
 <script src="${contextPath}/resources/js/star/star.js"></script>
 <script>
-    $('.authReply').click(function(){
-        if($(this).siblings('.replyCmt').css('display') == 'none'){ // question다음의 컨텐츠 영역이 display=none일 때
-            $('.replyCmt').slideUp();       // 기존에 열려있는 콘텐츠는 닫고
-            $(this).siblings('.replyCmt').slideDown();  // 클릭한 메뉴의 콘텐츠는 밑으로 스르륵 내려오게
-        }else{
-            $(this).siblings('.replyCmt').slideUp();    // display=none 이 아닐 때 클릭 시 위로 올라가게
-        }
-    });
-</script>
-<script>
+/*	$('.authReply').click(function(){
+	    if($(this).siblings('.replyCmt').css('display') == 'none'){ // question다음의 컨텐츠 영역이 display=none일 때
+	        $('.replyCmt').slideUp();       // 기존에 열려있는 콘텐츠는 닫고
+	        $(this).siblings('.replyCmt').slideDown();  // 클릭한 메뉴의 콘텐츠는 밑으로 스르륵 내려오게
+	    }else{
+	        $(this).siblings('.replyCmt').slideUp();    // display=none 이 아닐 때 클릭 시 위로 올라가게
+	    }
+	}); */
+	// 나타내기 모션.. 하고 싶다,,,
+ 	function show(rid){
+		let replyCmt = document.getElementById('replyCmt' + rid);
+		
+		replyCmt.style.display = (replyCmt.style.display == 'none') ? "block" : "none";
+	}
+    
+/*     $(document).ready(function(){
+    	$("textarea").keyup(function(){
+    		let inputLenth = $(this).val().length;
+    		if(inputLenth < 151){
+    			$("#count").text(inputLenth);
+    		} else {
+    			alert("한글 기준 150자까지 작성 가능합니다");
+    		}
+    	});
+    }); */
+    
     function calc(){
         document.getElementById('count').value = 
         document.getElementById('replyCont').value.length;
@@ -407,18 +491,52 @@ crossorigin="anonymous"></script>
             alert("한글 기준 150자까지 입력가능합니다.");
         }
     }
+	
+    function calcAuth(rid){	// 작가 댓글 입력 -> 리뷰 번호 값 부여
+        document.getElementById('count' + rid).value = 
+        document.getElementById('replyCont' + rid).value.length;
+        if(document.getElementById('count' + rid).value == 150) {
+            alert("한글 기준 150자까지 입력가능합니다.");
+        }
+    }
     
     $(document).ready(function () {
         $('#etcMsg').click(function(){  // a 태그를 클릭하면 함수 동작하는데
             if($('.msgInfo').css('display') == 'none'){  // div가 안보이면
-                $('.msgInfo').show();   // 보이게
+                $('.msgInfo').slideDown();   // 보이게
             } else {
-                $('.msgInfo').hide();   // 보이면 안보이게
+                $('.msgInfo').slideUp();   // 보이면 안보이게
             }
         });
     });
-</script>
+    
+	$(function() {	/* 스크롤 600 멀어지면 보이기 */
+       $(window).scroll(function() {
+           if ($(this).scrollTop() > 600) {
+               $('#moveA').fadeIn();
+           } else {
+               $('#moveA').fadeOut();
+           }
+       });
+ 	        
+   });
+	
+    $("#moveA").click(function() {	/* 천천히 올라가기 */
+           $('html, body').animate({
+               scrollTop : 0
+           }, 600);
+           return false;
+       });
+    
+    $("#moveReview").click(function() {	/* 천천히 리뷰 이동 */
+    	var offset = $("#review").offset();
 
+        $('html, body').animate({
+        	scrollTop : offset.top
+        }, 500);
+        return false;
+    });
+</script>
 <c:choose>
 <c:when test="${ !empty loginUser }">
 <script>            
@@ -432,6 +550,30 @@ crossorigin="anonymous"></script>
     	document.forms.acForm.action="${ contextPath }/cart";
     	document.forms.acForm.submit();
     }
+    
+    function reply(bid){
+    	let rcontent = document.forms.replyForm.rcontent.value.length;
+    	let rstarScore = document.forms.replyForm.rstarScore.value;
+    	
+    	console.log(rstarScore);
+    	
+    	if(rcontent == 0 || rstarScore == 0){
+    		alert("별점과 내용을 입력해주세요");
+    	} else {
+	    	document.forms.replyForm.action="${ contextPath }/reply/insert?bid=" + bid;
+	    	document.forms.replyForm.submit();
+    	}
+    }
+    
+    function deleteReply(rid, bid){
+		let result = confirm('정말로 삭제하시겠습니까?');
+		
+		if(result){
+			location.href="${contextPath}/reply/delete?bid="+ bid + "&rid="+rid;
+		} else {
+			location.href="${contextPath}/book/detail?bid=" + bid + "#review";
+		}
+    }
 </script>
 </c:when>
 <c:otherwise>
@@ -444,6 +586,17 @@ crossorigin="anonymous"></script>
 	function cart(){
 		alert('로그인 후 이용 가능합니다.');
 		location.href="${contextPath}/login";
+	}
+	
+	function reply(bid){
+		let result = confirm('로그인 후 이용 가능합니다. 로그인 하시겠습니까?');
+		
+		if(result){
+			location.href="${contextPath}/login";
+		} else {
+			location.href="${contextPath}/book/detail?bid=" + bid + "#review";
+		}
+		
 	}
 </script>
 </c:otherwise>

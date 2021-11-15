@@ -78,11 +78,11 @@ public class MemberService {
 		return updatedMember;
 	}
 	
-	public int deleteAccount(int userNo) {
+	public int deleteAccount(int userNo/*, String dissatisfaction*/) {
 		Connection conn = getConnection();
 		// Member updatedMember = null;
 		
-		int result = memberDao.deleteAccount(conn, userNo);
+		int result = memberDao.deleteAccount(conn, userNo/*, dissatisfaction*/);
 		
 		if(result > 0) {
 			commit(conn);
@@ -111,6 +111,16 @@ public class MemberService {
 		Member result = memberDao.searchPw(conn, userId, userName, userEmail);
 		
 		close(conn);		
+		
+		return result;
+	}
+	
+	public Member memberLogin(String userId, String userName, String userEmail) {
+		Connection conn = getConnection();
+		
+		Member result = memberDao.memberLogin(conn, userId, userName, userEmail);
+		
+		close(conn);
 		
 		return null;
 	}
@@ -208,6 +218,24 @@ public class MemberService {
 		
 		close(conn);
 		
+		return result;
+	}
+
+	public Member checkClient(String userPwd) {
+		Connection conn = getConnection();
+		
+		
+		
+		return null;
+	}
+
+	public Member deleteAccount2(String dissatisfaction, String userId, String userPwd) {
+		Connection conn = getConnection();
+		
+		Member result = memberDao.deleteAccount2(conn, dissatisfaction, userId, userPwd);
+		
+		close(conn);
+				
 		return result;
 	}
 

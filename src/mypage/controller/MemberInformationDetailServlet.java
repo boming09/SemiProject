@@ -9,17 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.service.MemberService;
+import member.model.vo.Member;
+
 /**
- * Servlet implementation class MypageOrchcaServlet
+ * Servlet implementation class MemberInformationServlet
  */
-@WebServlet("/mypageorchca")
-public class MypageOrchcaServlet extends HttpServlet {
+@WebServlet("/memberinformationdetail")
+public class MemberInformationDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MypageOrchcaServlet() {
+    public MemberInformationDetailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,9 +30,9 @@ public class MypageOrchcaServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 마이페이지의 주문/변경/취소 클릭 시 주문/변경/취소로 단순 이동
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/mypage-orchca.jsp");
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 마이페이지의 회원정보수정 클릭 시 회원정보수정 으로 단순 이동
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/memberinformationDetail.jsp");
 		view.forward(request, response);
 	}
 
@@ -37,8 +40,6 @@ public class MypageOrchcaServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	
 	}
-
 }

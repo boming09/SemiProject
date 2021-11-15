@@ -91,9 +91,6 @@
                        
             <div class="wc_btn">
                 <button type="button" onclick="location.href='${ contextPath }/w-check'">취소</button>
-                <c:if test="${ loginUser.userNo == wcheck.user_no }">
-	                <button type="button" onclick="location.href='#'">수정하기</button>
-                </c:if>
             </div>
            
             

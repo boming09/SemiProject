@@ -51,7 +51,20 @@ public class Myreview {
 		this.modify_Date = modify_Date;
 		this.status = status;
 	}
+	
 
+	public Myreview(int mid, String category_name, String mtitle, String user_nickname, int mcount, Date create_Date) {
+		super();
+		this.mid = mid;
+		this.category_name = category_name;
+		this.mtitle = mtitle;
+		this.user_nickname = user_nickname;
+		this.mcount = mcount;
+		this.create_Date = create_Date;
+	}
+	
+	
+	
 
 	public int getMid() {
 		return mid;

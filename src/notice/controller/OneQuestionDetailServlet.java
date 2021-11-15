@@ -43,7 +43,7 @@ public class OneQuestionDetailServlet extends HttpServlet {
 			request.setAttribute("one", one);
 			request.getRequestDispatcher("/WEB-INF/views/notice/oneQuestionDetailView.jsp").forward(request, response);
 		} else {
-			request.getSession().setAttribute("msg", "실패^^~~");
+			request.getSession().setAttribute("massage", "실패^^~~");
 			request.getRequestDispatcher("/WEB-INF/views/notice/oneQuestionView.jsp").forward(request, response);
 		}
 		

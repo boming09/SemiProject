@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Book {
+
 	private int bid;				// 도서 번호
 	private String btitle;			// 도서 제목
 	private int cid;				// 카테고리 번호
@@ -26,8 +27,11 @@ public class Book {
 	private double avgScore;		// 평점
 	private int sumScore;			// 별점 합계
 	private int reviewCount;        // 작가마이페이지 내도서 리뷰
+
+
+
 	
-	private List<Reply> replyList;	// 댓글목록
+	private List<Reply> replyList;		// 댓글목록
 //	BOOK_ID	NUMBER
 //	BOOK_NAME	VARCHAR2(20 BYTE)
 //	CATEGORY_ID	NUMBER
@@ -195,12 +199,24 @@ public class Book {
 	public void setAvgScore(double avgScore) {
 		this.avgScore = avgScore;
 	}
+
 	public int getSumScore() {
 		return sumScore;
 	}
 	public void setSumScore(int sumScore) {
 		this.sumScore = sumScore;
 	}
+
+	
+	public int getSumScore() {
+		return sumScore;
+	}
+
+	public void setSumScore(int sumScore) {
+		this.sumScore = sumScore;
+	}
+
+
 	public int getReviewCount() {
 		return reviewCount;
 	}

@@ -8,18 +8,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import member.model.dao.MemberDao;
+import member.model.service.MemberService;
+import member.model.vo.Member;
 
 /**
- * Servlet implementation class MypageReturnServlet
+ * Servlet implementation class IdServlet
  */
-@WebServlet("/mypagereturn")
-public class MypageReturnServlet extends HttpServlet {
+@WebServlet("/memberout2")
+public class MemberOutServlet2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MypageReturnServlet() {
+    public MemberOutServlet2() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,18 +32,22 @@ public class MypageReturnServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 마이페이지 에서 반품주문내역 클릭 시 반품주문내역 으로 단순 이동
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/mypage-return.jsp");
-		view.forward(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		
+				
+			
 	}
-
+	/*	
+	RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/memberout2.jsp");
+		view.forward(request, response);		
+		
+	}
+	*/
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/memberout2.jsp");
+		view.forward(request, response);
 	}
-
 }

@@ -37,7 +37,7 @@ h4{
 /* 헤더 center */
 .hdcenter{
 	background : lightgray;
-	height: 120px;
+	height: 160px;
 	margin-left : 50px;
 	margin-right : 50px;
 	display: flex;
@@ -46,15 +46,18 @@ h4{
 
 /* 왼쪽 div */
 .left, .right {
-	width : 250px;
-	height : 80px;
+	width : 300px;
+	height : 120px;
 	background : white;
-	font-size : 0.8rem;
+	font-size : 0.85rem;
 	margin : 20px;
-	padding-top : 10px;
-	padding-left : 10px;
+	padding : 10px;
+	line-height : 25px;
+	/* padding-top : 10px;
+	padding-left : 10px; 
 	margin-left : 50px;
-	margin-right : 50px;	
+	margin-right : 50px;
+	*/	
 }
 
 /* 전체 주문내역 */
@@ -172,7 +175,6 @@ h4{
 	width : 80px;
 	height : 80px;
 	background: #497D4E;
-	color : white;
 	text-align : center;
 	font-size : 1.8rem;
 	margin-top : 35px;
@@ -183,6 +185,9 @@ h4{
 	top : 45%;
 	right : 34%;
 	*/
+}
+.searchbut a{
+	color : white;
 }
 
 /* 주문 상태 */

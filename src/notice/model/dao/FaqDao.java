@@ -760,23 +760,6 @@ public class FaqDao {
 		return faqList;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
+	
 }

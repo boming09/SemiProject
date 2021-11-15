@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import member.model.vo.Member;
+import mypage.model.service.B_ReviewService;
 import mypage.model.service.MyreviewService;
+import mypage.model.vo.B_Review;
 import mypage.model.vo.Myreview;
 
 /**
@@ -40,20 +42,18 @@ public class MypageMyReviewInsertViewServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int category_id = Integer.parseInt(request.getParameter("category"));
-		String mtitle = request.getParameter("title");
-		String mcontent = request.getParameter("content");
-		int mwriter = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
+		int book_id = Integer.parseInt(request.getParameter("book_id"));
+		String content = request.getParameter("content");
+		int user_no = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
 				
 		
-		Myreview myreview = new Myreview();
-		myreview.setCategory_id(category_id);
-		myreview.setMtitle(mtitle);
-		myreview.setMcontent(mcontent);
-		myreview.setMwriter(mwriter);
-		myreview.setMtype(1);
+		B_Review b_review = new B_Review();
+		b_review.setBook_id(book_id);
+		b_review.setContent(content);
+		b_review.setUser_no(user_no);
+		b_review.setRef_no(1);
 		
-		int result = new MyreviewService().insertBoard(myreview);
+		int result = new B_ReviewService().insertBoard(b_review);
 		
 		if(result > 0) {
 		/* 성공 시 "게시글 등록이 완료 되었습니다" alert 후 게시글 목록으로 */

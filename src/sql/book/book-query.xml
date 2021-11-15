@@ -1244,24 +1244,112 @@ SELECT
      , BOOK_IMG
      , STAR_SCORE
      , AVG_SCORE
+     , SUM_SCORE
      FROM BOOK
      JOIN B_CATEGORY USING(CATEGORY_ID)
     WHERE BOOK_ID = ?
 </entry>
-<!-- SELECT REPLY LIST -->
-<entry key="selectReplyList">
+
+<!-- REPLY -->
+<entry key="getReviewCount">
 	SELECT
-		   REVIEW_NO
-		 , BOOK_ID
-		 , USER_NO
-         , USER_ID
-		 , CREATE_DATE
-		 , CONTENT
-		 , RATING
-		 , REF_NO
-	FROM B_REVIEW
-    JOIN MEMBER USING(USER_NO)
-   WHERE BOOK_ID = ?
+		   COUNT(REVIEW_NO)
+	  FROM B_REVIEW
+	 WHERE REF_NO IS NULL
+	   AND STATUS = 'Y'
+	   AND BOOK_ID = ?
+</entry>
+
+<entry key="selectReplyList">
+SELECT
+       REVIEW_NO
+     , BOOK_ID
+     , USER_NO
+     , USER_ID
+     , CREATE_DATE
+     , CONTENT
+     , RATING
+     , REF_NO
+     , STATUS
+ FROM (SELECT
+               REVIEW_NO
+             , BOOK_ID
+             , USER_NO
+             , USER_ID
+             , CREATE_DATE
+             , CONTENT
+             , RATING
+             , REF_NO
+             , R.STATUS
+          FROM B_REVIEW R
+          JOIN MEMBER USING(USER_NO)
+         WHERE BOOK_ID = ?
+           AND R.STATUS = 'Y'
+         ORDER BY CREATE_DATE DESC)
+  START WITH REF_NO IS NULL
+CONNECT BY PRIOR REVIEW_NO = REF_NO
+</entry>
+
+<entry key="insertReply">
+INSERT INTO B_REVIEW(
+    REVIEW_NO
+  , BOOK_ID
+  , USER_NO
+  , CREATE_DATE
+  , CONTENT
+  , RATING
+  , REF_NO
+  , STATUS
+  ) VALUES (
+    SEQ_REVIEW_NO.NEXTVAL
+  , ?
+  , ?
+  , SYSDATE
+  , ?
+  , ?
+  , NULL
+  , 'Y'
+  )
+</entry>
+
+<entry key="updateAvgScore">
+UPDATE BOOK 
+SET SUM_SCORE = SUM_SCORE + ?
+  , AVG_SCORE = ?
+  , STAR_SCORE = ?
+WHERE BOOK_ID = ?
+</entry>
+
+<entry key="deleteReply">
+UPDATE B_REVIEW
+   SET STATUS = 'N'
+ WHERE REVIEW_NO = ?
+</entry>
+
+<entry key="deleteAddReply">
+UPDATE B_REVIEW
+   SET STATUS = 'N'
+ WHERE REF_NO = ?
+</entry>
+
+<entry key="insertAddReply">
+INSERT INTO B_REVIEW(
+    REVIEW_NO
+  , BOOK_ID
+  , USER_NO
+  , CREATE_DATE
+  , CONTENT
+  , REF_NO
+  , STATUS
+  ) VALUES (
+    SEQ_REVIEW_NO.NEXTVAL
+  , ?
+  , ?
+  , SYSDATE
+  , ?
+  , ?
+  , 'Y'
+  )
 </entry>
 <entry key="cSelect">
 	SELECT

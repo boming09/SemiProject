@@ -1,11 +1,20 @@
 package order.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
+
+import book.model.vo.Book;
+import main.model.vo.Recommend;
+import member.model.vo.Member;
+
 import static common.JDBCTemplate.*;
 
 import order.model.dao.cartDao;
 import order.model.vo.Cart;
+import order.model.vo.Coupon;
+import order.model.vo.Order;
+import order.model.vo.OrderDetail;
 
 public class CartService {
 
@@ -102,6 +111,126 @@ public class CartService {
 		close(conn);
 		
 		return result;
+	}
+
+	public int insertOrder(Cart cart) { //필요 x
+		Connection conn = getConnection();
+		
+		int result = cartDao.insertOrder(conn, cart);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
+	public Cart selectAbook(int book_id) {
+		Connection conn = getConnection();
+		
+		
+		Cart direct = cartDao.selectAbook(conn,book_id);
+		close(conn);
+
+		return direct;
+	}
+
+	/*public int insertOrderDetail(List<OrderDetail> orderDt) {
+		Connection conn = getConnection();
+		
+		int result = cartDao.insertOrderDetail(conn, orderDt);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}*/
+
+	public int insertFinalOrder(Order order) {
+		Connection conn = getConnection();
+		
+		//오더 삽입
+		int orderResult = cartDao.insertFinalOrder(conn, order);
+		
+		//오더디테일 삽입
+		int orderDetailResult = 0;
+		
+		//북테이블에 판매수량 증가
+		int addSaleRateResult = 0;
+		
+		for(OrderDetail orderDetail : order.getOrderDetail()) {
+			orderDetailResult += cartDao.insertOrderDetail(conn, orderDetail);
+		
+			//amount add
+			addSaleRateResult += cartDao.updateBookSaleRate(conn, orderDetail);
+		}
+		
+		int result = 0;
+		//&& addSaleRateResult == order.getOrderDetail().size()
+		if(orderResult > 0 && orderDetailResult == order.getOrderDetail().size() && addSaleRateResult == order.getOrderDetail().size()) {
+			commit(conn);
+			result = 1;
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
+	public List<Coupon> selectCoupon(int userNo) {
+		Connection conn = getConnection();
+		
+		List<Coupon> couponList = cartDao.selectCoupon(conn, userNo);
+
+		close(conn);
+		
+		return couponList;
+	}
+
+	public Recommend selectBookList() {
+		Connection conn = getConnection();
+		//각각 세개씩 비아이디 받아와서 어디다 느면 되는데 
+		//아니다 이미지랑 제목같은것도 있어야됨
+	
+		Recommend recommend= new Recommend();
+		
+		List<Book> WeekBookList = cartDao.selectWBookList(conn);
+		List<Book> NewBookList = cartDao.selectNBookList(conn);
+		List<Book> PopBookList = cartDao.selectPBookList(conn);
+		List<Book> bestList = cartDao.selectBestList(conn);
+		
+		
+		//rd에 리스트들 넣어라
+		recommend.setWBookList(WeekBookList);
+		recommend.setNBookList(NewBookList);
+		recommend.setPBookList(PopBookList);
+		recommend.setBestList(bestList);
+		
+		close(conn);
+
+		//rd에 넣고 리턴해라
+		return recommend;
+	}
+
+	public Order selectUpOrder(int userNo) {
+		Connection conn = getConnection();
+		
+		Order upOrder = new Order();
+		
+		upOrder = cartDao.selectUpOrder(conn, userNo);
+		
+		close(conn);
+		
+		return upOrder;
 	}
 
 }

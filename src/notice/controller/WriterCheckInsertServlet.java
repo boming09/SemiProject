@@ -56,7 +56,7 @@ public class WriterCheckInsertServlet extends HttpServlet {
 		/* enctype이 multipart/form-data로 전송 되었는지 확인하고 아닐 경우 에러페이지 이동 */
 		if(!ServletFileUpload.isMultipartContent(request)) {
 			// 잘못된경로면 일단 cs페이지로...
-			request.getSession().setAttribute("msg", "잘못된 전송입니다.");
+			request.getSession().setAttribute("massage", "잘못된 전송입니다.");
 			request.getRequestDispatcher("/WEB-INF/views/notice/csPageView.jsp").forward(request, response);
 			return;
 		}
@@ -103,6 +103,7 @@ public class WriterCheckInsertServlet extends HttpServlet {
 		for(int i = 0; i < bidList.length; i++) {
 			WBook wbook = new WBook();
 			wbook.setBid(Integer.parseInt(bidList[i]));
+			wbook.setUser_no(user_no);
 			
 			wbookList.add(wbook);
 		}
@@ -135,7 +136,7 @@ public class WriterCheckInsertServlet extends HttpServlet {
 		
 		if(result > 0) {
 			// 인증게시판 목록 재요청
-			request.getSession().setAttribute("msg", "게시글이 등록 되었습니다.");
+			request.getSession().setAttribute("massage", "게시글이 등록 되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/w-check");
 		} else {
 			// 실패시 저장 된 사진 삭제
@@ -144,7 +145,7 @@ public class WriterCheckInsertServlet extends HttpServlet {
 				failedFile.delete();
 			}
 			
-			request.getSession().setAttribute("msg", "실패9ㅅ9");
+			request.getSession().setAttribute("massage", "실패9ㅅ9");
 			request.getRequestDispatcher("/WEB-INF/views/notice/writerCheckView.jsp").forward(request, response);
 		}
 		

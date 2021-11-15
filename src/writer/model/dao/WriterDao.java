@@ -16,6 +16,7 @@ import book.model.vo.Book;
 import member.model.vo.Member;
 import notice.model.vo.PageInfo;
 import writer.model.vo.WProfile;
+import writer.model.vo.WReview;
 import writer.model.vo.WriterInfo;
 
 
@@ -300,5 +301,153 @@ public class WriterDao {
 		return wbookList;
 	}
 
+	
+	// 미답변 리뷰 총 개수 가져오기
+	public int getReviewCount(Connection conn, int user_no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int listCount = 0;
+		String sql = writerQuery.getProperty("getReviewCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, user_no);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount;
+	}
+
+	// 미답변 리뷰 리스트
+	public List<WReview> selectReviewList(Connection conn, PageInfo pi, int user_no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = writerQuery.getProperty("selectReviewList");
+		
+		List<WReview> reviewList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			// 페이지 설정
+			int startRow = (pi.getPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, user_no);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				WReview review = new WReview();
+				review.setReview_no(rset.getInt("review_no"));
+				review.setBook_id(rset.getInt("book_id"));
+				review.setBook_name(rset.getString("book_name"));
+				review.setUser_no(rset.getInt("user_no"));
+				review.setUser_id(rset.getString("user_id"));
+				review.setCreate_date(rset.getDate("create_date"));
+				review.setContent(rset.getString("content"));
+				review.setRating(rset.getInt("rating"));
+				review.setRef_no(rset.getInt("ref_no"));
+				review.setStatus(rset.getString("status"));
+				
+				reviewList.add(review);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}		
+		
+		return reviewList;
+	}
+
+
+	// 리뷰 디테일 페이지
+	public WReview selectReview(Connection conn, int review_no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = writerQuery.getProperty("selectReview");
+		
+		WReview review = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, review_no);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				review = new WReview();
+				review.setReview_no(rset.getInt("review_no"));
+				review.setBook_id(rset.getInt("book_id"));
+				review.setBook_name(rset.getString("book_name"));
+				review.setUser_no(rset.getInt("user_no"));
+				review.setUser_id(rset.getString("user_id"));
+				review.setCreate_date(rset.getDate("create_date"));
+				review.setContent(rset.getString("content"));
+				review.setRating(rset.getInt("rating"));
+				review.setRef_no(rset.getInt("ref_no"));
+				review.setStatus(rset.getString("status"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}		
+				
+		return review;
+	}
+
+	// 리뷰 답댓 업데이트
+	public int insertReply(Connection conn, WReview newreply) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = writerQuery.getProperty("insertReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, newreply.getBook_id());
+			pstmt.setInt(2, newreply.getUser_no());
+			pstmt.setString(3, newreply.getContent());
+			pstmt.setInt(4, newreply.getRef_no());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

@@ -43,7 +43,7 @@ public class WriterCheckDetailServlet extends HttpServlet {
 			// 작가인증게시판 상세페이지 이동
 			request.getRequestDispatcher("/WEB-INF/views/notice/writerCheckDetailView.jsp").forward(request, response);
 		} else {
-			request.getSession().setAttribute("msg", "실패^^");
+			request.getSession().setAttribute("massage", "실패^^");
 			request.getRequestDispatcher("/WEB-INF/views/notice/csPageView.jsp").forward(request, response);
 		}
 		

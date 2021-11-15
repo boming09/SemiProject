@@ -19,7 +19,7 @@
 <body>
     <!-- 메뉴바 -->
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
-    <div class="id0">
+    <div class="id000">
     <div class="main-center2">
         <h1>봄숲 개인 회원가입</h1>
         <br>        
@@ -92,10 +92,8 @@
             </table>
         </fieldset>
         <div class="topline">
-        </div> 
-        <br>
+        </div>
         <fieldset class="lofd">
-            <legend id="lolegend">부가 정보 입력</legend>
             <table class="lotb2">
                 <tr>
                     <th class="address_name">* 주소</th>

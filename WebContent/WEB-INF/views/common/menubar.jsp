@@ -213,7 +213,7 @@ a {
                     <c:choose>
 				    	<c:when test="${ loginUser.userGrade == 10 }">
 				    		<!-- 일반회원등급 = 10 -->
-		                    <li><a href="<%= request.getContextPath() %>/mypage">마이페이지</a></li>
+		                    <li><a href="<%= request.getContextPath() %>/memberinformationdetail">마이페이지</a></li>
 				    	</c:when>
 				    	<c:otherwise>
 				    		<li><a href="<%= request.getContextPath() %>/w-mypage">마이페이지</a></li>
@@ -229,7 +229,7 @@ a {
         <!-- 3. 페이지 제목-->
         <div class="mainlogo wrapper">
             <div class="page-title">
-            	<a href="<%= request.getContextPath() %>">
+            	<a href="<%= request.getContextPath() %>/main"> <!-- 셀렉트 해오려면 필요 -->
                 <img src="<%= request.getContextPath() %>/resources/images/logo.png" alt="home logo">
                 <div>봄숲</div>
                 </a>
@@ -244,6 +244,7 @@ a {
                         <option value="author"
                         <c:if test="${ param.searchCondition == 'author' }">selected</c:if>>작가</option>
                     </select>
+                    <i class="fas fa-caret-down"></i>&nbsp;
                     <span class="input_area">
                     <input type="search" name="searchValue" 
                     <c:if test="${ param.searchCondition != 'category' }">value="${ param.searchValue }"</c:if> 

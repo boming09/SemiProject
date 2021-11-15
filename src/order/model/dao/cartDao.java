@@ -7,10 +7,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
+
+import book.model.vo.Book;
+
 import static common.JDBCTemplate.close;
 import order.model.vo.Cart;
+import order.model.vo.Coupon;
+import order.model.vo.Order;
+import order.model.vo.OrderDetail;
 
 public class cartDao {
 	private Properties cartQuery = new Properties();
@@ -149,6 +156,7 @@ public class cartDao {
 		
 		String params = "";
 		
+		
 		for(int i=0; i<cartNo.length; i++) {
 			params += cartNo[i];
 			
@@ -270,5 +278,375 @@ public class cartDao {
 		return result;
 		
 	}
+
+	public int insertOrder(Connection conn, Cart cart) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = cartQuery.getProperty("insertOrder");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, cart.getBook_id());
+			pstmt.setInt(2, cart.getAmount());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	public Cart selectAbook(Connection conn, int book_id) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Cart direct = null;
+		String sql = cartQuery.getProperty("selectAbook");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, book_id);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				direct = new Cart();
+				direct.setBook_name(rset.getString("book_name"));
+				direct.setCategory_id(rset.getInt("category_id"));
+				direct.setAuthor(rset.getString("author"));
+				//direct.setPublisher(rset.getString("publisher"));
+				direct.setSale_price(rset.getInt("sale_price"));
+				direct.setPrice(rset.getInt("price"));
+				//direct.setStock(rset.getInt("stock"));
+				//direct.setBook_img(rset.getString("book_img"));
+				//direct.setCart_no(rset.getInt("cart_no"));
+				direct.setBook_id(rset.getInt("book_id"));
+				//direct.setUser_no(rset.getInt("user_no"));
+				//direct.setAmount(rset.getInt("amount"));					
+			
+				
+			}	
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return direct;
+	}
+
+	/*public int insertOrderDetail(Connection conn, List<OrderDetail> orderDt) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = cartQuery.getProperty("insertOrderDetail");
+		
+		//list에 담아오지 말고 객체에 담ㅇ아서 처음꺼는 nextval 다음거부턴 currval하면 될까?
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, ((OrderDetail) orderDt).getBookId());
+			pstmt.setInt(2, ((OrderDetail) orderDt).getAmount());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}*/
+
+	public int insertFinalOrder(Connection conn, Order order) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = cartQuery.getProperty("insertFinalOrder");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, order.getAddress());
+			pstmt.setString(2, order.getPhone());
+			pstmt.setString(3, order.getPayment());
+			pstmt.setInt(4, order.getUser_no());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int insertOrderDetail(Connection conn, OrderDetail orderDetail) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = cartQuery.getProperty("insertOrderDetail");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, orderDetail.getBookId());
+			pstmt.setInt(2, orderDetail.getAmount());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public List<Coupon> selectCoupon(Connection conn, int userNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Coupon> couponList = new ArrayList<>();
+		String sql = cartQuery.getProperty("selectCoupon");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				couponList.add(new Coupon(rset.getInt("coupon_no")
+									, rset.getString("coupon_name")
+									, rset.getString("coupon_content")
+									, rset.getInt("discount")
+									, rset.getDate("expdate")
+									, rset.getInt("user_no")));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return couponList;
+	}
+	
+	
+	
+	//메인 편의상 여기다
+
+	public List<Book> selectWBookList(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Book> wBookList = new ArrayList<>();
+		String sql = cartQuery.getProperty("wBookList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+	            Book book = new Book();
+	            book.setBid(rset.getInt("book_id"));
+	            book.setBtitle(rset.getString("book_name"));
+	            book.setCid(rset.getInt("category_id"));
+	           // book.setCname(rset.getString("category_name"));
+	            book.setAuthor(rset.getString("author"));
+	            book.setEditor(rset.getString("editor"));
+	            book.setPublicationDate(rset.getDate("publication_date"));
+	            book.setPublisher(rset.getString("publisher"));
+	            book.setSalePrice(rset.getInt("sale_price"));
+	            book.setBimg(rset.getString("book_img"));
+	            book.setStarScore(rset.getInt("star_score"));
+	            book.setAvgScore(rset.getDouble("avg_score"));
+	            wBookList.add(book);
+	         }
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+		
+		return wBookList;
+	}
+
+	public List<Book> selectNBookList(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Book> nBookList = new ArrayList<>();
+		String sql = cartQuery.getProperty("nBookList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+	            Book book = new Book();
+	            book.setBid(rset.getInt("book_id"));
+	            book.setBtitle(rset.getString("book_name"));
+	            book.setCid(rset.getInt("category_id"));
+	          //  book.setCname(rset.getString("category_name"));
+	            book.setAuthor(rset.getString("author"));
+	            book.setEditor(rset.getString("editor"));
+	            book.setPublicationDate(rset.getDate("publication_date"));
+	            book.setPublisher(rset.getString("publisher"));
+	            book.setSalePrice(rset.getInt("sale_price"));
+	            book.setBimg(rset.getString("book_img"));
+	            book.setStarScore(rset.getInt("star_score"));
+	            book.setAvgScore(rset.getDouble("avg_score"));
+	            nBookList.add(book);
+	         }
+		
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+		
+		
+		return nBookList;
+	}
+
+	public List<Book> selectPBookList(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Book> pBookList = new ArrayList<>();
+		String sql = cartQuery.getProperty("pBookList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+	            Book book = new Book();
+	            book.setBid(rset.getInt("book_id"));
+	            book.setBtitle(rset.getString("book_name"));
+	            book.setCid(rset.getInt("category_id"));
+	           // book.setCname(rset.getString("category_name"));
+	            book.setAuthor(rset.getString("author"));
+	            book.setEditor(rset.getString("editor"));
+	            book.setPublicationDate(rset.getDate("publication_date"));
+	            book.setPublisher(rset.getString("publisher"));
+	            book.setSalePrice(rset.getInt("sale_price"));
+	            book.setBimg(rset.getString("book_img"));
+	            book.setStarScore(rset.getInt("star_score"));
+	            book.setAvgScore(rset.getDouble("avg_score"));
+	            pBookList.add(book);
+	         }
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}  finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+		
+		return pBookList;
+	}
+
+	public List<Book> selectBestList(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Book> bestList = new ArrayList<>();
+		String sql = cartQuery.getProperty("bestList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+	            Book book = new Book();
+	            book.setBid(rset.getInt("book_id"));
+	            book.setBtitle(rset.getString("book_name"));
+	            //book.setCid(rset.getInt("category_id"));
+	            // book.setCname(rset.getString("category_name"));
+	            book.setAuthor(rset.getString("author"));
+	            //book.setEditor(rset.getString("editor"));
+	           // book.setPublicationDate(rset.getDate("publication_date"));
+	            //book.setPublisher(rset.getString("publisher"));
+	            //book.setSalePrice(rset.getInt("sale_price"));
+	            book.setBimg(rset.getString("book_img"));
+	           // book.setStarScore(rset.getInt("star_score"));
+	            //book.setAvgScore(rset.getDouble("avg_score"));
+	            book.setSaleRate(rset.getInt("sale_rate"));
+	            
+	            bestList.add(book);
+	         }
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}  finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+		
+		return bestList;
+	}
+
+	
+	
+	public int updateBookSaleRate(Connection conn, OrderDetail orderDetail) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = cartQuery.getProperty("updateBookSaleRate");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, orderDetail.getAmount());
+			pstmt.setInt(2, orderDetail.getBookId());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public Order selectUpOrder(Connection conn, int userNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Order upOrder = null;
+		String sql = cartQuery.getProperty("selectUpOrder");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				upOrder = new Order();
+				upOrder.setOrder_no(rset.getInt("order_no"));
+				upOrder.setOrder_date(rset.getDate("order_date"));
+				upOrder.setRel_date(rset.getDate("rel_date"));
+				upOrder.setReceipte_date(rset.getDate("receipte_date"));
+				upOrder.setAddress(rset.getString("address"));
+				upOrder.setPhone(rset.getString("phone"));
+				upOrder.setPayment(rset.getString("payment"));
+			
+			}	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+		
+		
+		return upOrder;
+	}
+
+	
+	
 
 }
