@@ -34,8 +34,8 @@
 					<li class="group">
 					<div class="title">홈페이지 관리</div>
 					<ul class="sub">
-						<li><a href="${ contextPath }/admin/insertbook">책 등록</a></li>
-						<li><a href="${ contextPath }/admin/todaybook">오늘의 책</a></li>
+						<li><a href="${ contextPath }/admin/insertbook">도서 등록</a></li>
+						<li><a href="${ contextPath }/admin/stockbook">도서 재고 관리</a></li>
 						<li><a href="${ contextPath }/faq/insert">자주하는 질문</a></li>
 					</ul>
 				</li>

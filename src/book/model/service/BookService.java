@@ -149,6 +149,43 @@ public class BookService {
 		
 		return returnMap;
 	}
+
+
+	public List<Book> cSelect() {
+		Connection conn = getConnection();
+		List<Book> cList = bookDao.cSelect(conn);
+		
+		close(conn);
+		return cList;
+	}
+
+	public List<Book> cSelect2() {
+		Connection conn = getConnection();
+		List<Book> cList2 = bookDao.cSelect2(conn);
+		
+		close(conn);
+		return cList2;
+	}
+
+	public List<Book> cSelect3() {
+		Connection conn = getConnection();
+		List<Book> cList3 = bookDao.cSelect3(conn);
+		
+		close(conn);
+		return cList3;
+	}
+
+	public int insertBook(Book book) {
+		Connection conn = getConnection();
+		int result = bookDao.insertBook(conn, book);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+
 	
 	// 도서 댓글 등록
 	public int insertReply(Reply reply, double avgScore, int starScore) {
@@ -178,10 +215,34 @@ public class BookService {
 		} else {
 			rollback(conn);
 		}
+
 		close(conn);
 		
 		return result;
 	}
+
+
+	public Book ajaxSelect(int bNo) {
+		Connection conn = getConnection();
+		Book book = bookDao.ajaxSelect(conn, bNo);
+		close(conn);
+		return book;
+	}
+
+	public List<Book> bookSelect() {
+		Connection conn = getConnection();
+		List<Book> bookList = bookDao.bookSelect(conn);
+		close(conn);
+		return bookList;
+	}
+
+	public int stockInsert(int stockId, int pstock) {
+		Connection conn = getConnection();
+		int result = bookDao.stockInsert(conn, stockId, pstock);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
 
 	// 작가 댓글 등록
 	public int insertAddReply(Reply reply) {
@@ -191,6 +252,7 @@ public class BookService {
 		if(result > 0) {
 			commit(conn);
 		} else {
+
 			rollback(conn);
 		}
 		
@@ -198,4 +260,8 @@ public class BookService {
 		
 		return result;
 	}
+
+
+	
+
 }

@@ -5,6 +5,7 @@ import static common.JDBCTemplate.close;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -724,6 +725,110 @@ public class BookDao {
 		return replyList;
 	}
 	
+
+	public List<Book> cSelect(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Book> cList = new ArrayList<>();
+		String sql = bookQuery.getProperty("cSelect");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Book book = new Book();
+				book.setCid(rset.getInt(1));
+				book.setCname(rset.getString(2));
+				
+				cList.add(book);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return cList;
+	}
+
+	public List<Book> cSelect2(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Book> cList2 = new ArrayList<>();
+		String sql = bookQuery.getProperty("cSelect2");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Book book = new Book();
+				book.setCid(rset.getInt(1));
+				book.setCname(rset.getString(2));
+				
+				cList2.add(book);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return cList2;
+	}
+
+	public List<Book> cSelect3(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Book> cList3 = new ArrayList<>();
+		String sql = bookQuery.getProperty("cSelect3");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Book book = new Book();
+				book.setCid(rset.getInt(1));
+				book.setCname(rset.getString(2));
+				
+				cList3.add(book);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return cList3;
+	}
+
+	public int insertBook(Connection conn, Book book) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = bookQuery.getProperty("insertBook");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, book.getBtitle());
+			pstmt.setInt(2, book.getCid());
+			pstmt.setString(3, book.getAuthor());
+			pstmt.setString(4, book.getEditor());
+			pstmt.setDate(5, (Date) book.getPublicationDate());
+			pstmt.setString(6, book.getPublisher());
+			pstmt.setInt(7, book.getPrice());
+			pstmt.setInt(8, book.getSalePrice());
+			pstmt.setString(9, book.getBintro());
+			pstmt.setString(10, book.getBurl());
+			pstmt.setString(11, book.getBimg());
+			pstmt.setString(12, book.getFilepath());
+			pstmt.setString(13, book.getAintro());
+			
+			result = pstmt.executeUpdate();
+			
+
 	// 댓글 갯수 조회
 	public int getReviewCount(Connection conn, int bid) {
 		PreparedStatement pstmt = null;
@@ -783,11 +888,83 @@ public class BookDao {
 			pstmt.setInt(1, rid);
 			
 			result = pstmt.executeUpdate();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
 		}
+
+		
+		return result;
+	}
+
+	public Book ajaxSelect(Connection conn, int bNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Book book = new Book();
+		String sql = bookQuery.getProperty("ajaxSelect");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				book.setBid(rset.getInt(1));
+				book.setStock(rset.getInt(2));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return book;
+	}
+
+	public List<Book> bookSelect(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Book> bookList = new ArrayList<>();
+		String sql = bookQuery.getProperty("bookSelect");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Book book = new Book();
+				
+				book.setBid(rset.getInt(1));
+				book.setBtitle(rset.getString(2));
+				book.setStock(rset.getInt(3));
+				bookList.add(book);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return bookList;
+	}
+
+	public int stockInsert(Connection conn, int stockId, int pstock) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = bookQuery.getProperty("stockInsert");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, pstock);
+			pstmt.setInt(2, stockId);
+			
+			result = pstmt.executeUpdate();
+
 		return result;
 	}
 
@@ -844,11 +1021,19 @@ public class BookDao {
 			pstmt.setInt(1, rid);
 			
 			pstmt.executeUpdate();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
 		}
+
+		
+		return result;
 	}
+	
+
+	}
+
 
 }
