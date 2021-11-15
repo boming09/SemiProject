@@ -48,45 +48,6 @@
 						<b> ${od.amount}</b>
            		
 					</div>
-		
-			
-					
-	<!-- 				<div class="item">
-						<b>[국내도서] 어떻게 쓰지 않을 수 있겠어요2</b>
-					</div>
-					<div class="item">
-						<b>27,000원</b> / 1,485원(5%)
-					</div>
-					<div class="item">
-					
-						<b>1</b>
-						
-					</div>
-					
-					<div class="item">
-						<b>[국내도서] 어떻게 쓰지 않을 수 있겠어요3</b>
-					</div>
-					<div class="item">
-						<b>27,000원</b> / 1,485원(5%)
-					</div>
-					<div class="item">
-					
-						<b>1</b>
-						
-					</div>
-					
-					<div class="item">
-						<b>[국내도서] 어떻게 쓰지 않을 수 있겠어요4</b>
-					</div>
-					<div class="item">
-						<b>27,000원</b> / 1,485원(5%)
-					</div>
-					<div class="item">
-						
-						<b>1</b>
-						
-					</div>
-					-->
 					
 
 		</div>
@@ -158,7 +119,14 @@
 				 	}
 				 %>
         	
-        	
+        		<%
+        		  String email;
+        		  if(loginUser.getUserEmail() != null) {
+        				email = loginUser.getUserEmail();
+        		  } else {
+        			  email = "email";
+        		  }
+        		%>
 
         	<div class="od_tt">
         		<div class="o_item">

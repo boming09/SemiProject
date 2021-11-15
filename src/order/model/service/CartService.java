@@ -183,7 +183,7 @@ public class CartService {
 			couponMinusResult = cartDao.updateCouponStatus(conn, order);
 			
 		} else {
-		// 없으면 그냥 0 반환	
+		// 없으면 그냥 1 반환	
 			couponMinusResult = 1;
 		}
 		

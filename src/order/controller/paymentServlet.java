@@ -156,16 +156,6 @@ public class paymentServlet extends HttpServlet {
 		//얘네를 보내서 오더디테일에 인서트 해야되는데 물건은 여러개인데 같은 주문 번호를 어떻게 부여하지?
 		//int result = new CartService().insertOrderDetail(orderDt);
 		//System.out.println(result);
-				
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		

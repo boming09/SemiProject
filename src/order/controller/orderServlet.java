@@ -61,6 +61,8 @@ public class orderServlet extends HttpServlet {
 		}
 		
 		
+		// 여기서는 카트 넘버들을 넘겨서 셀렉트 해왔다는 점
+		
 		List<Cart> cartOrderList = new CartService().selectOrderList(cartNo);
 		
 		//System.out.println(cartOrderList);

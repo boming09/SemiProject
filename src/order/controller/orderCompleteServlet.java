@@ -76,6 +76,7 @@ public class orderCompleteServlet extends HttpServlet {
 		order.setPayment(pay);
 			 //쿠폰넘버가 넘어온게 있다면 객체에 넘기기	
 		
+		//쿠폰 넘버도 order객체에 추가
 		if(coupon_no > 0) {
 			
 			order.setCouponNo(coupon_no);
@@ -84,7 +85,7 @@ public class orderCompleteServlet extends HttpServlet {
 		
 		int result = new CartService().insertFinalOrder(order);
 	
-		//쿠폰 넘버도 보내야되는데 order객체에 추가해야겠다ㅡㅡ
+		
 		
 		
 		

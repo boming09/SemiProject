@@ -52,7 +52,7 @@
 					<div><!-- 카카오페이 ${upOrder.payment}-->
 					<c:choose>
 						<c:when test="${upOrder.payment eq 'kakaopay'}">카카오페이</c:when>
-						<c:when test="${upOrder.payment eq 'credit'}">신용카드</c:when>
+						<c:when test="${upOrder.payment eq 'credit'}">이니스페이</c:when>
 					</c:choose>
 					
 					</div>

@@ -47,26 +47,33 @@ public class orderDirectServlet extends HttpServlet {
 		int book_id = Integer.parseInt(request.getParameter("book_id"));
 		//int userNo = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
 
-		Cart cart = new Cart();
+		/*Cart cart = new Cart();
 		cart.setAmount(count);
-		cart.setBook_id(book_id);
+		cart.setBook_id(book_id);*/ //엥?
 
-		cart = new CartService().selectAbook(book_id);
-
+		//편의상 카트에 담음
+		Cart cart = new CartService().selectAbook(book_id);
+		
+		// 여기서는 번호 하나를 넘겨ㅓ서 셀렉트 해왔고
 		
 		System.out.println(cart);
 
 	
+		
+		//오더 서블릿에서는 cartOrderList 저장한걸 여기는 od에 담아서 화면에 뿌림
 		OrderDirect od = new OrderDirect();
 		od.setAmount(count);
 		od.setBook_name(cart.getBook_name());
 		od.setPrice(cart.getPrice());
 		od.setSale_price(cart.getSale_price());
 		od.setBook_id(book_id);
+		
 		System.out.println(od);
+		
 		request.setAttribute("od", od);
 		request.getRequestDispatcher("/WEB-INF/views/order/orderDirect.jsp").forward(request, response);
 		//response.sendRedirect(request.getContextPath() + "/orderDirect");
+		
 		
 		
 		
