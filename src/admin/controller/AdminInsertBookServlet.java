@@ -1,25 +1,28 @@
 package admin.controller;
 
 import java.io.IOException;
+import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import book.model.service.BookService;
+import book.model.vo.Book;
+
 /**
  * Servlet implementation class AdminInsertBook
  */
 @WebServlet("/admin/insertbook")
-public class AdminInsertBook extends HttpServlet {
+public class AdminInsertBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminInsertBook() {
+    public AdminInsertBookServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,8 +31,16 @@ public class AdminInsertBook extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/adminpage/adminInsertBook.jsp");
-		view.forward(request, response);
+		
+		List<Book> cList = new BookService().cSelect();
+		List<Book> cList2 = new BookService().cSelect2();
+		List<Book> cList3 = new BookService().cSelect3();
+		
+		
+		request.setAttribute("cList", cList);
+		request.setAttribute("cList2", cList2);
+		request.setAttribute("cList3", cList3);
+		request.getRequestDispatcher("/WEB-INF/views/adminpage/adminInsertBook.jsp").forward(request, response);
 	}
 
 	/**

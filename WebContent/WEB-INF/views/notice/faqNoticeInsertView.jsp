@@ -69,7 +69,7 @@
                 </div>
                 
 	            <div class="faq_btn">
-	                <button type="button" onclick="location.href='${ contextPath }/faqA'">취소</button>
+	                <button type="button" onclick="location.href='${ contextPath }/admin/main'">취소</button>
 	                <button type="submit">등록하기</button>
 	            </div>
             </form>

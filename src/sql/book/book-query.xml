@@ -1263,4 +1263,94 @@ SELECT
     JOIN MEMBER USING(USER_NO)
    WHERE BOOK_ID = ?
 </entry>
+<entry key="cSelect">
+	SELECT
+	       CATEGORY_ID
+	     , CATEGORY_NAME
+	  FROM B_CATEGORY
+	 WHERE REF_ID = 1
+</entry>
+<entry key="cSelect2">
+	SELECT
+	       CATEGORY_ID
+	     , CATEGORY_NAME
+	  FROM B_CATEGORY
+	 WHERE REF_ID = 2
+</entry>
+<entry key="cSelect3">
+	SELECT
+	       CATEGORY_ID
+	     , CATEGORY_NAME
+	  FROM B_CATEGORY
+	 WHERE REF_ID = 3
+</entry>
+
+<entry key="insertBook">
+		INSERT
+			INTO BOOK (
+			    BOOK_ID
+			  , BOOK_NAME
+			  , CATEGORY_ID
+			  , USER_NO
+			  , AUTHOR
+			  , EDITOR
+			  , PUBLICATION_DATE
+			  , PUBLISHER
+			  , PRICE
+			  , STOCK
+			  , SALE_RATE
+			  , SALE_PRICE
+			  , BOOK_INTRO
+			  , BOOK_URL
+			  , BOOK_IMG
+			  , FILE_PATH
+			  , AUTHOR_INTRO
+			  , STAR_SCORE
+			  , AVG_SCORE
+			  , SUM_SCORE
+			) VALUES (
+			    SEQ_BOOK_ID.NEXTVAL
+			  , ?
+			  , ?
+			  , NULL
+			  , ?
+			  , ?
+			  , ?
+			  , ?
+			  , ?
+			  , 1
+			  , 0
+			  , ?
+			  , ?
+			  , ?
+			  , CONCAT('/resources/images/book/', ?)
+			  , CONCAT('/resources/images/detailBook/', ?)
+			  , ?
+			  , DEFAULT
+			  , DEFAULT
+			  , DEFAULT
+			  )
+</entry>
+
+<entry key="ajaxSelect">
+	SELECT
+		   BOOK_ID
+		 , STOCK
+	  FROM BOOK
+	 WHERE BOOK_ID = ?
+</entry>
+<entry key="bookSelect">
+	SELECT
+	       BOOK_ID
+	     , BOOK_NAME
+	     , STOCK
+	  FROM BOOK
+	 ORDER BY BOOK_NAME ASC
+</entry>
+
+<entry key="stockInsert">
+	UPDATE BOOK
+	   SET STOCK = STOCK + ?
+	 WHERE BOOK_ID = ?
+</entry>
 </properties>
