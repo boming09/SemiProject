@@ -827,6 +827,13 @@ public class BookDao {
 			pstmt.setString(13, book.getAintro());
 			
 			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 			
 
 	// 댓글 갯수 조회
@@ -964,6 +971,9 @@ public class BookDao {
 			pstmt.setInt(2, stockId);
 			
 			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 		return result;
 	}
@@ -1021,18 +1031,11 @@ public class BookDao {
 			pstmt.setInt(1, rid);
 			
 			pstmt.executeUpdate();
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
 		}
-
-		
-		return result;
-	}
-	
-
 	}
 
 
