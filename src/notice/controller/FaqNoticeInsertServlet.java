@@ -64,10 +64,10 @@ public class FaqNoticeInsertServlet extends HttpServlet {
 		//System.out.println(result);
 		
 		if(result > 0) {
-			request.getSession().setAttribute("msg", "게시글이 등록 되었습니다.");
-			response.sendRedirect(request.getContextPath() + "/faqA");
+			request.getSession().setAttribute("massage", "게시글이 등록 되었습니다.");
+			response.sendRedirect(request.getContextPath() + "/admin/main");
 		} else {
-			request.getSession().setAttribute("msg", "실패9ㅅ9");
+			request.getSession().setAttribute("massage", "실패9ㅅ9");
 			request.getRequestDispatcher("/WEB-INF/views/notice/csPageView.jsp").forward(request, response);
 		}
 		
