@@ -65,10 +65,10 @@
 	                	</div>
 	                	<div class="right">
 	                		<div class="right_left">
-	                			10% 할인
+	                			5000원 할인
 	                		</div>
 	                		<div class="right_right">
-	                			10%할인<br>
+	                			5000원 할인<br>
 	                			<small>bomsoop</small>
 	                		</div>
 	                	</div>

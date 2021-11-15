@@ -53,6 +53,8 @@ public class MypageMyreviewServlet extends HttpServlet {
 		String searchCondition = request.getParameter("searchCondition");
 		String searchValue = request.getParameter("searchValue");
 		
+		// System.out.println("b_reviewList : " + b_reviewList);
+		
 		Map<String, Object> map 
 		= new B_ReviewService().selectList(page, new Search(searchCondition, searchValue));
 		
