@@ -186,6 +186,7 @@ public class CartService {
 		// 없으면 그냥 1 반환	
 			couponMinusResult = 1;
 		}
+		// 이렇게 하니까 쿠폰 상태 업데이트가 안됨
 		
 		
 		int result = 0;
