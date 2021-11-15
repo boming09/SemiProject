@@ -1,0 +1,207 @@
+@charset "UTF-8";
+.csarea {
+    /* 챙겨가야하는 놈 */
+    /* 카테고리 + 컨텐츠 영역 flex 용도 */
+    display: flex;
+}
+.content {
+    /* 챙겨가야하는 놈 */
+    width: 72%;
+    margin-left : 15px;
+    margin-right : 15px;
+}
+
+/* 컨텐츠 헤더 */
+.wcheck_header {
+    height: 70px;
+    display : flex;
+    justify-content : space-between;	
+    align-items: center;
+    margin: 0px 0px 10px 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 1.1rem;
+    font-weight : bold;
+} 
+
+/* 멘트 */
+.wcheck_ment ul li {
+    margin-left: 60px;
+    line-height: 30px;
+    font-size: 0.8rem;
+}
+
+/* 작성 영역 = form */
+.wc_info {
+    margin: 20px 30px 20px 30px;
+}
+
+/* 테이블 */
+.wc_area {
+	width : 100%;
+	border-bottom: 1px solid lightgray;
+	/*  테이블 간격 없애기 */
+    border-collapse: collapse; 
+    border-spacing: 0;
+}
+
+.wc_area tr {
+	 border-top: 1px solid lightgray; 
+}
+
+.wc_title, .wc_content, .wc_book, .wc_file {
+    width: 20%;
+    text-align: center;
+    background: rgb(239, 239, 239);
+    font-size: 0.95rem;
+    font-weight: bold;
+    border-right: 1px solid lightgray;
+}
+
+.wc_title2, .wc_content2, .wc_file2, .wc_book2 {
+    width: 80%;
+}
+
+/* 문의제목 영역 */
+.wc_title {
+    height: 50px;
+}
+
+.wc_title2 input {
+    width: 96%;
+    height: 30px;
+    border: 1px solid rgb(239, 239, 239);
+    margin: 0px 10px;
+    padding-left : 10px;
+    font-size: 0.9rem;
+}
+
+/* 문의내용 영역 */
+.wc_content {
+    height: 336px;
+}
+
+.wc_content2 textarea {
+    width: 96%;
+    height: 310px;
+    border: 1px solid rgb(239, 239, 239);
+    margin: 10px 10px;
+    resize: none;
+    padding : 10px;
+    font-size: 0.9rem;
+    line-height: 20px;
+}
+
+/* 도서 인증 영역 */
+.wc_book {
+	height : 122px;
+}
+.wc_search {
+	/* fieldset */
+	width: 96%;
+	height : 50px;
+	display : flex;
+	align-items: center;
+	margin-left : 10px;
+	margin-top : 10px;
+	font-size: 0.9rem;
+	border-bottom: 1px solid rgb(239, 239, 239);
+}
+#wc_type {
+	width : 40px;
+	margin:0px;
+	margin-left : 10px;
+	text-align-last: center;
+	text-align: center;
+	-ms-text-align-last: center;
+	-moz-text-align-last: center;
+}
+
+.wc_search input {
+	width : 200px;
+	height : 30px;
+	font-size : 0.9rem;
+	margin-left : 10px;
+	padding-left : 10px;
+	border: 1px solid rgb(239, 239, 239);
+}
+.wc_search button {
+	font-size : 0.8rem;
+	margin-left : 10px;
+	width: 65px;
+    height: 30px;
+    background: rgb(73, 125, 78);
+    color: white;
+    font-weight : bold;
+}
+.wc_search button:hover {
+    background-color: rgb(196, 217, 195);
+    color: black;
+}
+.wc_area .noline {
+	border-top : 0px;
+}
+.wc_area .line {
+	border-bottom : 1px solid rgb(239, 239, 239);
+	margin : 0 10px;
+}
+
+#wc_select {
+	width : 530px;
+	margin : 15px;
+	margin-left : 15px;
+	font-size : 0.9rem;
+	
+}
+/* 선택한 책 나오는 곳 */
+#wc_mybookarea {
+	font-size : 0.9rem;
+	width: 96%;
+	padding-left : 30px;
+	margin : 10px;
+	line-height: 20px;
+}
+
+/* 첨부파일 영역 */
+.wc_file {
+    height: 160px;
+}
+.filearea {
+	display : flex;
+	align-items: center;
+	height : 50px;
+}
+.filearea input {
+    margin: 15px;
+    font-size: 0.9rem;
+}
+
+.wc_file2 ul {
+    font-size: 0.8rem;
+    padding-left: 30px;
+    padding-right: 10px;
+    margin: 10px 0;
+    line-height: 20px;
+}
+
+/* 취소/등록 버튼 */
+.wc_btn {
+    display : flex;
+    justify-content : center;	
+    align-items: center;
+}
+.wc_btn button {
+    margin: 20px;
+    margin-bottom: 60px;
+    width: 90px;
+    height: 35px;
+    font-size: 0.85rem;
+    background: rgb(73, 125, 78);
+    color: white;
+    font-weight : bold;
+}
+
+.wc_btn button:hover {
+    background-color: rgb(196, 217, 195);
+    color: black;
+}

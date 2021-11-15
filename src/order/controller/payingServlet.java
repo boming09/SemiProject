@@ -40,6 +40,19 @@ public class payingServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("pay", pay);
 		
+		//쿠폰 저장  쿠폰이 없을때 처리
+		/*String coupon_no = request.getParameter("coupon_no");
+		if(coupon_no != null) {			
+			session.setAttribute("coupon_no", coupon_no);
+		}*/
+		
+		String coupon_no = null;
+		if(request.getParameter("coupon_no") != null ) {
+			session.setAttribute("coupon_no", coupon_no);
+		}
+	
+		
+		
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/order/paying.jsp"); //여기
 		view.forward(request, response);
 	

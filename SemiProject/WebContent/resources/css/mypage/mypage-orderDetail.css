@@ -1,0 +1,190 @@
+@charset "UTF-8";
+
+.ct_wrapper {
+    min-width : 800px;
+    width : 1100px;
+    margin : 0px auto;
+}
+
+.cart_bl {
+	width:95%; /*수정*/
+	position: inline-block;
+	margin-left :5%;
+	margin-top: 5%;
+	margin-bottom: 10% /*footer랑 간격*/	
+}
+
+#order {
+    position: relative;
+    font-size: 1.3rem;
+    font-weight:bold;
+    left:10px;
+    top:11px;
+}
+
+/*-------------------------*/
+.od_contain {
+  display: flex;
+  background: #f3f3f3;
+
+  margin-top:0px;
+  align-items:center;
+  justify-items:left;
+  
+  font-weight:bold;
+  
+  border-top:solid 2px gray;
+  border-bottom:dotted 1px gray;
+
+}
+.item1, .item2, .item3 {
+	margin:10px;
+	font-size:0.9rem;	
+	text-align : center;
+}
+.item1 {
+	width : 50%
+}
+.item2 {
+	width : 30%
+}
+.item3 {
+	width : 20%
+}
+
+/* 주문 리스트 영역 */
+.od_container {
+  background: #f3f3f3;
+  align-items:center;
+  justify-items:left;
+  border-bottom:solid 2px gray;
+  padding : 10px 0;
+  margin-bottom : 40px;
+}
+.detail_list {
+	display : flex;
+	justify-items:center;
+	align-items:center;
+}
+.titleArea {
+	display : flex;
+	align-items:center;
+}
+
+.detail_img img {
+	width : 80px;
+	margin-left : 30px;
+	margin-top : 10px;
+	margin-bottom : 10px;
+}
+.title {
+	margin-left : 20px;
+	text-align : left;
+	line-height : 20px;
+}
+.d_author, .publisher {
+	font-size : 0.8rem;
+}
+
+.sumArea {
+	padding-left : 580px;
+	font-size : 1.1rem;
+	font-weight:bold;
+	color : #D25832;  /* 빨간색 */
+	line-height : 50px;
+}
+.sumArea label {
+	color : black;
+}
+
+.od_info {
+	position:relative;
+	left:9px;
+	margin-top:70px;
+	margin-bottom:20px;
+	font-weight:bold;
+}
+
+.o_item{
+	margin-left:36px;
+	font-size:0.9rem;
+	margin-top:2px;
+	margin-bottom:2px;
+}
+
+.od_tt {
+	background: #f3f3f3;
+	display: flex;
+	padding-top:15px;
+	padding-bottom:15px;
+	border-top:1px solid gray;
+	
+}
+
+.btm_line{
+	border-bottom:2px solid gray;
+}
+.top_tt{
+	border-top:2px solid gray;
+}
+.btnArea {
+	display : flex;
+	justify-content:center;
+	align-items:center;
+}
+#ct_order_btn {
+	background:rgb(73, 125, 78);
+	color:white;
+	width : 100px;
+	height : 50px;
+	margin: 30px;
+	font-size:1.1rem;
+}
+
+.addressArea {
+	display : flex;
+	flex-direction: column;
+}
+.addressArea input {
+	width : 400px;
+	height : 23px;
+	background:white;
+	border:1px solid gray;
+	margin-bottom : 5px;
+}
+
+.nm_area {
+	width:140px;
+	height:23px;
+	background:white;
+	border:1px solid gray;
+}
+
+.text {
+	width : 12%;
+}
+
+
+/*------------------footer--------------*/
+.footer2 {
+	position:relative;
+	height: 67px;
+}
+
+footer {
+background:rgba(196, 217, 195, 1);
+text-align: center;
+padding : 26px 0;
+
+position: absolute;
+bottom: 0;
+
+width: 100%;
+
+}
+
+footer p {
+color: black;
+font-size: 0.865rem;
+}
+

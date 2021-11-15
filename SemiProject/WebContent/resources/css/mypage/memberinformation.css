@@ -1,0 +1,299 @@
+@charset "UTF-8";
+
+.html{
+	
+}
+
+h3 {
+	color : red;
+	text-align: left;
+}
+
+.wrapper{
+	height: 100vh;
+}
+
+.csarea {
+    /* 챙겨가야하는 놈 !*/
+    /* 카테고리 + 컨텐츠 영역 flex 용도 */
+    display: flex;
+}
+.content {
+    /* 챙겨가야하는 놈 */
+    width: 70%;    
+}
+
+/* 헤더 div */
+/* 헤더 center */
+.hdcenter{
+	background : ;
+	width : 600px;
+	height : 70px;
+	magin : 0px;
+	margin-left : 30px;
+}
+/* 헤더 li */
+.hdcenter li{
+	margin-left : 30px;
+	font-size : 10px;
+	line-height : 13px;
+}
+
+/* center */
+.cen{
+	margin-left : 30px;
+}
+
+/* table */
+.ctable {
+	border : 1px solid lightskyblue;
+	background-color : white;
+	width : 700px;
+	height: 50px;
+	font-size : 10px;
+	border-collapse: collapse;
+	font-weight : bold;
+}
+
+.ctable2 {
+	border : 1px solid lightskyblue;
+	background-color : white;
+	width : 700px;
+	height: 50px;
+	font-size : 10px;
+	border-collapse: collapse;
+	font-weight : bold;
+}
+
+.ctable2 th {
+	width : 12%;
+}
+
+.ctable2 td {
+	width : 38%;
+}
+
+.tbtd{
+	height: 30px;
+}
+
+tr, th, td {
+	border : 1px solid lightskyblue;
+}
+
+
+#table1 tr{
+	height : 28px;
+}
+
+#table1 th{
+	width : 80px;
+}
+
+#table2 tr, th, td{
+	
+}
+
+/* 버튼 속성 */
+.tb1{
+	background : green;
+	border-radius : 10%;
+	color : white;
+	height : 20px;
+}
+
+#tb1phone{
+	width : 180px;
+	height : 30px;
+	background: #497d42;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-left : 10px;
+    margin-right : 10px;
+}
+
+#tb1ip{
+	width : 150px;
+	height : 30px;
+	background: #497d42;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px; 
+}
+
+#pwdUpdateBtn{
+	width : 100px;
+	height : 30px;
+	background: #497d42;
+    color: white;
+    font-weight: bold;
+    margin-left : 15px;
+    border-radius: 5px; 
+}
+
+.tb0{
+	width : 90px;
+	height : 30px;
+	background: #497d42;
+    color: white;
+    font-weight: bold;
+    font-size : 15px;
+    border-radius: 5px;   
+}
+
+#tb0{
+	 color: white;
+	 font-weight: bold;
+}
+
+.tb2{
+	width : 150px;
+	height : 30px;
+	background: #497d42;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;  
+}
+
+.tb3{
+	border : 1px solid black;
+	border-radius : 10%;
+	width : 150px;
+	height : 30px;
+	margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 13px;
+    padding-left: 10px;
+}
+
+.tb9{
+	border : 1px solid black;
+	border-radius : 10%;
+	width : 90px;
+	height : 30px;
+	margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 13px;
+    padding-left: 10px;
+}
+
+.tb4{
+	border : 1px solid black;
+	border-radius : 10%;
+	height : 30px;
+	margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 13px;
+    padding-left: 10px;
+}
+
+.tb5{
+	border : 1px solid black;
+	border-radius : 10%;
+	width : 150px;
+	height : 30px;
+	margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+.postcodify_postcode5{
+	border : 1px solid black;
+	border-radius : 10%;
+	height : 30px;
+	margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 13px;
+    padding-left: 10px;
+}
+
+/* 개인정보 */
+.privacy {
+	padding-left: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    height : 40px;
+    line-height : 25px;
+}
+
+.detaillabel{
+	padding-left: 40px;
+}
+
+.detaillabel2{
+	padding-left: 15px;
+}
+
+.postcodify_address{
+	border : 1px solid black;
+	border-radius : 10%;
+	height : 30px;
+	margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 13px;
+    padding-left: 10px;
+    width : 300px;
+}
+
+.postcodify_extra_details{
+	border : 1px solid black;
+	border-radius : 10%;
+	height : 30px;
+	margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 13px;
+    padding-left: 10px;
+    width : 300px;
+}
+
+#postcodify_search_button{
+	width : 90px;
+	height : 30px;
+	background: #497d42;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-left : 10px;
+}
+
+/* 서재 닉네임 버튼 */
+#nicknameCheck{
+	width: 90px;
+    height: 30px;
+    background: #497d42;
+    color: white;
+    font-weight: bold;
+    margin-left: 15px;
+    border-radius: 5px;
+}
+
+/* 수정하기 버튼 */
+#updateBtn{
+	width : 150px;
+	height : 30px;
+	background: #497d42;
+    color: white;
+    height: 30px;
+    font-weight: bold;
+    margin-top : 20px;
+    margin-left : 160px;
+}
+
+#deleteBtn{
+	width : 150px;
+	height : 30px;
+	background: #497d42;
+    color: white;
+    height: 30px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+/* 약관 내역 */
+.pterms li{
+	font-size : 10px;
+	line-height : 13px;
+	margin-left: 30px;
+}
+

@@ -85,7 +85,7 @@ th,td {
 	    		<td>${coupon.couponNo}</td>
 	    		<td>${coupon.couponNm}</td>
 	    		<td>${coupon.couponCtt}</td>
-	    		<td>${coupon.couponDis}%</td>
+	    		<td>${coupon.couponDis}원</td>
 	    		<td>${coupon.cExpDate}</td>
 	    		<td><input type=radio name="checkCoupon" id="checkCoupon" value="${coupon.couponNo}"></td>
 	    	</tr>
@@ -103,8 +103,19 @@ th,td {
              opener.document.getElementById("aInput").value = document.getElementById("checkCoupon").value
              opener.document.getElementById("bInput").value = document.getElementById("couponDis").value
              opener.document.getElementById("dInput").value = "5000";
+             
+             //쿠폰 적용하면 0으로 바꾸기
+            // opener.document.getElementById("cponAmt").innerHTML = "0";
+             
+             //할인금액 빼기
+             opener.document.getElementById("test11").innerHTML = opener.document.getElementById("test11").innerHTML - 5000;
+             
+             //쿠폰번호 넘기기
+             opener.document.getElementById("aInput").value = document.getElementById("checkCoupon").value
+             
+             window.close();
        //이러면 첫번째꺼 밖에 안넘어감 어차피
-             document.popForm.submit();
+            // document.popForm.submit();
        
         }
         
@@ -182,7 +193,7 @@ th,td {
 
 
 	   
-	    <form name="popForm" method="post" "${contextPath}/payment">
+	    <form name="" method="post" >
 	    <!-- 이안에 체크된거 넣을 스크립트 작성 -->
 	    <!-- 히든으로 쿠폰넘버랑 가격값은 보이게 넘겨 -->
 	    <c:set var="apn" value="5000" scope="request"/>
@@ -192,9 +203,9 @@ th,td {
 	   </c:forEach>
 	   <div class="dd"> 
 	   <!-- <button type="submit" class="btn" onclick="popupSubmit()">적용</button> -->
-	    <button type="submit" class="btn" onclick="setParentText()">적용</button> 
+	    <button type="button" class="btn" onclick="setParentText()">적용</button> 
 	<!--    <input type="submit" class="btn" value="적용" onclick="window.close()">-->  
-	    <input type="button" class="btn" value="창닫기" onclick="window.close()">
+	    <!-- <input type="button" class="btn" value="창닫기" onclick="window.close()"> -->
 	   </div>
 	    </form>
 	

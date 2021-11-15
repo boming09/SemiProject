@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM
+"http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="seoulSelect">
+		SELECT
+			   COUNT(USER_ADDRESS)
+		  FROM MEMBER
+		 WHERE USER_ADDRESS LIKE '%'||?||'%'
+	</entry>
+	
+	<entry key="incheonSelect">
+		SELECT
+			   COUNT(USER_ADDRESS)
+		  FROM MEMBER
+		 WHERE USER_ADDRESS LIKE '%'||?||'%'
+	</entry>
+	
+	<entry key="gyeonggiSelect">
+		SELECT
+			   COUNT(USER_ADDRESS)
+		  FROM MEMBER
+		 WHERE USER_ADDRESS LIKE '%'||?||'%'
+	</entry>
+	
+	<entry key="gangwonSelect">
+		SELECT
+			   COUNT(USER_ADDRESS)
+		  FROM MEMBER
+		 WHERE USER_ADDRESS LIKE '%'||?||'%'
+	</entry>
+	
+	<entry key="gyeongsangSelect">
+		SELECT
+			   COUNT(USER_ADDRESS)
+		  FROM MEMBER
+		 WHERE USER_ADDRESS LIKE '%'||?||'%'
+		    OR USER_ADDRESS LIKE '%'||?||'%'
+		    OR USER_ADDRESS LIKE '%'||?||'%'
+		    OR USER_ADDRESS LIKE '%'||?||'%'
+	</entry>
+	
+	<entry key="chungcheongSelect">
+		SELECT
+			   COUNT(USER_ADDRESS)
+		  FROM MEMBER
+		 WHERE USER_ADDRESS LIKE '%'||?||'%'
+		    OR USER_ADDRESS LIKE '%'||?||'%'
+	</entry>
+	
+	<entry key="jeollaSelect">
+		SELECT
+			   COUNT(USER_ADDRESS)
+		  FROM MEMBER
+		 WHERE USER_ADDRESS LIKE '%'||?||'%'
+		    OR USER_ADDRESS LIKE '%'||?||'%'
+	</entry>
+
+	<entry key="jejuSelect">
+		SELECT
+			   COUNT(USER_ADDRESS)
+		  FROM MEMBER
+		 WHERE USER_ADDRESS LIKE '%'||?||'%'
+	</entry>
+
+	<entry key="manSelect">
+		SELECT
+		       COUNT(GENDER)
+		  FROM MEMBER
+		 WHERE GENDER = 'm'
+		   AND TO_CHAR(ENROLL_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE, LOWER('YY-MM-DD'))
+		    OR GENDER = 'M'
+		    OR GENDER = '남자'
+	</entry>
+	<entry key="man1Select">
+		SELECT
+		       COUNT(GENDER)
+		  FROM MEMBER
+		 WHERE GENDER = 'm'
+		   AND TO_CHAR(ENROLL_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE-1, LOWER('YY-MM-DD'))
+		    OR GENDER = 'M'
+		    OR GENDER = '남자'
+	</entry>
+	<entry key="man2Select">
+		SELECT
+		       COUNT(GENDER)
+		  FROM MEMBER
+		 WHERE GENDER = 'm'
+		   AND TO_CHAR(ENROLL_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE-2, LOWER('YY-MM-DD'))
+		    OR GENDER = 'M'
+		    OR GENDER = '남자'
+	</entry>
+	<entry key="man3Select">
+		SELECT
+		       COUNT(GENDER)
+		  FROM MEMBER
+		 WHERE GENDER = 'm'
+		   AND TO_CHAR(ENROLL_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE-3, LOWER('YY-MM-DD'))
+		    OR GENDER = 'M'
+		    OR GENDER = '남자'
+	</entry>
+	<entry key="man4Select">
+		SELECT
+		       COUNT(GENDER)
+		  FROM MEMBER
+		 WHERE GENDER = 'm'
+		   AND TO_CHAR(ENROLL_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE-4, LOWER('YY-MM-DD'))
+		    OR GENDER = 'M'
+		    OR GENDER = '남자'
+	</entry>
+	<entry key="man5Select">
+		SELECT
+		       COUNT(GENDER)
+		  FROM MEMBER
+		 WHERE GENDER = 'm'
+		   AND TO_CHAR(ENROLL_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE-5, LOWER('YY-MM-DD'))
+		    OR GENDER = 'M'
+		    OR GENDER = '남자'
+	</entry>
+	<entry key="man6Select">
+		SELECT
+		       COUNT(GENDER)
+		  FROM MEMBER
+		 WHERE GENDER = 'm'
+		   AND TO_CHAR(ENROLL_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE-6, LOWER('YY-MM-DD'))
+		    OR GENDER = 'M'
+		    OR GENDER = '남자'
+	</entry>
+	
+	<entry key="womanSelect">
+			SELECT
+		       COUNT(GENDER)
+		  FROM MEMBER
+		 WHERE GENDER = 'f'
+		   AND TO_CHAR(ENROLL_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE, LOWER('YY-MM-DD'))
+		    OR GENDER = 'F'
+		    OR GENDER = '여자'
+	</entry>
+	<entry key="woman1Select">
+			SELECT
+		       COUNT(GENDER)
+		  FROM MEMBER
+		 WHERE GENDER = 'f'
+		   AND TO_CHAR(ENROLL_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE-1, LOWER('YY-MM-DD'))
+		    OR GENDER = 'F'
+		    OR GENDER = '여자'
+	</entry>
+	<entry key="woman2Select">
+			SELECT
+		       COUNT(GENDER)
+		  FROM MEMBER
+		 WHERE GENDER = 'f'
+		   AND TO_CHAR(ENROLL_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE-2, LOWER('YY-MM-DD'))
+		    OR GENDER = 'F'
+		    OR GENDER = '여자'
+	</entry>
+	<entry key="woman3Select">
+			SELECT
+		       COUNT(GENDER)
+		  FROM MEMBER
+		 WHERE GENDER = 'f'
+		   AND TO_CHAR(ENROLL_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE-3, LOWER('YY-MM-DD'))
+		    OR GENDER = 'F'
+		    OR GENDER = '여자'
+	</entry>
+	<entry key="woman4Select">
+			SELECT
+		       COUNT(GENDER)
+		  FROM MEMBER
+		 WHERE GENDER = 'f'
+		   AND TO_CHAR(ENROLL_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE-4, LOWER('YY-MM-DD'))
+		    OR GENDER = 'F'
+		    OR GENDER = '여자'
+	</entry>
+	<entry key="woman5Select">
+			SELECT
+		       COUNT(GENDER)
+		  FROM MEMBER
+		 WHERE GENDER = 'f'
+		   AND TO_CHAR(ENROLL_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE-5, LOWER('YY-MM-DD'))
+		    OR GENDER = 'F'
+		    OR GENDER = '여자'
+	</entry>
+	<entry key="woman6Select">
+			SELECT
+		       COUNT(GENDER)
+		  FROM MEMBER
+		 WHERE GENDER = 'f'
+		   AND TO_CHAR(ENROLL_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE-6, LOWER('YY-MM-DD'))
+		    OR GENDER = 'F'
+		    OR GENDER = '여자'
+	</entry>
+
+
+
+
+
+</properties>

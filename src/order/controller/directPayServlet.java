@@ -1,6 +1,9 @@
 package order.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import member.model.vo.Member;
 import order.model.vo.Order;
+import order.model.vo.OrderDetail;
 import order.model.vo.OrderDirect;
 
 /**
@@ -104,10 +108,31 @@ public class directPayServlet extends HttpServlet {
 		odr.setAmount(book_amt);
 		odr.setSale_price(sum);
 		
+		// dpayment 화면에 뿌릴거
 		request.setAttribute("odr", odr);
+		
+		
+		List<OrderDetail> orderDt = new ArrayList<>();	
+		orderDt.add(new OrderDetail(book_id,book_amt)); //생성자 새로
+		
+		
+		order.setOrderDetail(orderDt);		
+		//세션에 주문정보(오더디테일 포함) 저장
+		session.setAttribute("order", order);
+
+		
+		//session.setAttribute("orderDt", orderDt); //세션에 저장하는게 맞나???
+		request.setAttribute("orderDt", orderDt);
+		
+		
+		
 		request.getRequestDispatcher("/WEB-INF/views/order/dpayment.jsp").forward(request, response);
 		
+		//여기서 order session에 저장
+		//반복문을 돌리고 어쩌고 형식에 맞춰서..
+		//북디테일도 넣어야지 등신아..
 		
+		//왜!!
 		
 	}
 

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM
+"http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="getWriterList">
+		SELECT
+		       USER_NO
+		     , USER_NAME
+		     , USER_GRADE
+		     , STATUS
+		  FROM MEMBER
+		 WHERE USER_GRADE = 20
+		   AND STATUS = 'Y'
+		 ORDER BY USER_NAME
+	</entry>
+
+	<entry key="insertCommu">
+		INSERT INTO COMMU
+		(
+		    COMMU_NO
+		  , TITLE
+		  , CONTENT
+		  , USER_NO
+		  , CREATE_DATE
+		  , REPLY
+		  , COUNT
+		  , WRITER_NO
+		  , STATUS
+		)
+		VALUES
+		(
+		    SEQ_COMMU_NO.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  , DEFAULT
+		  , DEFAULT
+		  , DEFAULT
+		  , ?
+		  , DEFAULT
+		)
+	</entry>
+
+	<entry key="getListCount">
+		SELECT
+		       COUNT(*)
+		  FROM COMMU
+		 WHERE DELETED = 'N'
+	</entry>
+
+	<entry key="selectList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.* 
+			        FROM(SELECT
+			               COMMU_NO
+			             , TITLE
+			             , CONTENT
+			             , C.USER_NO
+			             , M.USER_ID
+			             , CREATE_DATE
+			             , REPLY
+			             , COUNT
+			             , C.WRITER_NO
+			             , W.USER_NAME 
+			             , C.STATUS
+			          FROM COMMU C
+			          JOIN MEMBER M ON(C.USER_NO = M.USER_NO)
+			          JOIN MEMBER W ON(C.WRITER_NO = W.USER_NO)
+			         WHERE DELETED = 'N'
+			         ORDER BY CREATE_DATE DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectCommu">
+		SELECT
+		       COMMU_NO
+		     , TITLE
+		     , CONTENT
+		     , C.USER_NO
+		     , M.USER_ID
+		     , CREATE_DATE
+		     , REPLY
+		     , COUNT
+		     , C.WRITER_NO
+		     , W.USER_NAME 
+		     , C.STATUS
+		  FROM COMMU C
+		  JOIN MEMBER M ON(C.USER_NO = M.USER_NO)
+		  JOIN MEMBER W ON(C.WRITER_NO = W.USER_NO)
+		 WHERE COMMU_NO = ?
+		 ORDER BY CREATE_DATE DESC
+	</entry>
+	
+	<entry key="getMyListCount">
+		SELECT
+		       COUNT(*)
+		  FROM COMMU
+		 WHERE USER_NO = ?
+		   AND DELETED = 'N'
+	</entry>
+	
+	<entry key="selectMyList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.* 
+			        FROM(SELECT
+			               COMMU_NO
+			             , TITLE
+			             , CONTENT
+			             , C.USER_NO
+			             , M.USER_ID
+			             , CREATE_DATE
+			             , REPLY
+			             , COUNT
+			             , C.WRITER_NO
+			             , W.USER_NAME 
+			             , C.STATUS
+			          FROM COMMU C
+			          JOIN MEMBER M ON(C.USER_NO = M.USER_NO)
+			          JOIN MEMBER W ON(C.WRITER_NO = W.USER_NO)
+			         WHERE C.USER_NO = ?
+			           AND DELETED = 'N'
+			         ORDER BY CREATE_DATE DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+
+	<entry key="selectWriterCount">
+		SELECT
+		       COUNT(*)
+		  FROM MEMBER
+		 WHERE USER_GRADE = 20
+		   AND STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectSearchWriterCount">
+		SELECT
+		       COUNT(*)
+		  FROM MEMBER
+		 WHERE USER_GRADE = 20
+		   AND STATUS = 'Y'
+		   AND USER_NAME LIKE '%' || ? || '%'
+	</entry>
+	
+	<entry key="selectWriterList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.* 
+		            FROM(SELECT
+		                   M.USER_NO
+		                 , M.USER_NAME
+		                 , W.FILE_PATH
+		                 , W.GREETING
+		                 , W.ORIGIN_FILE
+		                 , W.CHANGE_FILE
+		              FROM MEMBER M, W_PROFILE W
+		             WHERE M.USER_NO = W.WRITER_NO(+)
+		               AND USER_GRADE = 20
+		             ORDER BY USER_NAME) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectSearchWriterList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.* 
+		            FROM(SELECT
+		                   M.USER_NO
+		                 , M.USER_NAME
+		                 , W.FILE_PATH
+		                 , W.GREETING
+		                 , W.ORIGIN_FILE
+		                 , W.CHANGE_FILE
+		              FROM MEMBER M, W_PROFILE W
+		             WHERE M.USER_NO = W.WRITER_NO(+)
+		               AND USER_GRADE = 20
+		               AND USER_NAME LIKE '%' || ? || '%'
+		             ORDER BY USER_NAME) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectWCommuCount">
+		SELECT
+		       COUNT(*)
+		  FROM COMMU
+		 WHERE WRITER_NO = ?
+		 AND STATUS = 'N'
+		 AND DELETED = 'N'
+	</entry>
+	<entry key="selectWCommuList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.* 
+		            FROM(SELECT
+		                   COMMU_NO
+		                 , TITLE
+		                 , CONTENT
+		                 , C.USER_NO
+		                 , M.USER_ID
+		                 , CREATE_DATE
+		                 , REPLY
+		                 , COUNT
+		                 , C.WRITER_NO
+		                 , W.USER_NAME 
+		                 , C.STATUS
+		              FROM COMMU C
+		              JOIN MEMBER W ON(C.WRITER_NO = W.USER_NO)
+		              JOIN MEMBER M ON(M.USER_NO = C.USER_NO)
+		             WHERE C.WRITER_NO = ?
+		               AND C.STATUS = 'N'
+		               AND C.DELETED = 'N'
+		             ORDER BY CREATE_DATE DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="updateWCommu">
+		UPDATE COMMU
+		   SET REPLY = ?
+		     , STATUS = 'Y'
+		 WHERE COMMU_NO = ?
+	</entry>
+	
+	<entry key="updateCommu">
+		UPDATE COMMU
+		   SET TITLE = ?
+		     , CONTENT = ?
+		 WHERE COMMU_NO = ?
+	</entry>
+	
+	<entry key="deleteCommu">
+		UPDATE COMMU
+		   SET DELETED = 'Y'
+		 WHERE COMMU_NO = ?
+	</entry>
+</properties>

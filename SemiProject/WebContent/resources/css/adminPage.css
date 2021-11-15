@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+.row{
+	display: flex;
+}
+aside{
+	width : 20vh;
+	height: 60vh;
+	background : rgb(196, 217, 195);
+	float: left;
+	border: 3px solid black;
+}
+ul#navi {
+        width: 100%;
+        text-indent: 10px;
+}
+ul#navi, ul#navi ul {
+        margin:0px;
+        padding:0px;
+        list-style:none;
+}
+li.group {
+        margin-bottom: 3px;
+        background: rgb(196, 217, 195);
+}
+li.group div.title {
+        height: 4vh;
+        line-height: 35px;
+        background: rgb(196, 217, 195);
+        font-weight: bolder;
+        cursor:pointer;
+        border-bottom: 3px solid black;
+}
+ul.sub li {
+        margin-bottom: 2px;
+        height:4vh;
+        line-height:35px;
+        background:#f4f4f4;
+        cursor:pointer;
+}
+ul.sub li a {
+        display:block;
+        width: 100%;
+        height:100%;
+        text-decoration:none;
+        color:#000;
+        text-align: center;
+        font-weight: bolder;
+}
+ul.sub li:hover {
+        background:rgb(196, 217, 240);
+}

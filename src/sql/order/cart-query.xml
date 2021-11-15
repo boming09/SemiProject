@@ -242,6 +242,14 @@
 				)
 		<![CDATA[WHERE ROWNUM <= 5]]>
 	</entry>
+		
+	<entry key="updateCouponStatus">
+		UPDATE CUPON
+		   SET STATUS = 'N'
+		 WHERE COUPON_NO = ?
+	</entry>
+	
+	
 	
 	
 </properties>

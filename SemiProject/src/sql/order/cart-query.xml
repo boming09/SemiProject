@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM
+"http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectList">
+		SELECT 
+		        BOOK_NAME
+		      , CATEGORY_ID
+		      , AUTHOR
+		      , PUBLISHER
+		      , SALE_PRICE
+		      , PRICE
+		      , STOCK
+		      , BOOK_IMG
+		      , CART_NO
+		      , BOOK_ID
+		      , C.USER_NO
+		      , AMOUNT
+		   FROM CART C
+		  LEFT JOIN BOOK USING(BOOK_ID)
+	</entry>
+
+	<entry key="insertCart">
+		INSERT
+			INTO CART
+			(
+				CART_NO
+			  , BOOK_ID
+			  , AMOUNT
+			  , USER_NO
+			)
+			VALUES
+			(
+				SEQ_CART_NO.NEXTVAL
+			  , ?
+			  , ?
+			  , ?
+			)
+	</entry>
+	
+	<entry key="deleteCart">
+		DELETE FROM CART
+ 		 WHERE CART_NO = ?
+	</entry>
+	
+	<entry key="updateCart">
+		UPDATE CART
+	  	   SET AMOUNT = ?
+	 	 WHERE CART_NO = ?
+	</entry>
+
+	<entry key="selectOrderList">
+		SELECT 
+		       BOOK_NAME
+		     , CATEGORY_ID
+		     , AUTHOR
+		     , SALE_PRICE
+		     , PRICE
+		     , CART_NO
+		     , BOOK_ID
+		     , C.USER_NO
+		     , AMOUNT
+		  FROM CART C
+		  LEFT JOIN BOOK USING(BOOK_ID)
+	     WHERE CART_NO = ?
+	</entry>
+
+	<entry key="selectSortListLow">
+		SELECT * 
+		  FROM BOOK
+		  JOIN CART USING(BOOK_ID)
+		 ORDER BY SALE_PRICE
+	</entry>
+	
+	<entry key="selectSortListHigh">
+		SELECT * 
+		  FROM BOOK
+		  JOIN CART USING(BOOK_ID)
+		 ORDER BY SALE_PRICE DESC
+	</entry>
+	
+	<entry key="selectSortListName">
+		SELECT * 
+		  FROM BOOK
+		  JOIN CART USING(BOOK_ID)
+		 ORDER BY BOOK_NAME
+	</entry>
+	
+	<entry key="selectSortListRel">
+		SELECT * 
+		  FROM BOOK 
+		  JOIN CART USING(BOOK_ID)
+		 ORDER BY PUBLICATION_DATE DESC
+	</entry>
+	
+	<entry key="insertOrder">
+		INSERT
+			INTO ORDER_DETAIL
+			(
+			    BOOK_ID
+			  , AMOUNT
+			  , ORDER_NO
+			  , ORDER_ID
+			)
+			VALUES
+			(
+			    ?
+			  , ?
+			  , SEQ_ORDER_NO.NEXTVAL
+			  , ORDER_ID.NEXTVAL
+			)
+	</entry>
+	
+	<entry key="selectAbook">
+		SELECT 
+		       BOOK_NAME
+		     , CATEGORY_ID
+		     , AUTHOR
+		     , SALE_PRICE
+		     , PRICE
+		     , BOOK_ID
+		  FROM BOOK
+	     WHERE BOOK_ID = ?
+	</entry>
+
+	
+	<entry key="insertFinalOrder">
+		INSERT 
+			INTO "ORDER"
+			(
+				ORDER_NO
+			  , ORDER_DATE
+			  , REL_DATE
+			  , RECEIPTE_DATE
+			  , ADDRESS
+			  , PHONE
+			  , PAYMENT
+			  , USER_NO
+			)
+			VALUES
+			(
+			  SEQ_ORDER_NO.NEXTVAL
+			, SYSDATE
+			, SYSDATE+1
+			, SYSDATE+2
+			, ?
+			, ?
+			, ?
+			, ?
+			)
+	</entry>
+	
+		
+	<entry key="insertOrderDetail">
+		INSERT
+			INTO ORDER_DETAIL
+			(
+			    BOOK_ID
+			  , AMOUNT
+			  , ORDER_NO
+			  , ORDER_ID
+			)
+			VALUES
+			(
+			    ?
+			  , ?
+			  , SEQ_ORDER_NO.CURRVAL
+			  , ORDER_ID.NEXTVAL
+			)
+	</entry>
+	
+	<entry key="selectCoupon">
+		SELECT *
+		      FROM CUPON
+		 WHERE USER_NO = ?
+		  AND STATUS = 'Y'	
+	</entry>
+	
+	<entry key="updateBookSaleRate">
+		UPDATE BOOK 
+		   SET SALE_RATE = SALE_RATE + ?
+		 WHERE BOOK_ID = ?
+	</entry>	
+	
+	
+	<entry key="selectUpOrder">
+	SELECT * FROM
+			(SELECT ORDER_NO 
+		      , ORDER_DATE
+		      , REL_DATE
+		      , RECEIPTE_DATE
+		      , ADDRESS
+		      , PHONE
+		      , PAYMENT
+		  FROM "ORDER"
+		 WHERE USER_NO = ?
+		  ORDER BY ORDER_DATE DESC)
+		<![CDATA[WHERE ROWNUM <= 1]]>
+	</entry>
+	
+	
+	<entry key="wBookList">
+		SELECT * 
+   		FROM (SELECT * 
+           FROM BOOK  
+          WHERE PUBLICATION_DATE  > ADD_MONTHS(SYSDATE,-1) 
+          ORDER BY SALE_RATE DESC)
+    <![CDATA[WHERE ROWNUM <= 3]]>
+	</entry>
+	
+	<entry key="nBookList">
+		SELECT * 
+		  FROM (SELECT * 
+		         FROM BOOK 
+		        ORDER BY PUBLICATION_DATE DESC
+		        )
+	<![CDATA[WHERE ROWNUM <= 3]]>
+	</entry>
+
+	<entry key="pBookList">
+		SELECT * 
+    	 FROM (SELECT * 
+	            FROM BOOK 
+	        ORDER BY AVG_SCORE DESC) 
+	<![CDATA[WHERE ROWNUM <= 3]]>
+	</entry>
+	
+	<entry key="bestList">
+		SELECT *
+		   FROM (
+				SELECT 
+				      DISTINCT BOOK_ID
+				    , BOOK_NAME
+				    , AUTHOR
+				    , BOOK_IMG
+				    , SALE_RATE
+				  FROM BOOK
+				  JOIN ORDER_DETAIL USING(BOOK_ID)
+				  JOIN "ORDER" USING(ORDER_NO)
+				  WHERE ORDER_DATE >= TO_CHAR(SYSDATE-7,'YYYYMMDD')
+				  ORDER BY SALE_RATE DESC
+				)
+		<![CDATA[WHERE ROWNUM <= 5]]>
+	</entry>
+	
+	
+</properties>
