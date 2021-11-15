@@ -27,6 +27,7 @@ public class B_ReviewService {
 		int listCount = b_reviewDao.getListCount(conn, search);
 		
 		// System.out.println(listCount); // 총게시글 숫자 확인 OK
+		
 				
 		// PageInfo 객체 만들기
 		PageInfo pi = new PageInfo(page, listCount, 10, 10);
@@ -35,7 +36,7 @@ public class B_ReviewService {
 		List<B_Review> b_reviewList = b_reviewDao.selectList(conn, pi, search);
 		
 		// System.out.println(pi);
-		// System.out.println(myreviewList);
+		// System.out.println(b_reviewList);
 		
 		Map<String, Object> returnMap = new HashMap<>();
 		

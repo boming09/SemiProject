@@ -151,7 +151,7 @@
             JOIN B_CATEGORY C ON(B.BOOK_ID = C.CATEGORY_ID)
 		    JOIN MEMBER M ON(B.USER_NO = M.USER_NO)
 		   WHERE B.STATUS = 'Y'
-		     AND REVIEW_NO = ?;
+		     AND REVIEW_NO = ?
 	</entry>
 	
 	<entry key="insertB_Review">

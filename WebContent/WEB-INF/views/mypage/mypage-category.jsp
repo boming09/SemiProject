@@ -23,9 +23,9 @@
 	                <li><a href="<%= request.getContextPath() %>/memberinformation">회원정보 수정</a></li>
 	                <li><a href="<%= request.getContextPath() %>/memberout">회원탈퇴</a></li>
 	                <li><a href="<%= request.getContextPath() %>/mypagemyreview">마이리뷰</a></li>
-	                <!-- 
+	                 
 	                <li><a href="<%= request.getContextPath() %>/mypagemycoupon">내쿠폰</a></li>
-	            	 -->
+	            	
 	            </ul>
 	        </div>
 	        <div class="area2"><a class="ca-top">주문내역</a>

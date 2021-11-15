@@ -63,6 +63,7 @@
                     <th>* 이메일</th>
                     <td class="id_name">
                     <input type="text" id="email" name="email" class="lomb inputEmail" required">
+                    <!-- 
                     <input type="email" id="email1" name="email" class="lomb"  size="20" required>&nbsp;
                         <select  class="lomb2" name="emailSelection" id="emailSelection">
                             <option value="naver.com">@naver.com</option>
@@ -72,6 +73,7 @@
                             <option value="nate.com">@nate.com</option>
                             <option value="1" selected>&nbsp;&nbsp;직접입력</option>
                         </select></td>
+                	-->
                 </tr>
                 <tr>
                     <th>성별</th>
@@ -97,7 +99,7 @@
         <fieldset class="lofd">
             <table class="lotb2">
                 <tr>
-                    <th class="address_name">* 주소</th>
+                    <th class="address_name">주소</th>
                     <td><input type="text" class="postcodify_postcode5" name="address" id="lobm2" size="10"></td>
                     <td><a href="#"><button type="button" id="postcodify_search_button">주소검색</button></a></td>                    
                 </tr>
@@ -141,11 +143,11 @@
                     </td>
                 </tr>
                  -->
+            </table>
+        </fieldset>
                 <div>
                 	<button class="joinme" id="joinBtn">회원 가입하기</button>
                 </div>
-            </table>
-        </fieldset>
         </form>
         <div class="topline">
         </div>
@@ -216,12 +218,17 @@
 	</script>
 		
 	<script>
+	// 유효값 검사용
+	function validate(){
+		return true;
+	}
+	
 	var text = "";
 	var count = 0;
 	
 	$("#joinBtn").click(function(){
 		/*
-		var idPattern = /^[A-Za-z]{1}[A-Za-z0-9]{3,19}$/;
+		
 	    var pwPattern = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
 	    var emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 	    var phonePattern = /(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/g;
@@ -231,7 +238,8 @@
 	    }
 	    else alert("아이디를 잘못 입력 하셨습니다.");
 	    */
-	    /*
+	    
+		/*	
 	    var userId = $("[name=userId]");
 		var userPwd = $("[name=userPwd]");
 		var userPwd2 = $("[name=userPwd2]");
@@ -239,27 +247,168 @@
 		var phone = $("[name=phone]");
 		var email = $("[name=email]");
 		var address = $("[name=address]");
+		// var idPattern = /^[A-Za-z]{1}[A-Za-z0-9]{6,10}$/;
+		if(!userId.val()){
+			alert("아이디를 입력하여야 합니다.");
+			return false;
+		}
 		
-		if($("#userId").value("") == false){
-			alert("아이디를 입력해주세요.");
-			return;
-	    }   
-	    	    
+		if(!idPattern.test(userId.val()){
+			alert("알파뱃 하고 숫자만 사용가능합니다.");
+			return false;
+		}
+		*/
+		/*
+		if(!check(/^[a-z][A-Za-z\d]{5,11}$/, 
+	            document.getElementById("userId"), 
+	            "아이디는 영문 소문자로 시작하여 영문과 숫자로만 6~12자 입력하세요"))
+	            return false;
+		*/
+	    /*
 	    if($("#userName") == false){
 			alert("이름을 적어주세요.");
 			return;
 	    }
-	    */
+	    */    
 	    
 	    /*
-	    if(!userId || userId.val() == false){
-			alert("아이디를 입력해주세요.");
-			userId.focus();
+	    if(!userName || userId.val() == false){
+			alert("이름을 입력해주세요.");
+			userName.focus();
+	    }
+	    
+	    if(!userName.val() == false){
+	    	alert("이름을 입력해주세요".)};
+	    	userName.focus();
+	    }
+	    */	     
+	    
+	    //if(!check(/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{8,20}/,
+	    //        document.getElementById("userPwd"),
+	    //        "비밀번호는 영문 대소문자 숫자 특수문자를 모두 하나이상 포함하여 8~20자 입력하세요"))
+	    //            return false;
+	    // if(!check(re,pw,"패스워드는 4~12자의 영문 대소문자와 숫자로만 입력")) {
+	    //     return false;
+	    // }
+	    
+	    /*
 	    */
+	    var re = /^[a-zA-Z0-9]{8,16}$/
+	    var id = document.getElementById("userId");
+	    var pw = document.getElementById("userPwd");
+	    var name = document.getElementById("userName");
+	    var idCheck = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6~10}$/;
+	    
+	    /*
+	    if(id.value == ""){
+	    	alert("아이디를 입력하세요.");
+	    	id.focus();
+	    	return true;
+	    }
+	    
+	    */
+	    if(joinForm.userId.value == ""){
+	    	alert("아이디를 입력하지 않았습니다")
+	    	joinForm.userId.focus();
+	    	return false;
+	    }
+	    /*
+	    if(!idCheck.test(joinForm.userId.value)){
+	    	alert("아이디는 영어+숫자 조합으로 6~10자 사이로 입력해주세요.")
+	    	pw.focus();
+	    	return false;
+	    }
+	    */
+	    
+	    if(pw.value == ""){
+	    	alert("비밀번호를 입력하세요.");
+	    	pw.focus();
+	    	return false;
+	    }
+
+	    var pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^&*+=-])(?=.*[0-9]).{8,25}$/;
+	    
+	    if(!pwCheck.test(pw.value)){
+	    	alert("비밀번호는 영어+숫자+특수문자 조합으로 8~20 사이로 입력해주세요.")
+	    	pw.focus();
+	    	return false;
+	    }
+	    
+	    /*
+	    if(joinForm.userPwd.value == ""){
+	        alert("비밀번호를 입력하지 않았습니다")	    	
+	    	joinForm.userPwd.focus();
+	    	return false;
+	    }
+	    */
+	    /*
+	    if(!check(/^[a-zA-Z0-9]{8,16}$/,
+	    		document.getElementById('userPwd'),
+	    		"비밀번호 입력"))
+	       	return false;
+	    }
+	    */
+	    
+	    if(joinForm.userPwd.value != joinForm.userPwd2.value){
+	    	alert("비밀번호가 같지 않습니다.")
+	    	joinForm.userPwd2.focus();
+	    	return false;
+	    }
+	    	        
+	    if(joinForm.userName.value == ""){
+	    	alert("이름을 입력하지 않았습니다")
+	    	joinForm.userName.focus();
+	    	return false;
+	    }
+	    /*
+	    if(name.value == ""){
+	    	alert("이름을 입력해주세요..");
+	    	name.focus();
+	    	return false;
+	    }
+	    */
+	    
+	    var nameCheck = /^[ㄱ-ㅎㅏ-ㅣ가-힣]{2,}$/;
+	    if(!nameCheck.test(joinForm.userName.value)){
+	    	alert("이름은 한글로 2자 이상 입력해주세요.")
+	    	joinForm.userName.focus();
+	    	return false;
+	    }
 	    	    
+	    if(joinForm.phone.value == ""){
+	    	alert("전화번호를 입력하지 않았습니다")
+	    	joinForm.phone.focus();
+	    	return false;
+	    }
+	    var phoneCheck = /^[0-9]{11}$/;
+	    if(!phoneCheck.test(joinForm.phone.value)){
+	    	alert("숫자만 입력가능합니다")
+	    	joinForm.phone.focus();
+	    	return false;
+	    }
+	    
+	    if(joinForm.email.value == ""){
+	    	alert("이메일을 입력하지 않았습니다")
+	    	joinForm.email.focus();
+	    	return false;
+	    }
+	    
+	    var emailCheck = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		if(!emailCheck.test(joinForm.email.value)){
+			alert("숫자와 영어만 입력가능합니다")
+			joinForm.email.focus();
+			return false;
+		}
+	    /*
+	    if(joinForm.address.value == ""){
+	    	alert("주소를 입력하지 않았습니다")
+	    	joinForm.email.focus
+	    	return false;
+	    }
+	    */
 	    if($("#termsbox").is(":checked") == false){ 
 				alert("이용약관에 동의하여야 회원가입이 진행됩니다.");
-				return;
+				return false;
 		}
 	    		
 		return true;
@@ -285,6 +434,8 @@
 	});
 	
 	</script>
+
+	
 
 
 </body>

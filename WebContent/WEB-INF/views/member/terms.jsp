@@ -19,8 +19,8 @@
 	<div class="wrapper">
 		<div class="outer2">
 	    	
-	    	<form class="lofdterms" action="<%= request.getContextPath() %>/terms"
-	    	method="post">
+	    	<form class="lofdterms" id="termsf" action="<%= request.getContextPath() %>/terms"
+	    	method="post" onsubmit="return validate();">
 	    		
 	    		<h2 class="h2">홈페이지 이용약관</h2>
 	    		<div class="agree">
@@ -1927,7 +1927,7 @@
 				② 이 법 시행 당시 다른 법령에서 종전의 「정보통신망법」 또는 그 규정을 인용하고 있는 경우 이 법에 그에 해당하는 규정이 있는 때에는 이 법 또는 이 법의 해당 규정을 인용한 것으로 본다.
 			    </div>
 			    <p>
-			    <input type="checkbox" id="chk1">
+			    <input type="checkbox" id="chk1" class="normal" name="chk" value="1">
 			    <label for="chk1">홈페이지 이용약관에 동의합니다.(동의하지 않을경우 가입되지 않습니다.)</label>
 			    </p>
 			    </div>
@@ -1982,18 +1982,18 @@
 				      · 개인정보 보유 및 이용 기간 : 행정자치부에서는 이미 보유하고 있는 개인정보이기 때문에 별도로 저장하지 않음
 	    		</div>
 	    		<p>
-	    		<input type="checkbox" id="chk2">
+	    		<input type="checkbox" id="chk2" class="normal" name="chk" value="2">
 			    <label for="chk2">개인정보 이용약관에 동의합니다.(동의하지 않을경우 가입되지 않습니다.)</label>
 	    		</p>
 	    		</div>
 	    		<div class="#">
-	    		<p id="agreement"><input type="checkbox" id="chk_all">
+	    		<p id="agreement"><input type="checkbox" id="chk_all" name="chk_all">
 	    		<label for="chk_all">모두 동의합니다. (동의하지 않을경우 가입되지 않습니다.)</label>
-	    		</p>
+	    		</p>	    		
 	    		</div>
 	    		<div class="butdiv">
-	    		<a href="<%= request.getContextPath() %>"><button class="termsbut">비동의</button></a>
-	    		<button class="termsbut">동의</button>
+	    		<a href="<%= request.getContextPath() %>"><button type="button" class="termsbut">비동의</button></a>
+	    		<button id="tbut" class="termsbut">동의</button>
 	    		</div>
 	        </from>
 		</div>
@@ -2001,32 +2001,56 @@
     <!-- footer -->
 	<jsp:include page="/WEB-INF/views/member/footer.jsp" />
 	<!-- 쿠키 사용하여 아이디 기억하기 기능 -->
-	<scripit src="<%= request.getContextPath() %>/resources/js/login/rememberUserId.js"></scripit>	
+	<script src="<%= request.getContextPath() %>/resources/js/login/rememberUserId.js"></script>	
+	<!-- jQuery와 Postcodify를 로딩한다 -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 	
-	<!-- 카카오 간편로그인 -->
-	<!-- 
-	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	
 	<script>
-		// dfeffb0d0cd1f04335779fda1d08bc4f
-		window.Kakao.init("dfeffb0d0cd1f04335779fda1d08bc4f");
-		
-		function kakaoLogin(){
-			window.Kakao.Auth.login({
-				scope: 'profile, account_email, gender',
-				success: function(authObj){
-					console.log(authObj);
-					window.Kakao.API.request({
-						url:'/v2/user/me',
-						success: res => {
-							const kakao_account = res.kakao_account;
-							console.log(kakao_account)
-						}
-					});
-				}
-			});
+		function validate(){
+			return true;
 		}
+		
+		$("#tbut").click(function(){
+			
+			if($("#chk1").is(":checked") == false){
+				alert("홈페이지 이용약관에 동의하여야 진행 가능합니다.");
+				return false;
+			}
+			
+		
+			if($("#chk2").is(":checked") == false){
+				alert("개인정보 이용약관에 동의하여야 진행 가능합니다.");
+				return false;
+			}
+			
+			if($("#chk_all").is(":checked") == false){
+				alert("모든 이용약관에 동의하여야 진행 가능합니다.");
+				return false;
+			}
+			
+			return true;
+		});
 	</script>
-	 -->	 
+	 
+	<script>
+	$(".outer2").on("click", "#chk_all", function(){
+		$(this).parents(".outer2").find('input').prop("checked", $(this).is(":checked"));
+	});
+	
+	$(".outer2").on("click", ".normal", function() {
+	    var is_checked = true;
+
+	    $(".outer2 .normal").each(function(){
+	        is_checked = is_checked && $(this).is(":checked");
+	    });
+
+	    $("#chk_all").prop("checked", is_checked);
+	});
+	
+	
+	</script>
 	 
 </body>
 </html>
