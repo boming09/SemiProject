@@ -184,8 +184,8 @@ public class BookService {
 		}else {
 			rollback(conn);
 		}
-		
-
+		return result;
+	}
 	
 	// 도서 댓글 등록
 	public int insertReply(Reply reply, double avgScore, int starScore) {
@@ -243,6 +243,10 @@ public class BookService {
 		if(result > 0) {
 			commit(conn);
 		}else {
+			rollback(conn);
+		}
+		return result;
+	}
 
 	// 작가 댓글 등록
 	public int insertAddReply(Reply reply) {
@@ -260,8 +264,6 @@ public class BookService {
 		
 		return result;
 	}
-
-
 	
 
 }

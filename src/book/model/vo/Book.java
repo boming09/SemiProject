@@ -27,9 +27,6 @@ public class Book {
 	private double avgScore;		// 평점
 	private int sumScore;			// 별점 합계
 	private int reviewCount;        // 작가마이페이지 내도서 리뷰
-
-
-
 	
 	private List<Reply> replyList;		// 댓글목록
 //	BOOK_ID	NUMBER
@@ -206,16 +203,6 @@ public class Book {
 	public void setSumScore(int sumScore) {
 		this.sumScore = sumScore;
 	}
-
-	
-	public int getSumScore() {
-		return sumScore;
-	}
-
-	public void setSumScore(int sumScore) {
-		this.sumScore = sumScore;
-	}
-
 
 	public int getReviewCount() {
 		return reviewCount;
