@@ -1,0 +1,470 @@
+@charset "UTF-8";
+
+
+
+.ct_wrapper {
+    min-width : 800px;
+    width : 1100px;
+    margin : 0px auto;
+
+    /*height:100vh; */
+}
+
+.cart_bl {
+	width:95%; /*수정*/
+	position: inline-block;
+	margin-left :5%;
+	margin-top: 5%;
+	margin-bottom: 10% /*footer랑 간격*/
+	
+	
+}
+
+#order {
+    position: relative;
+    font-size: 1.3rem;
+    font-weight:bold;
+    left:10px;
+    top:11px;
+
+}
+
+
+#cart_sel {
+	position: relative;
+	border:1px solid black;
+	left:84%;
+	margin-top:10px;
+	padding:1px;
+	font-size:0.9rem;
+}
+
+#delete_btn {
+	position: relative;
+	border:1px solid black;
+	left:83%;
+
+	margin-top:10px;
+	margin-bottom:20px;
+	padding:1px;
+	font-size:0.9rem;
+	
+}
+
+.btn {
+	background:gray;
+	padding:7px;
+	color:white;
+}
+
+
+.boldft {
+	font-weight:bold
+}
+
+/*.cart_tb span:not(.pdnm) {
+	margin:8%;	
+}
+
+.pdnm {
+	margin-left:8%;	
+}*/
+
+/*#ctod {
+	/*margin-left:50%;
+	
+}*/
+
+.hidden {
+	display:none;
+}
+
+
+/*-------------------------*/
+
+ul,ol,li {
+  list-style: none;
+}
+
+
+.title_item {
+  /*display: block;*/
+  font-size: 16px;
+
+ 
+}
+
+.title_item,
+.desc_item {
+  margin-top: 10px;
+}
+
+.desc_item {
+  font-size: 12px;
+}
+
+.od_container {
+  display: grid; 
+  grid-template-columns : 1fr 1fr 1fr;
+  grid-gap:0.5rem;
+ /* grid-auto-rows:minmax(10em, auto);*/
+  background: #f3f3f3;
+  padding-left:40px;
+  pading-right:30px;
+  padding-top:30px;
+  padding-bottom:23px;
+
+  margin-top:20px;
+  align-items:center;
+  justify-items:left;
+
+}
+
+.od_info {
+	position:relative;
+	left:9px;
+	margin-top:70px;
+	margin-bottom:20px;
+	font-weight:bold;
+}
+
+.discount {
+	display:inline-block;
+	position:relative;
+	width:130px;
+	height:130px;
+	border:1px solid gray;
+	background:#F2F9F0;
+	text-align:center;
+	line-height:18px;
+}
+
+.dis_btn {
+	padding:1px;
+	border: 1px solid gray;
+	/*position:relative;
+	left:10px;*/
+	background:white;
+	color:black;
+	
+}
+a {
+	color:black;
+}
+
+.align_ct{
+	display:block;
+	margin:3px;
+}
+
+
+.tst{
+	display:grid;
+	grid-template-columns : 1fr 1fr;
+	justify-items:left;
+	width:256px;
+	font-size:0.8rem;
+	
+}
+.dis{
+ 	display:inline-block;
+ 	position:relative;
+ 	padding:1px;
+ 	background:white;
+ 	width:45px;
+ 	border:1px solid gray;
+}
+
+.cart_thum {
+	width:80px;
+}
+
+.item {
+	/*align-self:right;
+	justify-self:left;*/
+	margin:10px;
+	
+	
+	
+}
+
+.thum {
+	
+	
+}
+
+
+.ct_input {
+	border:1px solid black;
+	background-color:white;
+	width:60px;
+	height:27px;
+}
+
+.pay_tt {
+	background: #f3f3f3;
+	/*background:#F2F9F0;*/
+	display: grid;
+	grid-template-columns: 4fr 6fr;
+	padding-left:50px;
+	padding-top:10px;
+	padding-bottom:14px;
+	font-weight:bold;
+	font-size:0.95rem;
+	border-top:2px solid gray;
+	
+}
+
+.od_ttt {
+	background: #f3f3f3;
+	/*background:#F2F9F0;*/
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	padding-left:50px;
+	padding-top:10px;
+	padding-bottom:14px;
+	font-size:0.9rem;
+	border-top:1px dotted gray;
+	
+	
+}
+
+.fs {
+	font-size:0.95rem;
+	border-bottom:2px solid gray;
+}
+
+.pay {
+	background: #f3f3f3;
+	/*background:#F2F9F0;*/
+	padding:20px;
+	font-size:0.9rem;
+	padding-left:40px;
+	border-top:2px solid gray;
+	border-bottom:2px solid gray;
+}
+
+#couponBtn{
+	font-weight:bold;
+}
+
+#infullBtn{
+	border:1px solid green;
+	color:green;
+	font-weight:bold;
+	
+}
+.bold{
+	font-weight:bold;
+}
+
+.white{
+	background:white;
+	border-left:1px solid white;
+}
+
+#pointPayBtn{
+	background:green;
+	color:white;
+	font-weight:bold;
+}
+
+.agree {
+	text-align:center;
+	
+
+}
+.agree_dt {
+	margin-top: 30px;
+	margin-bottom:10px;
+	font-size:1.1rem;
+	font-weight:bold;
+	color:gray;
+}
+
+.agree_dt2 {
+	width:100%;
+	border:2px solid gray;
+	margin-bottom:20px;
+	background: #f3f3f3;
+	font-weight:bold;
+
+}
+
+.agree_dt2 p {
+	margin:20px;
+}
+
+#agreebox {
+	zoom: 1.4;
+	width:17px;
+	
+	
+}
+.pay div{
+	margin:5px;
+}
+.ct_tt div {
+	margin:12px;
+	/*margin-left:50px;*/
+	font-weight:bold;
+}
+
+.c_item {
+
+	align-self:end;
+}
+
+#ct_order_btn {
+	background:rgb(73, 125, 78);
+	padding:20px;
+	color:white;
+	font-size:1.1rem;
+	position: relative;
+	left: 47%;
+	margin-top: 30px;
+}
+
+
+
+.address{
+	margin-right:10px;
+}
+
+.nm_area {
+	width:140px;
+	height:23px;
+	background:white;
+	border:1px solid gray;
+
+}
+
+#total_tb {
+	width:100%;
+	border-top:1px solid black;
+	border-collapse: collapse;
+	
+}
+td {
+	
+}
+.add_area {
+	width:400px;
+	height:23px;
+	background:white;
+	border:1px solid gray;
+}
+
+.big_text {
+	width:500px;
+	height:100px;
+	background:white;
+	border:1px solid gray;
+}
+
+
+
+
+
+/*------------------주문완료---------------*/
+
+.complete{
+	text-align:center;
+	width:100%; /*수정*/
+	position: inline-block;
+	margin-left :5%;
+	margin-top: 5%;
+	margin-bottom: 37% /*footer랑 간격*/
+}
+
+.complete_msg {
+	font-size:1.4rem;
+	font-weight:bold;
+	margin-bottom:20px;
+}
+
+#green {
+	color:rgb(73, 125, 78);
+}
+
+.complete_block {
+	display:inline-block;
+
+	width:20%;
+
+	text-align:left;
+	margin-top:20px;
+	padding-top:20px;
+	padding-bottom:20px;
+
+}
+
+.complete_block2 {
+	display:inline-block;
+
+	width:36%;
+
+	text-align:left;
+	margin-top:20px;
+	padding-top:20px;
+	padding-bottom:20px;
+
+}
+
+.cp_item {
+	padding:10px;
+}
+
+.cp_item div {
+	margin:8px;
+}
+
+.mint {
+	background:rgba(196, 217, 195, 1);
+}
+
+#goOrderDetail {
+	padding:7.5px;
+	border:1px solid black;
+	font-weight:bold;
+}
+
+#gohome {
+	font-weight:bold;
+	padding:8px;
+	color:white;
+	background:rgb(73, 125, 78);
+}
+
+#bInput{
+	width:30px;
+	text-align:right;
+}
+
+#dInput{
+	width:30px;
+}
+
+/*------------------footer--------------*/
+.footer2 {
+	position:relative;
+	height: 67px;
+}
+
+footer {
+background:rgba(196, 217, 195, 1);
+text-align: center;
+padding : 26px 0;
+
+position: absolute;
+bottom: 0;
+
+width: 100%;
+
+}
+
+footer p {
+color: black;
+font-size: 0.865rem;
+}
+

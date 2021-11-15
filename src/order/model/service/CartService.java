@@ -167,6 +167,9 @@ public class CartService {
 		//북테이블에 판매수량 증가
 		int addSaleRateResult = 0;
 		
+		//쿠폰 차감 결과
+		int couponMinusResult = 0;
+		
 		for(OrderDetail orderDetail : order.getOrderDetail()) {
 			orderDetailResult += cartDao.insertOrderDetail(conn, orderDetail);
 		
@@ -174,9 +177,20 @@ public class CartService {
 			addSaleRateResult += cartDao.updateBookSaleRate(conn, orderDetail);
 		}
 		
+		// 쿠폰 차감(있을시)
+		if(order.getCouponNo() > 0) {
+			
+			couponMinusResult = cartDao.updateCouponStatus(conn, order);
+			
+		} else {
+		// 없으면 그냥 0 반환	
+			couponMinusResult = 1;
+		}
+		
+		
 		int result = 0;
 		//&& addSaleRateResult == order.getOrderDetail().size()
-		if(orderResult > 0 && orderDetailResult == order.getOrderDetail().size() && addSaleRateResult == order.getOrderDetail().size()) {
+		if(orderResult > 0 && orderDetailResult == order.getOrderDetail().size() && addSaleRateResult == order.getOrderDetail().size() && couponMinusResult > 0) {
 			commit(conn);
 			result = 1;
 		} else {

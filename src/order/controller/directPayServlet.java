@@ -107,6 +107,9 @@ public class directPayServlet extends HttpServlet {
 		request.setAttribute("odr", odr);
 		request.getRequestDispatcher("/WEB-INF/views/order/dpayment.jsp").forward(request, response);
 		
+		//여기서 order session에 저장
+		//반복문을 돌리고 어쩌고 형식에 맞춰서..
+		
 		
 		
 	}

@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM
+"http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="getListACount">
+		SELECT
+			   COUNT(*)
+		  FROM FAQ
+		  JOIN FAQ_CATEGORY USING(CATEGORY_NO)
+		 WHERE REF_NO = 1
+	</entry>
+	<entry key="getListBCount">
+		SELECT
+			   COUNT(*)
+		  FROM FAQ
+		  JOIN FAQ_CATEGORY USING(CATEGORY_NO)
+		 WHERE REF_NO = 6
+	</entry>
+	<entry key="getListCCount">
+		SELECT
+			   COUNT(*)
+		  FROM FAQ
+		  JOIN FAQ_CATEGORY USING(CATEGORY_NO)
+		 WHERE REF_NO = 10
+	</entry>
+	<entry key="getListDCount">
+		SELECT
+			   COUNT(*)
+		  FROM FAQ
+		  JOIN FAQ_CATEGORY USING(CATEGORY_NO)
+		 WHERE REF_NO = 14
+	</entry>
+	
+	<!-- 페이징 처리 조회용 (1~5) -->
+	<entry key="selectAList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.*
+		          FROM (SELECT
+			                   FAQ_NO
+			                 , TITLE
+			                 , REPLY
+			                 , CATEGORY_NO
+			                 , CATEGORY_TYPE
+			                 , REF_NO
+			                 , COUNT
+			              FROM FAQ
+			              JOIN FAQ_CATEGORY USING(CATEGORY_NO)
+			             WHERE REF_NO = 1
+			             ORDER BY FAQ_NO DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="selectBList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.*
+		          FROM (SELECT
+			                   FAQ_NO
+			                 , TITLE
+			                 , REPLY
+			                 , CATEGORY_NO
+			                 , CATEGORY_TYPE
+			                 , REF_NO
+			                 , COUNT
+			              FROM FAQ
+			              JOIN FAQ_CATEGORY USING(CATEGORY_NO)
+			             WHERE REF_NO = 6
+			             ORDER BY FAQ_NO DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="selectCList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.*
+		          FROM (SELECT
+			                   FAQ_NO
+			                 , TITLE
+			                 , REPLY
+			                 , CATEGORY_NO
+			                 , CATEGORY_TYPE
+			                 , REF_NO
+			                 , COUNT
+			              FROM FAQ
+			              JOIN FAQ_CATEGORY USING(CATEGORY_NO)
+			             WHERE REF_NO = 10
+			             ORDER BY FAQ_NO DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="selectDList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.*
+		          FROM (SELECT
+			                   FAQ_NO
+			                 , TITLE
+			                 , REPLY
+			                 , CATEGORY_NO
+			                 , CATEGORY_TYPE
+			                 , REF_NO
+			                 , COUNT
+			              FROM FAQ
+			              JOIN FAQ_CATEGORY USING(CATEGORY_NO)
+			             WHERE REF_NO = 14
+			             ORDER BY FAQ_NO DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	
+
+	<entry key="selectCateList">
+		SELECT
+		       CATEGORY_NO
+		     , CATEGORY_TYPE
+		     , REF_NO
+		  FROM FAQ_CATEGORY
+	</entry>
+
+	<entry key="insertFaq">
+		INSERT INTO FAQ
+		(
+		    FAQ_NO
+		  , TITLE
+		  , REPLY
+		  , CATEGORY_NO
+		  , MANAGER_NO
+		  , COUNT
+		)
+		VALUES
+		(
+		    SEQ_CATEGORY_NO.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  , 1
+		  , DEFAULT
+		)
+	</entry>
+	
+	<entry key="selectAAlltopList">
+		SELECT 
+		       *
+		 FROM(SELECT
+		       FAQ_NO
+		     , TITLE
+		     , REPLY
+		     , CATEGORY_NO
+		     , CATEGORY_TYPE
+		     , REF_NO
+		     , COUNT
+		  FROM FAQ
+		  JOIN FAQ_CATEGORY USING(CATEGORY_NO)
+		 WHERE REF_NO = 1
+		 ORDER BY COUNT DESC)
+		 WHERE ROWNUM BETWEEN 1 AND 3
+	</entry>
+	
+	<entry key="selectAtopList">
+		SELECT 
+		       *
+		 FROM(SELECT
+		       FAQ_NO
+		     , TITLE
+		     , REPLY
+		     , CATEGORY_NO
+		     , CATEGORY_TYPE
+		     , REF_NO
+		     , COUNT
+		  FROM FAQ
+		  JOIN FAQ_CATEGORY USING(CATEGORY_NO)
+		 WHERE CATEGORY_NO = ?
+		 ORDER BY COUNT DESC)
+		 WHERE ROWNUM BETWEEN 1 AND 3
+	</entry>	
+	
+	<entry key="selectBAlltopList">
+		SELECT 
+		       *
+		 FROM(SELECT
+		       FAQ_NO
+		     , TITLE
+		     , REPLY
+		     , CATEGORY_NO
+		     , CATEGORY_TYPE
+		     , REF_NO
+		     , COUNT
+		  FROM FAQ
+		  JOIN FAQ_CATEGORY USING(CATEGORY_NO)
+		 WHERE REF_NO = 6
+		 ORDER BY COUNT DESC)
+		 WHERE ROWNUM BETWEEN 1 AND 3
+	</entry>
+	<entry key="selectBtopList">
+		SELECT 
+		       *
+		 FROM(SELECT
+		       FAQ_NO
+		     , TITLE
+		     , REPLY
+		     , CATEGORY_NO
+		     , CATEGORY_TYPE
+		     , REF_NO
+		     , COUNT
+		  FROM FAQ
+		  JOIN FAQ_CATEGORY USING(CATEGORY_NO)
+		 WHERE CATEGORY_NO = ?
+		 ORDER BY COUNT DESC)
+		 WHERE ROWNUM BETWEEN 1 AND 3
+	</entry>	
+
+	<entry key="selectCAlltopList">
+		SELECT 
+		       *
+		 FROM(SELECT
+		       FAQ_NO
+		     , TITLE
+		     , REPLY
+		     , CATEGORY_NO
+		     , CATEGORY_TYPE
+		     , REF_NO
+		     , COUNT
+		  FROM FAQ
+		  JOIN FAQ_CATEGORY USING(CATEGORY_NO)
+		 WHERE REF_NO = 10
+		 ORDER BY COUNT DESC)
+		 WHERE ROWNUM BETWEEN 1 AND 3
+	</entry>
+	<entry key="selectCtopList">
+		SELECT 
+		       *
+		 FROM(SELECT
+		       FAQ_NO
+		     , TITLE
+		     , REPLY
+		     , CATEGORY_NO
+		     , CATEGORY_TYPE
+		     , REF_NO
+		     , COUNT
+		  FROM FAQ
+		  JOIN FAQ_CATEGORY USING(CATEGORY_NO)
+		 WHERE CATEGORY_NO = ?
+		 ORDER BY COUNT DESC)
+		 WHERE ROWNUM BETWEEN 1 AND 3
+	</entry>
+	
+	<entry key="selectDAlltopList">
+		SELECT 
+		       *
+		 FROM(SELECT
+		       FAQ_NO
+		     , TITLE
+		     , REPLY
+		     , CATEGORY_NO
+		     , CATEGORY_TYPE
+		     , REF_NO
+		     , COUNT
+		  FROM FAQ
+		  JOIN FAQ_CATEGORY USING(CATEGORY_NO)
+		 WHERE REF_NO = 14
+		 ORDER BY COUNT DESC)
+		 WHERE ROWNUM BETWEEN 1 AND 3
+	</entry>
+	<entry key="selectDtopList">
+		SELECT 
+		       *
+		 FROM(SELECT
+		       FAQ_NO
+		     , TITLE
+		     , REPLY
+		     , CATEGORY_NO
+		     , CATEGORY_TYPE
+		     , REF_NO
+		     , COUNT
+		  FROM FAQ
+		  JOIN FAQ_CATEGORY USING(CATEGORY_NO)
+		 WHERE CATEGORY_NO = ?
+		 ORDER BY COUNT DESC)
+		 WHERE ROWNUM BETWEEN 1 AND 3
+	</entry>
+	
+	<entry key="selectAlltopList">
+		SELECT 
+		       *
+		 FROM(SELECT
+		       FAQ_NO
+		     , TITLE
+		     , REPLY
+		     , CATEGORY_NO
+		     , CATEGORY_TYPE
+		     , REF_NO
+		     , COUNT
+		  FROM FAQ
+		  JOIN FAQ_CATEGORY USING(CATEGORY_NO)
+		 ORDER BY COUNT DESC)
+		 WHERE ROWNUM BETWEEN 1 AND 3
+	</entry>	
+	
+	<entry key="getListAllCount">
+		SELECT
+			   COUNT(*)
+		  FROM FAQ
+		  JOIN FAQ_CATEGORY USING(CATEGORY_NO)
+	</entry>	
+	<entry key="selectAllList">
+		SELECT *
+		  FROM (SELECT ROWNUM RNUM, A.*
+		          FROM (SELECT
+			                   FAQ_NO
+			                 , TITLE
+			                 , REPLY
+			                 , CATEGORY_NO
+			                 , CATEGORY_TYPE
+			                 , REF_NO
+			                 , COUNT
+			              FROM FAQ
+			              JOIN FAQ_CATEGORY USING(CATEGORY_NO)
+			             ORDER BY FAQ_NO DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+
+</properties>

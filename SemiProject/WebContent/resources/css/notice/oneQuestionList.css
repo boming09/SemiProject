@@ -1,0 +1,145 @@
+@charset "UTF-8";
+.csarea {
+    /* 챙겨가야하는 놈 */
+    /* 카테고리 + 컨텐츠 영역 flex 용도 */
+    display: flex;
+}
+.content {
+    /* 챙겨가야하는 놈 */
+    width: 72%;
+    margin-left : 15px;
+    margin-right : 15px;    
+}
+
+/* 컨텐츠 헤더 */
+.one_header {
+    height: 70px;
+    display : flex;
+    justify-content : space-between;	
+    align-items: center;
+    margin: 0px 0px 0px 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+} 
+.one_header div:first-child {
+    font-size: 1.1rem;
+    font-weight : bold;
+}
+
+/* 문의하기 버튼 */
+.one_question button {
+    width: 100px;
+    height: 40px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 0px 10px;
+    background: rgb(73, 125, 78);
+    color: white;
+}
+.one_question button:hover {
+	background-color: rgb(196, 217, 195);
+    color: black;
+}
+
+/* 멘트 */
+.one_ment ul {
+    padding-left: 60px;
+    line-height: 30px;
+    font-size: 0.8rem;
+}
+
+/* 리스트 top 영역 = 문의리스트 */
+.one_area1 {
+    margin: 30px 30px 10px 30px;
+    display: flex;
+    justify-content : space-between;	
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* 리스트 */
+.one_area2 {
+    margin: 0px 30px 10px 30px;
+}
+
+.one_listarea ul {
+    display: flex;
+    justify-content : space-between;	
+    align-items: center;
+    text-align: center;
+    font-size: 0.9rem;
+    border-bottom: 1px solid lightgray;
+    list-style: none;
+}
+.one_listtop {
+    background: rgb(239, 239, 239);
+    font-weight: bold;
+}
+
+.one_listarea {
+    border-top: 1px solid lightgray;
+}
+
+.one_listarea ul li {
+    height: 50px;
+    line-height: 50px;
+}
+.one_no {
+    width: 8%;
+    border-right: 1px solid lightgray;
+  
+}
+.one_title {
+    width: 67%;
+    border-right: 1px solid lightgray;    
+}
+.title2 {
+	text-align : left;
+	padding: 0 10px;
+}
+
+.one_date {
+    width: 15%;
+    border-right: 1px solid lightgray;
+}
+.one_status {
+    width: 10%;
+    font-weight : bold;
+    font-size : 0.85rem;
+}
+
+/* 마우스 오버시 */
+.one_list:hover {
+    background: #f3f5f7;
+    font-weight : bold;
+    cursor : pointer;
+}
+
+/* 페이징 영역 */
+.pagingarea {
+	margin: 10px 30px;
+	margin-bottom : 80px;
+	height : 50px;
+	display : flex;
+	justify-content : center;
+    align-items: center;
+}
+.pagingarea ul {
+	list-style : none;
+	display : flex;
+	justify-content : center;
+    align-items: center;
+    width : 400px;
+    height : 50px;  
+}
+
+.pagingarea ul li {
+	width: 40px;
+	text-align : center;
+}
+
+.current_page {
+	border-bottom: 2px solid black;
+	font-weight: bold;
+}

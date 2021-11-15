@@ -646,6 +646,25 @@ public class cartDao {
 		return upOrder;
 	}
 
+
+	public int updateCouponStatus(Connection conn, Order order) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = cartQuery.getProperty("updateCouponStatus");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, order.getCouponNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 	
 	
 

@@ -1,0 +1,143 @@
+@charset "UTF-8";
+
+.csarea {
+    /* 챙겨가야하는 놈 */
+    /* 카테고리 + 컨텐츠 영역 flex 용도 */
+    display: flex;
+}
+.content {
+    /* 챙겨가야하는 놈 */
+    width: 72%;
+    margin-left : 15px;
+    margin-right : 15px;
+}
+
+/* 컨텐츠 헤더 */
+.wbook_header {
+    height: 70px;
+    display : flex;
+    justify-content : space-between;	
+    align-items: center;
+    margin: 0px 0px 10px 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+} 
+.wbook_header div:first-child {
+    font-size: 1.1rem;
+    font-weight : bold;
+}
+
+/* 리스트 top 영역 */
+.wbook_area {
+    margin: 30px 30px 10px 30px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* 리스트 테이블 */
+.wbook_listarea2 {
+	display : flex;
+	justify-content :center;
+} 
+.wbook_listarea {
+	width : 100%;
+    margin: 0px 30px 10px 30px;
+    font-size: 0.95rem;
+    /*  테이블 간격 없애기 */
+    border-collapse: collapse; 
+    border-spacing: 0;
+
+    border-top: 1px solid lightgray;
+}
+/* 리스트 헤더 */
+.wbook_listtop th {
+    border-bottom: 1px solid lightgray;
+    border-right: 1px solid lightgray; 
+    text-align: center;
+    height: 50px;
+    background: rgb(239, 239, 239);
+}
+.wbook_listtop th:last-child {
+    border-right: 0;
+}
+/* 리스트 내용 */
+.wbook_content td {
+    border-bottom: 1px solid lightgray;
+    border-right: 1px solid lightgray; 
+    text-align: center;
+    height: 50px;
+    padding: 0 10px;
+    line-height : 20px;
+}
+.wbook_content td:last-child {
+    border-right: 0;
+}
+
+/* 마우스 오버시 */
+.wbook_content:hover {
+    background: #f3f5f7;
+    font-weight : bold;
+}
+
+/* 도서 내용 */
+.wb_namearea a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor : pointer;
+}
+.wb_img {
+    width : 140px;
+    height : 200px;
+    margin: 15px 0;
+}
+.wb_namearea span {
+    margin-bottom: 15px;
+}
+
+
+/* 너비 지정 */
+.wb_no {
+    width: 12%;
+}
+.wb_name {
+    width: 40%;
+}
+.wb_pub {
+    width: 20%;   
+}
+.wb_update {
+    width: 18%;
+}
+.wb_review {
+    width: 10%;
+}
+
+/* 페이징 영역 */
+.pagingarea {
+	margin: 10px 30px;
+	margin-bottom : 80px;
+	height : 50px;
+	display : flex;
+	justify-content : center;
+    align-items: center;
+}
+.pagingarea ul {
+	list-style : none;
+	display : flex;
+	justify-content : center;
+    align-items: center;
+    width : 400px;
+    height : 50px;  
+}
+
+.pagingarea ul li {
+	width: 40px;
+	text-align : center;
+}
+
+.current_page {
+	border-bottom: 2px solid black;
+	font-weight: bold;
+}

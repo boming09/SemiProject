@@ -1,0 +1,115 @@
+@charset "UTF-8";
+.csarea {
+    /* 챙겨가야하는 놈 */
+    /* 카테고리 + 컨텐츠 영역 flex 용도 */
+    display: flex;
+}
+.content {
+    /* 챙겨가야하는 놈 */
+    width: 72%;
+    margin-left : 15px;
+    margin-right : 15px;    
+}
+
+/* 컨텐츠 헤더 */
+.faq_header {
+    height: 70px;
+    display : flex;
+    justify-content : space-between;	
+    align-items: center;
+    margin: 0px 0px 10px 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+} 
+.faq_header div:first-child {
+    font-size: 1.1rem;
+    font-weight : bold;
+}
+
+/* 내용 영역 */
+.conarea {
+	display : flex;
+	justify-content : center;	
+    align-items: center;
+}
+.faq_conarea table {
+	width : 100%;
+    font-size: 0.9rem;
+    margin: 0px 30px 10px 30px;
+    /*  테이블 간격 없애기 */
+    border-collapse: collapse; 
+    border-spacing: 0;
+
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+td {
+    padding: 10px;
+}
+.question, .answer {
+	display : flex;	
+	justify-content : center;	
+    align-items: center;
+}
+.question input {
+	width : 100%;
+	border: 1px solid lightgray;
+	height : 35px;
+	font-size : 0.9rem;
+}
+.answer textarea {
+	width : 100%;
+	height : 400px;
+	resize : none;
+    line-height: 20px;
+    border: 1px solid lightgray;
+    font-size : 0.9rem;
+}
+              
+/* tr 높이 */
+.liarea {
+    height: 50px;
+    border-bottom: 1px solid lightgray;
+}
+
+/* 너비 */
+.faq_cate, .faq_q, .faq_a {
+    width: 12%;
+    text-align: center;
+    background: rgb(239, 239, 239); 
+    border-right: 1px solid lightgray; 
+    font-size : 0.95rem;       
+}
+#atype, #btype {
+	width: 150px;
+	height: 40px;
+	padding-left: 10px;
+	border: 1px solid lightgray;
+}
+
+/* 테두리 */
+.aArea {
+    border-right: 1px solid lightgray;
+}
+
+/* 취소/답변작성 버튼 */
+.faq_btn {
+    display : flex;
+    justify-content : center;	
+    align-items: center;
+}
+.faq_btn button {
+    margin: 20px;
+    margin-bottom : 60px;
+    width: 90px;
+    height: 35px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    background: rgb(73, 125, 78);
+    color: white;
+}
+
+.faq_btn button:hover {
+    background-color: rgb(196, 217, 195);
+    color: black;
+}

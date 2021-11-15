@@ -1,0 +1,100 @@
+@charset "UTF-8";
+.csarea {
+    /* 챙겨가야하는 놈 */
+    /* 카테고리 + 컨텐츠 영역 flex 용도 */
+    display: flex;
+}
+.content {
+    /* 챙겨가야하는 놈 */
+    width: 72%;
+    margin-left : 15px;
+    margin-right : 15px;    
+}
+
+.wrapper{
+	height: 100vh;
+}
+
+/* 컨텐츠 헤더 */
+.coupon_header {
+    height: 70px;
+    display : flex;
+    justify-content : space-between;	
+    align-items: center;
+    margin: 0px 0px 10px 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+} 
+.coupon_header div:first-child {
+    font-size: 1.1rem;
+    font-weight : bold;
+}
+
+
+/* 리스트 top 영역 */
+.coupon_area1 {
+    margin: 30px 30px 10px 30px;
+    display: flex;
+    justify-content : space-between;	
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* 쿠폰 전체 div */
+.coupon_area2 {
+	border : 1px solid black;
+	height : 250px;
+    margin: 50px 150px 30px 150px;
+}
+
+/* 쿠폰 이름쪽 */
+.coupon_area2_hdader{
+	height: 50px;
+    border-bottom: 1px solid black;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    letter-spacing: 20px;	
+}
+
+/* 쿠폰 센터 */
+.area2_center{
+	margin: 30px;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	line-height : 20px;
+	display: grid;
+    grid-template-rows: 40px 40px 40px;
+    letter-spacing: 2px;
+}
+
+/* 쿠폰 장수 */
+.coupon_number{
+	color: red;
+}
+
+/* 쿠폰 버튼*/
+#cbut{
+	width : 150px;
+	background: #497D4E;
+    color: white;
+    height : 40px;
+}
+
+.coupon_discount{
+	margin-top : 10px;
+	line-height: 50px;
+}
+
+/* 할인금액 */
+#discount{
+	
+}
+
+/* 마우스 오버시 */
+.coupon_list:hover {
+    background: #f3f5f7;
+}
