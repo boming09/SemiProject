@@ -49,7 +49,7 @@ public class ReplyInsertServlet extends HttpServlet {
 		reply.setRcontent(rcontent);
 		reply.setStarScore(rstarScore);
 		
-		/* 도서 평점 계산 */
+		/* 도서 평점 계산 (총합계/총갯수) */
 		int sumScore = Integer.parseInt(request.getParameter("sumScore"));
 		int reviewCount = Integer.parseInt(request.getParameter("reviewCount"));
 		

@@ -255,6 +255,7 @@ table {
 	font-weight: bold;
 	color: gray;
 	margin: 0 10px;
+	
 }
 
 /* 리뷰 - 댓글 등록 */
@@ -262,7 +263,7 @@ table {
     padding: 20px 0;
 }
 .writeRating {
-    padding: 0 30px;
+    padding: 0 40px;
 }
 .writeArea_wrap {
     display: flex;
@@ -271,11 +272,12 @@ table {
 .writeArea {
     border: 1px solid gray;
 }
-#count{
-    width: 45px;
-}
 .wordCount {
-    padding: 0 5px
+    text-align: right;
+}
+.count{
+    width: 25px;
+    text-align: right;
 }
 #writeBtn {
     width: 100px;
@@ -349,17 +351,18 @@ table {
 /* top 이동 버튼*/
 #moveA {
 	text-decoration: none;
-	width: 30px;
+	width: 60px;
+	height: 60px;
 	display: none;
-	height: 30px;
-	border: 1px solid lightgray;
-	border-radius: 30px;
+	font-size: 30px;
+	border: 2px solid lightgray;
+	border-radius: 100%;
 	color: rgba(73, 125, 78, 1);
 	text-align: center;
-	padding: 5px 5px;
+	padding: 15px 20px;
 	position: fixed;
-	right: 500px;
-	top: 450px;
+	right: 60px;
+	bottom: 65px;
 }
 
 /* 별점 보여주기 */

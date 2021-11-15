@@ -285,11 +285,11 @@ crossorigin="anonymous"></script>
                         </div>
                         <div class="writeArea_wrap">
                             <div class="writeArea">
-                                <textarea id="replyCont" name="rcontent" rows="5" cols="70" style="resize:none;" maxlength="149" 
+                                <textarea id="replyCont" name="rcontent" rows="5" cols="70" style="resize:none;" maxlength="150" 
                                 placeholder="한글 기준 150자까지 작성 가능" onkeydown="calc()" onkeyup="calc()" onkeypress="calc()"></textarea>
-                                <span class="wordCount">
-                                    <input type="number" id="count" value="0" min="0" max="150" readonly>/150
-                                </span>
+                                <div class="wordCount">
+                                	<input type="text" id="count" value="0">/150
+                                </div>
                                 <input type="hidden" name="reviewCount" value="${ book.reviewCount }">
                                 <input type="hidden" name="sumScore" value="${ book.sumScore }">
                             </div>
@@ -373,11 +373,11 @@ crossorigin="anonymous"></script>
 			                        <form method="post" name="addReplyForm" action="${ contextPath }/addReply/insert">
 			                        <div class="writeArea_wrap">
 			                            <div class="writeArea">
-			                                <textarea id="replyCont${ reply.rid }" name="rcontent" rows="5" cols="50" style="resize:none;" maxlength="149" 
+			                                <textarea id="replyCont${ reply.rid }" name="rcontent" rows="4" cols="50" style="resize:none;" maxlength="150" 
 			                                placeholder="한글 기준 150자까지 작성 가능" onkeydown="calcAuth(${ reply.rid })" onkeyup="calcAuth(${ reply.rid })" onkeypress="calcAuth(${ reply.rid })"></textarea>
-			                                <span class="wordCount">
-			                                    <input type="number" id="count${ reply.rid }" value="0" min="0" max="150" readonly>/150
-			                                </span>
+			                                <div class="wordCount">
+			                                    <input type="text" id="count${ reply.rid }" class="count" value="0">/150
+			                                </div>
 			                            </div>
 			                            <input type="hidden" name="bid" value="${ book.bid }">
 			                            <input type="hidden" name="refRid" value="${ reply.rid }">
@@ -473,14 +473,25 @@ crossorigin="anonymous"></script>
 		replyCmt.style.display = (replyCmt.style.display == 'none') ? "block" : "none";
 	}
     
-    function calc(){	// 댓글 입력 
+/*     $(document).ready(function(){
+    	$("textarea").keyup(function(){
+    		let inputLenth = $(this).val().length;
+    		if(inputLenth < 151){
+    			$("#count").text(inputLenth);
+    		} else {
+    			alert("한글 기준 150자까지 작성 가능합니다");
+    		}
+    	});
+    }); */
+    
+    function calc(){
         document.getElementById('count').value = 
         document.getElementById('replyCont').value.length;
         if(document.getElementById('count').value == 150) {
             alert("한글 기준 150자까지 입력가능합니다.");
         }
     }
-    
+	
     function calcAuth(rid){	// 작가 댓글 입력 -> 리뷰 번호 값 부여
         document.getElementById('count' + rid).value = 
         document.getElementById('replyCont' + rid).value.length;
@@ -522,7 +533,7 @@ crossorigin="anonymous"></script>
 
         $('html, body').animate({
         	scrollTop : offset.top
-        }, 600);
+        }, 500);
         return false;
     });
 </script>
