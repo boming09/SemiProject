@@ -601,6 +601,64 @@ public class MemberDao {
 		}	
 		
 		return member;
+	}
+
+	public Member deleteAccount2(Connection conn, String dissatisfaction, String userId, String userPwd) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = memberQuery.getProperty("deleteAccount2");
+		Member member = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dissatisfaction);
+			pstmt.setString(2, userId);
+			pstmt.setString(3, userPwd);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				member = new Member(rset.getInt("user_no")
+								  , rset.getString("user_id")
+								  , rset.getString("user_pwd")
+								  , rset.getString("user_name")
+								  , rset.getString("gender")
+								  , rset.getString("user_email")
+								  , rset.getString("user_phone")
+								  , rset.getString("user_address")
+								  , rset.getInt("user_grade")
+								  , rset.getDate("enroll_date")
+								  , rset.getString("status")
+								  , rset.getString("user_certify")
+								  , rset.getString("user_nickname")
+								  , rset.getString("dissatisfaction"));
+								
+			}						
+				/*
+				member = new Member();
+				member.setUserNo(rset.getInt("user_no"));
+				member.setUserId(rset.getString("user_id"));
+				member.setUserPwd(rset.getString("user_pwd"));
+				member.setUserName(rset.getString("user_name"));
+				member.setGender(rset.getString("gender"));
+				member.setUserEmail(rset.getString("user_email"));
+				member.setUserPhone(rset.getString("user_phone"));
+				member.setUserAddress(rset.getString("user_address"));
+				member.setUserGrade(rset.getInt("user_grade"));
+				member.setEnrollDate(rset.getDate("enroll_date"));
+				member.setStatus(rset.getString("status"));
+				member.setUserCertify(rset.getString("user_certify"));
+				member.setUserNickname(rset.getString("user_nickname"));
+				*/			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}				
+		return member;
 	}		
 		
 }

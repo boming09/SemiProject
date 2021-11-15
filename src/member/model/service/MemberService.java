@@ -229,4 +229,14 @@ public class MemberService {
 		return null;
 	}
 
+	public Member deleteAccount2(String dissatisfaction, String userId, String userPwd) {
+		Connection conn = getConnection();
+		
+		Member result = memberDao.deleteAccount2(conn, dissatisfaction, userId, userPwd);
+		
+		close(conn);
+				
+		return result;
+	}
+
 }

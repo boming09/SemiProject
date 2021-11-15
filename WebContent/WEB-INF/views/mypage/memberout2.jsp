@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기</title>
+<title>회원탈퇴</title>
 <style>
 	.outer{
 		width:90%;
@@ -78,21 +78,29 @@
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>    
 
 	<div class="outerid">
-	<h1 id="searchh1">아이디 찾기</h1>
+	<h1 id="searchh1">회원탈퇴</h1>
 	<!-- 
 	<form id="updateSearchIdForm" action="<%= request.getContextPath() %>/password"
 	method="post" onsubmit="return searchId();">
 	 -->
 			<div class="wrap">
-				<div id="userId">${ member.userName }님의 아이디는 ${ member.userId } 입니다.</div>
+				<div id="userId">정말로 회원 탈퇴하시겠습니까 ?<br>
+				감사합니다.
+				</div>
 				
 				<div class="btnArea">
-				<a href="password"><button id="updatePwdBtn">비밀번호 찾기</button></a>
+				<button id="updatePwdBtn" onclick="confirmAccountDelete();">회원탈퇴</button>
 				</div>
 			</div>
 	<!--  </form> -->
 	</div>
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/member/footer.jsp" />
+	<script>
+	function confirmAccountDelete(){
+			if(confirm("정말로 탈퇴하시겠습니까?"))
+				location.href='<%= request.getContextPath () %>/accountDelete';
+		}
+	</script>
 </body>
 </html>

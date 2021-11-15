@@ -56,8 +56,7 @@
 			<br>
 			<div>
 			
-			<form action="${ contextPath }/accountDelete" method="post"
-			onSubmit="return checkit();">
+			
 			
 			<h4 class="h4go">
 				고객님께서 느끼신 봄숲의 부족한 점을 지적해 주세요.<br> 소중하게 반영하겠습니다.
@@ -165,10 +164,14 @@
 			<br>
 			<!-- 비밀번호 확인후 탈퇴하기 가능 하면 만들고  못할거 같으면 삭제하고 
 				  탈퇴하기 클릭시 탈퇴가능하게 만들예정. -->
+			
+			<form action="${ contextPath }/memberout2" method="post">
+			
 			<div class="h5go">
 				<h4 class="h5go">
-					비밀번호 : <input type="password" id="check_pw" name="check_pw" required><!-- required 비밀번호 삭제 되면 넣기 --> 
-					<button id="deleteBtn" type="button" onclick="confirmAccountDelete();">탈퇴하기</button>
+					아이디 : <input type="text" id="check_id" name="check_id" required>
+					비밀번호 : <input type="password" id="check_pw" name="check_pw" required><br><!-- required 비밀번호 삭제 되면 넣기 --> 
+					<button id="deleteBtn">탈퇴하기</button>
 					
 				</h4>
 			</div>
@@ -184,12 +187,14 @@
 	</div>
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	<!-- 
 	<script>
 	function confirmAccountDelete(){
-			if(confirm("정말로 탈퇴하시겠습니까?"))
-				location.href='<%= request.getContextPath () %>/accountDelete';
+			// if(confirm("정말로 탈퇴하시겠습니까?"))
+				location.href='<%= request.getContextPath () %>/accountDelete2';
 		}
 	</script>
+	 -->
 	<script>
 		
 	function checkit(){

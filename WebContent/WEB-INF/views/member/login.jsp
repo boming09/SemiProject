@@ -38,6 +38,7 @@
 	           	<div class="loginArea2">
 		            <a href="joinmembership"><input type="button" value="봄숲 간편 회원가입" class="mbjoin"></a>
 	           	</div>
+	            <!-- 
 	            <div class="imgdiv">
 	                <a href="#"><img class="naverlogo" src="<%= request.getContextPath() %>/resources/images/member/naverlogo.png" alt="naver logo"></a>   
 	                <a href="kakaoLogin();"><img class="kakaologo" src="<%= request.getContextPath() %>/resources/images/member/kakaologo.png" alt="kako logo"></a>
@@ -46,7 +47,8 @@
 				    <a id="kakao-login-btn"></a>
 				    <a href="http://developers.kakao.com/logout">
 				    <img class="kakaologo" src="<%= request.getContextPath() %>/resources/images/member/kakaologo.png" alt="kako logo"></a>
-				</div>       
+				</div>
+				 -->       
 	        </from>
 		</div>
 	</div>
