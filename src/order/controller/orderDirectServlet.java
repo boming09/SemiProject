@@ -62,6 +62,7 @@ public class orderDirectServlet extends HttpServlet {
 		od.setBook_name(cart.getBook_name());
 		od.setPrice(cart.getPrice());
 		od.setSale_price(cart.getSale_price());
+		od.setBook_id(book_id);
 		System.out.println(od);
 		request.setAttribute("od", od);
 		request.getRequestDispatcher("/WEB-INF/views/order/orderDirect.jsp").forward(request, response);

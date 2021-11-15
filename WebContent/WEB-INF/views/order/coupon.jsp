@@ -23,7 +23,7 @@
  	width : 610px;
  	text-align:center;*/
  		}
- #title {width:100%; font-family: 'ChosunGu'; font-size:1.2rem;  margin:140px;}
+ #title {width:100%; font-family: 'ChosunGu'; font-size:1.2rem;  margin:180px;}
  table{ /*margin-left:3%; margin-bottom:10%; */
  	width: 100%;
  	font-weight:bold;
@@ -49,8 +49,8 @@
 }
 
 .dd {
-	margin-left:180px;
-	margin-top:40px;
+	margin-left:200px;
+	margin-top:60px;
 }
 
 
@@ -80,7 +80,6 @@ th,td {
 	      		<th>쿠폰 내용</th>
 	      		<th>할인율</th>
 	      		<th>사용 기한</th>
-	      	</tr>
 	      	<c:forEach var="coupon" items="${ couponList }">
 	    	<tr>
 	    		<td>${coupon.couponNo}</td>
@@ -103,8 +102,18 @@ th,td {
         	
              opener.document.getElementById("aInput").value = document.getElementById("checkCoupon").value
              opener.document.getElementById("bInput").value = document.getElementById("couponDis").value
-        
+             opener.document.getElementById("dInput").value = "5000";
        //이러면 첫번째꺼 밖에 안넘어감 어차피
+             document.popForm.submit();
+       
+        }
+        
+        function doSomething(){
+            let a = document.getElemntById('couponDis').value;
+            let b = opener.document.getElementById('inputB').value;
+            opener.document.getElemntById("valueA").innerHTML=a;
+            opener.document.getElementById("valueB").innerHTML=b;
+            opener.document.getElementById("valueC").innerHTML=Number(a)+Number(b);
         }
         
         
@@ -170,17 +179,20 @@ th,td {
 
 
 
+
+
 	   
 	    <form name="popForm" method="post" "${contextPath}/payment">
 	    <!-- 이안에 체크된거 넣을 스크립트 작성 -->
 	    <!-- 히든으로 쿠폰넘버랑 가격값은 보이게 넘겨 -->
+	    <c:set var="apn" value="5000" scope="request"/>
 	    <c:forEach var="coupon" items="${ couponList }">
 	 		<input type="hidden" name="couponDis" id="couponDis" value="${coupon.couponDis}">
 			<input type="hidden" name="couponNo" id="couponNo" value="${coupon.couponNo}">
 	   </c:forEach>
 	   <div class="dd"> 
-	   <button type="submit" class="btn" onclick="popupSubmit()">적용</button>
-	 <!--    <button type="submit" class="btn" onclick="setParentText()">적용</button> -->
+	   <!-- <button type="submit" class="btn" onclick="popupSubmit()">적용</button> -->
+	    <button type="submit" class="btn" onclick="setParentText()">적용</button> 
 	<!--    <input type="submit" class="btn" value="적용" onclick="window.close()">-->  
 	    <input type="button" class="btn" value="창닫기" onclick="window.close()">
 	   </div>

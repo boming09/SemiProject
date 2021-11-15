@@ -436,6 +436,15 @@ td {
 	background:rgb(73, 125, 78);
 }
 
+#bInput{
+	width:30px;
+	text-align:right;
+}
+
+#dInput{
+	width:30px;
+}
+
 /*------------------footer--------------*/
 .footer2 {
 	position:relative;

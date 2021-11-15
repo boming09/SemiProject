@@ -64,17 +64,17 @@
         			<div>주문 상품 금액 정보</div>
         		</div>
         		<div class="o_item">
-        			<span class="address">총 ${od.amount}권,
+        			<span class="address">총 ${odr.amount}권,
         			<!--<c:forEach var="cart" items="${ amounts }">-->
         			
         			<!--</c:forEach>-->
-        			 <fmt:formatNumber value="${ od.sale_price }" type="number"/>원 </span>
+        			 <fmt:formatNumber value="${ odr.sale_price }" type="number"/>원 </span>
         		</div>
         	</div>
         	
         	<div class="od_ttt">
         		<div class="o_item">상품 주문 총액</div>
-        		<div class="o_item br"><fmt:formatNumber value="${ od.sale_price }" type="number"/>원</div>
+        		<div class="o_item br"><fmt:formatNumber value="${ odr.sale_price }" type="number"/>원</div>
         		<div class="o_item">쿠폰 할인 금액</div>
         		<div class="o_item "><input id="dInput">원</div>
         		<div class="o_item">배송료</div>
@@ -84,9 +84,9 @@
         		<div class="o_item">결제 총액</div>
         		<div class="o_item">
 
-        		<fmt:formatNumber value="${ od.sale_price }" type="number"/>원</div> <!-- 할인 있으면 차감해 -->
+        		<fmt:formatNumber value="${ odr.sale_price }" type="number"/>원</div> <!-- 할인 있으면 차감해 -->
         	</div>
-		<input type="hidden" id="inputB" name="inputB" value="20000">
+
         	<!-- <span id="valueA">1</span>
         	<span id="valueB">2</span>
         	<span id="valueC">3</span> -->
@@ -97,8 +97,9 @@
         		</div>
         		<div class="o_item">
         		<!--c:when 해가지고 뭔가 체크 됐을때 빼기할가  cpn 세션에 저장됨-->
-        		<c:if test="${cpn == 0}"><b><fmt:formatNumber value="${od.sale_price}" type="number"/>원</b></c:if>
-        		<c:if test="${cpn != 0}"><b><fmt:formatNumber value="${od.sale_price-cpn}" type="number"/>원</b></c:if>
+        		<b><fmt:formatNumber value="${odr.sale_price}" type="number"/>원</b>
+        		<!--<c:if test="${cpn == 0}"><b><fmt:formatNumber value="${odr.sale_price}" type="number"/>원</b></c:if>
+        		<c:if test="${cpn != 0}"><b><fmt:formatNumber value="${odr.sale_price-cpn}" type="number"/>원</b></c:if>-->
         			<!--  <b><fmt:formatNumber value="${od.sale_price-cpn}" type="number"/>원</b> <!-- 할인금액있으면 빼기  -->
         		</div>
         	</div>
@@ -176,7 +177,7 @@
      	      // 쿠폰할인
      	       	function couponDis(){
      	       	  var dis = document.getElementById("aInput").value;
-     	       	  var to = ${ od.sale_price };
+     	       	  var to = ${ odr.sale_price };
      	       	var todi = to * dis / 100;
      	       document.getElementById("cInput").value = todi;
      	     

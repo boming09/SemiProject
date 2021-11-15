@@ -64,8 +64,11 @@ public class paymentServlet extends HttpServlet {
 		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
 		
 		//쿠폰
-	//	int couponNo =  Integer.parseInt(request.getParameter("couponNo"));
-	//	int couponDis = Integer.parseInt(request.getParameter("couponDis"));
+		//int couponNo =  Integer.parseInt(request.getParameter("couponNo"));
+		//int couponDis = Integer.parseInt(request.getParameter("couponDis"));
+		//int cpNo = Integer.parseInt(request.getParameter("cp_no"));
+		//int cpDis = Integer.parseInt(request.getParameter("cp_dis"));
+		
 		
 		//결제수단
 		//String pay = request.getParameter("pay"); //아니 페이는 다음 서블릿에서 해야지
@@ -97,7 +100,10 @@ public class paymentServlet extends HttpServlet {
 		session.setAttribute("orderEmail", email);
 		//session.setAttribute("pay", pay);
 		
+		//쿠폰
+		//session.setAttribute("cpNo", cpNo);
 
+	
 		
 		//System.out.println(postCode);
 		// 책번호랑 가격 수량 추출
@@ -132,6 +138,12 @@ public class paymentServlet extends HttpServlet {
 		}
 		//System.out.println(orderDt);
 		
+	
+		
+		
+		
+		// 이 부분이 수상해
+		
 		
 		order.setOrderDetail(orderDt);		
 		//세션에 주문정보(오더디테일 포함) 저장
@@ -145,7 +157,15 @@ public class paymentServlet extends HttpServlet {
 		//int result = new CartService().insertOrderDetail(orderDt);
 		//System.out.println(result);
 				
-				
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
@@ -169,6 +189,7 @@ public class paymentServlet extends HttpServlet {
 		dis= sum * couponDis / 100;
 		aftDis = sum-aftDis;
 		System.out.println(aftDis);*/
+		
 		
 		// 총가격과 수량 보내기
 		OrderDirect od = new OrderDirect();
