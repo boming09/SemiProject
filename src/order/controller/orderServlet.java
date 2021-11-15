@@ -36,7 +36,6 @@ public class orderServlet extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/order/order.jsp");
 		view.forward(request, response);
 		
-		//order 직접 치고 들어가면 되는데 카트에서 연결이 안됨
 		
 	}
 

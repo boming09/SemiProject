@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import member.model.vo.Member;
 import order.model.service.CartService;
@@ -38,6 +39,10 @@ public class couponServlet extends HttpServlet {
 
 		List<Coupon> couponList = new CartService().selectCoupon(userNo);
 
+
+		//세션에 저장해보기 (안됨)
+//		HttpSession session = request.getSession();
+//		session.setAttribute("cpList", couponList);
 		
 		request.setAttribute("couponList",  couponList);
 		request.getRequestDispatcher("/WEB-INF/views/order/coupon.jsp").forward(request, response);

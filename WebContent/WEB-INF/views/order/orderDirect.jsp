@@ -23,7 +23,7 @@
                
  			<!-- 어디로갈지쓰셈 -->
 
-            <form class="order" action="<%= request.getContextPath() %>/payment"
+            <form class="order" action="<%= request.getContextPath() %>/dpayment"
 			method="post">
           
      		  <div class="od_info">주문 상품 정보</div>
@@ -49,7 +49,7 @@
            		
 					</div>
 		
-
+			
 					
 	<!-- 				<div class="item">
 						<b>[국내도서] 어떻게 쓰지 않을 수 있겠어요2</b>
@@ -248,12 +248,12 @@
      		<button id="ct_order_btn">다음 단계 </button>
      		<!--  <input type="hidden" value="${ cartOrderList }">-->
      		
-     	  	 <c:forEach var="cart" items="${ cartOrderList }">
+     	  	 <!--<c:forEach var="cart" items="${ cartOrderList }">
      			 <input type="hidden" name="book_id" value="${ cart.book_id }">
 				 <input type="hidden" name="sale_price" value="${cart.sale_price}">
 				 <input type="hidden" name="amount" value="${cart.amount}">	
 				 <input type="hidden" name="cart_no" value="${cart.cart_no}">		
-			</c:forEach> 
+			</c:forEach> -->
 			
 		
      		
@@ -271,8 +271,9 @@
      				</c:forEach>
      					<input type="hidden" name="amounts" value=${ amounts }>   -->
      		
-     		
-     		
+     			<input type="hidden" name="book_id" value="${od.book_id}">
+				<input type="hidden" name="book_amt" value="${od.amount}">
+     			<input type="hidden" name="book_pri" value="${od.sale_price}">
      		</form>
      		
          </div>
