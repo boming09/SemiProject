@@ -2,6 +2,8 @@ package mypage.model.dao;
 
 import static common.JDBCTemplate.close;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +19,16 @@ import mypage.model.vo.PageInfo;
 
 public class B_ReviewDao {
 	private static Properties b_reviewQuery = new Properties();
+	
+	public B_ReviewDao() {
+		String fileName = B_ReviewDao.class.getResource("/sql/mypage/b_review-query.xml").getPath();
+		
+		try {
+			b_reviewQuery.loadFromXML(new FileInputStream(fileName));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public int getListCount(Connection conn, Search search) {
 		PreparedStatement pstmt = null;
@@ -96,7 +108,7 @@ public class B_ReviewDao {
 				b_review.setReview_no(rset.getInt("review_no")); 				// 리뷰번호
 				b_review.setBook_id(rset.getInt("book_id"));					// 도서코드								
 				b_review.setUser_no(rset.getInt("user_no"));					// 회원번호				
-				b_review.setCreate_date(rset.getDate("create_date"));							// 작성일
+				b_review.setCreate_date(rset.getDate("create_date"));			// 작성일
 				b_review.setContent(rset.getString("content"));					// 내용
 				b_review.setRating(rset.getInt("rating"));						// 평점
 				b_review.setRef_no(rset.getInt("ref_no"));						// 참조리뷰번호

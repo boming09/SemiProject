@@ -97,6 +97,7 @@
 	            			
 	            			<button type="button" id="postcodify_search_button">변경하기</button></td>
 	            	</tr>
+	            	<!-- 
 	            	<tr>
 	            		<th>본인인증</th>
 	            		<td class="privacy">
@@ -104,7 +105,8 @@
 	            			<input type="button" class="tb1" id="tb1phone" value="휴대전화로 본인 인증하기">	            			
 	            			<input type="button" class="tb1" id="tb1ip" value="아이핀 인증하기">
 	            		</td>
-	            	</tr>            	
+	            	</tr>
+	            	 -->            	
 	            	<tr>
 	            		<th rowspan="">서재 닉네임</th>
 	            		<td class="privacy">
@@ -116,6 +118,7 @@
 	            	</tr>
 	            </table>
 	            <br>
+	            <!-- 
 	            <h3>계정 연동여부</h3>
 	            <br>
 	            <table class="ctable" id="table2">
@@ -128,6 +131,7 @@
 	            			<input type="button" class="tb0" id="tb0" value="변경하기"></td>
 	            	</tr>
 	            </table>
+	             -->
 	            <br>
 	            <table class="ctable" id="table3">
 	            	<tr>

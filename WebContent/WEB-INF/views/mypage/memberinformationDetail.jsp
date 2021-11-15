@@ -79,10 +79,12 @@
 	            			<%= address[1] %><br>
 	            			<%= address[2] %><br></td>
 	            	</tr>
+	            	<!-- 
 	            	<tr>
 	            		<th>본인인증</th>
 	            		<td class="privacy"></td>
-	            	</tr>            	
+	            	</tr>
+	            	 -->            	
 	            	<tr>
 	            		<th rowspan="">서재 닉네임</th>
 	            		<td class="privacy"><%= loginUser.getUserNickname() != null ? loginUser.getUserNickname() : "" %>
@@ -90,6 +92,7 @@
 	            	</tr>
 	            </table>
 	            <br>
+	            <!-- 
 	            <h3>계정 연동여부</h3>
 	            <br>
 	            <table class="ctable2" id="table2">
@@ -100,6 +103,7 @@
 	            		<td></td>
 	            	</tr>
 	            </table>
+	             -->
 	            <br>
 	            <table class="ctable" id="table3">
 	            	<tr>
