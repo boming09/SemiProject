@@ -96,7 +96,7 @@ public class B_ReviewDao {
 				b_review.setReview_no(rset.getInt("review_no")); 				// 리뷰번호
 				b_review.setBook_id(rset.getInt("book_id"));					// 도서코드								
 				b_review.setUser_no(rset.getInt("user_no"));					// 회원번호				
-				b_review.setDate(rset.getDate("date"));							// 작성일
+				b_review.setCreate_date(rset.getDate("create_date"));							// 작성일
 				b_review.setContent(rset.getString("content"));					// 내용
 				b_review.setRating(rset.getInt("rating"));						// 평점
 				b_review.setRef_no(rset.getInt("ref_no"));						// 참조리뷰번호
@@ -174,7 +174,7 @@ public class B_ReviewDao {
 				b_review.setReview_no(rset.getInt("review_no"));
 				b_review.setBook_id(rset.getInt("book_id"));
 				b_review.setUser_no(rset.getInt("user_no"));
-				b_review.setDate(rset.getDate("date"));
+				b_review.setCreate_date(rset.getDate("create_date"));
 				b_review.setContent(rset.getString("content"));
 				b_review.setRating(rset.getInt("rating"));
 				b_review.setRef_no(rset.getInt("ref_no"));
@@ -223,7 +223,9 @@ public class B_ReviewDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
 			pstmt.setInt(1, review_no);
+			
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
@@ -231,7 +233,7 @@ public class B_ReviewDao {
 				b_review.setReview_no(rset.getInt("review_no"));
 				b_review.setBook_id(rset.getInt("book_id"));
 				b_review.setUser_no(rset.getInt("user_no"));
-				b_review.setDate(rset.getDate("date"));
+				b_review.setCreate_date(rset.getDate("create_date"));
 				b_review.setContent(rset.getString("content"));
 				b_review.setRating(rset.getInt("rating"));
 				b_review.setRef_no(rset.getInt("ref_no"));

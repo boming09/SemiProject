@@ -45,7 +45,7 @@
                     <label>E-mail 주소</label> <input type="text" name="userEmail" class="id1text" size="10" required><br><br>
                     <a href="searchid">
                     <a href="login"><input type="button" id="searchreturn" value="돌아가기"></button></a>
-                    <button id="searchIdUpdateForm" onclick="searchId();">가입여부 확인하기</button>
+                    <button id="searchIdUpdateForm">가입여부 확인하기</button>
                     </a><br>
                 </div>
                 </form>
@@ -61,7 +61,7 @@
         </div>  
     <!-- footer -->
 	<jsp:include page="/WEB-INF/views/member/footer.jsp" />
-	
+	<!-- 
 	<script>
 		function searchId(){
 			var userName = document.getElementById("userName").value;
@@ -110,6 +110,7 @@
 		*/
 				
 	</script>
+	 -->
 	<!-- 
 	<script>
 		$(function(){

@@ -43,16 +43,16 @@
 			FROM (SELECT ROWNUM RUNM, A.*
 				 FROM(SELECT
 				        REVIEW_NO
-				      , BOOK_ID
-				      , USER_NO
-				      , DATE
+				      , B.BOOK_ID
+				      , B.USER_NO
+				      , CREATE_DATE
 				      , CONTENT
 				      , RATING
 				      , REF_NO
 				      , STATUS
 				   FROM B_REVIEW B
-				   JOIN B_CATEGORY USING(CATEGORY_ID)
-				   JOIN MEMBER ON(B.USER_NO = USER_NO)
+				   JOIN B_CATEGORY C ON(B.BOOK_ID = C.CATEGORY_ID)
+		    	   JOIN MEMBER M ON(B.USER_NO = M.USER_NO)
 				  WHERE REF_NO = 1
 				    AND B.STATUS = 'Y'
 				  ORDER BY MID DESC) A
@@ -139,19 +139,19 @@
 	
 	<entry key="selectB_Review">
 		SELECT
-		         REVIEW_NO
-				 , BOOK_ID
-				 , USER_NO
-				 , DATE
+		           REVIEW_NO
+				 , B.BOOK_ID
+				 , B.USER_NO
+				 , CREATE_DATE
 				 , CONTENT
 				 , RATING
 				 , REF_NO
 				 , B.STATUS
 		    FROM B_REVIEW B
-		    JOIN B_CATEGORY USING(CATEGORY_ID)
-		    JOIN MEMBER ON(B.USER_NO = USER_NO)
+            JOIN B_CATEGORY C ON(B.BOOK_ID = C.CATEGORY_ID)
+		    JOIN MEMBER M ON(B.USER_NO = M.USER_NO)
 		   WHERE B.STATUS = 'Y'
-		     AND REVIEW_NO = ?
+		     AND REVIEW_NO = ?;
 	</entry>
 	
 	<entry key="insertB_Review">

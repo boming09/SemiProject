@@ -56,7 +56,6 @@
                 	<ul class="review_list" onclick="detailView(${ b_review.review_no })">
                 		<li class="review_no">${ b_review.review_no }</li>
                 		<li class="review_classification">${ b_review.book_id }</li>
-                		<li class="review_title">${ b_review.user_no }</li>
                 		
                 		<c:choose> 
 				           	<c:when test="${ b_review.user_no != null}">
@@ -67,9 +66,10 @@
 				            </c:otherwise>
 			            </c:choose>                		
                 		
-                		<li class="review_views">${ b_review.count }</li>
+                		<li class="review_title">${ b_review.create_date }</li>
+                		<li class="review_views">${ b_review.content }</li>
                 		<li class="review_date">${ b_review.rating }</li>
-                		<li class="review_status"></li>
+                		<li class="review_status">${ b_review.ref_no }</li>
                 	</ul>
                     </c:forEach>
                     </c:if>

@@ -8,6 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import member.model.service.MemberService;
+import member.model.vo.Member;
 
 /**
  * Servlet implementation class MemberOutServlet
@@ -28,7 +32,7 @@ public class MemberOutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 마이페이지의 회원탈퇴 클릭 시 회원탈퇴로 단순 이동
+		
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/memberout.jsp");
 		view.forward(request, response);
 	}
@@ -37,8 +41,37 @@ public class MemberOutServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("utf-8");
+		
+		HttpSession session = request.getSession();
+		
+		// 변수 저장
+		String[] dissatisfactionArr = request.getParameterValues("dissatisfaction");
+		String userId = request.getParameter("check_id");
+		String userPwd = request.getParameter("check_pw");
+		
+		String dissatisfaction = "";
+		
+		if(dissatisfaction != null)
+			dissatisfaction = String.join("|", dissatisfaction);
+		
+		// 비즈니스 로직
+		Member member = new MemberService().deleteAccount2(dissatisfaction, userId, userPwd);
+		
+		// System.out.println("member : " + member);
+		
+		// view 연결
+		if(member != null) {
+		
+		request.setAttribute("member", member);
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/memberout2.jsp");
+		view.forward(request, response);		
+		
+		} else {
+			request.setAttribute("message", "회원탈퇴 정보 확인에 실패 하였습니다.<br> 비밀번호를 다시 확인해 주세요.");
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/errorpage.jsp");
+			view.forward(request, response);
+		}
 	}
 
 }
