@@ -81,7 +81,7 @@
 	                    <li class="faq_icon">▼</li>
 	                </ul>
 	                <div class="total_a">
-	                	<div class="total_answer"><p style="white-space: pre=line;">${ faq.reply }</p></div>
+	                	<div class="total_answer">${ fn:replace(faq.reply, newReply, '<br>')}</div>
 	                	<div class="total_service">
 	                		<img src="${ contextPath }/resources/images/notice/callcenter.png">
 	                		<p>추가로 자세한 상담을 원하신다면 1:1문의를 이용해주세요</p>
