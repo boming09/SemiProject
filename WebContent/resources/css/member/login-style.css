@@ -274,7 +274,7 @@ buttom{
     width : 300px;
     height : 100px;
     position : absolute;
-            top : 715px;
+            top : 662px;
             left : 600px;
     background :#497D4E;
     color : white;
@@ -384,6 +384,10 @@ footer {
     color : white;
     width : 230px;
     height : 50px;
+}
+
+#email{
+	margin-right : 10px;
 }
 
 /* 이메일로 문의하기 */
@@ -650,6 +654,11 @@ footer {
 
 .errordiv{
 	height: 59vh;
+}
+
+#termsbox{
+	margin-left: 20px;
+    margin-right: 5px;
 }
 
 /*--------------------------------------------------------------------*/

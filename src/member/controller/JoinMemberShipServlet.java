@@ -49,10 +49,14 @@ public class JoinMemberShipServlet extends HttpServlet {
 		String userName = request.getParameter("userName");
 		String gender = request.getParameter("gender");
 		String userPhone = request.getParameter("phone");
-		String userEmail = request.getParameter("email");
+		String userEmailArr[] = request.getParameterValues("email");
 		String[] addressArr = request.getParameterValues("address");
 		
+		String userEmail = "";
 		String address = "";
+		
+		if(userEmailArr != null)
+			userEmail = String.join("|", userEmailArr);
 		
 		if(addressArr != null && !addressArr[0].equals(""))
 			address = String.join("|", addressArr);

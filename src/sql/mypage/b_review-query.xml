@@ -32,7 +32,7 @@
 		SELECT
 				COUNT(*)
 		   FROM B_REVIEW B
-		   JOIN MEMBER ON(B.USER_NO = USER_NO)
+		   JOIN MEMBER C ON(B.USER_NO = C.USER_NO)
 		  WHERE REF_NO = 1
 		    AND B.STATUS = 'Y'
 		    AND USER_NO LIKE '%' || ? || '%'
@@ -49,13 +49,13 @@
 				      , CONTENT
 				      , RATING
 				      , REF_NO
-				      , STATUS
+				      , B.STATUS
 				   FROM B_REVIEW B
 				   JOIN B_CATEGORY C ON(B.BOOK_ID = C.CATEGORY_ID)
 		    	   JOIN MEMBER M ON(B.USER_NO = M.USER_NO)
 				  WHERE REF_NO = 1
 				    AND B.STATUS = 'Y'
-				  ORDER BY MID DESC) A
+				  ORDER BY REVIEW_NO DESC) A
 				 )
 			WHERE RUNM BETWEEN ? AND ?
 	</entry>
@@ -78,7 +78,7 @@
 				  WHERE REF_NO = 1
 				    AND B.STATUS = 'Y'
 				    AND MTITLE LIKE '%' || ? || '%'
-				  ORDER BY MID DESC) A
+				  ORDER BY REVIEW_NO DESC) A
 				 )
 			WHERE RUNM BETWEEN ? AND ?
 	</entry>
@@ -101,7 +101,7 @@
 				  WHERE MTYPE = 1
 				    AND B.STATUS = 'Y'
 				    AND MCONTENT LIKE '%' || ? || '%'
-				  ORDER BY MID DESC) A
+				  ORDER BY REVIEW_NO DESC) A
 				 )
 			WHERE RUNM BETWEEN ? AND ?
 	</entry>
@@ -124,7 +124,7 @@
 				  WHERE MTYPE = 1
 				    AND B.STATUS = 'Y'
 				    AND USER_NICKNAME LIKE '%' || ? || '%'
-				  ORDER BY MID DESC) A
+				  ORDER BY REVIEW_NO DESC) A
 				 )
 			WHERE RUNM BETWEEN ? AND ?
 	</entry>
@@ -133,7 +133,7 @@
 	<entry key="increaseCount">
 		UPDATE B_REVIEW
 		   SET MCOUNT = MCOUNT + 1
-		 WHERE MID = ?
+		 WHERE REVIEW_NO = ?
 	</entry>
 	 -->
 	

@@ -33,42 +33,43 @@
                 <tr>
                     <th>* 아이디</th>
                     <td class="id_name">
-                    	<input type="text" class="lomb" name="userId" placeholder="아이디 10글자 이내" required>
+                    	<input type="text" class="lomb inputEng" name="userId" placeholder="아이디 10글자 이내" maxlength="10" required>
                         <button id="idCheck" type="button">중복확인</button></td>
                 </tr>                
                 <tr>
                     <th>* 비밀번호</th>
                     <td class="id_name">
-                    <input type="password" class="lomb" size="30" name="userPwd" placeholder="영문,숫자,특수문자 포함 8자 이상" required>
+                    <input type="password" class="lomb" size="30" id="userPwd" name="userPwd" placeholder="영문,숫자,특수문자 포함 8자 이상" maxlength="12" required>
                         </input>
                     </td>
                 </tr>
                 <tr>
                     <th>* 비밀번호 확인</th>
                     <td class="id_name">
-                    <input type="password" class="lomb" name="userPwd2" size="30" required></td>
+                    <input type="password" class="lomb" name="userPwd2" size="30" maxlength="12" required></td>
                 </tr>
                 <tr>
                     <th>* 이름</th>
                     <td class="id_name">
-                    <input type="text" class="lomb" name="userName" size="30" required></td>
+                    <input type="text" class="lomb" name="userName" size="30" maxlength="5" required></td>
                 </tr>
                 <tr>
                     <th>* 휴대전화</th>
                     <td class="id_name">
-                    <input type="text" class="lomb" maxlength="11" name="phone" size="20" required>                        
+                    <input type="text" class="lomb inputNum" maxlength="11" name="phone" size="20" required>                        
                     </td>
                 </tr>
                 <tr>
                     <th>* 이메일</th>
                     <td class="id_name">
+                    <input type="text" id="email" name="email" class="lomb inputEmail" required">
                     <input type="email" id="email1" name="email" class="lomb"  size="20" required>&nbsp;
                         <select  class="lomb2" name="emailSelection" id="emailSelection">
-                            <option value="naver.com">naver.com</option>
-                            <option value="daum.com">daum.com</option>
-                            <option value="gmail.com">gmail.com</option>
-                            <option value="hanmail.net">hanmail.net</option>
-                            <option value="nate.com">nate.com</option>
+                            <option value="naver.com">@naver.com</option>
+                            <option value="daum.com">@daum.com</option>
+                            <option value="gmail.com">@gmail.com</option>
+                            <option value="hanmail.net">@hanmail.net</option>
+                            <option value="nate.com">@nate.com</option>
                             <option value="1" selected>&nbsp;&nbsp;직접입력</option>
                         </select></td>
                 </tr>
@@ -117,12 +118,14 @@
             <legend id="lolegend">약관 동의</legend>
             <table class="lotb">                
                 <tr>
-                    <th class="terms_name">봄숲 이용약관</th>
+                    <th class="terms_name">봄숲 전체 이용약관</th>
                     <td>
                         <label class="termstext">약관 전체보기</label>
-                        <a href="#"><img class="terms" src="<%= request.getContextPath() %>/resources/images/member/login-terms.png" alt="terms"></a> 
+                        <a href="terms"><img class="terms" src="<%= request.getContextPath() %>/resources/images/member/login-terms.png" alt="terms"></a> 
+                    	<input type="checkbox" id="termsbox"><label>동의를 해야 가입됩니다.</label>
                     </td>
                 </tr>
+                <!-- 
                 <tr>
                     <th>봄숲 커뮤니티 이용약관</th>
                     <td>
@@ -137,6 +140,7 @@
                         <a href="#"><img class="terms" src="<%= request.getContextPath() %>/resources/images/member/login-check.png" alt="cehck"></a> 
                     </td>
                 </tr>
+                 -->
                 <div>
                 	<button class="joinme" id="joinBtn">회원 가입하기</button>
                 </div>
@@ -169,10 +173,12 @@
 		$("#idCheck").on('click', function(){
 			
 			var userId = $("[name=userId]");
-			var isUsable =false;
+			var isUsable = false;
 			
-			if(!userId || userId.val().length < 4){
-				alert("아이디는 최소 4자리 이상이어야 합니다.");
+			/* (/^[a-z][A-Za-z\d]{5,10}$/) 정규표현식 */
+			
+			if(!userId || userId.val().length < 6){
+				alert("아이디는 최소 6자리 이상, 10글자 이하여야 합니다.");
 				userId.focus();
 			} else {
 				$.ajax({
@@ -206,9 +212,80 @@
 					}
 				});
 			}			
-		});
-		
+		});		
 	</script>
+		
+	<script>
+	var text = "";
+	var count = 0;
+	
+	$("#joinBtn").click(function(){
+		/*
+		var idPattern = /^[A-Za-z]{1}[A-Za-z0-9]{3,19}$/;
+	    var pwPattern = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
+	    var emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	    var phonePattern = /(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/g;
+		
+	    if(idpattern.test("#userId.value") == true){
+	    	text += "ID : " + "#userId.value" + "\n";
+	    }
+	    else alert("아이디를 잘못 입력 하셨습니다.");
+	    */
+	    /*
+	    var userId = $("[name=userId]");
+		var userPwd = $("[name=userPwd]");
+		var userPwd2 = $("[name=userPwd2]");
+		var userName = $("[name=userName]");
+		var phone = $("[name=phone]");
+		var email = $("[name=email]");
+		var address = $("[name=address]");
+		
+		if($("#userId").value("") == false){
+			alert("아이디를 입력해주세요.");
+			return;
+	    }   
+	    	    
+	    if($("#userName") == false){
+			alert("이름을 적어주세요.");
+			return;
+	    }
+	    */
+	    
+	    /*
+	    if(!userId || userId.val() == false){
+			alert("아이디를 입력해주세요.");
+			userId.focus();
+	    */
+	    	    
+	    if($("#termsbox").is(":checked") == false){ 
+				alert("이용약관에 동의하여야 회원가입이 진행됩니다.");
+				return;
+		}
+	    		
+		return true;
+	});
+	</script>	
+	
+	<script type="text/javascript">
+	
+	$('#emailSelection').change(function(){
+		$("#emailSelection option:selected").each(function () {
+			
+			if($(this).val()== '1'){				
+				$("#email1").val('');
+				$("#email1").attr("disabled",false);
+				
+			}else{ 
+				$("#email1").val($(this).text());
+				$("#email1").attr("disabled",true);
+			}
+			
+		}); 
+		
+	});
+	
+	</script>
+
 
 </body>
 </html>
