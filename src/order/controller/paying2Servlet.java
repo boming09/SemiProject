@@ -36,11 +36,13 @@ public class paying2Servlet extends HttpServlet {
 		session.setAttribute("pay", pay);
 		
 		//쿠폰 저장 
-		String coupon_no = null;
-		if(request.getParameter("coupon_no") != null ) {
-			coupon_no = request.getParameter("coupon_no");
-			session.setAttribute("coupon_no", coupon_no);
+		String coupon_no = request.getParameter("coupon_no");
+		if(coupon_no == null || coupon_no.trim().equals("")){
+			coupon_no = "0";
 		}
+
+		session.setAttribute("coupon_no", coupon_no);
+		
 		
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/order/paying2.jsp"); //여기
 		view.forward(request, response);
