@@ -25,36 +25,36 @@
 		   FROM B_REVIEW
 		  WHERE REF_NO = 1
 		    AND STATUS = 'Y'
-		    AND MCONTENT LIKE '%' || ? || '%'
+		    AND CONTENT LIKE '%' || ? || '%'
 	</entry>
 	
 	<entry key="getWriterListCount">
 		SELECT
 				COUNT(*)
 		   FROM B_REVIEW B
-		   JOIN MEMBER C ON(B.USER_NO = C.USER_NO)
+		   JOIN MEMBER ON(WRITER = USER_NO)
 		  WHERE REF_NO = 1
 		    AND B.STATUS = 'Y'
-		    AND USER_NO LIKE '%' || ? || '%'
+		    AND USER_NICKNAME LIKE '%' || ? || '%'
 	</entry>
 	
 	<entry key="selectList">
 	SELECT *
 			FROM (SELECT ROWNUM RUNM, A.*
 				 FROM(SELECT
-				        REVIEW_NO
-				      , B.BOOK_ID
-				      , B.USER_NO
-				      , CREATE_DATE
-				      , CONTENT
-				      , RATING
-				      , REF_NO
-				      , B.STATUS
-				   FROM B_REVIEW B
-				   JOIN B_CATEGORY C ON(B.BOOK_ID = C.CATEGORY_ID)
-		    	   JOIN MEMBER M ON(B.USER_NO = M.USER_NO)
+		           REVIEW_NO
+				 , K.BOOK_NAME
+				 , USER_NICKNAME
+				 , CREATE_DATE
+				 , CONTENT
+				 , RATING
+				 , REF_NO
+				 , B.STATUS
+		    FROM B_REVIEW B
+            JOIN BOOK K USING(BOOK_ID)
+		    JOIN MEMBER M ON(B.USER_NO = M.USER_NO)
 				  WHERE REF_NO = 1
-				    AND B.STATUS = 'Y'
+				    AND B.STATUS = 'Y'				    
 				  ORDER BY REVIEW_NO DESC) A
 				 )
 			WHERE RUNM BETWEEN ? AND ?
@@ -64,17 +64,19 @@
 		SELECT *
 			FROM (SELECT ROWNUM RUNM, A.*
 				 FROM(SELECT
-				        REVIEW_NO
-				      , BOOK_ID
-				      , USER_NO
-				      , DATE
-				      , CONTENT
-				      , RATING
-				      , REF_NO
-				      , B.STATUS
-				   FROM B_REVIEW B
-				   JOIN B_CATEGORY USING(CATEGORY_ID)
-				   JOIN MEMBER ON(B.USER_NO = USER_NO)
+		           REVIEW_NO
+				 , B.BOOK_ID
+				 , CREATE_DATE
+				 , CONTENT
+				 , RATING
+				 , REF_NO
+				 , B.STATUS
+				 , CATEGORY_ID
+				 , CATEGORY_NAME
+				 , B.WRITER
+		    FROM B_REVIEW B
+            JOIN B_CATEGORY USING(CATEGORY_ID)
+		    JOIN MEMBER ON(WRITER = USER_NO)
 				  WHERE REF_NO = 1
 				    AND B.STATUS = 'Y'
 				    AND MTITLE LIKE '%' || ? || '%'
@@ -87,18 +89,20 @@
 		SELECT *
 			FROM (SELECT ROWNUM RUNM, A.*
 				 FROM(SELECT
-				        REVIEW_NO
-				      , BOOK_ID
-				      , USER_NO
-				      , DATE
-				      , CONTENT
-				      , RATING
-				      , REF_NO
-				      , B.STATUS
-				   FROM B_REVIEW B
-				   JOIN B_CATEGORY USING(CATEGORY_ID)
-				   JOIN MEMBER ON(B.USER_NO = USER_NO)
-				  WHERE MTYPE = 1
+		           REVIEW_NO
+				 , B.BOOK_ID
+				 , CREATE_DATE
+				 , CONTENT
+				 , RATING
+				 , REF_NO
+				 , B.STATUS
+				 , CATEGORY_ID
+				 , CATEGORY_NAME
+				 , B.WRITER
+		    FROM B_REVIEW B
+            JOIN B_CATEGORY USING(CATEGORY_ID)
+		    JOIN MEMBER ON(WRITER = USER_NO)
+				  WHERE REF_NO = 1
 				    AND B.STATUS = 'Y'
 				    AND MCONTENT LIKE '%' || ? || '%'
 				  ORDER BY REVIEW_NO DESC) A
@@ -110,18 +114,20 @@
 		SELECT *
 			FROM (SELECT ROWNUM RUNM, A.*
 				 FROM(SELECT
-				        REVIEW_NO
-				      , BOOK_ID
-				      , USER_NO
-				      , DATE
-				      , CONTENT
-				      , RATING
-				      , REF_NO
-				      , B.STATUS
-				   FROM B_REVIEW B
-				   JOIN B_CATEGORY USING(CATEGORY_ID)
-				   JOIN MEMBER ON(B.USER_NO = USER_NO)
-				  WHERE MTYPE = 1
+		           REVIEW_NO
+				 , B.BOOK_ID
+				 , CREATE_DATE
+				 , CONTENT
+				 , RATING
+				 , REF_NO
+				 , B.STATUS
+				 , CATEGORY_ID
+				 , CATEGORY_NAME
+				 , B.WRITER
+		    FROM B_REVIEW B
+            JOIN B_CATEGORY USING(CATEGORY_ID)
+		    JOIN MEMBER ON(WRITER = USER_NO)
+				  WHERE REF_NO = 1
 				    AND B.STATUS = 'Y'
 				    AND USER_NICKNAME LIKE '%' || ? || '%'
 				  ORDER BY REVIEW_NO DESC) A
@@ -141,17 +147,19 @@
 		SELECT
 		           REVIEW_NO
 				 , B.BOOK_ID
-				 , B.USER_NO
 				 , CREATE_DATE
 				 , CONTENT
 				 , RATING
 				 , REF_NO
 				 , B.STATUS
+				 , CATEGORY_ID
+				 , CATEGORY_NAME
+				 , B.WRITER
 		    FROM B_REVIEW B
-            JOIN B_CATEGORY C ON(B.BOOK_ID = C.CATEGORY_ID)
-		    JOIN MEMBER M ON(B.USER_NO = M.USER_NO)
+            JOIN B_CATEGORY USING(CATEGORY_ID)
+		    JOIN MEMBER ON(WRITER = USER_NO)
 		   WHERE B.STATUS = 'Y'
-		     AND REVIEW_NO = ?;
+		     AND REVIEW_NO = ?
 	</entry>
 	
 	<entry key="insertB_Review">
@@ -160,22 +168,25 @@
 			 (
 			 	REVIEW_NO
 				, BOOK_ID
-				, USER_NO
-				, DATE
+				, CREATE_DATE
 				, CONTENT
 				, RATING
 				, REF_NO
 				, B.STATUS
+				, CATEGORY_ID
+				, WRITER
 			 )
 			 VALUES
 			 (
 			 	  SEQ_REVIEW_NO.NEXTVAL
 			 	, ?
-			 	, ?
 			 	, SYSDATE
 			 	, ?
 			 	, ?
+			 	, ?
 			 	, DEFAULT
+			 	, ?
+			 	, ?
 			 )		 
 	</entry>
 	

@@ -58,6 +58,11 @@ public class ReplyInsertServlet extends HttpServlet {
 		
 		int starScore = (int) Math.floor(avgScore);
 		
+		if(avgScore > 10.0) {	// 평점 10점 만점
+			avgScore = 10.0;
+			starScore = 10;
+		}
+		
 		// System.out.println(sumScore);
 		// System.out.println(rstarScore);
 		// System.out.println(reviewCount);

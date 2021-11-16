@@ -29,12 +29,13 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 
 <c:set var="searchParam" value="&searchCondition=${ param.searchCondition }&searchValue=${ param.searchValue }"/>
 <c:set var="categoryParam" value="&category=${ param.category }"/>
-
+<c:set var="category" value="${ param.category }"/>
 		<div class="content" id="moveTop">
             <div class="book_category">
                 <ul class="cLi">
                     <c:forEach var="category" items="${ categoryList }">
-                    <li><a href="${ contextPath }/book/category?category=${ category }${ searchParam }">${ category }</a></li>
+                    <li><a href="${ contextPath }/book/category?category=${ category }${ searchParam }"
+                    <c:if test="${ param.category == category }">style="color:orange;font-weight:bold;"</c:if>>${ category }</a></li>
                     </c:forEach>
                 </ul>
             </div>
@@ -43,16 +44,20 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                     <h2>검색 결과</h2>
                     <ul class="sortLi">
                         <li>
-                        	<a href="${ contextPath }/book/sort?sort=popular${ searchParam }${ categoryParam }">인기순</a>
+                        	<a href="${ contextPath }/book/sort?sort=popular${ searchParam }${ categoryParam }" 
+                        	<c:if test="${ param.sort == 'popular' }">style="color:orange;"</c:if>>인기순</a>
                         </li><label> | </label>
                         <li>
-                        	<a href="${ contextPath }/book/sort?sort=new${ searchParam }${ categoryParam }">신상품순</a>
+                        	<a href="${ contextPath }/book/sort?sort=new${ searchParam }${ categoryParam }"
+                        	<c:if test="${ param.sort == 'new' }">style="color:orange;font-weight:bold;"</c:if>>신상품순</a>
                         </li><label> | </label>
                         <li>
-                        	<a href="${ contextPath }/book/sort?sort=highest${ searchParam }${ categoryParam }">최고가순</a>
+                        	<a href="${ contextPath }/book/sort?sort=highest${ searchParam }${ categoryParam }"
+                        	<c:if test="${ param.sort == 'highest' }">style="color:orange;font-weight:bold;"</c:if>>최고가순</a>
                         </li><label> | </label>
                         <li>
-                        	<a href="${ contextPath }/book/sort?sort=lowest${ searchParam }${ categoryParam }">최저가순</a>
+                        	<a href="${ contextPath }/book/sort?sort=lowest${ searchParam }${ categoryParam }"
+                        	<c:if test="${ param.sort == 'lowest' }">style="color:orange;font-weight:bold;"</c:if>>최저가순</a>
                         </li>
                     </ul>
                 </div>
@@ -292,9 +297,9 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 		location.href="${contextPath}/book/search/categorylist?category=" + category;
 	}
 	
-	$(function() {	/* 스크롤 600 멀어지면 보이기 */
+	$(function() {	/* 스크롤 400 멀어지면 보이기 */
 	       $(window).scroll(function() {
-	           if ($(this).scrollTop() > 600) {
+	           if ($(this).scrollTop() > 400) {
 	               $('#moveA').fadeIn();
 	           } else {
 	               $('#moveA').fadeOut();
