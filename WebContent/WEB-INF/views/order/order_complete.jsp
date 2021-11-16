@@ -47,8 +47,8 @@
 					<div>${upOrder.order_date}<!--2021년 11월 1일 월요일 7시 10분--></div><!-- 날짜포맷 -->
 					<div>${upOrder.rel_date}</div>
 					<div>${upOrder.receipte_date}</div>
-					<div>${upOrder.address}<!--서울 강남구 테헤란로 14길 6 7층 그랑프리 빌딩--></div>
-					<div>${orderPhone}</div>
+					<div>${upOrder.address}<!--이메일하고 주소가 안보내짐--><!--서울 강남구 테헤란로 14길 6 7층 그랑프리 빌딩--></div>
+					<div>${upOrder.phone}</div>
 					<div><!-- 카카오페이 ${upOrder.payment}-->
 					<c:choose>
 						<c:when test="${upOrder.payment eq 'kakaopay'}">카카오페이</c:when>

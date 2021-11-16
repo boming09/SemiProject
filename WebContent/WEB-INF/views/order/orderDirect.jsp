@@ -127,7 +127,9 @@
         			  email = "email";
         		  }
         		%>
-
+			
+			<input type="hidden" name="email" value="email">
+			
         	<div class="od_tt">
         		<div class="o_item">
         			<div><b>주문인 *</b></div>
@@ -153,20 +155,20 @@
         			<div><b>주소 *</b></div>
         		</div>
         		<div class="o_item">
-	        		<span class="address name"><input type="text" name="address" class="postcodify_postcode5 nm_area" value="<%= address[0] %>" readonly></span>
+	        		<span class="address name"><input type="text" name="address1" class="postcodify_postcode5 nm_area" value="<%= address[0] %>" readonly></span>
 					<button type="button" id="postcodify_search_button"><b>검색</b></button>
 				</div>
 				<div class="o_item">
 					<div></div>
 				</div>
 				<div class="o_item">
-					<span class="address name"><input type="text" name="address" class="postcodify_address add_area" value="<%= address[1] %>" readonly></span>
+					<span class="address name"><input type="text" name="address2" class="postcodify_address add_area" value="<%= address[1] %>" readonly></span>
 				</div>
 				<div class="o_item">
 					<div></div>
 				</div>
 				<div class="o_item">
-				<span class="address name"><input type="text" name="address" class="postcodify_details add_area" value="<%= address[2] %>" required></span>
+				<span class="address name"><input type="text" name="address3" class="postcodify_details add_area" value="<%= address[2] %>" required></span>
         		</div>
         	</div>
         	
