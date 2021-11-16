@@ -44,32 +44,34 @@
                 <div class="review_listarea">
                     <ul class="review_listtop">
                         <li class="review_no">리뷰번호</li>
-                        <li class="review_classification">도서카테고리</li>
-                        <li class="review_title">내용</li>
-                        <li class="review_writer">작성일</li>
-                        <li class="review_views">내용</li>
-                        <li class="review_date">평점</li>
-                        <li class="review_status">참조리뷰번호</li>
+                        <li class="review_category">도서제목</li>
+                        <li class="review_content">내용</li>
+                        <li class="review_date">작성일</li>
+                        <li class="review_writer">작성자</li>
+                        <li class="review_ref_no">참조리뷰번호</li>
+                        <li class="review_rating">평점</li>
                     </ul>
                     <c:if test="${ !empty loginUser }">
+                	
                 	<c:forEach var="review" items="${ b_reviewList }">
+                	
                 	<ul class="review_list" onclick="detailView(${ review.review_no })">
                 		<li class="review_no">${ review.review_no }</li>
-                		<li class="review_classification">${ review.book_id }</li>
+                		<li class="review_category">${ review.book_name }</li>
+                		<li class="review_content">${ review.content }</li>
+                		<li class="review_date">${ review.create_date }</li>
                 		
                 		<c:choose> 
-				           	<c:when test="${ review.user_no != null}">
-				           	<li class="review_writer">${ review.user_no }</li>
+				           	<c:when test="${ review.user_nickname != null}">
+				           	<li class="review_writer">${ review.user_nickname }</li>
 				            </c:when>
 				            <c:otherwise>
 				            <li class="review_writer">${ loginUser.userName }</li>
 				            </c:otherwise>
 			            </c:choose>                		
                 		
-                		<li class="review_title">${ review.create_date }</li>
-                		<li class="review_views">${ review.content }</li>
-                		<li class="review_date">${ review.rating }</li>
-                		<li class="review_status">${ review.ref_no }</li>
+                		<li class="review_ref_no">${ review.ref_no }</li>
+                		<li class="review_rating">${ review.rating }</li>
                 	</ul>
                     </c:forEach>
                     </c:if>
