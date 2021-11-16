@@ -63,7 +63,7 @@
 
 .review_listarea ul {
     display: flex;
-    justify-content : space-between;	
+    justify-content : flex-start;	
     align-items: center;
     text-align: center;
     font-size: 0.8rem;
@@ -85,18 +85,18 @@
 }
 /* 리뷰번호 */
 .review_no {
-    width: 8%;
+    width: 12%;
     border-right: 1px solid lightgray;
   
 }
 /* 도서카테고리 */
 .review_category {
-    width: 12%;
+    width: 16%;
     border-right: 1px solid lightgray;
 }
 /* 내용 */
 .review_content {
-    width: 35%;
+    width: 47%;
     border-right: 1px solid lightgray;    
 }
 .title2 {
@@ -105,9 +105,8 @@
 }
 /* 작성일 */
 .review_date {
-    width: 10%;
-    border-right: 1px solid lightgray;
-    
+    width: 15%;
+    border-right: 1px solid lightgray;    
 }
 
 /* 작성자 */

@@ -85,7 +85,7 @@
 	 -->
 			<div class="wrap">
 				<div id="userId">정말로 회원 탈퇴하시겠습니까 ?<br>
-				감사합니다.
+				
 				</div>
 				
 				<div class="btnArea">

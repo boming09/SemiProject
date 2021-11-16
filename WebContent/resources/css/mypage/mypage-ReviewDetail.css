@@ -80,7 +80,7 @@ td {
 } 
 .title, .user {
     width: 58%;
-    border-right: 1px solid lightgray;
+    /*border-right: 1px solid lightgray;*/
 }
 .date {
     width: 18%;
@@ -100,9 +100,11 @@ td {
 }
 
 /* 테두리 */
+/*
 th, td {
     border-right: 1px solid lightgray;
 }
+*/
 .user, .date, .wcontent {
     border: 0;
 }

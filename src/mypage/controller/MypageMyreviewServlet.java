@@ -48,6 +48,8 @@ public class MypageMyreviewServlet extends HttpServlet {
 		// int user = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
 		// 현재 요청페이지
 		// 기본적으로 게시판은 1페이지부터 시작
+		int user_no = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
+		
 		int page = 1;
 		
 		if(request.getParameter("page") != null) {
@@ -59,7 +61,7 @@ public class MypageMyreviewServlet extends HttpServlet {
 		*/
 		// System.out.println("b_reviewList : " + b_reviewList);
 		
-		Map<String, Object> map = new B_ReviewService().selectList(page);
+		Map<String, Object> map = new B_ReviewService().selectList(page, user_no);
 				/*, new Search(searchCondition, searchValue)*/
 		
 		request.setAttribute("pi", map.get("pi"));

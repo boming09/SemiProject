@@ -4,6 +4,7 @@ import static common.JDBCTemplate.close;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,7 +31,7 @@ public class B_ReviewDao {
 		}
 	}
 
-	public int getListCount(Connection conn/*, Search search*/) {
+	public int getListCount(Connection conn, int user_no/*, Search search*/) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		int listCount = 0;
@@ -48,6 +49,7 @@ public class B_ReviewDao {
 		*/
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, user_no);
 			
 			// 검색 SQL문을 실행하는 경우 검색 값 설정
 			/*
@@ -71,7 +73,7 @@ public class B_ReviewDao {
 		return listCount;
 	}
 
-	public List<B_Review> selectList(Connection conn, PageInfo pi/*, Search search*/) {
+	public List<B_Review> selectList(Connection conn, int user_no, PageInfo pi/*, Search search*/) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = b_reviewQuery.getProperty("selectList");
@@ -103,14 +105,16 @@ public class B_ReviewDao {
 			pstmt.setInt(index, endRow);
 			 */
 			
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
+			pstmt.setInt(1, user_no);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
 				B_Review b_review = new B_Review();
-				b_review.setReview_no(rset.getInt("review_no")); 				// 리뷰번호
+				b_review.setReview_no(rset.getInt("review_no"));		// 리뷰번호
+				b_review.setBook_id(rset.getInt("book_id"));
 				b_review.setBook_name(rset.getString("book_name"));				// 회원번호				
 				b_review.setUser_nickname(rset.getString("user_nickname"));// 상태
 				b_review.setCreate_date(rset.getDate("create_date"));			// 작성일
@@ -191,15 +195,17 @@ public class B_ReviewDao {
 			if(rset.next()) {
 				b_review = new B_Review();
 				b_review.setReview_no(rset.getInt("review_no"));
-				b_review.setBook_id(rset.getInt("book_id"));
+				b_review.setBook_name(rset.getString("book_name"));
+				b_review.setUser_nickname(rset.getString("user_nickname"));
 				b_review.setCreate_date(rset.getDate("create_date"));
 				b_review.setContent(rset.getString("content"));
 				b_review.setRating(rset.getInt("rating"));
 				b_review.setRef_no(rset.getInt("ref_no"));
 				b_review.setStatus(rset.getString("status"));
+				/*
+				b_review.setBook_id(rset.getInt("book_id"));
 				b_review.setCategory_id(rset.getInt("category_id"));
-				b_review.setCategory_name(rset.getString("category_name"));
-				b_review.setWriter(rset.getInt("writer"));
+				*/
 			}
 			
 		} catch (SQLException e) {
@@ -242,6 +248,7 @@ public class B_ReviewDao {
 		ResultSet rset = null;
 		B_Review b_review = null;
 		String sql = b_reviewQuery.getProperty("selectB_review");
+	
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -253,6 +260,7 @@ public class B_ReviewDao {
 			if(rset.next()) {
 				b_review = new B_Review();
 				b_review.setReview_no(rset.getInt("review_no"));
+				b_review.setBook_id(rset.getInt("book_id"));
 				b_review.setBook_name(rset.getString("book_name"));
 				b_review.setUser_nickname(rset.getString("user_nickname"));
 				b_review.setCreate_date(rset.getDate("create_date"));
@@ -260,6 +268,7 @@ public class B_ReviewDao {
 				b_review.setRating(rset.getInt("rating"));
 				b_review.setRef_no(rset.getInt("ref_no"));
 				b_review.setStatus(rset.getString("status"));
+								
 			}
 			
 		} catch (SQLException e) {
