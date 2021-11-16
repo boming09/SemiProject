@@ -55,13 +55,15 @@ public class orderCompleteServlet extends HttpServlet {
 		
 		// coupon_no는? ${couponNo}
 		int coupon_no = 0;
-		if(session.getAttribute("coupon_no") != null) {
-			
-			coupon_no = Integer.parseInt((String) session.getAttribute("coupon_no"));
+		if(session.getAttribute("coupon_no") != "0" || session.getAttribute("coupon_no") != null) {
+			//For input string: "" 그 전 페이지에서 null 방지 처리해서 해결
+			coupon_no = Integer.parseInt((String)session.getAttribute("coupon_no"));
 		} 
 		//쿠폰 넘버가 널일때 처리를 어떻게 하는지
 	
+	
 		
+	
 		
 		
 		/*Order order = new Order();
@@ -77,6 +79,7 @@ public class orderCompleteServlet extends HttpServlet {
 			 //쿠폰넘버가 넘어온게 있다면 객체에 넘기기	
 		
 		//쿠폰 넘버도 order객체에 추가
+		
 		if(coupon_no > 0) {
 			
 			order.setCouponNo(coupon_no);

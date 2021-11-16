@@ -113,6 +113,22 @@ public class B_ReviewService {
 		return b_review;
 	}
 
+	public int increaseCount(int review_no) {
+		Connection conn = getConnection();
+		
+		int result = b_reviewDao.increaseCount(conn, review_no);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
 	
 
 }
