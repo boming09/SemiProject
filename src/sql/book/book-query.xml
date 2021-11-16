@@ -265,8 +265,8 @@ SELECT
 	                     , AVG_SCORE
 	                     FROM BOOK
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
-	                    WHERE STAR_SCORE IS NOT NULL
-	                    ORDER BY STAR_SCORE DESC NULLS LAST) A)
+	                    WHERE AVG_SCORE IS NOT NULL
+	                    ORDER BY AVG_SCORE DESC NULLS LAST) A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 
@@ -289,7 +289,7 @@ SELECT
 	                     FROM BOOK B
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
 	                     WHERE BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%'
-	                     ORDER BY STAR_SCORE DESC NULLS LAST) A)
+	                     ORDER BY AVG_SCORE DESC NULLS LAST) A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 
@@ -312,8 +312,8 @@ SELECT
 	                     FROM BOOK B
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
 	                     WHERE BOOK_NAME LIKE '%' || ? || '%'
-	                       AND STAR_SCORE IS NOT NULL
-	                     ORDER BY STAR_SCORE DESC NULLS LAST) A)
+	                       AND AVG_SCORE IS NOT NULL
+	                     ORDER BY AVG_SCORE DESC NULLS LAST) A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 
@@ -336,8 +336,8 @@ SELECT
 	                     FROM BOOK B
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
 	                     WHERE AUTHOR LIKE '%' || ? || '%'
-	                       AND STAR_SCORE IS NOT NULL
-	                     ORDER BY STAR_SCORE DESC NULLS LAST) A)
+	                       AND AVG_SCORE IS NOT NULL
+	                     ORDER BY AVG_SCORE DESC NULLS LAST) A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 
@@ -364,7 +364,7 @@ SELECT
                        					    FROM B_CATEGORY C
                        					    JOIN B_CATEGORY D ON(C.REF_ID = D.CATEGORY_ID)
                       				       WHERE C.CATEGORY_NAME LIKE '%' || ? || '%' OR D.CATEGORY_NAME LIKE '%' || ? || '%')
-	                 ORDER BY STAR_SCORE DESC NULLS LAST) A)
+	                 ORDER BY AVG_SCORE DESC NULLS LAST) A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 
@@ -388,8 +388,8 @@ SELECT
 	                     FROM BOOK B
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
 	                     WHERE CATEGORY_NAME = ?
-                           AND BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%'
-	                     ORDER BY STAR_SCORE DESC NULLS LAST) A)
+                           AND (BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%')
+	                     ORDER BY AVG_SCORE DESC NULLS LAST) A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 
@@ -413,7 +413,7 @@ SELECT
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
 	                     WHERE CATEGORY_NAME = ?
                            AND BOOK_NAME LIKE '%' || ? || '%'
-	                     ORDER BY STAR_SCORE DESC NULLS LAST) A)
+	                     ORDER BY AVG_SCORE DESC NULLS LAST) A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 
@@ -437,7 +437,7 @@ SELECT
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
 	                     WHERE CATEGORY_NAME = ?
                            AND AUTHOR LIKE '%' || ? || '%'
-	                     ORDER BY STAR_SCORE DESC NULLS LAST) A)
+	                     ORDER BY AVG_SCORE DESC NULLS LAST) A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 
@@ -465,7 +465,7 @@ SELECT
                        					    FROM B_CATEGORY C
                        					    JOIN B_CATEGORY D ON(C.REF_ID = D.CATEGORY_ID)
                       				       WHERE C.CATEGORY_NAME LIKE '%' || ? || '%' OR D.CATEGORY_NAME LIKE '%' || ? || '%')
-	                 ORDER BY STAR_SCORE DESC NULLS LAST) A)
+	                 ORDER BY AVG_SCORE DESC NULLS LAST) A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 
@@ -608,7 +608,7 @@ SELECT
 	                     FROM BOOK B
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
 	                     WHERE CATEGORY_NAME = ?
-                           AND BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%'
+                           AND (BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%')
 	                     ORDER BY PUBLICATION_DATE DESC NULLS LAST) A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
@@ -828,7 +828,7 @@ SELECT
 	                     FROM BOOK B
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
 	                     WHERE CATEGORY_NAME = ?
-                           AND BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%'
+                           AND (BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%')
 	                     ORDER BY SALE_PRICE DESC NULLS LAST) A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
@@ -1048,7 +1048,7 @@ SELECT
 	                     FROM BOOK B
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
 	                     WHERE CATEGORY_NAME = ?
-                           AND BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%'
+                           AND (BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%')
 	                     ORDER BY SALE_PRICE ASC NULLS LAST) A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
@@ -1170,8 +1170,8 @@ SELECT
 	                     , AVG_SCORE
 	                     FROM BOOK B
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
-	                     WHERE CATEGORY_NAME = ?
-	                       AND BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%') A)
+	                     WHERE (BOOK_NAME LIKE '%' || ? || '%' OR AUTHOR LIKE '%' || ? || '%')
+	                       AND CATEGORY_NAME = ?) A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 
@@ -1193,8 +1193,8 @@ SELECT
 	                     , AVG_SCORE
 	                     FROM BOOK B
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
-	                     WHERE CATEGORY_NAME = ?
-	                       AND BOOK_NAME LIKE '%' || ? || '%') A)
+	                     WHERE BOOK_NAME LIKE '%' || ? || '%'
+	                       AND CATEGORY_NAME = ?) A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 
@@ -1216,8 +1216,8 @@ SELECT
 	                     , AVG_SCORE
 	                     FROM BOOK B
 	                     JOIN B_CATEGORY USING(CATEGORY_ID)
-	                     WHERE CATEGORY_NAME = ?
-	                       AND AUTHOR LIKE '%' || ? || '%') A)
+	                     WHERE AUTHOR LIKE '%' || ? || '%'
+	                       AND CATEGORY_NAME = ?) A)
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 

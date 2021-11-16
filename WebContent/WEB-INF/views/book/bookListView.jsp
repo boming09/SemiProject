@@ -35,7 +35,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                 <ul class="cLi">
                     <c:forEach var="category" items="${ categoryList }">
                     <li><a href="${ contextPath }/book/category?category=${ category }${ searchParam }"
-                    <c:if test="${ param.category == category }">style="color:orange;"</c:if>>${ category }</a></li>
+                    <c:if test="${ param.category == category }">style="color:orange;font-weight:bold;"</c:if>>${ category }</a></li>
                     </c:forEach>
                 </ul>
             </div>
@@ -49,15 +49,15 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                         </li><label> | </label>
                         <li>
                         	<a href="${ contextPath }/book/sort?sort=new${ searchParam }${ categoryParam }"
-                        	<c:if test="${ param.sort == 'new' }">style="color:green;font-weight:bold;"</c:if>>신상품순</a>
+                        	<c:if test="${ param.sort == 'new' }">style="color:orange;font-weight:bold;"</c:if>>신상품순</a>
                         </li><label> | </label>
                         <li>
                         	<a href="${ contextPath }/book/sort?sort=highest${ searchParam }${ categoryParam }"
-                        	<c:if test="${ param.sort == 'highest' }">style="color:green;font-weight:bold;"</c:if>>최고가순</a>
+                        	<c:if test="${ param.sort == 'highest' }">style="color:orange;font-weight:bold;"</c:if>>최고가순</a>
                         </li><label> | </label>
                         <li>
                         	<a href="${ contextPath }/book/sort?sort=lowest${ searchParam }${ categoryParam }"
-                        	<c:if test="${ param.sort == 'lowest' }">style="color:green;font-weight:bold;"</c:if>>최저가순</a>
+                        	<c:if test="${ param.sort == 'lowest' }">style="color:orange;font-weight:bold;"</c:if>>최저가순</a>
                         </li>
                     </ul>
                 </div>
