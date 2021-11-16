@@ -221,11 +221,10 @@ public class B_ReviewDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, b_review.getBook_id());
-			pstmt.setString(2, b_review.getContent());
-			pstmt.setInt(3, b_review.getRating());
-			pstmt.setInt(4, b_review.getRef_no());
-			pstmt.setInt(5, b_review.getCategory_id());
-			pstmt.setInt(6, b_review.getWriter());
+			pstmt.setInt(2, b_review.getUser_no());
+			pstmt.setString(3, b_review.getContent());
+			pstmt.setInt(4, b_review.getRating());
+			pstmt.setInt(5, b_review.getRef_no());
 			
 			result = pstmt.executeUpdate();
 			
@@ -254,14 +253,13 @@ public class B_ReviewDao {
 			if(rset.next()) {
 				b_review = new B_Review();
 				b_review.setReview_no(rset.getInt("review_no"));
-				b_review.setBook_id(rset.getInt("book_id"));
+				b_review.setBook_name(rset.getString("book_name"));
+				b_review.setUser_nickname(rset.getString("user_nickname"));
 				b_review.setCreate_date(rset.getDate("create_date"));
 				b_review.setContent(rset.getString("content"));
 				b_review.setRating(rset.getInt("rating"));
 				b_review.setRef_no(rset.getInt("ref_no"));
 				b_review.setStatus(rset.getString("status"));
-				b_review.setCategory_id(rset.getInt("category_id"));
-				b_review.setCategory_name(rset.getString("category_name"));
 			}
 			
 		} catch (SQLException e) {
@@ -272,6 +270,26 @@ public class B_ReviewDao {
 		}
 		
 		return b_review;
+	}
+
+	public int increaseCount(Connection conn, int review_no) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = b_reviewQuery.getProperty("increaseCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, review_no);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		
+		return result;
 	}
 
 	

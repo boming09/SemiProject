@@ -28,27 +28,27 @@
             <div class="wcommu_conarea">
                 <table>
                     <tr class="liarea">
-                        <th class="wcommu_title" rowspan="3">제목</th>
-                        <td class="title" name="title" rowspan="3">
+                        <th class="wcommu_title" rowspan="4">도서제목</th>
+                        <td class="title" name="title" rowspan="4">
                             <div><input type="text" name="title" required></div>
                         </td>         
                         <th class="wcommu_user">작성자</th>
                         <td class="user">
-                        <!-- 
+                         
                         <c:choose>
-				           	<c:when test="${ review.user_nickname != null}">
-				           	<li class="review_writer">${ review.user_nickname }</li>
+				           	<c:when test="${ b_review.user_nickname != null}">
+				           	<li class="review_writer">${ b_review.user_nickname }</li>
 				            </c:when>
 				            <c:otherwise>
 				            <li class="review_writer">${ loginUser.userName }</li>
 				            </c:otherwise>
 			            </c:choose>  
-                         -->
+                        
                         </td>
                     </tr>
                     <tr class="liarea">
                     	<th class="wcommu_date">등록일</th>
-                        <td class="date">${ review.create_Date }</td>                        
+                        <td class="date">${ b_review.create_date }</td>                        
                     </tr>
                     <tr class="liarea">
                     	<th class="wcommu_date">분류</th>
@@ -105,7 +105,12 @@
 							</select> 
                         </td>
                     </tr>
-                                      
+                    <tr class="liarea">
+                    	<th class="wcommu_date">평점</th>
+                        <td class="date">
+                        	<div><input type="text" name="rating" required></div>
+                        </td>                        
+                    </tr>                 
                     <tr class="liarea2">
                         <th class="wcommu_content">내용</th>
                         <td class="wcontent" name="content" colspan="3">
