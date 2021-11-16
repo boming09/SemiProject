@@ -608,9 +608,8 @@ public class BookDao {
 	         
 	         /* 추가 : 변수로 처리 1, 2, 3 물음표 순서가 달라지니까 */
 	         int index = 1;
-	         // 검색 sql 실행 시
-	         pstmt.setString(index++, search.getCategory());
 	         
+	         // 검색 sql 실행 시
 	         if(search.getSearchCondition() != null && search.getSearchValue() != null && !search.getSearchCondition().equals("category")) {
 	        	 pstmt.setString(index++, search.getSearchValue());	// 후위 연산 됨
 	        	 if(sql.equals(bookQuery.getProperty("selectSearchCategoryBookList"))) {
@@ -618,6 +617,7 @@ public class BookDao {
 	        	 }
 	         }
 	         
+	         pstmt.setString(index++, search.getCategory());
 	         pstmt.setInt(index++, startRow);
 	         pstmt.setInt(index, endRow);
 	         
