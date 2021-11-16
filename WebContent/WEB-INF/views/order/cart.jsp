@@ -35,7 +35,6 @@
             	 <option value="rel" ${ orderby1 eq 'rel' ? 'selected="selected"' : ''} id="rel">출간일 순</option>
         	    </select>
     	    
-    	    <!-- <form name="orderby" action="<%= request.getContextPath() %>/cart/sort" method="post">-->
     	    <form name="orderby" action="<%= request.getContextPath() %>/cart" method="get">
     	    </form>
     	    
@@ -53,7 +52,7 @@
 			  		<div class="item mg">선택</div>
 			  		<div class="item mg"><input type='checkbox' onclick='selectAll(this)' checked/></div>
 			  	
-			<c:forEach var="cart" items="${ cartList }">
+				<c:forEach var="cart" items="${ cartList }">
 			
 					<div class="item">
 						<span class="thum"><img class="cart_thum" src="<%= request.getContextPath() %>${cart.book_img}"></span>	
@@ -81,7 +80,7 @@
 					</div>
 					
 					<form class="cart" action="<%= request.getContextPath() %>/cart/update"
-					method="post">
+					 method="post">
 					<input type="hidden" name="cart_no" value="${cart.cart_no}">
 					<div class="item">
 						<strong class="title_item">
@@ -96,40 +95,18 @@
 								<option value="7" <c:if test="${ cart.amount eq 7}">selected</c:if>>7</option>
 								<option value="8" <c:if test="${ cart.amount eq 8}">selected</c:if>>8</option>
 								<option value="9" <c:if test="${ cart.amount eq 9}">selected</c:if>>9</option>
-							   <option value="10" <c:if test="${ cart.amount eq 10}">selected</c:if>>10</option>
-							   <option value="11" <c:if test="${ cart.amount eq 11}">selected</c:if>>11</option>
-							   <option value="12" <c:if test="${ cart.amount eq 12}">selected</c:if>>12</option>
-							   <option value="13" <c:if test="${ cart.amount eq 13}">selected</c:if>>13</option>
-							   <option value="14" <c:if test="${ cart.amount eq 14}">selected</c:if>>14</option>
-							   <option value="15" <c:if test="${ cart.amount eq 15}">selected</c:if>>15</option>
-							   <option value="16" <c:if test="${ cart.amount eq 16}">selected</c:if>>16</option>
-							   <option value="17" <c:if test="${ cart.amount eq 17}">selected</c:if>>17</option>
-							   <option value="18" <c:if test="${ cart.amount eq 18}">selected</c:if>>18</option>
-							   <option value="19" <c:if test="${ cart.amount eq 19}">selected</c:if>>19</option>
-							   <option value="20" <c:if test="${ cart.amount eq 20}">selected</c:if>>20</option>
+							    <option value="10" <c:if test="${ cart.amount eq 10}">selected</c:if>>10</option>
+							    <option value="11" <c:if test="${ cart.amount eq 11}">selected</c:if>>11</option>
+							    <option value="12" <c:if test="${ cart.amount eq 12}">selected</c:if>>12</option>
+							    <option value="13" <c:if test="${ cart.amount eq 13}">selected</c:if>>13</option>
+							    <option value="14" <c:if test="${ cart.amount eq 14}">selected</c:if>>14</option>
+							    <option value="15" <c:if test="${ cart.amount eq 15}">selected</c:if>>15</option>
+							    <option value="16" <c:if test="${ cart.amount eq 16}">selected</c:if>>16</option>
+							    <option value="17" <c:if test="${ cart.amount eq 17}">selected</c:if>>17</option>
+							    <option value="18" <c:if test="${ cart.amount eq 18}">selected</c:if>>18</option>
+							    <option value="19" <c:if test="${ cart.amount eq 19}">selected</c:if>>19</option>
+							    <option value="20" <c:if test="${ cart.amount eq 20}">selected</c:if>>20</option>
 							</select> 
-							
-							<!--  <select class="form-control" id="test" name="amount" onchange="this.form.submit()">
-							    <option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-								<option value="6">6</option>
-								<option value="7">7</option>
-								<option value="7">8</option>
-								<option value="7">9</option>
-								<option value="7">10</option>
-							    <c:forEach items="${amount}" var="amountList">
-							      <option value="${amountList.amountNo}" ${amountList.amountNo == 1 ? 'selected="selected"' : ''}>${amountList.amountNo}</option>
-							    </c:forEach>
-							</select>-->
-							
-							<!-- <select name="amount" class="ct_input" id="test" onchange="this.form.submit()">
-							    <option value="1" ${amount == '0' ? 'selected="selected"' : '' }>1</option>
-							    <option value="2" ${amount == '1' ? 'selected="selected"' : '' }>2</option>
-							    <option value="3" ${amount == '2' ? 'selected="selected"' : '' }>3</option>
-							</select> -->
 							
 						</span>
 						</strong>
@@ -144,7 +121,6 @@
 						<button class="ct_del" onclick="deleteCart(${cart.cart_no})">삭제</button>
 						</strong>
 					</div>
-				
 				
 				
 					<div class="item">
@@ -184,58 +160,6 @@
 				    console.log(ch.value);
 				});
 				
-				
-				
-	//		        function accessName(){
-	//		            let cart_chk = document.getElementsByName('cart_chk');
-	//		            let checkedItems = '';
-	//		            for(let ch of cart_chk) { //hb 변수: 하나의 인풋 타입 체크박스
-	//		                if(ch.checked){ // 체크 박스가 체크 되어 있다면 true 리턴
-	//		                    checkedItems += ch.value + " 선택함\n";
-	//		                }
-	//		            }
-	//		            alert(checkedItems);
-	//		        }
-		
-			        
-	//		        function test() {
-	//		           var obj_length = document.getElementsByName("cart_chk").length;
-	//		      
-	//		            for (var i=0; i<obj_length; i++) {
-	//		                if (document.getElementsByName("cart_chk")[i].checked == true) {
-	//		                    //alert(document.getElementsByName("cart_chk")[i].value);
-	//		                    //알러트 말고 태그에 어떻게 넣니
-	//		                    var cartChecked = document.getElementsByName("cart_chk")[i].value
-	//		                    //document.getElementById('cart_check').value = document.getElementsByName("cart_chk")[i].value;
-	//		                    $('input[name=cart_check]').attr('value', cartChecked);
-	//		                }
-	//		            }
-	//		        }
-		
-			        
-		//	        function fnAddElement(fNm, nm, value){
-		//	        	var obj_length = document.getElementsByName("cart_chk").length;
-		//	        	var cartChecked = null;
-		//	        	 for (var i=0; i<obj_length; i++) {
-		//		                if (document.getElementsByName("cart_chk")[i].checked == true) {
-		//		                    //alert(document.getElementsByName("cart_chk")[i].value);
-		//		                    //알러트 말고 태그에 어떻게 넣니
-		//		                    //cartChecked = document.getElementsByName("cart_chk")[i].value
-		//				        	var theForm = document.forms[chekchk]; 
-		//				        	if ( theForm.elements[cart_check] == null){
-		//				        		var input   = document.createElement('input'); 
-		//				        		input.type   = 'hidden'; 
-		//				        		input.name  = 'cart_check'; 
-		//				        		input.id  = nm 
-		//				        		input.value  = document.getElementsByName("cart_chk")[i].value
-		//				        		theForm.appendChild(input); 
-		//				        	}else{
-		//				        		$("#" + cart_check).val(document.getElementsByName("cart_chk")[i].value);
-		//				        	}
-		//		                }
-		//	        	
-		//	        }
-		//	        }
 			        
 	        
 			    	function sortList() { //정렬
@@ -323,12 +247,13 @@
 			
 			<form name="chekchk" method="post" action="${contextPath}/order">
 				<!--  <input type="hidden" id="cart_check" name="cart_check" value=""/>-->
+				<!-- 이 사이에 자바스크립트로 태그 추가 -->
 			
 			</form> 
 
 			<form name="chkDel" method="post" action="${contextPath}/cart/delete">
 				<!--  <input type="hidden" id="cart_check" name="cart_check" value=""/>-->
-			
+				<!-- 이 사이에 자바스크립트로 태그 추가 -->
 			</form> 
 	  
 			</div>
@@ -379,10 +304,7 @@
      				<div>총 적립 예상 마일리지 : <span class="price"><fmt:formatNumber value="${msum div 20}" type="number"/></span>원</div>
      			</div>
      		</div>
-     	<!-- 	<form name="totalPrices" action="${contextPath}/payment">
-     			<input type="hidden" name="totalPrice" value="${sum}">
-     			<input type="hidden" name="totalamount" value="${amounts}">
-     		</form> -->
+
      		<button id="ct_order_btn" type="button" onclick="test2();">선택한 상품 주문하기</button>
      	
      		
