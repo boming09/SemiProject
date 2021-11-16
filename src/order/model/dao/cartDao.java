@@ -1,5 +1,7 @@
 package order.model.dao;
 
+import static common.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -7,13 +9,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
 import book.model.vo.Book;
-
-import static common.JDBCTemplate.close;
 import order.model.vo.Cart;
 import order.model.vo.Coupon;
 import order.model.vo.Order;

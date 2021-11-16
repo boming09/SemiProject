@@ -8,12 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import book.model.vo.Book;
 import main.model.vo.Recommend;
 import order.model.service.CartService;
-import order.model.vo.Cart;
 
 /**
  * Servlet implementation class mainServlet

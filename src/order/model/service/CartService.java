@@ -1,15 +1,15 @@
 package order.model.service;
 
+import static common.JDBCTemplate.close;
+import static common.JDBCTemplate.commit;
+import static common.JDBCTemplate.getConnection;
+import static common.JDBCTemplate.rollback;
+
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
 
 import book.model.vo.Book;
 import main.model.vo.Recommend;
-import member.model.vo.Member;
-
-import static common.JDBCTemplate.*;
-
 import order.model.dao.cartDao;
 import order.model.vo.Cart;
 import order.model.vo.Coupon;
