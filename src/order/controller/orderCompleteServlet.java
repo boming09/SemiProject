@@ -77,10 +77,11 @@ public class orderCompleteServlet extends HttpServlet {
 			 //쿠폰넘버가 넘어온게 있다면 객체에 넘기기	
 		
 		//쿠폰 넘버도 order객체에 추가
-		if(coupon_no > 0) {
+		
+		/*if(coupon_no > 0) {*/
 			
 			order.setCouponNo(coupon_no);
-		}
+		/*}*/
 	
 		
 		int result = new CartService().insertFinalOrder(order);
