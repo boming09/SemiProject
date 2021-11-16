@@ -41,7 +41,7 @@ public class MemberInformationServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+				
 		// 회원정보 수정에 필요한 값 추출
 		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
 		String userName = request.getParameter("userName");
@@ -62,6 +62,13 @@ public class MemberInformationServlet extends HttpServlet {
 		// 비즈니스 로직 수행 (DB update)
 		// db update 수정 된 member select > session의 loginUser 값 변경
 		Member updatedMember = new MemberService().updateMember(member);
+		
+		int user_no = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
+		
+		// 유저 정보 가져오기
+		Member member2 = new MemberService().selectMember2(user_no);
+		
+		request.setAttribute("member2", member2);
 		
 		// 응답 화면
 		if(updatedMember != null) {

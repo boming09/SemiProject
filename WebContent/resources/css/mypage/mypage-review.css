@@ -58,10 +58,11 @@
 
 /* 리스트 */
 .review_area2 {
-    margin: 0px 30px 10px 30px;
+    margin-left : 10px;
+    width : 90%;
 }
 
-.review_listarea ul {
+.review_listarea ui{
     display: flex;
     justify-content : flex-start;	
     align-items: center;
@@ -69,6 +70,10 @@
     font-size: 0.8rem;
     border-bottom: 1px solid lightgray;
     list-style: none;
+}
+
+.review_listarea2 td{
+	padding-left : 10px;
 }
 .review_listtop {
     background: rgb(239, 239, 239);
@@ -87,6 +92,8 @@
 .review_no {
     width: 12%;
     border-right: 1px solid lightgray;
+    width: 100px;
+    height: 40px;
   
 }
 /* 도서카테고리 */

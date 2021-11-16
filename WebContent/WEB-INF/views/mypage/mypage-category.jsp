@@ -17,7 +17,7 @@
 	<!-- mypage-category 추가 -->
     <aside >
     	<div class="category">
-	        <div class="ca-head"><a href="<%= request.getContextPath() %>/mypage">마이페이지</a></div>
+	        <div class="ca-head"><a href="<%= request.getContextPath() %>/memberinformationdetail">마이페이지</a></div>
 	        <div class="area1"><a class="ca-top">개인정보 수정</a>
 	            <ul class="ca-list">
 	                <li><a href="<%= request.getContextPath() %>/memberinformation">회원정보 수정</a></li>

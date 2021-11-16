@@ -81,7 +81,7 @@
 		}
 	</script>
 	 -->
-	 
+	 <!-- 
 	 <script type='text/javascript'>
     // 사용할 앱의 JavaScript 키를 설정해 주세요.
     Kakao.init('javascript key');
@@ -125,5 +125,6 @@
       }
     });
 </script>
+ -->
 </body>
 </html>

@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("loginUser", loginUser);
 						
 			session.setMaxInactiveInterval(1200);			
-			response.sendRedirect(request.getContextPath());
+			response.sendRedirect(request.getContextPath() + "/main");
 			
 		} else {
 			// id, pwd 값이 일치하는 유저가 없을 경우 => 로그인에 실패 => errorpage로 forward
