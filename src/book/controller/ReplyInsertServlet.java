@@ -49,7 +49,7 @@ public class ReplyInsertServlet extends HttpServlet {
 		reply.setRcontent(rcontent);
 		reply.setStarScore(rstarScore);
 		
-		/* 도서 평점 계산 (총합계/총갯수) */
+		/* 도서 평점 계산 */
 		int sumScore = Integer.parseInt(request.getParameter("sumScore"));
 		int reviewCount = Integer.parseInt(request.getParameter("reviewCount"));
 		
@@ -62,13 +62,6 @@ public class ReplyInsertServlet extends HttpServlet {
 			avgScore = 10.0;
 			starScore = 10;
 		}
-		
-		// System.out.println(sumScore);
-		// System.out.println(rstarScore);
-		// System.out.println(reviewCount);
-		System.out.println(avgScore);
-		System.out.println(starScore);
-		// System.out.println(Math.round(avgScore*10)/10.0);
 		
 		int result = new BookService().insertReply(reply, avgScore, starScore);
 		

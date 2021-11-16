@@ -112,7 +112,7 @@ public class BookDao {
 		String sql = bookQuery.getProperty("selectList");
 		List<Book> bookList = new ArrayList<>();
 		
-		// 검색 시 수행할 쿼리문 변경
+		// 검색 시 수행할 쿼리문 변경 - 검색
 		if (search.getSearchCondition() != null && search.getSearchValue() != null) {
 			if (search.getSearchCondition().equals("search")) {
 				sql = bookQuery.getProperty("selectSearchList");
@@ -183,7 +183,7 @@ public class BookDao {
 		String sql = bookQuery.getProperty("getCategoryList");
 		List<String> categoryList = new ArrayList<>();
 		
-		// 검색 시 수행할 쿼리문 변경
+		// 검색 시 수행할 쿼리문 변경 - 상단 카테고리 목록
 		if (search.getSearchCondition() != null && search.getSearchValue() != null) {
 			if (search.getSearchCondition().equals("search")) {
 				sql = bookQuery.getProperty("getSearchCategoryList");
@@ -238,7 +238,7 @@ public class BookDao {
 		String sql = bookQuery.getProperty("selectPopularList");
 		List<Book> bookList = new ArrayList<>();
 		
-		// 검색 시 수행할 쿼리문 변경
+		// 검색 시 수행할 쿼리문 변경 - 검색&정렬 OR 검색&카테고리&정렬
 		if (search.getSearchCondition() != null && search.getSearchValue() != null) {
 			if (search.getSearchCondition().equals("search")) {
 				sql = bookQuery.getProperty("selectPopularSearchList");
@@ -326,7 +326,7 @@ public class BookDao {
 		String sql = bookQuery.getProperty("selectNewList");
 		List<Book> bookList = new ArrayList<>();
 		
-		// 검색 시 수행할 쿼리문 변경
+		// 검색 시 수행할 쿼리문 변경- 검색&정렬 OR 검색&카테고리&정렬
 		if (search.getSearchCondition() != null && search.getSearchValue() != null) {
 			if (search.getSearchCondition().equals("search")) {
 				sql = bookQuery.getProperty("selectNewSearchList");
@@ -413,7 +413,7 @@ public class BookDao {
 		String sql = bookQuery.getProperty("selectHighestList");
 		List<Book> bookList = new ArrayList<>();
 		
-		// 검색 시 수행할 쿼리문 변경
+		// 검색 시 수행할 쿼리문 변경- 검색&정렬 OR 검색&카테고리&정렬
 		if (search.getSearchCondition() != null && search.getSearchValue() != null) {
 			if (search.getSearchCondition().equals("search")) {
 				sql = bookQuery.getProperty("selectHighestSearchList");
@@ -500,7 +500,7 @@ public class BookDao {
 		String sql = bookQuery.getProperty("selectLowestList");
 		List<Book> bookList = new ArrayList<>();
 		
-		// 검색 시 수행할 쿼리문 변경
+		// 검색 시 수행할 쿼리문 변경 - 검색&정렬 OR 검색&카테고리&정렬
 		if (search.getSearchCondition() != null && search.getSearchValue() != null) {
 			if (search.getSearchCondition().equals("search")) {
 				sql = bookQuery.getProperty("selectLowestSearchList");
@@ -589,7 +589,7 @@ public class BookDao {
 		String sql = bookQuery.getProperty("selectCategoryBookList");
 		List<Book> bookList = new ArrayList<>();
 		
-		// 검색 시 수행할 쿼리문 변경
+		// 검색 시 수행할 쿼리문 변경 - 검색&카테고리
 		if (search.getSearchCondition() != null && search.getSearchValue() != null) {
 			if (search.getSearchCondition().equals("search")) {
 				sql = bookQuery.getProperty("selectSearchCategoryBookList");
