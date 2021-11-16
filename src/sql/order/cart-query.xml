@@ -249,7 +249,11 @@
 		 WHERE COUPON_NO = ?
 	</entry>
 	
-	
+	<entry key="updateStock">
+		UPDATE BOOK 
+		   SET STOCK = STOCK - ?
+		 WHERE BOOK_ID = ?
+	</entry>
 	
 	
 </properties>

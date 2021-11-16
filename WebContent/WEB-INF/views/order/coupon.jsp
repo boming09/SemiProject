@@ -8,59 +8,59 @@
 <meta charset="UTF-8">
 <title>coupon jsp</title>
 <style>
-  body { background : #F2F9F0; }
-  
- /* 전체 글꼴 */
-@font-face {
-    font-family: 'ChosunGu';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-} 
-  * {  font-family: 'ChosunGu';}
- .wrap { 
- /*	background : #f3f3f3; 
- 	width : 610px;
- 	text-align:center;*/
- 		}
- #title {width:100%; font-family: 'ChosunGu'; font-size:1.2rem;  margin:180px;}
- table{ /*margin-left:3%; margin-bottom:10%; */
- 	width: 100%;
- 	font-weight:bold;
- 	/*height:80px;*/
- 	text-align:center;
- 	font-size:0.9rem;
-}
-
-.btn {
-	border:1px solid gray;
-	padding:4px;
-	background : #F2F9F0;
-	font-size: 0.9rem;
-	font-weight: bold;
-	background:white;
-/*	background:rgba(73, 125, 78, 1);
-	color:white;*/
-	/*position:absolute;*/
-
-   /* left:57%;*/
-   /* transform:translate(-50%,-50%);  */
-
-}
-
-.dd {
-	margin-left:200px;
-	margin-top:60px;
-}
-
-
-.green{
-	color:rgba(73, 125, 78, 1);
-}
-
-th,td {
-  padding:5px;
- }
+	  body { background : #F2F9F0; }
+	  
+	 /* 전체 글꼴 */
+	@font-face {
+	    font-family: 'ChosunGu';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	} 
+	  * {  font-family: 'ChosunGu';}
+	 .wrap { 
+	 /*	background : #f3f3f3; 
+	 	width : 610px;
+	 	text-align:center;*/
+	 		}
+	 #title {width:100%; font-family: 'ChosunGu'; font-size:1.2rem;  margin:180px;}
+	 table{ /*margin-left:3%; margin-bottom:10%; */
+	 	width: 100%;
+	 	font-weight:bold;
+	 	/*height:80px;*/
+	 	text-align:center;
+	 	font-size:0.9rem;
+	}
+	
+	.btn {
+		border:1px solid gray;
+		padding:4px;
+		background : #F2F9F0;
+		font-size: 0.9rem;
+		font-weight: bold;
+		background:white;
+	/*	background:rgba(73, 125, 78, 1);
+		color:white;*/
+		/*position:absolute;*/
+	
+	   /* left:57%;*/
+	   /* transform:translate(-50%,-50%);  */
+	
+	}
+	
+	.dd {
+		margin-left:200px;
+		margin-top:60px;
+	}
+	
+	
+	.green{
+		color:rgba(73, 125, 78, 1);
+	}
+	
+	th,td {
+	  padding:5px;
+	 }
 
 
 
@@ -114,7 +114,7 @@ th,td {
              opener.document.getElementById("aInput").value = document.getElementById("checkCoupon").value
              
              window.close();
-       //이러면 첫번째꺼 밖에 안넘어감 어차피
+     
             // document.popForm.submit();
        
         }
@@ -127,18 +127,7 @@ th,td {
             opener.document.getElementById("valueC").innerHTML=Number(a)+Number(b);
         }
         
-        
-       /* function setParentText(){
-        	var obj_length = document.getElementsByName("checkCoupon").length;
-  	      
-            for (var i=0; i<obj_length; i++) {
-            	if (document.getElementsByName("checkCoupon")[i].checked == true) {
-            		
-		             opener.document.getElementById("pInput").value = document.getElementById("checkCoupon")[i].value
-            	}
-            }
-  
-        }*/
+   
         
         function popupSubmit() {
 
@@ -147,7 +136,7 @@ th,td {
             document.popForm.target = "parentForm"; // 타켓을 부모창으로 설정
 
             document.popForm.action = "${contextPath}/payment" //부모창에 호출될 url 
-//"/target/parentPage2.do"; 
+			//"/target/parentPage2.do"; 
             
             document.popForm.submit();
 
