@@ -57,14 +57,14 @@ https://github.com/filipelinhares/ress-->
             <div class="conbox con1">
                 <ul class="recomm">
                 <c:forEach var="w" items="${ wBookList }">
-                    <li><a href="${contextPath}/book/detail?bid=${w.bid}"><img class="book " src="<%= request.getContextPath() %>${w.bimg}"></a></li>
+                    <li><a href="${contextPath}/book/detail?bid=${w.bid}"><img class="book" src="<%= request.getContextPath() %>${w.bimg}"></a></li>
                 </c:forEach>
                 </ul>  
             </div>
             <div class="conbox con2">
                 <ul class="recomm">
                 <c:forEach var="n" items="${ nBookList }">
-                    <li><a href="${contextPath}/book/detail?bid=${n.bid}"><img class="book " src="<%= request.getContextPath() %>${n.bimg}"></a></li>
+                    <li><a href="${contextPath}/book/detail?bid=${n.bid}"><img class="book" src="<%= request.getContextPath() %>${n.bimg}"></a></li>
                 </c:forEach>
                 </ul>  
             </div>
@@ -75,7 +75,6 @@ https://github.com/filipelinhares/ress-->
                </c:forEach>
                 </ul>  
             </div>
- 
         </div>
 
 	<div class="main_bottom">
@@ -129,26 +128,7 @@ https://github.com/filipelinhares/ress-->
 	                    <td><a href="${contextPath}/book/detail?bid=${b.bid}"><span class="bsn">${b.btitle}</span><br><span class="bsw">${b.author} 저</span></a></td>
 	                </tr>
 	                </c:forEach>
-	               <!--   <tr>
-	                    <td><b>2</b><br>-</td>
-	                    <td><a href=""><img class="bsb" src="<%= request.getContextPath() %>/resources/images/pop2.png"></a></td>
-	                    <td><a href=""><span class="bsn">나와 밍들의 세계</span><br><span class="bsw">천선란 저</span></a></td>
-	                </tr>
-	                <tr>
-	                    <td><b>3</b><br>-</td>
-	                    <td><a href=""><img class="bsb" src="<%= request.getContextPath() %>/resources/images/thisweek3.png"></a></td>
-	                    <td><a href=""><span class="bsn">뇌 과학의 모든 역사</span><br><span class="bsw">매튜 코브 저</span></a></td>
-	                </tr>
-	                <tr>
-	                    <td><b>4</b><br>-</td>
-	                    <td><a href=""><img class="bsb" src="<%= request.getContextPath() %>/resources/images/thisweek2.png"></a></td>
-	                    <td><a href=""><span class="bsn">어떻게 쓰지 않을 수 있겠어요</span><br><span class="bsw">이윤주</span></a></td>
-	                </tr>
-	                <tr>
-	                    <td><b>5</b><br>-</td>
-	                    <td><a href=""><img class="bsb" src="<%= request.getContextPath() %>/resources/images/thisweek1.png"></a></td>
-	                    <td><a href=""><span class="bsn">은밀한 결정</span><br><span class="bsw">오가와 요코</span></a></td>
-	                </tr>-->
+	     
 	            </table>
 	        </div>
 		</div> 

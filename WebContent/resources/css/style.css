@@ -119,13 +119,8 @@ nav {
 /********************************/
 
 .tab_content {
-   /* position:absolute;
-    top:37%;
-    left:57%;
-    transform:translate(-50%,-50%);  */
     font-size:15px;
-} /* 화면의 가운데 정렬 */
-
+} 
 
 input[type="radio"] { display:none; } /* input을 안보이게 처리 */
 

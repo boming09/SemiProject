@@ -247,13 +247,13 @@
 			
 			<form name="chekchk" method="post" action="${contextPath}/order">
 				<!--  <input type="hidden" id="cart_check" name="cart_check" value=""/>-->
-				<!-- 이 사이에 자바스크립트로 태그 추가 -->
+				<!-- 이 사이에 자바스크립트 코드로 태그 추가됨 -->
 			
 			</form> 
 
 			<form name="chkDel" method="post" action="${contextPath}/cart/delete">
 				<!--  <input type="hidden" id="cart_check" name="cart_check" value=""/>-->
-				<!-- 이 사이에 자바스크립트로 태그 추가 -->
+				<!-- 이 사이에 자바스크립트 코드로 태그 추가됨 -->
 			</form> 
 	  
 			</div>
