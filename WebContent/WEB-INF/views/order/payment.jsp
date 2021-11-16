@@ -160,32 +160,16 @@
      			});
      			
      			
-     	     /*   var openWin;
-     	       
-     	        function openChild(){
-     	            // window.name = "부모창 이름"; 
-     	            window.name = "parentForm";
-     	            // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-     	            openWin = window.open("coupon",
-     	                    "childForm", "width=640, height=350, resizable = no, scrollbars = no");    
-     	        }
-     	        
-     	        function setChildText(){
-     	            openWin.document.getElementById("checkCoupon").value = document.getElementById("aInput").value;
-     	           openWin.document.getElementById("couponDis").value = document.getElementById("bInput").value;
-     	          openWin.document.getElementById("couponNo").value = document.getElementById("dInput").value;
-     	        }*/
 
      				 
      	      // 쿠폰할인
-     	       	function couponDis(){
+     	      /* 	function couponDis(){
      	       	  var dis = document.getElementById("aInput").value;
      	       	  var to = ${ od.sale_price };
      	       	var todi = to * dis / 100;
      	       document.getElementById("cInput").value = todi;
-     	     
-     	       	  
-     	      }
+  	  
+     	      }*/
      	      
      	      function openPopup(url, title, width, height) {
      	    	  
