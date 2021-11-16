@@ -18,11 +18,11 @@
 	<%@ include file="/WEB-INF/views/common/menubar.jsp" %>
         <div class="id0">
         <div class="ps1">
-            <h1 id="emailh1">비밀번호 재설정</h1>
+            <h1 id="emailh1">비밀번호 찾기</h1>
             <div class="ps2">
                 <br>
                 <div class="id4div">
-                                           봄숲에 등록된 개인정보로 비밀번호 재설정 하기<br><br>
+                                           봄숲에 등록된 개인정보로 비밀번호 찾기<br><br>
                 <p>
                     <font size="2">                        
                                                 가입 정보에 저장된 아이디, 이름, E-mail 주소를 입력해 주세요.<br>

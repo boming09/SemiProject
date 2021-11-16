@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- 외부 스타일 시트 -->
 <link href="${ contextPath }/resources/css/mypage/mypage-ReviewDetail.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <title>마이리뷰</title>
 </head>
 <body>
@@ -77,18 +78,19 @@
                                       
                     <tr class="liarea2">
                         <th class="wcommu_content">내용</th>
-                        <td class="wcontent" name="content" colspan="3">${ b_review.content }</td>
+                        <td class="wcontent" name="content" colspan="3">${ b_review.content }${ loginUser.userNo}<br>${ b_review.user_no }</td>
                     </tr>
                 </table>
             </div>
                        
             <div class="wcommu_btn">
                 <button type="button" onclick="location.href='${ contextPath }/mypagemyreview'">돌아가기</button>
+                
                 <!-- 이게시글을 쓴 사람과 로그인한 유저가 같아 야한다 -->
                 <c:if test="${ loginUser.userNo == b_review.user_no }">
+                </c:if>
                 <button type="button" onclick="updateMyreviewView();">수정하기</button>
                 <button type="button" onclick="deleteMyreview();">삭제하기</button>
-                </c:if>
             </div>
 		</div>
 		
@@ -100,6 +102,7 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
 	<c:if test="${ loginUser.userNo ==  b_review.user_no }">
+	</c:if>
 	<form name="myreviewForm" method="post">
 		<input type="hidden" name="review_no" value="${ b_review.review_no }">
 	</form>
@@ -116,6 +119,5 @@
 			}
 		}
 	</script>
-	</c:if>
 </body>
 </html>

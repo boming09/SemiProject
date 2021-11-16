@@ -40,8 +40,8 @@ public class MyreviewUpdateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int review_no = Integer.parseInt(request.getParameter("review_no"));
-		int book_id = Integer.parseInt(request.getParameter("book_id"));
-		String content = request.getParameter("ontent");
+		int book_id = Integer.parseInt(request.getParameter("category"));
+		String content = request.getParameter("content");
 		
 				
 		B_Review b_review = new B_Review();

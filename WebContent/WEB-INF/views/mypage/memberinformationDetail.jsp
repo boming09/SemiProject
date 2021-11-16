@@ -24,7 +24,7 @@
 		<div class="content">            
             <header>
             	<div class="hdcenter">
-            		<h3>개인정보 수정</h3><br>
+            		<h3>마이 페이지</h3><br>
             		<ul>
             			<li>변경된 주소나 연락처, 이메일 주소를 수정해주세요.</li>
             			<li>주소 변경 전 접수하신 주문에는 새 주소가 반영되지 않습니다.</li>

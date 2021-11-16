@@ -6,7 +6,7 @@
 		SELECT
 				COUNT(*)
 		   FROM B_REVIEW
-		  WHERE REF_NO = 1
+		  WHERE USER_NO = ?
 		    AND STATUS = 'Y'
 	</entry>
 	
@@ -43,6 +43,7 @@
 			FROM (SELECT ROWNUM RUNM, A.*
 				 FROM(SELECT
 		           REVIEW_NO
+		         , B.BOOK_ID
 				 , K.BOOK_NAME
 				 , USER_NICKNAME
 				 , CREATE_DATE
@@ -51,9 +52,9 @@
 				 , REF_NO
 				 , B.STATUS
 		    FROM B_REVIEW B
-            JOIN BOOK K USING(BOOK_ID)
+            JOIN BOOK K ON(K.BOOK_ID = B.BOOK_ID)
 		    JOIN MEMBER M ON(B.USER_NO = M.USER_NO)
-				  WHERE REF_NO = 1
+				  WHERE B.USER_NO = ?
 				    AND B.STATUS = 'Y'				    
 				  ORDER BY REVIEW_NO DESC) A
 				 )
@@ -146,6 +147,7 @@
 	<entry key="selectB_review">
 		SELECT
 		           REVIEW_NO
+		         , B.BOOK_ID
 				 , K.BOOK_NAME
 				 , USER_NICKNAME
 				 , CREATE_DATE
@@ -154,7 +156,7 @@
 				 , REF_NO
 				 , B.STATUS
 		    FROM B_REVIEW B
-            JOIN BOOK K USING(BOOK_ID)
+            JOIN BOOK K ON(K.BOOK_ID = B.BOOK_ID)
 		    JOIN MEMBER M ON(B.USER_NO = M.USER_NO)
 		   WHERE B.STATUS = 'Y'
 		     AND REVIEW_NO = ?

@@ -21,6 +21,8 @@
         
         <div class="content">
         	<header class="review_header">
+        	
+        	<!-- 로그인유저가 닉네임이 있으면 -->
         	<c:choose>
            	<c:when test="${ loginUser.userNickname != null}">
            	<div>${ loginUser.userNickname }님 의 리뷰</div>
@@ -47,20 +49,23 @@
                         <li class="review_category">도서제목</li>
                         <li class="review_content">내용</li>
                         <li class="review_date">작성일</li>
+                        <!-- 
                         <li class="review_writer">작성자</li>
                         <li class="review_ref_no">참조리뷰번호</li>
+                         -->
                         <li class="review_rating">평점</li>
                     </ul>
                     <c:if test="${ !empty loginUser }">
                 	
                 	<c:forEach var="review" items="${ b_reviewList }">
                 	
-                	<ul class="review_list" onclick="detailView(${ review.review_no })">
+                	<!-- 내역 반복문 -->
+                	<ul class="review_list" onclick="detailView(${ review.book_id })">
                 		<li class="review_no">${ review.review_no }</li>
                 		<li class="review_category">${ review.book_name }</li>
                 		<li class="review_content">${ review.content }</li>
                 		<li class="review_date">${ review.create_date }</li>
-                		
+                		<!-- 
                 		<c:choose> 
 				           	<c:when test="${ review.user_nickname != null}">
 				           	<li class="review_writer">${ review.user_nickname }</li>
@@ -71,6 +76,7 @@
 			            </c:choose>                		
                 		
                 		<li class="review_ref_no">${ review.ref_no }</li>
+                		 -->
                 		<li class="review_rating">${ review.rating }</li>
                 	</ul>
                     </c:forEach>
@@ -190,11 +196,13 @@
 						value="${ param.searchValue }">
 					</span>					
 					<button type="submit" class="noticeInsert" id="noticeInsert">검색하기</button>
-				-->					
+				-->	
+				<!-- 				
 					<c:if test="${ !empty loginUser }">
 					<button id="noticeInsert" type="button" class="noticeInsert"
 					onclick="location.href='${ contextPath }/myreviewinsertview'">작성하기</button>
 					</c:if>
+				 -->
 				</form>
 			</div>
             </div>
@@ -208,11 +216,12 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
 	<script>
-				function detailView(review_no){
+				function detailView(book_id){
 					location.href='${contextPath}/mypagemyreviewdetail?review_no=' + review_no;
 				}
 	</script>
 	
+	<!-- 
 	<c:choose>
 		<c:when test="${ !empty loginUser }">			
 		</c:when>
@@ -225,7 +234,7 @@
 			</script>
 		</c:otherwise>
 	</c:choose>
-	
+	 -->
 	<script>
 	/*	
 		let rating = new Rating();//별점 인스턴스 생성
