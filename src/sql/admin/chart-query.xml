@@ -206,6 +206,7 @@
 		   JOIN ORDER_DETAIL USING(ORDER_NO)
 		   JOIN BOOK USING(BOOK_ID)
 		  WHERE DELIVERY = '상품준비중'
+		    AND ORDERCHANGE = 0
 	</entry>
 	<entry key="shipUpdate">
 		UPDATE "ORDER"
