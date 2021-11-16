@@ -20,11 +20,11 @@ public class B_ReviewService {
 
 	private B_ReviewDao b_reviewDao = new B_ReviewDao();
 	
-	public Map<String, Object> selectList(int page, Search search) {
+	public Map<String, Object> selectList(int page/*, Search search*/) {
 		Connection conn = getConnection();
 		
 		// 게시글 총 개수 구하기
-		int listCount = b_reviewDao.getListCount(conn, search);
+		int listCount = b_reviewDao.getListCount(conn/*, search*/);
 		
 		// System.out.println(listCount); // 총게시글 숫자 확인 OK
 		
@@ -33,7 +33,7 @@ public class B_ReviewService {
 		PageInfo pi = new PageInfo(page, listCount, 10, 10);
 		
 		// 페이징 처리 된 게시글 목록 조회
-		List<B_Review> b_reviewList = b_reviewDao.selectList(conn, pi, search);
+		List<B_Review> b_reviewList = b_reviewDao.selectList(conn, pi/*, search*/);
 		
 		// System.out.println(pi);
 		// System.out.println(b_reviewList);

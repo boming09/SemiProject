@@ -83,46 +83,46 @@
     height: 50px;
     line-height: 50px;
 }
-/* 글번호 */
+/* 리뷰번호 */
 .review_no {
     width: 8%;
     border-right: 1px solid lightgray;
   
 }
-/* 분류 */
-.review_classification {
-    width: 10%;
+/* 도서카테고리 */
+.review_category {
+    width: 12%;
     border-right: 1px solid lightgray;
 }
-/* 제목 */
-.review_title {
-    width: 37%;
+/* 내용 */
+.review_content {
+    width: 35%;
     border-right: 1px solid lightgray;    
 }
 .title2 {
 	text-align : left;
 	padding: 0 10px;
 }
-/* 작성자 */
-.review_writer {
+/* 작성일 */
+.review_date {
     width: 10%;
     border-right: 1px solid lightgray;
     
 }
 
-/* 조회수 */
-.review_views{
+/* 작성자 */
+.review_writer{
 	width: 10%;
     border-right: 1px solid lightgray;
 }
 
-/* 등록일 */
-.review_date {
+/* 참조리뷰번호 */
+.review_ref_no {
     width: 15%;
     border-right: 1px solid lightgray;
 }
 /* 평점 */
-.review_status {
+.review_rating {
     width: 10%;
 }
 

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import book.model.vo.Search;
+import member.model.vo.Member;
 import mypage.model.service.B_ReviewService;
 import mypage.model.service.MyreviewService;
 
@@ -38,25 +39,28 @@ public class MypageMyreviewServlet extends HttpServlet {
 		/*RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/mypage-myreview.jsp");
 		view.forward(request, response);
 		*/
-		
-		int user_no = 0;
-		if(request.getParameter("user_no") != null) {
-			user_no = Integer.parseInt(request.getParameter("user_no"));
+		/*
+		int review_no = 0;
+		if(request.getParameter("review_no") != null) {
+			review_no = Integer.parseInt(request.getParameter("review_no"));
 		}
-		
+		*/
+		// int user = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
+		// 현재 요청페이지
+		// 기본적으로 게시판은 1페이지부터 시작
 		int page = 1;
 		
 		if(request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
-		
+		/*
 		String searchCondition = request.getParameter("searchCondition");
 		String searchValue = request.getParameter("searchValue");
-		
+		*/
 		// System.out.println("b_reviewList : " + b_reviewList);
 		
-		Map<String, Object> map 
-		= new B_ReviewService().selectList(page, new Search(searchCondition, searchValue));
+		Map<String, Object> map = new B_ReviewService().selectList(page);
+				/*, new Search(searchCondition, searchValue)*/
 		
 		request.setAttribute("pi", map.get("pi"));
 		request.setAttribute("b_reviewList", map.get("b_reviewList"));
