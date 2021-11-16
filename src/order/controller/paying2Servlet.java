@@ -38,6 +38,7 @@ public class paying2Servlet extends HttpServlet {
 		//쿠폰 저장 
 		String coupon_no = null;
 		if(request.getParameter("coupon_no") != null ) {
+			coupon_no = request.getParameter("coupon_no");
 			session.setAttribute("coupon_no", coupon_no);
 		}
 		
