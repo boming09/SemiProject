@@ -193,7 +193,7 @@ crossorigin="anonymous"></script>
                         <%-- <div class="authImg"><img src="${contextPath}/resources/images/author/auth.jpg"></div> --%>
                         <div class="authTxtWrap">
                             <div class="authTit"><h5 class="authorName">${ book.author }</h5></div>
-                            <span class="authTxt"><p>${ fn:replace(book.aintro, newReply, '<br>')}</p> </span>
+                            <span class="authTxt"><p>${ fn:replace(book.aintro, newReply, '<br>')}</p></span>
                         </div>
                     </div>
                 </div>
@@ -285,7 +285,7 @@ crossorigin="anonymous"></script>
                         </div>
                         <div class="writeArea_wrap">
                             <div class="writeArea">
-                                <textarea id="replyCont" name="rcontent" rows="5" cols="70" style="resize:none;" maxlength="150" 
+                                <textarea id="replyCont" name="rcontent" rows="4" cols="70" style="resize:none;" maxlength="150" 
                                 placeholder="한글 기준 150자까지 작성 가능" onkeydown="calc()" onkeyup="calc()" onkeypress="calc()"></textarea>
                                 <div class="wordCount">
                                 	<input type="text" id="count" value="0">/150
@@ -355,7 +355,7 @@ crossorigin="anonymous"></script>
                                		</div>
                                 </div>
                                 <div class="cmt_cont">
-                                    <span class="txt_cont">${ reply.rcontent }</span>
+                                    <span class="txt_cont">${ fn:replace(reply.rcontent, newReply, '<br>')}</span>
                                 </div>
                             </div>
                             <div class="reviewInfoBot">
@@ -391,7 +391,7 @@ crossorigin="anonymous"></script>
 	                   		<c:choose>
 	                   			<c:when test="${ loginUser.userNo eq book.userNo and reply.refRid ne 0}">
 	                   			<div class="see">
-	                   				<span class="authReply${ reply.rid } authReply" onclick="show(${ reply.rid })">작가 댓글 보기</span><div>&nbsp;</div>
+	                   				<span class="authReply${ reply.rid } authReply" onclick="show(${ reply.rid })">작가 댓글 보기&nbsp;<i class="fas fa-caret-down"></i></span><div>&nbsp;</div>
 			                        <div class="replyCmt" id="replyCmt${ reply.rid }">
 			                        
 			                        	<c:if test="${ loginUser.userNo == reply.userNo }">
@@ -401,7 +401,7 @@ crossorigin="anonymous"></script>
 	 					                </c:if>
 	 					                
 			                            <div class="cmt_cont">
-			                                <span class="txt_cont">${ reply.rcontent }</span>
+			                                <span class="txt_cont">${ fn:replace(reply.rcontent, newReply, '<br>')}</span>
 			                            </div>
 			                            <div class="reviewInfoBot">
 			                                <span class="txt_id">${ book.author }&nbsp;<i class="fas fa-check-circle"></i></span>
@@ -420,7 +420,7 @@ crossorigin="anonymous"></script>
 	                   				<span class="authReply" onclick="show(${ reply.rid })">작가 댓글 보기&nbsp;<i class="fas fa-caret-down"></i></span><div>&nbsp;</div>
 		                        	<div class="replyCmt"  id="replyCmt${ reply.rid }">
 			                            <div class="cmt_cont">
-			                                <span class="txt_cont">${ reply.rcontent }</span>
+			                                <span class="txt_cont">${ fn:replace(reply.rcontent, newReply, '<br>')}</span>
 			                            </div>
 			                            <div class="reviewInfoBot">
 			                                <span class="txt_id">${ book.author }&nbsp;<i class="fas fa-check-circle"></i></span>
@@ -439,7 +439,7 @@ crossorigin="anonymous"></script>
                    </c:forEach>
                   </c:if>
                   	 <script>
-               			$(document).ready(function(){	// div.see의 이전(span.authReply) 이전  div(.replyCmt)를 숨기기
+               			$(document).ready(function(){	
                				$('.see').prev().prev().prev().hide();
                			
                			});
@@ -487,6 +487,7 @@ crossorigin="anonymous"></script>
     function calc(){
         document.getElementById('count').value = 
         document.getElementById('replyCont').value.length;
+        
         if(document.getElementById('count').value == 150) {
             alert("한글 기준 150자까지 입력가능합니다.");
         }

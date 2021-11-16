@@ -263,7 +263,7 @@ table {
     padding: 20px 0;
 }
 .writeRating {
-    padding: 0 40px;
+    padding: 0 65px;
 }
 .writeArea_wrap {
     display: flex;
@@ -276,6 +276,10 @@ table {
     text-align: right;
 }
 #count{
+    width: 25px;
+    text-align: right;
+}
+.count{
     width: 25px;
     text-align: right;
 }
