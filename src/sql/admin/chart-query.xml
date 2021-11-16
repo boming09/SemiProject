@@ -191,8 +191,105 @@
 		    OR GENDER = '여자'
 	</entry>
 
-
-
-
-
+	<entry key="shipSelect">
+		SELECT
+		       ORDER_NO
+		     , USER_ID
+		     , USER_NAME
+		     , USER_NICKNAME
+		     , BOOK_NAME
+		     , AMOUNT
+		     , ORDER_DATE
+		     , DELIVERY
+		   FROM MEMBER
+		   JOIN "ORDER" USING(USER_NO)
+		   JOIN ORDER_DETAIL USING(ORDER_NO)
+		   JOIN BOOK USING(BOOK_ID)
+		  WHERE DELIVERY = '상품준비중'
+	</entry>
+	<entry key="shipUpdate">
+		UPDATE "ORDER"
+		   SET DELIVERY = '배송완료'
+		 WHERE ORDER_NO = ?
+	</entry>
+	<entry key="refundSelect">
+		SELECT
+		       O.ORDER_NO
+		     , USER_ID
+		     , USER_NAME
+		     , USER_NICKNAME
+		     , USER_PHONE
+		     , BOOK_NAME
+		     , AMOUNT
+		     , ORDERCHANGE
+		FROM "ORDER" O
+		JOIN ORDER_DETAIL D ON(O.ORDER_NO = D.ORDER_NO)
+		JOIN BOOK B ON(B.BOOK_ID = D.BOOK_ID)
+		JOIN MEMBER M ON(M.USER_NO = O.USER_NO)
+		WHERE NOT ORDERCHANGE = 0
+	</entry>
+	<entry key="refundUpdate">
+		UPDATE "ORDER"
+		   SET ORDERCHANGE = 0
+		 WHERE ORDER_NO = ?
+	</entry>
+	
+	
+	<entry key="sales1Select">
+		SELECT
+		       SUM(SALE_PRICE * AMOUNT)
+		  FROM ORDER_DETAIL
+		  JOIN BOOK USING(BOOK_ID)
+		  JOIN "ORDER" USING(ORDER_NO)
+		  WHERE TO_CHAR(ORDER_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE, LOWER('YY-MM-DD'))
+	</entry>
+	<entry key="sales2Select">
+		SELECT
+		       SUM(SALE_PRICE * AMOUNT)
+		  FROM ORDER_DETAIL
+		  JOIN BOOK USING(BOOK_ID)
+		  JOIN "ORDER" USING(ORDER_NO)
+		  WHERE TO_CHAR(ORDER_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE-1, LOWER('YY-MM-DD'))
+	</entry>
+	<entry key="sales3Select">
+		SELECT
+		       SUM(SALE_PRICE * AMOUNT)
+		  FROM ORDER_DETAIL
+		  JOIN BOOK USING(BOOK_ID)
+		  JOIN "ORDER" USING(ORDER_NO)
+		  WHERE TO_CHAR(ORDER_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE-2, LOWER('YY-MM-DD'))
+	</entry>
+	<entry key="sales4Select">
+		SELECT
+		       SUM(SALE_PRICE * AMOUNT)
+		  FROM ORDER_DETAIL
+		  JOIN BOOK USING(BOOK_ID)
+		  JOIN "ORDER" USING(ORDER_NO)
+		  WHERE TO_CHAR(ORDER_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE-3, LOWER('YY-MM-DD'))
+	</entry>
+	<entry key="sales5Select">
+		SELECT
+		       SUM(SALE_PRICE * AMOUNT)
+		  FROM ORDER_DETAIL
+		  JOIN BOOK USING(BOOK_ID)
+		  JOIN "ORDER" USING(ORDER_NO)
+		  WHERE TO_CHAR(ORDER_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE-4, LOWER('YY-MM-DD'))
+	</entry>
+	<entry key="sales6Select">
+		SELECT
+		       SUM(SALE_PRICE * AMOUNT)
+		  FROM ORDER_DETAIL
+		  JOIN BOOK USING(BOOK_ID)
+		  JOIN "ORDER" USING(ORDER_NO)
+		  WHERE TO_CHAR(ORDER_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE-5, LOWER('YY-MM-DD'))
+	</entry>
+	<entry key="sales7Select">
+		SELECT
+		       SUM(SALE_PRICE * AMOUNT)
+		  FROM ORDER_DETAIL
+		  JOIN BOOK USING(BOOK_ID)
+		  JOIN "ORDER" USING(ORDER_NO)
+		  WHERE TO_CHAR(ORDER_DATE, LOWER('YY-MM-DD')) = TO_CHAR(SYSDATE-6, LOWER('YY-MM-DD'))
+	</entry>
+	
 </properties>

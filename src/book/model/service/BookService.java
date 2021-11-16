@@ -264,6 +264,27 @@ public class BookService {
 		
 		return result;
 	}
+
+	public int tinsertBook(Book book) {
+		Connection conn = getConnection();
+		int result = bookDao.tinsertBook(conn, book);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		return result;
+	}
+
+	public Book todaySelect() {
+		Connection conn = getConnection();
+		Book book = bookDao.todaySelect(conn);
+		
+		close(conn);
+		
+		return book;
+	}
 	
 
 }

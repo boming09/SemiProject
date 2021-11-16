@@ -27,6 +27,7 @@ public class Book {
 	private double avgScore;		// 평점
 	private int sumScore;			// 별점 합계
 	private int reviewCount;        // 작가마이페이지 내도서 리뷰
+	private String bToday;			// 오늘의 책
 	
 	private List<Reply> replyList;		// 댓글목록
 //	BOOK_ID	NUMBER
@@ -50,7 +51,7 @@ public class Book {
 	public Book(int bid, String btitle, int cid, String cname, int userNo, String author, String editor,
 			Date publicationDate, String publisher, int price, int stock, double saleRate, int salePrice, String bintro,
 			String burl, String filepath, String aintro, String bimg, int starScore, double avgScore, int sumScore,
-			int reviewCount, List<Reply> replyList) {
+			int reviewCount, String bToday, List<Reply> replyList) {
 		super();
 		this.bid = bid;
 		this.btitle = btitle;
@@ -74,6 +75,7 @@ public class Book {
 		this.avgScore = avgScore;
 		this.sumScore = sumScore;
 		this.reviewCount = reviewCount;
+		this.bToday = bToday;
 		this.replyList = replyList;
 	}
 	public int getBid() {
@@ -196,19 +198,23 @@ public class Book {
 	public void setAvgScore(double avgScore) {
 		this.avgScore = avgScore;
 	}
-
 	public int getSumScore() {
 		return sumScore;
 	}
 	public void setSumScore(int sumScore) {
 		this.sumScore = sumScore;
 	}
-
 	public int getReviewCount() {
 		return reviewCount;
 	}
 	public void setReviewCount(int reviewCount) {
 		this.reviewCount = reviewCount;
+	}
+	public String getbToday() {
+		return bToday;
+	}
+	public void setbToday(String bToday) {
+		this.bToday = bToday;
 	}
 	public List<Reply> getReplyList() {
 		return replyList;
@@ -223,8 +229,8 @@ public class Book {
 				+ publisher + ", price=" + price + ", stock=" + stock + ", saleRate=" + saleRate + ", salePrice="
 				+ salePrice + ", bintro=" + bintro + ", burl=" + burl + ", filepath=" + filepath + ", aintro=" + aintro
 				+ ", bimg=" + bimg + ", starScore=" + starScore + ", avgScore=" + avgScore + ", sumScore=" + sumScore
-				+ ", reviewCount=" + reviewCount + ", replyList=" + replyList + "]";
+				+ ", reviewCount=" + reviewCount + ", bToday=" + bToday + ", replyList=" + replyList + "]";
 	}
-	
+		
 		
 }

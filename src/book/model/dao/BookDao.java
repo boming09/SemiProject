@@ -1038,5 +1038,66 @@ public class BookDao {
 		}
 	}
 
+	public int tinsertBook(Connection conn, Book book) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = bookQuery.getProperty("tinsertBook");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, book.getBtitle());
+			pstmt.setInt(2, book.getCid());
+			pstmt.setString(3, book.getAuthor());
+			pstmt.setString(4, book.getEditor());
+			pstmt.setDate(5, (Date) book.getPublicationDate());
+			pstmt.setString(6, book.getPublisher());
+			pstmt.setInt(7, book.getPrice());
+			pstmt.setInt(8, book.getSalePrice());
+			pstmt.setString(9, book.getBintro());
+			pstmt.setString(10, book.getBurl());
+			pstmt.setString(11, book.getBimg());
+			pstmt.setString(12, book.getFilepath());
+			pstmt.setString(13, book.getAintro());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public Book todaySelect(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Book book = new Book();
+		String sql = bookQuery.getProperty("todaySelect");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				book.setBid(rset.getInt(1));
+				book.setBtitle(rset.getString(2));
+				book.setAuthor(rset.getString(3));
+				book.setPublisher(rset.getString(4));
+				book.setSalePrice(rset.getInt(5));
+				book.setBintro(rset.getString(6));
+				book.setBimg(rset.getString(7));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return book;
+	}
+
 
 }

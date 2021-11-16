@@ -20,6 +20,8 @@ https://github.com/filipelinhares/ress-->
 <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
  <!-- 외부 스타일 시트 -->
  <link href="<%= request.getContextPath() %>/resources/css/style.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 </head>
 <body>
@@ -65,33 +67,23 @@ https://github.com/filipelinhares/ress-->
 			<div class="todays_recom">
 				<table id="today">
 					<tr>
-					    <td rowspan="4">
-					    	<a href="#"><img class="bookk book4" src="<%= request.getContextPath() %>/resources/images/today.png"></a>
-					    </td>
+					    <td rowspan="4" name="todayImg"></td>
 					    <td>
 					        <b>오늘의 책</b>
 					        <c:if test="${ !empty loginUser && loginUser.userId == 'admin' }">
-					        <button type="button" style="border: 1px solid black; width: 30px; background: pink; color: white; margin-left: 10px;">edit</button>
+					        <button type="button" name="editBtn" onclick="location.href='${ contextPath }/admin/todaybook'" style="border: 1px solid black; width: 30px; background: pink; color: white; margin-left: 10px;">edit</button>
 					        </c:if>
 					    </td>
 					</tr>
 					<tr>
-					    <td id="tbn">
-					        <b>1차원의 세계로 충분했던 그 시절의 너와 나</b>
+					</tr>
+					<tr>
+					    <td>
+					    <div class="tri" style="width: 200px; height: 130px; overflow: hidden; margin-top: 5px; font-size: 16px; color: #bfbfbf; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; line-height: 1.2em; height: 5.9em;"></div>
 					    </td>
 					</tr>
 					<tr>
-					    <td id="tri">한국의 지방 도시를 배경으로 십대 퀴어의 이야기를 그린
-					       소설. 다양한 작품을 통해 청춘의 풍경을 생생하게 전해온
-					       작가는 이번 책에서 우리가 지나온 과거의 어느 페이지를
-					       다시 펼쳐 보인다. 너와 나, 1차원의 세계로 충분했던 그 시
-					       절의 사랑과 우정이 우리를 다시 그곳으로 데려간다.</td>
-					</tr>
-					<tr>
-					    <td id=tbn2><b>1차원이 되고 싶어</b><br>
-					    박신영 저 | 문학동네<br>
-					    <b>13,320</b>원(10% 할인)<b>P</b>740원
-					   </td>
+					    <td id=tbn2></td>
 					</tr>
 				</table>
 			</div>
@@ -135,6 +127,33 @@ https://github.com/filipelinhares/ress-->
 
         
    </section>
+
+
+
+<script>
+
+$(document).ready(function(){
+	$.ajax({
+		url : "${pageContext.servletContext.contextPath}/admin/todayajax",
+		dataType : "json",
+		type : "get",
+		success : function(stock){
+			var stockPrice = stock.salePrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+			$('td#tbn2').append('<b>'+stock.btitle+'</b><br>'+stock.author+' 저| '+stock.publisher+'<br><b>'+stockPrice+'</b>원(10% 할인)');
+			$('.tri').append(stock.bintro);
+			$('td[name=todayImg]').append('<a href="#"><img class="bookk book4" src="${contextPath}'+stock.bimg+'"></a>');
+		},
+		error : function(e){
+			console.log(e);
+		}
+	});
+});
+
+
+</script>
+
+
+
 
 </body>
 </html>

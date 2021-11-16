@@ -1,13 +1,19 @@
 package admin.model.dao;
 
-import static common.JDBCTemplate.*;
+import static common.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
+
+import admin.model.vo.RefundList;
+import admin.model.vo.ShipList;
 
 public class ChartDao {
 private Properties chartQuery = new Properties();
@@ -570,6 +576,251 @@ private Properties chartQuery = new Properties();
 			close(pstmt);
 		}
 		
+		return result;
+	}
+
+	public List<ShipList> shipSelect(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<ShipList> shipList = new ArrayList<>();
+		String sql = chartQuery.getProperty("shipSelect");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				ShipList ship = new ShipList();
+				
+				ship.setOrderNo(rset.getInt(1));
+				ship.setUserId(rset.getString(2));
+				ship.setUserName(rset.getString(3));
+				ship.setUserNickName(rset.getString(4));
+				ship.setBookName(rset.getString(5));
+				ship.setAmount(rset.getInt(6));
+				ship.setOrder_date(rset.getDate(7));
+				ship.setDelivery(rset.getString(8));
+				
+				shipList.add(ship);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return shipList;
+	}
+
+	public int shipUpdate(Connection conn, int oNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = chartQuery.getProperty("shipUpdate");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, oNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public List<RefundList> refundSelect(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<RefundList> refundList = new ArrayList<>();
+		String sql = chartQuery.getProperty("refundSelect");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				RefundList refund = new RefundList();
+				refund.setOrderNo(rset.getInt(1));
+				refund.setUserId(rset.getString(2));
+				refund.setUserName(rset.getString(3));
+				refund.setUserNickName(rset.getString(4));
+				refund.setUserPhone(rset.getString(5));
+				refund.setBookName(rset.getString(6));
+				refund.setAmount(rset.getInt(7));
+				refund.setOrderChange(rset.getInt(8));
+				
+				refundList.add(refund);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return refundList;
+	}
+
+	public int refundUpdate(Connection conn, int oNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = chartQuery.getProperty("refundUpdate");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, oNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int sales1Select(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		String sql = chartQuery.getProperty("sales1Select");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+	}
+	public int sales2Select(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		String sql = chartQuery.getProperty("sales2Select");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+	}
+	public int sales3Select(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		String sql = chartQuery.getProperty("sales3Select");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+	}
+	public int sales4Select(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		String sql = chartQuery.getProperty("sales4Select");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+	}
+	public int sales5Select(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		String sql = chartQuery.getProperty("sales5Select");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+	}
+	public int sales6Select(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		String sql = chartQuery.getProperty("sales6Select");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+	}
+	public int sales7Select(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		String sql = chartQuery.getProperty("sales7Select");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
 		return result;
 	}
 

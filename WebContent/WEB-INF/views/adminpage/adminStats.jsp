@@ -54,7 +54,6 @@
 	
 	
 	
-	
 		let salesChart = document.getElementById('salesChart').getContext('2d');
 		
 		let saChart = new Chart(salesChart, {
@@ -64,7 +63,7 @@
 				datasets : [
 					{
 					label: '매출',
-					data : [3000000, 200000, 1500000, 1000000, 1300000, 3500000, 4000000],
+					data : ['${areaList.sales7}', '${areaList.sales6}','${areaList.sales5}', '${areaList.sales4}', '${areaList.sales3}', '${areaList.sales2}', '${areaList.sales1}'],
 					backgroundColor: [ 'rgba(255, 99, 132, 0.2)'
 						, 'rgba(200, 99, 132, 0.2)'
 						, 'rgba(54, 162, 235, 0.2)'
