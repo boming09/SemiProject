@@ -173,6 +173,7 @@
                 <!-- 페이지 이동 끝 -->
                 
                 <!-- 검색, 작성하기 -->
+                <!-- 
                 <div class="search_area2">
 				<form method="get" action="${ contextPath }/mypagemyreview">
 					<select id="searchCondition" name="searchCondition">
@@ -189,7 +190,7 @@
 						value="${ param.searchValue }">
 					</span>					
 					<button type="submit" class="noticeInsert" id="noticeInsert">검색하기</button>
-										
+				-->					
 					<c:if test="${ !empty loginUser }">
 					<button id="noticeInsert" type="button" class="noticeInsert"
 					onclick="location.href='${ contextPath }/myreviewinsertview'">작성하기</button>

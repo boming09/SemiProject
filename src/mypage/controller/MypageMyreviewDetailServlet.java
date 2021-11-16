@@ -34,8 +34,38 @@ public class MypageMyreviewDetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int review_no = Integer.parseInt(request.getParameter("review_no"));
-		
 		B_ReviewService b_reviewService = new B_ReviewService();
+		
+		Cookie[] cookies = request.getCookies();
+		
+		String bcount = "";
+		
+		if(cookies != null && cookies.length > 0) {
+			for(Cookie c : cookies) {
+				if(c.getName().equals("bcount")) {
+					bcount = c.getValue();
+				}
+			}
+		}
+		
+		if(bcount.indexOf("|" + review_no + "|") == -1) {
+			/*
+			Cookie newBcount = new Cookie("bcount", bcount + "|" + review_no + "|");
+			
+			// newBCount.setMaxAge(1 * 24 * 60 * 60);
+			response.addCookie(newBcount);
+			
+			int result = b_reviewService.increaseCount(review_no);
+			
+			if(result > 0) {
+				System.out.println("조회수 증가 성공");
+			} else {
+				System.out.println("조회수 증가 실패");
+			}
+		
+		}
+		*/
+		// B_ReviewService b_reviewService = new B_ReviewService();
 					
 		B_Review b_review = b_reviewService.selectB_review(review_no);
 		
@@ -46,7 +76,7 @@ public class MypageMyreviewDetailServlet extends HttpServlet {
 			request.setAttribute("message", "게시글 상세 조회에 실패하였습니다.");
 			request.getRequestDispatcher("/WEB-INF/views/member/errorpage.jsp").forward(request, response);
 		}
-		
+		}
 	}
 
 	/**

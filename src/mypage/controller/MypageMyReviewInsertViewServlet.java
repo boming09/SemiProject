@@ -41,16 +41,18 @@ public class MypageMyReviewInsertViewServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		int book_id = Integer.parseInt(request.getParameter("book_id"));
+				
+		int book_id = Integer.parseInt(request.getParameter("category"));
 		String content = request.getParameter("content");
+		int rating = Integer.parseInt(request.getParameter("rating"));
 		int user_no = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
 				
 		
 		B_Review b_review = new B_Review();
 		b_review.setBook_id(book_id);
-		b_review.setContent(content);
 		b_review.setUser_no(user_no);
+		b_review.setContent(content);
+		b_review.setRating(rating);
 		b_review.setRef_no(1);
 		
 		int result = new B_ReviewService().insertBoard(b_review);

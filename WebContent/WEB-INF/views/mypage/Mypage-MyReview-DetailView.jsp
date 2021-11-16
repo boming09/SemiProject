@@ -28,28 +28,56 @@
             <div class="wcommu_conarea">
                 <table>
                     <tr class="liarea">
-                        <th class="wcommu_title" rowspan="3">제목</th>
-                        <td class="title" name="title" rowspan="3">
-                            <div> ${ myreview.mtitle }</div>
-                        </td>         
+                        <th class="wcommu_date" rowspan="4">책제목</th>
+                        <td class="date2" name="category" rowspan="4">
+                        ${ b_review.book_name }
+                        </td>       
                         <th class="wcommu_user">작성자</th>
-                        <td class="user">${ myreview.user_nickname }</td>
+                        <td class="user">
+                        
+                        <c:choose>
+			           	<c:when test="${ loginUser.userNickname != null}">
+			           	<div>${ loginUser.userNickname }</div>
+			            </c:when>
+			            <c:otherwise>
+			            <div>${ loginUser.userName }</div>
+			            </c:otherwise>
+			            </c:choose> 
+                        <!-- 
+                        <c:choose> 
+				           	<c:when test="${ review.user_nickname != null}">
+				           	<li class="review_writer">${ review.user_nickname }</li>
+				            </c:when>
+				            <c:otherwise>
+				            <li class="review_writer">${ loginUser.userName }</li>
+				            </c:otherwise>
+			            </c:choose>       
+                         -->
+                        <!-- ${ b_review.user_no } -->
+                        </td>
                     </tr>
                     <tr class="liarea">
                     	<th class="wcommu_date">등록일</th>
-                        <td class="date"> <fmt:formatDate value="${ myreview.create_Date }" type="both"
+                        <td class="date"> <fmt:formatDate value="${ b_review.create_date }" type="both"
                         pattern="yyyy.MM.dd HH:mm:ss"/></td>                        
                     </tr>
+                    
                     <tr class="liarea">
-                    	<th class="wcommu_date">분류</th>
+                    <th class="wcommu_title">리뷰번호</th>
+                        <td class="title" name="title">
+                            <div> ${ b_review.review_no }</div>
+                        </td>                    	
+                    </tr>
+                    <tr class="liarea">
+                    	<th class="wcommu_date">평점</th>
                         <td class="date" name="category">
-                        ${ myreview.category_name }
+                        ${ b_review.rating }
                         </td>
                     </tr>
                                       
                     <tr class="liarea2">
                         <th class="wcommu_content">내용</th>
-                        <td class="wcontent" name="content" colspan="3">${ myreview.mcontent }</td>
+                        <td class="wcontent" name="content" colspan="3">${ b_review.content }</td>
                     </tr>
                 </table>
             </div>
@@ -57,7 +85,7 @@
             <div class="wcommu_btn">
                 <button type="button" onclick="location.href='${ contextPath }/mypagemyreview'">돌아가기</button>
                 <!-- 이게시글을 쓴 사람과 로그인한 유저가 같아 야한다 -->
-                <c:if test="${ loginUser.userNo == myreview.mwriter }">
+                <c:if test="${ loginUser.userNo == b_review.user_no }">
                 <button type="button" onclick="updateMyreviewView();">수정하기</button>
                 <button type="button" onclick="deleteMyreview();">삭제하기</button>
                 </c:if>
@@ -71,9 +99,9 @@
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
-	<c:if test="${ loginUser.userNo == myreview.mwriter }">
+	<c:if test="${ loginUser.userNo ==  b_review.user_no }">
 	<form name="myreviewForm" method="post">
-		<input type="hidden" name="mid" value="${ myreview.mid }">
+		<input type="hidden" name="review_no" value="${ b_review.review_no }">
 	</form>
 	<script>
 		function updateMyreviewView(){
