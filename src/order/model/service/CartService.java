@@ -220,9 +220,8 @@ public class CartService {
 	}
 
 	public Recommend selectBookList() {
+		
 		Connection conn = getConnection();
-		//각각 세개씩 비아이디 받아와서 어디다 느면 되는데 
-		//아니다 이미지랑 제목같은것도 있어야됨
 	
 		Recommend recommend= new Recommend();
 		
@@ -231,8 +230,6 @@ public class CartService {
 		List<Book> PopBookList = cartDao.selectPBookList(conn);
 		List<Book> bestList = cartDao.selectBestList(conn);
 		
-		
-		//rd에 리스트들 넣어라
 		recommend.setWBookList(WeekBookList);
 		recommend.setNBookList(NewBookList);
 		recommend.setPBookList(PopBookList);
@@ -240,9 +237,9 @@ public class CartService {
 		
 		close(conn);
 
-		//rd에 넣고 리턴해라
 		return recommend;
 	}
+	
 
 	public Order selectUpOrder(int userNo) {
 		Connection conn = getConnection();

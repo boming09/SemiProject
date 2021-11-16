@@ -39,6 +39,7 @@
 		font-size: 0.9rem;
 		font-weight: bold;
 		background:white;
+		width: 80px;
 	/*	background:rgba(73, 125, 78, 1);
 		color:white;*/
 		/*position:absolute;*/
@@ -49,7 +50,7 @@
 	}
 	
 	.dd {
-		margin-left:200px;
+		margin-left:220px;
 		margin-top:60px;
 	}
 	
