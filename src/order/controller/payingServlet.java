@@ -43,12 +43,31 @@ public class payingServlet extends HttpServlet {
 			session.setAttribute("coupon_no", coupon_no);
 		}*/
 		
-		String coupon_no = null;
+		// 
+		/*String coupon_no;
 		if(request.getParameter("coupon_no") != null ) {
 			coupon_no = request.getParameter("coupon_no");
+			//Integer.parseInt(coupon_no);
 			session.setAttribute("coupon_no", coupon_no);
-		}
+		} else {
+			coupon_no="none";
+			session.setAttribute("coupon_no", coupon_no);
+		}*/
 	
+		String coupon_no = request.getParameter("coupon_no");
+		if(coupon_no == null || coupon_no.trim().equals("")){
+			coupon_no = "0";
+		}
+
+		session.setAttribute("coupon_no", coupon_no);
+	
+		
+		/*int coupon_no = 0;
+		if(request.getParameter("coupon_no") != null) {
+		coupon_no = Integer.parseInt(request.getParameter("coupon_no"));
+		//Integer.parseInt(coupon_no);
+		session.setAttribute("coupon_no", coupon_no);
+		} */
 	
 		
 		
