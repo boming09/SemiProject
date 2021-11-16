@@ -66,27 +66,19 @@ p {
 	width : 15%;
 }
 .orderNo, .orderNo2 {
-	width : 13%;
+	width : 17%;
 }
 .orderInfo, .orderInfo2 {
-	width : 41%;
+	width : 53%;
 }
 .delivery, .delivery2 {
-	width : 13%;
+	width : 15%;
+	border-right : 0px;
 }
 .delivery2 {
 	font-weight : bold;
 }
-.deliveryNum, .deliveryNum2 {
-	/* width : 15%; */
-	width : 18%;
-	border-right : 0px;
-}
-/* .change, .change2 {
-	width : 10%;
-	border-right : 0px;
-}
- */
+
  
 /* 리스트 마우스 오버시 */
 .orderlist:hover {

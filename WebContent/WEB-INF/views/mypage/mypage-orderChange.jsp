@@ -27,7 +27,7 @@
            	<header class="orderheader"><h3>주문조회</h3></header>
         	<div class="hArea">
 	            <h4>주문 리스트</h4>
-	            <p>배송상태 : 상품준비중(주문취소 가능) / 배송중, 배송완료(주문취소 불가)</p>          
+	            <p>배송상태 : 상품준비중(주문취소 가능) / 배송완료(주문취소 불가)</p>          
         	</div>
         	<div>
 	            <ul class="order">
@@ -35,7 +35,6 @@
 	            	<li class="orderNo">주문번호</li>
 	            	<li class="orderInfo">주문내역</li>
 	            	<li class="delivery">배송상태</li>
-	            	<li class="deliveryNum">운송장번호</li>
 	            	<li class="change">주문변경</li>
 	            </ul>
 	            <c:forEach var="change" items="${ changeList }">
@@ -44,12 +43,6 @@
 		            	<li class="orderNo2">${ change.order_no }</li>
 		            	<li class="orderInfo2">총  ${ change.detailCount }종류의 도서 구매</li>
 			            <li class="delivery2" style="color:gray;">${ change.delivery }</li>
-		            	<li class="deliveryNum2">
-		            		<c:choose>
-				            	<c:when test="${ change.delivery_number == 0 }">&nbsp;</c:when>
-				            	<c:otherwise>${ change.delivery_number }</c:otherwise>
-			            	</c:choose>
-		            	</li>
 			            <li class="change2" style="color:#D25832;">
 			            	<c:choose>
 				            	<c:when test="${ change.orderchange == 10 }">주문취소</c:when>

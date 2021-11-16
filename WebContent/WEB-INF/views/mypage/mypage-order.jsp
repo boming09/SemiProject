@@ -35,7 +35,6 @@
 	            	<li class="orderNo">주문번호</li>
 	            	<li class="orderInfo">주문내역</li>
 	            	<li class="delivery">배송상태</li>
-	            	<li class="deliveryNum">운송장번호</li>
 	            </ul>
 	            <c:forEach var="order" items="${ orderList }">
 		            <ul class="orderlist" onclick="myDetail(${ order.order_no })">
@@ -50,7 +49,6 @@
 			            		<li class="delivery2" style="color:#D25832;;">${ order.delivery }</li>
 			            	</c:otherwise>
 		            	</c:choose>
-		            	<li class="deliveryNum2">${ order.delivery_number }</li>
 		            </ul>
 	            </c:forEach>
         	</div>
