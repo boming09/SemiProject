@@ -1,8 +1,6 @@
 package admin.controller;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,19 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import admin.model.service.ChartService;
-import admin.model.vo.RefundList;
 
 /**
- * Servlet implementation class AdminRefundServlet
+ * Servlet implementation class AdminRefundUpdateServlet
  */
-@WebServlet("/admin/refund")
-public class AdminRefundServlet extends HttpServlet {
+@WebServlet("/admin/refundupdate")
+public class AdminRefundUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminRefundServlet() {
+    public AdminRefundUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,18 +28,25 @@ public class AdminRefundServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<RefundList> refundList = new ChartService().refundSelect();
-		
-		request.setAttribute("refundList", refundList);
-		request.getRequestDispatcher("/WEB-INF/views/adminpage/adminRefund.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		int oNo = Integer.parseInt(request.getParameter("oNo"));
+		
+		int result = new ChartService().refundUpdate(oNo);
+		
+		if(result > 0) {
+			request.getSession().setAttribute("message", "변경");
+			response.sendRedirect(request.getContextPath() + "/admin/refund");
+		} else {
+			request.getSession().setAttribute("message", "실패");
+			response.sendRedirect(request.getContextPath() + "/admin/refund");
+		}
 	}
 
 }

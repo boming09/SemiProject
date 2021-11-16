@@ -78,6 +78,21 @@ public class AdminStatsServlet extends HttpServlet {
 		areaList.setWoman5(woman5);
 		areaList.setWoman6(woman6);
 		
+		int sales1 = new ChartService().sales1Select();
+		int sales2 = new ChartService().sales2Select();
+		int sales3 = new ChartService().sales3Select();
+		int sales4 = new ChartService().sales4Select();
+		int sales5 = new ChartService().sales5Select();
+		int sales6 = new ChartService().sales6Select();
+		int sales7 = new ChartService().sales7Select();
+		areaList.setSales1(sales1);
+		areaList.setSales2(sales2);
+		areaList.setSales3(sales3);
+		areaList.setSales4(sales4);
+		areaList.setSales5(sales5);
+		areaList.setSales6(sales6);
+		areaList.setSales7(sales7);
+		
 		
 		
 		

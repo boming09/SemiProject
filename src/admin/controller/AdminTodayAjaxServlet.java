@@ -1,7 +1,6 @@
 package admin.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,20 +8,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import admin.model.service.ChartService;
-import admin.model.vo.RefundList;
+import com.google.gson.Gson;
+
+import book.model.service.BookService;
+import book.model.vo.Book;
 
 /**
- * Servlet implementation class AdminRefundServlet
+ * Servlet implementation class AdminTodayAjaxServlet
  */
-@WebServlet("/admin/refund")
-public class AdminRefundServlet extends HttpServlet {
+@WebServlet("/admin/todayajax")
+public class AdminTodayAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminRefundServlet() {
+    public AdminTodayAjaxServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,10 +32,13 @@ public class AdminRefundServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<RefundList> refundList = new ChartService().refundSelect();
 		
-		request.setAttribute("refundList", refundList);
-		request.getRequestDispatcher("/WEB-INF/views/adminpage/adminRefund.jsp").forward(request, response);
+		
+		Book todayStock = new BookService().todaySelect();
+		
+		
+		response.setContentType("application/json; charset=utf-8");
+		new Gson().toJson(todayStock, response.getWriter());
 	}
 
 	/**

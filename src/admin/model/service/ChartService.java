@@ -3,8 +3,11 @@ package admin.model.service;
 import static common.JDBCTemplate.*;
 
 import java.sql.Connection;
+import java.util.List;
 
 import admin.model.dao.ChartDao;
+import admin.model.vo.RefundList;
+import admin.model.vo.ShipList;
 
 public class ChartService {
 	private ChartDao chartDao = new ChartDao();
@@ -153,6 +156,94 @@ public class ChartService {
 		return result;
 	}
 
+	public List<ShipList> shipSelect() {
+		Connection conn = getConnection();
+		List<ShipList> shipList = chartDao.shipSelect(conn);
+		
+		close(conn);
+		
+		return shipList;
+	}
+
+	public int shipUpdate(int oNo) {
+		Connection conn = getConnection();
+		int result = chartDao.shipUpdate(conn, oNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
+
+	public List<RefundList> refundSelect() {
+		Connection conn = getConnection();
+		List<RefundList> refundList = chartDao.refundSelect(conn);
+		
+		close(conn);
+		
+		return refundList;
+	}
+
+	public int refundUpdate(int oNo) {
+		Connection conn = getConnection();
+		int result = chartDao.refundUpdate(conn, oNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
+
+	public int sales1Select() {
+		Connection conn = getConnection();
+		int result = chartDao.sales1Select(conn);
+		close(conn);
+		return result;
+	}
+	public int sales2Select() {
+		Connection conn = getConnection();
+		int result = chartDao.sales2Select(conn);
+		close(conn);
+		return result;
+	}
+	public int sales3Select() {
+		Connection conn = getConnection();
+		int result = chartDao.sales3Select(conn);
+		close(conn);
+		return result;
+	}
+	public int sales4Select() {
+		Connection conn = getConnection();
+		int result = chartDao.sales4Select(conn);
+		close(conn);
+		return result;
+	}
+	public int sales5Select() {
+		Connection conn = getConnection();
+		int result = chartDao.sales5Select(conn);
+		close(conn);
+		return result;
+	}
+	public int sales6Select() {
+		Connection conn = getConnection();
+		int result = chartDao.sales6Select(conn);
+		close(conn);
+		return result;
+	}
+	public int sales7Select() {
+		Connection conn = getConnection();
+		int result = chartDao.sales7Select(conn);
+		close(conn);
+		return result;
+	}
 
 	
 

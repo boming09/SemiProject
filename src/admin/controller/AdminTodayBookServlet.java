@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import admin.model.service.ChartService;
-import admin.model.vo.RefundList;
+import book.model.service.BookService;
+import book.model.vo.Book;
 
 /**
- * Servlet implementation class AdminRefundServlet
+ * Servlet implementation class AdminTodayBookServlet
  */
-@WebServlet("/admin/refund")
-public class AdminRefundServlet extends HttpServlet {
+@WebServlet("/admin/todaybook")
+public class AdminTodayBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminRefundServlet() {
+    public AdminTodayBookServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,10 +31,15 @@ public class AdminRefundServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<RefundList> refundList = new ChartService().refundSelect();
+		List<Book> cList = new BookService().cSelect();
+		List<Book> cList2 = new BookService().cSelect2();
+		List<Book> cList3 = new BookService().cSelect3();
 		
-		request.setAttribute("refundList", refundList);
-		request.getRequestDispatcher("/WEB-INF/views/adminpage/adminRefund.jsp").forward(request, response);
+		
+		request.setAttribute("cList", cList);
+		request.setAttribute("cList2", cList2);
+		request.setAttribute("cList3", cList3);
+		request.getRequestDispatcher("/WEB-INF/views/adminpage/todayInsertBook.jsp").forward(request, response);
 	}
 
 	/**

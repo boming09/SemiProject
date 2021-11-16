@@ -25,11 +25,20 @@ public class AreaList {
 	private int woman5;
 	private int woman6;
 	
+	private int sales1;
+	private int sales2;
+	private int sales3;
+	private int sales4;
+	private int sales5;
+	private int sales6;
+	private int sales7;
+	
 	public AreaList() {}
 
 	public AreaList(int seoul, int incheon, int gyeonggi, int gangwon, int gyeongsang, int chungcheong, int jeolla,
 			int jeju, int man, int man1, int man2, int man3, int man4, int man5, int man6, int woman, int woman1,
-			int woman2, int woman3, int woman4, int woman5, int woman6) {
+			int woman2, int woman3, int woman4, int woman5, int woman6, int sales1, int sales2, int sales3, int sales4,
+			int sales5, int sales6, int sales7) {
 		super();
 		this.seoul = seoul;
 		this.incheon = incheon;
@@ -53,6 +62,13 @@ public class AreaList {
 		this.woman4 = woman4;
 		this.woman5 = woman5;
 		this.woman6 = woman6;
+		this.sales1 = sales1;
+		this.sales2 = sales2;
+		this.sales3 = sales3;
+		this.sales4 = sales4;
+		this.sales5 = sales5;
+		this.sales6 = sales6;
+		this.sales7 = sales7;
 	}
 
 	public int getSeoul() {
@@ -231,15 +247,74 @@ public class AreaList {
 		this.woman6 = woman6;
 	}
 
+	public int getSales1() {
+		return sales1;
+	}
+
+	public void setSales1(int sales1) {
+		this.sales1 = sales1;
+	}
+
+	public int getSales2() {
+		return sales2;
+	}
+
+	public void setSales2(int sales2) {
+		this.sales2 = sales2;
+	}
+
+	public int getSales3() {
+		return sales3;
+	}
+
+	public void setSales3(int sales3) {
+		this.sales3 = sales3;
+	}
+
+	public int getSales4() {
+		return sales4;
+	}
+
+	public void setSales4(int sales4) {
+		this.sales4 = sales4;
+	}
+
+	public int getSales5() {
+		return sales5;
+	}
+
+	public void setSales5(int sales5) {
+		this.sales5 = sales5;
+	}
+
+	public int getSales6() {
+		return sales6;
+	}
+
+	public void setSales6(int sales6) {
+		this.sales6 = sales6;
+	}
+
+	public int getSales7() {
+		return sales7;
+	}
+
+	public void setSales7(int sales7) {
+		this.sales7 = sales7;
+	}
+
 	@Override
 	public String toString() {
 		return "AreaList [seoul=" + seoul + ", incheon=" + incheon + ", gyeonggi=" + gyeonggi + ", gangwon=" + gangwon
 				+ ", gyeongsang=" + gyeongsang + ", chungcheong=" + chungcheong + ", jeolla=" + jeolla + ", jeju="
 				+ jeju + ", man=" + man + ", man1=" + man1 + ", man2=" + man2 + ", man3=" + man3 + ", man4=" + man4
 				+ ", man5=" + man5 + ", man6=" + man6 + ", woman=" + woman + ", woman1=" + woman1 + ", woman2=" + woman2
-				+ ", woman3=" + woman3 + ", woman4=" + woman4 + ", woman5=" + woman5 + ", woman6=" + woman6 + "]";
+				+ ", woman3=" + woman3 + ", woman4=" + woman4 + ", woman5=" + woman5 + ", woman6=" + woman6
+				+ ", sales1=" + sales1 + ", sales2=" + sales2 + ", sales3=" + sales3 + ", sales4=" + sales4
+				+ ", sales5=" + sales5 + ", sales6=" + sales6 + ", sales7=" + sales7 + "]";
 	}
 
+	
 	
 	
 	
