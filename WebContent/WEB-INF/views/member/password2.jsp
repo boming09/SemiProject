@@ -19,15 +19,15 @@
 	
         <div class="id0">
         <div class="ps3">
-           <h1 id="emailh1">비밀번호 재설정</h1>
+           <h1 id="emailh1">비밀번호 찾기</h1>
             <div class="ps4">
                 <br>
                 	<div class="id4div">
-                 	본인인증 수단으로 비밀번호 재설정 하기<br><br>
+                 	본인인증 수단으로 비밀번호 찾기<br><br>
                     <p>
                     <font size="2">
-		                        실명인증 또는 본인인증된 계정은 이메일로 인증할수 있습니다.<br>
-		            &nbsp;봄숲에 가입된 이메일주소를 입력해주세요.<br>
+		                        가입된 정보로 비밀번호를 찾을수 있습니다.<br>
+		            &nbsp;봄숲에 가입된 비밀번호 입니다.<br>
                     </font size>    
                 	</p>
                 	</div>

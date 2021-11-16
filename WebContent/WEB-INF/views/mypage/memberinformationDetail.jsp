@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.Arrays"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -49,7 +50,7 @@
 	            	</tr>	            	
 	            	<tr>
 	            		<th>성  명</th>
-	            		<td class="privacy"><%= loginUser.getUserName() %></td>
+	            		<td class="privacy"><%= loginUser.getUserName() %>${ member.enroll_date }</td>
 	            	</tr>
 	            	<tr>
 	            		<th>휴대전화</th>
@@ -105,6 +106,7 @@
 	            </table>
 	             -->
 	            <br>
+	            <!-- 
 	            <table class="ctable" id="table3">
 	            	<tr>
 	            		<th><input type="button" class="tb5" value="뉴스레터/문자수신 설정">
@@ -112,6 +114,7 @@
 	            			설정할 수 있습니다.
 	            	</tr>
 	            </table>
+	             -->
 	            	<div class="btnArea">
 						<a href="<%= request.getContextPath() %>/memberinformation"><button id="updateBtn">수정하기</button></a>
 						<a href="<%= request.getContextPath() %>/memberout"><button id="deleteBtn" type="button"
@@ -122,11 +125,11 @@
 	            <br>
 	            <p>
 	            	<ul class="pterms">
-	            		<li>봄숲 이용약관 : 에 동의 하였습니다.</li>
-	            		<li>봄숲 커뮤니티 이용약관 : 에 동의 하였습니다.</li>
-	            		<li>봄숲 개인정보 수집 및 이용 : 에 동의 하였습니다.</li>
+	            		<li>봄숲 이용약관 : [${ member2.enrollDate }] 에 동의 하였습니다.</li>	            		
+	            		<li>봄숲 개인정보 수집 및 이용 : [${ member2.enrollDate }] 에 동의 하였습니다.</li>
 	            		<li>봄숲 에서 제공하는 서비스의 특성상 회원 가입시 필수 동의 항목 중 일부 항목의 철회는 불가합니다.</li>
 	            		<li>동의 철회를 하시려면 현제 페이지 왼쪽에 있는 "회원탈퇴" 메뉴를 이용해주시기 바랍니다.</li>
+	            		
 	            	</ul>
 	            </p>
 	            </div>

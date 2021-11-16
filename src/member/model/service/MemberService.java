@@ -229,6 +229,7 @@ public class MemberService {
 		return null;
 	}
 
+	// 회원탈퇴
 	public Member deleteAccount2(String dissatisfaction, String userId, String userPwd) {
 		Connection conn = getConnection();
 		
@@ -237,6 +238,28 @@ public class MemberService {
 		close(conn);
 				
 		return result;
+	}
+
+	// 로그인 유저
+	public Member selectMember(int user_no) {
+		Connection conn = getConnection();
+		
+		Member member = memberDao.selectMember(conn, user_no);
+		
+		close(conn);
+		
+		return member;
+	}
+
+	// 로그인 유저 찾아오기
+	public Member selectMember2(int user_no) {
+		Connection conn = getConnection();
+		
+		Member member = memberDao.selectMember2(conn, user_no);
+		
+		close(conn);
+		
+		return member;
 	}
 
 }

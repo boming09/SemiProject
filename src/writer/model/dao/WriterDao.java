@@ -199,6 +199,7 @@ public class WriterDao {
 				writer.setUserNickname(rset.getString("user_nickname"));
 			}
 			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

@@ -44,27 +44,28 @@
 
             <div class="review_area2">
                 <div class="review_listarea">
-                    <ul class="review_listtop">
-                        <li class="review_no">리뷰번호</li>
-                        <li class="review_category">도서제목</li>
-                        <li class="review_content">내용</li>
-                        <li class="review_date">작성일</li>
+                    <table class="review_listarea2">
+                    <tr class="review_listtop">
+                        <th class="review_no">리뷰번호</th>
+                        <th class="review_category">도서제목</th>
+                        <th class="review_content">내용</th>
+                        <th class="review_date">작성일</th>
                         <!-- 
                         <li class="review_writer">작성자</li>
                         <li class="review_ref_no">참조리뷰번호</li>
                          -->
-                        <li class="review_rating">평점</li>
-                    </ul>
+                        <th class="review_rating">평점</th>
+                    </tr>
                     <c:if test="${ !empty loginUser }">
                 	
                 	<c:forEach var="review" items="${ b_reviewList }">
                 	
                 	<!-- 내역 반복문 -->
-                	<ul class="review_list" onclick="detailView(${ review.book_id })">
-                		<li class="review_no">${ review.review_no }</li>
-                		<li class="review_category">${ review.book_name }</li>
-                		<li class="review_content">${ review.content }</li>
-                		<li class="review_date">${ review.create_date }</li>
+                	<tr class="review_list" onclick="detailView(${ review.book_id })">
+                		<th class="review_no">${ review.review_no }</th>
+                		<td class="review_category">${ review.book_name }</td>
+                		<td class="review_content">${ review.content }</td>
+                		<td class="review_date">${ review.create_date }</td>
                 		<!-- 
                 		<c:choose> 
 				           	<c:when test="${ review.user_nickname != null}">
@@ -77,10 +78,11 @@
                 		
                 		<li class="review_ref_no">${ review.ref_no }</li>
                 		 -->
-                		<li class="review_rating">${ review.rating }</li>
-                	</ul>
+                		<th class="review_rating">${ review.rating }</th>
+                	</tr>
                     </c:forEach>
                     </c:if>
+                    </table>
                     <!-- 반복문 --> 
                     <!-- 가데이터 -->
                     <!-- 
@@ -204,12 +206,13 @@
 					</c:if>
 				 -->
 				</form>
+				</div>
 			</div>
+        <!-- 광고  -->
+		<jsp:include page="/WEB-INF/views/common/adArea.jsp" />	
             </div>
         </div>	
         
-        <!-- 광고  -->
-		<jsp:include page="/WEB-INF/views/common/adArea.jsp" />	
 	</div>
 	
 	<!-- footer -->
@@ -217,7 +220,7 @@
 	
 	<script>
 				function detailView(book_id){
-					location.href='${contextPath}/mypagemyreviewdetail?review_no=' + review_no;
+					location.href='${contextPath}/book/detail?=bid' + book_id;
 				}
 	</script>
 	

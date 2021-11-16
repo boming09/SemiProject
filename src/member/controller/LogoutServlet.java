@@ -34,7 +34,7 @@ public class LogoutServlet extends HttpServlet {
 		// session 객체 초기화
 		// session.invalidate();
 		
-		response.sendRedirect(request.getContextPath());
+		response.sendRedirect(request.getContextPath() + "/main");
 	}
 
 	/**
