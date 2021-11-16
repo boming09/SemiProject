@@ -62,25 +62,22 @@ p {
 	border-right : 1px solid gray;
 }
 .date, .date2 {
-	width : 14%;
+	width : 15%;
 }
 .orderNo, .orderNo2 {
-	width : 13%;
+	width : 15%;
 }
 .orderInfo, .orderInfo2 {
-	width : 39%;
+	width : 40%;
 }
 .delivery, .delivery2 {
-	width : 13%;
+	width : 15%;
 }
 .delivery2 {
 	font-weight : bold;
 }
-.deliveryNum, .deliveryNum2 {
-	width : 15%;
-}
 .change, .change2 {
-	width : 10%;
+	width : 15%;
 	border-right : 0px;
 }
 .change2 {
