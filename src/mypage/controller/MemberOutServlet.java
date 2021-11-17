@@ -43,20 +43,20 @@ public class MemberOutServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		HttpSession session = request.getSession();
+		// HttpSession session = request.getSession();
 		
 		// 변수 저장
-		String[] dissatisfactionArr = request.getParameterValues("dissatisfaction");
+		//String[] dissatisfactionArr = request.getParameterValues("dissatisfaction");
 		String userId = request.getParameter("check_id");
 		String userPwd = request.getParameter("check_pw");
 		
-		String dissatisfaction = "";
+		//String dissatisfaction = "";
 		
-		if(dissatisfaction != null)
-			dissatisfaction = String.join("|", dissatisfaction);
+		//if(dissatisfaction != null)
+		//	dissatisfaction = String.join("|", dissatisfaction);
 		
 		// 비즈니스 로직
-		Member member = new MemberService().deleteAccount2(dissatisfaction, userId, userPwd);
+		Member member = new MemberService().deleteAccount2(/*dissatisfaction, */userId, userPwd);
 		
 		// System.out.println("member : " + member);
 		

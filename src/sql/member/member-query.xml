@@ -122,8 +122,11 @@
 			  , USER_NICKNAME
 			  , DISSATISFACTION
 		   FROM MEMBER
+		  <!-- 
 		  WHERE DISSATISFACTION = ?
-		    AND USER_ID = ?
+		   AND
+		   -->
+		  WHERE USER_ID = ?
 		    AND USER_PWD = ?
 	</entry>
 	

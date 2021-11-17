@@ -41,12 +41,14 @@
 						</li>
 					</ul>
 					<br>
+					<!-- 
 					<p>
 						<img class="warnign"
 							src="<%= request.getContextPath() %>/resources/images/mypage/warning.png"
 							alt="warning"> 로그인할 때 사용하시는 이메일 주소를 직접 변경할 수 있습니다. <input
 							type="button" id="emailbut" value="이메일주소 변경하기">
 					</p>
+					 -->
 					<br>
 				</header>
 			</div>
@@ -62,7 +64,7 @@
 				고객님께서 느끼신 봄숲의 부족한 점을 지적해 주세요.<br> 소중하게 반영하겠습니다.
 			</h4>
 			<br>
-			<form action="${ contextPath }/memberout2" name="memberoutform" method="post"
+			<form action="${ contextPath }/memberout" name="memberoutform" method="post"
 			onsubmit="return validate();">
 			<div class="center">
 			<!-- 
@@ -173,8 +175,7 @@
 				<h4 class="h5go">
 					아이디 : <input type="text" id="check_id" name="check_id">
 					비밀번호 : <input type="password" id="check_pw" name="check_pw"><br><!-- required 비밀번호 삭제 되면 넣기 --> 
-					<button id="deleteBtn">탈퇴하기</button>
-					
+					<button id="deleteBtn">탈퇴하기</button>					
 				</h4>
 			</div>
 			<!-- 
