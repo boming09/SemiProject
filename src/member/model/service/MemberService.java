@@ -230,10 +230,10 @@ public class MemberService {
 	}
 
 	// 회원탈퇴
-	public Member deleteAccount2(String dissatisfaction, String userId, String userPwd) {
+	public Member deleteAccount2(/*String dissatisfaction, */String userId, String userPwd) {
 		Connection conn = getConnection();
 		
-		Member result = memberDao.deleteAccount2(conn, dissatisfaction, userId, userPwd);
+		Member result = memberDao.deleteAccount2(conn/*, dissatisfaction*/, userId, userPwd);
 		
 		close(conn);
 				

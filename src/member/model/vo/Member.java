@@ -155,6 +155,13 @@ public class Member {
 		this.userNickname = userNickname;
 	}
 
+	public Member(String dissatisfaction, String userId, String userPwd) {
+		super();
+		this.dissatisfaction = dissatisfaction;
+		this.userId = userId;
+		this.userPwd = userPwd;
+	}
+
 	public int getUserNo() {
 		return userNo;
 	}

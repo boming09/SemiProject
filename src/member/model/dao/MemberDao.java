@@ -603,7 +603,7 @@ public class MemberDao {
 		return member;
 	}
 
-	public Member deleteAccount2(Connection conn, String dissatisfaction, String userId, String userPwd) {
+	public Member deleteAccount2(Connection conn,/* String dissatisfaction, */String userId, String userPwd) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = memberQuery.getProperty("deleteAccount2");
@@ -612,9 +612,9 @@ public class MemberDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, dissatisfaction);
-			pstmt.setString(2, userId);
-			pstmt.setString(3, userPwd);
+			//pstmt.setString(1, dissatisfaction);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userPwd);
 			
 			rset = pstmt.executeQuery();
 			
