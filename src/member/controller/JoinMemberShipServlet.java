@@ -69,8 +69,7 @@ public class JoinMemberShipServlet extends HttpServlet {
 		
 		if(result > 0) {
 			request.getSession().setAttribute("message", "회원 가입이 완료 되었습니다. 로그인 해주세요.");		
-			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/main/main.jsp");
-			view.forward(request, response);
+			response.sendRedirect("/WEB-INF/views/main/main.jsp");
 		} else {
 			request.setAttribute("message", "회원가입에 실패 하였습니다.<br>다시 정보입력을 확인해 주세요.");
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/errorpage.jsp");
