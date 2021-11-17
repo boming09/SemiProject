@@ -189,6 +189,10 @@
 	</div>
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	<!-- jQuery와 Postcodify를 로딩한다 -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+	
 	<!-- 
 	<script>
 	function confirmAccountDelete(){
@@ -197,6 +201,7 @@
 		}
 	</script>
 	 -->
+	<!-- 
 	<script>
 	function validate(){
 		return true;
@@ -209,6 +214,7 @@
 		}
 	
 	</script>
+	 -->
 	<script>
 		function validate(){
 			return true;
