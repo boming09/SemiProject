@@ -100,7 +100,7 @@ public class AdminTodayInsertServlet extends HttpServlet {
 		
 		if(result > 0) {
 			request.getSession().setAttribute("message", "책 등록 성공");
-			response.sendRedirect(request.getContextPath());
+			response.sendRedirect(request.getContextPath() + "/main");
 		} else {
 			File fail = new File(savePath + book.getBimg());
 			File fail2 = new File(savePath + book.getFilepath());
@@ -108,7 +108,7 @@ public class AdminTodayInsertServlet extends HttpServlet {
 			fail2.delete();
 			
 			request.getSession().setAttribute("message", "책 등록 실패");
-			request.getRequestDispatcher("/WEB-INF/views/main.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/main/main.jsp").forward(request, response);
 		}
 	}
 

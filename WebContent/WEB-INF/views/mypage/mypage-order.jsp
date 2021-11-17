@@ -27,7 +27,7 @@
            	<header class="orderheader"><h3>주문조회</h3></header>
         	<div class="hArea">
 	            <h4>주문 리스트</h4>
-	            <p>배송상태 : 상품준비중(주문취소 가능) / 배송중, 배송완료(주문취소 불가)</p>          
+	            <p>배송상태 : 상품준비중(주문취소 가능) / 배송완료(주문취소 불가)</p>          
         	</div>
         	<div>
 	            <ul class="order">
