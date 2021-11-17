@@ -43,7 +43,7 @@
 	     		  	<!--<span class="align_ct"><b>보유 쿠폰: <span id="cponAmt">1</span>장</b><br></span>--> <!-- 쿠폰이 있으면 1장 없으면 0장 -->
 	     		  	<span class="align_ct"><b>보유 쿠폰</b><br></span>
 	     		  	<!-- <button class="dis_btn" id="couponBtn" onclick="openChild();">쿠폰 조회/적용</button><br>-->
-	     		  	<button class="dis_btn" id="couponBtn" onclick="openPopup('<%= request.getContextPath()%>/coupon', 'coupon', 500, 210);">쿠폰 조회/적용</button><br>
+	     		  	<button class="dis_btn" id="couponBtn" onclick="openPopup('<%= request.getContextPath()%>/coupon', 'coupon', 600, 250);">쿠폰 조회/적용</button><br>
 	     		  	<span class="align_ct bold"> 할인액:<span><input id="bInput">원</span></span>
 	     		  </div>
 	     		<!--   <div class="discount white">

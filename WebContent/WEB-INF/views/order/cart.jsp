@@ -300,8 +300,8 @@
      				<div>총 결제 예상 금액 : <span class="price"><fmt:formatNumber value="${sum}" type="number"/></span>원</div>
      			</div>
      			<div class="d_item">
-     				<div>상품 마일리지 : <b><fmt:formatNumber value="${msum div 20}" type="number"/>원</b></div>
-     				<div>총 적립 예상 마일리지 : <span class="price"><fmt:formatNumber value="${msum div 20}" type="number"/></span>원</div>
+     				<div><!--  상품 마일리지 : <b><fmt:formatNumber value="${msum div 20}" type="number"/>원</b>--></div>
+     				<div><!--  총 적립 예상 마일리지 : <span class="price"><fmt:formatNumber value="${msum div 20}" type="number"/></span>원--></div>
      			</div>
      		</div>
 

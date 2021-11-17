@@ -52,7 +52,7 @@ public class AccoutDeleteServlet extends HttpServlet {
 		if(result > 0) {
 			request.getSession().removeAttribute("loginUser");	// 로그인 세션 정보 삭제
 			request.getSession().setAttribute("message", "회원 탈퇴가 완료 되었습니다.");	// 메뉴바에서 alert
-			response.sendRedirect(request.getContextPath());	// 메인 페이지로 이동(서버 재요청)
+			response.sendRedirect(request.getContextPath() + "/main");	// 메인 페이지로 이동(서버 재요청)
 		}else {
 		
 		/* 실패한 경우 "회원 탈퇴에 실패하였습니다" 메세지 가지고 에러 페이지로 이동 */

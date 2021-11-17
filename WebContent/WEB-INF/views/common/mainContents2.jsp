@@ -87,9 +87,9 @@ https://github.com/filipelinhares/ress-->
 					    </td>
 					    <td>
 					        <b>오늘의 책</b>
-					        <c:if test="${ !empty loginUser && loginUser.userId == 'admin' }">
-					        <button type="button" style="border: 1px solid black; width: 30px; background: pink; color: white; margin-left: 10px;">edit</button>
-					        </c:if>
+                       <c:if test="${ !empty loginUser && loginUser.userId == 'admin' }">
+                       <button type="button" name="editBtn" onclick="location.href='${ contextPath }/admin/todaybook'" style="border: 1px solid black; width: 30px; background: pink; color: white; margin-left: 10px;">edit</button>
+                       </c:if>
 					    </td>
 					</tr>
 					<tr>
