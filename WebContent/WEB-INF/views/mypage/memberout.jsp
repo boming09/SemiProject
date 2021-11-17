@@ -62,6 +62,8 @@
 				고객님께서 느끼신 봄숲의 부족한 점을 지적해 주세요.<br> 소중하게 반영하겠습니다.
 			</h4>
 			<br>
+			<form action="${ contextPath }/memberout2" name="memberoutform" method="post"
+			onsubmit="return validate();">
 			<div class="center">
 			<!-- 
 			 -->
@@ -165,12 +167,12 @@
 			<!-- 비밀번호 확인후 탈퇴하기 가능 하면 만들고  못할거 같으면 삭제하고 
 				  탈퇴하기 클릭시 탈퇴가능하게 만들예정. -->
 			
-			<form action="${ contextPath }/memberout2" method="post">
+			
 			
 			<div class="h5go">
 				<h4 class="h5go">
-					아이디 : <input type="text" id="check_id" name="check_id" required>
-					비밀번호 : <input type="password" id="check_pw" name="check_pw" required><br><!-- required 비밀번호 삭제 되면 넣기 --> 
+					아이디 : <input type="text" id="check_id" name="check_id">
+					비밀번호 : <input type="password" id="check_pw" name="check_pw"><br><!-- required 비밀번호 삭제 되면 넣기 --> 
 					<button id="deleteBtn">탈퇴하기</button>
 					
 				</h4>
@@ -196,13 +198,39 @@
 	</script>
 	 -->
 	<script>
-		
+	function validate(){
+		return true;
+	}
+	
 	function checkit(){
 			alert("비밀번호를 입력하지 않으셨습니다.");
 			document.deleteForm.check_pw.focus();
 			return false;
 		}
 	
+	</script>
+	<script>
+		function validate(){
+			return true;
+		}
+		
+		$("#deleteBtn").click(function(){
+			
+			if(memberoutform.check_id.value == ""){
+		    	alert("아이디를 입력하지 않았습니다")
+		    	memberoutform.check_id.focus();
+		    	return false;
+		    }
+			
+			if(memberoutform.check_pw.value == ""){
+		    	alert("비밀번호를 입력하지 않았습니다")
+		    	memberoutform.check_pw.focus();
+		    	return false;
+		    }
+			
+			
+			return true;
+		});
 	</script>
 </body>
 </html>
