@@ -46,6 +46,6 @@
 - 김소민 : 메인 도서 추천 카테고리(이주의 책/신간 도서/화제의 책/오늘의 책/베스트 셀러), 장바구니(CRUD),주문 페이지,할인/결제 기능
 - 윤용한 : 회원 탈퇴신청 관리 기능, 회원 등급 관리 기능, 통계 그래프, 배송환불현황관리, 책 등록, 오늘의 책 등록
 
-### [프로토타입](https://www.figma.com/file/vxIDgfEYfLQjAvr8EQ6Jpn/1%EC%A1%B0-team-library)
+### [프로토타입](https://www.miricanvas.com/v/1vduly)
 ### [ERD](https://www.erdcloud.com/d/LNg3in7EjpjLvkrvB)
 
